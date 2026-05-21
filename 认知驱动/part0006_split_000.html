@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>认知驱动 · 第四章 · 策略</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(135deg,#f0f8f5 0%,#e0f2ec 100%);font-family:'Inter','PingFang SC','Microsoft YaHei',sans-serif;padding:2rem 1.5rem;color:#1a2e3f}
+.infographic{max-width:1400px;margin:0 auto}
+.hero{text-align:center;margin-bottom:3rem;position:relative}
+.hero h1{font-size:2.6rem;font-weight:800;background:linear-gradient(120deg,#1B4A5C,#059669);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.02em}
+.hero-badge{display:inline-block;background:rgba(5,150,105,0.1);padding:0.3rem 1.4rem;border-radius:40px;font-weight:500;font-size:0.85rem;color:#059669;margin-top:0.75rem;border:1px solid rgba(5,150,105,0.25)}
+.hero-sub{max-width:720px;margin:1rem auto 0;color:#3e5a6c;font-size:1.05rem;line-height:1.6}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem;margin-bottom:2.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+.card{background:rgba(255,255,255,0.88);backdrop-filter:blur(1px);border-radius:2rem;padding:1.6rem 1.5rem;box-shadow:0 15px 30px -12px rgba(0,0,0,0.08);transition:all 0.2s ease;border:1px solid rgba(255,255,255,0.6)}
+.card:hover{transform:translateY(-3px);background:white;box-shadow:0 22px 35px -14px rgba(0,0,0,0.12)}
+.card-icon{font-size:2.2rem;color:#059669;margin-bottom:0.8rem}
+.card-title{font-size:1.4rem;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
+.card-title .tag{font-size:0.7rem;background:#f0e2d4;padding:0.2rem 0.7rem;border-radius:30px;color:#c45d1a;font-weight:600}
+.cdesc{color:#2c4e66;line-height:1.5;font-size:0.93rem;margin-bottom:1rem}
+.list{list-style:none}
+.list li{margin-bottom:0.55rem;font-size:0.87rem;display:flex;gap:0.6rem;align-items:baseline;line-height:1.5}
+.list li i{color:#059669;width:1.2rem;font-size:0.8rem}
+.contrast-row{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-bottom:2.5rem}
+.cc{background:white;border-radius:1.8rem;padding:1.8rem;border-top:4px solid;box-shadow:0 12px 24px -10px rgba(0,0,0,0.05)}
+.ch{display:flex;gap:0.8rem;align-items:center;margin-bottom:1rem}
+.ch i{font-size:1.8rem}
+.ch h3{font-size:1.2rem}
+.flywheel{background:linear-gradient(115deg,#fef5ea,#fff8f0);border-radius:2rem;padding:1.8rem 2rem;margin-bottom:2.5rem;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.flywheel-text{flex:2}
+.flywheel-title{font-size:1.4rem;color:#b55a25;font-weight:700;margin-bottom:0.5rem}
+.flywheel-steps{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:0.8rem}
+.step{background:white;border-radius:60px;padding:0.4rem 1.2rem;font-weight:600;font-size:0.8rem;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+.flywheel-icon{flex:1;text-align:center;font-size:2.8rem;color:#059669}
+.matrix{background:#1e3a43;border-radius:2rem;padding:1.5rem;color:white;margin-bottom:2rem}
+.matrix h4{text-align:center;font-weight:600;margin-bottom:1rem;letter-spacing:1px}
+.matrix-items{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.matrix-item{background:rgba(255,255,255,0.12);border-radius:1.2rem;padding:0.8rem 1.2rem;text-align:center;width:160px}
+.matrix-item strong{font-size:1rem;display:block}
+.matrix-item small{font-size:0.78rem;opacity:0.8}
+.gold-box{background:#f6ede3;border-radius:1.8rem;padding:1.5rem;margin-bottom:2rem}
+.quote-block{font-style:italic;font-weight:500;font-size:1rem;color:#3e5a6c;line-height:1.6}
+.highlight{background:#fef1e0;border-radius:12px;padding:0.2rem 0.6rem;font-weight:500}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:1.5rem}
+.tag-item{background:#e6f0f2;border-radius:60px;padding:0.4rem 1rem;font-size:0.82rem;font-weight:500}
+.tag-item.accent{background:#feeedf;color:#c45d1a}
+.tag-item.dark{background:#1e3a43;color:white}
+footer{text-align:center;margin-top:2rem;font-size:0.75rem;color:#6d8ba0;border-top:1px solid #d4e2ec;padding-top:1.5rem}
+.ladder{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem}
+.ladder-item{display:flex;align-items:center;gap:0.8rem;background:rgba(255,255,255,0.6);border-radius:12px;padding:0.6rem 1rem;font-size:0.88rem}
+.ladder-item .num{font-weight:700;font-size:1rem;width:1.8rem;text-align:center}
+.ladder-item .label{flex:1}
+.ladder-item .desc{font-size:0.78rem;color:#666;max-width:200px;text-align:right}
+.action-row{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;margin-top:1rem}
+.action-item{flex:1;min-width:160px;background:white;border-radius:1.2rem;padding:1rem}
+.action-item .step-num{font-weight:700;color:#059669;font-size:0.85rem;margin-bottom:0.3rem}
+.action-item .step-title{font-weight:600;font-size:0.95rem;margin-bottom:0.3rem}
+.action-item .step-desc{font-size:0.82rem;color:#666}
+@media(max-width:780px){.contrast-row{grid-template-columns:1fr}.hero h1{font-size:1.8rem}}</style>
+</head>
+<body>
+<div class="infographic">
+  <div class="hero">
+    <h1>📐 认知驱动</h1>
+    <div class="hero-badge"><i class="fas fa-chart-line"></i> 方法和路径</div>
+    <div class="hero-sub">用认知的力量驱动自己，而非用毅力苦苦支撑。成为真正的长期主义者。</div>
+  </div>
+  <div class="grid-2">
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+    <div class="card-title">认知驱动 <span class="tag">vs</span><span class="tag">毅力驱动</span></div>
+    <div class="cdesc">真正驱动一个人长期坚持的不是毅力，而是对一件事的深刻认知。</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-top:0.8rem;">
+      <div style="background:#fef5ea;border-radius:12px;padding:0.8rem;font-size:0.85rem;"><i class="fas fa-fire" style="color:#e67e22;"></i> <strong>毅力驱动</strong><br>靠意志力硬撑，容易放弃</div>
+      <div style="background:#e0f2ec;border-radius:12px;padding:0.8rem;font-size:0.85rem;"><i class="fas fa-rocket" style="color:#059669;"></i> <strong>认知驱动</strong><br>看清机制，找到意义，自然坚持</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+    <div class="card-title">长期主义三要素</div>
+    <ul class="list">
+      <li><i class="fas fa-search"></i> <strong>看清机制</strong>：了解原理后，不做会感觉亏了<br><small style="color:#999;">例：了解三重大脑理论后，主动选择成长</small></li>
+      <li><i class="fas fa-compass"></i> <strong>寻找意义</strong>：激活情绪脑的力量<br><small style="color:#999;">例：写作的意义不是10万+，而是唤醒更多人</small></li>
+      <li><i class="fas fa-smile"></i> <strong>感受好处</strong>：在大脑中强化积极体验<br><small style="color:#999;">例：每天记录一个小进步</small></li>
+    </ul>
+  </div>
+</div>
+
+<div class="flywheel">
+  <div class="flywheel-text">
+    <div class="flywheel-title"><i class="fas fa-arrows-spin"></i> 认知驱动闭环</div>
+    <p>从<strong>看清机制</strong>出发，通过<strong>寻找意义</strong>激活情绪，最后用<strong>感受好处</strong>形成正反馈循环。</p>
+  </div>
+  <div class="flywheel-icon"><i class="fas fa-infinity"></i><br><span style="font-size:0.85rem;">正向循环</span></div>
+</div>
+
+<div class="matrix">
+  <h4><i class="fas fa-tools"></i> 策略工具箱</h4>
+  <div class="matrix-items">
+    <div class="matrix-item"><strong>📖 深度学习</strong><br><small>关联·体系·迁移</small></div>
+    <div class="matrix-item"><strong>✍️ 作品输出</strong><br><small>极致利他·反馈闭环</small></div>
+    <div class="matrix-item"><strong>🧠 心理表征</strong><br><small>高手思维模型</small></div>
+    <div class="matrix-item"><strong>⏳ 耐心复利</strong><br><small>时间的朋友</small></div>
+  </div>
+</div>
+
+<div class="gold-box">
+  <span class="quote-block">"一个人的成就往往在他的眼界之内——先在脑中构思，然后付诸实践。"<br>—— 史蒂芬·柯维</span>
+</div>
+  <footer>🧩 信息图解 · 《认知驱动》周岭 — 第四章 · 策略</footer>
+</div>
+</body>
+</html>

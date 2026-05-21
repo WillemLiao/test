@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>认知驱动 · 第一章 · 价值</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(135deg,#f6f9fc 0%,#ebf2f7 100%);font-family:'Inter','PingFang SC','Microsoft YaHei',sans-serif;padding:2rem 1.5rem;color:#1a2e3f}
+.infographic{max-width:1400px;margin:0 auto}
+.hero{text-align:center;margin-bottom:3rem;position:relative}
+.hero h1{font-size:2.6rem;font-weight:800;background:linear-gradient(120deg,#1B4A5C,#1f7b8c);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.02em}
+.hero-badge{display:inline-block;background:rgba(31,123,140,0.1);padding:0.3rem 1.4rem;border-radius:40px;font-weight:500;font-size:0.85rem;color:#1f7b8c;margin-top:0.75rem;border:1px solid rgba(31,123,140,0.25)}
+.hero-sub{max-width:720px;margin:1rem auto 0;color:#3e5a6c;font-size:1.05rem;line-height:1.6}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem;margin-bottom:2.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+.card{background:rgba(255,255,255,0.88);backdrop-filter:blur(1px);border-radius:2rem;padding:1.6rem 1.5rem;box-shadow:0 15px 30px -12px rgba(0,0,0,0.08);transition:all 0.2s ease;border:1px solid rgba(255,255,255,0.6)}
+.card:hover{transform:translateY(-3px);background:white;box-shadow:0 22px 35px -14px rgba(0,0,0,0.12)}
+.card-icon{font-size:2.2rem;color:#1f7b8c;margin-bottom:0.8rem}
+.card-title{font-size:1.4rem;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
+.card-title .tag{font-size:0.7rem;background:#f0e2d4;padding:0.2rem 0.7rem;border-radius:30px;color:#c45d1a;font-weight:600}
+.cdesc{color:#2c4e66;line-height:1.5;font-size:0.93rem;margin-bottom:1rem}
+.list{list-style:none}
+.list li{margin-bottom:0.55rem;font-size:0.87rem;display:flex;gap:0.6rem;align-items:baseline;line-height:1.5}
+.list li i{color:#1f7b8c;width:1.2rem;font-size:0.8rem}
+.contrast-row{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-bottom:2.5rem}
+.cc{background:white;border-radius:1.8rem;padding:1.8rem;border-top:4px solid;box-shadow:0 12px 24px -10px rgba(0,0,0,0.05)}
+.ch{display:flex;gap:0.8rem;align-items:center;margin-bottom:1rem}
+.ch i{font-size:1.8rem}
+.ch h3{font-size:1.2rem}
+.flywheel{background:linear-gradient(115deg,#fef5ea,#fff8f0);border-radius:2rem;padding:1.8rem 2rem;margin-bottom:2.5rem;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.flywheel-text{flex:2}
+.flywheel-title{font-size:1.4rem;color:#b55a25;font-weight:700;margin-bottom:0.5rem}
+.flywheel-steps{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:0.8rem}
+.step{background:white;border-radius:60px;padding:0.4rem 1.2rem;font-weight:600;font-size:0.8rem;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+.flywheel-icon{flex:1;text-align:center;font-size:2.8rem;color:#1f7b8c}
+.matrix{background:#1e3a43;border-radius:2rem;padding:1.5rem;color:white;margin-bottom:2rem}
+.matrix h4{text-align:center;font-weight:600;margin-bottom:1rem;letter-spacing:1px}
+.matrix-items{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.matrix-item{background:rgba(255,255,255,0.12);border-radius:1.2rem;padding:0.8rem 1.2rem;text-align:center;width:160px}
+.matrix-item strong{font-size:1rem;display:block}
+.matrix-item small{font-size:0.78rem;opacity:0.8}
+.gold-box{background:#f6ede3;border-radius:1.8rem;padding:1.5rem;margin-bottom:2rem}
+.quote-block{font-style:italic;font-weight:500;font-size:1rem;color:#3e5a6c;line-height:1.6}
+.highlight{background:#fef1e0;border-radius:12px;padding:0.2rem 0.6rem;font-weight:500}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:1.5rem}
+.tag-item{background:#e6f0f2;border-radius:60px;padding:0.4rem 1rem;font-size:0.82rem;font-weight:500}
+.tag-item.accent{background:#feeedf;color:#c45d1a}
+.tag-item.dark{background:#1e3a43;color:white}
+footer{text-align:center;margin-top:2rem;font-size:0.75rem;color:#6d8ba0;border-top:1px solid #d4e2ec;padding-top:1.5rem}
+.ladder{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem}
+.ladder-item{display:flex;align-items:center;gap:0.8rem;background:rgba(255,255,255,0.6);border-radius:12px;padding:0.6rem 1rem;font-size:0.88rem}
+.ladder-item .num{font-weight:700;font-size:1rem;width:1.8rem;text-align:center}
+.ladder-item .label{flex:1}
+.ladder-item .desc{font-size:0.78rem;color:#666;max-width:200px;text-align:right}
+.action-row{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;margin-top:1rem}
+.action-item{flex:1;min-width:160px;background:white;border-radius:1.2rem;padding:1rem}
+.action-item .step-num{font-weight:700;color:#1f7b8c;font-size:0.85rem;margin-bottom:0.3rem}
+.action-item .step-title{font-weight:600;font-size:0.95rem;margin-bottom:0.3rem}
+.action-item .step-desc{font-size:0.82rem;color:#666}
+@media(max-width:780px){.contrast-row{grid-template-columns:1fr}.hero h1{font-size:1.8rem}}</style>
+</head>
+<body>
+<div class="infographic">
+  <div class="hero">
+    <h1>🎯 价值规律</h1>
+    <div class="hero-badge"><i class="fas fa-chart-line"></i> 改变自己的关键是创造价值</div>
+    <div class="hero-sub">一切成功皆源于"价值交换"。想要得到某样东西，先让自己配得上它，并为他人创造独特价值。</div>
+  </div>
+  <div class="grid-2">
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-copy"></i></div>
+    <div class="card-title">复制 <span class="tag">边际成本递减</span></div>
+    <div class="cdesc">一次性投入，持续收益。作家、程序员、歌手——一次创作，无限传播。</div>
+    <ul class="list">
+      <li><i class="fas fa-chart-line"></i> 边际成本趋近于零</li>
+      <li><i class="fas fa-bed"></i> 睡后收入，一劳永逸</li>
+      <li><i class="fas fa-infinity"></i> 收益曲线=复利曲线：拐点后飞速增长</li>
+      <li><i class="fas fa-user-tie"></i> 举例：J.K.罗琳、周杰伦、迈克尔·杰克逊</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+    <div class="card-title">转换 <span class="tag">边际成本递增</span></div>
+    <div class="cdesc">出售时间或体力换取有限收益。做多少是多少，不做就归零。</div>
+    <ul class="list">
+      <li><i class="fas fa-hand-holding-usd"></i> 外卖小哥、货车司机、公司白领</li>
+      <li><i class="fas fa-chart-line"></i> 收益与投入线性相关</li>
+      <li><i class="fas fa-stopwatch"></i> 天花板明显，难以突破</li>
+      <li><i class="fas fa-lightbulb"></i> 解法：在转换中植入复制属性</li>
+    </ul>
+  </div>
+</div>
+
+<div class="contrast-row">
+  <div class="cc" style="border-top-color:#1f7b8c;">
+    <div class="ch"><i class="fas fa-balance-scale-left" style="color:#1f7b8c;"></i><h3 style="color:#1f5f6e;">复制 vs 转换</h3></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:0.85rem;">
+      <div style="background:#f0f6f8;border-radius:12px;padding:1rem;"><strong>厨师</strong><br>要更多收益→做更多菜<br><span style="color:#999;">线性增长</span></div>
+      <div style="background:#fef5ea;border-radius:12px;padding:1rem;"><strong>作家</strong><br>写一篇文章→持续收益<br><span style="color:#c45d1a;">指数增长</span></div>
+    </div>
+    <div style="margin-top:0.8rem;font-size:0.85rem;background:#f6ede3;border-radius:12px;padding:0.8rem;"><i class="fas fa-lightbulb" style="color:#e67e22;"></i> 有追求的厨师：研发秘方→技术入股连锁店 / 制作教程发布到网上</div>
+  </div>
+  <div class="cc" style="border-top-color:#E67E22;">
+    <div class="ch"><i class="fas fa-hand-holding-heart" style="color:#E67E22;"></i><h3 style="color:#c45d1a;">利他 · 镜子 · 内向</h3></div>
+    <ul class="list">
+      <li><i class="fas fa-heart"></i> <strong>利他</strong>：毋庸置疑，利他是最好的人生——纯粹的利他最终是极致的利己</li>
+      <li><i class="fas fa-glass"></i> <strong>镜子</strong>：所有的社交都是一面镜子——你怎样对别人，别人就怎样对你</li>
+      <li><i class="fas fa-user-check"></i> <strong>内向</strong>：被动社交——内向成长者的制胜之道是用作品说话</li>
+    </ul>
+  </div>
+</div>
+
+<div class="flywheel">
+  <div class="flywheel-text">
+    <div class="flywheel-title"><i class="fas fa-cogs"></i> 价值飞轮 · 五步闭环</div>
+    <p>从利他出发，通过持续创造，实现复利增长。每一环都为下一环蓄力。</p>
+    <div class="flywheel-steps">
+      <span class="step">🎯 明确价值</span>
+      <span class="step">📚 深度学习</span>
+      <span class="step">✍️ 产出作品</span>
+      <span class="step">🤝 交付反馈</span>
+      <span class="step">🔁 迭代升级</span>
+    </div>
+  </div>
+  <div class="flywheel-icon"><i class="fas fa-repeat"></i> <i class="fas fa-arrow-up"></i><br><span style="font-size:0.85rem;">正向积累</span></div>
+</div>
+  <footer>🧩 信息图解 · 《认知驱动》周岭 — 第一章 · 价值</footer>
+</div>
+</body>
+</html>

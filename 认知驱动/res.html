@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>认知驱动 · 全书汇总</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(135deg,#f6f9fc 0%,#ebf2f7 100%);font-family:'Inter','PingFang SC','Microsoft YaHei',sans-serif;padding:2rem 1.5rem;color:#1a2e3f}
+.infographic{max-width:1400px;margin:0 auto}
+.hero{text-align:center;margin-bottom:3rem;position:relative}
+.hero h1{font-size:2.6rem;font-weight:800;background:linear-gradient(120deg,#1B4A5C,#E67E22);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.02em}
+.hero-badge{display:inline-block;background:rgba(230,126,34,0.1);padding:0.3rem 1.4rem;border-radius:40px;font-weight:500;font-size:0.85rem;color:#E67E22;margin-top:0.75rem;border:1px solid rgba(230,126,34,0.25)}
+.hero-sub{max-width:720px;margin:1rem auto 0;color:#3e5a6c;font-size:1.05rem;line-height:1.6}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem;margin-bottom:2.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+.card{background:rgba(255,255,255,0.88);backdrop-filter:blur(1px);border-radius:2rem;padding:1.6rem 1.5rem;box-shadow:0 15px 30px -12px rgba(0,0,0,0.08);transition:all 0.2s ease;border:1px solid rgba(255,255,255,0.6)}
+.card:hover{transform:translateY(-3px);background:white;box-shadow:0 22px 35px -14px rgba(0,0,0,0.12)}
+.card-icon{font-size:2.2rem;color:#E67E22;margin-bottom:0.8rem}
+.card-title{font-size:1.4rem;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
+.card-title .tag{font-size:0.7rem;background:#f0e2d4;padding:0.2rem 0.7rem;border-radius:30px;color:#c45d1a;font-weight:600}
+.cdesc{color:#2c4e66;line-height:1.5;font-size:0.93rem;margin-bottom:1rem}
+.list{list-style:none}
+.list li{margin-bottom:0.55rem;font-size:0.87rem;display:flex;gap:0.6rem;align-items:baseline;line-height:1.5}
+.list li i{color:#E67E22;width:1.2rem;font-size:0.8rem}
+.contrast-row{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-bottom:2.5rem}
+.cc{background:white;border-radius:1.8rem;padding:1.8rem;border-top:4px solid;box-shadow:0 12px 24px -10px rgba(0,0,0,0.05)}
+.ch{display:flex;gap:0.8rem;align-items:center;margin-bottom:1rem}
+.ch i{font-size:1.8rem}
+.ch h3{font-size:1.2rem}
+.flywheel{background:linear-gradient(115deg,#fef5ea,#fff8f0);border-radius:2rem;padding:1.8rem 2rem;margin-bottom:2.5rem;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.flywheel-text{flex:2}
+.flywheel-title{font-size:1.4rem;color:#b55a25;font-weight:700;margin-bottom:0.5rem}
+.flywheel-steps{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:0.8rem}
+.step{background:white;border-radius:60px;padding:0.4rem 1.2rem;font-weight:600;font-size:0.8rem;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+.flywheel-icon{flex:1;text-align:center;font-size:2.8rem;color:#E67E22}
+.matrix{background:#1e3a43;border-radius:2rem;padding:1.5rem;color:white;margin-bottom:2rem}
+.matrix h4{text-align:center;font-weight:600;margin-bottom:1rem;letter-spacing:1px}
+.matrix-items{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.matrix-item{background:rgba(255,255,255,0.12);border-radius:1.2rem;padding:0.8rem 1.2rem;text-align:center;width:160px}
+.matrix-item strong{font-size:1rem;display:block}
+.matrix-item small{font-size:0.78rem;opacity:0.8}
+.gold-box{background:#f6ede3;border-radius:1.8rem;padding:1.5rem;margin-bottom:2rem}
+.quote-block{font-style:italic;font-weight:500;font-size:1rem;color:#3e5a6c;line-height:1.6}
+.highlight{background:#fef1e0;border-radius:12px;padding:0.2rem 0.6rem;font-weight:500}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:1.5rem}
+.tag-item{background:#e6f0f2;border-radius:60px;padding:0.4rem 1rem;font-size:0.82rem;font-weight:500}
+.tag-item.accent{background:#feeedf;color:#c45d1a}
+.tag-item.dark{background:#1e3a43;color:white}
+footer{text-align:center;margin-top:2rem;font-size:0.75rem;color:#6d8ba0;border-top:1px solid #d4e2ec;padding-top:1.5rem}
+.ladder{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem}
+.ladder-item{display:flex;align-items:center;gap:0.8rem;background:rgba(255,255,255,0.6);border-radius:12px;padding:0.6rem 1rem;font-size:0.88rem}
+.ladder-item .num{font-weight:700;font-size:1rem;width:1.8rem;text-align:center}
+.ladder-item .label{flex:1}
+.ladder-item .desc{font-size:0.78rem;color:#666;max-width:200px;text-align:right}
+.action-row{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;margin-top:1rem}
+.action-item{flex:1;min-width:160px;background:white;border-radius:1.2rem;padding:1rem}
+.action-item .step-num{font-weight:700;color:#E67E22;font-size:0.85rem;margin-bottom:0.3rem}
+.action-item .step-title{font-weight:600;font-size:0.95rem;margin-bottom:0.3rem}
+.action-item .step-desc{font-size:0.82rem;color:#666}
+@media(max-width:780px){.contrast-row{grid-template-columns:1fr}.hero h1{font-size:1.8rem}}</style>
+</head>
+<body>
+<div class="infographic">
+  <div class="hero">
+    <h1>🧭 认知驱动 · 做成事的心法</h1>
+    <div class="hero-badge"><i class="fas fa-chart-line"></i> 完整内容</div>
+    <div class="hero-sub">周岭继《认知觉醒》后核心升华——用价值规律驱动人生，让技能与作品成为你的"利他"桥梁。</div>
+  </div>
+  <div class="grid-2">
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-bullhorn"></i></div>
+    <div class="card-title">价值规律 <span class="tag">核心引擎</span></div>
+    <div class="cdesc">一切成功皆源于"价值交换"。想要得到某样东西，先让自己配得上它，并为他人创造独特价值。</div>
+    <ul class="list">
+      <li><i class="fas fa-gem"></i> 利他 → 极致利己（长期主义思维）</li>
+      <li><i class="fas fa-chart-simple"></i> 作品思维：输出可交付、可积累的作品</li>
+      <li><i class="fas fa-arrow-trend-up"></i> 你的价值 = 解决问题的能力 × 影响力半径</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-seedling"></i></div>
+    <div class="card-title">身份驱动 <span class="tag">内在重塑</span></div>
+    <div class="cdesc">不是"我要做什么"，而是"我是谁"。从潜意识层面建立身份认知，驱动持久行动。</div>
+    <ul class="list">
+      <li><i class="fas fa-id-card"></i> 信念层 → 行为层 → 结果层</li>
+      <li><i class="fas fa-brain"></i> 自我肯定 + 心理对照：先成为理想中的人</li>
+      <li><i class="fas fa-globe"></i> 改变从"默认设定"切换到"创造者模式"</li>
+    </ul>
+  </div>
+</div>
+
+<div class="contrast-row">
+  <div class="cc" style="border-top-color:#1f7b8c;">
+    <div class="ch"><i class="fas fa-person-walking-arrow-right" style="color:#1f7b8c;"></i><h3 style="color:#1f5f6e;">内向成长 · 习惯驱动</h3></div>
+    <p>围绕自身，早起、阅读、冥想…… 提升自我品格，但难以直接产生对外价值。</p>
+    <div style="margin:1rem 0;background:#EFF6F8;border-radius:16px;padding:1rem;"><i class="fas fa-check-circle" style="color:#4c9e8f;"></i> 每日坚持，自律获益<br><i class="fas fa-charging-station"></i> 需要转化为"外向创造"</div>
+  </div>
+  <div class="cc" style="border-top-color:#E67E22;">
+    <div class="ch"><i class="fas fa-chalkboard-user" style="color:#E67E22;"></i><h3 style="color:#c45d1a;">外向成长 · 价值驱动</h3></div>
+    <p>技能、作品、服务他人。将内在能量外化，解决外部问题，获得反馈与复利。</p>
+    <div style="margin:1rem 0;background:#FEF5ea;border-radius:16px;padding:1rem;"><i class="fas fa-fire"></i> 写作、编程、设计、咨询……<br><i class="fas fa-chart-line"></i> 打造"价值飞轮"</div>
+  </div>
+</div>
+
+<div class="flywheel">
+  <div class="flywheel-text">
+    <div class="flywheel-title"><i class="fas fa-cogs"></i> 价值飞轮 · 五步闭环</div>
+    <p>从"利他"出发，通过持续创造，实现复利增长。每一环都为下一环蓄力。</p>
+    <div class="flywheel-steps">
+      <span class="step">🎯 明确价值</span>
+      <span class="step">📚 深度学习</span>
+      <span class="step">✍️ 产出作品</span>
+      <span class="step">🤝 交付反馈</span>
+      <span class="step">🔁 迭代升级</span>
+    </div>
+  </div>
+  <div class="flywheel-icon"><i class="fas fa-repeat"></i> <i class="fas fa-arrow-up"></i><br><span style="font-size:0.9rem;">⏫ 正向积累 ⏫</span></div>
+</div>
+
+<div class="grid-2">
+  <div class="card"><div class="card-icon"><i class="fas fa-copy"></i></div><div class="card-title">复制与杠杆 <span class="tag">放大价值</span></div><div class="cdesc">将个人成果复制成可多次传播的产品，打破时间单次出售的限制。</div><ul class="list"><li><i class="fas fa-dice-d6"></i> 边际成本趋近于零，实现睡后价值</li><li><i class="fas fa-chart-line"></i> 一次创作，无限传播</li><li><i class="fas fa-hand-peace"></i> 利他 + 复制 = 影响力复利</li></ul></div>
+  <div class="card"><div class="card-icon"><i class="fas fa-layer-group"></i></div><div class="card-title">NLP逻辑层次 <span class="tag">觉醒阶梯</span></div><div class="cdesc">从环境、行为、能力，到信念、身份、使命。上三层（信念/身份/精神）决定下三层。</div><ul class="list"><li><i class="fas fa-mountain"></i> 信念/身份/精神决定环境/行为/能力</li><li><i class="fas fa-arrow-up"></i> 升级世界观：我是创造者，而非被动反应者</li><li><i class="fas fa-feather"></i> 为世界贡献价值，是最高级的动机</li></ul></div>
+</div>
+
+<div class="matrix">
+  <h4><i class="fas fa-chart-pie"></i> 两种核心能力 · 价值引擎</h4>
+  <div class="matrix-items">
+    <div class="matrix-item"><strong>🎯 深度学习力</strong><br><small>关联·体系·迁移</small></div>
+    <div class="matrix-item"><strong>🛠️ 作品打磨力</strong><br><small>极致利他·反馈闭环</small></div>
+    <div class="matrix-item"><strong>⚡ 心理表征</strong><br><small>高手思维模型</small></div>
+    <div class="matrix-item"><strong>📈 耐心复利</strong><br><small>时间的朋友</small></div>
+  </div>
+  <p style="text-align:center;margin-top:1rem;font-size:0.8rem;opacity:0.9;">认知驱动 = 在正确的方向上持续积累"不可替代的价值"</p>
+</div>
+
+<div class="gold-box">
+  <div class="quote-block">"一流的生活不是富有，而是觉知；顶尖的成长不是自律，而是价值驱动。" —— 周岭</div>
+  <div style="margin-top:0.8rem;"><span class="highlight"><i class="fas fa-ruler-combined"></i> 衡量标准：你的作品对他人产生了多少正向影响？</span></div>
+</div>
+
+<div class="tag-row">
+  <span class="tag-item"><i class="fas fa-brain"></i> 认知觉醒（内观）</span>
+  <span style="font-size:1.5rem;">⟷</span>
+  <span class="tag-item accent"><i class="fas fa-chart-line"></i> 认知驱动（外观）</span>
+  <span style="font-size:1.5rem;">=</span>
+  <span class="tag-item dark">完整人生系统</span>
+</div>
+
+<div class="grid-2">
+  <div class="card"><div class="card-icon"><i class="fas fa-trap"></i></div><div class="card-title">伪努力陷阱 <span class="tag">警惕自我感动</span></div><div class="cdesc">大量阅读、打卡却缺少产出，陷入"成长幻觉"。认知驱动强调向外输出。</div><ul class="list"><li><i class="fas fa-eye-slash"></i> 避免"无效输入 → 无输出"的死循环</li><li><i class="fas fa-bridge"></i> 跨越从学习到创造的门槛</li></ul></div>
+  <div class="card"><div class="card-icon"><i class="fas fa-arrows-spin"></i></div><div class="card-title">镜像思维·利他破局 <span class="tag">最高级利己</span></div><div class="cdesc">纯粹利他，最终自己会成为最大的受益者。建立"我能带来什么"的心智。</div><ul class="list"><li><i class="fas fa-hand-sparkles"></i> 通过成就他人来成就自己</li><li><i class="fas fa-people-arrows"></i> 信任积累 → 资源聚集 → 价值网络</li></ul></div>
+</div>
+  <footer>🧩 信息图解 · 《认知驱动》周岭 — 全书汇总</footer>
+</div>
+</body>
+</html>

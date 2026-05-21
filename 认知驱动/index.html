@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>认知驱动 · 读书信息图解</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter','PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f5;color:#1a2e3f;display:flex;height:100vh;overflow:hidden}
+.sidebar{width:260px;background:linear-gradient(180deg,#0f0c29,#1a1a2e);color:#fff;display:flex;flex-direction:column;flex-shrink:0}
+.sb-header{padding:22px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.sb-header h1{font-size:17px;font-weight:700;display:flex;align-items:center;gap:8px}
+.sb-header p{font-size:12px;opacity:0.45;margin-top:3px}
+.sb-list{flex:1;overflow-y:auto;padding:6px 0}
+.sb-list::-webkit-scrollbar{width:4px}
+.sb-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px}
+.sb-item{padding:10px 18px;cursor:pointer;font-size:13px;color:rgba(255,255,255,0.5);transition:all .15s;border-left:3px solid transparent;display:flex;align-items:center;gap:10px}
+.sb-item:hover{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.8)}
+.sb-item.active{background:rgba(255,255,255,0.08);color:#fff;border-left-color:#E67E22}
+.sb-item .num{width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.4);flex-shrink:0}
+.sb-item.active .num{background:rgba(230,126,34,0.2);color:#E67E22}
+.sb-item .label{flex:1;line-height:1.3}
+.sb-item .label .sub{display:block;font-size:10px;opacity:0.4;margin-top:1px}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.main .placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#b8a89a;gap:12px}
+.main .placeholder .icon{font-size:56px;opacity:0.2}
+.main .placeholder p{font-size:15px;opacity:0.6}
+iframe{flex:1;width:100%;border:none;display:none;background:#f0f2f5}
+iframe.show{display:block}
+@media(max-width:700px){body{flex-direction:column}.sidebar{width:100%;height:auto;max-height:180px}}
+</style>
+</head>
+<body>
+<div class="sidebar">
+  <div class="sb-header">
+    <h1>📘 认知驱动</h1>
+    <p>周岭 · 做成事的心法与技法</p>
+  </div>
+  <div class="sb-list" id="list"></div>
+</div>
+<div class="main">
+  <div class="placeholder" id="placeholder">
+    <div class="icon">📖</div>
+    <p>选择左侧章节开始阅读</p>
+  </div>
+  <iframe id="viewer" loading="lazy"></iframe>
+</div>
+<script>
+const chapters = [
+  { file:"part0004", title:"前言", sub:"为什么我们很努力却总是看不到希望", icon:"📝" },
+  { file:"part0005_split_000", title:"第一章 · 价值", sub:"改变自己的关键是创造价值", icon:"🎯" },
+  { file:"part0005_split_001", title:"第二章 · 身份", sub:"一切从信念开始", icon:"👤" },
+  { file:"part0005_split_002", title:"第三章 · 心理", sub:"清除成事路上的情绪障碍", icon:"🧠" },
+  { file:"part0006_split_000", title:"第四章 · 策略", sub:"方法和路径", icon:"📐" },
+  { file:"part0006_split_001", title:"第五章 · 战略", sub:"环境与多维", icon:"🌍" },
+  { file:"part0006_split_002", title:"第六章 · 成事", sub:"做到是最高等级的成长", icon:"⚡" },
+  { file:"part0007", title:"后记", sub:"践行", icon:"📝" },
+  { file:"part0008", title:"附录", sub:"参考文献", icon:"📚" },
+  { file:"res", title:"全书汇总", sub:"完整体系概览", icon:"🧭" }
+];
+const list = document.getElementById('list');
+const viewer = document.getElementById('viewer');
+const ph = document.getElementById('placeholder');
+chapters.forEach(function(c,i){
+  const d=document.createElement('div');
+  d.className='sb-item';
+  d.innerHTML='<span class="num">'+(i+1)+'</span><span class="label">'+c.title+'<span class="sub">'+c.sub+'</span></span>';
+  d.dataset.file=c.file;
+  d.onclick=function(){openChapter(c.file);};
+  list.appendChild(d);
+});
+function openChapter(f){
+  document.querySelectorAll('.sb-item').forEach(function(e){e.classList.toggle('active',e.dataset.file===f);});
+  ph.style.display='none';
+  viewer.className='show';
+  viewer.src=f+'.html';
+}
+</script>
+</body>
+</html>

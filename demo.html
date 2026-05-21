@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>认知觉醒 · 核心信息图解 | 思维重构地图</title>
+    <!-- 使用优雅现代字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (免费图标库) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f5f7fc 0%, #eef2f6 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 2rem 1.5rem;
+            color: #1a2c3e;
+        }
+
+        /* 主容器 — 信息图风格 */
+        .infographic-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 头部标题区 */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+        .hero-section h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1E3C4C, #2B5F6E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.01em;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(43, 95, 110, 0.12);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #2B5F6E;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(43, 95, 110, 0.25);
+        }
+        .hero-sub {
+            max-width: 700px;
+            margin: 1rem auto 0;
+            color: #4a6276;
+            font-weight: 400;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        /* 网格卡片布局 — 信息图块 */
+        .grid-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        /* 普通卡片样式 */
+        .insight-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.02);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255,255,255,0.7);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 40px -14px rgba(0,0,0,0.12);
+            background: white;
+            border-color: #cbdde6;
+        }
+
+        /* 突出的大卡片 (适用于核心模型) */
+        .feature-card {
+            background: linear-gradient(125deg, #ffffff 0%, #fefef9 100%);
+            border-left: 5px solid #f5a65b;
+            border-radius: 2rem;
+        }
+
+        .card-icon {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            color: #2d7a8c;
+        }
+        .card-title {
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .card-title span {
+            background: #eef2f7;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #2c6e7e;
+        }
+        .card-desc {
+            color: #2c4258;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+        .key-points {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        .key-points li {
+            margin-bottom: 0.7rem;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            color: #2b4f63;
+        }
+        .key-points li i {
+            color: #f5a65b;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+            width: 1.2rem;
+        }
+
+        /* 特色双栏布局：左右对照区 (元认知/本能脑) */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        .split-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.06);
+            border-bottom: 3px solid;
+        }
+        .split-left {
+            border-bottom-color: #3a8c9e;
+        }
+        .split-right {
+            border-bottom-color: #e9a368;
+        }
+        .split-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .split-header i {
+            font-size: 2rem;
+        }
+        .split-header h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        /* 图表/数值样式 */
+        .stats-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: space-between;
+        }
+        .stat-item {
+            background: #f8fafc;
+            border-radius: 1.2rem;
+            padding: 0.8rem;
+            text-align: center;
+            flex: 1;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1f5e6e;
+        }
+
+        /* 觉醒螺旋区 — 特别设计模块 */
+        .awakening-spiral {
+            background: linear-gradient(115deg, #fef7e6, #fff7ef);
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid #ffe2b5;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .spiral-text {
+            flex: 2;
+            min-width: 240px;
+        }
+        .spiral-text h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #b45f2b;
+            margin-bottom: 0.6rem;
+        }
+        .spiral-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .step-badge {
+            background: white;
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            color: #4c5d6b;
+        }
+        .spiral-visual {
+            flex: 1;
+            text-align: center;
+            font-size: 2.8rem;
+            letter-spacing: 8px;
+            color: #df9f5e;
+        }
+
+        /* 三重心智模型可视化 */
+        .brain-model {
+            background: #1e2f3a;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        .brain-title {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        .layers {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .layer {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(3px);
+            border-radius: 1.4rem;
+            padding: 0.8rem 1.2rem;
+            width: 120px;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .layer strong {
+            display: block;
+            font-size: 1rem;
+        }
+        .layer small {
+            opacity: 0.8;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 780px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .spiral-visual {
+                font-size: 2rem;
+            }
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.8rem;
+            color: #6d8a9c;
+            border-top: 1px solid #dce5ec;
+            padding-top: 1.5rem;
+        }
+        .footnote {
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+<div class="infographic-container">
+    
+    <!-- HERO 信息图主视觉 -->
+    <div class="hero-section">
+        <h1>📖 认知觉醒</h1>
+        <div class="hero-badge"><i class="fas fa-brain"></i> 内观自己 · 摆脱焦虑 · 心智跃迁</div>
+        <div class="hero-sub">周岭 · 核心认知框架 | 成长就是消除模糊，让理性与本能合作</div>
+    </div>
+
+    <!-- 第一层：核心概念卡片矩阵 (4大基石) -->
+    <div class="grid-dashboard">
+        <!-- 卡片1：三重脑 -->
+        <div class="insight-card">
+            <div class="card-icon"><i class="fas fa-brain"></i></div>
+            <div class="card-title">本能·情绪·理智 <span>三重大脑</span></div>
+            <div class="card-desc">源于进化时间轴：本能脑（3.6亿年）、情绪脑（2亿年）、理智脑（250万年）。理智脑虽年轻但掌舵觉醒。</div>
+            <ul class="key-points">
+                <li><i class="fas fa-crown"></i> 理智脑：高级认知，目标规划</li>
+                <li><i class="fas fa-heartbeat"></i> 情绪脑：感性驱动，趋利避害</li>
+                <li><i class="fas fa-tree"></i> 本能脑：生理反应，节能模式</li>
+                <li><i class="fas fa-chart-line"></i> 成长= 让理智脑变强，而非对抗本能</li>
+            </ul>
+        </div>
+        <!-- 卡片2：焦虑的根源 -->
+        <div class="insight-card">
+            <div class="card-icon"><i class="fas fa-fire"></i></div>
+            <div class="card-title">焦虑根源 <span>模糊 · 欲望</span></div>
+            <div class="card-desc">想同时做很多事，又想立即看到效果。本质是本能脑与情绪脑对于“不确定性”的抗拒。</div>
+            <ul class="key-points">
+                <li><i class="fas fa-question-circle"></i> 认知模糊：缺乏清晰目标</li>
+                <li><i class="fas fa-hourglass-half"></i> 急于求成：即时满足陷阱</li>
+                <li><i class="fas fa-puzzle-piece"></i> 消除模糊 → 清晰力才是行动力</li>
+            </ul>
+        </div>
+        <!-- 卡片3：元认知 -->
+        <div class="insight-card feature-card">
+            <div class="card-icon"><i class="fas fa-eye"></i></div>
+            <div class="card-title">元认知 <span>终极觉醒</span></div>
+            <div class="card-desc">对自己思考过程的审视与反思。上帝视角 · 觉察起点 · 灵魂伴侣。元认知能力是觉醒的基石。</div>
+            <ul class="key-points">
+                <li><i class="fas fa-arrows-spin"></i> 主动元认知：自控力的根源</li>
+                <li><i class="fas fa-clock"></i> 每日反思：复盘回路</li>
+                <li><i class="fas fa-crosshairs"></i> 从被动到主动，成为思维舵手</li>
+            </ul>
+        </div>
+        <!-- 卡片4：舒适区边缘 -->
+        <div class="insight-card">
+            <div class="card-icon"><i class="fas fa-chart-simple"></i></div>
+            <div class="card-title">拉伸区 <span>高效成长区</span></div>
+            <div class="card-desc">既不太难又不太容易的“匹配区”。在舒适区边缘持续练习，心流与进步共存。</div>
+            <ul class="key-points">
+                <li><i class="fas fa-waveform"></i> 太难⇒焦虑，太易⇒无聊</li>
+                <li><i class="fas fa-arrow-trend-up"></i> 匹配原则 + 刻意练习 = 复利曲线</li>
+                <li><i class="fas fa-seedling"></i> 小步迭代，积累正反馈</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 第二层：元认知 vs 本能/情绪对照（左右信息对比）觉醒关键-->
+    <div class="split-layout">
+        <div class="split-card split-left">
+            <div class="split-header">
+                <i class="fas fa-robot" style="color:#3a8c9e"></i>
+                <h3 style="color:#2c7082;">本能/情绪主导</h3>
+            </div>
+            <p style="margin-bottom: 12px;">自动驾驶模式 · 趋易避难 · 及时行乐</p>
+            <div class="stats-group">
+                <div class="stat-item"><div class="stat-number">70%</div><div>决策习惯性</div></div>
+                <div class="stat-item"><div class="stat-number">即时</div><div>反馈依赖</div></div>
+            </div>
+            <ul class="key-points" style="margin-top: 10px;">
+                <li><i class="fas fa-bed"></i> 沉迷娱乐、拖延、情绪化</li>
+                <li><i class="fas fa-dice"></i> 缺乏长远视角</li>
+            </ul>
+        </div>
+        <div class="split-card split-right">
+            <div class="split-header">
+                <i class="fas fa-lightbulb" style="color:#e9a368"></i>
+                <h3 style="color:#c97e3a;">元认知觉醒模式</h3>
+            </div>
+            <p>觉察 → 审视 → 选择 → 主动控制，让理智脑驾驭本能情绪。</p>
+            <div class="stats-group">
+                <div class="stat-item"><div class="stat-number">复盘</div><div>每日反思</div></div>
+                <div class="stat-item"><div class="stat-number">延迟</div><div>满足能力</div></div>
+            </div>
+            <ul class="key-points" style="margin-top: 10px;">
+                <li><i class="fas fa-dove"></i> 自我监控，跳出当局者迷</li>
+                <li><i class="fas fa-map"></i> 成为自己思维的主人</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 第三层：心智成长模型 —— 专注力+学习力+行动力 -->
+    <div class="grid-dashboard">
+        <div class="insight-card">
+            <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+            <div class="card-title">专注力 <span>极度投入</span></div>
+            <div class="card-desc">身心合一，感受当下。专注是“元认知”在行动中的体现——主动选择注意焦点。</div>
+            <ul class="key-points">
+                <li><i class="fas fa-meditate"></i> 收回感受，回归当下</li>
+                <li><i class="fas fa-stopwatch"></i> 番茄工作法 + 单任务模式</li>
+                <li><i class="fas fa-charging-station"></i> 享受过程，避免精神游离</li>
+            </ul>
+        </div>
+        <div class="insight-card">
+            <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+            <div class="card-title">学习力 <span>关联+体系</span></div>
+            <div class="card-desc">深度学习，用旧知识缝接新知识。不是记忆而是“认知晶体”搭建。</div>
+            <ul class="key-points">
+                <li><i class="fas fa-link"></i> 关联：知识与已有体系连接</li>
+                <li><i class="fas fa-cubes"></i> 体系：个人知识框架＞碎片</li>
+                <li><i class="fas fa-person-chalkboard"></i> 教授他人，获取反馈</li>
+            </ul>
+        </div>
+        <div class="insight-card">
+            <div class="card-icon"><i class="fas fa-bolt"></i></div>
+            <div class="card-title">行动力 <span>清晰即力量</span></div>
+            <div class="card-desc">想得模糊，做得拖延；清晰明确的目标+最小启动步骤，破除“一切始于想”。</div>
+            <ul class="key-points">
+                <li><i class="fas fa-clipboard-list"></i> 写下来：日程细化到时间段</li>
+                <li><i class="fas fa-rocket"></i> 5分钟起步法，克服畏难</li>
+                <li><i class="fas fa-chart-line"></i> 反馈闭环 → 持续精进</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 特别模块：觉醒螺旋 (认知飞轮) 加上可视化循环 -->
+    <div class="awakening-spiral">
+        <div class="spiral-text">
+            <h3><i class="fas fa-sync-alt"></i> 觉醒螺旋 · 成长飞轮</h3>
+            <p>认知驱动，从“知道”到“做到”。闭环四阶段：觉知 → 反思 → 行动 → 迭代。</p>
+            <div class="spiral-steps">
+                <span class="step-badge">🔍 觉知问题</span>
+                <span class="step-badge">🧠 元认知反思</span>
+                <span class="step-badge">⚡ 微小行动</span>
+                <span class="step-badge">📈 反馈优化</span>
+                <span class="step-badge">🔄 螺旋上升</span>
+            </div>
+            <div style="margin-top: 1rem; font-size: 0.85rem; background: #fcedd3; border-radius: 60px; padding: 0.3rem 1rem; display: inline-block;">
+                💡 每天早晨设立目标，晚间复盘 —— 让改变发生
+            </div>
+        </div>
+        <div class="spiral-visual">
+            <i class="fas fa-arrow-up"></i><i class="fas fa-arrow-up"></i><br>
+            ⬆️ 认知攀升 ⬆️
+        </div>
+    </div>
+
+    <!-- 大脑分层图示 + 心智权重 (数据化信息) -->
+    <div class="brain-model">
+        <div class="brain-title"><i class="fas fa-chart-pie"></i> 大脑决策权重 & 觉醒策略</div>
+        <div class="layers">
+            <div class="layer"><strong>🧬 本能脑</strong><small>≈80% 能耗基础</small></div>
+            <div class="layer"><strong>🐒 情绪脑</strong><small>≈15% 情感驱动</small></div>
+            <div class="layer"><strong>🧠 理智脑</strong><small>≈5% 但掌控未来</small></div>
+        </div>
+        <div style="text-align: center; margin-top: 15px; font-size: 0.8rem; opacity:0.9;">
+            ｜刻意练习驯化本能 ｜ 情绪调节化解阻力 ｜ 增强理智脑带宽 ｜
+        </div>
+    </div>
+
+    <!-- 五条核心觉醒法则 (竖排风格展板) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.2rem; margin-bottom: 2rem;">
+        <div style="background: white; border-radius: 1.2rem; padding: 1rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+            <i class="fas fa-book-open" style="font-size: 1.8rem; color:#478d9e;"></i>
+            <div style="font-weight: 700; margin: 0.5rem 0;">消除模糊</div>
+            <div style="font-size: 0.75rem;">知识清晰，目标明确</div>
+        </div>
+        <div style="background: white; border-radius: 1.2rem; padding: 1rem; text-align: center;">
+            <i class="fas fa-layer-group" style="font-size: 1.8rem; color:#e9a368;"></i>
+            <div style="font-weight: 700; margin: 0.5rem 0;">舒适区边缘</div>
+            <div style="font-size: 0.75rem;">最佳挑战区成长</div>
+        </div>
+        <div style="background: white; border-radius: 1.2rem; padding: 1rem; text-align: center;">
+            <i class="fas fa-microchip" style="font-size: 1.8rem; color:#478d9e;"></i>
+            <div style="font-weight: 700; margin: 0.5rem 0;">元认知监控</div>
+            <div style="font-size: 0.75rem;">第三视角审视</div>
+        </div>
+        <div style="background: white; border-radius: 1.2rem; padding: 1rem; text-align: center;">
+            <i class="fas fa-weight-hanging" style="font-size: 1.8rem; color:#e9a368;"></i>
+            <div style="font-weight: 700; margin: 0.5rem 0;">匹配原则</div>
+            <div style="font-size: 0.75rem;">难易适中，心流涌现</div>
+        </div>
+        <div style="background: white; border-radius: 1.2rem; padding: 1rem; text-align: center;">
+            <i class="fas fa-recycle" style="font-size: 1.8rem; color:#478d9e;"></i>
+            <div style="font-weight: 700; margin: 0.5rem 0;">反馈闭环</div>
+            <div style="font-size: 0.75rem;">持续精进钥匙</div>
+        </div>
+    </div>
+
+    <!-- 深度金句 + 行动策略引用 (书中核心) -->
+    <div style="background: #eef3f5; border-radius: 1.8rem; padding: 1.8rem; margin-top: 1rem;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;">
+            <div style="max-width: 400px;">
+                <i class="fas fa-quote-left" style="font-size: 2rem; color:#2d7a8c; opacity:0.5;"></i>
+                <p style="font-size: 1rem; font-style: italic; font-weight: 500;">“人与人之间的根本差异，是认知能力的差异，认知影响选择，选择改变命运。”</p>
+                <p style="margin-top: 0.5rem;">—— 周岭《认知觉醒》</p>
+            </div>
+            <div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <div><i class="fas fa-angles-right"></i> 早起 · 冥想 · 阅读 · 写作 · 运动</div>
+                    <div><span style="background:#2d7a8c20; padding:0.3rem 0.8rem; border-radius:40px;">人生五件套</span></div>
+                </div>
+                <ul style="margin-top: 1rem; list-style: none;">
+                    <li>✓ <strong>早冥读写跑</strong> 低成本高回报的觉醒习惯</li>
+                    <li>✓ 每日反思，记录触发情绪的事件与元认知复盘</li>
+                    <li>✓ 清晰力：将计划细化到具体时段及行动结果</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-chart-simple"></i> 信息图 · 基于《认知觉醒》提炼核心模型<br>
+        <span class="footnote">认知体系：本能脑 | 情绪脑 | 理智脑 · 元认知觉醒 · 拉伸区练习 · 清晰行动力</span>
+    </footer>
+</div>
+</body>
+</html>

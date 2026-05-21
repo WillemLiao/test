@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>认知驱动 · 前言</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(135deg,#f6f9fc 0%,#ebf2f7 100%);font-family:'Inter','PingFang SC','Microsoft YaHei',sans-serif;padding:2rem 1.5rem;color:#1a2e3f}
+.infographic{max-width:1400px;margin:0 auto}
+.hero{text-align:center;margin-bottom:3rem;position:relative}
+.hero h1{font-size:2.6rem;font-weight:800;background:linear-gradient(120deg,#1B4A5C,#E67E22);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-0.02em}
+.hero-badge{display:inline-block;background:rgba(230,126,34,0.1);padding:0.3rem 1.4rem;border-radius:40px;font-weight:500;font-size:0.85rem;color:#E67E22;margin-top:0.75rem;border:1px solid rgba(230,126,34,0.25)}
+.hero-sub{max-width:720px;margin:1rem auto 0;color:#3e5a6c;font-size:1.05rem;line-height:1.6}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem;margin-bottom:2.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+.card{background:rgba(255,255,255,0.88);backdrop-filter:blur(1px);border-radius:2rem;padding:1.6rem 1.5rem;box-shadow:0 15px 30px -12px rgba(0,0,0,0.08);transition:all 0.2s ease;border:1px solid rgba(255,255,255,0.6)}
+.card:hover{transform:translateY(-3px);background:white;box-shadow:0 22px 35px -14px rgba(0,0,0,0.12)}
+.card-icon{font-size:2.2rem;color:#E67E22;margin-bottom:0.8rem}
+.card-title{font-size:1.4rem;font-weight:700;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap}
+.card-title .tag{font-size:0.7rem;background:#f0e2d4;padding:0.2rem 0.7rem;border-radius:30px;color:#c45d1a;font-weight:600}
+.cdesc{color:#2c4e66;line-height:1.5;font-size:0.93rem;margin-bottom:1rem}
+.list{list-style:none}
+.list li{margin-bottom:0.55rem;font-size:0.87rem;display:flex;gap:0.6rem;align-items:baseline;line-height:1.5}
+.list li i{color:#E67E22;width:1.2rem;font-size:0.8rem}
+.contrast-row{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-bottom:2.5rem}
+.cc{background:white;border-radius:1.8rem;padding:1.8rem;border-top:4px solid;box-shadow:0 12px 24px -10px rgba(0,0,0,0.05)}
+.ch{display:flex;gap:0.8rem;align-items:center;margin-bottom:1rem}
+.ch i{font-size:1.8rem}
+.ch h3{font-size:1.2rem}
+.flywheel{background:linear-gradient(115deg,#fef5ea,#fff8f0);border-radius:2rem;padding:1.8rem 2rem;margin-bottom:2.5rem;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.flywheel-text{flex:2}
+.flywheel-title{font-size:1.4rem;color:#b55a25;font-weight:700;margin-bottom:0.5rem}
+.flywheel-steps{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:0.8rem}
+.step{background:white;border-radius:60px;padding:0.4rem 1.2rem;font-weight:600;font-size:0.8rem;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
+.flywheel-icon{flex:1;text-align:center;font-size:2.8rem;color:#E67E22}
+.matrix{background:#1e3a43;border-radius:2rem;padding:1.5rem;color:white;margin-bottom:2rem}
+.matrix h4{text-align:center;font-weight:600;margin-bottom:1rem;letter-spacing:1px}
+.matrix-items{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
+.matrix-item{background:rgba(255,255,255,0.12);border-radius:1.2rem;padding:0.8rem 1.2rem;text-align:center;width:160px}
+.matrix-item strong{font-size:1rem;display:block}
+.matrix-item small{font-size:0.78rem;opacity:0.8}
+.gold-box{background:#f6ede3;border-radius:1.8rem;padding:1.5rem;margin-bottom:2rem}
+.quote-block{font-style:italic;font-weight:500;font-size:1rem;color:#3e5a6c;line-height:1.6}
+.highlight{background:#fef1e0;border-radius:12px;padding:0.2rem 0.6rem;font-weight:500}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-bottom:1.5rem}
+.tag-item{background:#e6f0f2;border-radius:60px;padding:0.4rem 1rem;font-size:0.82rem;font-weight:500}
+.tag-item.accent{background:#feeedf;color:#c45d1a}
+.tag-item.dark{background:#1e3a43;color:white}
+footer{text-align:center;margin-top:2rem;font-size:0.75rem;color:#6d8ba0;border-top:1px solid #d4e2ec;padding-top:1.5rem}
+.ladder{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.8rem}
+.ladder-item{display:flex;align-items:center;gap:0.8rem;background:rgba(255,255,255,0.6);border-radius:12px;padding:0.6rem 1rem;font-size:0.88rem}
+.ladder-item .num{font-weight:700;font-size:1rem;width:1.8rem;text-align:center}
+.ladder-item .label{flex:1}
+.ladder-item .desc{font-size:0.78rem;color:#666;max-width:200px;text-align:right}
+.action-row{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;margin-top:1rem}
+.action-item{flex:1;min-width:160px;background:white;border-radius:1.2rem;padding:1rem}
+.action-item .step-num{font-weight:700;color:#E67E22;font-size:0.85rem;margin-bottom:0.3rem}
+.action-item .step-title{font-weight:600;font-size:0.95rem;margin-bottom:0.3rem}
+.action-item .step-desc{font-size:0.82rem;color:#666}
+@media(max-width:780px){.contrast-row{grid-template-columns:1fr}.hero h1{font-size:1.8rem}}</style>
+</head>
+<body>
+<div class="infographic">
+  <div class="hero">
+    <h1>🧭 成长的陷阱与出路</h1>
+    <div class="hero-badge"><i class="fas fa-chart-line"></i> 为什么我们很努力却总是看不到希望</div>
+    <div class="hero-sub">绝大多数人把时间花在内在成长上，却忘了问自己一个问题：我有什么产出？</div>
+  </div>
+  <div class="grid-2">
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-seedling"></i></div>
+    <div class="card-title">内向成长 <span class="tag">习惯驱动</span></div>
+    <div class="cdesc">围绕自身展开的成长——早起、跑步、阅读、冥想。容易坚持，但无直接对外价值。</div>
+    <ul class="list">
+      <li><i class="fas fa-check-circle"></i> 不需要严格标准，好坏自己认可就行</li>
+      <li><i class="fas fa-exclamation-triangle"></i> 内部循环，不对外产出</li>
+      <li><i class="fas fa-heart"></i> 能让我们成为更好的人，但不会成为很厉害的人</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-icon"><i class="fas fa-chalkboard-user"></i></div>
+    <div class="card-title">外向成长 <span class="tag">价值驱动</span></div>
+    <div class="cdesc">围绕外界展开的成长——写作、编程、设计、咨询。好坏全由外界评定，但能产生实际价值。</div>
+    <ul class="list">
+      <li><i class="fas fa-check-circle"></i> 必须对外产出，接受外界检验</li>
+      <li><i class="fas fa-chart-line"></i> 参与社会价值循环，被他人需要</li>
+      <li><i class="fas fa-star"></i> 打造过硬的技能，让成长被世界看见</li>
+    </ul>
+  </div>
+</div>
+
+<div class="contrast-row">
+  <div class="cc" style="border-top-color:#1f7b8c;">
+    <div class="ch"><i class="fas fa-person-walking" style="color:#1f7b8c;"></i><h3 style="color:#1f5f6e;">常见陷阱</h3></div>
+    <p style="font-size:0.9rem;">每天早起、读书、跑步、学习，忙碌到感动自己，却看不到希望。重习惯轻技能，重输入轻输出，陷入伪努力的成长幻觉。</p>
+  </div>
+  <div class="cc" style="border-top-color:#E67E22;">
+    <div class="ch"><i class="fas fa-rocket" style="color:#E67E22;"></i><h3 style="color:#c45d1a;">破局关键</h3></div>
+    <p style="font-size:0.9rem;">重技能辅习惯，重输出辅输入。每读一本书就去实践、写心得；每学一个技能就去产出作品。哪怕不完美，也要做出最小可用品。</p>
+  </div>
+</div>
+
+<div class="gold-box">
+  <div style="display:flex;flex-wrap:wrap;gap:0.8rem;align-items:center;">
+    <i class="fas fa-quote-right" style="font-size:2rem;color:#c45d1a;opacity:0.5;"></i>
+    <span class="quote-block">"坚持这些习惯只能让我们成为更好的人，而不会让我们轻易成为很厉害的人。"</span>
+  </div>
+  <div style="margin-top:0.8rem;font-size:0.85rem;color:#666;">—— 周岭《认知驱动》</div>
+</div>
+
+<div class="tag-row">
+  <span class="tag-item"><i class="fas fa-brain"></i> 内向成长 ≠ 成长</span>
+  <span class="tag-item dark">↓</span>
+  <span class="tag-item accent"><i class="fas fa-chart-line"></i> 外向成长 = 价值产出</span>
+</div>
+  <footer>🧩 信息图解 · 《认知驱动》周岭 — 前言</footer>
+</div>
+</body>
+</html>
