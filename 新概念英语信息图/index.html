@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新概念英语 · 第二册 信息图</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Segoe UI',Roboto,'PingFang SC','Microsoft YaHei',sans-serif;display:flex;height:100vh;background:#f0f2f5}
+.sidebar{width:260px;background:#1a1a2e;color:#fff;display:flex;flex-direction:column;flex-shrink:0}
+.sidebar-header{padding:20px 18px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sidebar-header h1{font-size:16px;font-weight:700}
+.sidebar-header p{font-size:12px;opacity:.5;margin-top:2px}
+.sidebar-search{padding:10px 14px}
+.sidebar-search input{width:100%;padding:7px 10px;border-radius:6px;border:none;background:rgba(255,255,255,.08);color:#fff;font-size:13px;outline:none}
+.sidebar-search input::placeholder{color:rgba(255,255,255,.3)}
+.lesson-list{flex:1;overflow-y:auto;padding:4px 0}
+.lesson-list::-webkit-scrollbar{width:4px}
+.lesson-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.lesson-item{padding:7px 18px;cursor:pointer;font-size:13px;color:rgba(255,255,255,.65);transition:all .15s;display:flex;align-items:center;gap:6px;border-left:3px solid transparent}
+.lesson-item:hover{background:rgba(255,255,255,.05);color:#fff}
+.lesson-item.active{background:rgba(255,255,255,.1);color:#fff;border-left-color:#ffd700}
+.lesson-item .num{font-size:11px;opacity:.4;min-width:24px}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.main-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#999;gap:12px}
+.main-placeholder .icon{font-size:48px;opacity:.3}
+.main-placeholder p{font-size:15px}
+iframe{flex:1;width:100%;border:none;display:none;background:#f0f2f5}
+iframe.show{display:block}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h1>📘 新概念英语 · 第二册</h1>
+    <p>96 课信息图</p>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" id="search" placeholder="搜索课程..." oninput="filterLessons()">
+  </div>
+  <div class="lesson-list" id="lessonList"></div>
+</div>
+
+<div class="main">
+  <div class="main-placeholder" id="placeholder">
+    <div class="icon">📖</div>
+    <p>从左侧选择一课开始学习</p>
+  </div>
+  <iframe id="viewer" loading="lazy"></iframe>
+</div>
+
+<script>
+const lessons = [
+  "Lesson 1 A private conversation",
+  "Lesson 2 Breakfast or lunch",
+  "Lesson 3 Please send me a card",
+  "Lesson 4 An exciting trip",
+  "Lesson 5 No wrong numbers",
+  "Lesson 6 Percy Buttons",
+  "Lesson 7 Too late",
+  "Lesson 8 The best and the worst",
+  "Lesson 9 A cold welcome",
+  "Lesson 10 Not For Jazz",
+  "Lesson 11 One good turn deserves another",
+  "Lesson 12 Goodbye and good luck",
+  "Lesson 13 The Greenwood Boys",
+  "Lesson 14 Do you speak English",
+  "Lesson 15 Good news",
+  "Lesson 16 A polite request",
+  "Lesson 17 Always young",
+  "Lesson 18 He often does this",
+  "Lesson 19 Sold out",
+  "Lesson 20 One man in a boat",
+  "Lesson 21 Mad or not",
+  "Lesson 22 A glass envelope",
+  "Lesson 23 A new house",
+  "Lesson 24 It could be worse",
+  "Lesson 25 Do the English speak English",
+  "Lesson 26 The best art critics",
+  "Lesson 27 A wet night",
+  "Lesson 28 No parking",
+  "Lesson 29 Taxi",
+  "Lesson 30 Football or polo",
+  "Lesson 31 Success story",
+  "Lesson 32 shopping made easy",
+  "Lesson 33 Out of the darkness",
+  "Lesson 34 quick work",
+  "Lesson 35 Stop thief!",
+  "Lesson 36 Across the Channel",
+  "Lesson 37 The Olympic Games",
+  "Lesson 38 Everything except the weather",
+  "Lesson 39 Am I all right",
+  "Lesson 40 Food and talk",
+  "Lesson 41 Do you call that a hat",
+  "Lesson 42 Not very musical",
+  "Lesson 43 Over the South Pole",
+  "Lesson 44 Through the forest",
+  "Lesson 45 clear conscience",
+  "Lesson 46 Expensive and uncomfortable",
+  "Lesson 47 A thirsty ghost",
+  "Lesson 48 Did you want to tell me something",
+  "Lesson 49 The end of a dream",
+  "Lesson 50 Taken for a ride",
+  "Lesson 51 Reward for virtue",
+  "Lesson 52 A pretty carpet",
+  "Lesson 53 Hot snake",
+  "Lesson 54 Sticky fingers",
+  "Lesson 55 Not a gold mine",
+  "Lesson 56 Faster than sound",
+  "Lesson 57 Can I help you, madam",
+  "Lesson 58 blessing in disguise",
+  "Lesson 59 In or out",
+  "Lesson 60 The future",
+  "Lesson 61 Trouble with the Hubble",
+  "Lesson 62 After the fire",
+  "Lesson 63 She was not amused",
+  "Lesson 64 The Channel Tunnel",
+  "Lesson 65 Jumbo versus the police",
+  "Lesson 66 Sweet as honey!",
+  "Lesson 67 Volcanoes",
+  "Lesson 68 Persistent",
+  "Lesson 69 But not murder!",
+  "Lesson 70 Red for danger",
+  "Lesson 71 A famous clock",
+  "Lesson 72 A car called bluebird",
+  "Lesson 73 The record-holder",
+  "Lesson 74 Out of the limelight",
+  "Lesson 75 SOS",
+  "Lesson 76 April Fools' Day",
+  "Lesson 77 A successful operation",
+  "Lesson 78 The last one",
+  "Lesson 79 By air",
+  "Lesson 80 The Crystal Palace",
+  "Lesson 81 Escape",
+  "Lesson 82 Monster or fish",
+  "Lesson 83 After the elections",
+  "Lesson 84 On strike",
+  "Lesson 85 Never too old to learn",
+  "Lesson 86 Out of control",
+  "Lesson 87 A perfect alibi",
+  "Lesson 88 Trapped in a mine",
+  "Lesson 89 slip of the tongue",
+  "Lesson 90 What's for supper",
+  "Lesson 91 Three men in a basket",
+  "Lesson 92 Asking for trouble",
+  "Lesson 93 A noble gift",
+  "Lesson 94 Future champions",
+  "Lesson 95 A fantasy",
+  "Lesson 96 The dead return"
+];
+
+const list = document.getElementById('lessonList');
+const viewer = document.getElementById('viewer');
+const placeholder = document.getElementById('placeholder');
+let current = null;
+
+function render(filter) {
+  const q = (filter || '').toLowerCase();
+  list.innerHTML = '';
+  lessons.forEach(function(name) {
+    if (q && !name.toLowerCase().includes(q)) return;
+    const div = document.createElement('div');
+    div.className = 'lesson-item';
+    const num = name.match(/Lesson (\d+)/)[1];
+    div.innerHTML = '<span class="num">' + num + '</span><span>' + name.replace(/^Lesson \d+ /, '') + '</span>';
+    div.dataset.name = name;
+    div.onclick = function() { openLesson(name); };
+    list.appendChild(div);
+  });
+}
+
+function openLesson(name) {
+  if (current === name) return;
+  current = name;
+  document.querySelectorAll('.lesson-item').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.name === name);
+  });
+  placeholder.style.display = 'none';
+  viewer.className = 'show';
+  viewer.src = encodeURI(name + '.html');
+}
+
+function filterLessons() {
+  render(document.getElementById('search').value);
+}
+
+render();
+</script>
+</body>
+</html>
