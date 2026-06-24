@@ -77,6 +77,12 @@
     transition: all 0.2s;
   }
   .nav-item:hover .num { background: #e3a869; color: #0a0a14; }
+  .nav-item.active {
+    color: #e3a869;
+    background: rgba(227,168,105,0.08);
+    border-left-color: #e3a869;
+  }
+  .nav-item.active .num { background: #e3a869; color: #0a0a14; }
   .nav-footer {
     padding: 14px;
     text-align: center;
@@ -688,6 +694,20 @@
   document.querySelectorAll('.nav-item').forEach(a => {
     a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); });
   });
+
+  const sections = document.querySelectorAll('.section[id^="s"]');
+  const navItems = document.querySelectorAll('.nav-item');
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(function(ni) {
+          ni.classList.toggle('active', ni.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px' });
+  sections.forEach(function(s) { obs.observe(s); });
 </script>
 </body>
 </html>
