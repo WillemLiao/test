@@ -715,19 +715,21 @@
     a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); });
   });
 
-  const sections = document.querySelectorAll('.section[id^="s"]');
-  const navItems = document.querySelectorAll('.nav-item');
-  const obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        navItems.forEach(function(ni) {
-          ni.classList.toggle('active', ni.getAttribute('href') === '#' + id);
-        });
-      }
-    });
-  }, { rootMargin: '-80px 0px -60% 0px' });
-  sections.forEach(function(s) { obs.observe(s); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var obsSections = document.querySelectorAll('.section[id^="s"]');
+    var obsNavItems = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          obsNavItems.forEach(function(ni) {
+            ni.classList.toggle('active', ni.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    obsSections.forEach(function(s) { observer.observe(s); });
+  });
 </script>
 </body>
 </html>
