@@ -16,7 +16,6 @@
     overflow: hidden;
   }
 
-  /* ===== Sidebar ===== */
   .sidebar {
     width: 240px;
     min-width: 240px;
@@ -92,7 +91,6 @@
     border-top: 1px solid rgba(255,255,255,0.04);
   }
 
-  /* ===== Main ===== */
   .main {
     flex: 1;
     display: flex;
@@ -150,9 +148,7 @@
     font-size: 0.85em;
   }
   .empty-state .big { font-size: 2em; margin-bottom: 10px; display: block; color: #334; }
-  .empty-state p { margin-top: 4px; }
 
-  /* ===== Grid items ===== */
   .grid-item {
     border-radius: 8px;
     overflow: hidden;
@@ -228,8 +224,45 @@
     white-space: nowrap;
     pointer-events: none;
   }
+  .grid-item .lazy-placeholder,
+  .grid-item .lazy-loading {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center; justify-content: center;
+    color: #334;
+    font-size: 1.4em;
+    background: rgba(255,255,255,0.01);
+  }
+  .grid-item .lazy-loading { font-size: 0.8em; color: #445; animation: pulse 1s ease infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+  .grid-item .load-error {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center; justify-content: center;
+    color: #e86969;
+    font-size: 0.55em;
+    background: rgba(255,255,255,0.01);
+  }
 
-  /* ===== Lightbox ===== */
+  .load-more {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 16px;
+  }
+  .load-more-btn {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 6px;
+    color: #667788;
+    font-size: 0.78em;
+    font-family: inherit;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .load-more-btn:hover { background: rgba(227,168,105,0.08); color: #e3a869; border-color: #e3a869; }
+  .load-more-btn:disabled { opacity: 0.3; cursor: default; }
+
   .lightbox {
     display: none;
     position: fixed;
@@ -297,7 +330,6 @@
   .lightbox .nav-btn.prev { left: 20px; }
   .lightbox .nav-btn.next { right: 20px; }
 
-  /* ===== Error ===== */
   .error-msg {
     padding: 14px 20px;
     text-align: center;
@@ -305,6 +337,18 @@
     font-size: 0.8em;
     background: rgba(232,105,105,0.06);
     border-bottom: 1px solid rgba(232,105,105,0.1);
+  }
+  .loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,20,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    font-size: 0.85em;
+    color: #667788;
+    animation: pulse 1s ease infinite;
   }
 
   @media (max-width: 900px) {
@@ -346,7 +390,7 @@
   <div class="sidebar-footer">支持图片 · 视频</div>
 </div>
 
-<div class="main">
+<div class="main" style="position:relative">
   <div class="toolbar">
     <div class="breadcrumb" id="breadcrumb"></div>
   </div>
@@ -373,14 +417,22 @@
     return;
   }
 
+  // ===== Config =====
+  var BATCH_SIZE = 60;
+
   // ===== State =====
-  var folders = [];          // [{id, name, handle}]
+  var folders = [];
   var currentFolderId = null;
-  var currentDirHandle = null;  // FileSystemDirectoryHandle for current browsing
-  var currentPath = [];        // [{handle, name}] breadcrumb trail
-  var currentFiles = [];       // [{name, handle, kind, url}]
-  var lbItems = [];            // [{url, name, type}] for lightbox navigation
+  var currentDirHandle = null;
+  var currentPath = [];
+  var allItems = [];        // full list: [{name, handle, kind}], no URLs
+  var displayedCount = 0;   // how many items rendered so far
+  var loadedUrls = {};      // name -> url (for media items that have been loaded)
+  var loadingLock = false;
+  var lbItems = [];
   var lbIndex = -1;
+  var sentinelObs = null;
+  var itemObs = null;
 
   // ===== DOM refs =====
   var folderListEl = document.getElementById('folderList');
@@ -398,7 +450,7 @@
   // ===== IndexedDB =====
   function openDB() {
     return new Promise(function(resolve, reject) {
-      var req = indexedDB.open('MediaBrowser', 1);
+      var req = indexedDB.open('MediaBrowser2', 1);
       req.onupgradeneeded = function() {
         req.result.createObjectStore('folders', { keyPath: 'id' });
       };
@@ -406,7 +458,6 @@
       req.onerror = function() { reject(req.error); };
     });
   }
-
   function dbSave(folder) {
     return openDB().then(function(db) {
       return new Promise(function(resolve, reject) {
@@ -417,7 +468,6 @@
       });
     });
   }
-
   function dbDelete(id) {
     return openDB().then(function(db) {
       return new Promise(function(resolve, reject) {
@@ -428,7 +478,6 @@
       });
     });
   }
-
   function dbGetAll() {
     return openDB().then(function(db) {
       return new Promise(function(resolve, reject) {
@@ -441,29 +490,22 @@
   }
 
   // ===== Helpers =====
-  function isImage(name) {
-    return /\.(jpe?g|png|gif|bmp|webp|svg|avif)$/i.test(name);
-  }
-  function isVideo(name) {
-    return /\.(mp4|webm|mov|avi|mkv|flv|wmv)$/i.test(name);
-  }
-  function isMedia(name) {
-    return isImage(name) || isVideo(name);
-  }
-  function ext(name) {
-    var i = name.lastIndexOf('.');
-    return i > 0 ? name.slice(i).toLowerCase() : '';
+  function isImage(name) { return /\.(jpe?g|png|gif|bmp|webp|svg|avif)$/i.test(name); }
+  function isVideo(name) { return /\.(mp4|webm|mov|avi|mkv|flv|wmv)$/i.test(name); }
+  function isMedia(name) { return isImage(name) || isVideo(name); }
+  function escapeHtml(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function showError(msg) { errorMsg.textContent = msg; errorMsg.style.display = 'block'; }
+  function hideError() { errorMsg.style.display = 'none'; }
+
+  // ===== Cleanup URLs =====
+  function cleanupUrls() {
+    Object.keys(loadedUrls).forEach(function(key) {
+      URL.revokeObjectURL(loadedUrls[key]);
+    });
+    loadedUrls = {};
   }
 
-  function showError(msg) {
-    errorMsg.textContent = msg;
-    errorMsg.style.display = 'block';
-  }
-  function hideError() {
-    errorMsg.style.display = 'none';
-  }
-
-  // ===== Render sidebar =====
+  // ===== Sidebar =====
   function renderSidebar() {
     folderListEl.innerHTML = '';
     folders.forEach(function(f) {
@@ -476,27 +518,15 @@
       });
       folderListEl.appendChild(div);
     });
-    // del handler
     folderListEl.querySelectorAll('.del').forEach(function(el) {
       el.addEventListener('click', function(e) {
         e.stopPropagation();
-        var id = el.getAttribute('data-id');
-        removeFolder(id);
+        removeFolder(el.getAttribute('data-id'));
       });
     });
   }
 
-  function escapeHtml(s) {
-    var d = document.createElement('div');
-    d.textContent = s;
-    return d.innerHTML;
-  }
-
   // ===== Folder management =====
-  function addFolder(handle) {
-    return handle.name ? handle.name : handle.name;
-  }
-
   addBtn.addEventListener('click', async function() {
     hideError();
     try {
@@ -506,7 +536,7 @@
       folders.push(folder);
       renderSidebar();
       await dbSave(folder).catch(function(e) {
-        console.warn('IndexedDB save failed (permissions may not persist across sessions):', e);
+        console.warn('IndexedDB save failed:', e);
       });
       openFolder(id);
     } catch (e) {
@@ -521,23 +551,14 @@
     folders = folders.filter(function(f) { return f.id !== id; });
     dbDelete(id).catch(function(e) { console.warn('IndexedDB delete failed:', e); });
     if (wasCurrent) {
-      currentFolderId = null;
-      currentDirHandle = null;
-      currentPath = [];
-      currentFiles = [];
-      if (folders.length > 0) {
-        openFolder(folders[0].id);
-      } else {
-        renderSidebar();
-        renderBreadcrumb();
-        renderGrid();
-      }
-    } else {
-      renderSidebar();
-    }
+      currentFolderId = null; currentDirHandle = null; currentPath = []; allItems = []; displayedCount = 0;
+      cleanupUrls();
+      if (folders.length > 0) { openFolder(folders[0].id); }
+      else { renderSidebar(); renderBreadcrumb(); renderGrid(); }
+    } else { renderSidebar(); }
   }
 
-  // ===== Open folder =====
+  // ===== Browse directory =====
   async function openFolder(id) {
     hideError();
     var folder = folders.find(function(f) { return f.id === id; });
@@ -554,35 +575,41 @@
       var perm = await handle.queryPermission({ mode: 'read' });
       if (perm !== 'granted') {
         perm = await handle.requestPermission({ mode: 'read' });
-        if (perm !== 'granted') {
-          showError('没有读取权限');
-          return;
-        }
+        if (perm !== 'granted') { showError('没有读取权限'); return; }
       }
+
+      cleanupUrls();
+      allItems = [];
+      displayedCount = 0;
+      renderBreadcrumb();
+
+      // Show loading state
+      gridEl.innerHTML = '<div class="empty-state"><span class="big" style="animation:pulse 1s ease infinite">⏳</span><p>正在读取目录…</p></div>';
+
+      // Read all entries (fast - just metadata)
       var entries = [];
       for await (var entry of handle.values()) {
         entries.push(entry);
       }
-      // Sort: dirs first, then by name
+
+      // Sort: directories first, then by name
       entries.sort(function(a, b) {
-        var aIsDir = a.kind === 'directory';
-        var bIsDir = b.kind === 'directory';
-        if (aIsDir && !bIsDir) return -1;
-        if (!aIsDir && bIsDir) return 1;
+        var aIsDir = a.kind === 'directory' ? 0 : 1;
+        var bIsDir = b.kind === 'directory' ? 0 : 1;
+        if (aIsDir !== bIsDir) return aIsDir - bIsDir;
         return a.name.localeCompare(b.name);
       });
-      currentFiles = [];
-      for (var i = 0; i < entries.length; i++) {
-        var entry = entries[i];
+
+      entries.forEach(function(entry) {
         if (entry.kind === 'directory') {
-          currentFiles.push({ name: entry.name, handle: entry, kind: 'directory' });
+          allItems.push({ name: entry.name, handle: entry, kind: 'directory' });
         } else if (isMedia(entry.name)) {
-          var file = await entry.getFile();
-          var url = URL.createObjectURL(file);
-          currentFiles.push({ name: entry.name, handle: entry, kind: isImage(entry.name) ? 'image' : 'video', url: url, file: file });
+          allItems.push({ name: entry.name, handle: entry, kind: isImage(entry.name) ? 'image' : 'video' });
         }
-      }
+      });
+
       renderBreadcrumb();
+      displayedCount = Math.min(BATCH_SIZE, allItems.length);
       renderGrid();
     } catch (e) {
       if (e.name === 'SecurityError' || e.name === 'NotAllowedError') {
@@ -603,28 +630,23 @@
     currentPath.forEach(function(p, i) {
       if (i > 0) {
         var sep = document.createElement('span');
-        sep.className = 'bc-sep';
-        sep.textContent = '›';
+        sep.className = 'bc-sep'; sep.textContent = '›';
         breadcrumbEl.appendChild(sep);
       }
       var span = document.createElement('span');
       span.className = 'bc-item' + (i === currentPath.length - 1 ? ' current' : '') + (i === 0 ? ' root' : '');
       span.textContent = i === 0 ? '📂 ' + p.name : p.name;
       if (i < currentPath.length - 1) {
-        (function(idx) {
-          span.addEventListener('click', function() { goToPath(idx); });
-        })(i);
+        (function(idx) { span.addEventListener('click', function() { goToPath(idx); }); })(i);
       }
       breadcrumbEl.appendChild(span);
     });
-    var count = currentFiles.filter(function(f) { return f.kind !== 'directory'; }).length;
-    var dirCount = currentFiles.filter(function(f) { return f.kind === 'directory'; }).length;
-    if (count > 0 || dirCount > 0) {
-      var info = document.createElement('span');
-      info.style.cssText = 'margin-left:auto;font-size:0.7em;color:#445;';
-      info.textContent = dirCount + ' 文件夹 · ' + count + ' 个媒体';
-      breadcrumbEl.appendChild(info);
-    }
+    var dirCount = allItems.filter(function(f) { return f.kind === 'directory'; }).length;
+    var mediaCount = allItems.filter(function(f) { return f.kind !== 'directory'; }).length;
+    var info = document.createElement('span');
+    info.style.cssText = 'margin-left:auto;font-size:0.7em;color:#445;';
+    info.textContent = '共 ' + dirCount + ' 文件夹 · ' + mediaCount + ' 个媒体  (显示 ' + Math.min(displayedCount - dirCount, mediaCount) + ')';
+    breadcrumbEl.appendChild(info);
   }
 
   function goToPath(idx) {
@@ -633,24 +655,40 @@
     browseDir(currentPath[idx].handle);
   }
 
-  // ===== Grid =====
+  // ===== Grid: lazy rendering =====
   function renderGrid() {
+    // Clean up old observers
+    if (sentinelObs) { sentinelObs.disconnect(); sentinelObs = null; }
+    if (itemObs) { itemObs.disconnect(); itemObs = null; }
+
     gridEl.innerHTML = '';
     if (!currentDirHandle) {
       gridEl.innerHTML = '<div class="empty-state"><span class="big">📁</span>点击左侧"添加文件夹"选择本地目录<p>支持图片和视频文件</p></div>';
       return;
     }
-    var items = currentFiles;
-    if (items.length === 0) {
+    if (allItems.length === 0) {
       gridEl.innerHTML = '<div class="empty-state"><span class="big">📭</span>此文件夹中没有媒体文件</div>';
       return;
     }
-    // limit display
-    var maxShow = 500;
-    var overflow = items.length > maxShow ? items.length - maxShow : 0;
-    if (overflow > 0) items = items.slice(0, maxShow);
 
-    items.forEach(function(item, idx) {
+    var showItems = allItems.slice(0, displayedCount);
+    var hasMore = displayedCount < allItems.length;
+
+    // Create observer for lazy-loading media
+    itemObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var el = entry.target;
+        var idx = parseInt(el.getAttribute('data-idx'), 10);
+        if (isNaN(idx)) return;
+        if (entry.isIntersecting) {
+          loadItem(idx, el);
+        } else {
+          unloadItem(idx, el);
+        }
+      });
+    }, { root: gridEl, rootMargin: '200px 0px' });
+
+    showItems.forEach(function(item, idx) {
       if (item.kind === 'directory') {
         var div = document.createElement('div');
         div.className = 'grid-item folder-item-grid';
@@ -660,71 +698,120 @@
           browseDir(item.handle);
         });
         gridEl.appendChild(div);
-      } else if (item.kind === 'image') {
+      } else {
         var div = document.createElement('div');
         div.className = 'grid-item';
-        var img = document.createElement('img');
-        img.loading = 'lazy';
-        img.alt = item.name;
-        // Create thumbnail from blob
-        if (item.url) {
-          img.src = item.url;
-        }
-        div.appendChild(img);
-        var nameSpan = document.createElement('div');
-        nameSpan.className = 'item-name';
-        nameSpan.textContent = item.name;
-        div.appendChild(nameSpan);
+        div.setAttribute('data-idx', idx);
+        div.innerHTML = '<div class="lazy-placeholder">🖼</div><div class="item-name">' + escapeHtml(item.name) + '</div>';
         div.addEventListener('click', function() { openLightbox(idx); });
         gridEl.appendChild(div);
-      } else if (item.kind === 'video') {
-        var div = document.createElement('div');
-        div.className = 'grid-item';
-        var vid = document.createElement('video');
-        vid.preload = 'metadata';
-        vid.muted = true;
-        vid.playsInline = true;
-        if (item.url) vid.src = item.url;
-        var playBtn = document.createElement('div');
-        playBtn.className = 'vid-overlay';
-        div.appendChild(vid);
-        div.appendChild(playBtn);
-        var nameSpan = document.createElement('div');
-        nameSpan.className = 'item-name';
-        nameSpan.textContent = item.name;
-        div.appendChild(nameSpan);
-        div.addEventListener('click', function() { openLightbox(idx); });
-        gridEl.appendChild(div);
+        itemObs.observe(div);
       }
     });
 
-    if (overflow > 0) {
-      var more = document.createElement('div');
-      more.className = 'empty-state';
-      more.style.padding = '20px';
-      more.textContent = '还有 ' + overflow + ' 个文件未显示（最多显示 ' + maxShow + ' 个）';
-      gridEl.appendChild(more);
+    // Sentinel for loading more
+    if (hasMore) {
+      var sentinel = document.createElement('div');
+      sentinel.className = 'load-more';
+      sentinel.id = 'loadMoreSentinel';
+      sentinel.innerHTML = '<button class="load-more-btn" id="loadMoreBtn">加载更多 (' + (allItems.length - displayedCount) + ' 个剩余)</button>';
+      gridEl.appendChild(sentinel);
+
+      sentinelObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            loadMore();
+          }
+        });
+      }, { root: gridEl, rootMargin: '400px 0px' });
+      sentinelObs.observe(sentinel);
     }
+  }
+
+  // ===== Lazy load/unload a single item =====
+  function loadItem(idx, el) {
+    var item = allItems[idx];
+    if (!item || item.kind === 'directory') return;
+    var key = idx + '_' + item.name;
+    if (loadedUrls[key]) return; // already loaded
+
+    var placeholder = el.querySelector('.lazy-placeholder');
+    if (placeholder) {
+      placeholder.className = 'lazy-loading';
+      placeholder.textContent = '加载中…';
+    }
+
+    item.handle.getFile().then(function(file) {
+      var url = URL.createObjectURL(file);
+      loadedUrls[key] = url;
+      var container = el;
+      if (item.kind === 'image') {
+        var img = document.createElement('img');
+        img.src = url;
+        img.alt = item.name;
+        img.loading = 'lazy';
+        container.insertBefore(img, container.firstChild);
+      } else {
+        var vid = document.createElement('video');
+        vid.src = url;
+        vid.preload = 'metadata';
+        vid.muted = true;
+        vid.playsInline = true;
+        container.insertBefore(vid, container.firstChild);
+        var overlay = document.createElement('div');
+        overlay.className = 'vid-overlay';
+        container.insertBefore(overlay, container.firstChild);
+      }
+      // Remove placeholder
+      var ph = container.querySelector('.lazy-placeholder, .lazy-loading');
+      if (ph) ph.remove();
+    }).catch(function() {
+      var ph = el.querySelector('.lazy-loading');
+      if (ph) { ph.className = 'load-error'; ph.textContent = '⚠ 加载失败'; }
+    });
+  }
+
+  function unloadItem(idx, el) {
+    // Optionally revoke URL to save memory
+    var key = idx + '_' + el.getAttribute('data-idx') + '_' + (allItems[idx] ? allItems[idx].name : '');
+    // Actually, let's just check by exact idx
+    var item = allItems[idx];
+    if (!item) return;
+    var lookupKey = idx + '_' + item.name;
+    if (loadedUrls[lookupKey]) {
+      // We'll keep the URL for now to avoid flickering
+      // But we could revoke it if memory is tight
+    }
+  }
+
+  // ===== Load more =====
+  function loadMore() {
+    if (loadingLock) return;
+    loadingLock = true;
+    var prev = displayedCount;
+    displayedCount = Math.min(displayedCount + BATCH_SIZE, allItems.length);
+    if (displayedCount > prev) {
+      renderGrid();
+    }
+    loadingLock = false;
   }
 
   // ===== Lightbox =====
   function openLightbox(idx) {
-    // Collect only media files (not dirs)
+    var item = allItems[idx];
+    if (!item || item.kind === 'directory') return;
+
     lbItems = [];
-    currentFiles.forEach(function(f) {
+    allItems.forEach(function(f, i) {
       if (f.kind === 'image' || f.kind === 'video') {
-        lbItems.push({ url: f.url, name: f.name, type: f.kind });
+        lbItems.push({ idx: i, name: f.name, kind: f.kind });
       }
     });
     if (lbItems.length === 0) return;
-    // Find the index in lbItems
-    var target = currentFiles[idx];
+
     lbIndex = -1;
     for (var i = 0; i < lbItems.length; i++) {
-      if (lbItems[i].name === target.name && lbItems[i].url === target.url) {
-        lbIndex = i;
-        break;
-      }
+      if (lbItems[i].name === item.name) { lbIndex = i; break; }
     }
     if (lbIndex < 0) lbIndex = 0;
     showLightboxItem();
@@ -736,14 +823,39 @@
     var item = lbItems[lbIndex];
     lbContent.innerHTML = '';
     lbName.textContent = item.name;
-    if (item.type === 'image') {
+    var lookupKey = item.idx + '_' + item.name;
+    var url = loadedUrls[lookupKey];
+
+    if (!url) {
+      // Need to load it now
+      var entry = allItems[item.idx];
+      if (entry && entry.handle) {
+        lbContent.innerHTML = '<div style="color:#445;padding:40px">加载中…</div>';
+        lbName.textContent = item.name + ' (加载中)';
+        entry.handle.getFile().then(function(file) {
+          url = URL.createObjectURL(file);
+          loadedUrls[lookupKey] = url;
+          showLightboxContent(item, url);
+        }).catch(function() {
+          lbContent.innerHTML = '<div style="color:#e86969;padding:40px">加载失败</div>';
+        });
+        return;
+      }
+    }
+    showLightboxContent(item, url);
+  }
+
+  function showLightboxContent(item, url) {
+    lbContent.innerHTML = '';
+    lbName.textContent = item.name;
+    if (item.kind === 'image') {
       var img = document.createElement('img');
-      img.src = item.url;
+      img.src = url;
       img.alt = item.name;
       lbContent.appendChild(img);
-    } else if (item.type === 'video') {
+    } else {
       var vid = document.createElement('video');
-      vid.src = item.url;
+      vid.src = url;
       vid.controls = true;
       vid.autoplay = true;
       vid.style.maxWidth = '100%';
@@ -759,11 +871,11 @@
     document.body.style.overflow = '';
     lbContent.innerHTML = '';
   }
+  function prevItem() { if (lbItems.length < 2) return; lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length; showLightboxItem(); }
+  function nextItem() { if (lbItems.length < 2) return; lbIndex = (lbIndex + 1) % lbItems.length; showLightboxItem(); }
 
   lbClose.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) closeLightbox();
-  });
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', function(e) {
     if (!lightbox.classList.contains('show')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -773,40 +885,21 @@
   lbPrev.addEventListener('click', prevItem);
   lbNext.addEventListener('click', nextItem);
 
-  function prevItem() {
-    if (lbItems.length < 2) return;
-    lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
-    showLightboxItem();
-  }
-  function nextItem() {
-    if (lbItems.length < 2) return;
-    lbIndex = (lbIndex + 1) % lbItems.length;
-    showLightboxItem();
-  }
-
-  // ===== Init: restore from IndexedDB =====
+  // ===== Init =====
   async function init() {
     try {
       var saved = await dbGetAll();
       if (saved && saved.length > 0) {
         folders = saved;
         renderSidebar();
-        // Try to open the first folder
         openFolder(folders[0].id);
         return;
       }
-    } catch (e) {
-      console.warn('IndexedDB restore failed:', e);
-    }
+    } catch (e) { console.warn('IndexedDB restore failed:', e); }
     renderSidebar();
     renderBreadcrumb();
     renderGrid();
   }
-
-  // Cleanup object URLs on page unload
-  window.addEventListener('beforeunload', function() {
-    // Nothing special needed; URLs will be freed on reload
-  });
 
   init();
 })();
