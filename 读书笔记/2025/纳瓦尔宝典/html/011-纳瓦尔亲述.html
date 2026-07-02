@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纳瓦尔亲述 — 纳瓦尔宝典</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  background: #f5f0ea;
+  color: #2c2416;
+  padding: 30px 20px;
+}
+.container { max-width: 880px; margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: 60px 30px 44px;
+  background: linear-gradient(160deg, #3d2b1f, #1f140e);
+  color: #eadbc5;
+  border-radius: 16px 16px 0 0;
+}
+.hero .ch { font-size: 12px; letter-spacing: 6px; opacity: .45; margin-bottom: 8px; }
+.hero h1 { font-size: 28px; letter-spacing: 8px; line-height: 1.4; }
+.hero .sub { font-size: 14px; opacity: .5; margin-top: 10px; letter-spacing: 2px; }
+
+.body {
+  background: #fffcf7;
+  padding: 36px 40px 20px;
+  border-left: 1px solid #e6dccf;
+  border-right: 1px solid #e6dccf;
+}
+
+.highlight {
+  background: #f8f2ea;
+  border-left: 4px solid #b8864e;
+  padding: 20px 24px;
+  margin: 0 0 24px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #3d2b1f;
+  border-radius: 0 8px 8px 0;
+}
+
+.sec-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #6b4a2a;
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e6dccf;
+}
+
+/* timeline */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+  margin: 10px 0 18px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 10px; bottom: 10px;
+  width: 2px;
+  background: #d4c5ad;
+}
+.tl-item {
+  position: relative;
+  padding: 10px 0 10px 18px;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -22px; top: 16px;
+  width: 12px; height: 12px;
+  background: #b8864e;
+  border-radius: 50%;
+  border: 2px solid #fffcf7;
+}
+.tl-item .year {
+  font-size: 12px;
+  color: #8b7a65;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.tl-item .desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #3d3224;
+  margin-top: 2px;
+}
+
+/* stat cards */
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0 18px;
+}
+.stat-card {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+.stat-card .num {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6b4a2a;
+  letter-spacing: 1px;
+}
+.stat-card .label {
+  font-size: 13px;
+  color: #8b7a65;
+  margin-top: 4px;
+}
+
+/* quote block */
+.quote-block {
+  background: #3d2b1f;
+  color: #eadbc5;
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 16px 0 20px;
+  text-align: center;
+}
+.quote-block .text {
+  font-size: 17px;
+  line-height: 1.8;
+}
+.quote-block .from {
+  font-size: 13px;
+  opacity: .5;
+  margin-top: 10px;
+}
+
+/* card */
+.card {
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  margin: 10px 0 18px;
+  overflow: hidden;
+}
+.card-head {
+  background: #f0e8dc;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4a3a2a;
+  letter-spacing: 2px;
+}
+.card-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #3d3224;
+}
+.card-body p { margin-bottom: 6px; }
+
+.footer {
+  background: #fffcf7;
+  padding: 18px 40px;
+  border: 1px solid #e6dccf;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #a69580;
+}
+
+@media (max-width: 640px) {
+  .stat-row { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 22px; }
+  .body { padding: 24px 18px; }
+}
+@media print {
+  body { background: #fff; }
+  .hero, .quote-block { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="ch">NAVAL IN HIS OWN WORDS</div>
+  <h1>纳瓦尔亲述</h1>
+  <div class="sub">纳瓦尔宝典 · The Almanack of Naval Ravikant</div>
+</div>
+
+<div class="body">
+
+  <!-- 金句 -->
+  <div class="highlight">
+    我出身寒门，一度困顿迷茫，<br>而现在的我经济上宽裕，精神上幸福。
+  </div>
+
+  <!-- 人生时间线 -->
+  <div class="sec-title">⏳ 人生轨迹</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="year">童年 · 纽约</div>
+      <div class="desc">单亲移民家庭，母亲靠读书和工作抚养两兄弟。社区不安全，图书馆是避难所。</div>
+    </div>
+    <div class="tl-item">
+      <div class="year">15 岁</div>
+      <div class="desc">第一份工作——非法餐饮公司送餐。还送过报纸、洗过盘子。</div>
+    </div>
+    <div class="tl-item">
+      <div class="year">转折点</div>
+      <div class="desc">考上史岱文森高中 → 人生改写。"像一台智能抽奖机，从蓝领到白领只需要一步。"</div>
+    </div>
+    <div class="tl-item">
+      <div class="year">大学</div>
+      <div class="desc">达特茅斯学院，经济学 + 计算机科学。一度想成为经济学博士。</div>
+    </div>
+    <div class="tl-item">
+      <div class="year">今</div>
+      <div class="desc">投资人、AngelList 创始人兼董事长、加密货币基金合伙人。</div>
+    </div>
+  </div>
+
+  <!-- 现状 -->
+  <div class="sec-title">📊 现在</div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="num">200+</div>
+      <div class="label">投资的公司</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">1</div>
+      <div class="label">AngelList 创始人兼董事长</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">∞</div>
+      <div class="label">一直在探索新想法和副业</div>
+    </div>
+  </div>
+
+  <!-- 核心信息 -->
+  <div class="quote-block">
+    <div class="text">
+      我什么也教不了。<br>
+      我只能给你带来些许启发，<br>或者还有几个你能记住的"金句"。
+    </div>
+    <div class="from">—— 纳瓦尔</div>
+  </div>
+
+  <!-- 移民经历 -->
+  <div class="sec-title">💪 移民底色</div>
+
+  <div class="card">
+    <div class="card-head">书是唯一真正的朋友</div>
+    <div class="card-body">
+      <p>图书馆就是我的课外活动中心。放学后直接去图书馆，待到闭馆，然后回家。</p>
+      <p style="margin-top:6px;color:#8b7a65;">"过去几千年最优秀的思想家都是以书为媒，与你分享他们的超凡智慧的。"</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">母亲的无条件的爱</div>
+    <div class="card-body">
+      <p>"在一无所有的人生中，如果至少还有一个人无条件地爱着你，你的自尊心就会得到极大的保护。"</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">写给读者</div>
+    <div class="card-body">
+      <p>我学到了一些经验和教训，总结了一些原则。我试着把自己的思考结集成文，希望对你有所启发。</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">— 纳瓦尔宝典 · 第 11 章 —</div>
+
+</div>
+</body>
+</html>

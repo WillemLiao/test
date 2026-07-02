@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>找到天赋所在，积累专长 — 纳瓦尔宝典</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  background: #f5f0ea;
+  color: #2c2416;
+  padding: 30px 20px;
+}
+.container { max-width: 880px; margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: 60px 30px 44px;
+  background: linear-gradient(160deg, #3d2b1f, #1f140e);
+  color: #eadbc5;
+  border-radius: 16px 16px 0 0;
+}
+.hero .ch { font-size: 12px; letter-spacing: 6px; opacity: .45; margin-bottom: 8px; }
+.hero h1 { font-size: 26px; letter-spacing: 4px; line-height: 1.4; }
+.hero .sub { font-size: 14px; opacity: .5; margin-top: 10px; letter-spacing: 2px; }
+
+.body {
+  background: #fffcf7;
+  padding: 36px 40px 20px;
+  border-left: 1px solid #e6dccf;
+  border-right: 1px solid #e6dccf;
+}
+
+.highlight {
+  background: #f8f2ea;
+  border-left: 4px solid #b8864e;
+  padding: 20px 24px;
+  margin: 0 0 24px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #3d2b1f;
+  border-radius: 0 8px 8px 0;
+}
+
+.sec-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #6b4a2a;
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e6dccf;
+}
+
+/* core quote */
+.core-box {
+  background: #3d2b1f;
+  color: #eadbc5;
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 16px 0 20px;
+  text-align: center;
+}
+.core-box .big {
+  font-size: 22px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.core-box .small {
+  font-size: 14px;
+  opacity: .6;
+  margin-top: 10px;
+}
+
+/* talent grid */
+.talent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0 18px;
+}
+.talent-item {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+.talent-item .icon { font-size: 22px; margin-bottom: 4px; }
+.talent-item .label { font-size: 13px; color: #6b4a2a; font-weight: 600; }
+.talent-item p { font-size: 12px; color: #5a4a3a; line-height: 1.5; margin-top: 4px; }
+
+/* card */
+.card {
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  margin: 10px 0 18px;
+  overflow: hidden;
+}
+.card-head {
+  background: #f0e8dc;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4a3a2a;
+  letter-spacing: 2px;
+}
+.card-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #3d3224;
+}
+.card-body p { margin-bottom: 6px; }
+
+/* learning */
+.learn-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0 18px;
+}
+.learn-card {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.learn-card h3 { font-size: 14px; color: #6b4a2a; margin-bottom: 6px; }
+.learn-card p { font-size: 13px; line-height: 1.7; color: #4a3a2a; }
+
+.footer {
+  background: #fffcf7;
+  padding: 18px 40px;
+  border: 1px solid #e6dccf;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #a69580;
+}
+
+@media (max-width: 640px) {
+  .talent-grid, .learn-row { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 20px; }
+  .body { padding: 24px 18px; }
+  .core-box .big { font-size: 18px; }
+}
+@media print {
+  body { background: #fff; }
+  .hero, .core-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="ch">CHAPTER 15</div>
+  <h1>找到天赋所在，积累专长</h1>
+  <div class="sub">纳瓦尔宝典 · The Almanack of Naval Ravikant</div>
+</div>
+
+<div class="body">
+
+  <!-- 金句 -->
+  <div class="highlight">
+    专长无法被教授，但可以被学习。
+  </div>
+
+  <!-- 核心 -->
+  <div class="core-box">
+    <div class="big">在"成为自己"这件事情上，<br>没有人能比得过你。</div>
+    <div class="small">每个人都是独一无二的，每个人在某些方面都能做到最好。</div>
+  </div>
+
+  <!-- 如何发现专长 -->
+  <div class="sec-title">🔍 如何发现你的专长</div>
+
+  <div class="card">
+    <div class="card-head">回想孩提时代</div>
+    <div class="card-body">
+      <p>有哪些事情是你几乎<strong>不费吹灰之力</strong>就可以完成的？</p>
+      <p>即使你自己不觉得那是一门技能，身边的人也会留意到。</p>
+      <p>你的母亲或者你成长过程中最好的朋友会知道你有什么特别之处。</p>
+    </div>
+  </div>
+
+  <div class="sec-title">🎯 专长举例</div>
+  <div class="talent-grid">
+    <div class="talent-item">
+      <div class="icon">🤝</div>
+      <div class="label">销售技巧</div>
+      <p>天生的销售高手让人眼前一亮</p>
+    </div>
+    <div class="talent-item">
+      <div class="icon">🎵</div>
+      <div class="label">音乐天赋</div>
+      <p>学习任何乐器都不费力</p>
+    </div>
+    <div class="talent-item">
+      <div class="icon">🧘</div>
+      <div class="label">专注力强</div>
+      <p>容易沉浸，快速记住知识点</p>
+    </div>
+    <div class="talent-item">
+      <div class="icon">🚀</div>
+      <div class="label">热爱科幻</div>
+      <p>吸收新知识的能力特别强</p>
+    </div>
+    <div class="talent-item">
+      <div class="icon">🎮</div>
+      <div class="label">擅长游戏</div>
+      <p>对博弈论了解透彻</p>
+    </div>
+    <div class="talent-item">
+      <div class="icon">🗣️</div>
+      <div class="label">喜欢八卦</div>
+      <p>可能成为有所建树的记者</p>
+    </div>
+  </div>
+
+  <!-- 竞争 -->
+  <div class="sec-title">🏆 避开竞争</div>
+
+  <div class="card">
+    <div class="card-head">独辟蹊径</div>
+    <div class="card-body">
+      <p>"只有独辟蹊径，才能避开竞争。"</p>
+      <p>竞争就是模仿——与他人竞争，是因为你跟别人在做一样的事情。</p>
+      <p>如果你打造和推介的内容是<strong>自我的衍生</strong>，那就没有人可以与你竞争。</p>
+    </div>
+  </div>
+
+  <!-- 终身学习 -->
+  <div class="sec-title">📚 终身学习</div>
+
+  <div class="learn-row">
+    <div class="learn-card">
+      <h3>致富最重要的技能</h3>
+      <p>成为<strong>终身学习者</strong>。无论想学什么，找到途径和方法。</p>
+    </div>
+    <div class="learn-card">
+      <h3>新时代的节奏</h3>
+      <p>9个月内掌握一门新专业，而这门专业4年后就过时了——但在这3年里，你可以变得非常富有。</p>
+    </div>
+    <div class="learn-card">
+      <h3>打好基础</h3>
+      <p>在基础知识层面得90分，远胜于盲目深入钻研。打好基础，就不忌惮任何书籍。</p>
+    </div>
+    <div class="learn-card">
+      <h3>找到痴迷之事</h3>
+      <p>一个人只能在一两件事上做到精通。而这一两件事通常是让你痴迷的事情。</p>
+    </div>
+  </div>
+
+  <!-- 互联网 -->
+  <div class="card">
+    <div class="card-head">🌐 互联网拓宽了职业空间</div>
+    <div class="card-body">
+      <p>只要在网上进行<strong>独特的自我表达</strong>，你就有机会传播快乐，累积财富，打造产品，创立企业。</p>
+      <p>就算你的兴趣很小众，只要你能规模化你所提供的特别内容，你也能有所发展。</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">— 纳瓦尔宝典 · 第 15 章 —</div>
+
+</div>
+</body>
+</html>

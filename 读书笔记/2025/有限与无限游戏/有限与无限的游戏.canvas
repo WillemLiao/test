@@ -1,0 +1,24 @@
+{
+	"nodes":[
+		{"id":"group_finite","type":"group","x":-800,"y":-100,"width":500,"height":650,"color":"1","label":"有限游戏 (Finite Games)"},
+		{"id":"group_infinite","type":"group","x":300,"y":-100,"width":500,"height":650,"color":"4","label":"无限游戏 (Infinite Games)"},
+		{"id":"center_title","type":"text","text":"# 《有限与无限的游戏》\n## 詹姆斯·卡斯 (James Carse)\n\n世界上至少有两种游戏：\n1. **有限游戏**\n2. **无限游戏**","x":-200,"y":-400,"width":400,"height":200,"color":"6"},
+		{"id":"node_finite_def","type":"text","text":"### 定义\n\n- **目的**：以**取胜**为目的\n- **特点**：有终结，有输赢\n- **心态**：剧本化，防范意外","x":-780,"y":-50,"width":460,"height":180,"color":"1"},
+		{"id":"node_finite_boundary","type":"text","text":"### 边界 (自我限制)\n\n1. **时空**：特定时间/地点\n2. **人员**：资格/人数限制\n3. **规则**：不可更改","x":-780,"y":150,"width":460,"height":180,"color":"1"},
+		{"id":"node_society","type":"text","text":"### 社会 (Society)\n\n- **本质**：巨大的有限游戏\n- **目标**：追求**权力**与头衔\n- **手段**：战争、法律、财产\n- **特征**：爱国主义，维护现有规则","x":-780,"y":350,"width":460,"height":180,"color":"1"},
+		{"id":"node_infinite_def","type":"text","text":"### 定义\n\n- **目的**：以**延续**为目的\n- **特点**：无终结，产生无数可能\n- **心态**：传奇性，期待惊喜","x":320,"y":-50,"width":460,"height":180,"color":"4"},
+		{"id":"node_infinite_boundary","type":"text","text":"### 边界 (与边界玩)\n\n- **消除**时空/人员边界\n- **不停修改规则**\n- 唯一边界：**死亡** (向死而生)","x":320,"y":150,"width":460,"height":180,"color":"4"},
+		{"id":"node_culture","type":"text","text":"### 文化 (Culture)\n\n- **本质**：自由的、流动的\n- **特征**：越轨、创新\n- **矛盾**：社会往往会打击文化\n(因文化会打破社会的规则)","x":320,"y":350,"width":460,"height":180,"color":"4"},
+		{"id":"node_wisdom","type":"text","text":"## 人生智慧：宏大的人生观\n\n> 用无限游戏的心态，去玩有限游戏。\n\n- **不执着输赢**：失败只是体验\n- **打破剧本**：成为自己的天才\n- **追求根本自由**","x":-250,"y":650,"width":500,"height":200,"color":"3"},
+		{"id":"source_file","type":"file","file":"读书/2025/有限与无限游戏/未命名.md","x":-200,"y":900,"width":400,"height":380}
+	],
+	"edges":[
+		{"id":"edge_center_finite","fromNode":"center_title","fromSide":"left","toNode":"group_finite","toSide":"top","label":"包含"},
+		{"id":"edge_center_infinite","fromNode":"center_title","fromSide":"right","toNode":"group_infinite","toSide":"top","label":"包含"},
+		{"id":"edge_finite_infinite","fromNode":"group_finite","fromSide":"right","toNode":"group_infinite","toSide":"left","color":"3","label":"对立与转化"},
+		{"id":"edge_society_culture","fromNode":"node_society","fromSide":"right","toNode":"node_culture","toSide":"left","color":"1","label":"冲突/压制"},
+		{"id":"edge_finite_wisdom","fromNode":"group_finite","fromSide":"bottom","toNode":"node_wisdom","toSide":"left"},
+		{"id":"edge_infinite_wisdom","fromNode":"group_infinite","fromSide":"bottom","toNode":"node_wisdom","toSide":"right"},
+		{"id":"edge_wisdom_source","fromNode":"node_wisdom","fromSide":"bottom","toNode":"source_file","toSide":"top","toEnd":"none","label":"来源"}
+	]
+}

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第3章 冷酷仙境 · 雨衣、夜鬼、分类运算 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .nav {
+    position: fixed; top: 0; right: 0; width: 200px; height: 100vh;
+    background: #f0ebe3; border-left: 1px solid #ddd2c4;
+    padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column;
+  }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+
+<nav class="nav" id="nav">
+  <div class="nav-title">雨衣、夜鬼、分类运算<small>第3章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>空荡的房间</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>雨衣木乃伊</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>壁橱后的黑洞</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>坠入黑暗</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>地下相遇</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>消除声音</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>夜鬼与瀑布</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>老人的研究室</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>三百个头盖骨</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>模糊运算的委托</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>计算士的世界</a>
+    <a class="nav-item" data-section="s12"><span class="num">12</span>孙女的声音</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+
+<div class="main">
+
+<header>
+  <h1>冷酷仙境<small>第3章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">雨衣、夜鬼、分类运算</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle"><div class="zh">空荡的房间</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">场景</span><span class="tag purple">观察</span></div>
+    <p>我被领进去的是个空荡荡的大房间。墙壁是白的，天花板是白的，地毯为深褐色——颜色无不透出高雅的情趣。同样是白的，却有高雅和低俗之分，二者很有区别。窗玻璃是不透明的，看不到外面的景色，但隐约射进的光线肯定是太阳光无疑。如此看来，这里不是地下室，说明电梯刚才上升来着。弄清这一点，我略微舒了口气。我的想象不错。女郎做出要我坐在沙发的姿势，我便在房间正中的皮沙发上坐下，架起双腿。我刚一坐定，女郎就从另一个与进来时不同的门口走了出去。</p>
+    <p>房间里几乎没有像样的家具，与沙发配套的茶几上放着瓷质打火机、烟灰缸和香烟盒。我打开烟盒盖看了看，里面竟一支烟也没有。墙上没有画没有挂历没有照片，多余之物一概没有。窗旁有个大大的写字台。我从沙发上站起走到窗前，顺眼打量了台面。写字台敦敦实实，是用一整块厚板做成的，两边都带抽屉。上面有台灯有台历有大号圆珠笔三支，边角处有一堆回形针。我觑了眼台历的日期，日期豁然入目：正是今天。房间一角排列着三个随处可见的铁制文件柜。文件柜同房间的气氛不大谐调，显得过于事务性过于直截了当。若是我，放置的肯定是同这房间相配的风格典雅的木柜。问题是这不是我的房间，我只不过是来此工作的。</p>
+    <p>左侧墙有一个凹陷式壁橱，带有狭窄的立式折叠门，算是这房间里惟一的家具，也是所有的家具。没有时钟没有电话没有铅笔削没有水壶，书架和信插也没有。我全然想不明白这房间的建造目的及其功能所在。我折回沙发，重新架起腿，打个哈欠。</p>
+    <div class="key"><span class="lbl">✦ 无功能的房间</span><p>房间布置得高雅但功能不明——没有时钟、电话、书架，"我全然想不明白这房间的建造目的及其功能所在"。这是读者对"冷酷仙境"世界的第一次感受：一切都很精致，但一切都不对劲。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle"><div class="zh">雨衣木乃伊</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">场景</span><span class="tag blue">荒诞</span></div>
+    <p>大约过了十分钟，女郎回来了。她看也没看我一眼，径直打开一个文件柜，从中拖出一个滑溜溜的黑东西，搬到台面。原来是叠得整整齐齐的橡胶雨衣和长胶靴，最上边放着第一次世界大战中飞行员戴的那种航空镜式的风镜。眼下正在发生什么呢？我根本摸不着头脑。</p>
+    <p>女郎向我说了句什么，但嘴唇动得太快，我未能揣摩出来。</p>
+    <p>"请慢一点说好么？读唇术我可不怎么拿手。"我说道。</p>
+    <p>于是她这回张大嘴慢慢说了一遍。她的意思是"把那个套在衣服外面"。可能的话，我真不想穿什么雨衣，但解释起来又嫌麻烦，只好默默照她说的做了。我脱去轻便鞋，换上长胶靴，把雨衣披在运动衫外面。雨衣沉甸甸地颇有分量，靴子的尺寸大了一两号。对此我也决定不说三道四。女郎走到我跟前，为我扣上长达踝骨的雨衣的纽扣，把风帽整个扣在头上。扣风帽的时候，我的鼻尖碰在她滑润的额头上。</p>
+    <p>"好香的气味儿！"我夸奖她的古龙香水。</p>
+    <p>"谢谢。"说着，她把我风帽的子母扣咔咔有声地一直扣到鼻端，将风镜戴在风帽外面。这一来，我活脱脱地成了一副雨天木乃伊的模样。</p>
+    <div class="key"><span class="lbl">✦ 无言的默契</span><p>女郎全程几乎不说话，需要"读唇术"才能沟通——这个设定在第一章已经铺垫。温暖的古龙水味与荒诞的雨衣装扮形成微妙对照。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle"><div class="zh">壁橱后的黑洞</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">超现实</span><span class="tag red">悬念</span></div>
+    <p>接下去，她打开一扇壁橱门，拉起我的手伸到里边，拉开灯，反手把门关上。门内是个西服柜，却不见西服，只悬挂着几个空衣架和卫生球。我猜想这并非一般的西服柜，而是伪装成西服柜的秘密通道之类，因为毫无必要让我穿上雨衣后再把我推到西服柜里去。</p>
+    <p>她窸窸窣窣摆弄了一会墙角处的金属拉手。稍顷，正面墙壁果然闪出一个小型卡车般大小的空洞。洞内漆黑一团，可以清楚地感觉到有股凉丝丝潮乎乎的风从中吹来，吹得并不令人痛快。还可听到水流一般咕咕嘟嘟的持续声响。</p>
+    <p>"里面有河流。"她说。</p>
+    <p>由于水流声之故，她的无声说话法似乎多少有了一点现实感，仿佛她本来是出声的，只不过声音被水流声淹没而已。</p>
+    <p>"顺河一直往上，有一条很大的瀑布，只管钻过去就是。祖父的研究室就在那里边。到那里你就明白了。"</p>
+    <p>"就是说你祖父在那里等我吗？"</p>
+    <p>"不错。"说罢，她递给我一支有带子的大号防水手电筒。</p>
+    <p>我实在不大情愿走进这漆黑的深处，但现在已不容我说这等话了，只好咬紧牙关，一只脚迈进黑洞，随即向前屈身，把头和肩也送了进去，最后收进另一只脚。由于身上裹着并不驯服的雨衣，费了九牛二虎之力我才好歹把自己的身体从西服柜折腾到墙的对面，然后看着站在西服柜中的胖女郎。从黑洞中透过风镜看去，觉得她甚为可爱。</p>
+    <p>"小心，不要偏离河道拐去别处，一直走！"她弓下身子细看着我说。</p>
+    <p>"一直走就是瀑布！"我加大音量。</p>
+    <p>"一直走就是瀑布。"她复述一遍。</p>
+    <p>我试着不出声地做出"西拉"的口形。她莞尔一笑，也说了声"西拉"，旋即"砰"的一声把门关严。</p>
+    <div class="key"><span class="lbl">✦ 异世界的入口</span><p>大楼壁橱后面是悬崖峭壁——冷酷仙境的入口如此荒诞又如此随意。女郎的"西拉"在此处成了一个只有两人知道的暗号。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="stitle"><div class="zh">坠入黑暗</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">感官</span><span class="tag blue">描写</span></div>
+    <p>关门之后，我完全置身于黑暗之中。这是地地道道的、不折不扣的黑暗，连针尖大的光亮也没有，一无所见。连自己贴近脸前的手也全然不见。我像遭受过巨大打击似的茫然伫立良久。一种虚脱感——犹如包在保鲜纸里被投进电冰箱后马上给人关门封死的鱼一样冷冰冰的虚脱感袭上全身。任何人在毫无精神准备的情况下突然被抛入厚重的黑暗，都会即刻感到浑身瘫软。她本应该在关门前告知一声才是。</p>
+    <p>我摩挲着按下手电筒开关，一道温馨的黄色光柱笔直地向黑暗冲去。我先用来照了照脚下，继而慢慢确认了周围场地。我站立的位置为三米见方的混凝土台面，再往前便是深不见底的悬崖峭壁，既无栅栏又无围墙。我不由生出几分气忿：这点她本应事先提醒我才是道理。</p>
+    <p>台的旁边立着一架铝合金梯子，供人攀援而下。我把手电筒的带子斜挎在胸前，小心翼翼地顺着滑溜溜的铝梯一格一格往下移步。越往下去水流声越是清晰。大楼一室的壁橱里侧居然是悬崖峭壁，且下端有河水流淌，这种事我还闻所未闻，更何况是发生在东京城的市中心！越想越觉得头疼。</p>
+    <p>下至第二十格，我稍事休息，喘口气，之后又下了十八格，落到地面。我站在梯下用手电筒仔仔细细照了照四周。脚下已是坚固而平坦的石岩，河水在前面约两米的地方流着。在手电筒光的探照之下，河水的表面如旗帜一般，一面猎猎作响地飘舞一面向前流去。</p>
+    <p>我一边小心照亮脚下，一边贴着巨石朝上流前进。我不时觉得有什么东西在自己身体四周绕来绕去，而用手电一照，却什么都没发现。</p>
+    <div class="key"><span class="lbl">✦ 绝对黑暗中的虚脱感</span><p>"犹如包在保鲜纸里被投进电冰箱后马上给人关门封死的鱼"——村上最擅长的冷感比喻。黑暗不是空白，而是有质感的压迫。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.19s">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div class="stitle"><div class="zh">地下相遇</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag purple">悬念</span></div>
+    <p>由于我一味注意脚下，对前方隐约摇曳的光亮未能马上觉察出来。蓦地抬眼一看，已经到了离光七八米的近处。我条件反射地熄掉电筒，把手插进雨衣的衩口，从后裤袋里抽出一把小刀，摸索着亮出刀刃。黑暗和汩汩的水流声把我整个包笼起来。</p>
+    <p>刚一熄掉手电筒，那隐隐约约的黄色光亮也同时止住了晃动，在空间两次划出大大的圆圈，大概是向我示意，叫我壮起胆子，别怕。但我依然不敢大意，保持原来的姿势看对方如何动作。不一会儿，那光亮又开始摇晃，恰似一只具有高度发达大脑的萤火虫在空中飘忽不定地朝我飞来。我右手握刀，左手拿着已经熄掉的手电筒，定定地逼视着那光亮。</p>
+    <p>光亮在距我三米左右处停住，顺势一直上移，再次止住不动。光亮相当微弱，一开始我没大看清它照的是何物件，待定睛细看，才明白像是一张人脸。那脸与我同样戴着风镜，被黑色风帽包得严严实实。他手上提的是体育用品商店出售的那种小型气灯，并且一边用气灯照自己的脸一边拼命说着什么，但水流的回声使得我什么也没听清。</p>
+    <p>"……是因为……由于你的……不好，还有……"男子似乎这样说道。</p>
+    <p>我完全不知其所云。</p>
+    <p>男子理解似的点了几下头，放下气灯，两手伸进雨衣口袋摩挲起来。这时间里，潮水似乎急剧退去，充溢四周的轰鸣声骤然减弱。我感到自己开始明显变得神志不清。意识模糊，声音因而从头脑中消失。</p>
+    <p>几秒钟后我仍然好端端站着，心情也大为正常，惟独周围的水声变小了。</p>
+    <p>"接你来了。"男子说。现在可以听得清清楚楚。</p>
+    <p>我晃了下头，将手电筒夹在腋下，收起刀刃，把刀揣进衣袋。我预感到今天将是彻底莫名其妙的一天。</p>
+    <div class="key"><span class="lbl">✦ 黑暗中的刀与光</span><p>叙事者随身带刀、条件反射熄灭光源——职业计算士的本能。对方用气灯画圆示意"别怕"：两个全副武装的人在地下黑暗中互相试探。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.23s">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div class="stitle"><div class="zh">消除声音</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag green">设定</span><span class="tag purple">对话</span></div>
+    <p>"声音怎么的了？"我问来人。</p>
+    <p>"呃，声音嘛，你不是嫌吵吗？就把它弄小了。对不起，已经没事了。"男子边说边频频点头。水流声小得如小溪的低吟。"好了，走吧！"男子一下子把后背转向我，迈开稳健的步伐朝上流走去。我用手电筒照着脚下，跟在他后面。</p>
+    <p>"声音都可以弄小——莫非是人工声音不成？"我对着估计有男子后背的地方大声询问。</p>
+    <p>"不不，"男子说，"声音是天然的。"</p>
+    <p>"天然的声音为什么会变小呢？"</p>
+    <p>"准确说来并非使声音变小，"男子回答，"而是将其消除。"</p>
+    <p>我有点费解，但不再追问。我的处境容不得自己向别人絮絮发问。自己是来完成工作的，我的委托人将声音消掉也罢排除也罢，抑或到处洒伏特加果汁饮料也罢，都不关我生意上的事。因此我只管默不作声地继续走路。</p>
+    <div class="key"><span class="lbl">✦ 声音的消除</span><p>这是全书核心能力之一的首次展示：声音可以被"消除"而非被"减小"。叙事者的反应是"不关我事"——职业性的克制与疏离。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.27s">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div class="stitle"><div class="zh">夜鬼与瀑布</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag red">悬念</span><span class="tag gold">动作</span></div>
+    <p>不管怎样，由于水流声已被消除，四下一片寂然，就连长胶靴的"唧唧"声都听得一清二楚。头顶上响起两三次仿佛有人对搓石子的声响，转瞬即逝。</p>
+    <p>"看形迹好像有夜鬼混进过这一带，我放心不下，就赶来这里接你。按理，那些家伙是绝对到不了这里的，但毕竟偶尔也有发生，伤透脑筋。"男子说。</p>
+    <p>"夜鬼……"</p>
+    <p>"在这种地方冷不防撞上夜鬼，你恐怕也是吃不消的。"男子说着，以极大的声音"嗬嗬"地笑了起来。</p>
+    <p>"啊，那倒是。"我附和道。无论夜鬼还是其他什么，我可不愿意在这么黑的地方碰见不伦不类的东西。</p>
+    <p>往前走了一阵，听得前面有水龙头喷水样的声响。瀑布！我用手电筒大致晃了一下，具体看不清楚，反正像是来头不小。往前一站，飞沫顿时让风镜溅上了水珠。</p>
+    <p>"是要从中钻过去吧？"我问。</p>
+    <p>"是的。"男子再未多言，大步流星地向前走去，转眼在瀑布中消失得了无形影。无奈，我也急急追了过去。</p>
+    <p>好在我们钻的路线正是瀑布流量最薄弱的地方。尽管如此，身子还是险些被击倒在地。虽说严严实实地裹着雨衣，但也还是要冒着瀑布的枪林弹雨方能进入研究室——这点无论怎么从好意看来都未免荒唐。如此做法估计是为了保守机密，可也应该采用多少与人为善的方法才是。我在瀑布中跌了一跤，膝盖重重地撞在石头上。由于声音已被消除，声音与造成声音的现实之间完全失去了平衡，致使我不知所措。瀑布本来应该有与其本身相应的音量的！</p>
+    <div class="key"><span class="lbl">✦ 夜鬼</span><p>"夜鬼"首次被提及，但叙事者和读者一样对此一无所知。男子的"嗬嗬"笑声表明他知道的远多于他愿意说的。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.31s">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <div class="stitle"><div class="zh">老人的研究室</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag gold">对话</span></div>
+    <p>瀑布里边，有个大小仅容一人通过的洞口，进去一直往前，尽头是一扇铁门。男子从雨衣袋里掏出一个小计算器样的玩意儿插入铁门的空隙，操作片刻，铁门悄然从内侧闪开。</p>
+    <p>"啊，到了，请进。"男子先让我进去，他自己也进来把门锁上。</p>
+    <p>我们走进的房间相当宽大，如游泳池的更衣室，毫无生活气息。搁物板上整整齐齐放着的，全是与我穿的一样的黑色雨衣和长胶靴。我摘掉风镜，脱去雨衣挂在衣架上，长胶靴放在搁物板上，手电筒挂在壁钩上。</p>
+    <p>"抱歉，让你受这么多折腾。"男子说，"不过也真是马虎不得。一些家伙前前后后盯着我们，不能不加这些小心。"</p>
+    <p>接着他把我领进更衣室里边的客厅。脱下黑色雨衣后，男子成了一个普普通通的文质彬彬的小老头。胖倒不胖，但长得结结实实，一副坚不可摧的样子。脸上神采奕奕，从衣袋掏出眼镜一戴，完全是战前大政治家的风度。</p>
+    <p>他让我在沙发上落座，自己则在办公桌后面坐定。房间布置同我最初进的那个房间毫无二致，地毯颜色一样灯具一样墙纸一样沙发一样统统一样，使人觉得好像绕一圈后又返回了同一房间。</p>
+    <p>老人打量了我一会，然后捏起一枚回形针拉得笔直，用来捅指甲的根部。捅的是左手食指。捅罢指甲根，把已拉直的回形针扔进烟灰缸。我心中思忖，下辈子我托生成什么都好，但就是不当这回形针，居然被这莫名其妙的老人捅完指甲后顺势扔进烟灰缸——简直叫人不寒而栗。</p>
+    <p>"据我掌握的情报，夜鬼和符号士正在握手言和。"老人说，"不过这些家伙当然不至于因此而同仇敌忾。夜鬼老谋深算，符号士野心勃勃，所以他们的勾结只限于一小撮。但也不是好的苗头。"</p>
+    <p>"言之有理。"我说。</p>
+    <p>"我委托代理人派一名最能干的计算士过来，你怕是有些名声，大家都夸你。有本领，有胆识，做事干练。除去缺乏协调性这点，听说无可挑剔。"</p>
+    <p>"过奖。"我谦虚一句。</p>
+    <p>老人又阴阳怪气地放声大笑。"协调性那玩意儿怎么都无所谓，关键在于胆识。要当上一流计算士必须有胆识，报酬相应也高。"</p>
+    <div class="key"><span class="lbl">✦ 回形针的命运</span><p>"我心中思忖，下辈子我托生成什么都好，但就是不当这回形针"——在紧张诡异的氛围中突然插入的幽默独白，是村上最标志性的叙事风格。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.35s">
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <div class="stitle"><div class="zh">三百个头盖骨</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">意象</span><span class="tag gold">对话</span></div>
+    <p>"我是生物学者。"老人说，"说是生物学，可我干的范围非常之广，一言难尽。从脑生理学到音响学、语言学、宗教学，都有所涉及。"</p>
+    <p>说着，他按下墙壁上的开关，打开工作间的灯。只见房间靠里的墙壁整面都做成了搁物架，上面密密麻麻排列着所有哺乳动物的头盖骨。从麒麟、马、熊猫到老鼠，大凡我能想到的尽皆汇聚于此。数量估计有三四百之多，当然也有人的头盖骨，白人的黑人的印第安人的，男女各一。</p>
+    <p>"鲸鱼和大象的头盖骨放在地下仓库。如你所知，那东西太占地方。"</p>
+    <p>动物们像早已有约在先似的一齐张开大嘴，两个空洞洞的眼穴死死盯住对面的墙壁。虽说全是供研究用的标本，但置身于如此众多的骨头的包围之中，仍觉心里不是滋味。</p>
+    <p>"如何，了不起的收藏吧？"老人不无得意地开口道，"世上有人收藏邮票，有人收藏唱片，有的在地下室里摆满葡萄酒，也有的富翁喜欢把装甲车摆在院子里，我则收藏头骨。大千世界，无奇不有，所以才情趣盎然。你不这样认为？"</p>
+    <p>"我嘛，整整花了三十年才达到听懂骨头所发之声的境地。三十年！可不是一朝一夕，嗯？"</p>
+    <p>"声音？骨头能发声音？"</p>
+    <p>"当然能。"老人说，"每块骨头都有其固有的声音。这不是比喻，骨头的的确确是会说话的。"</p>
+    <p>"比如，一旦能从骨头里收集情报，就省去了拷问的麻烦，只消把对手杀死，去肉洗骨就万事大吉。"</p>
+    <p>"岂有此理！"我说。</p>
+    <div class="key"><span class="lbl">✦ 会说话的骨头</span><p>"每块骨头都有其固有的声音"——这是全书最核心的设定之一。老人花三十年练就听骨之术，而技术的滥用方向令人不寒而栗。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.39s">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="stitle"><div class="zh">模糊运算的委托</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">对话</span><span class="tag green">设定</span></div>
+    <p>"所以才求你计算。注意不要被符号士们窃听，偷去实验数据。"老人神情肃然，"科学的滥用和善用同样使现代文明面临危机。我坚信科学应为科学本身而存在。"</p>
+    <p>"信念那东西我不大明白，"我说，"只有一点请明确一下，是事务性的：这次要我来工作的，既非'组织'总部，又不是法定代理人，而是你直接插手。情况很不正常。有可能违反就业规则。果真如此，我将被没收执照。"</p>
+    <p>老人拉开桌子抽屉，取出一个文件夹。里面果然有"组织"的正式委托书，式样和签字也无懈可击。</p>
+    <p>"那好吧。"我把文件夹还给对方，"我的级别是双料级……"</p>
+    <p>"就是普通薪金的两倍吧？没问题。这回再加上奖金，来个三料级。"</p>
+    <p>"请先让我看一下数值。"我说。</p>
+    <p>老人从隐藏在墙壁后的暗格中取出另一个文件夹。我接过看了长达七页的蝇头数值。</p>
+    <p>"若是这个程度，用分类运算就足够了。"我说。</p>
+    <p>"我并没有说要二次转换。"说着，老人又用回形针捅起指甲根来，"我想请你进行分类运算和模糊运算。"</p>
+    <p>"不明白，"我架起腿，"你怎么会知道模糊呢？那是绝密事项，局外人不可能知道。"</p>
+    <p>"可我知道。我同'组织'的上层人物有着非同一般的关系。"</p>
+    <p>"模糊系统现已完全冻结。原因我不清楚，大概出现什么故障了吧。反正不能使用那个系统。"</p>
+    <p>老人又把文件夹递过来："请好好看最后一页，那上面应该有模糊系统的使用许可。"</p>
+    <p>果不其然，上面的确有模糊系统的使用许可。签名就有五个。我实在不晓得上头那伙人打的什么主意。挖出洞来叫埋上，刚刚埋上又叫挖出！左右为难的总是我这样的下层人员。</p>
+    <p>"三天后的正午时分无论如何我得使用……"</p>
+    <p>"绝不延误。"我说。</p>
+    <p>"千万千万，"老人叮嘱道，"延误了可就要坏大事。"</p>
+    <p>"世界崩溃不成？"我问。</p>
+    <p>"在某种意义上。"老人说得高深莫测。</p>
+    <div class="key"><span class="lbl">✦ 模糊系统</span><p>"模糊"是全书技术设定的核心。已经被"冻结"的系统为何又得到了五个人签名的使用许可？这是一个更大的谜团的开端。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.43s">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div class="stitle"><div class="zh">计算士的世界</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">设定</span><span class="tag gold">独白</span></div>
+    <p>我将所给数值输入大脑右半球，转换成完全不一样的符号后再移入大脑左半球。继而将移入左半球的符号作为截然不同的数字取出，打在打字纸上。这就是分类运算。至于转换的代码，每个计算士各所不一。</p>
+    <p>符号士们企图通过架假设桥的办法来解读其从计算机上窃来的数值。若我们提高技术，他们也提高对抗技术。我们保护数据，他们盗窃数据——纯属古典式警察和小偷的套数。</p>
+    <p>符号士们将非法获取的数据大多捅到黑市上去，牟取暴利。我们的组织一般称为"组织"，符号士们的组织则被称为"工厂"。"组织"原本是私营性质的联合企业，但随着其重要性的提高，现已带有半官方色彩。我们这些基层计算士像税务顾问和律师那样独立自主地开展工作，但要有国家颁发的执照。</p>
+    <p>我不知道"工厂"的结构是怎样的。也有人称之为"数据黑手党"。他们只兜售情报。情报既文雅，又赚钱。</p>
+    <p>我一边喝着一整壶咖啡，一边不停地进行分类运算。我的规则是干一小时休息三十分钟。否则，大脑左右两半球的接缝便模糊不清，致使出来的数据一塌糊涂。</p>
+    <p>在三十分钟休息时间里，我同老人天南海北地闲聊。聊的内容无所谓，只要鼓动嘴巴说话就行，这是排除大脑疲劳的最佳方法。</p>
+    <div class="key"><span class="lbl">✦ 世界的设定</span><p>分类运算、符号士、组织与工厂——村上为"冷酷仙境"搭建了一整套近未来设定。计算士用大脑左右半球进行数据加密，听起来像科幻，但语调却像在描述一份普通工作。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s12" style="animation-delay:0.47s">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div class="stitle"><div class="zh">孙女的声音</div></div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">对话</span><span class="tag blue">幽默</span></div>
+    <p>"这到底是哪一方面的数值呢？"我问。</p>
+    <p>"实验测定数值。"老人说，"是我一年来的研究成果。有两种，一种是各个动物头盖骨和口腔上颚容积的三次原始图像所转换成的数值，一种是其发音的三要素分解，二者合在一起。这项计算完成之后，我们就可以从理论上而不是根据经验将声音分离出来。"</p>
+    <p>"消除声音是其中之一吧？"我问。</p>
+    <p>老人洋洋得意地"嗬嗬"笑了几声。"是的。可以结合人类头盖骨固有的信号，消除或增大声音。声音的消除在研究成果中是最为无害的一种。"</p>
+    <p>如果说这个无害的话，那么往下可想而知。想到世人各自随心所欲地消除声音或增大声音，我不由有点心烦意躁。</p>
+    <p>往下一个小时，我全神贯注地进行计算。而后又到了休息时间。</p>
+    <p>"提个问题好么？"我说。</p>
+    <p>"就是门口的年轻女郎，那个穿粉红色西服套裙的身段丰满的……"</p>
+    <p>"是我的孙女。"老人说，"是个非常懂事的孩子，小小年纪就帮我搞研究。"</p>
+    <p>"所以我想问：她是天生说不出话来呢，还是声音被消除了……"</p>
+    <p>"糟糕！"老人用一只手"啪"地拍了下膝盖，"忘得一干二净。做过消音实验后还没有复原，糟糕糟糕，得马上为她复原！"</p>
+    <p>"似乎这样为妥。"我说。</p>
+    <div class="key"><span class="lbl">✦ 笑点收尾</span><p>整整一章的紧张、荒诞和超现实，最后落在一个老人忘记给孙女"解消音"的笑点上。胖女郎并非天生失声，而是被爷爷的实验误伤——这个收尾笔法极妙。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch02.html" class="nav-ch">‹ 第2章</a>
+    <a href="ch04.html" class="nav-ch">第4章 ›</a>
+  </div>
+<footer>
+  <a href="index.html">目录</a> · 第3章 · 冷酷仙境 · 雨衣、夜鬼、分类运算
+</footer>
+
+</div>
+
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

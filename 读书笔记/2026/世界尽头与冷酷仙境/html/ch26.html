@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第26章 世界尽头 · 大校与地图 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">大校与地图<small>第26章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>去发电站</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>冬日春朝</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>衰弱的独角兽</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>山顶望镇</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>森林中的发电站</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>风力发电</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>管理员独白</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>森林的居民</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第26章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">大校与地图</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">去发电站</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag blue">路线</span></div>
+    <p>读罢古梦，我提起要去发电站的事，女孩的脸阴暗下来。</p>
+    <p>"发电站可是在森林里的哟！"她边说边把烧得红彤彤的煤块埋进沙里熄掉。</p>
+    <p>"只是入口。"我说，"看门人都说没什么问题。"</p>
+    <p>"天晓得看门人想的什么。就算是森林入口也还是危险的。"</p>
+    <p>"横竖我想去看看，无论如何得弄到一件乐器。"</p>
+    <p>她把煤块全部掏出，打开下面炉口，将里面堆积的白灰倒入桶内，摇了好几下头。</p>
+    <p>"我也跟去。"她说。</p>
+    <p>"为什么？你不是不想靠近森林吗？再说我也不愿意拖累你。"</p>
+    <p>"因为不能放你一个人出去，你还没有充分了解森林的厉害。"</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">冬日春朝</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">氛围</span></div>
+    <p>我们在阴晦的天空下沿河边向东走去。这是个使人联想到和煦春光的早晨。没有风，水流声听起来也似乎带有缠绵的柔情，一改往日冰冷的明快。走了十或十五分钟，我摘掉手套，解下围巾。</p>
+    <p>"像是春天。"我说。</p>
+    <p>"是啊。可惜只有一天，向来如此。冬天马上回头杀来。"</p>
+    <p>穿过桥南岸零零星星的人家，路右侧映入眼帘的便只有农田了，石子路也随之变成了狭窄的泥路。田垄之间，几道结冻发白的积雪如搔伤遗痕似的存留下来。左边河岸排列着柳树，柔软的枝条依依垂向河面。小鸟落在弱不禁风的枝上，为保持平衡而摇动了几次树枝，终于改变主意，往别的树飞去。阳光淡淡的，轻柔而和煦。我几次扬起脸，享受这静静的温馨。女孩右手插在自己的大衣袋里，左手放进我的大衣袋。我左手提着一个小皮箱，右手在衣袋里抓着她的手。</p>
+    <div class="key"><span class="lbl">✦ 短暂的春天</span><p>"可惜只有一天，向来如此。冬天马上回头杀来"——在世界尽头，温暖只是暂时的假象。但正是在这短暂的春日里，他第一次抓住了她的手。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">衰弱的独角兽</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag purple">象征</span></div>
+    <p>也可以在枯草地上碰到在枯草地上往来觅食的独角兽。他们身上披满泛白的淡黄色的毛，毛比秋天的长得多也厚得多，但一眼即可看出远比以前衰弱，形销骨立，犹如从旧沙发里支出的弹簧。嘴角的肉也松弛下垂得不成样子，令人目不忍睹。眼睛黯淡无光，四肢关节球一样膨胀起来。一成不变的惟有前额凸起的一支白角，角始终如一且不无自豪地直刺长天。</p>
+    <p>它们顺着田垄从一小片树丛走往另一小片树丛。树上的果实和适于食用的绿叶已经寥寥无几，高高的树枝上虽还剩有几颗果，可惜以它们的个头是无论如何也够不到的。它们徒劳无益地在树下寻找掉在地面的果实，或用可怜巴巴的眼神一动不动地望着鸟儿啄食树果的情景。</p>
+    <p>"兽们为什么不动地里的农作物呢？"我问女孩。</p>
+    <p>"一向如此，为什么我也不知道。"她回答，"兽们决不动人吃的东西。当然如果我们给，有时也是吃的，否则决不轻举妄动。"</p>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">山顶望镇</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">风景</span><span class="tag blue">空间</span></div>
+    <p>看门人告诉的不错，沿河岸走三十分钟跨过东桥时，有条小道向右拐去。道很小很细，不注意很容易忽略。沿荒草间的小径前行不久，迎来一段徐缓的坡路，草也随之疏落起来。继而坡路变成山坡，终于成了石山。好在虽是石山，但并非光秃秃的需要攀援，而有颇为正规的石阶。登了十多分钟，我们上到山顶。</p>
+    <p>石山南侧不同于北侧，坡势缓缓而下，山脚连着一片相当宽阔的草地，再往前便是黑压压的东部森林，如海洋一般推向远方。</p>
+    <p>我们在山顶坐下歇息，观望了一会四周风景。从东面看去，镇景与我平时得到的印象有很大差别。河流直得令人吃惊，全然没有沙洲，直挺挺地流动不息，活像是人工渠。河对面是北部那片沼泽。沼泽右侧隔河是飞地一般蚕食大地的东部森林。河的这一侧左边，可以望见我们刚刚走过的农田。极目远眺，渺无人烟，东桥也寂寂无人，令人不由怆然。凝目细览，可以认出职工住宅区和钟塔，但那更像从远方过来的虚无缥缈的幻影。</p>
+    <div class="key"><span class="lbl">✦ 地图上的镇子</span><p>从山顶俯瞰，镇子的几何结构一览无余——直线的河流、规整的农田、孤立的钟塔。这世界尽头的"地图"如同人工设计般完美而不自然，印证了影子关于"完整即虚假"的判断。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.19s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">森林中的发电站</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">空间</span><span class="tag green">探索</span></div>
+    <p>歇息片刻，我们下坡朝森林走去。森林入口有一泓浅可见底的水池，中央立着半截白骨样的枯树桩，上面落着两只白色的鸟，定定地看着我们。雪很硬，鞋踩上去丝毫不留脚印。漫长的冬日已使林中景色大为改观，里面不闻鸟鸣，不见蝉影，惟有大树从不可能结冻的地层深处汲取着生命力，向阴沉沉的天宇刺去。</p>
+    <p>沿着林中路行走之间，耳畔传来一种奇妙的声音，近乎林中流窜的风声，而四周却又没有一丝刮风的样子。越往前行，声音越大越清晰。透过巨大的柞树，可以望见前面空空荡荡的广场。广场尽头有一座类似发电站的建筑物，然而又没有任何足以表示其为发电站的功能性特征，简直像座巨大的仓库。</p>
+    <p>正门似乎上着锁，两人一起推也岿然不动。我们绕建筑物转了一圈。后面相邻的是同为砖瓦建筑的不大的住宅，大小同看门人小屋差不多，开有极为普通的窗户，窗上挂的不是窗帘，而是装谷物的布袋。</p>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.23s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">风力发电</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">规则</span><span class="tag blue">神秘</span></div>
+    <p>往门口一站，风声愈发大了。由于我平时就熟悉黑暗，没费多长时间就认出了房间地板正中站着一个男子。男子又瘦又小，一动不动地注视着面前直径约三四米的直捅天花板的大圆铁柱。除了这个圆柱，再无其他像样的设备和机器，房间如室内跑马场一样空空如也。</p>
+    <p>男子摇摇头，表示并不打扰，然后指着圆柱上明信片大小的玻璃窗，意思像是叫我往里看。玻璃窗里面，贴地安着一台巨大的风扇，势不可挡地飞速旋转，似乎内部有一台不知几千马力的驱动马达。想必风扇是借助某处吹来的风力旋转而发电的。</p>
+    <p>"是风吧？"我问。</p>
+    <p>男子点头称是。</p>
+    <div class="key"><span class="lbl">✦ 地下之风</span><p>世界尽头的电力来自地下洞穴吹出的风——这个设定巧妙地将两条叙事线连接起来：冷酷仙境的地下风洞与世界尽头的发电站，是同一个物理系统的两端。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">管理员独白</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag purple">孤独</span></div>
+    <p>他把我们领到几乎听不到风声的地方。屋后有片树林拓出的农田，我们坐在排列成一片的几个树墩上。</p>
+    <p>"对不起，我不能大声说话。"年轻管理员自我辩解似的说。"你们是镇上的人吧？"</p>
+    <p>我答说是的。</p>
+    <p>"您都看到了，"年轻男子说，"镇子的电力是靠风力供应的。这儿的地面开有一个特大的洞，利用里面吹出的风来发电。风每隔三天吹上来一次。这一带地洞很多，里面风来水往。我在这里负责设备保养，没风的时候拧紧风扇螺栓，涂润滑油，或采取措施防止开关上冻，发出的电通过地下电缆输往镇子。"</p>
+    <p>"一直一个人住在这里？"我问。</p>
+    <p>"嗯，是的，已经很久了。光听声音都晓得机器的一举一动，毕竟每天都同机器对话，天长日久，这点事自然了然于心。机器运转正常，我本身也心里坦然。此外还通晓森林的动静。森林发出的声音可多着哩，简直像活物似的。"</p>
+    <p>"孤零零住在森林里不难受吗？"</p>
+    <p>"难受不难受这问题我不大明白。"他说，"森林位于这里，我住在这里，如此而已。总得有人在此照看机器才行。况且我所在的不过是森林入口，里面的情形不很清楚。"</p>
+    <div class="key"><span class="lbl">✦ 与机器对话的人</span><p>"每天都同机器对话，天长日久，这点事自然了然于心"——管理员是全书中最中立的角色，既不属于镇子也不属于森林。他与机器对话，与森林共存，是两种世界的边界人。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.31s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">森林的居民</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">神秘</span><span class="tag blue">空间</span></div>
+    <p>"此外还有像你这样住在森林里的人么？"女孩问。</p>
+    <p>管理员沉思片刻，微微点了几下头道："知道几个人。住在很远很远的里边。是有几个。他们挖煤、开荒、种田。但我遇到的只是极少数几个，而且极少搭话，因为他们不接受我。他们在森林里度日，我在这里过活，两不相干。或者森林里有更多的人，可是我只了解这么多。我不到森林里边去，他们几乎不来这入口。"</p>
+    <p>"见到过女的吗？"女孩问，"三十一二岁的。"</p>
+    <p>管理员摇头道："没有，女的一个也没见到。见到的清一色是男子。"</p>
+    <p>我看了一眼女孩的脸。她再未开口。</p>
+    <div class="key"><span class="lbl">✦ 森林中的她</span><p>女孩问起"三十一二岁的女人"——那很可能就是她的母亲。森林深处有人居住，但管理员从未见过女性。这个未回答的问题，将作为伏笔延续到之后的篇章。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch25.html" class="nav-ch">‹ 第25章</a>
+    <a href="ch27.html" class="nav-ch">第27章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第26章 · 世界尽头 · 大校与地图</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

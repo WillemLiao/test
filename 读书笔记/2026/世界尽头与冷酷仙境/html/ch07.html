@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第7章 冷酷仙境 · 百科全书式老人与沙丁鱼 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; cursor: pointer; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">百科全书式老人与沙丁鱼<small>第7章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>深夜归来</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>晨光与谜之盒</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>头骨的冲击</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>购物狂的哲学</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>图书馆的女孩</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>回形针与头骨</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>九十三种对照</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>煤气男子的偷袭</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>僵持的棋局</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>独角兽的角</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>电话求助</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第7章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">百科全书式老人与沙丁鱼</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">深夜归来</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">氛围</span></div>
+    <p>我是乘出租车回到住处的。走到外面时天已黑尽，街上到处挤满了下班的男男女女，加之细雨霏霏，好半天才拦住一辆出租车。</p>
+    <p>即便不遇上这种情况，我拦出租车也颇费时间。为了避开危险，我要至少放过两辆空车才行。据说符号士们往往开出几辆伪装的出租车，把刚刚结束工作的计算士捡上车去，直接拉去什么地方。这当然不过是传闻，无论我还是身边任何人都未有过如此遭遇，不过还是小心行事为妙。</p>
+    <p>因此，平时我尽可能利用地铁或公共汽车。但此时实在人困马乏，况且天又下雨，一想到要挤傍晚正值下班高峰时的电车或公共汽车，便觉不寒而栗，于是花时间拦了一辆出租车。坐车当中好几次险些昏睡过去，勉强咬牙挺住。心想车上万万睡不得，在车上睡过于危险，要睡等回到住处睡个够好了。</p>
+    <p>这样，我把精神集中在车内收音机中的棒球赛转播上。职业棒球我不大懂行，姑且决定声援正在进攻的一方，而怨恨防守的球队。可惜我声援的队以一比三落后。从二出局二垒倒击中两球，但由于奔跑的人在二三垒间失足跌倒，以致成为三出局，未能得分。</p>
+    <p>车开到我公寓跟前时，比分仍是四比一。我付了车费，抱着帽盒和昏昏沉沉的脑袋推门下车。雨差不多已经停了。</p>
+    <div class="key"><span class="lbl">✦ 符号士的阴影</span><p>出租车不敢随便拦，担心是符号士的陷阱——计算士与符号士之间的对抗已经渗透到日常生活。主角用棒球赛来维持清醒，村上标志性的日常细节叙事。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">晨光与谜之盒</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">日常</span><span class="tag purple">思辨</span></div>
+    <p>信箱里什么邮件也没有，录音电话也没留下口信，看来没有一个人有求于我。也好，我也无求于任何人。我从电冰箱里取出冰块，做了一大杯加冰威士忌，又放了少许苏打，然后脱衣上床，靠在床背上一小口一小口地喝起酒来。虽说现在昏昏欲睡，但这一天中最后的美好节目却是省略不得的。我最喜欢的就是上床到入睡前的这短暂时刻，一定要拿饮料上床，听听音乐或看看书。我分外钟爱这一片刻，如同钟爱美丽的黄昏时分的清新空气。</p>
+    <p>威士忌刚喝到一半，电话铃响了。电话机放在离床头两米多远的圆形茶几上。好容易才钻上床，我实在懒得特意起身走过去。因此只是呆呆地注视着那电话机不动，任凭它响个不停。铃响了十三四遍。我满不在乎。</p>
+    <p>睁眼醒来，四下若明若暗。时针指在六点十五分。我弄不清是早晨还是傍晚，便穿上裤子走到门外，往隔壁房间门上看了看：门上插着一份晨报，由此知道现在是早上。</p>
+    <p>我决心起床。同崭新的纤尘不染的太阳一同醒来时的惬意之感是任凭什么都无法替代的。我用淋浴精心洗罢身体，刮了胡须，做体操，开始吃现成的早餐。这当儿，我陡然想起老人送的那件谜一样的礼物，于是把右脚那只尚未洗完的网球鞋扔在一边，用厨房毛巾擦擦手，折回寝室拿起帽盒。较之体积，盒子依然那么轻，轻得令人不无生厌，委实轻得出格。有东西触动了我头脑中的那根弦。</p>
+    <div class="key"><span class="lbl">✦ 睡前的美好</span><p>"上床到入睡前的短暂时刻"——主角最珍惜的仪式。电话响了就是不接，这种对孤独的执着是计算士的性格底色。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">头骨的冲击</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">神秘</span></div>
+    <p>我转身环视房间。房间静得出奇，仿佛声音已被消除殆尽。我试着咳嗽一声，咳嗽声倒还真真切切。我掏出小刀，用刀背敲敲茶几，同样橐橐有声。一旦体验过消音事件之后，一段时间里总是难免对寂静疑神疑鬼。打开阳台窗扇，车声鸟鸣随即传来，我这才一阵释然。</p>
+    <p>接着，我用小刀划开包装胶带，划得很小心，以防损伤里面的东西。盒的最上边塞满揉成一团团的报纸。我展开两三张看了看，全是三周前的《每日新闻》，不见任何特征。除掉报纸，下面是小孩小指大小的软绵绵的东西，不知是聚乙烯还是泡沫塑料。去掉一半填充物之后，从中又落出一个报纸包。我折回厨房从冰箱里拿来一罐可口可乐，坐在床沿不紧不慢地喝着，用小刀尖不经意地削着指甲。</p>
+    <p>不久，我又鼓起精神面对茶几，从盒中轻轻掏出报纸包裹的物体。形状如同长得细长的西瓜，仍无重量可言。我把盒子和小刀从茶几上撤去，在宽大的茶几上小心翼翼地剥去报纸，里面出现的竟是一块动物头骨。</p>
+    <p>莫名其妙！老人怎么居然想到我会为接受一块头骨而兴高采烈呢？何况以动物头骨送人一事本身就已相当荒唐，无论怎么看都断非神经地道者所为。</p>
+    <p>我决定暂且把头骨放在电视机上，虽然不大雅观，可又想不出其他位置。若是海明威，必定把它同壁炉上的大鹿头并放在一起，而我这房间当然没有什么壁炉。别说壁炉，连地柜也没有，鞋柜也没有。因此除了电视机，再没有可放这莫名其妙的头骨的位置了。</p>
+    <div class="key"><span class="lbl">✦ 电视机上的头骨</span><p>动物头骨与电视机——古老与当代的并置。主角自嘲"若是海明威"会如何处理，村上式的幽默在此闪现。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">购物狂的哲学</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">独白</span><span class="tag gold">日常</span></div>
+    <p>我拿起不锈钢火筷，轻轻敲了敲动物头骨的额头部位。"咕"——一声类似巨犬鼻音的声响。我本来预想的是"通"或"砰"那样硬物相撞之声，因此可以说颇感意外。</p>
+    <p>头骨看得厌了敲得烦了，我便离开电视机在床沿坐下，拨动"组织"正式代理人的电话号码，以确认工作日程。负责我的人接起电话，说四天后有一项任务，问我有无问题。我说没有。从个人角度说我不大喜欢负责我的这个人。此君三十光景，瘦瘦高高，总以为自己无所不知。我可不愿意使自己陷入必须同这等人物交涉棘手事的境地。</p>
+    <p>三言两语商谈完事务性工作，我放下电话，打开一罐啤酒，放录像带看亨佛莱·鲍嘉的《拉戈岛》。我非常喜欢里边的劳伦·巴考尔。我不知看了多少遍，但终究未得出正确答案。</p>
+    <p>十一点，我走出公寓，在车站附近的超级商场随手买了些食品，又去酒店买了红葡萄酒、汽水和橘汁，接着在洗衣店取了一件上衣和两件衬衫，在文具店买了圆珠笔、信封和信笺，在杂货店买了纹路最细的磨石。还到书店买了两本杂志，在电器商品店买了灯泡和盒式磁带，在照相馆买了一次成像式照相机用的胶卷，顺路进唱片店买了几张唱片。结果我这辆小型车的后座给购物袋堆得满满的。我大概是天生喜欢购物吧，偶尔上街一次，每次都像十一月的松鼠一样买一大堆零零碎碎的物品。</p>
+    <div class="key"><span class="lbl">✦ 十一月的松鼠</span><p>主角对购物的自嘲——"像十一月的松鼠一样"。购物车是他唯一的车，从不用于兜风或旅行，百分之百的实用主义。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">图书馆的女孩</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag gold">对话</span></div>
+    <p>采购完毕，我把车开进附近一家餐馆停车场，要了啤酒、鲜虾色拉和洋葱片，一个人闷头吃着。从饭店窗口可以看见高速公路。我一边看车，一边回想昨天打交道的奇妙老人和他的胖孙女。</p>
+    <p>饭后等咖啡的时间里，我逐一回想了胖女郎身上的有关部位——方耳环、粉红色西服裙、高跟鞋，以及大腿和脖颈的脂肪附着状况、面部神态等等。但正如老人所说，同样是胖，而胖法却千差万别。</p>
+    <p>我不再围绕胖女郎的裸体想入非非，付罢款离开餐馆，然后走到附近的图书馆。参考文献室的桌旁坐着一个苗条的长发女孩，我问她有没有关于哺乳类动物头盖骨的资料。女孩正专心看一本袖珍读物，此时扬起脸来看着我：</p>
+    <p>"什么？"</p>
+    <p>"关于哺乳类动物、头盖骨的、资料。"我一字一板地重复一遍。</p>
+    <p>"哺乳类动物头盖骨。"女孩像唱歌一般鹦鹉学舌道。经她如此一说，听起来绝对像一首诗的标题——俨然诗人在朗读诗之前向听众宣布标题。</p>
+    <p>女孩穿着宽松的浅色毛衣，长发垂在肩头。她操作电脑查阅目录的动作十分娴熟。我打量着她苗条的背和修长的黑发，相当困惑，不知是否该对她怀以好意。</p>
+    <div class="key"><span class="lbl">✦ 图书馆女孩的登场</span><p>"哺乳类动物头盖骨"被女孩重复得像诗的标题——村上用这种错位感赋予日常以诗意。这个女孩将成为本线的重要角色。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">回形针与头骨</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">日常</span></div>
+    <p>女孩按下复印键，将电脑显示屏上的内容打印下来递给我，说："请从这九册中挑选。"</p>
+    <p>我的借书卡最多可借三册，我挑选了二、三、八三册。《作为哺乳类的我》和《谈骨骼》等估计也很有趣，但同眼下的问题似无直接关系。</p>
+    <p>"十分抱歉，《图解哺乳类》禁止带出，不能外借。"女孩边说边用圆珠笔搔太阳穴。</p>
+    <p>经过一番交涉，她破例同意借我一天。"OK，就借你一次，下不为例。明天上午九点半前务必带来！"作为回报，我去买了"三十一种冰淇淋"的双头圆筒送她。</p>
+    <p>我买好冰淇淋回来时，女孩尚未转出，我只得手拿冰淇淋在桌前乖乖等候。桌面上她已开读的袖珍书是H·G·威尔斯的传记《时间旅人》下册。书旁排列着三支削得整整齐齐的铅笔，此外还散放着七八个回形针。为什么到处都有回形针呢？实在不得其解。</p>
+    <p>或许是由于某种缘故而致使回形针满世界流行。这回形针简直就像早有预谋似的，散落在我所到之处的最显眼位置。是有什么碰上了我头脑中的弦。近来碰上那根弦的东西实在太多——野兽头骨、回形针，不一而足，其中似乎有某种关联，但若问野兽头骨同回形针之间有何关联性，却又浑然不觉。</p>
+    <p>一进房间我就把回形针撒在电视机上的头骨旁边。奇妙的搭配。奇妙得犹如羽绒枕和搅冰勺、墨水瓶和莴苣一类组合。</p>
+    <div class="key"><span class="lbl">✦ 回形针的母题</span><p>回形针反复出现——图书馆桌上、新买的文具里——仿佛某种不可言说的暗号。头骨与回形针的"奇妙搭配"是村上式的超现实日常。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">九十三种对照</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">求知</span><span class="tag gold">流程</span></div>
+    <p>我坐在床沿上，久久地盯视电视机，但什么都无从想起，惟觉时间倏忽逝去。一辆救护车和一辆右翼宣传车从附近驶过。我很想喝威士忌，但还是忍了。眼下必须开动完全清醒的头脑。</p>
+    <p>我泄气地站起身，坐在厨房桌前翻了翻从图书馆借来的书。我决定首先查阅草食性中型哺乳动物的种类，再逐一确认其骨骼。草食性哺乳动物的数量之多远远出乎我的预料，光是鹿就不下几十种。</p>
+    <p>我从电视机上面拿来那块头骨，置于餐桌上，对照书上的每一幅画加以比较。花了一小时二十分钟，对照看了九十三种动物的头盖骨，但没有任何一种同桌上的相吻合。在这方面我也陷入了困境。我合上三本书，叠放在桌面，扬起双臂伸个懒腰。一筹莫展。</p>
+    <div class="key"><span class="lbl">✦ 知识的局限</span><p>九十三种骨架逐一对照，无一匹配——主角作为计算士的理性方法在此失效。头骨的身份成为一个必须用另一种方式破解的谜。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">煤气男子的偷袭</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">冲突</span><span class="tag blue">紧张</span></div>
+    <p>我索性歪倒在床，看约翰·福特导演的录像带《沉默的男子》。正看着，门铃响了。透过门上的猫儿眼一瞧，见外面站着一个身穿东京煤气公司制服的中年男子。我打开门（没解防盗链），问有何事。</p>
+    <p>"煤气定期检查，看有无泄漏。"男子道。</p>
+    <p>"等等。"我应了一声，返回卧室把桌上的小刀揣入裤袋，这才打开门。定期检查煤气的人上个月刚刚来过。此人的神态总有些不大自然。</p>
+    <p>我故意装出无所谓的样子，继续看《沉默的男子》。那男子先用血压计样的仪器测试一下卫生间里的煤气，之后拐进厨房。厨房餐桌上依然摆着那块骨头。我开大电视音量，蹑手蹑脚走到厨房门口一看，不出所料，男子正要把头骨塞进黑塑料包。我亮出刀刃，飞身跃入厨房，绕到男子后面一把掐住其脖子，把刀刃对准其鼻下。</p>
+    <p>"没别的意思。"男子声音颤抖地辩解，"一看就恨不能马上搞到手，所以就装到包里去了。纯属心血来潮。请饶了我吧！"</p>
+    <p>"不饶！"我说。还从没听说过有哪个煤气检测员看见人家厨房餐桌上的动物骨头就心血来潮得想据为己有。</p>
+    <div class="key"><span class="lbl">✦ 符号士的触手</span><p>煤气检测员是符号士派来的——头骨的价值已经被盯上。主角的警觉（小刀揣裤袋）表明他随时处于战斗状态。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">僵持的棋局</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">策略</span></div>
+    <p>"对不起，我老实交代，请高抬贵手。"男子说，"其实是有人告诉我偷来这东西可以得到一大笔钱。当时我正走路，突然贴上来两条汉子，问我想不想打工，随手给了我五万元，又说如果偷成功再给五万。作为我也不想干这勾当，但见其中一个长得牛高马大，若说个'不'字难保不倒大霉，所以才无可奈何地干了。"</p>
+    <p>为慎重起见，我依然把刀刃贴着他的脖颈，从其裤后口袋里掏出钱夹看里面装的什么。现金六万七千元，其中五万元是顶呱呱的新钞。此外有东京煤气公司的职员证和全家彩照。还有巢鸭至信浓町区间的电车月票。由此看来，此人不像为非作歹之徒，我收起刀将他放开。</p>
+    <p>"可以走了。"我把钱夹还给他。</p>
+    <p>"谢谢！"男子说，"可往下怎么办呢？拿了人家钱却空手而归。"</p>
+    <p>我说我也不知怎么办。符号士们——想必对方是符号士——往往随机应变地采取荒唐行动，他们故意如此，以免被人摸出其行动规律。</p>
+    <p>我指点他如何从停车场走往后门。公寓后门连接的是条狭窄的胡同，从外面很难发现。弄得好，有可能瞒过那两人直接回家。</p>
+    <p>眼下，我同他们处于僵持阶段。我拥有头骨却不知其含义，他们知其含义却不拥有头骨。势均力敌，彼此彼此。</p>
+    <div class="key"><span class="lbl">✦ 僵持的平衡</span><p>主角拥有头骨却不知其含义，符号士知其含义却不拥有头骨——这是全书最微妙的角力状态。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">独角兽的角</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">发现</span><span class="tag gold">声音</span></div>
+    <p>最终，我决定不采取任何行动。</p>
+    <p>我拿起不锈钢火筷，再次轻轻叩击头骨的顶部。"咕"，声音一如前次，且透出一丝凄楚意味，宛如一头叫不出名字的动物的悲鸣。何以发出如此奇妙的声响呢？将头骨拿在手上细细观察，并再一次用火筷轻敲，结果还是那声"咕"。</p>
+    <p>一连敲了几次，终于找出其准确位置——那"咕"的一声，原来是从头骨前额那个直径约两厘米的浅坑中传出的。我用指肚往坑内轻轻一摸，觉得多少有点粗糙，不同于普通骨头，好像被人强行拧掉什么之后形成的。什么呢？譬如角……</p>
+    <p>果真是角，那么我手中的便是独角兽的头骨。我重新翻开《图解哺乳类》，试图找出一角仅存的哺乳动物。然而一无所获。惟有犀牛勉强类似，但从大小和形状来看，不可能是犀牛头骨。</p>
+    <p>无奈，我只好从电冰箱里拿出冰块，兑在国产O牌威士忌里喝着。天已暮色沉沉，喝酒似也未尝不可。接着，又吃了盒龙须菜罐头。我最喜欢白色龙须菜，很快一扫而光。又把熏牡蛎夹在面包里吃了。最后喝了第二杯威士忌。</p>
+    <p>我决定姑且把这头骨的昔日持有者视为独角兽。否则事情很难进展。</p>
+    <p>我心里暗暗叫苦。为什么屡屡发生此等莫名其妙的事呢？我难道做了什么坏事不成？自己不过是个极为讲究现实且独善其身的计算士而已。而眼下偏偏同独角兽和声音消除之类不伦不类的东西纠缠不清，这到底是因为什么呢？</p>
+    <div class="key"><span class="lbl">✦ 独角兽的确认</span><p>从浅坑推断出角的存在，继而断定这是独角兽头骨。主角的"独善其身"被独角兽和消音术打破——他渴望的平淡生活正在崩塌。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.33s">
+  <div class="section-header"><div class="section-num">11</div><div class="stitle"><div class="zh">电话求助</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">请求</span></div>
+    <p>喝干第二杯加冰威士忌，我走进卧室翻阅电话号码簿，给图书馆打电话，说要找参考文献室负责借阅的人。十秒钟后，那个长头发女孩出来接起。</p>
+    <p>"《图解哺乳类》。"我说。</p>
+    <p>"谢谢你的冰淇淋。"女孩道。</p>
+    <p>"不用谢。"我说，"对了，现有一事相求，可以么？"</p>
+    <p>"相求？"她反问，"那要看求的是哪一类事。"</p>
+    <p>"求你查阅一下独角兽。"</p>
+    <p>"独角兽？"她重复一遍。</p>
+    <p>"十万火急，事关重大。"</p>
+    <p>"呃——重大到什么地步？"</p>
+    <p>"涉及进化。"我说。</p>
+    <p>"进化？你指的是长达几万年的那种进化吧？我是不大明白，不过那玩意儿果真急得刻不容缓？连一天都等不得的？"</p>
+    <p>"进化既有长达数万年的进化，又有只需三小时的进化，很难在电话中三言两语解释清楚。希望你相信：这的确事关重大，关系到人类新的进化！"</p>
+    <p>经过一番交涉，女孩最终同意帮忙，"好了好了，把去你家的路线告诉我可以吧？"</p>
+    <p>我一阵欣喜，赶紧把路线告诉给她。</p>
+    <div class="key"><span class="lbl">✦ 进化的赌注</span><p>主角以"进化"为由请求帮助——这个宏大词汇与他手头的独角兽头骨联系在一起，暗示头骨背后牵扯的远不止古生物学。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch06.html" class="nav-ch">‹ 第6章</a>
+    <a href="ch08.html" class="nav-ch">第8章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第7章 · 冷酷仙境 · 百科全书式老人与沙丁鱼</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

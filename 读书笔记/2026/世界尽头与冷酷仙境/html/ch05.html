@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第5章 冷酷仙境 · 计算、进化、性欲 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">计算、进化、性欲<small>第5章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>独自计算</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>除音的构想</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>三明治</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>孙女的困境</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>无声世界的预言</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>托付与进化</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>头盖骨的音乐</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>工作完结</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>地下归来</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>对话的边界</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>性欲与告别</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第5章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">计算、进化、性欲</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">独自计算</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">独白</span><span class="tag purple">哲学</span></div>
+    <p>为了使被消除声音的孙女恢复正常，老人返回地面。这时间里，我一边喝着咖啡，一边一个人默默计算。</p>
+    <p>我调好电子表的响铃，使之按一小时——三十分——一小时——三十分的周期反复鸣响，我随之计算、休息、再计算。我熄掉灯，以使自己看不见表盘数字。因为若把时间挂在心头，计算便很难顺利。无论现在是何时刻，都与我的工作毫不相干。我着手计算时便是工作的开始，停止计算时即是工作的结束。</p>
+    <p>老人不在的时间里，自己大概休息了两次或三次。休息时我或者歪在沙发上胡思乱想，或者上厕所或者做屈臂撑体运动。沙发躺上去很舒服，既不太硬又不太软。脑袋下面的软垫也恰到好处。</p>
+    <p>我总是确信——或许出于偏见——在沙发的选择上面往往反映出人的品位。沙发本身便是一个不可侵犯的壁垒森严的世界，这点只有在好沙发上长大的人才体会得到，这同成长当中看好书听好音乐是一回事。一个好沙发生出另一个好沙发，一个坏沙发则生出另一个坏沙发，无一例外。我清楚好几个人虽然坐着高级轿车往来奔波而家里放的却是二三流的沙发，对这样的人我是不大信任的。高级车或许不失其应有的价值，但终归不过是高级车而已，只要花钱谁都能手到擒来。而买好沙发则需要相应的见识、经济和哲学。钱固然要花，但并非只消花钱即可。就沙发而言，头脑中若没有一个完整的形象，是不可能得到好货的。</p>
+    <p>而此时此刻我所躺的沙发的的确确是一级品，由此我得以对老人怀有好感。</p>
+    <div class="key"><span class="lbl">✦ 沙发的哲学</span><p>"一个好沙发生出另一个好沙发，一个坏沙发则生出另一个坏沙发"——村上笔下标志性的物质品位论。从一张好沙发推导出对一个人的信任，看似荒诞但自有其逻辑。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">除音的构想</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">技术</span></div>
+    <p>我倒在沙发上闭目合眼，开始就这位老人那奇妙的说话方式和奇妙的笑法思来想去。当思路又转回除音上面时，我认定老人作为科学家无疑属于最高档次，普通学者根本不可能随心所欲地消除或植入声音，甚至想都不可能想到。另外，此人相当偏执这点也无可否认。科学家为人古怪或遭人讨厌这种情况固然不乏其例，然而总不至于达到为掩人耳目而在地层深处的瀑布里面建造研究室的程度。</p>
+    <p>我想，如果能使除音增音这项技术商品化，笃定可以大发其财。首先，音乐厅中的PA音响装置当可销声匿迹，因为已无需使用庞大的机械设备增加音量。其次，相反却可以将噪音一举根除。若在飞机上安装除音器，机场附近的居民必然欢天喜地。问题是，除音增音这项成果同时势必以各种形式用于军工生产和犯罪活动。显而易见，无声轰炸机、消音枪、以惊人音量破坏人脑的炸弹将接二连三诞生出来，有组织的大屠杀也将以更为巧妙的形式出现。或许老人对此了然于心，所以才不肯把研究成果公之于世而控制在自己手中。于是我愈发对老人产生了好感。</p>
+    <div class="key"><span class="lbl">✦ 技术伦理的自觉</span><p>主角敏锐地意识到除音技术的双重用途——和平用途 VS 军事犯罪用途。老人将技术控制在手中不愿公开，这种自我审查让主角产生了信任。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">三明治</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag red">品位</span></div>
+    <p>当我进入第五回或第六回工作周期的时候，老人回来了，手臂上挎着一个大篮子。</p>
+    <p>"带来了新做的咖啡和三明治。"老人说，"黄瓜、火腿和奶酪，怎么样？"</p>
+    <p>三明治足有普通饭馆和快餐店里的五六盘那么多，我一个人闷头吃掉三分之二。</p>
+    <p>我吃掉三个的时间里，老人只动了一两下。他好像喜欢黄瓜，卷起面包片，在黄瓜片上小心翼翼地撒上适量的盐，喳喳有声地——声音很小——嚼着。吃三明治时的老人，看起来很有点像一只彬彬有礼的蟋蟀。</p>
+    <p>"随便吃好了，能吃多少吃多少！"老人说，"到了我这把年纪，可就越吃越少了，吃一点点，动弹一点点。但年轻人应放开肚皮猛吃，只管猛吃猛胖就是。世上的人都好像讨厌胖，依我看那是因为胖的方式有问题，所以才胖得使人失去健康失去漂亮。但若胖得恰如其分，就绝对不至于那样，反而使得人生充实，性欲旺盛，头脑清晰。我年轻时也相当胖着哩，如今倒是看不出来了。"老人合拢嘴唇，"嗬嗬"笑了几声。</p>
+    <p>味道的确不同凡响。如同我对沙发挑三拣四一样，我对三明治的评价也相当苛刻。可这次的三明治刚好触及我既定的标准线。面包新鲜，富有弹性，用锋利洁净的切刀切得整整齐齐。其实制作好的三明治绝对不可缺少好的切刀，而这一点很容易被忽略。无论材料多么高级多么齐全，若无好的切刀也做不出味道鲜美的三明治。我有很久没吃过如此可口的三明治了。芥末纯正地道，莴苣无可挑剔，蛋黄酱也属手工制作或接近手工制作。</p>
+    <div class="key"><span class="lbl">✦ 好的切刀</span><p>"制作好的三明治绝对不可缺少好的切刀"——村上式的细节哲学再次出现。如同好沙发需要见识和哲学，好三明治需要好切刀。物质世界的秩序反映精神的秩序。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">孙女的困境</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">性</span></div>
+    <p>"是我孙女做的，说是对你的谢意。"老人说，"做三明治是那孩子的拿手好戏。"</p>
+    <p>"她就是不想到外界去。头脑聪明伶俐，身体也极为健康，但横竖不乐意接触外界。年轻时这样是不成的。性欲也必须以合适的形式处理才行。怎样？那孩子具备女性的魅力吧？"</p>
+    <p>"性欲这东西是光明正大的能量，这点无可怀疑。如果将性欲死死禁锢起来不给出路，头脑势必失去冷静，身体势必失去平衡，这方面男女都一样。女的将出现月经失调，而一旦失调，精神就焦躁不安。"</p>
+    <p>"那孩子应当尽快同种类地道的男子交合才是，无论作为监护人还是作为生物学者，我都对此深信不疑。"老人边说边往黄瓜片上撒盐。</p>
+    <p>"那个、声音可顺利地加到她身上去了？"我问。我不大愿意在工作时间里听别人讲什么性欲。</p>
+    <p>"那孩子几乎不同社会发生关系，因此没有什么特别不便之处。但有电话打来就很麻烦。我从这里打过几次，谁都不肯接，弄得我莫名其妙。"</p>
+    <p>"世间有一种叫超级商场的地方，那里不开口也照样可以采购，便利得很。那孩子又最喜欢超级商场，时常在那里买东西，她可以说是在超级商场同事务所之间往来生活。"</p>
+    <div class="key"><span class="lbl">✦ 生物学的视角</span><p>老人以生物学家的冷静谈论孙女的性欲——"光明正大的能量""尽早交合"。主角则尴尬地转移话题。两者的反差呈现了科学与日常之间的鸿沟。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">无声世界的预言</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">预言</span><span class="tag blue">进化</span></div>
+    <p>"好吧，我只告诉给你一个人：将来，世界必定成为无声世界。"</p>
+    <p>"无声世界？"我不由反问。</p>
+    <p>"对，彻底无声。因为，声音对人类进化不仅没有必要，而且有害无益，所以声音迟早都要消亡。"</p>
+    <p>"呃。那么说，鸟的叫声河的流水声和音乐之类，统统都将消失喽？"</p>
+    <p>"当然。"</p>
+    <p>"可那好像挺寂寞的。"</p>
+    <p>"所谓进化就是这么回事。进化总是苦涩而寂寞的，不可能有令人心旷神怡的进化。"说着，老人起身走到桌前，从抽屉里取出一个指甲钳，又折回沙发，从右手的拇指到左手的小指，按部就班地将十个指甲修剪整齐。"眼下正处于研究阶段，详情还无可奉告，大致是这个情况。请不要透露给外界。一旦传到符号士耳朵里，可就要大祸临头。"</p>
+    <div class="key"><span class="lbl">✦ 苦涩的进化</span><p>"进化总是苦涩而寂寞的，不可能有令人心旷神怡的进化"——全书核心命题之一。老人预言声音即将消亡，意味着人类正在失去最本质的交流方式。注意他在宣布重大预言时却镇定地修剪指甲。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">托付与进化</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">存在</span></div>
+    <p>"依我看，你倒像是对那孩子十二分地理解。若是你，我看可以放心大胆地把她托付过去。"</p>
+    <p>"托付给我？"我吃了一惊，"就因为我夸她三明治做得好？"</p>
+    <p>"对三明治你不中意？"</p>
+    <p>"三明治我非常中意。"说罢，我在不影响计算的限度内回想了一番胖女郎，喝了口咖啡。</p>
+    <p>"我感觉，你有什么，或者说缺少什么，总之都一样。"</p>
+    <p>"自己也时常这么想。"我如实相告。</p>
+    <p>"我们科学家将这种状况称为进化过程。总有一天你也会明白：进化是严峻的。你认为进化中最严峻的究竟是什么？"</p>
+    <p>"不明白，请指教。"</p>
+    <p>"就是无法自由选择。任何人都无法选择进化，它属于洪水雪崩地震一类，来临之前你不得而知，一旦临头又无可抗拒。"</p>
+    <p>"这进化莫非还同你说的声音有关？就是说，我将变得不能说话不成？"</p>
+    <p>"准确说来不是这样的。能说话或者不能说话，本质上不是什么大问题，无非一个台阶而已。"</p>
+    <p>"也罢，这话就到此为止吧。"老人说着，又阴阳怪气地笑了起来。</p>
+    <div class="key"><span class="lbl">✦ 进化不可选择</span><p>"任何人都无法选择进化"——进化在这里不再是生物学的乐观叙事，而是如同"洪水雪崩地震"般盲目而暴力的力量。主角身上"缺少什么"的状态被定义为正在进化的标志。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">头盖骨的音乐</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">死亡</span><span class="tag gold">意象</span></div>
+    <p>老人从桌子抽屉里取出一对不锈钢火筷样的东西，用右手拿着在排列头盖骨的架前走来走去，时而用火筷"橐橐"轻敲某块骨头，倾听其声音，俨然小提琴大师在巡视史特拉第瓦里制作的小提琴收藏品，并拿起其中一把品听琴弦的音色。只闻其声都能感受到老人对头盖骨怀有非同寻常的执著之情。我觉得，虽说同是头盖骨，但其音色的确千差万别，有的如叩威士忌酒杯，有的如敲巨型花盆。我一时思绪纷纭：其中每一个都曾有皮有肉，都曾盛满脑浆（尽管重量有别），都曾有食欲和性欲，但终归这些都荡然无存，剩下的惟有各种各样的声响，而声响不过同酒杯同花盆同饭盆同铝管同水壶的动静一般无二。</p>
+    <p>我想象自家头颅被剥去皮肉掏空脑浆后摆在架上承受老人的火筷"橐橐"叩击的情景，心里总有点不是滋味。老人到底将从我的头盖骨声响中读取什么呢？是读取我的记忆，还是读取我记忆以外的东西呢？不管怎样，我都感到惶惶然。</p>
+    <p>死本身并非那么可怕。莎士比亚说过，今年死了明年就不会再死。想来也真是简单之极。但死后被置于架上用火筷敲击则未免令人怏怏不快。一想到死后都要被人敲骨吸髓，心底就涌起一阵悲凉。生存尽管也决非易事，但毕竟可以由我量力自行把握，因此也就罢了。可是死后还是请容许安息为好。古代的埃及国王之所以要深深躲进金字塔中，原因我觉得似乎不难理解。</p>
+    <div class="key"><span class="lbl">✦ 死后的尊严</span><p>"死后还是请容许安息为好"——头盖骨被视为乐器般品鉴，每个骨头发出的声音不同，但最终不过是"酒杯花盆"的动静。主角不怕死亡本身，但恐惧死后被"读取"。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">工作完结</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">流程</span><span class="tag green">规则</span></div>
+    <p>又过了几小时，好歹分类完毕。我说不准用了几个小时，从身体的疲劳判断，大约用了八九个小时。我从沙发站起，伸了个大大的懒腰，按摩一下身体各部位的肌肉。发给计算士的小册子上，用图解形式标出了总共二十六块肌肉的按摩方式。计算完后一定要好好按图操作一番，这样才能消除大脑疲劳。</p>
+    <p>我按摩完肌肉，坐回沙发闭起双眼，把大脑左右两半球缓缓合为一体。至此工作全部告终，操作程序准确无误。</p>
+    <p>"完了？"老人问。</p>
+    <p>"完了。"我说。</p>
+    <p>"今天这就回家睡觉，明后天在家里进行模糊运算，大后天正午保证送来这里，可以吧？"</p>
+    <p>"务必准时，迟过中午可就麻烦了，非同小可。"</p>
+    <p>我从裤子内侧的特殊口袋里掏出用来装重要文件的钱夹样的软金属夹，将数值表放进去锁好。</p>
+    <p>"这锁除我以外没有人能打开。若是别人开锁，里面的文件就会消失。"</p>
+    <p>我把文件夹放回裤子内侧的口袋。由于肚子又饿了，便乖乖把剩下的三明治一扫而光。老人只集中吃一样，因此黄瓜已片甲不留，剩的全是火腿和奶酪。</p>
+    <div class="key"><span class="lbl">✦ 二十六块肌肉</span><p>计算士手册上的肌肉按摩指南——暗示计算这项脑力劳动有明确的物理代价。主角将大脑左右半球"缓缓合为一体"的描述，赋予计算一种近乎冥想或修炼的质感。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">地下归来</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">场景</span><span class="tag blue">空间</span></div>
+    <p>我重新穿好雨衣，戴上风镜，一只手拿着手电筒返回地道。这回老人没有跟来。</p>
+    <p>"夜鬼已被我用声波赶走了，短时间不可能卷土重来，只管放心。"老人说道，"夜鬼其实也不大敢来这里，只是禁不住符号士的花言巧语才偶一为之，一吓就缩了回去。"</p>
+    <p>话是这么说，但在知道夜鬼栖身于这地下的某处之后，一个人摸黑行走毕竟有些不快，更何况我对夜鬼究竟为何物还不了解，其习性形状以及防御措施也一无所知，因而更加深了这种不快。我左手打开手电筒，右手握刀，沿地下河退回原路。</p>
+    <p>由于这个缘故，当我在刚才爬下的长铝梯下面发现身穿粉红色连衣裙的胖女郎身影时，不由得顿生绝处逢生之感。她将手电筒光朝我这边轻轻摇晃。我走到跟前时她好像说了句什么，但一来因为水声太大——河流大概已被解除音量限制——根本无法听清，二来黑漆漆地看不见其口形，所以全然不知所云。</p>
+    <p>不管怎样都要爬梯子，便走到光亮的地方。刚开始爬，女郎便跟了上来。梯子极高，下的时候因一片漆黑什么也没看见而未感到害怕，但现在一格一格向上攀登起来，其高度尽在想象之中，脸上和腋下便不由沁出汗珠。若以楼房作比，足有三四层楼高。加以铝梯沾满潮气，脚下一跐一滑，稍一疏忽，真可能一失足成千古恨。途中我本想休息一下，但想到她尾随上来，只好一鼓作气爬上梯子顶端。考虑到三天后将重蹈故辙去研究室，不由心情黯然。</p>
+    <p>穿过壁橱进入最初来过的房间后，女郎为我摘掉风镜，脱去雨衣。我则脱掉长胶靴，把手电筒放在旁边。</p>
+    <div class="key"><span class="lbl">✦ 夜鬼与梯子</span><p>地下世界的危险以"夜鬼"的形式存在——被符号士操控的未知生物。而返回地面的铝梯足有三四层楼高，充满水汽与滑倒的恐惧。每次下去都要重来，让人"心情黯然"。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">对话的边界</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">规则</span></div>
+    <p>"工作可顺利？"女郎问。声音柔和清脆，我还是第一次听到。</p>
+    <p>"谢谢你把声音消除的事告诉了祖父，实在帮了大忙。已经那样熬了一个星期了。"</p>
+    <p>"为什么不用笔谈告诉我呢？那样岂不早就万事大吉了？何苦吃那个苦头！"</p>
+    <p>女郎并不应声，绕桌子转了一圈，然后摸了摸两边的大耳环。</p>
+    <p>"这是规矩。"她说。</p>
+    <p>"不能笔谈？"</p>
+    <p>"那也是规矩之一。"</p>
+    <p>"禁止一切同退化相关的做法。"</p>
+    <p>"原来如此。"我心悦诚服。果然一丝不苟。</p>
+    <p>"你有多大？"女郎问。</p>
+    <p>"三十五。"我说，"你呢？"</p>
+    <p>"十七。"女郎回答，"我还是头一回见到计算士。当然符号士也没见过。"</p>
+    <p>"真的十七？"我有些愕然。"怎么看都二十朝上。"</p>
+    <p>"我也不情愿被人看成十七。"她说。</p>
+    <p>"计算士过的是怎样一种生活？"</p>
+    <p>"计算士也好，符号士也好，不工作的时候和世人一个样，普普通通，地地道道。"</p>
+    <p>"世人普普通通倒有可能，但并不地地道道。"</p>
+    <p>"如果我提出给我钱我和你睡，你就会睡不成？"</p>
+    <p>"我的原则是：一般不同熟人睡觉。同熟人睡觉往往节外生枝。此外也不同工作有联系的人睡觉。我从事的毕竟是替人保密的职业，需要在这方面划条界线。"</p>
+    <p>"不是因为我又胖又丑？"</p>
+    <p>"你并不那么胖，而且丝毫不丑。"</p>
+    <div class="key"><span class="lbl">✦ 退化的禁令</span><p>"禁止一切同退化相关的做法"——笔谈被认为是"退化"而遭禁止。老人一家奉行严格的进化伦理：有声音时不用口说话就是退化。用声音沟通成为进化的标志。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.33s">
+  <div class="section-header"><div class="section-num">11</div><div class="stitle"><div class="zh">性欲与告别</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">性</span></div>
+    <p>"祖父说，第一个睡觉的对象最好是三十五岁以上的男人。说是性欲积攒到一定程度后会损害头脑的清晰度。"</p>
+    <p>"这话从你祖父口里听说了。"</p>
+    <p>"果真如此？"</p>
+    <p>"我不是生物学家，不大清楚。"我说，"况且性欲强弱因人而异，其间差别很大。很难一概而论。"</p>
+    <p>"你属于强的？"</p>
+    <p>"怕是一般吧。"我沉吟一下回答。</p>
+    <p>"我还不大了解自己的性欲。"胖女郎说，"所以很想寻根问底。"</p>
+    <p>我一时不知如何回答。不一会来到电梯跟前，电梯如训练有素的犬，正开门以待。</p>
+    <p>"下次见。"女郎说。</p>
+    <p>我刚一踏入，电梯门便悄然合上，我靠在不锈钢壁上，叹息一声。</p>
+    <div class="key"><span class="lbl">✦ 叹息</span><p>这一章以主角靠在电梯壁上的一声叹息结束。全章的性欲讨论、孙女的直白、老人的托付，都化作这无声的叹息。村上把性欲作为一个生物学话题来讨论：冷静、直接、不带情色。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch04.html" class="nav-ch">‹ 第4章</a>
+    <a href="ch06.html" class="nav-ch">第6章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第5章 · 冷酷仙境 · 计算、进化、性欲</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

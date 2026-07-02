@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>序 — 纳瓦尔宝典</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  background: #f5f0ea;
+  color: #2c2416;
+  padding: 30px 20px;
+}
+.container { max-width: 880px; margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: 60px 30px 44px;
+  background: linear-gradient(160deg, #3d2b1f, #1f140e);
+  color: #eadbc5;
+  border-radius: 16px 16px 0 0;
+}
+.hero .ch { font-size: 12px; letter-spacing: 6px; opacity: .45; margin-bottom: 8px; }
+.hero h1 { font-size: 28px; letter-spacing: 12px; line-height: 1.4; }
+.hero .byline { font-size: 15px; opacity: .6; margin-top: 10px; letter-spacing: 2px; }
+.hero .sub { font-size: 13px; opacity: .4; margin-top: 4px; letter-spacing: 1px; }
+
+.body {
+  background: #fffcf7;
+  padding: 36px 40px 20px;
+  border-left: 1px solid #e6dccf;
+  border-right: 1px solid #e6dccf;
+}
+
+.highlight {
+  background: #f8f2ea;
+  border-left: 4px solid #b8864e;
+  padding: 20px 24px;
+  margin: 0 0 24px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #3d2b1f;
+  border-radius: 0 8px 8px 0;
+}
+
+.sec-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #6b4a2a;
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e6dccf;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.profile .avatar {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, #b8864e, #8b6f50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.profile .info h3 { font-size: 16px; color: #2c2416; }
+.profile .info .title { font-size: 13px; color: #8b7a65; margin-top: 2px; }
+
+/* reasons */
+.reason-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0 18px;
+}
+.reason-card {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  padding: 20px 18px;
+  text-align: center;
+}
+.reason-card .num {
+  width: 28px; height: 28px;
+  background: #b8864e;
+  color: #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.reason-card p { font-size: 13px; line-height: 1.6; color: #4a3a2a; }
+
+naval-box {
+  display: block;
+  background: #f0e8dc;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin: 10px 0 18px;
+}
+naval-box .label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8b7a65;
+  margin-bottom: 8px;
+}
+
+/* trait grid */
+.trait-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0 18px;
+}
+.trait {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #3d3224;
+  line-height: 1.5;
+}
+
+/* cred grid */
+.cred-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0 18px;
+}
+.cred-card {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.cred-card .icon { font-size: 20px; margin-bottom: 4px; }
+.cred-card h3 { font-size: 14px; color: #6b4a2a; margin-bottom: 4px; }
+.cred-card p { font-size: 13px; line-height: 1.6; color: #4a3a2a; }
+
+.footer {
+  background: #fffcf7;
+  padding: 18px 40px;
+  border: 1px solid #e6dccf;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #a69580;
+}
+
+@media (max-width: 640px) {
+  .reason-grid, .trait-grid { grid-template-columns: 1fr; }
+  .cred-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 22px; letter-spacing: 8px; }
+  .body { padding: 24px 18px; }
+  .profile { flex-direction: column; text-align: center; }
+}
+@media print {
+  body { background: #fff; }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="ch">PROLOGUE</div>
+  <h1>序</h1>
+  <div class="byline">蒂姆·费里斯 作</div>
+  <div class="sub">纳瓦尔宝典 · The Almanack of Naval Ravikant</div>
+</div>
+
+<div class="body">
+
+  <!-- 作者 -->
+  <div class="profile">
+    <div class="avatar">✍️</div>
+    <div class="info">
+      <h3>蒂姆·费里斯</h3>
+      <div class="title">Tim Ferriss · 畅销书《每周工作4小时》《巨人的工具》作者</div>
+    </div>
+  </div>
+
+  <!-- 金句 -->
+  <div class="highlight">
+    纳瓦尔说话做事不绕弯子……他的想法永远不用别人去猜。<br>
+    在当今这个很多人口是心非的世界里，纳瓦尔直来直去的风格让人感受到一种巨大的解脱。
+  </div>
+
+  <!-- 破例作序的三个原因 -->
+  <div class="sec-title">❓ 为何破例作序</div>
+  <div class="reason-grid">
+    <div class="reason-card">
+      <div class="num">1</div>
+      <p>电子版将<strong>免费</strong>提供给全球读者，没有任何附加条件</p>
+    </div>
+    <div class="reason-card">
+      <div class="num">2</div>
+      <p>与纳瓦尔相识<strong>十几年</strong>，早就希望有人编写这样一本书</p>
+    </div>
+    <div class="reason-card">
+      <div class="num">3</div>
+      <p>作序可增加纳瓦尔给下一个孩子取名为"<strong>蒂姆</strong>"的可能性</p>
+    </div>
+  </div>
+
+  <!-- 纳瓦尔其人 -->
+  <div class="sec-title">👤 蒂姆眼中的纳瓦尔</div>
+
+  <div class="cred-grid">
+    <div class="cred-card">
+      <div class="icon">🏢</div>
+      <h3>AngelList</h3>
+      <p>CEO 兼联合创始人</p>
+    </div>
+    <div class="cred-card">
+      <div class="icon">📱</div>
+      <h3>天使投资</h3>
+      <p>推特、优步、Yammer、OpenDNS 等</p>
+    </div>
+    <div class="cred-card">
+      <div class="icon">🛒</div>
+      <h3>Epinions</h3>
+      <p>联合创立，后被 Shopping.com 收购上市</p>
+    </div>
+    <div class="cred-card">
+      <div class="icon">📰</div>
+      <h3>Vast.com</h3>
+      <p>联合创立分类广告平台</p>
+    </div>
+  </div>
+
+  <!-- 9个特质 -->
+  <div class="sec-title">⭐ 为什么看重纳瓦尔</div>
+  <div style="background:#f8f2ea;border-radius:10px;padding:20px 22px;margin:10px 0 6px;">
+    <p style="font-size:14px;color:#6b4a2a;margin-bottom:10px;font-weight:700;">"我看重纳瓦尔，是因为他："</p>
+  </div>
+  <div class="trait-grid">
+    <div class="trait">对近乎一切都持<strong>怀疑态度</strong></div>
+    <div class="trait">从<strong>第一性原理</strong>出发思考</div>
+    <div class="trait">可以对人对事进行<strong>有效测试</strong></div>
+    <div class="trait"><strong>从不自我欺骗</strong></div>
+    <div class="trait">不时调整自己的<strong>观点和看法</strong></div>
+    <div class="trait">经常<strong>开怀大笑</strong></div>
+    <div class="trait">有<strong>大局观</strong></div>
+    <div class="trait"><strong>眼光长远</strong></div>
+    <div class="trait"><strong>不把自己太当回事</strong></div>
+  </div>
+  <div style="text-align:right;font-size:13px;color:#8b7a65;margin-bottom:18px;">—— 最后一点非常重要</div>
+
+  <!-- 阅读建议 -->
+  <div class="sec-title">📖 阅读建议</div>
+
+  <div style="background:#3d2b1f;color:#eadbc5;border-radius:10px;padding:22px 26px;margin:10px 0 20px;">
+    <p style="font-size:14px;line-height:2;">
+      认真阅读体味，但<strong style="color:#d4b68a;">不要机械模仿、简单照搬</strong>。<br>
+      可以遵循他的建议，但在自己的生活中<strong style="color:#d4b68a;">亲身体验</strong>，进行<strong style="color:#d4b68a;">压力测试</strong>。<br>
+      可以深入思考他的观点，但<strong style="color:#d4b68a;">不要将其视为真理</strong>。<br>
+      纳瓦尔希望别人<strong style="color:#d4b68a;">挑战他的观点</strong>，只要挑战者有理有据。
+    </p>
+  </div>
+
+  <div style="text-align:center;font-size:15px;line-height:1.8;color:#4a3a2a;margin-bottom:10px;">
+    以开放的心态拥抱纳瓦尔的智慧吧。<br>
+    <span style="font-size:13px;color:#8b7a65;">—— 蒂姆·费里斯</span>
+  </div>
+
+</div>
+
+<div class="footer">— 纳瓦尔宝典 · 第 8 章 —</div>
+
+</div>
+</body>
+</html>

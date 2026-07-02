@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第19章 冷酷仙境 · 虚无 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">虚无<small>第19章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>准备出发</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>废墟中的告别</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>深夜驱车</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>汉堡包与紧张</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>特殊建筑物</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>电梯中的对话</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>感情外壳的真相</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>唯一的幸存者</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>被破坏的事务所</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>手枪与手册</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>最后的期限</a>
+    <a class="nav-item" data-section="s12"><span class="num">12</span>下地道</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第19章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">虚无</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">准备出发</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">行动</span><span class="tag gold">准备</span></div>
+    <p>我们做出的第一个决定是找地方填肚子。我虽然没有食欲，但由于往下不知何时能吃上饭，所以似乎还是吃点什么为妙。啤酒和汉堡包之类或许能勉强送入胃去。女郎说她中午只吃了一块巧克力，实在饥肠辘辘。</p>
+    <p>为了不刺激伤口，我小心翼翼地把两腿插进牛仔裤，在T恤外面套上运动衫，并加了一件薄毛衣。出于慎重，我又打开衣箱，拿出登山用尼龙防寒衣。女郎那套粉红色西装裙看上去无论如何都不适于地下探险，好在我以前穿过的一件美军处理的厚作战夹克还算符合她的尺寸，便递给了她。</p>
+    <p>我打开壁橱，掏出背包，判认未被割裂之后，塞进两人用的外衣、手电筒、指南针、手套、毛巾、大号小刀、打火机、绳索和固体燃料。接着走进厨房，从一片狼藉的食品中拣出两个面包、咸味牛肉罐头、香肠、桃和葡萄柚罐头，装进背包。</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">废墟中的告别</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">虚无</span><span class="tag gold">氛围</span></div>
+    <p>出发前，我再度巡视一周我这浑如大块垃圾堆放场的房间。维持生存的活动莫不如此：构筑起来劳心费时，而毁坏则在顷刻之间。三个小房间之中，曾有过尽管不无疲惫却又自满自足的生活，然而这一切已在喝光两罐啤酒的时间里如晨雾般了无踪影。我的职业我的威士忌我的平稳我的孤独我的毛姆和约翰·福特影片集，统统化为毫无意义的废品。</p>
+    <p>草原的金辉，鲜花的荣光——我不出声地念念有词，随后伸出手，拉掉门口的电闸，切断家中所有的电源。</p>
+    <div class="key"><span class="lbl">✦ 构筑与毁坏</span><p>"构筑起来劳心费时，而毁坏则在顷刻之间"——这不仅是物理空间的写照，也是主角整个人生的隐喻。三个房间中那"自满自足的生活"，其实一直建立在脆弱的平衡之上。"草原的金辉，鲜花的荣光"引自华兹华斯的诗歌，暗示失去的不仅是物质，更是灵魂的光泽。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">深夜驱车</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">城市</span></div>
+    <p>由于肚皮伤口痛得过分加之累得过分，我无法深入思考问题，于是决定什么也不去想。与其半途而废，莫如一开始就不思不想。我大模大样地乘上电梯，下到地下停车场，打开车门把东西放进后座。有人监视就监视好了，想盯梢也悉听尊便，对于我怎么都无所谓了。</p>
+    <p>可能的话，车也不想驾驶。我问女郎能否开车，她说不能。"请原谅。马倒是能骑。"</p>
+    <p>我确认燃料显示计的指针贴近F，将车开出。虽是夜半，车辆仍铺天盖地，大约一半是出租车，其余是卡车和客车。我实在想不明白这芸芸众生何以偏要在深更半夜乘车满街乱闯。他们为什么就不能六点下班回家十点前钻进被窝关灯睡觉？</p>
+    <p>但归根结蒂，这是别人的问题。无论我怎样左思右想，世界都将按其自身规律扩大下去。</p>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">汉堡包与紧张</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">日常</span></div>
+    <p>我把车停在第一个扑入眼帘的路边汉堡包店前。身穿红色短连衣裙的女侍走来，把托盘贴在两旁车窗上问吃什么。</p>
+    <p>"两个奶酪饼一份炸薯条外加热巧克力。"胖女郎说。</p>
+    <p>"普通汉堡包和啤酒。"我说。</p>
+    <p>"对不起，不备啤酒。"女侍道。</p>
+    <p>等食物的时间里，我注意着后面有无来车。女郎将盘中物一扫而光，喝掉最后一口热巧克力，又舔净手指上沾的番茄酱和芥末，用纸巾擦了擦指头和嘴巴。从旁看来都觉得她吃得十分香甜。</p>
+    <p>"关于你祖父的事，"我说，"首先该去地下实验室看看吧？"</p>
+    <p>"恐怕是的。那里说不定能找到什么线索，我也可以帮忙。"</p>
+    <p>便携式干扰器只能连续使用三十分钟，充电要十五分钟。我没了情绪，不再言语。我驱车驶出停车场，中途找见一家深夜营业的自选商场，买了两罐啤酒和一小瓶威士忌。这么着，心情总算略有好转。</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">特殊建筑物</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">空间</span><span class="tag green">设定</span></div>
+    <p>我把车开进女郎祖父事务所所在大厦的停车场，下车背起背包。</p>
+    <p>大厦入口有个大个头年轻门卫，要求女郎出示本楼居住证，女郎从衣袋掏出塑料卡，递给门卫。门卫把卡塞进桌上电脑的吞吐孔，确认荧屏上出现的姓名和房间号之后，按动开关打开大门。</p>
+    <p>"这是座非常特殊的建筑物。"女郎穿过宽敞的大厅时对我解释道，"进入这里的人都有某种秘密，为保守秘密而建立了特殊的警卫体制。"</p>
+    <p>"那么，你祖父在这楼下挖地洞的事他们也知道？"</p>
+    <p>"呢——怎么样呢？我想未必知道。这座楼施工时祖父叫人搞了个特别设计，以便从房间直接进入地下。知道此事的仅限于极少几个人。"</p>
+    <p>女郎从衣袋里掏出钥匙，打开电梯，两人跨进上次那个空荡荡的奇妙电梯。</p>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">电梯中的对话</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">人生</span></div>
+    <p>"祖父说学校教育效率太差，培养不出一流人才。你怎么看？"</p>
+    <p>"是吧，大概是的。"我说，"十六年前我也上学来着，是觉得没起太大作用，弄得我不会说外语，不会玩乐器，不晓得股票，不能够骑马。"</p>
+    <p>"那为什么不退学？要退不是随时可以退的吗？"</p>
+    <p>"噢，那倒是。"我思忖了一会。不错，想退学什么时候都能一退了之。"可我当时没想到这点。我家同你那里不同，是平平常常的普通家庭，从来就没想过什么自己会成为某一方面的一流角色。"</p>
+    <p>"不对，"女郎说，"任何人都具有某种成为一流的素质，问题只在于能不能把它充分发掘出来。很多人之所以成不了一流，是因为一些不懂发掘方法的人一齐上前把它扼杀掉磨损掉了。"</p>
+    <p>"好比我。"</p>
+    <div class="key"><span class="lbl">✦ 一流的可能性</span><p>"任何人都具有某种成为一流的素质"——胖女郎的这句话，与主角的自我认知形成了鲜明的对照。他对自己的定位是"小喽啰"，而她看他是一块未经打磨的宝石。教育究竟是发掘还是扼杀？这是一个没有答案的问题。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">感情外壳的真相</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">信息</span><span class="tag blue">设定</span></div>
+    <p>正如此呆呆思考之间，电梯门开了。她放慢脚步，同我并肩而行。</p>
+    <p>"不过，就算真的那样，"我对着她的背部说，"也只是你这个那个地给予我，我却什么也给不了你。我觉得这非常不公平也不自然。"</p>
+    <p>"我想你肯定有东西给我。"</p>
+    <p>"举例说？"</p>
+    <p>"例如你的感情外壳。我实在想了解这一点：它是如何形成的？具有怎样的功能？等等。这以前我还几乎没有接触过这样的外壳，兴趣实在大得很。"</p>
+    <p>"你这人真的一无所知，"胖女郎说，"你不是具有模糊运算的能力么，是吧？"</p>
+    <p>她告诉我一个惊人的事实：掌握模糊能力的二十六人中，竟有二十五人在训练结束后一年到一年半时间里死了，惟独主角一个人活过三年，并且安然无恙地进行模糊作业。</p>
+    <div class="key"><span class="lbl">✦ 二十六分之一</span><p>二十六人受训，二十五人死亡——模糊运算的能力伴随着致命的代价。主角能活下来不是因为技术比别人强，而是因为体内有一种"自然抗体"，一种"感情外壳"。在别人死去的地方，他活了下来。博士的研究目标，正是这层外壳。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">唯一的幸存者</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">信息</span><span class="tag red">对话</span></div>
+    <p>"为什么都死了？"我问女郎。</p>
+    <p>"不知道。死因不清楚。死于脑功能障碍倒是知道，但何以如此则弄不明白。"</p>
+    <p>"祖父说，普通人大概承受不住意识核的照射，因而脑细胞试图制造与之作战的某种抗体，但反应过于剧烈，结果置人于死地。"</p>
+    <p>"那么，我又是因为什么活下来的呢？"</p>
+    <p>"你恐怕具备自然抗体，就是我说的感情外壳。由于某种缘故，那东西早已存在于你的脑中，使得你能够存活。祖父打算人为地制作那种外壳以保护大脑，但终究好像过于薄弱。"</p>
+    <p>"那么，"我说，"抗体也罢保护层也罢外壳也罢瓜皮也罢，是我身上与生俱来的，还是后天的？"</p>
+    <p>"大概一部分是先天的，一部分是后天的吧？像你这样具备自然抗体的人，大约每一百万至一百五十万人中才有一个。"</p>
+    <div class="key"><span class="lbl">✦ 百万分之一</span><p>"每一百万至一百五十万人中才有一个"——主角的生存是一场概率的奇迹。感情外壳保护了他，也隔绝了他。他是"被选择的"，但选择他的是某种盲目的生物学运气，不是命运。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">被破坏的事务所</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">场景</span><span class="tag blue">调查</span></div>
+    <p>尽管不像我的房间那样严重，但事务所里也被糟蹋得相当狼狈。各种文件扔得满地都是，桌子掀得四脚朝天，保险柜撬得大敞四开，壁橱抽屉纷纷落马，被割得七零八落的沙发床上散乱着博士和女郎原本装在柜里的备用西服。她的西服的确一律粉红色：从深的粉红到浅的粉红，大凡粉红无所不有。</p>
+    <p>"不像话！"她摇头道，"估计是从地下冒出来的。"</p>
+    <p>"夜鬼干的？"</p>
+    <p>"不，不是，夜鬼一般上不到地面，即使上来也有气味留下。估计和搞乱你房间的是同一伙人，手法也相似。"</p>
+    <p>"有可能。"说着，我再次环视房间：被掀翻的桌前，一盒回形针四溅开来，在荧光灯下闪闪生辉。</p>
+    <p>夜鬼干扰器还完好，女郎从柜前散乱堆放的零碎物品中挑出那件小仪器，反复按了几下开关。"完全能用。他们肯定以为是什么闲杂东西。"</p>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">手枪与手册</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag green">准备</span></div>
+    <p>胖女郎走去墙角，蹲在地上打开插座盖，按下里边的小电钮，起身用手心悄然推了一下墙壁，墙壁随之敞开电话号码簿大小的空间，闪出状似保险柜的东西。里面有一个褐色信封（父亲的欧米茄手表和母亲的戒指）、一捆钞票，还有一把自动手枪。</p>
+    <p>"枪打得可好？"</p>
+    <p>"何至于，"我吃了一惊，"摸都没摸过。"</p>
+    <p>"我可有两手哩！练了好几年。去北海道别墅时一个人在山里射击。十米左右的距离，明信片大小的目标保准穿透。"</p>
+    <p>接着，女郎翻开黑皮手册，在电灯下神情肃然地盯视多时。"这是祖父的手册，上面的暗号只有我和祖父才看得明白。"</p>
+    <p>她解读出三个阶段的标记：①九月二十九号分类运算完毕；②十月一号模糊运算结束；③十月二号正午"程序解除"。</p>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.33s">
+  <div class="section-header"><div class="section-num">11</div><div class="stitle"><div class="zh">最后的期限</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">危机</span><span class="tag blue">时间</span></div>
+    <p>"往下是专业性相当强的计算，什么电气量、溶解速度、抵抗值、误差之类，我看不懂。"女郎说。她指着手册上一个大大的X和日期时刻。较之周围几乎要用放大镜才看得清的密密麻麻的小字，这个X实在大得出格。</p>
+    <p>"这大概指的就是最后期限吧？"她说。</p>
+    <p>"想必。恐怕也就是。假如③解除程序，那么不至于出现这个X。问题是程序因某种原因未能解除，反而迅猛发展，终于导致X印的出现，我想。"</p>
+    <p>"那么就是说我们无论如何得赶在二号正午之前面见祖父喽？"</p>
+    <p>"如果我的推测正确的话。"</p>
+    <p>"到世界完蛋或宇宙爆炸之时？"</p>
+    <p>"三十六个小时。"我说。无需看表。不过是地球自转一周半的时间。这时间里，可接到两次晨报和一次晚报，闹钟可响两回，男人们可刮两遍胡须，运气好的人可性交两场至三场。而这三十六个小时过后，某种状况——大概是世界尽头——就要到来。</p>
+    <div class="key"><span class="lbl">✦ 三十六个小时</span><p>"不过是地球自转一周半的时间"——主角用极其日常的尺度丈量末日的长度：两次晨报、两遍胡须、两场性交。最后的期限是二号正午，如果程序无法解除，X就会降临。虚无正在逼近。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s12" style="animation-delay:0.36s">
+  <div class="section-header"><div class="section-num">12</div><div class="stitle"><div class="zh">下地道</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">行动</span><span class="tag blue">空间</span></div>
+    <p>我从躺在立柜前的急救箱里找出止痛药，连同水筒里的水一起吞下，背起背包。</p>
+    <p>"往下如何行动？"女郎问。</p>
+    <p>"下地道，别无选择。"我说。</p>
+    <div class="key"><span class="lbl">✦ 别无选择</span><p>全章以"下地道"结束。止痛药、背包、水筒，物资已备齐。不论前方是夜鬼还是虚无，唯一的路径就是向下。这是冷酷仙境线进入终局的信号。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch18.html" class="nav-ch">‹ 第18章</a>
+    <a href="ch20.html" class="nav-ch">第20章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第19章 · 冷酷仙境 · 虚无</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

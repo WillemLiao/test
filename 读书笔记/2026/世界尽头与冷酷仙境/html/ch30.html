@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第30章 世界尽头 · 门与钥匙 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">门与钥匙<small>第30章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>非现实的声音</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>窗外的坑</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>老人增至六人</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>手风琴的弹奏</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>挖坑的意义</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>纯粹的坑</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>心的失去与安详</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>影子的消息</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第30章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">门与钥匙</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">非现实的声音</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">氛围</span></div>
+    <p>早晨醒来，觉得森林中发生的一切都恍若梦境。但又不可能是梦，那部古旧的手风琴宛如一头衰弱的小动物一般楚楚可怜地蜷缩在桌上。一切都实有其事：利用地底吹来的风旋转的扇片也罢，满脸不幸神情的年轻管理员也罢，五花八门的乐器藏品也罢。</p>
+    <p>然而我的头脑里一直鸣响着另一种非现实的声音，是一种似乎一个劲儿把某种东西刺入我的脑袋的声音。声音无休无止地把一种扁平之物刺进头内。头并不痛。头极其正常。只是非现实而已。</p>
+    <p>我在床上环视房间，没有发现有什么特别之处。天花板、方壁、略微变形的地板、窗帘，全都一如昨日。有桌子，桌上有手风琴。墙上挂有大衣和围巾，手套从大衣袋里探出。</p>
+    <p>接着，我小心翼翼地试着动了动自己的身体，所有部位都活动自如，眼睛也不痛。无任何可疑之处。</p>
+    <p>尽管如此，那扁平的声音依然在脑袋里响个不停。声音很不规则，是混合的，几种同质声响交织在一起。我力图弄清这声音来自何处，但无论怎样侧耳谛听都辨不出方向。声音仿佛发自自己的脑袋。</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">窗外的坑</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">场景</span><span class="tag blue">神秘</span></div>
+    <p>为慎重起见，我下床往外观望。这时我才明白声音的起因：窗口下面的空地上，三位老人正在用锹挖一个很大的坑，声音即是锹尖啃咬冰冻的地面时发出来的。由于空气紧绷绷的，声音奇异地颤抖着，以致弄得我莫名其妙。各种各样的怪事接踵而来，神经多少有些亢奋，而这也可能是其原因之一。</p>
+    <p>时针已指向近十点。这种时候睡觉还是第一次。大校为什么没叫醒我呢？除我发烧之时，他一天不少地九点钟将我叫醒，把装有两人分量早餐的托盘端进房间。</p>
+    <p>直到十点半，大校仍未出现。无奈，我自己去下边厨房领了面包饮料，拿回房间独自吃了，也许因为长时间都是两人共进早餐，自己吃起来总觉得索然无味。我只吃了一半面包，其余留给独角兽，然后围着大衣坐在床上，等待炉火烘暖房间。</p>
+    <p>果不其然，昨天神话般的温煦一夜之间便尽皆逝去，房间里一如往日地充满着滞重阴冷的空气。周围景致已彻底恢复了冬日本来的面目，挟雪的阴云铺天盖地地低垂在北大山和南面荒野之间。</p>
+    <p>窗前空地上，四位老人仍在挖坑不止。</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">老人增至六人</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag green">仪式</span></div>
+    <p>四人？刚才看时好像仅有三人，是三位老人在挥锹挖坑，而现在成了四人，想必中途加进了一人。这也不足为奇，官舍里老人多得数不胜数。四位老人分别在四个位置不声不响地挖着脚下的坑。时而掠过的冷风猛然掀起老人们薄薄的外衣底襟，但老人们看上去全然不以为意，双颊红红的一下接一下用锹触着地面。甚至有人出汗脱去了外衣，外衣浑如秋蝉的空壳挂在树枝上随风摇摆。</p>
+    <p>老人已增至六位，后加进的两人使用的是丁字镐和手推车。拿丁字镐的老人跳入坑内刨开硬邦邦的地面，推手推车的老人用锹把掘出坑外的土铲进车内，推往斜坡卸下。坑已挖到齐腰深。风声再大也已无法消除他的挥锹抡镐的声响。</p>
+    <p>我打消回忆歌曲的念头，将手风琴放在桌上，去窗边观看了一会老人们的作业。作业现场似乎没有指挥模样的角色，大家平等地劳作，没有人指手画脚发号施令。</p>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">手风琴的弹奏</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">物品</span><span class="tag purple">记忆</span></div>
+    <p>房间烘暖后，我坐在椅子上拿起桌上的手风琴，试着慢慢伸缩蛇腹管。带回自己房间一看，发现比在森林里看时的印象要精致得多。琴键和蛇腹管尽管已完全变旧褪色，但木琴盘的涂漆一处也未剥落，周边细腻的云卷式花纹也完好无损，与其说是乐器，莫如说更像一件美术工艺品。蛇腹管的伸缩固然有些僵硬，但还不至于影响使用，想必是经年累月放在那里无人触动的缘故。至于它以前曾被何人弹奏过，经过怎样的途径到达那里，我无法得知，一切都是谜团。</p>
+    <p>我伸缩了好几次。熟悉蛇腹管的伸缩状况后，依序按了按右边的琴钮，同时按了一遍左右的和音钮。等其全部发出音来，我停下手来倾听周围动静。</p>
+    <p>老人们挖坑之声仍在响个不停。四把锹尖啃咬冻土的声响汇成杂乱无章的韵律，异常真切地涌入房间。风时而吹响窗扇，窗外残雪点点的斜坡触目可见。我不知道手风琴声是否传至老人们的耳畔，大概不至于，一来声小，二来逆风。</p>
+    <p>拉手风琴已是很久以前的事了，而且是新键盘式的，因此好半天才得以熟悉这老式结构和按钮的序列。由于小巧玲珑，按钮也小，且间距极近，妇女或小孩倒也罢了，而男人的大手要弹奏自如远非易事，更何况还要一边注意旋律一边有效地控制好蛇腹管。</p>
+    <p>尽管如此，一两个小时过后，我终于能够随机应变地准确弹奏出几个简单的和音了。不过，旋律却横竖浮现不出。我翻来覆去按动琴钮，力图回想起类似旋律的声音，结果想起的仍然只是毫无意义的音阶的罗列，无法把我带入音乐境界。</p>
+    <div class="key"><span class="lbl">✦ 消失的旋律</span><p>"旋律却横竖浮现不出"——手风琴能发声，但主角记不起任何歌曲。正如他拥有记忆的容器，却丢失了记忆的内容。旋律的消失意味着情感记忆的丧失，这是心正在失去的标志。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">挖坑的意义</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">规则</span></div>
+    <p>中午，老人们终于停止作业返回了官舍，地面剩下的只有随手扔开的锹和丁字镐。</p>
+    <p>我在窗前椅子上坐下，望着空无人影的坑。望着望着，隔壁大校来敲我房间的门。他依旧身穿那件厚大衣，带檐的工作帽拉得很低，大衣和帽子都厚厚落了一层白色雪粒。</p>
+    <p>“看样于今晚会有相当厚的积雪。”他说，“午饭拿过来？”</p>
+    <p>“那当然好。”我说。</p>
+    <p>十分钟后，他双手端锅返回，放在炉子上，然后像甲壳动物随着季节更迭而脱壳那样慎之又慎地逐一脱去帽子、大衣和手套，最后用手指捋着纵横交错的白发，坐在椅子上叹了口气。</p>
+    <p>“对不起，没能来吃早饭。”老人道，“一大早就有事非做不可，没工夫吃饭。”</p>
+    <p>“该不会是挖坑吧？”</p>
+    <p>“挖坑？啊，你指的是那个坑吧。那不是我的工作，尽管我不讨厌挖坑。”说着，大校"哧哧"笑了起来，“在镇里做事来着。”</p>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">纯粹的坑</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">哲学</span><span class="tag red">对话</span></div>
+    <p>“那坑到底干什么用的？”我问大校。</p>
+    <p>“不干什么用。”老人把汤送进嘴里，“他们是为挖坑而挖坑。在这个意义上，可谓极其纯粹的坑。”</p>
+    <p>“费解啊。”</p>
+    <p>“十分简单，他们是想挖坑才挖的，此外谈不上任何目的。”</p>
+    <p>我嚼着面包，思索这所谓纯粹的坑。</p>
+    <p>“他们经常挖坑，”老人说，“大概和我迷上国际象棋是同一道理吧。既无意义，又无归宿。但无所谓，因为谁也不需要什么意义，更不想找什么归宿。其实我们每一个人都在这里分别挖着纯粹的坑。没有目的的行为，没有进步的努力，没有方向的行走——你不认为这样很好？谁也不伤害谁，谁也不受谁伤害；谁也不追赶谁，谁也不被谁追赶。没有胜利，没有失败。”</p>
+    <p>“你说的我好像可以理解。”</p>
+    <p>老人点了几下头，把盘里最后一口面条倒进嘴里。</p>
+    <div class="key"><span class="lbl">✦ 纯粹的坑</span><p>"他们是为挖坑而挖坑"——世界尽头生活的本质：没有目的的行为，没有进步的努力，没有方向的行走。不存在竞争，不存在伤害。但代价是——也没有快乐和幸福。这是全书对"完美世界"最深的质疑。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">心的失去与安详</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">哲学</span><span class="tag red">对话</span></div>
+    <p>“在你眼睛里，或许这镇子的几种情况有欠自然，但对我们来说则是自然的。自然、纯粹、安详。我想总有一天你也会恍然大悟，也希望你大悟。我曾作为军人送走了漫长的岁月，这也罢了，并不后悔，毕竟自得其乐。现在还有时想起那硝烟那血腥那刀光剑影那冲锋号声，然而是什么东西驱使我们驰骋沙场却无从记起，包括什么名誉呀爱国精神呀斗志呀仇恨呀等等。可能眼下你在为心的失去而惶惶不可终日，我也惶恐不安。这没有什么不好意思的。”说到这里，大校略略顿了顿，寻觅词句似的注视着室内，“但一旦丢掉心，安详即刻来临。那是一种你从来不曾体味过的深切的安详感——这点你可不要忘记。”</p>
+    <p>我默默点头。</p>
+    <div class="key"><span class="lbl">✦ 丢掉心的安详</span><p>"一旦丢掉心，安详即刻来临"——大校曾是军人，经历过硝烟和死亡，如今却连"是什么驱使自己驰骋沙场"都已忘记。丢失心带来了深切的安详，但这是真正的救赎还是彻底的虚无？</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">影子的消息</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">规则</span></div>
+    <p>“对了，在镇里听到了你影子的消息。”老人用面包蘸起面条汤说道，“听说你影子相当无精打采，吃进去的几乎呕吐一空，好像已经整整卧床三天，或许将不久人世。你要是不嫌弃，就去见他一次好么？对方估计也很想见你。”</p>
+    <p>“是啊，”我装出不无迷惘的样子，“我倒无所谓，可看门人能允许见吗？”</p>
+    <p>“当然允许，影子快不行了嘛。本人有见影子的权利，这是规定得清清楚楚的。对于镇子，影子之死是一种庄严肃穆的仪式，看门人再厉害也不得阻拦，也没有阻拦的理由。”</p>
+    <p>“那么，我这就去见见。”过了一会，我说道。</p>
+    <p>“是啊，这就对了。”说着，老人凑到身旁拍了下我的肩膀，“趁还没有天黑积雪时去。不管怎么说，影子对人是再亲近不过的，要好好体谅他的心情，以免留下遗憾，让他死得舒畅些。或许你会难过，但终究是为你本身。”</p>
+    <p>“完全明白了。”说罢，我穿好大衣，缠上了围巾。</p>
+    <div class="key"><span class="lbl">✦ 影子之死是仪式</span><p>"影子之死是一种庄严肃穆的仪式"——影子死去意味着人正式成为镇子的一部分。大校劝主角去见影子最后一面，不是为了救影子，而是为了"不留下遗憾"。这是全书世界尽头线最重要的情节转折点。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch29.html" class="nav-ch">‹ 第29章</a>
+    <a href="ch31.html" class="nav-ch">第31章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第30章 · 世界尽头 · 门与钥匙</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

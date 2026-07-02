@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第18章 世界尽头 · 河滨 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">河滨<small>第18章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>重新读梦</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>无法理解的古梦</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>敞开心扉</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>读梦的仪式</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>古梦的碎片</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>疲惫与沉默</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>河边的月光</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>心的轨迹</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第18章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">河滨</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">重新读梦</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag green">仪式</span></div>
+    <p>我无法明确认识自己的心，而就这样重新开始了读梦。寒冷一天胜似一天，工作不能永远拖延下去。至少，在集中精力读梦的时间里，我可以暂且忘记心中的失落感。</p>
+    <p>然而另一方面，越是读梦，一种形式不同的虚脱感越是在体内膨胀。究其原因，在于我不能理解古梦所倾诉的形象性语言，无论我读得如何专心。我可以读它，却不能理解其含义，如同日复一日地阅读不知所云的文章，又如每天观看流逝的河水。哪里也没有我的归宿。读梦技术固然有所提高，但不能给我以慰藉。技术的提高仅仅使得我可以卓有成效地提高读梦的数量，而继续这种作业所带来的空虚却一发不可遏止。为了进步，人可以继续付出相应的努力，问题是无处可供我进步。</p>
+    <div class="key"><span class="lbl">✦ 无处可供进步</span><p>"无处可供我进步"——这是世界尽头最深的困境：不是能力不足，而是能力越强越空虚。技术提高了，意义却消失了。如同现代人的技术性失业：我们越来越擅长做某件事，却不知道为什么做。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">无法理解的古梦</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">独白</span></div>
+    <p>"我不明白古梦到底意味什么。"我对女孩说，"以前你说过我的工作就是从头骨中解读古梦，是吧？但那仅仅是从我体内通过而已，其实根本无从理解，越读越觉得自己本身受到了严重磨损。"</p>
+    <p>"话虽这么说，可你读起来简直就像走火入魔似的，什么缘故呢？"</p>
+    <p>"不知道。"我摇了摇头。有时是为了排遣失落感而忘我工作，但连我自己都觉得原因并不单单是这个。如她所言，我读起梦来的确像走火入魔一般。</p>
+    <p>"恐怕也是因为你本身的问题，我想。"女孩道。</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">敞开心扉</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">心</span></div>
+    <p>"我想你应该进一步敞开心扉。关于心我倒不大明白，不过我觉得它好像处于严密封闭的状态。正如古梦希求你解读一样，你本身大概也在希求古梦。"</p>
+    <p>"何以见得？"</p>
+    <p>"因为读梦就是这么回事。就像鸟随着季节南来北往，读梦人也在不断地追求读梦。"</p>
+    <p>随后，她伸出手，隔桌放在我手上，莞尔一笑，笑得如云间泻下的一缕柔和的春光。</p>
+    <p>"敞开心扉！你不是犯人，你是空中逐梦飞翔的鸟！"</p>
+    <div class="key"><span class="lbl">✦ 空中逐梦飞翔的鸟</span><p>"你不是犯人，你是空中逐梦飞翔的鸟"——全章最温暖的句子。她看不见自己的心，却看穿了他的封闭。这个"莞尔一笑"是世界尽头罕有的明亮瞬间。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">读梦的仪式</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">仪式</span><span class="tag gold">描写</span></div>
+    <p>结果，我只能把古梦一个个拿在手里潜心阅读。我从书架上触目皆是的古梦中拿起一个，轻轻抱在怀里运往桌面。女孩帮着用微湿的抹布擦去灰尘，再用干布富有节奏地慢慢擦。细细磨罢，古梦便如积雪一般通体莹白。正面两个黑洞洞的眼窝，看上去犹如一对不知深有几许的幽幽古井。</p>
+    <p>我用双手轻轻掩住头骨上端，等待头骨在我体温的作用下开始微微发热。及至达到一定温度——如冬日里的阳光，并不很热——被磨得雪白的头骨便开始叙述其上面镌刻的古梦。我则闭目合眼，深深吸气，开启心扉，用指尖摸索头骨叙述的故事。</p>
+    <div class="key"><span class="lbl">✦ 如积雪般莹白</span><p>读梦的仪式本身有一种惊人的美感：用湿布和干布擦拭头骨，直至"如积雪一般通体莹白"。眼窝如古井。村上把一场考古阅读写成了一种近乎宗教的仪式。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">古梦的碎片</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag blue">神秘</span></div>
+    <p>这里绵亘着看不见的风景，流淌着听不见的音乐，低吟着理解不了的话语。它时而突然跃上顶峰，时而急剧沉入黑谷。一个断片同另一断片之间不存在任何共通之处，恰如快速转动收音机的调频钮，从一个台调往另一个台。我试图用各种方法尽量将精神集中于指尖，结果纯属徒劳。我觉察得出古梦是想向我倾吐什么，而我却无法将其作为故事解读出来。</p>
+    <p>或许我的解读方式有某种缺陷，也可能由于他们的语言在漫长的岁月中已彻底磨损和风化，抑或他们构思的故事同我所构思的之间在时间性和背景方面存在着根本性差异。</p>
+    <p>不管怎样，我只能眼睁睁地默默看着这些异质片断忽而浮现忽而消失。其中也有几幅我已司空见惯的极其平常的景致：白云在空中飘移，阳光在河面跳跃。毫无特色可言。然而这些平庸无奇的景致却使我心里充满无可名状不可思议的悲哀。</p>
+    <div class="key"><span class="lbl">✦ 平庸的悲哀</span><p>"白云在空中飘移，阳光在河面跳跃"——最平凡的景致带来最深的悲哀。因为世界尽头的一切都太完美太安详，而这种安详正是心的死亡。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">疲惫与沉默</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag red">人物</span></div>
+    <p>大约持续十分钟后，古梦开始像退潮一样渐渐失去体温，不一会变回原来冷冰冰的纯粹的白骨。古梦于是再度长眠。所有的水滴都从我两手的指间滴落到地上。我这读梦作业永远周而复始。</p>
+    <p>等古梦彻底凉透，我便递给女孩，由她摆在柜台上。这时间里我双手拄着桌面，休息一下身体，放松一会神经。我一天所能解读的古梦顶多也就是五六个。房间里的挂钟指向十一点时，我已心力交瘁，好半天都不能从椅子上直起身来。</p>
+    <p>此时她总是端来最后一杯热咖啡，也有时从家里带来白天烤的曲奇饼、面包和水果等作为夜宵。一般我们都几乎不再开口，面对面地喝咖啡，吃饼或啃面包。我累得好久说不出像样的句子，她也清楚这点，和我同样沉默不语。</p>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">河边的月光</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">氛围</span></div>
+    <p>"你打不开心扉是因为我的关系？"女孩问道，"我无法回应你的心，所以你的心才闭得紧紧的？"</p>
+    <p>我们一如往常地坐在旧桥正中通往沙洲的石阶上眼望河水。一弯凄冷清白的小小的月在河面瑟瑟发抖。由于并肩坐在狭窄的石阶上，我的肩一直感觉着她的体温。人们往往把心比做体温，然而心与体温之间却毫不相干，不可思议！</p>
+    <p>"不是那样的，"我说，"我的心不能充分打开估计是我本身的问题，怪不得你。我不能清楚认识自己的心，所以才惶惑不安。"</p>
+    <p>"心这东西你也捉摸不透？"</p>
+    <p>"有的时候。有的东西不过很久是不可能理解的，有的东西等到理解了又为时已晚。大多时候，我们不得不在尚未清楚认识自己的心的情况下选择行动，因而感到迷惘和困惑。"</p>
+    <p>"我觉得心这东西似乎是非常不健全的。"女孩微笑着说。</p>
+    <div class="key"><span class="lbl">✦ 不健全的心</span><p>"心这东西似乎是非常不健全的"——一个没有心的人说"心不健全"，这是全书中最反讽也最温柔的判断。她羡慕心的丰富，也看到心的脆弱。河面瑟瑟发抖的月亮，正是他们之间无法弥合的隔阂的写照。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">心的轨迹</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">结局</span></div>
+    <p>我从衣袋里掏出双手，在月光下注视着。被月光染白的手看上去宛如一对雕像，一对完美地自成一统而又失去归宿的雕像。</p>
+    <p>"我也同样，也觉得它是非常不健全的。"我说，"不过会留下痕迹，我们可以顺着痕迹一路返回，就像顺着雪地上的脚印行走。"</p>
+    <p>"走去哪里？"</p>
+    <p>"我自身。"我答道，"所谓心便是这样的东西。没有心哪里也走不到。"</p>
+    <p>我抬头看月。冬月不自量力地散发出鲜亮亮的光，悬挂在高墙包围下的镇子的上空。</p>
+    <p>"没有一样可以怪你。"我说。</p>
+    <div class="key"><span class="lbl">✦ 心的痕迹</span><p>"不过会留下痕迹，我们可以顺着痕迹一路返回"——这是全书关于心最核心的比喻。心不是可见的实体，而是"痕迹"——如同雪地上的脚印。你无法看见脚印本身，但你可以顺着它走回自身。"没有心哪里也走不到"——心既是目的，也是路径。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch17.html" class="nav-ch">‹ 第17章</a>
+    <a href="ch19.html" class="nav-ch">第19章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第18章 · 世界尽头 · 河滨</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

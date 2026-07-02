@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>埃里克的笔记 — 纳瓦尔宝典</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  background: #f5f0ea;
+  color: #2c2416;
+  padding: 30px 20px;
+}
+.container { max-width: 880px; margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: 60px 30px 44px;
+  background: linear-gradient(160deg, #3d2b1f, #1f140e);
+  color: #eadbc5;
+  border-radius: 16px 16px 0 0;
+}
+.hero .ch { font-size: 12px; letter-spacing: 6px; opacity: .45; margin-bottom: 8px; }
+.hero h1 { font-size: 28px; letter-spacing: 6px; line-height: 1.4; }
+.hero .byline { font-size: 15px; opacity: .6; margin-top: 10px; letter-spacing: 2px; }
+.hero .sub { font-size: 13px; opacity: .4; margin-top: 4px; letter-spacing: 1px; }
+
+.body {
+  background: #fffcf7;
+  padding: 36px 40px 20px;
+  border-left: 1px solid #e6dccf;
+  border-right: 1px solid #e6dccf;
+}
+
+.highlight {
+  background: #f8f2ea;
+  border-left: 4px solid #b8864e;
+  padding: 20px 24px;
+  margin: 0 0 24px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #3d2b1f;
+  border-radius: 0 8px 8px 0;
+}
+
+.sec-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #6b4a2a;
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e6dccf;
+}
+
+/* info boxes */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 10px 0 18px;
+}
+.info-card {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.info-card .icon { font-size: 22px; margin-bottom: 4px; }
+.info-card h3 { font-size: 14px; color: #6b4a2a; margin-bottom: 4px; }
+.info-card p { font-size: 13px; line-height: 1.6; color: #4a3a2a; }
+
+/* mission box */
+.mission-box {
+  background: #3d2b1f;
+  color: #eadbc5;
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin: 16px 0 20px;
+  text-align: center;
+}
+.mission-box .label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  opacity: .5;
+  margin-bottom: 8px;
+}
+.mission-box .text {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* card */
+.card {
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  margin: 10px 0 18px;
+  overflow: hidden;
+}
+.card-head {
+  background: #f0e8dc;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4a3a2a;
+  letter-spacing: 2px;
+}
+.card-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #3d3224;
+}
+.card-body p { margin-bottom: 6px; }
+.card-body p:last-child { margin-bottom: 0; }
+
+.footer {
+  background: #fffcf7;
+  padding: 18px 40px;
+  border: 1px solid #e6dccf;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #a69580;
+}
+
+@media (max-width: 640px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 22px; }
+  .body { padding: 24px 18px; }
+}
+@media print {
+  body { background: #fff; }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mission-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="ch">EDITOR'S NOTE</div>
+  <h1>埃里克的笔记</h1>
+  <div class="byline">—— 关于这本书</div>
+  <div class="sub">纳瓦尔宝典 · The Almanack of Naval Ravikant</div>
+</div>
+
+<div class="body">
+
+  <!-- 编者 -->
+  <div class="highlight">
+    纳瓦尔思考问题总是从第一性原理出发，不惮说出自己的真实想法。<br>
+    他的思想往往新颖独到、发人深省。他能透过生活的表象看到本质。
+  </div>
+
+  <!-- 纳瓦尔速写 -->
+  <div class="sec-title">👤 纳瓦尔速写</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="icon">🏗️</div>
+      <h3>连续创业者</h3>
+      <p>2000年互联网泡沫期间创立 Epinions，2010年创立 AngelList</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">💎</div>
+      <h3>天使投资人</h3>
+      <p>优步、推特、Postmates 等数百家公司早期投资人</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🧘</div>
+      <h3>生活哲学家</h3>
+      <p>事业成功 + 生活幸福，极为罕见的组合</p>
+    </div>
+    <div class="info-card">
+      <div class="icon">🔍</div>
+      <h3>第一性原理者</h3>
+      <p>从根本出发思考，不惮说出真实想法，透过表象看本质</p>
+    </div>
+  </div>
+
+  <!-- 书的使命 -->
+  <div class="sec-title">🎯 这本书的使命</div>
+
+  <div class="mission-box">
+    <div class="label">MISSION</div>
+    <div class="text">
+      纳瓦尔有价值的思想值得用<strong style="color:#d4b68a;">更持久、更易于获取的形式</strong>留存下来。<br>
+      收集他过去 10 年通过<strong>推特、博客和播客</strong>分享的智慧，<br>
+      让你在几个小时内学到受益终身的思想。
+    </div>
+  </div>
+
+  <!-- 书的构成 -->
+  <div class="sec-title">📖 如何使用这本书</div>
+
+  <div class="card">
+    <div class="card-head">两大主题</div>
+    <div class="card-body">
+      <p>本书聚焦纳瓦尔探索最深入的两个主题：<strong>财富</strong> 和 <strong>幸福</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">按需阅读</div>
+    <div class="card-body">
+      <p>提供特定主题的阅读和查询指南，读者可自行选择主题阅读相关篇章。</p>
+      <p style="margin-top:8px;color:#8b7a65;">"做投资之前，我总会回顾这本书里关于投资的内容；<br>每当心情低落时，我就会阅读关于幸福的章节。"</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">保留原话</div>
+    <div class="card-body">
+      <p>保留纳瓦尔原话，按逻辑顺序串联成章节，以便读者参阅。</p>
+    </div>
+  </div>
+
+  <!-- 编者的感悟 -->
+  <div class="sec-title">💡 编者的收获</div>
+
+  <div style="background:#f8f2ea; border-radius:10px; padding:18px 22px; margin:10px 0 18px;">
+    <p style="font-size:14px; line-height:1.8; color:#3d3224;">
+      "在生活的各个方面，我都感到<strong>更清醒、更自信、更平和</strong>了。<br>
+      我希望这本书也能给你带来同样的启迪和效果。"
+    </p>
+    <p style="text-align:right;font-size:13px;color:#8b7a65;margin-top:8px;">—— 埃里克</p>
+  </div>
+
+</div>
+
+<div class="footer">— 纳瓦尔宝典 · 第 9 章 —</div>
+
+</div>
+</body>
+</html>

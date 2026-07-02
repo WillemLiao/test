@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第13章 冷酷仙境 · 炸肉饼与鲸鱼须 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">炸肉饼与鲸鱼须<small>第13章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>婚礼闹钟</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>模糊运算完成</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>未来的构想</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>凌晨电话</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>胖女郎的求助</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>驱车赴约</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>法兰克福广告</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>独自返回</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>破门而入</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>夜鬼与组织</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>彻底的破坏</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第13章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">炸肉饼与鲸鱼须</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">婚礼闹钟</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag purple">独白</span></div>
+    <p>像往常那样，我的意识从视野的角落依序回归。首先捕捉我的意识的是视野右端的卫生间门扇和左端的台灯，一会儿，它们渐次转往内侧，如湖面结冰时一样在正中汇合。视野的正中间是闹钟，钟针指在十一时二十六分。这闹钟是在一个人的婚礼上得到的。要止住钟的闹声，必须同时按下其右侧的红钮和左侧的黑钮，否则便会闹个不停。这一设计很独特，目的在于防止尚未彻底醒来便条件反射地按钮止住闹声而旋即昏睡过去这种世间习惯性动作。的确，每次铃响，我都不得不好好地从床上坐起，把闹钟放在膝部，这样才能同时按下左右两个钮。这样一来，我的意识也就被迫一步步踏入觉醒的世界。</p>
+    <p>当我的视野同放闹钟的地方相结合的时候，我反射性地拿起闹钟放在膝头，双手按下红黑两钮。随即我发现闹钟根本没响，我刚才并非睡觉，自然没有调钟，不过偶然把闹钟置于餐桌而已。我是在进行模糊运算来着，无需中止钟的闹声。</p>
+    <div class="key"><span class="lbl">✦ 意识的回归</span><p>"如湖面结冰时一样在正中汇合"——村上式的意识描写。那个必须同时按两个钮才能止住的闹钟，是贯穿本章的隐喻：世界正在要求他同时按下不可能的按键。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">模糊运算完成</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag green">规则</span></div>
+    <p>接下去，我仔细看了眼前的手册和铅笔。原本削得细细尖尖的五支F铅笔，两支断了，两支贴根写秃了，惟有一支原封未动。右手中指还残留着长时间写东西造成的轻度麻痹感。模糊运算已经完成。手册上密密麻麻写满了十六页蝇头数值。</p>
+    <p>我按手册上的要求，将分类转换数值和模糊运算后的数值逐项合算，然后将最初用的一览表拿去水槽烧掉，把手册装进安全盒，连同录音机一起放入保险柜。最后，坐在沙发上吁了口气。任务已完成一半。至少下一天可以好好休养生息。</p>
+    <p>我往杯里倒了大约二指高的威士忌，闭目分两口饮下。温吞吞的酒精通过喉头，经肠道进入胃中。俄尔，温吞感沿血管扩散到身体各个部位，首先胸口和脸颊变暖，继之双手变暖，最后脚也暖和起来。</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">未来的构想</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">独白</span></div>
+    <p>我开始考虑辞去计算士工作以后的生活。我要存一大笔钱，加上退休金，从从容容地打发时光，学习希腊语和大提琴。把琴盒放在小汽车后座，开上山去一个人尽情尽兴地练琴。</p>
+    <p>如果顺利，说不定能在山上买一幢别墅——一座带有像样厨房的整洁漂亮的小房，在那里读书，听音乐，看旧电影录像，烧菜做饭。提起饭菜，不由想起图书馆负责参考文献的长头发女孩，觉得和她一起在那里——那座小房——倒也不坏。我做，她吃。</p>
+    <p>如此思考饭菜的时间里，我坠入了梦乡。睡意如同天空塌落一般突然降临我的头顶。大提琴也好小房也好饭菜也好，统统烟消云散，了无踪影，惟独我存留下来，如金枪鱼一样沉沉睡去。</p>
+    <div class="key"><span class="lbl">✦ 沉入睡眠</span><p>"睡意如同天空塌落一般突然降临"——村上最擅长的入睡描写。主角在幻想希腊语和大提琴的祥和世界中遁入梦境，但等待他的是即将崩坏的现实。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">凌晨电话</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">神秘</span><span class="tag red">对话</span></div>
+    <p>有人用钻头在我头上打洞，塞进一条硬纸绳般的东西。绳似乎很长，源源不断地塞入头中。我挥手想把绳拨开，但怎么拨都无济于事，绳依然连连进入头内。</p>
+    <p>我翻身坐起，用手心摸了摸脑袋两侧，并无绳，也无洞。有铃在响，持续地响。我抓起闹钟放在膝头，双手按下红钮黑钮，然而铃还是响个不停。是电话铃！时针指在四点十八分。外面尚黑——凌晨四点十八分。</p>
+    <p>我下床走去厨房，拿起话筒。每次半夜电话铃响，我都下定决心，睡前一定把电话移回卧室，但事后总是忘得一干二净。因此小腿肯定又要撞上桌腿或煤气取暖炉之类。</p>
+    <p>"喂喂。"</p>
+    <p>电话另一端无声无息，犹如电话机整个埋进了沙地。</p>
+    <p>"喂喂！"我大声吼叫。</p>
+    <p>但话筒仍寂无声息，既不闻喘息，又听不见"咯噔"声，静得险些使我也顺着电话线陷入沉默之中。我气呼呼地放下话筒，从电冰箱里拿出牛奶咕嘟嘟喝了，重新上床躺下。</p>
+    <p>电话铃再度响起是四点四十六分。</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">胖女郎的求助</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">危机</span></div>
+    <p>"喂喂。"我开口道。</p>
+    <p>"喂喂，"一个女子的声音。听不出是谁。"刚才真对不起，音场乱套了，声音不时被整个消除。"</p>
+    <p>原来是送给我独角兽头骨的那位奇特老人的孙女，那个身穿粉红色西服裙的胖女郎。</p>
+    <p>"祖父一直未归，音场又一下子乱成一团，情况肯定不妙。往实验室打电话也没人接……一定是夜鬼对祖父下了毒手。"</p>
+    <p>"因为都在盯着祖父的研究，夜鬼啦符号士啦等等。这伙家伙一心把祖父的研究成果据为己有，他们向祖父提出过做交易的事，祖父一口拒绝，因此怀恨在心。求求你，请你马上过来，肯定事情不妙，帮我一把，求你了！"</p>
+    <p>我脑海中推出夜鬼在地道中得意徘徊的情景。想到现在要钻到那种地方，我立时毛骨悚然。</p>
+    <p>"你是钥匙，缺你打不开门。"</p>
+    <p>"罢了罢了，"我看看表，"不管怎样，你也最好离开那里。如果你的预感不错，那里就太危险了。"</p>
+    <p>我把青山一家昼夜营业的超级商场位置告诉她。"在里面一间咖啡屋等我，我五点半前赶到。"</p>
+    <div class="key"><span class="lbl">✦ 你是钥匙</span><p>"你是钥匙，缺你打不开门"——胖女郎的这句话将主角推入风暴中心。他对博士的研究一无所知，却被锁定为不可替代的"钥匙"。音场的混乱暗示着博士设置的防御系统已被攻破。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">驱车赴约</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">行动</span></div>
+    <p>声音再次消失。我朝话筒吼了几次，都无反应。沉默如同枪口冒出的烟一般从话筒口袅袅升起。音场混乱。我放回话筒，脱去睡袍，换上运动衫和棉布裤。而后去卫生间用电动刮须刀三下五除二刮了胡须，洗了把脸，对镜梳理头发。由于睡眠不足，脸肿得活脱脱成了廉价奶酪饼。</p>
+    <p>我在运动衫外面套上尼龙风衣，把钱夹、零币和小刀装入衣袋。略一迟疑，又把独角兽头骨用两条毛巾团团包起，连同火筷一起塞入旅行包，再把已装进安全盒的模糊运算完毕的手册贴在其旁边投入包中。</p>
+    <p>我穿上那双只刷洗了一只的网球鞋，夹起旅行包走出房间。走廊里不见人影。我避开电梯，沿楼梯下楼。天色尚未破晓，公寓里一片寂然，地下停车场也空无人影。</p>
+    <p>我拉开车门，旅行包放在助手席，打开引擎。五点眼看就到。我一面巡视左右，一面驱车驶出停车场往青山赶去。路面空空荡荡，除了匆匆返回的出租车和夜行卡车，几乎不见车影。我不时瞄一眼后视镜，未发现有车跟踪。</p>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">法兰克福广告</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag purple">观察</span></div>
+    <p>五点二十八分时我把汽车开进超级商场的停车场。我夹着旅行包走入商场，空旷的商场内人影寥寥。我拐过摆满酒类的货架，走到咖啡屋。</p>
+    <p>柜台前排列的大约一打小圆凳上都没有她的身影。我在最靠边的凳子坐下，要来冷牛奶和三明治。为了消磨时间，我看了好一会墙上贴的法兰克福观光广告画：季节为秋天，河边树木红叶纷披，河面天鹅戏水，身穿黑外套头戴鸭舌帽的老人在给天鹅喂食……再看香烟广告，一个脸色光鲜的年轻男子指间夹着点燃的过滤嘴香烟，以茫然的眼神斜望前方。</p>
+    <p>看罢十五张酒广告，我发觉所有酒中惟独加冰威士忌在视觉上最富有诗情画意。另一个发现，就是没有一张广告出现下酒菜。广告中喝酒之人，谁都不吃下酒菜，一律干喝。</p>
+    <p>我庆幸自己是在超级商场里等她。若是别的场所，不可能如此轻松地消磨时间。我最喜欢超级商场这块天地。</p>
+    <div class="key"><span class="lbl">✦ 广告的哲学</span><p>主角对法兰克福广告和酒广告的冗长观察，是村上标志性的"等待叙事"——在危机逼近的间隙，用对外部细节的极度专注来稀释内心的焦躁。加冰威士忌的视觉诗意、没有下酒菜的纯粹性，都是他特有的物质美学。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">独自返回</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">行动</span><span class="tag green">策略</span></div>
+    <p>等到六点半，我到底失去了耐性，驾车来到新宿站，开进停车场，夹起旅行包走到短时行李寄存处前，求其代为保管。我说里面装的是易碎物品，请多加小心。值班男子于是把写有"小心易碎"字样并带有鸡尾酒杯图案的红色卡片别在提手处。我看着他把耐克牌蓝色旅行包认真地放在架上的合适位置以后，接过了提货证。接着，去报摊买了二百六十日元的信封和邮票，把提货证放入信封粘好，贴上邮票，写上以子虚乌有的公司名义设置的秘密私人信箱名称，用快信寄了出去。这样，除非有相当特殊的情况，否则不可能暴露实物。</p>
+    <p>把信投进邮筒之后，我开车离开停车场，返回住处。想到这回已无东西担心被盗，心情豁然开朗。我把车停进车场，上楼回到房间，冲罢淋浴上床，一身轻松地酣然入睡。</p>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">破门而入</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">场景</span></div>
+    <p>十一点有人进来。来人没按门铃，竟直接体撞门扇，像用拆毁楼房的铁锤一般劈头盖脑地往门上猛砸，弄得地板上下颤抖。我穿上长裤，把运动衫从脑袋套下，刀藏在腰带后面，去卫生间小便。为防万一，我打开保险柜按动录音机上的非常键，消去里边磁带的声音，随后从冰箱里拿出罐装啤酒和土豆色拉，当午餐吃了。</p>
+    <p>只听铁门发出一声爆炸般的巨响，陡然朝里打开，一个见所未见的大块头汉子闯进屋来。和尚头，蒜头鼻，脖子粗如常人的腰，身高恐怕足有一米九五。大块头用打量我拔掉的葡萄酒瓶塞那样的眼神扫了一眼他自行破坏的门扇，然后把目光转向我。</p>
+    <p>大块头把身体靠到我身旁，后面又闪出一个小个子男人。小个子身高不足一米五十，单薄瘦削，五官倒还端正。他身穿浅蓝色鳄鱼牌开领半袖衫和驼色粗布裤，脚上浅褐色皮鞋，年纪大约在三十往后四十往前。小个子看也没正眼看我一眼，更谈不上打招呼。他从衣袋里掏出香烟盒和打火机，摆在桌上。烟是本森＆黑吉斯牌，打火机是金色的"杜蓬"。</p>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">夜鬼与组织</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">信息</span><span class="tag blue">世界设定</span></div>
+    <p>"我们是来帮助你的。"小个子说。他详细解释了当前的格局：博士曾是计算士组织的研究所所长，开发了模糊系统后退出，同时成为计算士和符号士两方的敌人。他在夜鬼巢穴旁建造实验室，用特殊声波防御。</p>
+    <p>"夜鬼是在地下生活的。住在地铁、下水道那样的地方，靠吃城里的残羹剩饭和喝污水度日，几乎不同人发生关系。政府当然知道，但如让国民知道，势必引起一场大混乱。它们在皇宫下面筑有极大的巢穴，一旦事情不妙，就会捅开地面爬出。"</p>
+    <p>小个子说博士退出了组织，符号士组织马上前来拉拢，但博士拒绝了。这样一来，博士就成了计算士和符号士共同的敌手。"你是第一个得以进入实验室的人。这就是说，你这一存在已重要到了如此地步。"</p>
+    <p>"我们现在有个计划，我们掌握的情报要比符号士的详细，已经抢先一步。拿你做诱饵好了。"</p>
+    <div class="key"><span class="lbl">✦ 地下世界的秩序</span><p>小个子对夜鬼的解说揭开了"冷酷仙境"地下世界的神秘面纱：夜鬼在皇宫下筑巢，政府知情却无力铲除，只能共存。博士选择在夜鬼巢穴旁建实验室，是利用了敌人对敌人的恐惧。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.33s">
+  <div class="section-header"><div class="section-num">11</div><div class="stitle"><div class="zh">彻底的破坏</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">暴力</span><span class="tag purple">虚无</span></div>
+    <p>大块头首先逐个打开壁柜和抽屉，从抽屉中拉出锻炼肌肉的对拉弹簧链，绕到背后，贴着脊背拉直。他像拿棒球棍一样双手握着对拉弹簧链，到卧室去了。随着显像管粉身碎骨之声，三个月前新买的二十七英寸电视机便如西瓜一般被砸得一塌糊涂。录像机也被举起摔打不止。大块头从衣袋中抽出一把刀，将两套加起来差不多价值二十万元的服装利利索索地划裂开来。</p>
+    <p>"怎么好这样胡来，"我对小个子吼道，"不是说不破坏贵重物吗？"</p>
+    <p>"我可没那么说，"小个子泰然自若地回答，"只是问你最珍惜什么，没有说不破坏。破坏就是要从珍贵的开始，岂非明摆着的事！"</p>
+    <p>"得得。"说着，我从冰箱里拿出一罐啤酒，边喝边和小个子一起观看大块头破坏我这两室一厅的小而富有格调的住房。</p>
+    <div class="key"><span class="lbl">✦ 破坏的理性</span><p>"破坏就是要从珍贵的开始"——小个子这句话冷酷而富有逻辑。主角最终选择"边喝啤酒边观看"，这种对暴力的消极接受是他性格中最典型的特征：在无可挽回的损失面前，保持一种近乎虚无的冷静。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch12.html" class="nav-ch">‹ 第12章</a>
+    <a href="ch14.html" class="nav-ch">第14章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第13章 · 冷酷仙境 · 炸肉饼与鲸鱼须</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

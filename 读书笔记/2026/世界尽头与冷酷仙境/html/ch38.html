@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第38章 世界尽头 · 水潭 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">水潭<small>第38章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>光之温煦</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>心的感觉</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>最后的睡眠</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>风雪间歇</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>看门人的小屋</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>影子广场的钥匙</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>影子的衰弱</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>背上的影子</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>独角兽的目光</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>逃往南水潭</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第38章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">水潭</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">光之温煦</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">神秘</span></div>
+    <p>随着晨光的熹微，头骨之光渐渐朦胧暗淡下去。及至开在书库天花板边缘的采光小窗射进一缕灰濛濛的晨光，模模糊糊地照出周围墙壁之时，头骨便一点点失去光亮，连同漆黑的记忆一个接一个遁往别处。</p>
+    <p>等到最后的光亮消失之后，我在头骨上移动手指，将其温煦深深渗入体内。我不知夜间读出的光属于全体中的哪一个。要读的头骨数量实在太多，而给我的时间又极其有限。我尽可能不把时间挂在心上，耐心而仔细地逐一用手指摸索下去。每一瞬间我都可以在指尖真切地感觉出她心的存在。仅此足矣，我觉得。数、量和比例等都不是问题。无论怎样努力，无一遗漏地读出每一个人的心都是不可能的。那里确实有她的心，我可以感觉出来。此外还能求什么呢？</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">心的感觉</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">内省</span><span class="tag gold">独白</span></div>
+    <p>我将最后一个头骨放回架子，靠墙坐在地板上。采光窗位于头顶很高的地方，无法窥测外面的天气，仅能根据光线知道四下阴晦重重。淡淡的暗影如绵软的液体在书库里静静游移，头骨们沉入重新降临的睡眠。我也闭起双眼，在清晨的冷气中休息头脑。一摸脸颊，得知手指依然存留着光的温煦。</p>
+    <p>我凝然不动地坐在书库一角，静等着沉默和冷气使我亢奋的心平静下来。我能感觉到的时间是不均一而且杂乱无章的。窗口射进的微光好久都静止不变，影子亦停在同一位置。我觉得，女孩那渗入我体内的心正在上下巡行不止，同有关我自身的各种事项交融互汇，沁入我身体的每一部位。想必要花很长时间才能使她的心具有明确的形式，而传达给她使之进入她的身体恐怕又要花更长的时间。但无论花多长时间我也要把心赋予她，哪怕形式并不完整。我相信：她肯定能通过自己的努力使心具有更完美的形式。</p>
+    <div class="key"><span class="lbl">✦ 赋予她心</span><p>"无论花多长时间我也要把心赋予她"——在世界尽头这个失去心的地方，叙述者的使命恰恰是要为他人创造心。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">最后的睡眠</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">温暖</span></div>
+    <p>我从地板上站起，走出书库。女孩孤零零地坐在阅览室桌旁，等待着我。由于晨光迷濛，其身体的轮廓看上去似比平时略微淡薄了些。无论对我还是对她，这都是个漫长的夜晚。见到我，她一声不响地离开桌旁，把咖啡壶放在火炉上。我趁着热咖啡的时间去里面水槽洗了手，拿毛巾擦干，折回坐在炉前暖和身子。</p>
+    <p>"怎样，累了吧？"她问。</p>
+    <p>我点下头。身体重得像一摊泥，连举手都十分困难。我连续不停地读了十二小时古梦。但疲劳并未渗入我的心。如女孩在我最初读梦时所说，无论身体多么疲劳，也不能把心牵连进去。</p>
+    <p>"回家休息多好，"我说，"你本来没必要守在这里的。"</p>
+    <p>她往杯里倒入咖啡，递到我手上。</p>
+    <p>"只要你在这里，我就守着不动。"</p>
+    <p>"有这条规定？"</p>
+    <p>"我定的。"她微微笑道，"再说你读的又是我的心。我不能把自己的心丢开不管，对吧？"</p>
+    <p>我点点头，啜了口咖啡。古老的挂钟指在八点十五分。</p>
+    <p>"准备早餐？"</p>
+    <p>"不用。倒想好好睡一觉。两点半叫醒我。两点半之前希望你坐在我身边看我睡觉。不碍事吧？"</p>
+    <p>"如果你需要的话。"她依然面带微笑。</p>
+    <p>"比什么都需要。"</p>
+    <p>她从里面房间拿来两床毛毯，包住我的身体。她的头发一如往常地轻拂我的脸颊。我一闭上眼睛，耳畔便传来煤块"毕毕剥剥"的声响。女孩的手放在我肩上。</p>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">风雪间歇</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">场景</span></div>
+    <p>"冬天会永远持续下去么？"我问。</p>
+    <p>"不晓得。"她回答，"谁也不晓得冬天什么时候结束，但应该不至于持续很久，肯定。有可能是最后一场大雪。"</p>
+    <p>我伸出手，把指尖触在她面颊上。女孩闭起眼睛，品味了一会这份温煦。</p>
+    <p>"这是我的光的温煦？"</p>
+    <p>"什么感觉？"</p>
+    <p>"好像春天的阳光。"</p>
+    <p>"我想我可以把心传给你。"我说，"也许花些时间，但只要你肯相信，我保证迟早传给你。"</p>
+    <p>"明白。"说着，她把手轻轻贴在我眼皮上，"睡吧！"</p>
+    <p>我睡了。</p>
+    <p>两点半，她准时把我叫醒。我站起身，把大衣、围巾、手套和帽子穿戴起来，她则默默无言地喝着咖啡。由于挂在火炉旁边，落过雪的大衣早已干透，热乎乎的。</p>
+    <p>"手风琴放在这里好么？"我说。</p>
+    <p>她点下头，拿起桌上的手风琴，确认重量似的掂量了一会，又放回原处。</p>
+    <p>"放心，保管妥当就是。"她应道。</p>
+    <p>走到外面，才知雪已变小，风也停了。肆虐了整整一个晚上的风雪似乎几个小时前便已止息，但天空依然彤云低垂，告诉人们真正的大雪随时都可能袭来，眼下不过是短暂的间歇。</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">看门人的小屋</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">场景</span><span class="tag gold">紧张</span></div>
+    <p>朝北过了西桥，发现灰色的烟已开始从围墙那边升起，一如平日。起始是白烟迟疑不决地断断续续爬向天空，俄顷转为大量焚尸的浓烟。看门人在苹果林里。我在几乎齐膝深的积雪上留下清晰得自己都为之吃惊的脚印，急急赶往小屋。镇子一片沉寂，仿佛所有的声音都已被雪吸尽。没有风声，甚至不闻鸟鸣，惟有鞋底钉子踩碾新雪的声音在四周激起不无夸张的奇妙回响。</p>
+    <p>看门人小屋里空无人影，一如往常地散发着酸臭气味。炉火已经熄灭，但周围尚有余温，看来刚熄不久。桌上散乱地扔着脏盘子和烟斗，靠墙摆着一排白亮亮的柴刀和斧头。环视房间，我不由产生了一种错觉，总好像看门人会蹑手蹑脚地从身后走来把大手贴在自己脊背。那排刀具、水壶、烟斗等四下里的东西，都似乎在默默谴责我的背信弃义。</p>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">影子广场的钥匙</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">行动</span><span class="tag blue">紧张</span></div>
+    <p>我像躲避刀具阵列似的小心伸出手去，迅速摘下墙上挂的钥匙串，紧紧攥在手心里，从后门走到影子广场的入口。影子广场的皑皑白雪上尚无任何人的脚印，惟独那棵黑乎乎的榆树矗立在中央。刹那间，我觉得这是一片人们不得涉足玷污的神圣空间。一切各得其所地聚拢在这谐调的岑寂之中，浑然天成一般地沉浸于恬适的睡眠中。雪地带有美丽的风纹，全身缀满白雪的榆树枝将弯曲的手臂停在空中。没有任何东西处于动态，雪也几乎偃旗息鼓，只有风偶尔想起似的低声一掠而过，它们大概永远不会忘记有人曾用皮靴蹂躏这短暂而平和的睡眠。</p>
+    <p>但时间已不容我犹豫不决。事到如今，已经无法转身后撤。我拿着钥匙串，用冻僵的手将四把钥匙轮流往锁孔里插去，然而哪一把都不相吻合。我腋下沁出冷汗，再次回想看门人开门时的情景，当时钥匙同样是四把，这点毫无疑问，我一一数过，其中必有一把能打开锁才是。</p>
+    <p>我把钥匙串放回衣袋，揉搓着使其充分变暖，然后依序试插，结果第三把整个探进锁孔，转动时发出很大的干涩的响声。在这阒无人息的广场，金属声听起来格外清晰尖锐，仿佛全镇的人都可听到。我把钥匙插进锁孔里观察周围动静，似乎无人朝这边走近。不闻任何人的语声任何人的足音。于是我把重重的铁门打开一条小缝，挤过身体，把门悄然合上。</p>
+    <div class="key"><span class="lbl">✦ 神圣空间的侵犯</span><p>"它们大概永远不会忘记有人曾用皮靴蹂躏这短暂而平和的睡眠"——叙述者清楚地意识到自己是这一完美秩序的破坏者。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">影子的衰弱</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">存在</span></div>
+    <p>广场的积雪如泡沫一样绵软，把我的脚整个吞没。脚底的"吱吱"声犹如一头巨兽在小心翼翼地咀嚼捕到的猎物。我把两行笔直的脚印留在广场上，从雪积得老高的木凳旁通过。榆树枝从头上恫吓似的俯视着我。某处传来刺耳的鸟鸣。</p>
+    <p>小屋内比外面还冷，险些把人冻僵。我打开拉窗，顺梯下到地下室。</p>
+    <p>影子坐在地下室的床上等我。</p>
+    <p>"担心你不来了呢。"影子吐着白气说。</p>
+    <p>"约定好了嘛！我可是守约的。"我说，"好了，赶快动身吧，这里臭得很。"</p>
+    <p>"爬不上梯子。"影子叹息道，"刚才试过，爬不上去。看来我要比自己预想的衰弱得多，真是哭笑不得。原本是伪装虚弱，结果装着装着居然搞不清自己虚弱到了什么地步。尤其是昨晚的低温，简直冻入骨髓。"</p>
+    <p>"拉你上去。"</p>
+    <p>影子摇摇头："拉上去也没用。我已经跑不动了，无论如何也跑不到逃路出口。怕是要坐以待毙了。"</p>
+    <p>"你一手策划的，现在打退堂鼓怎么行！"我说，"我背你，横竖要逃离这里活下去。"</p>
+    <p>影子用凹陷的眼睛看着我的脸。</p>
+    <p>"既然你那么说，我当然拼死一搏。"影子道，"问题是背着我跑雪路可不是好玩的哟！"</p>
+    <p>我点下头；"一开始就没把事情想得那么简单。"</p>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">背上的影子</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">行动</span><span class="tag gold">挣扎</span></div>
+    <p>我把浑身瘫软的影子拉上梯子，用肩支着他穿过广场。左面高耸着的冷森森黑乎乎的围墙默不作声地定定俯视着我们两人和我们的脚印。榆树枝不胜重荷似的把雪条抖落在地，枝条随即弹起。</p>
+    <p>"两腿差不多麻木了，"影子说，"为了躺倒后不至于一蹶不振，自以为做了不少运动，但不管用。毕竟房间太小。"</p>
+    <p>我拖着影子走出广场。为慎重起见，我进入看门人小屋把钥匙串挂回墙壁。如果运气好，看门人或许不会很快发现我们出逃。</p>
+    <p>"这回朝哪边走？"我问在早已熄火的炉前战栗不止的影子。</p>
+    <p>"去南水潭。"</p>
+    <p>"南水潭？"我不禁反问，"南水潭到底有什么？"</p>
+    <p>"南水潭有南水潭嘛，我们跳进潭里逃走。这种时节，很可能感冒，但考虑到你我处境，也就顾不得那么多了。"</p>
+    <p>"潭下水流很急，跳下去要被卷进水底即刻丧命的！"</p>
+    <p>影子瑟瑟发抖，频频咳嗽。"啊，不会的。怎么想出口都只此一处。所有地方我都详详细细研究过了，出口在南水潭，别无他处。你的担心自然不无道理，但反正眼下还是相信我交给我好了。我也是拿这仅有一条的性命打赌，不会盲目地孤注一掷。"</p>
+    <p>看门人小屋外渺无人影。地上只有两道脚印，一道是我进屋前留下的，一道是看门人出屋往城门走去时踩出的。也有板车辙。我在此背起影子。影子已经形销骨立，分量轻了许多，不过背他翻越山冈恐怕仍是相当重的负担。我早已习惯于不带影子的轻松生活，因此能否承此重担，自己心里也没底。</p>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">独角兽的目光</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">场景</span><span class="tag gold">象征</span></div>
+    <p>我沿着雪路东行。来时的脚印依然真真切切地剩在路上，给我以仿佛同往昔的自身擦肩而过的印象。除了我的脚印，只有独角兽小小的足迹。回头看去，又粗又直的灰烟仍在围墙外升腾。笔直的烟柱被云层吞去了端头，俨然不吉利的灰塔。从烟柱的粗细分析，看门人烧的独角兽恐怕不在少数。夜间一场大雪冻死了比以往任何时候都多的独角兽，全部烧掉那些尸体无疑需要很长时间，这意味着看门人的追击将大大推迟。我觉得我们计划的实施是得益于独角兽们静静的死。</p>
+    <p>然而与此同时，深雪又妨碍了我的行走。深深吃进鞋钉而又牢牢粘住的雪使我的双脚变重打滑，我后悔没有找来登山用防滑钉鞋或滑雪板一类的器具。</p>
+    <p>途中，我们同许多独角兽擦肩而过。它们在深深的雪中寻觅着匮乏的食物，茫然四顾。兽们以湛蓝色的眼睛静静地看我喘着白气背负影子从其身旁走过，看上去它们完全懂得我们行动的含义。</p>
+    <p>爬坡时，我开始气喘吁吁了。影子的重量吃进身体，脚步在雪中踉踉跄跄。回想起来，我已有好长时间没做过像样的运动了。白气越来越浓，眼睛被再次降下的雪花打得模模糊糊。</p>
+    <div class="key"><span class="lbl">✦ 独角兽的理解</span><p>"兽们以湛蓝色的眼睛静静地看我……它们完全懂得我们行动的含义"——独角兽作为世界尽头最古老的原住民，以沉默的注视送别逃离者。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">逃往南水潭</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">对话</span><span class="tag red">决心</span></div>
+    <p>我放下影子，蹲在雪地上喘粗气。身体燥热，甚至感觉不出雪的寒冷，其实两只脚已经从脚跟到脚尖都冻得如石块一般。</p>
+    <p>"有时候我也困惑，"影子说，"如果我什么也不对你说而悄悄死去，说不定你可以在这里无忧无虑地幸福生活下去。"</p>
+    <p>"有可能。"</p>
+    <p>"就是说我妨碍了你。"</p>
+    <p>"这点早该知道的。"我说。</p>
+    <p>"一开始我就凭直觉感到这镇子必有隐蔽的出口。不久变得坚信不疑。为什么呢？因为这镇子是完全的镇子，所谓完全必然包含所有的可能性。在这个意义上，这里甚至不能称为镇子，而是更富于流动性和综合性的东西，它提示了所有可能性而又不断改变其形式，并且维持着其完全性。换言之，这里绝不是固定的封闭世界，而是在运动过程中自成一统的世界。所以，如果我要找出逃路的出口，出口就会出现。我说的你可明白？"</p>
+    <p>"明白。"我说，"这点我昨天刚意识到，就是说这里是充满可能性的世界。这里无所不有，又一无所有。"</p>
+    <p>"假如某处存在着出口，那么剩下的问题就是如何逃跑了。首先设想从城门跑。然而即使能够跑出，也难免被看门人马上抓住。那小子对那一带的一草一木都了如指掌，何况城门那个地方，大凡有人策划逃走，首先想到的必是那里，出口不可能那么轻易地被人想到。围墙也不行，东城门更不行，那里堵得严严实实，河流入口也拦着粗栅栏，无论如何也逃脱不得。这样一来，剩下的便只有南水潭——可以同河流一起逃离镇子。"</p>
+    <p>"绝对有把握？"</p>
+    <p>"绝对，凭直感看得出来。其他所有出口都无隙可乘，惟有南水潭听之任之地扔在那里，围栏也没有。你不觉得蹊跷？他们是用恐怖围起水潭的。只要置恐怖于不顾，我们就能战胜这座镇子！"</p>
+    <div class="key"><span class="lbl">✦ 完全的镇子</span><p>"这里绝不是固定的封闭世界，而是在运动过程中自成一统的世界"——影子揭示世界尽头(即叙述者内心)的本质：所有可能性并存，出口只存在于敢于相信它的人面前。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch37.html" class="nav-ch">‹ 第37章</a>
+    <a href="ch39.html" class="nav-ch">第39章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第38章 · 世界尽头 · 水潭</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

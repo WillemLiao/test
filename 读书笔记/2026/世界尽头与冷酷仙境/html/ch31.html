@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第31章 冷酷仙境 · 黑暗的深渊 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">黑暗的深渊<small>第31章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>地铁线路</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>出站口争执</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>雨中的街道</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>租车与警察乐队</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>意外的收拾</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>沐浴与裸体</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>最后的电话</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>拒绝的直觉</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>烘干室的时间</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第31章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">黑暗的深渊</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">地铁线路</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">空间</span><span class="tag gold">场景</span></div>
+    <p>从管道出口到青山一丁目车站没有多远的距离，我们走在地铁线路上，电车来时就躲在立柱后面等它通过。车内光景历历在目，而乘客对我们则不屑一顾。地铁乘客没有人往窗外张望，他们或看报纸，或干脆怔怔发呆。地铁无非是方便人们在都市空间移动的权宜性工具而已，任何人都不会为乘地铁而喜出望外。</p>
+    <p>乘客数量不很多，几乎无人站立。虽说上班高峰已经过去，但依我的记忆，上午十时后的银座线该更挤些才是。</p>
+    <p>“今天星期几？”我问女郎。</p>
+    <p>“不知道，从来不理会星期几。”女郎回答。</p>
+    <p>“就平日来说，乘客未免过少。”我摇了摇头，“说不定星期天。”</p>
+    <p>“星期天又怎么样？”</p>
+    <p>“也不怎么样，星期天不外乎是星期天。”我说。</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">出站口争执</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">荒诞</span></div>
+    <p>我们站在立柱后面，静静看着开往银座方向的电车进站台停下，开门放客，又载上新的乘客后关门。列车长下到站台，确认乘客上下情形，又上车关门，发出开车信号。电车消失后，站务员便不知去了何处。对面站台也已不见站务员的身影。</p>
+    <p>“走吧。”我说，“别跑，要装得若无其事。跑的话会招致乘客的怀疑。”</p>
+    <p>两人从立柱背后走出，快步走到月台的这边一头，然后装出习以为常且毫无兴致的样子爬上铁梯，跳过木栅栏。有几个乘客看见我们，露出费解的神情。我们三步两步穿过站台，朝出站口走去。走到跟前才意识到没有车票。</p>
+    <p>“没票。”我说。</p>
+    <p>“就说票丢了，付钱补票可以吧？”女郎道。</p>
+    <p>我向出站口的年轻站务员说票弄丢了。站务员不无疑惑地定定注视着我俩的装束。</p>
+    <p>“从哪里上的？”</p>
+    <p>涩谷，我回答。</p>
+    <p>“花了多少钱，从涩谷到这里？”</p>
+    <p>“忘了，”我说，“不是一百二十元就是一百四十元。”</p>
+    <p>“记不得了？”</p>
+    <p>“想问题来着。”</p>
+    <p>我们重新开始交涉。我懒得再这么无休无止地争论下去，便放下一张千元钞票，擅自走到外面。背后传来站务员的喊声，我们装作没有听见，兀自前行。在这世界即将步入尽头之际，实在懒得为这一两张地铁票挖空心思。其实追究起来，我们根本就没乘地铁。</p>
+    <div class="key"><span class="lbl">✦ 没乘地铁的人</span><p>"其实追究起来，我们根本就没乘地铁"——全书最幽默的一笔。两人从地底的夜鬼巢穴爬上来，走在地铁轨道上，却因没票被站务员拦下。世界即将终结之时，还在为地铁票的金额争论不休。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">雨中的街道</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">氛围</span></div>
+    <p>天上在下雨，针一般的霏霏细雨将地面和树木淋得湿漉漉的，想必从夜里便一直在下。下雨使我心绪多少有些黯然。对我来说，今天是宝贵的最后一天。不希望下什么雨，最好一两天万里无云，而后像J·G·巴拉德小说中描写的那样连降一个月倾盆大雨，反正已不关我事。我只想躺在灿烂阳光照耀下的草坪上听着音乐痛饮冰凉冰凉的啤酒，此外别无他求。</p>
+    <p>然而事与愿违，雨不像有止息的迹象。仿佛包了好几层塑料包装纸的色调模糊的阴云把天空遮掩得密密实实，雨不间断地从中泻下。我想买份晨报看看天气预报，但买报必须走到地铁出站口附近，而一到出站口势必又要同站务员重开那场徒劳无益的论战。于是我只好放弃买报的打算。一天刚开头就这样不顺心。连今天星期几都无从判断。</p>
+    <p>人们撑伞而行，不撑伞的惟独我们两人。我们站在大楼的檐下，像观看古希腊卫城遗址似的茫然注视着街景。雨中的十字路口，五颜六色的车辆熙来攘往。无论如何我也无法想象在这下面有个广大而离奇的夜鬼世界。</p>
+    <p>我们走进附近一家自选商场，在门口处的饮食间要了两个浓汤和一个火腿鸡蛋三明治。柜台里的女孩见我们这副狼狈相，起初像是相当惊愕，旋即若无其事地用职业性口气应对下来。</p>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">租车与警察乐队</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">音乐</span></div>
+    <p>走出店门，拦了辆出租车。由于浑身脏污，等了好些时间才碰上一辆肯停下来的。司机是个留长发的小伙子，助手席上放一台组合音响式的大型收录机，里面淌出"警察乐队"的歌声。我大声告以去处，然后深深缩进座席。</p>
+    <p>“喂，怎么脏成这样？”司机对着后望镜问道。</p>
+    <p>“在雨中抓打起来了。”女郎回答。</p>
+    <p>“嗬，厉害厉害。”司机说，“不过也太狼狈了。脖子侧面红一块青一块的。”</p>
+    <p>“我只拉看上去喜欢听流行歌曲的年轻人，哪怕脏点也无所谓，只听这个就足够开心的了。喜欢‘警察’？”</p>
+    <p>“差不多。”我适当应和一句。</p>
+    <p>“警察”磁带转罢，司机给我们听鲍勃·马利的情歌。仪表板上堆满了盒式磁带。开到我住处门前停下，我付罢车费下车，给了一张千元小费：“买磁带好了。”</p>
+    <p>“太高兴了！”司机说，“能再次碰到一起？”</p>
+    <p>“是啊！”</p>
+    <p>但我想那是不可能的。吉姆·莫里逊死了十多年了，我还从未碰上哪辆出租车放着"大门"的音乐赶路。世间有变化的有不变化的，不变化的永远一成不变，出租车上的音乐便是其中之一。</p>
+    <div class="key"><span class="lbl">✦ 出租车的音乐</span><p>一生中最后一个出租车司机——喜欢"警察乐队"和鲍勃·马利的长发青年。千元小费是"买磁带的"。主角在心里想的是：出租车上的音乐永远一成不变，永远不会放"大门"的歌。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">意外的收拾</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">空间</span><span class="tag gold">发现</span></div>
+    <p>我们乘电梯上楼。房间的门本应依然处于合叶脱尽的状态，不料不知何人已将门整个嵌入门框，乍看似乎门关得好好的。谁干的不晓得，肯定花了不少时间和气力。我像克罗马努人打开洞窟盖子那样卸掉不锈钢门，把女郎让入室内，又从里面把门移过来，以免房间里的光景给人看见，而后自欺欺人地扣上防盗链。</p>
+    <p>房间收拾得整整齐齐。一瞬间我甚至怀疑昨天那狼狈场面是自己的错觉。原先所有四脚朝天的家具全部各就各位，一片狼藉的食品被清除干净，打碎的瓶罐和餐具的残片了无踪影，书和唱片返回书架，衣服被收进立柜，厨房卫生间卧室也已被擦洗得闪闪发光，地板不见半点垃圾。</p>
+    <p>不过若仔细检查，仍可随处发现遗痕。打烂的显像管如时间隧道一样赫然开着空洞；电冰箱呜呼哀哉，里边空空如也；四分五裂的衣服已被统统扔掉，剩下的仅能装满一小皮箱；餐橱里仅存几个盘子和玻璃杯；挂钟停了；没有一件电器运转正常。显然，有人把不堪再用的东西挑出处理掉了，房间因而给人以神清气爽之感，宽宽敞敞，别无多余之物。</p>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">沐浴与裸体</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag gold">描写</span></div>
+    <p>水放满后，我让女郎先洗。女郎在书里夹上一枚书签下床，在厨房里三下两下脱去衣服。脱得十分潇洒自然，我不由坐在床沿怔怔地看着她的裸体。她的体形很妙，既像孩子又像大人。浑身都是白白嫩嫩的肉，俨然普通人的身体上上下下涂了一层果冻，而且胖得十分匀称，不注意会险些忘记她长得胖这一事实。胳膊大腿脖颈腰部都膨胀得赏心悦目，如鲸鱼一般珠滑玉润。较之身体，乳房并不很大，紧绷绷地隆起。臀部也丰满得恰到好处。</p>
+    <p>“我的身体不坏吧？”女郎从厨房问我。</p>
+    <p>“不坏。”</p>
+    <p>“让肉长到这个程度是件很辛苦的事。要吃很多很多饭，还得吃蛋糕啦油炸的东西啦等等。”</p>
+    <p>卫生间里晾着她的内衣、裙子和衬衫。粉红色胸罩粉红色三角裤粉红色裙子粉红色衬衫。泡在浴槽里一瞧见这些物件，两个太阳穴便一剜一剜地作痛。我本来就不喜欢什么内衣长筒袜晾在卫生间里。原因说不上来，反正就是不喜欢。</p>
+    <p>我三下五除二洗了头发，洗了身体，刷了牙，刮了须。如此目睹卫生间晾着内衣、床上坐着女孩用吹风机吹发看书、外面细雨飘零的时间里，我恍若回到了几年前的婚姻生活。</p>
+    <div class="key"><span class="lbl">✦ 粉红色的内衣</span><p>"我本来就不喜欢什么内衣长筒袜晾在卫生间里。原因说不上来，反正就是不喜欢"——村上标志性的无理由偏好。卫生间里晾着粉红色内衣触动了他关于婚姻生活的记忆。一切都在提示：这是一天中最后的人间气息。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">最后的电话</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">日常</span></div>
+    <p>躺到床上不久，睡意汹涌袭来。但不能就势睡去，一睡必是几个小时，什么也做不成。</p>
+    <p>但若问不睡干什么，自己也全然不知干什么好。我取下床头灯伞上的橡胶圈，摆弄了一会又放了回去。反正不能呆在房里不动，闷在这里一无所得。要去外面做点什么，至于做什么走到外面再作打算不迟。</p>
+    <p>想来，人生仅剩二十四个小时这点颇有点妙不可言。该干的事原本堆积如山，实际上却一个也想不起来。我又取下台灯伞的橡胶圈，用手指来回旋转。蓦地，我想起超级商场墙壁上贴的法兰克福旅游宣传画：有河，河上有桥，河面浮着天鹅。地方似乎不坏。去法兰克福终此一生倒也十分可取。问题是二十四小时以内不大可能赶到。结果我能想得起来的，只有同女孩一起美美地吃上一顿喝上一通，此外没有任何感兴趣的事。我翻开手册，找到图书馆电话号码，拨动转盘，唤来负责参考文献的那个女孩。</p>
+    <p>“如果方便的话，今晚再吃一顿如何？”我放出引线。</p>
+    <p>“吃一顿？”她重复道，“今晚有研究会呀！”</p>
+    <p>“研究会？”我也复述一遍。</p>
+    <p>“关于河流污染的研究会。噢，例如合成洗衣粉造成鱼类灭绝等等，就研究这个。今晚轮到我报告研究成果。”</p>
+    <p>“倒像很实用的研究。”我说。</p>
+    <p>“嗯，那当然。所以如果可能，吃饭的事最好改到明天，好么？明天星期一，图书馆休息，尽可慢慢来。”</p>
+    <p>“明天下午我已不在。电话中说不清楚，总之我要远离一段时间。”</p>
+    <p>女孩最终还是说研究会就算啦。我们在电话里约好了六点十分在图书馆门前碰头。</p>
+    <div class="key"><span class="lbl">✦ 最后的一餐</span><p>在人生最后的二十四小时，主角能想到的唯一想做的事——和图书馆的女孩吃一顿饭。没有壮烈的告别，没有宏大的计划，只有一顿晚饭。这或许就是村上笔下最动人的"日常的珍贵"。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">拒绝的直觉</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">性</span></div>
+    <p>“嗳，”女郎把书放在一边，“真的不想让人喝精液？”</p>
+    <p>“现在不想。”</p>
+    <p>“没那个情绪？”</p>
+    <p>“嗯。”</p>
+    <p>“不想同我睡觉？”</p>
+    <p>“现在不想。”</p>
+    <p>“嫌我胖？”</p>
+    <p>“哪里，”我说，“你的身子十分诱人。”</p>
+    <p>“那干嘛不想睡？”</p>
+    <p>“不明白。”我说，“原因我不明白。总觉得现在不该同你睡。”</p>
+    <p>“是出于道德上的原因？还是因为违背你的生活伦理？”</p>
+    <p>“生活伦理。”我重复一句。这四个字眼很是不同凡响。我眼望天花板思索了一会。</p>
+    <p>“不，不是，不是那么回事。”我说，“两码事。可能近乎本能或直觉吧，或者同我的记忆倒流有关，很难解释清楚。其实我现在极想同你睡觉，但有某种东西从中作梗，说眼下不到时候。”</p>
+    <div class="key"><span class="lbl">✦ 不到时候</span><p>"有某种东西从中作梗，说眼下不到时候"——当肉体唾手可得，主角却听从了某种直觉的拒绝。在即将失去一切的时候，这或许是最后的、最顽固的自我坚持。不因为任何道德理由，只是"不到时候"。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">烘干室的时间</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">结尾</span><span class="tag purple">时间</span></div>
+    <p>“什么时候返回你祖父那里？”我试着问。</p>
+    <p>“睡一会，等衣服干了就走。”女郎说，“水要到傍晚才能消，消了才好再经地铁返回。”</p>
+    <p>“这种天气晾衣服，得等到明天才能干。”</p>
+    <p>“真的？”她说，“那如何是好？”</p>
+    <p>“附近有家自动洗衣店，去那里烘干就是。”</p>
+    <p>“可我没出门的衣服啊！”</p>
+    <p>我歪头想了想，但想不出好办法，看来只好由我跑去自动洗衣店把她的衣服扔进烘干机了。我走进卫生间，将她的湿衣服塞入德意志航空公司的塑料袋，然后从剩下的衣服中挑出橄榄绿短裤和蓝色带扣开领衫穿了，鞋穿的是茶色皮鞋。这么着，剩给我的宝贵时间的几分之一便将在自动洗衣店那寒伧的电镀椅上毫无价值地消耗掉了。时间已指向十二点十七分。</p>
+    <div class="key"><span class="lbl">✦ 寒伧的电镀椅</span><p>"剩给我的宝贵时间的几分之一便将在自动洗衣店那寒伧的电镀椅上毫无价值地消耗掉了"——在人生最后一天，主角要去洗衣店烘干女郎的粉红色内衣。时间在最有价值和无价值之间来回撕扯，正是全章的底色。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch30.html" class="nav-ch">‹ 第30章</a>
+    <a href="ch32.html" class="nav-ch">第32章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第31章 · 冷酷仙境 · 黑暗的深渊</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

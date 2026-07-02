@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第37章 冷酷仙境 · 消失 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">消失<small>第37章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>半夜惊醒</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>头骨之光</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>光的触摸</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>黎明的电话</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>地上的衣物</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>蜗牛的隐喻</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>海滩的垃圾</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>黎明前</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>厨房的早晨</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>最后一餐</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第37章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">消失</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">半夜惊醒</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">神秘</span></div>
+    <p>不知睡了多长时间。有人摇我的肩膀。最先感觉到的是沙发气味，接着那人开始为我的迟迟不醒感到焦躁。任何人都想剥夺我犹如秋日蝗虫般恬适的睡眠。</p>
+    <p>不过，我体内也有某种东西强行要我起来，告诉我已无暇再睡，并用铁花瓶打我的头。</p>
+    <p>"起来，求你起来！"她说。</p>
+    <p>我从沙发上坐起，睁开眼睛。我身穿橙色浴衣，她穿着男式白色T恤，几乎扑在我身上摇我肩膀。她那只穿白T恤和白内裤的苗条身段宛如站不稳的小孩，仿佛只消一阵强风便可将她吹为委地的尘埃。我所吞食的一大堆意大利风味消失到何处去了呢？我的手表又去哪里了呢？四周还是一片黑暗。若非眼睛出了问题，便是天还未亮。</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">头骨之光</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">神秘</span><span class="tag gold">描写</span></div>
+    <p>"看那茶几！"女孩说。</p>
+    <p>我往茶几看去，上面放着小圣诞树样的东西，却又不是圣诞树。作为圣诞树未免太小，况且现在刚交十月。不可能是圣诞树。我依然双手压住浴衣底襟，目不转睛地看着茶几上的物体。原来是我放的头骨！不，也可能是她放的，这点我已记不起了。谁放的都无所谓，反正茶几上如圣诞树一般闪闪烁烁的是我带来的独角兽头骨。光在头骨顶端一闪一灭。</p>
+    <p>一个个光点非常细小，光本身并不强，小小的光点如满天星斗缀满头骨。光色莹白，微弱柔和。每个光点周围都仿佛包笼着模模糊糊的光膜，轮廓绵软，扑朔迷离。或许由于这个缘故，那光看起来与其说是头骨表面在闪烁，莫如说是连片浮出于头骨之上。我们并坐在沙发上默不作声，久久凝视着小小的光之海。她的双手轻轻握住我的胳膊，我的双手仍放在浴衣底襟。夜半更深，四下阒无声息。</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">光的触摸</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">超自然</span><span class="tag red">触摸</span></div>
+    <p>"这里有什么机关不成？"</p>
+    <p>我摇摇头。我曾同头骨一起过了一夜，那时它根本没有发光。倘若那光是由某种夜光漆或光苔一类东西发出的，肯定不至于有时亮有时不亮，应该一暗下来必有光亮现出才是，何况两人睡前头骨并未发光。不会是什么机关，而是某种超越人力的特殊物。任何人为的努力都不可能制造出如此柔和如此怡然的光。</p>
+    <p>我悄悄拿开她抓住我右臂的手，把手伸向茶几上的头骨，静静地拿起来放上膝头。</p>
+    <p>"不怕的？"她低声询问。</p>
+    <p>"不怕。"我说。何怕之有。这玩意儿说不定在某处连着我的自身，谁都不会害怕自己本身。</p>
+    <p>我用手心罩住头骨，手心生出残火般微弱的温煦感，甚至指尖也好像包笼在淡淡的光膜中。我闭目合眼，将十指浸入这柔弱的余温，于是纷纭的昔日回忆如遥远的云絮浮现在我心头。</p>
+    <div class="key"><span class="lbl">✦ 不怕自己</span><p>"何怕之有。这玩意儿说不定在某处连着我的自身，谁都不会害怕自己本身"——对发光头骨的接受暗示着叙述者开始与自己的无意识和解。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">黎明的电话</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">行动</span><span class="tag purple">告别</span></div>
+    <p>我把头骨放回茶几，用指尖触摸女孩的脸颊。</p>
+    <p>"暖乎乎的。"她说。</p>
+    <p>"光暖和嘛。"</p>
+    <p>"我摸摸也不要紧？"</p>
+    <p>"没问题。"</p>
+    <p>女孩将双手置于头骨上面，闭起眼睛。她的手指也和我一样被镀上了一层莹白的光膜。</p>
+    <p>"有所感觉。"她说，"是什么倒说不清，总之像是过去在什么地方感觉过的：空气、光线、声音等等。表达不好。"</p>
+    <p>我从电冰箱里拿出啤酒，连同杯子拿到客厅。趁这时间我拾起躺在沙发背后的手表看了眼时间：四点十六分。再过一个小时多一点天将放亮。我拎过电话机拨动自己住处的号码。还从来没往自己房间打过电话，好一会才想起号码。无人接起。等铃响到十五次我放下话筒，再次拨通让铃响了十五次，结果同样，无人接起。</p>
+    <p>莫非胖女郎回到她那在地下等待的祖父那里去了？还是被来我房间的符号士或"组织"的人抓住带往什么地方了呢？不管怎样，我想她都一定临阵有余。无论遇到什么情况，她的应变能力都是我的十倍，而其年龄却仅及我一半。实非等闲之辈！我放下话筒，想到此生再也见不到那女郎了，不禁生出几分怅惘，就像在观看一个个沙发和吊灯从倒闭的宾馆中被运出，一扇扇窗口被关合，一幅幅窗帘被卸下。</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">地上的衣物</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">内省</span><span class="tag purple">观察</span></div>
+    <p>我们坐在沙发上边喝啤酒边注视着头骨闪闪烁烁的白光。</p>
+    <p>"头骨是同你发生感应才发光的不成？"女孩问。</p>
+    <p>"不晓得。"我说，"不过有那个感觉。也可能不是我，而同别的什么发生感应。"</p>
+    <p>我把剩下的啤酒全倒进杯里，从从容容地喝干。黎明前的世界万籁无声，同森林中无异。地毯上东一件西一件扔着我的衣服和她的衣服：我的轻便西服、衬衫、领带、长裤，她的连衣裙、长筒袜、小背心之类。我觉得地上的衣服摊似乎是我这三十五载人生的一个总结。</p>
+    <p>"看什么呢？"</p>
+    <p>"衣服。"我回答。</p>
+    <p>"干嘛看什么衣服？"</p>
+    <p>"刚才还是我的一部分来着，你的衣服也是你的一部分。现在则不然，活像别人的别的衣服。看不出是自己的。"</p>
+    <p>"怕是交欢的关系吧？"她说，"交欢之后，人往往变得内省起来。"</p>
+    <p>"不，不是那么回事。"我手拿空杯说，"并非变得内省起来，只是注目于构成世界的许多琐碎部件而已。蜗牛、雨帘、五金店的商品阵列——对这类东西十分敏感。"</p>
+    <div class="key"><span class="lbl">✦ 衣物的陌生感</span><p>"刚才还是我的一部分，现在则不然"——亲密行为之后，自我与世界之间的边界变得模糊，日常物品呈现出独立的生命。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">蜗牛的隐喻</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">象征</span><span class="tag red">对话</span></div>
+    <p>"再讲讲蜗牛。"</p>
+    <p>"蜗牛是在洗衣店门前看见的。"我说，"没想到秋天里还有蜗牛。"</p>
+    <p>"蜗牛一年到头都有的。"</p>
+    <p>"想必。"</p>
+    <p>"在欧洲，蜗牛具有神话意味。"她说，"外壳意味着黑暗世界，蜗牛从壳中探头意味着阳光普照。所以，人们一看见蜗牛，就本能地想打破外壳使它从里面出来亮相。这事可做过？"</p>
+    <p>"没有。"我说，"你懂的还真不少。"</p>
+    <p>"在图书馆工作嘛，自然知道很多。"</p>
+    <p>我从茶几上拿起那盒七星烟，用啤酒屋的火柴点燃，再次眼望地毯上的衣服。她的淡蓝色长筒袜上压着我的衬衫袖，天鹅绒连衣裙腰部像拧劲似的扭歪着，旁边薄薄的小背心如垂头丧气的旗帜。项链和手表扔在沙发上，黑皮挎包躺在屋角的咖啡桌上。</p>
+    <p>她脱掉的衣服看上去比她本身还像她。也许我的衣服看上去比我本身还像我。</p>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">海滩的垃圾</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">回忆</span><span class="tag gold">独白</span></div>
+    <p>"想了解我？"她问，"例如哪里出生，少女时代如何，读哪所大学，什么时候不再是处女等等。"</p>
+    <p>"不，"我说，"现在不急。多少想了解一点。"</p>
+    <p>"我也多少想了解一点你。"</p>
+    <p>"在大海附近出生的。"我说，"每次台风过后的第二天早上都跑去海滩，海滩都有许多许多东西，海浪打上来的。好些东西简直想象不到。从瓶子、拖鞋、帽子、眼镜盒到桌椅板凳，无所不有。为什么有这种东西打上来呢？叫人摸不着头脑。不过我喜欢物色这些，来台风是一大乐事。怕是别处海滩扔的东西被卷进海里，又被浪打上岸来。"</p>
+    <p>我把烟在烟灰缸里熄掉，空杯放在茶几上，继续道："奇怪的是，大凡被海水打上来的东西全都干干净净。虽说无一不是没用的垃圾，但一律洁净得很，没有一件脏乎乎的碰不得。海这东西也真是特殊。每当回顾自己过去的生活，总是想起海滩上的垃圾。我的生活便总是这样：把垃圾收集起来，以自己的方式弄干净，再扔去其他地方——只是派不上用场，徒然朽化而已。"</p>
+    <div class="key"><span class="lbl">✦ 洁净的垃圾</span><p>"我的生活便总是这样：把垃圾收集起来，以自己的方式弄干净"——叙述者对自己人生的总结：洁净而徒劳，像被海浪冲刷过的垃圾，有用但无意义。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">黎明前</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag red">亲密</span></div>
+    <p>女孩用手搭住我肩膀从沙发上站起来，走进厨房打开电冰箱，取出葡萄酒斟上，连同一瓶啤酒一起用盘子托来。</p>
+    <p>"我喜欢黎明前的一段黑暗。"她说，"因为洁净而无用，肯定。"</p>
+    <p>"但这段时间过得飞快。天一亮，就开始送报送奶，电车也投入了运行。"</p>
+    <p>她滑溜溜地钻到我身旁，把毛毯拉到胸口，喝了口葡萄酒。我把新拿来的啤酒倒进杯子，拿在手里打量着茶几上尚未失去光芒的头骨。头骨朝茶几上的啤酒瓶、烟灰缸和火柴盒投以淡淡的光。女孩把头靠在我肩上。</p>
+    <p>"刚才看你从厨房往这边走来着。"</p>
+    <p>"怎样？"</p>
+    <p>"腿很迷人。"</p>
+    <p>"中意？"</p>
+    <p>"非常。"</p>
+    <p>她把杯放在茶几上，往我耳下吻了一口。</p>
+    <p>"嗯，知道么？"她说，"我，顶顶喜欢别人夸奖。"</p>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">厨房的早晨</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">日常</span><span class="tag purple">观察</span></div>
+    <p>随着天光破晓，头骨的光像被阳光冲掉了似的慢慢减弱下去，不久变回毫无奇异之处的光滑滑的白骨。我们在沙发上拥抱着观望窗帘外面的世界被晨光夺去黑暗的情景。她热辣辣的呼吸弄得我肩头潮乎乎的，乳房娇小而柔软。</p>
+    <p>喝罢葡萄酒，她利用这短暂的时间蜷起身子静静地睡了。阳光明晃晃地照亮了相邻人家的房脊，不知何处传来了汽车发动的声响。我已再无睡意。我记不清自己到底睡了多少个小时，总之睡意全消，醉意也没剩下。我把她搭在自己肩上的头轻轻放下，离开沙发走去厨房，喝了几杯水，吸了支烟，然后关紧厨房和客厅之间的门，打开餐桌上的小收录机，调低音量听立体声广播。本想听鲍勃·迪伦的歌曲，遗憾的是没有播放，而代之以罗杰·威廉姆兹弹的《枯叶》。秋天了！</p>
+    <p>她家的厨房同我家的很相似，有水槽有换气扇有电冰箱有热水器，大小、功能、使用年头、用具数量也大同小异。我自己也不明白何以对别人家的厨房如此关心备至。其实我无意查看他人的生活细节，不过是厨房里的东西自然而然地映入自己的眼帘。</p>
+    <p>我用锅烧了开水，从电冰箱里拿出西红柿，又切了大蒜和手旁一点蔬菜做成西红柿酱汤，然后加进斯特拉斯堡香肠"咕嘟咕嘟"煮了一阵子。同时细细切了甘蓝和圆椒，做了个色拉。又把咖啡放入咖啡壶，在法国式面包上淋了点水并用箔纸包住放入微波炉加热。</p>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">最后一餐</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">告别</span></div>
+    <p>准备妥当后，我叫醒女孩，撤下客厅茶几上的杯子和空瓶。</p>
+    <p>"好味道！"她说。</p>
+    <p>"可以穿衣服了吧？"我问。先于女孩穿衣服是我的一忌，文明社会称之为礼仪。</p>
+    <p>"当然可以，请。"说着，女孩脱下自己的T恤。晨光在她的乳房和腹部照出淡淡的阴影，汗毛闪着光泽。她以这样的姿势欣赏了一会自己的身体。"不坏呀！"她说。</p>
+    <p>"不坏。"</p>
+    <p>我们隔着餐桌面对面坐下，吃着面包、香肠、色拉，喝着咖啡。</p>
+    <p>"早上往下怎么安排？"她问。</p>
+    <p>我看了看表：八点半。</p>
+    <p>"九点离开这里。"我说，"找一处公园，两人晒太阳喝啤酒。十点半开车把你送去什么地方，之后就动身。"</p>
+    <p>她在镜前用梳子梳理头发。我系好领带，穿上外衣。</p>
+    <p>"独角兽骨头怎么处理？"她问。</p>
+    <p>"送给你。"我说，"放在什么地方当装饰算了。"</p>
+    <p>我拿起已不发光的头骨走到房间角落，放在电视机上。</p>
+    <p>"怎么样？"</p>
+    <p>"挺好的。"我回答。</p>
+    <p>"还会发光？"</p>
+    <p>"没问题。"说罢，我再次把她搂在怀里，将这份温煦刻入脑海中。</p>
+    <div class="key"><span class="lbl">✦ 最后的拥抱</span><p>"将这份温煦刻入脑海中"——叙述者知道自己即将消失，每一个日常动作都染上了告别的色彩。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch36.html" class="nav-ch">‹ 第36章</a>
+    <a href="ch38.html" class="nav-ch">第38章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第37章 · 冷酷仙境 · 消失</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

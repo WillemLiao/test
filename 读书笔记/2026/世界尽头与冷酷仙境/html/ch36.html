@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第36章 世界尽头 · 森林 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">森林<small>第36章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>心的感应</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>回溯线索</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>手风琴的启示</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>风的声音</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>小镇的映像</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>旋律苏醒</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>小伙子丹尼</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>围墙即我</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>头骨之光的觉醒</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>你的心在那里</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第36章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">森林</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">心的感应</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag red">对话</span></div>
+    <p>"是那样感觉的？"女孩问，"你感觉可以读出我的心？"</p>
+    <p>"感觉非常强烈。本来你的心近得伸手可触，而我却视而不见。解读的方法本应提示在我面前。"</p>
+    <p>"既然你那样感觉，那就是正确的。"</p>
+    <p>"但我还不能找到。"</p>
+    <p>我们坐在书库地板上，一起靠在墙上抬头望着头骨阵列。头骨鸦雀无声，什么也不说给我听，哪怕只言片语。</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">回溯线索</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">回忆</span></div>
+    <p>"你那种强烈感觉恐怕是最近一段时间才有的吧？"她说，"你逐个回想一下影子衰弱之后你身边发生的事情，里边或许藏有一把钥匙——能用来找到我的心的钥匙。"</p>
+    <p>我在这冷冰冰的地板上闭起双眼，侧耳谛听了一会头骨沉沉的静默。</p>
+    <p>"今早老人们在房前挖坑来着，不知用来埋什么，非常之大。锹声把我吵醒，简直就像在我脑袋里挖坑。下的雪已经把坑埋上了。"</p>
+    <p>"其他呢？"</p>
+    <p>"和你一起去了森林发电站。这事你也晓得吧？见了年轻管理员，谈了森林。还参观了风洞上面的发电设备。风的声音很烦人，活像从地狱底层吹上来的。管理员年轻、文静、瘦削。"</p>
+    <p>"此外？"</p>
+    <p>"从他那里拿了把手风琴，折叠式的，小巧玲珑。很旧，但发音还准。"</p>
+    <p>女孩在地板上静静沉思。我觉得书库的气温正在一刻刻下降。</p>
+    <p>"大约是手风琴。"她说，"钥匙定是它！"</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">手风琴的启示</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">推理</span><span class="tag green">线索</span></div>
+    <p>"手风琴？"</p>
+    <p>"逻辑上说得通。手风琴同歌有关，歌同我母亲有关，我母亲同我心的残片有关。不是么？"</p>
+    <p>"的确如你所说，"我接道，"顺理成章。手风琴有可能是关键。问题是重要一环已经脱落：我连一首歌也想不起来。"</p>
+    <p>"不是歌也行。让我多少听听手风琴的声音也好，可以么？"</p>
+    <p>"可以。"说着，我走出书库，从挂在炉旁的大衣口袋里掏出手风琴，拿来坐在她身边。我双手插进琴盘两侧的皮带，按了几个和音。</p>
+    <p>"真是动听！"她说，"声音像风？"</p>
+    <p>"风本身。"我说，"制作出能发各种声音的风，再加以组合。"</p>
+    <p>她一直闭着眼在倾听这和音。</p>
+    <div class="key"><span class="lbl">✦ 手风琴之钥</span><p>女孩敏锐地指出手风琴是关键——它连接着歌曲、母亲，最终通向心的残片。在逻辑上听起来牵强，但在世界尽头这个充满暗示的世界里，一切线索都以隐喻的方式互联。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">风的声音</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">音乐</span></div>
+    <p>我在能想起的范围内一个接一个弹奏和弦，并用右手指探索似的按动音阶。旋律固然无从记起，但无所谓，只消像风一样让她听手风琴声音即可，像鸟一样把心交给风即可，别无他求。</p>
+    <p>我不能抛弃心，我想。无论它多么沉重，有时是多么黑暗，但它还是可以时而像鸟一样在风中曼舞，可以眺望永恒。我甚至可以使自己的心潜入这小小手风琴的声音之中。</p>
+    <p>建筑物外面刮风的声音似乎传到我的耳畔。是冬天的寒风在镇上往来流窜。风绕过高高耸立的钟塔，穿过桥下，摇曳着排列在河岸的垂柳。它拂动森林无数的枝条，掠过草原，吹响厂区的电线，拍打门扇。独角兽们在风中冻僵，人们在家里悄然屏息。我合上眼睑，在脑海中推出镇上的诸多场景。</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">小镇的映像</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag purple">内省</span></div>
+    <p>我合上眼睑，在脑海中推出镇上的诸多场景：河中沙洲，西墙角楼，林中电站，老人们坐在其中的官舍门前的阳光，河中水深流缓之处，独角兽们俯身饮水，运河石阶上随风起伏的青青夏草。此外还记得电站后面的小块农田，旧兵营西面的草地，东面森林围墙脚下残存的房屋和古井。</p>
+    <p>继而又想在此见到的各色人等：邻室的大校，官舍中居住的老人，电站管理员，还有那个看门人——他们大概正在各自的房间里谛听窗外呼啸的夹雪寒风。</p>
+    <p>我将永久失去这一幅幅景致和一个个人，当然也包括她。但我将一如昨日那样铭记着这个世界和这里的人们，直到永远。纵使这个镇子在我看来不自然且不正常，纵使这里的人们失去了心，那也绝非他们的过错。我甚至可能怀念那个看门人，他也不过是连接在镇子这条牢固锁链中的一环。某种力量建造了牢不可破的围墙，人们只是被吞噬在里面而已。我恍惚觉得自己可以爱镇上的所有风景和所有人。我不能住在这里，但我爱他们。</p>
+    <div class="key"><span class="lbl">✦ 爱世界尽头</span><p>"我不能住在这里，但我爱他们"——整部小说最温柔的句子之一。明知是虚假的、不自然的世界，依然对其中每一个存在产生了爱，这恰恰是心在活动的最好证明。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">旋律苏醒</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">神秘</span><span class="tag gold">音乐</span></div>
+    <p>这当儿，有什么在微微拨动我的心弦。一个和音简直像在寻觅什么似的蓦地驻留在我心中。我睁开眼睛，再度按出这个和弦，并用右手探寻其中的音。花了好些时间，终于找出了和弦开头的四个音。这四个音宛如太阳温柔的光线，从空中款款飘落到我的心中。这四个音寻求着我，我寻求着这四个音。</p>
+    <p>我按住一个和弦键，反复依序弹这四个音。四个音寻求下面几个音和另外的和弦。我首先试着找另一和弦。和弦当即找出。捕捉旋律多少遇到点麻烦，好在开头四个音把我引向其次五个音。别的和弦和三个音又接踵而来。</p>
+    <p>这是歌曲。不是完整的歌曲，是开头一节。我再三按动这三个和弦和十二个音。那是我应该熟悉的歌。</p>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">小伙子丹尼</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">情感</span><span class="tag purple">回忆</span></div>
+    <p>《小伙子丹尼》！</p>
+    <p>我闭上眼睛，接着往下弹。一旦想起歌名，后面的旋律与和弦便水到渠成地从指尖连连涌出。我一口气弹了几次。我清楚地感觉出旋律在滋润心田，整个紧绷绷的身体为之释然。听到这许久没有听过的乐曲，我得以深深感到自己的身体是何等由衷地在渴求它。由于失去音乐的时间过于长久，以致我甚至已不能对它产生饥渴之感了。音乐使我被漫长的冬季冻僵的身心舒展开来，赋予我的眼睛以温煦亲切的光芒。</p>
+    <p>我似乎可以感觉出镇子本身在音乐中喘息。镇中有我，我中有镇。镇子随着我身体的晃动而呼吸而摇摆，围墙也在动，也在一起一伏。我觉得围墙简直就是我自身的皮肤。</p>
+    <p>我久久、久久地反复弹着这支曲子，然后放开乐器置于地板，靠着墙闭上眼睛。我再次感觉出身体的晃动。这里所有的一切都恍若我的自身，围墙也罢城门也罢独角兽也罢河流也罢风洞也罢水潭也罢，统统是我自身，它们都在我体内，就连这漫长的冬季想必也在我体内。</p>
+    <div class="key"><span class="lbl">✦ 围墙即我</span><p>"我觉得围墙简直就是我自身的皮肤"——世界尽头最深刻的认知。镇子不是独立存在，而是叙述者内心的投射。围墙、河流、丛林……都是他自己。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">围墙即我</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">哲学</span><span class="tag blue">神秘</span></div>
+    <p>我放开手风琴后，女孩仍然闭着眼睛，双手紧紧抓住我的胳膊。她的眼睛里溢出了泪水。我把手搭在她肩头，吻着她的眼睛。泪水暖暖的，带给她以温馨的湿气。隐隐约约的柔光照着她的脸颊，使她的泪水莹莹闪光。可是那光并非发自垂悬于书库天花板的昏黄的灯盏，它比星光更白，更温和。</p>
+    <p>我起身熄掉电灯。于是我找到了光源：是头骨在发光！房间变得亮同白昼，那光芒如春天阳光一般温情脉脉，如月光那样安然静谧。架上无数头骨中沉睡的古光此刻正在觉醒。头骨阵列浑似用细碎的光拼凑而成的清晨的海面一样悄无声息地灿灿生辉。然而我的眼睛即使面对这样的光也毫无晕眩之感。光给我以慰藉，使我的心充溢着往昔记忆所带来的温煦。我可以感觉出自己的眼睛已经痊愈，无论什么都再也不能刺痛我的双眼。</p>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">头骨之光的觉醒</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">神秘</span><span class="tag gold">描写</span></div>
+    <p>何等美妙的光景！所有地方都银光点点。它们像一清见底的水中宝石一样释放着早已成就的沉默的光。我把一块头骨拿在手中，用指尖轻轻摸了摸表面。我已经能够从中感受到她的心，她的心就在那里，在我的指尖隐约浮现。那一个个光粒子虽然只有微乎其微的暖意和光芒，却是任何人都无法剥夺的。</p>
+    <p>"那里有你的心。"我说，"惟独你的心浮现出来，在那里闪光。"</p>
+    <p>她轻轻点头，以泪花晶莹的眼睛凝视着我。</p>
+    <p>"我能够读出你的心，能够将其合而为一。你的心并非失落的支离破碎的断片，它就在那里，谁也夺不去。"</p>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">你的心在那里</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">感动</span></div>
+    <p>"让我一个人在这里呆一阵子，"我说，"我想在早晨到来之前读出你的心，再小睡一会。"</p>
+    <p>女孩又点了下头，打量了一遍光闪闪的头骨阵列，走出书库。门关上后，我背靠墙壁，许久许久地凝视着在头骨上交相闪烁的无数光粒。那光既是她怀抱的旧梦，同时也是我自身的旧梦。我在这围墙环绕的镇子上走了漫长的路，而今终于和它不期而遇了。</p>
+    <p>我拿起一块头骨，把手贴在上面，闭上眼睛。</p>
+    <div class="key"><span class="lbl">✦ 不期而遇</span><p>"我在这围墙环绕的镇子上走了漫长的路，而今终于和它不期而遇了"——音乐唤醒了记忆，记忆唤醒了光，光暴露了心。这是世界尽头线情感的高潮。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch35.html" class="nav-ch">‹ 第35章</a>
+    <a href="ch37.html" class="nav-ch">第37章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第36章 · 世界尽头 · 森林</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

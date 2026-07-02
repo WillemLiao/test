@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第8章 · 回忆四 · 命运</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f9f5ef;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f2ece4; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #c7823d; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; cursor: pointer; }
+  .nav-item:hover { color: #c7823d; background: rgba(199,130,61,0.04); border-left-color: #c7823d; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #c7823d; color: #fff; }
+  .nav-item.active { color: #c7823d; background: rgba(199,130,61,0.08); border-left-color: #c7823d; }
+  .nav-item.active .num { background: #c7823d; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-footer a { color: #c7823d; text-decoration: none; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #c7823d, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #c7823d; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #c7823d; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #c7823d; color: #fff; border-color: #c7823d; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #c7823d; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(199,130,61,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(199,130,61,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(199,130,61,0.1); color: #c7823d; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #c7823d; background: rgba(199,130,61,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #c7823d; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #c7823d; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(242,236,228,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #c7823d; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+.ch-nav { display: flex; justify-content: flex-end; gap: 10px; }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">回忆四<small>第8章 · 命运</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>夫人妈送子</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>最牛的葬礼</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>地瓜汤守灵</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>游街送葬</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>西边来的孩子</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>东南西北的阿母</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>喊杨仔屎</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>两亩地</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>地瓜爷爷</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>拼命活</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>放屁大赛</a>
+    <a class="nav-item" data-section="s12"><span class="num">12</span>收成</a>
+    <a class="nav-item" data-section="s13"><span class="num">13</span>地瓜熟了</a>
+    <a class="nav-item" data-section="s14"><span class="num">14</span>找神明</a>
+    <a class="nav-item" data-section="s15"><span class="num">15</span>百花生病</a>
+    <a class="nav-item" data-section="s16"><span class="num">16</span>厕中佛</a>
+    <a class="nav-item" data-section="s17"><span class="num">17</span>夫人妈</a>
+    <a class="nav-item" data-section="s18"><span class="num">18</span>侨批</a>
+    <a class="nav-item" data-section="s19"><span class="num">19</span>送别</a>
+    <a class="nav-item" data-section="s20"><span class="num">20</span>万流亡</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>回忆四<small>第8章 · 命运</small></h1>
+  <div class="meta"><span class="sub">腐烂之地，神明之所</span> · 蔡崇达</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">夫人妈送子</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">开篇</span><span class="tag blue">人物</span></div>
+    <p>你阿母——我外孙女可是结结实实唠叨三十年了。说她生你的前几天，老是出血，本来是因为担心自己扛不过这一关，才想请我来坐镇。哪想待产那晚，我去医院陪床，一进来没和她说几句话，就坐在躺椅上睡着了。她疼得说不出话，拼命推我，我还半天都摇不醒。她只好忍着疼自己下床，扶着吊瓶支架去找医生。</p>
+    <p>我当时不是在睡觉，我是在和夫人妈说话。夫人妈当时正抱着你过来，和我说，本来你阿母这一胎生的应该还是女儿，但是因为你阿母整天一直唠叨，就想要儿子。夫人妈受不了唠叨，帮忙临时换了个儿子。夫人妈还交代，临时换的，孩子还没长全，得小心护着。</p>
+    <p>我记得你是凌晨三点出生的，生下来才四斤七两，啼哭得有气无力的，像只猫，甚至头顶骨都没长好。那天你舅舅骑着三轮车接你阿母出院的时候，是我坚持先直接去趟关帝庙再回家。因为夫人妈交代了，你得有个神明干爹护着，才能安全。这不，你回家时，就突然哭得豪情万丈，跟你干爹的结拜兄弟张飞一样了。</p>
+    <p>再过几十天，我就要走了，你记得有空就去你干爹的庙看看。你还得多去夫人妈庙坐坐，不用干吗，就坐坐。那是我这辈子最好的闺密了。</p>
+    <div class="key"><span class="lbl">✦ 神明干爹</span><p>阿太用"夫人妈受不了唠叨换了儿子"来解释"我"的出生——神明不是高高在上的，而是会听唠叨、会帮忙换孩子的身边人。三圣杯收干儿子，这是闽南民间信仰最温暖的注脚。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">最牛的葬礼</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">习俗</span><span class="tag red">仪式</span></div>
+    <p>我是后来才知道，我一不小心给那神婆办了咱们镇子当时最牛的葬礼。按照当时的说法，咱们镇子是没有鬼魂的了，所以葬礼上是不用守灵的；咱们镇子是没有神明的了，自然也不会需要游街送魂灵升天。我当时什么都不知道，结果，该有的不该有的，那神婆的葬礼都有。</p>
+    <p>那天神婆没吃地瓜汤就走了。我仰着头，对着半空问：蔡也好，你在的吧？我听到海浪和海风的声音，但没有听到她的回应。我想，估计她在忙着捡自己的脚印吧。我对着那藤摇椅又重复问了一遍，还是听不到她的回答。我想，我果然听不到灵魂说话。我想，或许到梦里就可以了。</p>
+    <p>我忘了我是怎么睡着的了，是我妹把我叫醒的。她说：婆婆死了。我说：我知道。我是想，睡着了是不是就能和她说话。我阿妹问：那你说上话了吗？我说：没有。她很笃定地说：她在的，就是说不上话了。</p>
+    <p>我想了想，如果我听得到那神婆说话，她会说什么呢。然后我知道了，我说：咱们先让婆婆好好死，再让自己好好活。</p>
+    <div class="key"><span class="lbl">✦ 生下一场葬礼</span><p>"一件事情落了地，它自己就会挣扎着长出自己的模样。所以很多时候，我们只需要把这件事生下来，然后看它到底能长成什么样子。"——这是阿太的人生哲学：先做，再看结果。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">地瓜汤守灵</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">黑色幽默</span><span class="tag gold">故事</span></div>
+    <p>我叫上阿妹一起，把大门的门板卸了，在门口搭了一个灶，把自己那个办喜事用的大锅抬出来，把火烧得旺旺的。地瓜无论大小，全部洗了，煮地瓜汤。我想，就让海风带着地瓜汤的香味往镇上飘。我想，吃不饱饭的人应该不少，都煮得这么香了，就不信没有人来。</p>
+    <p>果然，香味飘着飘着，开始有人走过来张望。有人问：什么好事啊？我说：我婆婆走了。那人愣了一下，说：现在不好守灵了。我说：我有地瓜汤，你喝吗？那人说：喝啊。我就喝地瓜汤，我不守灵。我说：好啊。然后，那人就留下来守灵了。</p>
+    <p>陆陆续续地，大家都来喝地瓜汤，大家就都这样来守灵了。海风一吹，地瓜汤很容易就放凉了，先来的人把地瓜汤当晚餐，后来的人把地瓜汤当甜点。一个操着外地口音的姑娘突然站起来说，她原来是部队文工团的，可以表演打快板。我妹开心地说：婆婆算是有乐队了。</p>
+    <p>喝起酒来，总会回忆。有人讲起婆婆帮过的人，讲着讲着，有人开始呜呜地哭。我妹也跟着哭，我没哭——我开心地和哭着的阿妹小声地说：咱们婆婆这不就有了哭丧的和念悼词的了？</p>
+    <div class="key"><span class="lbl">✦ 地瓜汤的力量</span><p>一碗地瓜汤，吸引来整个镇子的人，最终办成了全镇最牛的葬礼。阿太用最朴素的智慧——"吃饱饭"——完成了最复杂的事情。守灵、乐队、哭丧、念悼词，所有环节都自然而然长出来了。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">游街送葬</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">金句</span><span class="tag green">意象</span></div>
+    <p>那个晚上他们还帮我在屋后挖了一个洞，好几个人，挖到天蒙蒙亮。守灵的人走的时候，天已经翻出鱼肚白了。我把百花绑在自己身上，北来说他长大了，可以帮忙推车。我们就这样出发去游街了。</p>
+    <p>我妹在前面骑，我和北来在后面推。有狗看到我们，叫了一声，然后传染一样，一只只狗帮我们把我婆婆葬礼游街的消息就这样传下去。过一会儿，鸡也加入了，前前后后比赛着打鸣，好像在帮我们奏乐。我妹开心地说：像乐队在开路。我说：就是乐队在帮神婆开路。</p>
+    <p>我大声喊：蔡也好，你好好走。有人推开窗户，看到了我们，对我点了点头。我知道，他们也在送我婆婆。我们走到原来那一座座庙的地方，看到有的庙被完全推倒，有的庙推了一半。我在路过每座庙的时候，都向他们一一点头。脑子里浮现出的，是我十五岁那个晚上，一个人跑去找神婆时，他们一个个帮我点燃灯火的样子。</p>
+    <p>不远处就是海，海翻出来一条浪，又被新追过来的海水吞了。我指了指浪，对阿妹说：海好像在回答你刚才的问题。</p>
+    <div class="key"><span class="lbl">✦ 狗鸡奏乐，海回答你</span><p>阿太办的这场葬礼，狗帮她传信，鸡帮她奏乐，海帮她回答——整个小镇连同万物都在送神婆最后一程。这是全书最富生命力的葬礼场景。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.19s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">西边来的孩子</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">人物</span><span class="tag red">悲情</span></div>
+    <p>你二舅公的名字之所以叫杨西来，就是因为那天他和我说，他是从西边来的。他五六岁的光景，眼睛大大的，穿着时髦的短衬衫和吊带裤，还穿着皮鞋，只是全身都是泥。小男孩用一半国语一半闽南语问：这里有地瓜吃吗？</p>
+    <p>他说，自己出生的地方叫昆明，他们一家人跟着父亲坐火车去了北京，又搭飞机去了上海，又从上海坐车到这里来。他年纪很小，但他走过的路，比我爷爷、我奶奶、我婆婆、我阿母一辈子加起来还多。</p>
+    <p>他说，当时大家要上船，他父亲搀着他母亲走在前头，他由家里的用人张婆牵着走在后面。不知道谁喊了一声什么，大家慌乱地往前挤。张婆一不小心掉海里了。他停下来，对着海一直喊，张婆没应答，再回头看，他父母都不见了。他下了船，一直等。等所有人都上船了，张婆还没来，等船开走了，张婆还没来。第二天天一亮，他往海边一走，才发现，昨天看到的不是浪，而是一层尸体堆着一层尸体，远看过去，像浪。</p>
+    <p>他哭着走进镇里，被一户人家收留了几个月。有一天，那女人把他原来的衣服穿上，说：你得走了。你是坏人的孩子，你不是我的孩子。我的丈夫就是被那些坏人抓走的。他说，他没再说话，换上原来的衣服出门了。</p>
+    <div class="key"><span class="lbl">✦ 尸体做的浪</span><p>"昨天看到的不是浪，而是一层尸体堆着一层尸体"——一个五六岁的孩子，用"浪"来形容尸体堆。这段历史伤痕，通过一个孩子的眼睛被记录下来，比任何宏大叙述都更令人震撼。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.23s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">东南西北的阿母</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">金句</span><span class="tag purple">温暖</span></div>
+    <p>小男孩说：你给我地瓜汤吃，我叫你阿娘。我说：不用不用，吃完你就赶紧回去找你阿娘。那小男孩说：我没有阿娘了，我得找到阿娘才能一直有东西吃，所以你就做我的阿娘吧。我想了想，现在外面太多没有阿母的孩子了，要不是那神婆，我早就是没有阿母的孩子了，所以我说：那我来当你的阿娘吧。</p>
+    <p>我阿妹说：蔡屋楼，我发现了，你一个孩子都没生的人，最终是来自祖国大地东南西北孩子的阿母。我问：哪有？我阿妹说，北来是北边来的，西来是西边来的。百花是咱们这边的，咱们这边是东南，所以就是东南西北了。我想了想，还真是。我是东南西北的阿母了。</p>
+    <p>最终，一家人齐齐整整挤在一个房间里了。借着月光，我看看百花，看看阿妹，看看北来，看看西来。我想，我就是死都要让你们活下来。</p>
+    <div class="key"><span class="lbl">✦ 东南西北的阿母</span><p>一个被算命断定"无子无孙无儿送终"的女人，最后成了来自东南西北四个方向孩子的母亲。这就是阿太对命运最响亮的回答——"我偏要"。全家挤在一个房间的场景，是全书最温暖的家庭画面。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">喊杨仔屎</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">生存</span><span class="tag gold">故事</span></div>
+    <p>第二天一大早，我早早地打开门，搬了张板凳，就坐在大门口等。我阿妹看到了，问：你在等什么啊？我说：我在等管事的人来找我们。以前婆婆说过，没去祠堂登记的孤魂野鬼是没供养吃的，最终都要饿成厉鬼。咱们在这新世道里都还没登记，都还是孤魂野鬼，肯定活不下去的。我阿妹笑得很开心地说：所以那场葬礼一边送婆婆去阴间，一边送咱们回人间，是吧？我想了想，好像真是这样。</p>
+    <p>等了许久没人来，我开始嚷了：现在谁管事啊？管事的人管下我们啊。有人远远地答了：别喊别喊，我是杨先锋。杨先锋其实就住我婆家斜对面。他掏出烟斗抽了起来，说：万流嫂啊，可不许再叫我杨仔屎了，那是土名，我现在可是干部。</p>
+    <p>我说：你说的这些都是真的吧？首先啊，你是我们自己人，所以我家五张口，你得管，对吧？现在要翻天覆地地变化了，需要大量建设人才，我和我阿妹是建设人才吧，你怎么安排啊？什么东西都分，我们家还没分到，你可得给我们补。杨先锋一下子站了起来：但现在分完了啊。我说：你要对我们不好，我就去找你祖宗和神明告状。想了想，现在没有神明了，于是我又加了一句：我就整天在路上一直喊你杨仔屎。</p>
+    <div class="key"><span class="lbl">✦ 孤魂野鬼回人间</span><p>"那场葬礼一边送婆婆去阴间，一边送咱们回人间"——这句话精准地概括了这个章节的核心。在新时代的浪潮中，阿太用最原始的方式（喊、缠、闹）为全家争取到了生存资格。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.31s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">两亩地</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">土地</span><span class="tag blue">希望</span></div>
+    <p>折腾了一周多，那天中午杨先锋喜气洋洋地来了，跨着大步就进了门，嘴里喊着：蔡屋楼，赶紧来，好事来了。一二三四五，他数了数，五张口，三个小孩。上面说给你们——他伸出手掌，我以为他要说五亩，结果他笑开一口黄牙，说：两亩地。他拍了拍胸膛，对着孩子们说：大家都得活下来啊，都得活得好哦。</p>
+    <p>那块地其实就在我家往那片我和婆婆去拾过肉的海滩的中间。我们全家五个人，把家里能找到的工具都翻出来了，有锄头有铲子有钉耙有扁担有水桶——但直到真的站在那块地上，我才想起，除了在自己家院子里插过地瓜藤，我们谁都没种过地。</p>
+    <p>我们一起蹲在隔壁的田边研究许久，我想，如果这个时候神婆在，她会让我们做什么。然后我知道了，做肯定对的事情。于是我说：先松土，松土肯定是对的。然后等到大家都来了，看他们干吗，我们跟着干吗。</p>
+    <p>西来说，能不能在田中间种上花，最好有一百种花。我觉得这个想法挺好。我也知道了，西来是心里有花田的小孩。</p>
+    <div class="key"><span class="lbl">✦ 心里有花田的小孩</span><p>在最艰难的时刻，西来想在田中间种花——"心里有花田"这个意象太美了。后来百花的墓地真的长成了一片花田，花和根把生与死温柔地连在了一起。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.35s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">地瓜爷爷</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">哲理</span><span class="tag gold">金句</span></div>
+    <p>和我们挨得最近的，是一个老爷爷领着一个老奶奶。老爷爷的肤色比土还黑，眯着眼看我们倒腾了一会儿，对我们喊：你们在干吗？我回：在种地啊。那爷爷笑得咧开了嘴：我这辈子第一次知道种地是这么种的，真行。我问爷爷能教我们种地吗？那爷爷说：可以啊。北来开心地说：谢谢爷爷啊。那爷爷咧嘴一笑：我又不是在帮你们，我在帮这块地。这块地性格那么好，可不能被你们糟蹋了。</p>
+    <p>老爷爷叫郭地瓜，他老婆叫黄芋头。他们有个儿子，叫郭花生。他儿子说，他不想叫花生了，他想叫华生了。他不喜欢种田。这一生很长，只在一块地里活，就是白活了。郭地瓜说他倒觉得是自己老婆不懂事——有的人把一块地当作一个世界，有的人把一个世界当作一块地，哪有什么对错。</p>
+    <p>地瓜爷爷向我招手，要和我咬小耳朵，问：你细看你们那块地了吗？我今天每个角度都下手去摸了，这块地，温柔得很，像阿母。估计能养活你们三口人。我说：但我家五口人。地瓜爷爷眯着眼笑说：没事，我快要死了，我死了，这三亩地，你们也种了。</p>
+    <div class="key"><span class="lbl">✦ 把一块地当作一个世界</span><p>"有的人把一块地当作一个世界，有的人把一个世界当作一块地，哪有什么对错。"——这是全书最通透的话之一。地瓜爷爷用一辈子印证了前者，而这句话里没有评判，只有理解。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.39s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">拼命活</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">坚韧</span><span class="tag green">生长</span></div>
+    <p>我出了门，往镇上走。以前阿母沿着海边走，是去和一个个神明吵架的。现在神明不在了，来了一座座工厂。我走到码头的时候，太阳已经开始准备下山了。一片红霞下，一群渔船正在归港卸货。我问：我能帮忙装卸吗？我爷爷、太爷爷、太太爷爷都是在这里装卸的。</p>
+    <p>我一开始就冲去挑最大包的扛，用力一拉，真重啊，想着，这是我祖宗们以前拉的东西啊，原来我祖宗就是这样给自己和子孙扛出一条生路来的啊。现在轮到我了。女人就是女人，我整个人被那包东西压倒，直接摔在地上。大家笑开了。我也不回话，继续拼命搬。工头硬塞给我工钱，只比他给别人的少一点点。工头说：明天可以来，但明天不准这么拼命。</p>
+    <p>我喜滋滋地回到家，一进门，我看到阿妹抱着百花，北来、西来笑开了牙龈等着我。我阿妹掏出一张钱来，说：咱们有钱了。我们下午三个人，轮流帮田里其他人家挑粪水赚来的。</p>
+    <p>我那段时间老觉得，自己也是地瓜了，也长出许多根须，硬是往这地里扎。虽然那地再怎么松，终究很硬，但咬咬牙，还是可以扎进去的。</p>
+    <div class="key"><span class="lbl">✦ 我也是地瓜了</span><p>"自己也是地瓜了，也长出许多根须，硬是往这地里扎"——人像地瓜一样扎根，这个意象贯穿了阿太的一生。无论命运给什么土，她都拼命扎进去。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.43s">
+  <div class="section-header"><div class="section-num">11</div><div class="stitle"><div class="zh">放屁大赛</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">黑色幽默</span><span class="tag green">日常</span></div>
+    <p>一直吃地瓜还是会有许多毛病的，比如，容易胀气，胀气了就会放屁。大家还是一起挤在我房里睡觉。一开始大家都憋着，但总有一个人会先忍不住放了一声，听着有人带头，于是有了第二个、第三个、第四个屁……大家放完屁都不说话，躲在被子里，偷偷笑。</p>
+    <p>每天都要放屁，对自己和彼此的屁都熟悉后，就开始把放屁玩出不同的花样来了。每天要睡觉前，要么我阿妹，要么北来，就开始宣布今天的新玩法，比如：今天比赛谁放的屁最大声。有比赛谁放的屁声音长，比赛一晚多少次屁，最后还分组比赛团队合作连环屁……</p>
+    <p>最让人意想不到的是你外婆我女儿。百花还小，本来没有参赛资格的，但有次大家还在比着，她突然无比清亮地噗一声，大家一起惊呼，她又噗噗噗，机关枪一般。你外婆我女儿因此曾有个绰号，叫百发机关枪，这是北来取的。只是后来，想着百花长大了，以后还得嫁人的，才不叫了。</p>
+    <div class="key"><span class="lbl">✦ 百发机关枪</span><p>在最穷最苦的日子里，一家人用放屁比赛来取乐——这是全书最欢乐的段落。苦难没有压垮他们，反而让他们的笑声更加响亮。"百发机关枪"这个绰号里，藏着的是用幽默对抗命运的全部力量。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s12" style="animation-delay:0.47s">
+  <div class="section-header"><div class="section-num">12</div><div class="stitle"><div class="zh">收成</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">收获</span><span class="tag green">土地</span></div>
+    <p>临近秋霜了，那个地瓜爷爷每天都预告：地瓜要有收成了哦。北来和西来怕地瓜被偷了，后来干脆就拿着席子和蚊帐，睡田边了。有地瓜爷爷帮忙带着，收成就是好，堆起来像一座小山。地瓜爷爷说，留一半自家吃，留一半换钱去。换完钱，买米去。听到"米"字，孩子们兴奋得一直叫。</p>
+    <p>地瓜爷爷眯着眼笑：那地瓜就是好。我们对它稍微好点，它就对我们这么好。有的东西自己一直吃着苦，然后就想着得让自己变得甜，结果，它不仅甜了自己，最终还甜了许多人。</p>
+    <p>我们家三包米，每包米十斤，百花也刚好三十斤。我抱着百花，阿妹、北来、西来像抱着孩子一样各抱着一包米，每个人心里都踏实得暖洋洋的。那个晚上，我们家第一次有饭，有菜，有肉还有花。那个晚上，大家都没放屁，而是此起彼伏、开心地打呼。</p>
+    <p>第二天又是新一轮的松土、拉沟渠、插苗。早上我还没起床，北来、西来就起来了，他们早早扛起了锄头着急要去田里。我知道，他们是看到过收成的人。看到过收成的人，会更知道怎么开始种地。</p>
+    <div class="key"><span class="lbl">✦ 看到过收成的人</span><p>"看到过收成的人，会更知道怎么开始种地。"——这句话何尝不是说人生？阿太用最朴素的经验告诉我们：只要你尝过一次丰收的甜，你就有了继续耕耘的勇气。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s13" style="animation-delay:0.51s">
+  <div class="section-header"><div class="section-num">13</div><div class="stitle"><div class="zh">地瓜熟了</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">离别</span><span class="tag blue">生命</span></div>
+    <p>新一季还没结束，一天下午，就芋头奶奶一个人来了。北来问：地瓜爷爷呢？芋头奶奶听到了，但因为耳背说话很大声：爷爷昨晚走了。说完还是笑着，让人感觉像是兴高采烈在说着什么开心的事情。不开心的是北来，北来愣了好一会儿，问：怎么就走了？奶奶笑眯眯地说：就像地瓜，熟了就是熟了。</p>
+    <p>芋头奶奶每天还是来田里，不下田，就坐在田埂上，呆呆地看着自己的地。就这样过了三个月左右吧，芋头奶奶有一天没有坐在田埂上了。我们都知道，芋头奶奶走了。</p>
+    <p>我悄悄跑去找村长，帮忙写了"地瓜"和"芋头"这两个名字。那天，我把北来、西来拉到那个小沙滩。沙滩边上，是一片相思树林。树林里，有两个小土堆。西来开心地说：我们找到爷爷奶奶了。北来开心地说：那坟墓上的土黝黑黝黑的，就像地瓜爷爷。那天中午，我们就在那墓地边上用干牛屎烤了地瓜。北来挑出最大最肥的两个，放在墓碑前。</p>
+    <p>我妹问我：阿姐，你说人会死，地瓜会死，神明会死，地会死吗？我想了想，说：应该会吧。</p>
+    <div class="key"><span class="lbl">✦ 熟了就是熟了</span><p>"就像地瓜，熟了就是熟了。"——这是全书对死亡最朴素也最通透的解释。北来和西来知道"还有一种死亡叫熟了"，他们把地瓜放在墓碑前，在死亡面前烤地瓜、吃地瓜，这是对生命最好的致敬。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s14" style="animation-delay:0.55s">
+  <div class="section-header"><div class="section-num">14</div><div class="stitle"><div class="zh">找神明</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">寻找</span><span class="tag gold">哲思</span></div>
+    <p>我确定能和大家活下来后，就开始偷偷找那神婆说会留给我的那尊神。我预料那神婆担心这在当时是封建迷信，应该会把她藏好的，但我真没想到，那神婆藏得也过于好了。</p>
+    <p>我一开始是猜着找的，我找过各种墙角、柜子，找过屋檐、床底……没有找到；用锄头翻找过庭院，用手敲过每一面墙……没有找到。后来，我每周细抠一个区域，每个区域一寸一寸、一块砖一块砖地翻找过去。我越找越生气，找到最后，神明不重要了，重要的，是我竟然找不到。</p>
+    <p>我之所以着急找神明，因为我是认识命运的。我看过我爷爷的命运，也看过我奶奶的命运。我看过我阿母的命运，也看过那神婆的命运。我知道的，命运不会只是条潺潺流淌的溪流，它会在经过某个山谷时就突然坠落成瀑布，还可能在哪个拐弯后就汇入大海消失不见了。</p>
+    <div class="key"><span class="lbl">✦ 找到最后，神明不重要了</span><p>"找到最后，神明不重要了，重要的，是我竟然找不到。"——阿太找神像的过程，其实是在找一种确定性。当她说出"命运会在某个山谷突然坠落成瀑布"的时候，她已经做好了准备。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s15" style="animation-delay:0.59s">
+  <div class="section-header"><div class="section-num">15</div><div class="stitle"><div class="zh">百花生病</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">转折</span><span class="tag red">悲情</span></div>
+    <p>百花无论坐在哪儿，都像一盆花。那天，我和百花要回家了。她还是走在前面，两只手护着裤兜里的糖果和花生，像只小鸭子一样兴奋地跑进家门，突然摔了一下。她没哭，站起来，继续往前跑，又摔了一下。</p>
+    <p>百花还是给大家分了糖果和花生，大家还是拿回给她。吃了糖果，饭也做好了，大家才发现，百花已经睡着了。大家舍不得叫醒百花，该收拾家里的收拾家里，全部工作做好了，百花还在睡。我推了推百花，百花没应。我用手一摸，百花的额头有点烫手。我心扑通扑通跳，抱起百花就往卫生院跑。我一跑，北来、西来也跟着跑，我阿妹也赶紧跟着跑。</p>
+    <p>我边跑边哭，边哭边骂：我就知道你没那么安分，我就知道。我就要和你杠下去，我一辈子就和你没完。我阿妹问我：你在骂谁？我说：命运。</p>
+    <p>小儿麻痹症，那是我第一次听到它的名字。我不认得字，国语也不好，但我就一直念着，赶紧念着，我想，我必须记住它的名字。</p>
+    <div class="key"><span class="lbl">✦ 我在骂谁？命运。</span><p>"我就知道你没那么安分，我就要和你杠下去，我一辈子就和你没完。"——百花生病的这一刻，阿太对命运的愤怒到达顶点。她没有求饶，没有认输，而是骂着命运，准备继续杠下去。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s16" style="animation-delay:0.63s">
+  <div class="section-header"><div class="section-num">16</div><div class="stitle"><div class="zh">厕中佛</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">金句</span><span class="tag purple">神性</span></div>
+    <p>医生说百花可能会死。我认识这个字，我听不得这个字。我赶紧跑回了家，趴在地上，一块砖一块砖地敲过去，一片墙一片墙敲过去。我果然还是没找到。</p>
+    <p>我知道自己的心里已经像个粪坑，腐朽的东西在不断发酵。我赶紧捂住嘴，那难受的哭声，还是从手指缝里流了出来。我对他们笑了笑，说：我去趟厕所。我一进厕所，蹲在茅坑上，就开始呕吐着哭，哭着哭着，突然看到，那茅坑的矮墙上，好像有人用石块画着字。我用都是泪水和鼻涕的手去擦墙，那字沾上水后颜色更清晰了。有"阿弥陀佛"，有"妈祖"，有"七王爷公"，有"大普公"……我知道了，此时是我蹲在厕所里哭，但此前很多人和我一样，在这个最臭的地方，假装蹲着坑偷偷哭。然后，我还知道了，神明其实一个都没有走，他们就藏在厕所里，就藏在这世间最恶心的地方——好像这里本来就是生下他们的地方。</p>
+    <p>我赶紧往家里跑，冲进厕所，我抬起头，看到厕所顶上那根木头上，好像有什么。我拿来一张凳子，踮着脚，够着了。我拿下来——是神像。我站在凳子上，抱着神像，下面是张开着的粪坑——像女人的产道。好像，这世界终于为我重新生下神明了。</p>
+    <div class="key"><span class="lbl">✦ 腐烂之地，神明之所</span><p>"神明其实一个都没有走，他们就藏在厕所里，就藏在这世间最恶心的地方——好像这里本来就是生下他们的地方。"——这是全书最震撼的段落之一。在最腐朽的地方，藏着最神圣的东西。粪坑像产道，神明被重新生下来。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s17" style="animation-delay:0.67s">
+  <div class="section-header"><div class="section-num">17</div><div class="stitle"><div class="zh">夫人妈</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">希望</span><span class="tag gold">温暖</span></div>
+    <p>我用百花小时候用的襁褓包住夫人妈，抱在怀里一路往卫生院跑。我把夫人妈放在百花枕头边。我对百花说：夫人妈来了，你必须活过来，你要不活过来，我不认你当我的女儿了。我对着神像说：夫人妈请你保佑百花，如果百花没好过来，我自此就不认你，也不要你了。</p>
+    <p>大约在第二天凌晨，百花醒了。百花哭着说，她记得本来回家了，然后不知道怎么的，就在一条街上玩。街上有个婆婆对着她喊，说：百花百花，城门要关了，你得赶紧回去。她想着得赶紧回来找阿母，就跟着那婆婆一直跑。跑到城门，城门已经关了。那婆婆抱着她，来到一个狗洞，说，这是她在城墙上偷偷开的洞，只有小孩子钻得过去。她就赶紧钻了。一出来，就看到我们在哭。</p>
+    <p>百花是活过来了，但只是活了一半回来。百花的腿脚有可能会不断萎缩。百花确确实实在试图把自己的腿找回来。她经常用力地发着呆，我知道她在让自己的意识一点点往自己腿的深处爬。我心疼得眼眶里泪水直打转，但我可不想在孩子面前显得很脆弱，所以我笑着问：很疼吧？百花笑着和我说：不疼啊。阿母我不疼。百花越说不疼，我越心疼。</p>
+    <div class="key"><span class="lbl">✦ 钻狗洞回来</span><p>百花从另一个世界钻狗洞回来——这是全书最温柔的神迹。夫人妈帮她打开了那扇关上的城门。阿太对神明说"你不帮我我就不认你"——她和神明的相处方式，和与命运一样：平等，甚至带点蛮横。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s18" style="animation-delay:0.71s">
+  <div class="section-header"><div class="section-num">18</div><div class="stitle"><div class="zh">侨批</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">思念</span><span class="tag blue">远隔</span></div>
+    <p>村长领着个人直直地走进来，坐在院子里的石礅上，开心地抽起了烟。他说：你们家有侨批了。你家有华侨，华侨给你寄信还寄钱来了。邮局的人从口袋里掏出那封信，信封上写了一行外国字一行中国字。中文写的是，马来西亚杨万流。村长得意扬扬地想对我说什么，才发现我眼眶红了。</p>
+    <p>杨万流说他在马来西亚已经有了养殖场，要接婆婆、我和北来去马来西亚。我说回信。我说你就这么回：万流，婆婆已经死了，但她说一直陪着我。我现在不仅有北来，还有我阿妹陪着我，后来人民群众又给我送来了西来和百花。这么多人去马来西亚肯定很贵，而且我坐船会晕。我觉得你还是用给我们买船票的钱娶个妻子吧。咱们的事情下辈子再说。</p>
+    <p>杨万流不断有电报过来。那张纸条写着的是：吾妻来。又一张：妻来。我甚至能听到杨万流的声音和口气。我把那张写着"妻来"的纸条折好，放在胸口处那个兜兜里，心里暖乎乎的。</p>
+    <div class="key"><span class="lbl">✦ 妻来</span><p>杨万流的电报"妻来"就两个字，却比任何情书都有力。"吾妻来"——他从来没有忘记她是他的妻。而阿太回"咱们的事情下辈子再说"，是她这辈子最温柔也最残忍的决定。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s19" style="animation-delay:0.75s">
+  <div class="section-header"><div class="section-num">19</div><div class="stitle"><div class="zh">送别</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">离别</span><span class="tag red">悲情</span></div>
+    <p>到厦门的码头了，我们远远地就看到"马来西亚"四个字。喊一个名字，我们就过去一个人。轮到我阿妹的时候，工作人员翻出那本子和纸，说：没有了，蔡屋阁没有自己丈夫签字，和杨万流不是直系，是不能办访亲的。我知道了，王双喜那个没良心的，没有给我阿妹签字。</p>
+    <p>我推着阿妹，说：她是蔡屋楼。我阿妹愣了，说：我是蔡屋阁。我说：傻阿妹，你还不懂，这就是夫人妈安排的啊。杨万流必须重新娶个妻子，他这么好的人，必须有孩子。我要把百花抱到阿妹的担子里，百花疯了一样挣扎，她整个人直接摔在地上。百花说：阿母不走，我也不走。</p>
+    <p>我挑起担子转头就走。担子的前面是我的百花，担子的后面，是我的神明、阿母和婆婆。我知道，我这辈子没有杨万流了。虽然我告诉自己，可以下辈子再找他的，但眼泪一直一直掉。百花挣扎着从筐里爬出来，磕着了腿。百花说：阿母不哭，百花陪着阿母的。我说：阿母没哭啊。但眼泪就是一颗颗往外蹦。</p>
+    <div class="key"><span class="lbl">✦ 这辈子没有杨万流了</span><p>"担子的前面是我的百花，担子的后面，是我的神明、阿母和婆婆。我知道，我这辈子没有杨万流了。"——这是全书最让人心碎的场景之一。阿太把自己的人生一肩挑了，把爱情留给了下辈子。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s20" style="animation-delay:0.79s">
+  <div class="section-header"><div class="section-num">20</div><div class="stitle"><div class="zh">万流亡</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">结局</span><span class="tag purple">爱情</span></div>
+    <p>那份电报就七个字：万流亡遗物寄回。我就知道。我感觉到了，我刚刚就感觉到了。杨万流走了，我没有丈夫了。我很想知道，他是怎么走的。但电报上分明有这三个字：万流亡。我想着，我可以做什么呢？我做不了什么。我没有他的尸体，我没有他的照片或者画像，我没法给他办葬礼。</p>
+    <p>我想问杨万流：下辈子还要不要我继续当你妻子？我知道，你可太生我气了。但我就想问，这么生我气，还要我吗？如果他愿意我下辈子还当他妻子，他希望要几个孩子啊？十个、二十个，要多少个我都生。</p>
+    <p>足足等了半个月，我才收到杨万流的遗物——那是一堆信。原来杨万流每周都给我写一封信，从他到台湾再到马来西亚，只有我不去马来西亚的那些日子，他停了三个月，但此后又继续写了。只是一直没给我寄。我不过还是一封封地把信拆开了，一张张地摸。然后，我看到了，每封信的结尾，他都画了一颗心。</p>
+    <p>阿太讲着讲着，笑得像个孩子，沟沟壑壑的脸，突然害羞地绯红了起来。她说：对哦，我得告诉你一件事情，过了许久许久之后，很多华侨寄侨批回来，说要给神明的庙宇添砖加瓦。那些藏在厕所里的神明，一尊尊都被请出来了。有尊叫紫姑的神明最可爱，问卜了半天，说不想建庙了，她就住厕所里了。那尊神明，用咱们现在的说法是神界的妇联主任。她估计是看到太多女人都躲在厕所里哭吧。</p>
+    <div class="key"><span class="lbl">✦ 每封信都画了一颗心</span><p>"那炮说得可大声了。"——杨万流把爱刻在炮弹上，写在每封信的结尾，画成一颗颗心。这个沉默的男人的爱，像炮声一样轰鸣了一生。而紫姑住在厕所里的结尾，让整章"腐烂之地，神明之所"的主题完美闭合。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch07.html" class="nav-ch">‹ 第7章</a>
+    <a href="ch09.html" class="nav-ch">第9章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第8章 · 回忆四 · 蔡崇达</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

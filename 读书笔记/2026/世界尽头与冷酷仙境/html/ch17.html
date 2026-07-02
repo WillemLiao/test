@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第17章 冷酷仙境 · 电梯、电烤箱、性爱 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">电梯、电烤箱、性爱<small>第17章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>床边对话</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>她的人生</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>疲劳的哲学</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>查理·帕克</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>模糊系统的真相</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>定时炸弹</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>世界尽头与关键词</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>唯一的钥匙</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>解救博士</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第17章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">电梯、电烤箱、性爱</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">床边对话</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">疼痛</span></div>
+    <p>"快起呀，"胖女郎说，"这样下去世界要完蛋的。"</p>
+    <p>世界完蛋更好，我想。肚子上的伤口痛得像有恶魔作怪，又如有一对健壮的双胞胎男孩在用四只脚猛踢我有限而狭窄的想象力边框。</p>
+    <p>胖女郎脸上浮现出莫名其妙似的表情，久久地凝目注视着我。"为什么这么想？"</p>
+    <p>"不知道。大概是想怪罪谁吧——把这种莫名其妙的勾当推到一个人头上，心里才舒服点。"</p>
+    <p>"可是什么也解决不了。"</p>
+    <p>"是什么也解决不了。"我说，"但那不是我的责任，事情不是我惹起来的。是你祖父加的油拧的开关，我不过遭受连累。干嘛非让我解决不可？"</p>
+    <div class="key"><span class="lbl">✦ 无妄之灾</span><p>"干嘛非让我解决不可？"——主角的抱怨是一连串被动遭遇的总爆发。他始终是被卷入的，从未主动选择过。这质问既是对胖女郎说的，也是对"世界"说的。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">她的人生</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag purple">孤独</span></div>
+    <p>女郎绕到床的另一侧，没脱粉红色西服裙就毛手毛脚地钻进被窝。她把枕头拍得鼓胀后塞到颈下，其脖颈发出初次见面时的那种香瓜味儿。</p>
+    <p>"我嘛，跟男人这么亲近还是头一次。"她说。</p>
+    <p>她讲述自己的身世：六岁时父母和兄弟都在一场交通事故中死了。那以后一直跟祖父生活。没上学，几乎不上街，也没有朋友。课程全是祖父教的，从英语、俄语到解剖学。</p>
+    <p>"我什么都会，光外语就会四门。会弹钢琴，会吹中音萨克斯管，会组装通讯仪器，还学过航海和踩钢丝，书也看了一大堆。三明治也做得可口吧？"</p>
+    <p>"可口。"</p>
+    <p>"祖父说，学校无非是花十六年来消耗脑浆的地方。"</p>
+    <p>"不过，没有同龄朋友不寂寞？"</p>
+    <p>"怎么说呢，我特别忙，没时间想那么多。再说，反正我跟同龄的人怕也说不到一起。"</p>
+    <div class="key"><span class="lbl">✦ 孤岛式的教育</span><p>祖父为她设计了一种隔绝于社会的精英教育：四门外语、钢琴、萨克斯、航海、踩钢丝——却没有任何同龄朋友。"学校是消耗脑浆的地方"这态度，既是天才的自信，也是与社会彻底脱钩的风险。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">疲劳的哲学</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">独白</span></div>
+    <p>"但对你极有兴趣。"</p>
+    <p>"为什么？"</p>
+    <p>"你看上去很疲劳，而疲劳却又像是一种精力。这点我不明白，我认识的人里边没有一个是这种类型。祖父绝不疲劳，我也同样。咦，真的很疲劳？"</p>
+    <p>"确实疲劳。"我恨不得反复说二十遍。</p>
+    <p>"疲劳是怎么一回事？"女郎问。</p>
+    <p>"感情有很多侧面都不明确。对自己的怜悯，对他人的愠怒；对他人的怜悯，对自己的愠怒——凡此种种，都是疲劳。"</p>
+    <p>"哪种都叫人糊涂。"</p>
+    <p>"最后一切都变得稀里糊涂，和转动各色圆球是同一回事：转速越快，越是辨不出彼此，终归一片混沌。"</p>
+    <div class="key"><span class="lbl">✦ 疲劳即混沌</span><p>"疲劳是怎么一回事？"——一个从未疲劳过的人问出这个问题，本身就荒诞而深刻。主角的回答将疲劳定义为情感的离心运动：转速太快，以至无法分辨怜悯与愠怒、自我与他人。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">查理·帕克</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">音乐</span></div>
+    <p>"你会吹中音萨克斯管？"女郎问我。</p>
+    <p>"不会。"</p>
+    <p>"可有查理·帕克的唱片？"</p>
+    <p>"有，我想是有，但眼下乱糟糟的，绝对找不出来，何况音响也坏了，总之欣赏不成。"</p>
+    <p>"会哪样乐器？"</p>
+    <p>"一样也不会。"</p>
+    <p>"碰一下身体可以么？"</p>
+    <p>"不行，"我说，"要是碰得不妥，伤口可就遭殃了。"</p>
+    <p>"伤好后可以碰吧？"</p>
+    <p>"如果伤好而世界又没完蛋的话。"</p>
+    <div class="key"><span class="lbl">✦ 如果世界没完蛋</span><p>"如果伤好而世界又没完蛋的话"——主角用轻描淡写的口吻说出了一个最严肃的前提。查理·帕克的萨克斯、身体的触碰，这些日常的欲望必须在"世界尚未完蛋"的前提下才有意义。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">模糊系统的真相</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">信息</span><span class="tag blue">设定</span></div>
+    <p>胖女郎用手指摸着金耳环，一阵沉思。</p>
+    <p>"他说模糊系统是通向新世界的大门。虽然那是为重新组合输入电脑里的数据而开发的辅助性手段，但若运用得法，很可能使之发挥出足以改变整个世界结构的威力，正如原子物理学产生原子弹一样。"</p>
+    <p>"就是说，我将成为开启模糊系统通往新世界之门的钥匙？"</p>
+    <p>"总的说来，怕是这样的吧。"</p>
+    <p>我用指甲尖敲着门牙。我很想用大玻璃杯喝加冰块的威士忌，可惜冰块和威士忌早已在房间里销声匿迹了。</p>
+    <p>女郎解释祖父的动机：祖父离开组织是因为担心组织滥用其研究成果。"祖父不信赖任何种类的权力。他退出组织时，把你'组织'里的私人数据也带出来了。"</p>
+    <p>大概不出我所料，我想。博士带走我的私人数据，用于其个人研究，把我作为主要标本而将模糊理论大大推向前进。</p>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">定时炸弹</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">危机</span><span class="tag blue">时间</span></div>
+    <p>"那么，也就是说……我是在什么地方同世界尽头连在一起喽？"</p>
+    <p>"是吧。祖父说你是关键，说他好几年前就以你为核心进行研究来着。"</p>
+    <p>"那定时炸弹又是怎么回事？"</p>
+    <p>小个子说我为博士处理的数据就像定时炸弹，时间一到就轰炸。胖女郎说她也不清楚细节。</p>
+    <p>我在脑袋中快速计算自己搞好模糊运算后到现在的时间。运算完毕睁眼醒来是昨晚快到十二点的时候，已经差不多过去了二十四个小时，时间相当之长。不知定时炸弹到底在几小时后爆炸，反正时针已走过了二十四个小时。</p>
+    <div class="key"><span class="lbl">✦ 倒计时</span><p>模糊运算完成后已经过了二十四个小时——定时炸弹在滴答作响。主角被动地意识到自己正在被一个他无法理解的程序消耗着，而唯一的知情者博士已失踪。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">世界尽头与关键词</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">连接</span><span class="tag blue">关键</span></div>
+    <p>"还有一个疑问，"我说，"你是说世界要完蛋了吗？"</p>
+    <p>"嗯，是的，祖父那么说的。"</p>
+    <p>"你祖父说世界要完蛋，是在开始研究我的私人数据之前，还是之后？"</p>
+    <p>"之后。大概是之后。不过祖父准确地说出世界要完蛋则是最近几天的事。"</p>
+    <p>"我也不清楚。但有一点令人生疑：我进行模糊运算的通行令是'世界尽头'。这实在难以认为是偶然巧合。"</p>
+    <p>"你那个'世界尽头'，内容是什么？"</p>
+    <p>"不知道。尽管是我的意识，却藏在我鞭长莫及的地方。我所知道的，仅仅是'世界尽头'。"</p>
+    <div class="key"><span class="lbl">✦ 世界尽头</span><p>主角模糊运算的通行令是"世界尽头"——这与"世界尽头"那一章的故事发生了共振。两个世界的联系第一次被明确点出：不是比喻，而是程序上、意识上的真实连接。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">唯一的钥匙</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">存在</span></div>
+    <p>"你祖父到底想对我做什么？他叫我进行模糊运算的数据和独角兽头骨究竟意味什么？"</p>
+    <p>"我要是知道，马上就可以把你解救出来。"女郎说。</p>
+    <p>"解救我和世界。"我说。</p>
+    <p>我手捂伤口从床上坐起。脑袋针刺般作痛。</p>
+    <p>"恐怕别无选择。"我说，"你祖父口中的世界尽头究竟意味着什么，我自然不清楚，但总不能放任自流，一定得设法阻止。否则会有人倒大霉的，我觉得。"</p>
+    <p>"不管怎样，为此你必须解救我祖父。"</p>
+    <p>"因为我们三人都是好人？"</p>
+    <p>"是的。"胖女郎说。</p>
+    <div class="key"><span class="lbl">✦ 好人</span><p>"因为我们三人都是好人"——这句天真的话在冷酷仙境的语境中反而带有悲壮的意味。在世界行将完蛋的阴影下，"好人"是唯一可以依靠的标准。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">解救博士</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">行动</span></div>
+    <p>"既然如此，你肯把祖父从夜鬼手中搭救出来？"</p>
+    <p>我手捂伤口从床上坐起。脑袋针刺般作痛。</p>
+    <p>"恐怕别无选择。"我说，"你祖父口中的世界尽头究竟意味着什么，我自然不清楚，但总不能放任自流，一定得设法阻止。否则会有人倒大霉的，我觉得。"所谓有人，十之八九是我本身。</p>
+    <p>"不管怎样，为此你必须解救我祖父。"</p>
+    <p>"因为我们三人都是好人？"</p>
+    <p>"是的。"胖女郎说。</p>
+    <div class="key"><span class="lbl">✦ 别无选择</span><p>主角从"干嘛非让我解决"到"恐怕别无选择"——这一章完成了他的心理转折。不是英雄主义，而是意识到：如果不去，倒霉的就是自己。这是村上特有的"软弱的决心"。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch16.html" class="nav-ch">‹ 第16章</a>
+    <a href="ch18.html" class="nav-ch">第18章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第17章 · 冷酷仙境 · 电梯、电烤箱、性爱</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

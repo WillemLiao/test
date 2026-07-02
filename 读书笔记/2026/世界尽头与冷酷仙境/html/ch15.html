@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第15章 冷酷仙境 · 雨衣电筒面包奶酪 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">雨衣电筒面包奶酪<small>第15章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>威士忌的覆灭</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>毁灭的节奏</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>拷问的预谋</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>腹部的刀伤</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>组织的盘问</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>独处与反思</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>就医缝合</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>屠格涅夫与四面墙</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>废墟中的睡眠</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>胖女郎再次唤醒</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第15章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">雨衣电筒面包奶酪</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">威士忌的覆灭</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">场景</span><span class="tag purple">暴力</span></div>
+    <p>大块头在水槽里把我贮存的威士忌打得一瓶不剩——的确一瓶也不剩。我同附近酒店的老板成了熟人，每次削价处理威士忌时，对方都送一两瓶过来，结果我现在的库存量相当可观。</p>
+    <p>大块头首先打烂了两瓶威尔德·泰西，接着开始摔苏格兰C·S，毁掉了三瓶I·W，粉碎了两瓶杰克·丹尼，埋葬了劳塞斯，报销了赫格，最后把半打芝华士一起送上西天。声音震天动地，气味直冲霄汉。毕竟同时打碎的是足够我喝半年的威士忌，气味当然非同小可，满屋子酒气扑鼻。</p>
+    <p>"光是呆在这里都能醉过去。"小个子感慨道。</p>
+    <p>我万念俱灰，支着下巴坐在桌旁，眼看支离破碎的酒瓶在水槽中越积越高。在上的必然掉下，有形的必然解体。</p>
+    <div class="key"><span class="lbl">✦ 品牌的清单</span><p>大块头逐瓶摧毁威士忌的清单——威尔德·泰西、苏格兰C·S、I·W、杰克·丹尼、劳塞斯、赫格、芝华士——既有仪式感又有荒诞性。这些品牌的列举是村上式的物质叙事：用细节堆砌出损失的重量。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">毁灭的节奏</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">暴力</span></div>
+    <p>大块头继续进行并无意义可言的破坏。他将床一把掀翻，用刀割裂床垫。又把立柜里的衣服一古脑儿掏空，把桌子抽屉统统摔在地上。接着掀掉空调器的配电盘，踢翻垃圾筒，将抽屉里的东西用不同的办法一一砸毁摔碎。雷厉风行，干脆利落。</p>
+    <p>卧室和客厅沦为废墟之后，即刻移师厨房。我和小个子则转到客厅，把靠背割得七零八落且上下倒置的沙发弄回原处，坐下观看大块头在厨房大发淫威。沙发坐垫几乎完好无缺委实堪称不幸中的一幸。</p>
+    <p>大块头拉开餐柜，将玻璃杯扫落在地，又向碟盘发起攻击。带过滤器的咖啡壶、茶壶、盐瓶、白糖罐、面粉罐，全部粉身碎骨。大米撤了一地，冷冻箱里的冷冻食品也惨遭同一下场。</p>
+    <p>破坏戛然而止，一如其开始之时。大约十五分钟到三十分钟。从小个子目视劳力士表盘时现出的满意神情看来，这可能是近乎破坏两室一套住房所需标准时间。</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">拷问的预谋</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">策略</span></div>
+    <p>"我们走后不久，'组织'那帮人就会赶来。他们要调查我们，看我们闯入你房间搜寻什么，问你头骨在哪里。但你对头骨一无所知。明白么？不知道的事无法告诉，没有的东西拿不出来，纵使受到拷问。"</p>
+    <p>"免得你受怀疑。那些家伙不知道你去过博士那里，知道这点的眼下只有我们，所以你不至于受害。你是成绩优秀的计算士，那些家伙肯定相信你的话，而以为我们是'工厂'的，并开始行动。我们早已算计好了。"</p>
+    <p>"简单得很，"小个子说，"我们掌握了你所面临的大致境况，正在利用你。而你的组织对你的处境还几乎浑然不觉，一旦发觉，很可能除掉你。我们的估算百发百中。简单吧？"</p>
+    <p>"所谓选择就是这么一种东西。要尽量选择可能性多的，哪怕仅多百分之一。这和下国际象棋一样，受挫的时候就逃，逃的过程中对方很可能出错。"</p>
+    <div class="key"><span class="lbl">✦ 选择的艺术</span><p>"要尽量选择可能性多的，哪怕仅多百分之一"——小个子传授的不是拳脚功夫，而是一种生存策略：在信息不对等的博弈中，给自己创造转圜余地。这简直是冷酷仙境的行动哲学。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">腹部的刀伤</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">暴力</span><span class="tag gold">疼痛</span></div>
+    <p>"那么，"小个子重复道，"往下需要你稍微难受一下。稍微——或者说相当难受也未尝不可。这是为你本人着想，只能请你忍耐。"</p>
+    <p>我无可奈何地脱下裤子。反抗也于事无补。我乖乖地撤离沙发，在地毯上跪下。大块头绕到背后两手插进我腋下，拦腰攥住我的手腕，便如同射击游戏室壁架上摆的假鸭子，全然动弹不得。</p>
+    <p>小个子去厨房拿回快刀，将刀身弹出大约七厘米，从衣袋里掏出打火机仔细烧了烧刀刃。用火消罢毒，小个子静候片刻，以便刀刃降温。随后，他把左手放在我白色短裤的腹部橡皮带处，往下拉到阳物露出一半的部位。</p>
+    <p>小个子丝毫没有伤害我的阳物，而是在我肚脐往下约五厘米的地方横向切了一道六厘米左右的口子。我直觉得浑身所有的汗毛孔一齐冒出冷汗。小个子用纸巾擦去刀口上的血，收起刀身。"缝七针就行。多少会留下伤疤，好在那个位置别人看不见。"</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">组织的盘问</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">规则</span></div>
+    <p>过了三十分钟，本部来了三个人。一个便是经常来我这里取数据的盛气凌人的年轻男联络员，其余两人穿着胶底布面轻便鞋，一副运输公司搬运工的打扮。他们也同样没有敲门，穿着鞋径直登堂入室。</p>
+    <p>联络员从我开始听取情况。他从上衣内侧口袋里掏出一个黑皮手册，用夏普记录笔记下谈话要点。我说有两人来搜寻头骨，出示了腹部伤口。对方对着伤口看了好一会儿，但未发表任何感想。</p>
+    <p>"头骨？头骨到底是什么？"他问。</p>
+    <p>"哪里晓得什么头骨，"我说，"我还想问人呢。"</p>
+    <p>"我们已隐约觉察出符号士们在密谋策划什么，那些家伙已开始行动，但还摸不准其具体用心。"联络员说，"提高警惕，休养身体。工作请暂时辞掉，有什么情况马上同我们联系。"</p>
+    <p>"注意，好好听着，"联络员说，"即便那些家伙花言巧语拉你下水，你也不得动摇。你要是反戈一击，我们追到天涯海角也要把你除掉。这不是戏言，一言为定。我们有国家这个靠山，我们无所不能。"</p>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">独处与反思</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">独白</span></div>
+    <p>他们走后，我开始就事情的发展状况加以梳理归纳。但无论梳理得如何头头是道，我都没有出路。问题的关键在于博士到底想干什么，不弄清这点，一切推断都无从谈起。</p>
+    <p>清楚的只有一点：我背叛了"组织"，尽管迫不得已。一旦真相大白——早早晚晚——势必如那个盛气凌人的联络员所预言的，我将陷入相当窘迫的境地。</p>
+    <p>我乘电梯下楼，坐在门口树下等出租车开来。表针指在下午一时半，距那两人破门而入才不过两个半小时。然而这两个半小时却异常之长，仿佛过了十个钟头。</p>
+    <p>提着购物篮的主妇络绎不绝地从我眼前走过。大葱和萝卜在超级商场购物袋口探头探脑。我不由得有点羡慕她们，她们既不会被砸坏冰箱，又不至于被刀子划破肚子。这便是普普通通的生活。</p>
+    <div class="key"><span class="lbl">✦ 普通的羡慕</span><p>"羡慕"提着大葱萝卜的主妇——这种对平庸生活的渴望，是主角在经历暴力之后最本能的反应。大葱萝卜的日常感，正是他所失去的一切的象征。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">就医缝合</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">场景</span></div>
+    <p>医生看罢我的伤口，问我何以弄成这样。</p>
+    <p>"在女人身上出现一点麻烦。"我说。此外无法解释。</p>
+    <p>"在这种情况下，作为我们院方有报告警察的义务。"医生道。</p>
+    <p>"警察不好办。"我说，"也怪我不好，所幸伤还不深，想私了算了。拜托了！"</p>
+    <p>医生口中嘟囔了一会，终究不再坚持，让我躺在床上，给伤口消了毒，打了几针，拿出针线麻利地缝合伤口。随后，护士用充满狐疑的目光瞪着我。"啪"的一声把厚厚的纱布贴在受伤部位。</p>
+    <p>"尽可能别做剧烈运动。"医生说，"也不要喝酒，不要性交，不要过分地笑。最好看看书，轻松些日子。"</p>
+    <p>我道过谢，在窗口付款，领了消炎药返回住处。</p>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">屠格涅夫与四面墙</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag gold">文学</span></div>
+    <p>于是我腰缝绷带，天还未晚就倒在床上看屠格涅夫富有古典情调的小说。看着看着，我开始觉得一切都无所谓怎么样都无所谓。这三天时间里发生的任何事情都不是我自己找的，一切都是主动找上门的，我不过受连累而已。</p>
+    <p>我走进厨房，在高高隆起于水槽中的威士忌瓶子碎片堆上专心拨弄。发现一瓶帝王牌居然下半端幸免于难，里边尚存大约一杯分量的威士忌。我持杯上床，一边干喝温吞吞的威士忌一边继续看书。第一次看《罗亭》时还在读大学，已是十五年前的事了。十五年后我腰缠绷带重读此书。</p>
+    <p>读罢袖珍本《罗亭》，又折回床开始看司汤达的《红与黑》。读着读着我又同情上了于连·索雷尔。在于连·索雷尔身上，缺点在十五岁以前便大局已定，这一事实也激发了我的同情心。他自行投入监牢也是如此。他蜷缩在四面墙世界里，不断地朝毁灭行进。</p>
+    <p>有什么打动我的心。是墙壁！那世界四面皆壁。</p>
+    <div class="key"><span class="lbl">✦ 四面皆壁</span><p>"那世界四面皆壁"——从屠格涅夫到司汤达，主角用古典文学麻醉自己的痛感，却从于连的监狱中看到了自己的处境。墙壁的意象从"世界尽头"穿过"冷酷仙境"抵达了他手中的书页。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">废墟中的睡眠</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">废墟</span></div>
+    <p>我闭目合眼，吸了一口深如印加水井的空气，再次回到《红与黑》上。失去的业已失去，再多思多想也无可挽回。</p>
+    <p>注意到时，天已完全黑尽。几年前我读过一本描写世界垃圾遍布以至沦为废墟的科幻小说，而我的房间光景与之毫无二致。地上散乱扔着形形色色种种样样的废物：被割裂的三件套西服，毁掉的录像机、电视机，打碎的花瓶，折断脖子的台灯，踩烂的唱片，沧海横流的番茄汁，断断续续的扩音器软线……</p>
+    <p>全部化为废品。微生物死了变石油，大树倒了成煤层，而这里的一切全都是没有归宿不折不扣的废品。</p>
+    <p>我再次走进厨房，拨弄水槽里的威士忌瓶子碎片，遗憾的是再也找不到一滴威士忌。时近九点，睡魔袭来。我这如月球背面一般荒芜的斗室，睡意居然也肯光顾。我是这荒芜房间中的小小胎儿，在应该苏醒之前，任何人都无从打扰。</p>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">胖女郎再次唤醒</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">危机</span></div>
+    <p>然而出乎意料，只睡了不到两个小时，半夜十一点，身穿粉红色西服套裙的胖女郎走来摇我的肩膀。看来我的睡眠成了价格低得惊人的拍卖品，众人依序近前，像敲打半旧车轮胎似的踢动我的睡眠。他们不该有如此权利。我并非半旧车，尽管半新不旧。</p>
+    <p>"躲开！"我说。</p>
+    <p>"喂，求求你，起来，求你了！"女郎道。</p>
+    <p>"躲开躲开！"我重复道。</p>
+    <p>"不是睡觉的时候！"女郎说着，用拳头咚咚捶打我的侧腹。一股打开地狱之门般的剧痛穿过我的全身。</p>
+    <p>"快起呀，"她说，"这样下去世界要完蛋的！"</p>
+    <div class="key"><span class="lbl">✦ 被动的主角</span><p>"我的睡眠成了价格低得惊人的拍卖品"——主角在这章里始终是被动的：被破坏、被割伤、被盘问、被唤醒。他唯一的反抗是试图在废墟中沉睡，但连这点权利也被剥夺。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch14.html" class="nav-ch">‹ 第14章</a>
+    <a href="ch16.html" class="nav-ch">第16章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第15章 · 冷酷仙境 · 雨衣电筒面包奶酪</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第25章 冷酷仙境 · 雨夹雪与电影院 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">雨夹雪与电影院<small>第25章 · 冷酷仙境</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>爬绳登顶</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>祭坛见博士</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>伤口与进食</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>故事的起点</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>组织的秘密</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>黑匣子与象厂</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>脑手术与中继站</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>二十五人之死</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>第三线路</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>世界的尽头</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>无法复原</a>
+    <a class="nav-item" data-section="s12"><span class="num">12</span>挽回失去的一切</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>冷酷仙境<small>第25章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">雨夹雪与电影院</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">爬绳登顶</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">行动</span><span class="tag gold">描写</span></div>
+    <p>爬绳不知比登梯舒服多少倍。绳上每隔三十厘米就打一个牢牢实实的结，而且粗细恰到好处，容易把握。我双手紧握绳索，身体略微前后摇晃着，有节奏地一步步向上爬去。自觉颇像荡秋千的电影镜头。诚然，秋千绳是不打什么结的，因为打结会遭到观众的轻蔑。</p>
+    <p>爬到六七十个绳结的时候，总算摸到了类似顶端的东西。我两手扣住石沿，像游泳运动员爬上游泳池那样向上爬去。由于绳子太长，胳膊早已累得没有了力气，花了好长时间才爬上顶部。竟好像游了两三公里自由泳。她抓住我的皮带，帮我最后一把。</p>
+    <p>"好险的地方！"她说，"再晚四五分钟我们两人就都报销了。"</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">祭坛见博士</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">人物</span><span class="tag blue">空间</span></div>
+    <p>我重新背起背包，跟着她往祭坛那边走去。所谓祭坛，其实不过是岩壁上一个圆洞而已。洞内状似大房间，洞壁凹陷处放着一个气瓶样的灯盏，放出朦朦胧胧的黄色光亮，使得参差不齐的石头洞壁上爬满无数奇形怪状的阴影。博士身裹毛巾被坐在灯旁，脸有一半背光。由于灯光的关系，眼睛看上去深深下陷，但实际上可以说精神十足。</p>
+    <p>"噢，怕是死里逃生吧？"博士不无欣喜地对我说，"出水我是知道的。本以为能早些赶到，也就没怎么在意。"</p>
+    <p>"在街上迷路来着，爷爷。"胖孙女说，"差不多整整晚了一天才见到他。"</p>
+    <p>"好了好了，怎么都无所谓了。"博士道，"事到如今，费时间也罢省时间也罢都是同一码事了。"</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">伤口与进食</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">日常</span><span class="tag gold">细节</span></div>
+    <p>我坐在稍离博士一点的地方，他孙女坐在我旁边，从衣袋掏出火柴擦燃，把附在我脖子上的蚂蟥烧掉。蚂蟥早已喝饱了血，鼓胀得足有葡萄酒瓶塞那么大，被火一燎，"滋"地发出一声带水汽的声响，落在地上还扭动了一会，女郎用运动鞋底一脚碾碎。皮肤被火烧了一下，紧绷绷地作痛。</p>
+    <p>博士打开背包，拿出几个罐头、面包和水壶，连同罐头刀一起递给博士。博士首先不胜怜爱地喝了水筒里的水，然后像察看葡萄酒年代似的一一仔细检查了罐头，把桃罐头和咸牛肉罐头打开。博士把面包撕成片状，卷上咸牛肉，大口大口吃得十分香甜。又吃了几块桃，把罐头盒对在嘴上吱吱有声地喝里面的汁。</p>
+    <p>"啊，谢天谢地！"博士对我说，"这里一般备有应急食品，能保证两三天不饿。可这回因一时马虎没有补充，自己都感到窝囊。一旦过惯了舒服日子，就难免放松警惕。"</p>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">故事的起点</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">解说</span><span class="tag red">对话</span></div>
+    <p>"现在饭也算吃完了，"我说，"差不多进入正题吧。从头按顺序说好么——你到底想干什么？已经干了什么？结果如何？我应该怎么办？一五一十地。"</p>
+    <p>"恐怕专业性很强，我想。"博士不无怀疑地说。</p>
+    <p>"专业性强的地方从略就是。明白基本轮廓和具体方案也可以了。"</p>
+    <p>"要是全部捅出，估计你会生我的气，这可实在是……"</p>
+    <p>"不生气。"我说。事到如今，生气也于事无补。</p>
+    <p>"首先我恐怕必须向你道歉。"博士道，"虽说是为了研究，但毕竟欺骗了你利用了你，把你逼得走投无路，对此我正在深刻反省。不光是口头，我从内心觉得对你不起。不过话说回来，我所进行的研究，可以说是相当重要相当可贵的，几乎无与伦比的，这点无论如何得请你理解。"</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.19s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">组织的秘密</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">规则</span><span class="tag red">历史</span></div>
+    <p>博士追溯到三年前，叙述他在"组织"的研究工作。"组织"为保护情报所编排的数据保密系统已被符号士们破译殆尽。双方争建高墙，墙越建越高，终至失去实用性。于是"组织"决定依据全新的原理开发无法破译的数据保密方式。</p>
+    <p>"他们选我是非常英明之举。因为，当时——当然现在也是如此——我在大脑生理学领域是最有能力最有干劲的科学家。"</p>
+    <p>"可你是由于加入'组织'而放弃自由人立场的吧？"我问。</p>
+    <p>"不错，是那样的，"博士道，"你说得不错。对此我也在以我的方式反省。不后悔，而是反省。并非自我辩解——我急欲得到能够将自己的理论付诸实践的场所。"</p>
+    <div class="key"><span class="lbl">✦ 科学的纯粹性</span><p>"科学这东西正因为有其纯粹性才获得繁殖"——博士的自我辩护触及了科学伦理的核心。纯粹的求知欲可以成为最危险的借口。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.23s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">黑匣子与象厂</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">哲学</span><span class="tag blue">理论</span></div>
+    <p>博士阐述了他的核心理论：万无一失的暗号只有一个——通过万无一失的黑匣子来保存情报。这个黑匣子就是人的深层心理，即每个人的思维体系。</p>
+    <p>"准确说来，称为象厂倒也许贴切。因为无数记忆和认识的断片在那里筛选，筛选出的断片在那里被错综复杂地组合起来制成线，又将线错综复杂地组合为线束，由线束构成体系。这正是一家'工厂'，从事生产的工厂。厂长当然是你，遗憾的是你不能去那里访问。就像神秘之国艾丽丝，要进入必须有一种特殊的药才行。"</p>
+    <p>"也就是说，我们的行动方式是由象厂发出的指令来决定的了？"</p>
+    <p>"完全正确。"老人道。</p>
+    <div class="key"><span class="lbl">✦ 象厂</span><p>"象厂"——村上为人的深层意识创造的绝妙比喻。我们每个人头脑中都有一座工厂，但我们无法访问它。这个比喻将弗洛伊德的无意识理论化作了生动的意象。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">脑手术与中继站</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">技术</span><span class="tag purple">身体</span></div>
+    <p>"一言以蔽之，就是像牙医削珐琅质那样削掉表层而只留下具有必然性的中心要素即意识核。进而将削掉表层的思维体系冷冻起来投入水井，'扑通'一声。这就是模糊运算方式的原型。"</p>
+    <p>"就是说要做脑手术？"</p>
+    <p>"脑手术是需要的。"博士道，"就是设置脑波流程的中继站，也算是分流点吧。在其旁边埋入电极和小型电池，并用特定信号来'咔哧咔哧'转换中继站。"</p>
+    <p>"那么说，我的脑袋里也已埋入电池和电极了？"</p>
+    <p>"当然。"</p>
+    <p>"乖乖！"</p>
+    <p>"不不，它既没你想得那么可怕又没什么特殊，大小也只有小豆粒那个程度。"</p>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.31s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">二十五人之死</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">死亡</span><span class="tag red">真相</span></div>
+    <p>"第一批八个人接连死去时，'组织'把我叫去，要我查明死因。"博士继续道，"二十六人中，已有一半莫名其妙地死去。如此下去，适合不适合倒是次要的，主要的是将带来一个根本性问题，亦即将两套思维体系交相转换使用这点对于大脑来说原本就是不可能的。据此，我向'组织'提议冻结这个项目。"</p>
+    <p>"但'组织'说此事办不到，拒绝我的提案。他们说，模糊系统运行得极有成效，事实上已无法就此刹住而将整个系统重归于零。若果真如此，'组织'机能势必瘫痪。况且又不是说肯定全体死光，如果有人活下来，不妨将其作为有说服力的标本进行下一步研究。"</p>
+    <p>"而且只我一个逃生。"</p>
+    <p>"是这样的吧。"</p>
+    <p>我把后脑壳贴在岩壁上，怅怅地望着洞顶，用手心摩挲着脸颊茁壮的胡须。</p>
+    <div class="key"><span class="lbl">✦ 标本</span><span class="p">"如果有人活下来，不妨将其作为有说服力的标本"——在冷酷仙境中，人的生命不过是数据。二十五人死去，惟独"我"存活，不是幸运，而是即将被解剖的宿命。</span></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.35s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">第三线路</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">揭秘</span><span class="tag green">转折</span></div>
+    <p>"那你为什么在我身上搞小动作？说谎把我叫来，故意让我计算？"</p>
+    <p>"因为我想赶在'组织'和符号士把你抓去胡乱糟蹋之前来验证我的假设。我给你的计算数据之中，含有转换为第三思维系统所需的暗号。就是说，你在转换成第二思维系统之后换了一个点，而用第三思维系统进行了计算。"</p>
+    <p>"所谓第三思维系统，就是你在经过图像化的基础上重新编排的系统？"</p>
+    <p>"完全正确。"博士点头道。</p>
+    <p>"这何以证明你的假设呢？"</p>
+    <p>"误差问题。你是无意间一一把握自己的意识核的，所以在使用第二思维系统阶段没有任何问题。但第三线路是我重新编排的，二者之间自然存在误差，而这种误差应该给你造成某种反应。作为我，就是想计测一下你对误差的反应。"</p>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.39s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">世界的尽头</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">核心</span><span class="tag blue">揭示</span></div>
+    <p>"这点与世界完蛋有什么关系呢？"</p>
+    <p>"准确地说，并非现存的这个世界完蛋，而是世界在人们心中完蛋。"</p>
+    <p>"不明白。"我说。</p>
+    <p>"一句话，那就是你的意识核。是你意识所描绘的世界归于终结。至于你的意识底层何以藏有这种东西我不清楚，反正是世界在你的意识中走到尽头。反过来说，你的意识是在世界尽头中生存的。那一世界里缺少这个现存世界中应有的大部分东西。那里没有时间没有空间没有生死，没有正确含义上的价值观和自我，而由兽们来控制人的自我。"</p>
+    <p>"兽？"</p>
+    <p>"独角兽。"博士说，"那座镇子有独角兽。"</p>
+    <div class="key"><span class="lbl">✦ 世界的连接点</span><p>这是全书最关键的段落：冷酷仙境的"我"和世界尽头的"读梦人"是同一个意识的两面。世界尽头不是别处，而是"我"意识核中描绘的世界。两条叙事线在此交汇。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.43s">
+  <div class="section-header"><div class="section-num">11</div><div class="stitle"><div class="zh">无法复原</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">冲突</span><span class="tag purple">绝望</span></div>
+    <p>"请停一下，"我说，"自己意识深处存在那样一个世界这点我基本明白了。你以更显而易见的形式将其编排出来，作为第三线路植入我的脑中，之后送进暗号，将我的意识注入这条线路，使之模糊起来。随着模糊作业的完成，第三线路自动关闭，我的意识返回原来的第一线路。"</p>
+    <p>"不对。"说着，博士"咔咔"搔了几把后颈，"若是那样事情自然简单，但并非那样。第三线路不具有自动关闭功能。"</p>
+    <p>"那么说，我的第三线路一直开放着？"</p>
+    <p>"可以这样认为。"</p>
+    <p>"但我现在是按第一线路思考、行动的呀。"</p>
+    <p>"因为第二线路已经封口。……准确说来第三线路并非属于你自己的。如果听之任之，势必产生误差能，烧毁中继站B，致使永远同第三线路连在一起，以其放电将中继站A拉向点②，进而烧掉那个中继站。"</p>
+    <p>"如此下去，我将永远嵌在第三线路之中，无法复归原位了？"</p>
+    <p>"想必是的，想必要在世界尽头中生活。"</p>
+  </div>
+</div>
+
+<div class="section" id="s12" style="animation-delay:0.47s">
+  <div class="section-header"><div class="section-num">12</div><div class="stitle"><div class="zh">挽回失去的一切</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">终结</span><span class="tag red">人物</span></div>
+    <p>"一塌糊涂。"我说。闯入我房间胡作非为、割开我肚皮的到底是符号士。他们之所以大动干戈，目的就在于把"组织"的注意力引到我身上。"那么说，我已经山穷水尽了？符号士和'组织'两面夹击，如此下去，我这一现实存在肯定化为乌有。"</p>
+    <p>"不，你本身不会完蛋，不过进入另一世界罢了。"</p>
+    <p>"半斤八两。"我说，"听着，我自己也知道我这个人渺小得几乎要用显微镜才看得出。……不过说来你也许奇怪，我已经基本满足于这个世界。我是讨厌世上存在的大多数东西，对方想必也讨厌我，但其中也有我中意的，而且中意的就非常中意，这和对方中意不中意我没有关系。我就是这样生存于世的。我哪里也不想去，也不需要死。"</p>
+    <p>"归根结蒂，责任百分之百在你身上。策划的是你，实施的是你，把我卷进去的是你。是你在人家脑袋里擅自编织线路……如此惨无人道的勾当闻所未闻。你就能对此无动于衷？反正请为我复原好了！"</p>
+    <p>老人"唔"了一声。</p>
+    <p>"人家说的不错，爷爷，"胖女郎插嘴道，"你有时候太热衷于自己的事情，以致连累别人。"</p>
+    <p>"不过，你大概可以在那个世界里挽回你在这里失去的东西，已经失去的，和正在失去的。"</p>
+    <p>"我失去的？"</p>
+    <p>"是的。"博士说，"挽回你失去的一切，一切都在那里。"</p>
+    <div class="key"><span class="lbl">✦ 挽回一切</span><p>"挽回你失去的一切，一切都在那里"——博士最后的话语如同谶语。世界尽头不是惩罚，而是一个可以挽回失去之物的场所。但"那里"究竟是救赎还是更大的囚笼？</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch24.html" class="nav-ch">‹ 第24章</a>
+    <a href="ch26.html" class="nav-ch">第26章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第25章 · 冷酷仙境 · 雨夹雪与电影院</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

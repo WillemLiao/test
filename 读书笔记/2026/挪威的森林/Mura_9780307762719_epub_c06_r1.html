@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挪威的森林 第六章 · 信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a14;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #d4cfc4;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav {
+    position: fixed;
+    top: 0; right: 0;
+    width: 210px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f0f1e 0%, #14142a 100%);
+    border-left: 1px solid rgba(255,255,255,0.04);
+    padding: 24px 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #334; border-radius: 2px; }
+  .nav-title {
+    text-align: center;
+    padding: 0 14px 16px;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: #e3a869;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-title small {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 300;
+    color: #667788;
+    margin-top: 3px;
+  }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 16px;
+    color: #667788;
+    text-decoration: none;
+    font-size: 0.7em;
+    font-weight: 300;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover {
+    color: #e3a869;
+    background: rgba(227,168,105,0.04);
+    border-left-color: #e3a869;
+  }
+  .nav-item .num {
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    color: #556;
+    font-size: 0.6em;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .nav-item:hover .num { background: #e3a869; color: #0a0a14; }
+  .nav-footer {
+    padding: 14px;
+    text-align: center;
+    font-size: 0.55em;
+    color: #445;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .main {
+    flex: 1;
+    max-width: calc(100% - 210px);
+    padding: 50px 60px 60px;
+  }
+  header {
+    text-align: center;
+    padding: 30px 20px 36px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 50px; height: 1px;
+    background: linear-gradient(90deg, transparent, #e3a869, transparent);
+  }
+  header h1 { font-size: 1.7em; font-weight: 700; color: #e3a869; letter-spacing: 0.15em; }
+  header h1 small { display: block; font-size: 0.35em; color: #667788; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #667788; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+
+  .toggle-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .toggle-bar span { font-size: 0.75em; color: #667788; font-weight: 300; }
+  .switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .slider {
+    position: absolute; inset: 0;
+    background: #2a2a3e;
+    border-radius: 12px;
+    transition: 0.3s;
+  }
+  .switch .slider::before {
+    content: '';
+    position: absolute;
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background: #667788;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  .switch input:checked + .slider { background: rgba(227,168,105,0.3); }
+  .switch input:checked + .slider::before { transform: translateX(20px); background: #e3a869; }
+  .toggle-label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .toggle-label .label-en, .toggle-label .label-cn { font-size: 0.72em; transition: color 0.3s; font-weight: 500; }
+  .toggle-label .label-en { color: #e3a869; }
+  .toggle-label .label-cn { color: #667788; }
+  .toggle-label.checked .label-en { color: #667788; }
+  .toggle-label.checked .label-cn { color: #e3a869; }
+
+  .section {
+    margin-bottom: 36px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .section-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #e3a869;
+    color: #0a0a14;
+    font-weight: 700; font-size: 0.75em;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 1.05em; font-weight: 700; color: #e3a869; letter-spacing: 0.04em; }
+  .stitle .en { font-size: 0.65em; color: #667788; font-weight: 300; margin-top: 1px; }
+  .sline { flex: 0 0 40px; height: 1px; background: linear-gradient(90deg, rgba(227,168,105,0.3), transparent); }
+  .body {
+    background: linear-gradient(135deg, #12121f 0%, #16162a 100%);
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: border-color 0.25s;
+  }
+  .body:hover { border-color: rgba(227,168,105,0.15); }
+  .body p { font-family: 'Noto Serif SC', serif; font-size: 0.9em; line-height: 1.85; color: #c8c3b8; margin-bottom: 10px; text-align: justify; }
+  .body p:last-child { margin-bottom: 0; }
+  .p-en { font-family: 'Noto Serif SC', serif; }
+  .p-cn {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #9a9a8e;
+    font-size: 0.82em;
+    line-height: 1.75;
+    display: none;
+    border-top: 1px dashed rgba(255,255,255,0.04);
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+  .show-cn .p-cn { display: block; }
+
+  .hl { color: #f0d8a8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(227,168,105,0.15) 60%); padding: 0 2px; }
+  .hl-r { color: #e8997a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-b { color: #8ab8d4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #b896d4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #7dc4a4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+
+  .key {
+    border-left: 3px solid #e3a869;
+    background: rgba(227,168,105,0.04);
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .key .lbl { font-size: 0.58em; font-weight: 700; color: #e3a869; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .key p { font-size: 0.85em; color: #d4c8b0; margin-bottom: 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag { font-size: 0.58em; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: rgba(255,255,255,0.04); color: #667788; }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #e3a869; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #b896d4; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #8ab8d4; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #e8997a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #7dc4a4; }
+
+  .dots { text-align: center; padding: 6px 0 24px; color: #334; font-size: 0.9em; letter-spacing: 0.3em; }
+  footer { text-align: center; padding: 30px 20px; color: #445; font-size: 0.65em; font-weight: 300; }
+
+  .menu-btn {
+    display: none;
+    position: fixed;
+    top: 14px; right: 14px;
+    width: 40px; height: 40px;
+    background: rgba(15,15,30,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    z-index: 200;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    transition: 0.2s;
+  }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #e3a869; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav {
+      position: fixed;
+      top: 0; right: -280px;
+      width: 260px;
+      height: 100vh;
+      transition: right 0.3s ease;
+      z-index: 100;
+    }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 1.3em; }
+    .toggle-bar { margin-bottom: 20px; }
+    .section { margin-bottom: 24px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 0.95em; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; line-height: 1.75; }
+    .p-cn { font-size: 0.78em; }
+    .key { padding: 8px 12px; }
+    .key p { font-size: 0.8em; }
+    .section-num { width: 26px; height: 26px; font-size: 0.65em; }
+    .sline { flex: 0 0 20px; }
+    header h1 small { font-size: 0.3em; }
+    footer { font-size: 0.55em; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 1.1em; }
+    body { font-size: 15px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 0.78em; }
+    .p-cn { font-size: 0.74em; }
+    .key { padding: 6px 10px; margin: 8px 0; }
+    .section { margin-bottom: 18px; }
+    .tag { font-size: 0.5em; padding: 1px 6px; }
+    .stitle .zh { font-size: 0.85em; }
+    header h1 small { font-size: 0.28em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+
+<nav class="nav" id="nav">
+  <div class="nav-title">
+    挪威的森林
+    <small>第六章 · 11段</small>
+  </div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>前往京都</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>山中巴士</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>阿美寮的大门</a>
+    <a class="nav-item" href="#s4"><span class="num">4</span>遇见玲子</a>
+    <a class="nav-item" href="#s5"><span class="num">5</span>疗养院的哲学</a>
+    <a class="nav-item" href="#s6"><span class="num">6</span>玲子的故事</a>
+    <a class="nav-item" href="#s7"><span class="num">7</span>与直子重逢</a>
+    <a class="nav-item" href="#s8"><span class="num">8</span>三人之夜</a>
+    <a class="nav-item" href="#s9"><span class="num">9</span>音乐与酒</a>
+    <a class="nav-item" href="#s10"><span class="num">10</span>挪威的森林</a>
+    <a class="nav-item" href="#s11"><span class="num">11</span>深夜的坦白</a>
+  </div>
+  <div class="nav-footer">村上春树</div>
+</nav>
+
+<div class="main">
+
+<header>
+  <h1>挪威的森林<small>NORWEGIAN WOOD</small></h1>
+  <div class="author">村上春树 · Haruki Murakami</div>
+</header>
+
+<div class="toggle-bar">
+  <label class="toggle-label" id="toggleLabel">
+    <span class="label-en">EN</span>
+    <span class="switch">
+      <input type="checkbox" id="toggleCn">
+      <span class="slider"></span>
+    </span>
+    <span class="label-cn">中文</span>
+  </label>
+</div>
+
+<!-- 1 -->
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">前往京都</div>
+      <div class="en">Journey to Kyoto · Bullet Train, Hikari Express</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">旅途</span>
+      <span class="tag gold">出发</span>
+    </div>
+    <p class="p-en"><span class="hl-b">AS SOON AS I WOKE UP AT SEVEN O'CLOCK ON MONDAY MORNING, I washed my face, shaved, and went straight to the dorm head's room without eating breakfast to say that I was going to be gone for two days hiking in the hills.</span> He was used to my taking short trips when I had free time, and reacted without surprise. I took a crowded commuter train to Tokyo Station and bought a bullet-train ticket to Kyoto, literally jumping onto the first Hikari express to pull out. I made do with coffee and a sandwich for breakfast and dozed for an hour.</p>
+    <p class="p-cn">星期一早上七点一醒来，我洗了脸、刮了胡子，没吃早饭就径直去宿舍长的房间，说要出去徒步两天。他对我有空就短期旅行已经习以为常，并无惊讶。我挤上通勤电车去东京站，买了去京都的新干线车票，几乎是跳上了第一班驶出的光号列车。早饭用咖啡和三明治凑合，打了一小时的盹。</p>
+    <p class="p-en"><span class="hl">I arrived in Kyoto a few minutes before eleven.</span> Following Naoko's instructions, I took a city bus to a small terminal serving the northern suburbs. The next bus to my destination would not be leaving until 11:35, I was told, and the trip would take a little over an hour. I bought a ticket and went to a bookstore across the street for a map. Back in the waiting room, I studied the map to see if I could find exactly where the Ami Hostel was located. <span class="hl-b">It turned out to be much farther into the mountains than I had imagined.</span></p>
+    <p class="p-cn">不到十一点我就到了京都。按照直子的指示，我坐上市内公交去了一个通往北部郊区的客运站。去目的地的最早一班车要十一点三十五分才出发，车程一个多小时。我买了票，去对面街的书店买了张地图。回到候车室，展开地图找阿美寮的位置。结果发现它比我想象的要深入山区得多。</p>
+    <div class="key">
+      <span class="lbl">✦ 启程</span>
+      <p>直子在阿美寮接受了三个月的疗养。"我"利用暑假后的空档，独自前往京都看望她。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">山中巴士</div>
+      <div class="en">Mountain Bus · Cedar Forest, Narrow Pass</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">风景</span>
+      <span class="tag purple">氛围</span>
+    </div>
+    <p class="p-en"><span class="hl">The bus pulled out with twenty passengers aboard, following the Kamo River through the north end of Kyoto.</span> The tightly packed city streets gave way to more sparse housing, then fields and vacant land. Black tile roofs and vinyl-sided hothouses caught the early autumn sun and sent it back with a glare. <span class="hl-b">When the bus entered the canyon, the driver had to start hauling the steering wheel back and forth to follow the twists and curves of the road, and I began to feel queasy.</span></p>
+    <p class="p-cn">巴士载着二十名乘客出发了，沿着鸭川穿过京都北端。密集的市街渐渐稀疏，变成田野和空地。黑色的瓦屋顶和塑料大棚反射着初秋的阳光，刺眼得让人眯起眼睛。当巴士驶入峡谷时，司机不得不来回猛打方向盘以应对道路的蜿蜒曲折，我开始感到恶心。</p>
+    <p class="p-en"><span class="hl">By the time the number of curves began to decrease to the point where I felt some relief, the bus plunged into a chilling cedar forest.</span> The trees might have been old growth the way they towered over the road, blocking out the sun and covering everything in gloomy shadows. The breeze flowing into the bus's open windows turned suddenly cold, its dampness sharp against the skin.</p>
+    <p class="p-cn">弯道终于减少到让我稍感缓解的程度时，巴士又一头扎进了一片令人寒战的杉树林。那些树木高耸入云，遮天蔽日，将一切都笼罩在阴郁的阴影中——仿佛是原始森林。吹进敞开车窗的风骤然变冷，潮湿的空气刺在皮肤上。</p>
+    <p class="p-en"><span class="hl-p">The valley road hugged the riverbank, continuing so long through the trees it began to seem as if the whole world had been buried forever in cedar forest—at which point the forest ended, and we came out to an open basin surrounded by mountain peaks.</span></p>
+    <p class="p-cn">谷间道路紧贴河岸，在树丛中穿行了那么久，仿佛整个世界都永远埋进了杉树林——这时森林突然结束，我们来到了一个群山环抱的开阔盆地。</p>
+    <div class="key">
+      <span class="lbl">✦ 渐入深山</span>
+      <p>巴士在京都北部的深山中穿行，村落与森林交替出现。乘客越来越少，最终只剩四人。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">阿美寮的大门</div>
+      <div class="en">The Gate of Ami Hostel · Private, No Trespassing</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">到达</span>
+      <span class="tag gold">场景</span>
+    </div>
+    <p class="p-en"><span class="hl">At the stop where I got off, there was nothing—no houses, no fields, just the bus stop sign, a little stream, and the trail opening.</span> I slung my knapsack over my shoulder and started up the track. The stream ran along the left side of the trail, and a forest of deciduous trees lined the right side. I had been climbing the gentle slope for some fifteen minutes when I came to a road leading into the woods on the right. <span class="hl-b">"Ami Hostel. Private. No Trespassing," read the sign by the road.</span></p>
+    <p class="p-cn">我下车的地方什么都没有——没有房屋、没有田地，只有公交站牌、一条小溪和山路入口。我把背包甩到肩上，沿着小路往上走。溪流沿左侧而下，右侧是落叶林。沿着缓坡走了大约十五分钟，右侧出现一条通向树林的小路，路边立着一块牌子："阿美寮。私人用地。禁止入内。"</p>
+    <p class="p-en"><span class="hl">Beyond the woods I came to a white stone wall. It was no higher than my own height and, lacking additional barriers on top, would have been easy for me to scale. The black iron gate looked sturdy enough, but it was wide open, and there was no one manning the guardhouse.</span></p>
+    <p class="p-cn">穿过树林，眼前出现一道白色石墙。墙只有一人高，上面没有加装任何障碍物，很容易翻过去。黑色铁门看起来够结实，但大敞着，传达室里没有人。</p>
+    <p class="p-en"><span class="hl-b">A few clues suggested the guard had been there until some moments before: the ashtray held three butts, a teacup stood there half empty, a transistor radio sat on a shelf, and the clock on the wall ticked off the time with a dry sound.</span></p>
+    <p class="p-cn">一些迹象表明看守刚刚还在：烟灰缸里有三个烟蒂，茶杯里剩着半杯茶，架子上放着晶体管收音机，墙上的钟发出干涩的滴答声。</p>
+    <div class="key">
+      <span class="lbl">✦ 进入另一个世界</span>
+      <p>阿美寮的大门敞开着，没有锁。"我"等了片刻，一个骑着黄色自行车的看守才姗姗来迟。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="stitle">
+      <div class="zh">遇见玲子</div>
+      <div class="en">Meeting Reiko · The Music Doctor, Seven Stars</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag gold">人物</span>
+      <span class="tag blue">对话</span>
+    </div>
+    <p class="p-en"><span class="hl">"Go to the main building, please, and ask for Doctor Ishida," he said to me.</span></p>
+    <p class="p-cn">"请去主楼，找石田医生。"</p>
+    <p class="p-en"><span class="hl-b">Before long, though, I heard the soft padding of rubber soles, and a mature, bristly haired woman appeared. She swept across the lobby, sat down next to me, crossed her legs, and took my hand. Instead of just shaking it, she turned my hand over, examining it front and back.</span></p>
+    <p class="p-cn">不久，传来橡胶鞋底轻柔的脚步声，一个头发短硬的中年女人出现了。她大步穿过大厅，在我身边坐下，翘起腿，握住我的手——不是握手，而是翻过来仔细察看手心和手背。</p>
+    <p class="p-en"><span class="hl">"You haven't played a musical instrument, at least not for some years now, have you?" were the first words out of her mouth.</span></p>
+    <p class="p-cn">"你没有弹过乐器——至少这几年没弹过吧？"这是她开口说的第一句话。</p>
+    <p class="p-en"><span class="hl-g">There was something almost mysterious about this woman. Her face had lots of wrinkles. These were the first thing to catch your eye, but they didn't make her look old. Instead, they emphasized a certain youthfulness in her that transcended age.</span> <span class="hl-p">Here was a woman in her late thirties who seemed not merely a nice person but whose niceness drew you to her. I liked her from the moment I saw her.</span></p>
+    <p class="p-cn">这个女人带着某种近乎神秘的气质。她的脸上有很多皱纹。这是最先映入眼帘的，但皱纹并未让她显老，反而强调了一种超越年龄的青春感。她看上去三十五六岁，不仅仅是个好人，而是那种善意本身就吸引着你。从一见面我就喜欢上了她。</p>
+    <p class="p-en"><span class="hl">"Oh, by the way, you can call me Reiko. Everybody does."</span></p>
+    <p class="p-cn">"对了，叫我玲子就行。大家都这么叫。"</p>
+    <div class="key">
+      <span class="lbl">✦ 音乐·医生·病人</span>
+      <p>玲子其实是病人，也是这里的音乐老师。大家都叫她"音乐医生"——这个称谓模糊了病人与医护的界限。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div class="stitle">
+      <div class="zh">疗养院的哲学</div>
+      <div class="en">The Philosophy of the Sanatorium · Mutual Help</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag purple">哲学</span>
+      <span class="tag gold">对话</span>
+    </div>
+    <p class="p-en"><span class="hl">"The first thing you ought to know is that this is no ordinary 'hospital.' It's not so much for treatment as for convalescence."</span></p>
+    <p class="p-cn">"首先你要知道，这不是普通的'医院'。与其说是治疗，不如说是疗养。"</p>
+    <p class="p-en"><span class="hl-b">"Just living here is the convalescence. A regular routine, exercise, isolation from the outside world, clean air, quiet. Our farmland makes us practically self-sufficient; there's no TV or radio. We're like one of those commune places you hear so much about."</span></p>
+    <p class="p-cn">"住在这里本身就是疗养。规律作息、运动、与外界隔绝、干净的空气、安静。我们的农田让我们几乎自给自足；没有电视也没有收音机。就像你听说的那种公社一样。"</p>
+    <p class="p-en"><span class="hl">"The best thing about this place is the way everybody helps everybody else. Everybody knows they're flawed in some way, and so they try to help each other. We're all each others' mirrors, and the doctors are part of us."</span></p>
+    <p class="p-cn">"这里最好的一点就是大家互相帮助。每个人都知道自己有某种缺陷，所以努力帮助别人。我们都是彼此的镜子，医生也是我们的一部分。"</p>
+    <p class="p-en"><span class="hl-r">"First you decide that you want to help and that you need to be helped by the other person. Then you decide to be totally honest. You will not lie, you will not gloss over anything, you will not cover up anything that might prove embarrassing for you. That's all there is to it."</span></p>
+    <p class="p-cn">"首先你要决定你想要帮助别人，也需要被别人帮助。然后你决定完全诚实。不说谎、不粉饰、不掩饰任何可能让你难堪的事情。就是这样。"</p>
+    <div class="key">
+      <span class="lbl">✦ 平等与互助</span>
+      <p>阿美寮的核心理念：病人与医护人员没有身份之分，大家都是"镜子"。诚实是唯一的规则。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div class="stitle">
+      <div class="zh">玲子的故事</div>
+      <div class="en">Reiko's Story · Seven Years, Piano Dreams</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag gold">回忆</span>
+      <span class="tag purple">内心</span>
+    </div>
+    <p class="p-en"><span class="hl">"Not while the sun's up," she said with a somber look. "But when night comes, I start drooling and rolling on the floor."</span></p>
+    <p class="p-cn">"白天还好，"她神色阴郁地说。"但到了晚上，我就开始流口水，在地上打滚。"</p>
+    <p class="p-en"><span class="hl">"Don't be ridiculous, I'm kidding," she said, shaking her head with a look of disgust. "I'm completely well—for now, at least."</span></p>
+    <p class="p-cn">"别当真，我开玩笑的。"她厌恶地摇了摇头。"我完全好了——至少目前是。"</p>
+    <p class="p-en"><span class="hl-b">"I stay here because I enjoy helping other people get well, teaching music, raising vegetables. I like it here. We're all more or less friends."</span></p>
+    <p class="p-cn">"我留在这里是因为我喜欢帮助别人康复、教音乐、种蔬菜。我喜欢这里。我们或多或少都是朋友。"</p>
+    <p class="p-en"><span class="hl-p">"I'm thirty-eight, going on forty. I'm not like Naoko. There's nobody waiting for me to get out, no family to take me back. I don't have any work to speak of, and almost no friends. And after seven years, I don't know what's going on out there."</span></p>
+    <p class="p-cn">"我已经三十八了，快到四十了。我不像直子。没有人等我出去，没有家庭接我回去。我没有可以说得上话的工作，也几乎没有朋友。而且七年了，我不知道外面发生了什么。"</p>
+    <div class="key" style="border-left-color:#8ab8d4;">
+      <span class="lbl" style="color:#8ab8d4;">✦ 自愿的囚徒</span>
+      <p>玲子在阿美寮住了七年。她并非不能出去，而是选择留下——外面的世界对她而言已太陌生。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div class="stitle">
+      <div class="zh">与直子重逢</div>
+      <div class="en">Reunion with Naoko · Butterfly Barrette, Warmth</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag gold">重逢</span>
+      <span class="tag blue">情感</span>
+    </div>
+    <p class="p-en"><span class="hl">I opened my eyes, and there she was. I raised my head and looked into her eyes for a time. She was sitting on the arm of the sofa, looking at me. At first I thought she might be an image spun into existence by my own memories. But it was the real Naoko.</span></p>
+    <p class="p-cn">我睁开眼睛，她就在那里。我抬起头，久久地望着她的眼睛。她坐在沙发的扶手上看着我。起初我以为那是我记忆编织出的幻影。但那是真实的直子。</p>
+    <p class="p-en"><span class="hl-b">"I wanted to be sure to see you alone before the three of us get together. Not that I had anything special to say. I just wanted to see your face and get used to having you here. Otherwise, I'd have trouble getting to know you again. I'm so bad with people."</span></p>
+    <p class="p-cn">"我想在三个人聚之前先单独见你一面。不是有什么特别的话要说。只是想看看你的脸，习惯你在这里。否则我会很难重新和你熟络起来。我不擅长和人打交道。"</p>
+    <p class="p-en"><span class="hl">Naoko sat down and leaned against me on the sofa. When I put my arm around her, she rested her head on my shoulder and pressed her face to my neck. She stayed like that for a time, almost as if she were taking my temperature. Holding her, I felt warm in the chest.</span></p>
+    <p class="p-cn">直子在沙发上坐下，靠在我身上。我伸手搂住她，她将头靠在我肩上，把脸贴在我的脖子旁。就这样待了一会儿，仿佛在测量我的体温。抱着她，我感到胸口温暖。</p>
+    <div class="key">
+      <span class="lbl">✦ 短暂的独处</span>
+      <p>直子的头发剪短了，用蝴蝶发夹别住一侧——像个女学生。"我"住在玲子和直子的房间里，睡在客厅的沙发床上。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <div class="stitle">
+      <div class="zh">三人之夜</div>
+      <div class="en">The Three of Us · Bill Evans, Candlelight</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">氛围</span>
+      <span class="tag gold">音乐</span>
+    </div>
+    <p class="p-en"><span class="hl">The moon was so bright, I turned the lights off and stretched out on the sofa to listen to Bill Evans's piano.</span></p>
+    <p class="p-cn">月光太亮了，我关了灯，躺在沙发上听比尔·埃文斯的钢琴。</p>
+    <p class="p-en"><span class="hl-b">The moon was so bright, I turned the lights off and stretched out on the sofa to listen to Bill Evans's piano. Streaming in through the window, the moonlight cast long shadows and splashed the walls with a touch of diluted India ink.</span></p>
+    <p class="p-cn">月光透过窗户倾泻进来，投下长长的影子，在墙壁上泼洒出稀释的墨色。</p>
+    <p class="p-en"><span class="hl">"It's lovely, though," said Naoko. "Reiko, do we still have those candles from the last power outage?"</span></p>
+    <p class="p-cn">"不过很美呢，"直子说。"玲子，上次停电时用的蜡烛还有吗？"</p>
+    <p class="p-en"><span class="hl-p">As the three of us sat facing the candle amid these hushed surroundings, it began to seem as if we were the only ones left on some far edge of the world.</span></p>
+    <p class="p-cn">三个人在寂静中面对蜡烛而坐，仿佛我们是被遗弃在世界某个遥远角落的唯一幸存者。</p>
+    <div class="key">
+      <span class="lbl">✦ 烛光三人</span>
+      <p>那一夜，玲子弹吉他、喝葡萄酒、讲笑话。直子说，这首歌让她觉得自己一个人在黑暗的森林里徘徊。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <div class="stitle">
+      <div class="zh">音乐与酒</div>
+      <div class="en">Music and Wine · Bach, Beatles, Bossa Nova</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag gold">音乐</span>
+      <span class="tag blue">对话</span>
+    </div>
+    <p class="p-en"><span class="hl">When the record ended, Reiko brought a guitar out from under her bed, and after tuning it with a look of fondness for the instrument, she began to play a slow Bach fugue.</span> She missed her fingering every now and then, but it was real Bach, with real feeling—warm, intimate, and filled with the joy of performance.</p>
+    <p class="p-cn">唱片放完后，玲子从床底下拿出吉他。她带着对乐器的宠爱调好音，然后开始弹奏一首缓慢的巴赫赋格曲。指法偶尔出错，但那是真正的巴赫，带着真实的情感——温暖、亲密，充满演奏的喜悦。</p>
+    <p class="p-en"><span class="hl-b">"I started playing the guitar here. There are no pianos in the rooms, of course. I'm self-taught, and I don't have guitar hands, so I'll never get very good, but I really love the instrument. It's small and simple and easy, kind of like a warm little room."</span></p>
+    <p class="p-cn">"我是在这里开始弹吉他的。房间里当然没有钢琴。我是自学的，手型不适合弹吉他，永远弹不好，但我真的很喜欢这个乐器。它小巧简单，容易上手，就像一个温暖的小房间。"</p>
+    <p class="p-en"><span class="hl">"That's a good one," she said. "I really like that song." She took a sip of wine and puffed her cigarette. "It makes me feel like I'm in a big meadow in a soft rain."</span></p>
+    <p class="p-cn">"那首歌真好，"她说。"我真的很喜欢。"她抿了一口葡萄酒，吸了一口烟。"它让我觉得自己在一片大草地上，下着柔和的细雨。"</p>
+    <p class="p-en">She played "Michelle," "Nowhere Man," "Julia." <span class="hl-p">Now and then as she played, she would close her eyes and shake her head. Afterward she would go back to the wine and the cigarette.</span></p>
+    <p class="p-cn">她弹了《Michelle》《Nowhere Man》《Julia》。弹奏时偶尔闭上眼睛，摇摇头。然后回到葡萄酒和香烟上。</p>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="stitle">
+      <div class="zh">挪威的森林</div>
+      <div class="en">Norwegian Wood · A Hundred Yen, A Deep Wood</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag red">标题曲</span>
+      <span class="tag gold">核心</span>
+    </div>
+    <p class="p-en"><span class="hl">Reiko brought a porcelain beckoning cat from the kitchen. It was a coin bank, and Naoko dropped a hundred-yen piece from her purse into its slot.</span></p>
+    <p class="p-cn">玲子从厨房拿来一只瓷质招财猫。那是存钱罐，直子从钱包里掏出一枚一百日元硬币投了进去。</p>
+    <p class="p-en"><span class="hl">"It's a rule," said Naoko. "When I request 'Norwegian Wood,' I have to put a hundred yen into the bank. It's my favorite, so I make a point of paying for it."</span></p>
+    <p class="p-cn">"这是规矩，"直子说。"我点《挪威的森林》时，必须往存钱罐里投一百日元。这是我喜欢的曲子，所以要专门付钱。"</p>
+    <p class="p-en"><span class="hl-b">Reiko gave her fingers a good flexing and then played "Norwegian Wood." Again she played with real feeling, but never allowed it to become sentimental. I took a hundred-yen coin from my pocket and dropped it into the bank.</span></p>
+    <p class="p-cn">玲子好好活动了一下手指，然后弹起了《挪威的森林》。她再次投入了真实情感，但从未让音乐变得感伤。我从口袋里掏出一枚一百日元硬币，投进了存钱罐。</p>
+    <p class="p-en"><span class="hl-r">"That song can make me feel so sad," said Naoko. "I don't know, I guess I imagine myself wandering in a deep wood. I'm all alone and it's cold and dark, and nobody comes to save me. That's why Reiko never plays it unless I request it."</span></p>
+    <p class="p-cn">"那首歌让我感到如此悲伤，"直子说。"我不知道，大概是我幻想自己在深林里徘徊。独自一人，又冷又暗，没有人来救我。所以玲子从不主动弹它，除非我点。"</p>
+    <div class="key" style="border-left-color:#e8997a;">
+      <span class="lbl" style="color:#e8997a;">✦ 书名的来源</span>
+      <p>《挪威的森林》——这首 Beatles 的歌曲是全书的灵魂隐喻：直子独自徘徊在黑暗的森林中，无人拯救。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 11 -->
+<div class="section" id="s11" style="animation-delay:0.33s">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div class="stitle">
+      <div class="zh">深夜的坦白</div>
+      <div class="en">Midnight Confessions · The Reason, Tears</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag red">真相</span>
+      <span class="tag purple">情感</span>
+    </div>
+    <p class="p-en"><span class="hl">Naoko shook her head for a few moments, and then she raised her face to look at me. "You asked me that time why I had never slept with Kizuki, didn't you? Do you still want to know?"</span></p>
+    <p class="p-cn">直子摇了一会儿头，然后抬起脸看着我。"你那次问我为什么从来没和木月睡过，对吧？你还想知道吗？"</p>
+    <p class="p-en"><span class="hl-b">"I loved him, and I wasn't worried about losing my virginity. I would have been glad to do anything he wanted. But it never worked."</span></p>
+    <p class="p-cn">"我爱他，我并不担心失去处女之身。他想要什么我都愿意做。但就是不行。"</p>
+    <p class="p-en"><span class="hl">"I couldn't get wet," she said in a tiny voice. "I never opened to him. So it always hurt."</span></p>
+    <p class="p-cn">"我湿不了，"她用小得几乎听不见的声音说。"他对我的身体，我从来没有打开过。所以总是很疼。"</p>
+    <p class="p-en"><span class="hl-r">"I was plenty wet the time I slept with you, wasn't I?"</span></p>
+    <p class="p-cn">"我跟你睡的时候，可是很湿的，对吧？"</p>
+    <p class="p-en"><span class="hl-p">Naoko remained silent for a while, then suddenly burst into tears, trembling all over. Slumping forward, she buried her face in her hands and sobbed with all the suffocating violence she had had that night with me.</span></p>
+    <p class="p-cn">直子沉默了一会儿，然后突然放声大哭，浑身颤抖。她向前一倒，把脸埋在双手里，像那天晚上和我在一起时一样，以那种令人窒息的剧烈抽泣哭了起来。</p>
+    <p class="p-en"><span class="hl-b">"You know," Reiko said to me, "it might be a good idea for you to go out for a little walk. Maybe twenty minutes."</span></p>
+    <p class="p-cn">"你知道，"玲子对我说，"你出去散散步可能比较好。二十分钟左右。"</p>
+    <p class="p-en"><span class="hl">I focused on that point of light for a long, long time. It made me think of something like the final throb of a soul's dying embers. I wanted to cup my hands over what was left and keep it alive.</span></p>
+    <p class="p-cn">我久久地凝视着那个光点。它让我想起灵魂余烬的最后一缕跳动。我想用双手捧住那残留的火光，让它继续燃烧。</p>
+    <div class="key">
+      <span class="lbl">✦ 难以承受的真相</span>
+      <p>直子终于道出：与木月从未成功结合，却与"我"一触即发。这让她痛苦而困惑。爱、性与身体——三者并不一致。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  挪威的森林 · Norwegian Wood · 村上春树 · 第六章 · 共11段 · 双语对照
+</footer>
+
+</div>
+
+<script>
+  const toggle = document.getElementById('toggleCn');
+  const main = document.querySelector('.main');
+  const label = document.getElementById('toggleLabel');
+  toggle.addEventListener('change', function() {
+    main.classList.toggle('show-cn', this.checked);
+    label.classList.toggle('checked', this.checked);
+  });
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() {
+    menuBtn.classList.toggle('active');
+    nav.classList.toggle('open');
+    backdrop.classList.toggle('show');
+  }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => {
+    a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); });
+  });
+</script>
+</body>
+</html>

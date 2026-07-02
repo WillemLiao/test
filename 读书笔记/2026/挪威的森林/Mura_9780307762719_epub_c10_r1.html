@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挪威的森林 第十章 · 信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a14;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #d4cfc4;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav {
+    position: fixed;
+    top: 0; right: 0;
+    width: 210px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f0f1e 0%, #14142a 100%);
+    border-left: 1px solid rgba(255,255,255,0.04);
+    padding: 24px 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #334; border-radius: 2px; }
+  .nav-title {
+    text-align: center;
+    padding: 0 14px 16px;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: #e3a869;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-title small {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 300;
+    color: #667788;
+    margin-top: 3px;
+  }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 16px;
+    color: #667788;
+    text-decoration: none;
+    font-size: 0.7em;
+    font-weight: 300;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover {
+    color: #e3a869;
+    background: rgba(227,168,105,0.04);
+    border-left-color: #e3a869;
+  }
+  .nav-item .num {
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    color: #556;
+    font-size: 0.6em;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .nav-item:hover .num { background: #e3a869; color: #0a0a14; }
+  .nav-footer {
+    padding: 14px;
+    text-align: center;
+    font-size: 0.55em;
+    color: #445;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .main {
+    flex: 1;
+    max-width: calc(100% - 210px);
+    padding: 50px 60px 60px;
+  }
+  header {
+    text-align: center;
+    padding: 30px 20px 36px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 50px; height: 1px;
+    background: linear-gradient(90deg, transparent, #e3a869, transparent);
+  }
+  header h1 { font-size: 1.7em; font-weight: 700; color: #e3a869; letter-spacing: 0.15em; }
+  header h1 small { display: block; font-size: 0.35em; color: #667788; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #667788; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+
+  .toggle-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .toggle-bar span { font-size: 0.75em; color: #667788; font-weight: 300; }
+  .switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .slider {
+    position: absolute; inset: 0;
+    background: #2a2a3e;
+    border-radius: 12px;
+    transition: 0.3s;
+  }
+  .switch .slider::before {
+    content: '';
+    position: absolute;
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background: #667788;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  .switch input:checked + .slider { background: rgba(227,168,105,0.3); }
+  .switch input:checked + .slider::before { transform: translateX(20px); background: #e3a869; }
+  .toggle-label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .toggle-label .label-en, .toggle-label .label-cn { font-size: 0.72em; transition: color 0.3s; font-weight: 500; }
+  .toggle-label .label-en { color: #e3a869; }
+  .toggle-label .label-cn { color: #667788; }
+  .toggle-label.checked .label-en { color: #667788; }
+  .toggle-label.checked .label-cn { color: #e3a869; }
+
+  .section {
+    margin-bottom: 36px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .section-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #e3a869;
+    color: #0a0a14;
+    font-weight: 700; font-size: 0.75em;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 1.05em; font-weight: 700; color: #e3a869; letter-spacing: 0.04em; }
+  .stitle .en { font-size: 0.65em; color: #667788; font-weight: 300; margin-top: 1px; }
+  .sline { flex: 0 0 40px; height: 1px; background: linear-gradient(90deg, rgba(227,168,105,0.3), transparent); }
+  .body {
+    background: linear-gradient(135deg, #12121f 0%, #16162a 100%);
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: border-color 0.25s;
+  }
+  .body:hover { border-color: rgba(227,168,105,0.15); }
+  .body p { font-family: 'Noto Serif SC', serif; font-size: 0.9em; line-height: 1.85; color: #c8c3b8; margin-bottom: 10px; text-align: justify; }
+  .body p:last-child { margin-bottom: 0; }
+  .p-en { font-family: 'Noto Serif SC', serif; }
+  .p-cn {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #9a9a8e;
+    font-size: 0.82em;
+    line-height: 1.75;
+    display: none;
+    border-top: 1px dashed rgba(255,255,255,0.04);
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+  .show-cn .p-cn { display: block; }
+
+  .hl { color: #f0d8a8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(227,168,105,0.15) 60%); padding: 0 2px; }
+  .hl-r { color: #e8997a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-b { color: #8ab8d4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #b896d4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #7dc4a4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+
+  .key {
+    border-left: 3px solid #e3a869;
+    background: rgba(227,168,105,0.04);
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .key .lbl { font-size: 0.58em; font-weight: 700; color: #e3a869; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .key p { font-size: 0.85em; color: #d4c8b0; margin-bottom: 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag { font-size: 0.58em; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: rgba(255,255,255,0.04); color: #667788; }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #e3a869; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #b896d4; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #8ab8d4; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #e8997a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #7dc4a4; }
+
+  .dots { text-align: center; padding: 6px 0 24px; color: #334; font-size: 0.9em; letter-spacing: 0.3em; }
+  footer { text-align: center; padding: 30px 20px; color: #445; font-size: 0.65em; font-weight: 300; }
+
+  .menu-btn {
+    display: none;
+    position: fixed;
+    top: 14px; right: 14px;
+    width: 40px; height: 40px;
+    background: rgba(15,15,30,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    z-index: 200;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    transition: 0.2s;
+  }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #e3a869; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav {
+      position: fixed;
+      top: 0; right: -280px;
+      width: 260px;
+      height: 100vh;
+      transition: right 0.3s ease;
+      z-index: 100;
+    }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 1.3em; }
+    .toggle-bar { margin-bottom: 20px; }
+    .section { margin-bottom: 24px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 0.95em; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; line-height: 1.75; }
+    .p-cn { font-size: 0.78em; }
+    .key { padding: 8px 12px; }
+    .key p { font-size: 0.8em; }
+    .section-num { width: 26px; height: 26px; font-size: 0.65em; }
+    .sline { flex: 0 0 20px; }
+    header h1 small { font-size: 0.3em; }
+    footer { font-size: 0.55em; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 1.1em; }
+    body { font-size: 15px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 0.78em; }
+    .p-cn { font-size: 0.74em; }
+    .key { padding: 6px 10px; margin: 8px 0; }
+    .section { margin-bottom: 18px; }
+    .tag { font-size: 0.5em; padding: 1px 6px; }
+    .stitle .zh { font-size: 0.85em; }
+    header h1 small { font-size: 0.28em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+
+<nav class="nav" id="nav">
+  <div class="nav-title">
+    挪威的森林
+    <small>第十章 · 11段</small>
+  </div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>一九六九的沼泽</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>冬日探望</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>关于同居的提议</a>
+    <a class="nav-item" href="#s4"><span class="num">4</span>新的住所</a>
+    <a class="nav-item" href="#s5"><span class="num">5</span>绿子的愤怒</a>
+    <a class="nav-item" href="#s6"><span class="num">6</span>等待春天</a>
+    <a class="nav-item" href="#s7"><span class="num">7</span>玲子的来信</a>
+    <a class="nav-item" href="#s8"><span class="num">8</span>春天的绝望</a>
+    <a class="nav-item" href="#s9"><span class="num">9</span>绿子的原谅</a>
+    <a class="nav-item" href="#s10"><span class="num">10</span>长椅上的信</a>
+    <a class="nav-item" href="#s11"><span class="num">11</span>孤独的四月</a>
+  </div>
+  <div class="nav-footer">村上春树</div>
+</nav>
+
+<div class="main">
+
+<header>
+  <h1>挪威的森林<small>NORWEGIAN WOOD</small></h1>
+  <div class="author">村上春树 · Haruki Murakami</div>
+</header>
+
+<div class="toggle-bar">
+  <label class="toggle-label" id="toggleLabel">
+    <span class="label-en">EN</span>
+    <span class="switch">
+      <input type="checkbox" id="toggleCn">
+      <span class="slider"></span>
+    </span>
+    <span class="label-cn">中文</span>
+  </label>
+</div>
+
+<!-- 1 -->
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">一九六九的沼泽</div>
+      <div class="en">The Swamp of 1969</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag purple">存在</span>
+      <span class="tag red">时代</span>
+    </div>
+    <p class="p-en"><span class="hl-b">THINKING BACK ON THE YEAR 1969, ALL THAT COMES TO MIND FOR me is a swamp—a deep, sticky bog that feels as if it's going to suck my shoe off each time I take a step. I walk through the mud, exhausted. In front of me, behind me, I can see nothing but an endless swampy darkness.</span></p>
+    <p class="p-cn">回想一九六九年，浮现在我脑海中的只有一片沼泽——一片深深的、黏稠的泥沼，每走一步都感觉鞋子要被吸掉。我在泥泞中疲惫地走着。前后左右，除了无边无际的沼泽般的黑暗，什么都看不见。</p>
+    <p class="p-en"><span class="hl">Time itself slogged along in rhythm with my faltering steps. The people around me had gone on ahead long before, while my time and I hung back, struggling through the mud.</span></p>
+    <p class="p-cn">时间本身也和我踉跄的脚步同节奏地缓缓前行。周围的人早就走到了前面，只有我和我的时间落在后面，在泥泞中挣扎。</p>
+    <p class="p-en"><span class="hl-b">I trudged along through each day in its turn, looking up only rarely, eyes locked on the endless swamp that lay before me, planting my right foot, raising my left, planting my left foot, raising my right, never sure where I was, never sure I was headed in the right direction, knowing only that I had to keep moving, one step at a time.</span></p>
+    <p class="p-cn">我一天一天地跋涉，很少抬头，眼睛紧盯着前方无边无际的沼泽，落下右脚，抬起左脚，落下左脚，抬起右脚，不确定自己在哪里，也不确定自己是否朝着正确的方向，只知道必须不停地走，一步一步地走。</p>
+    <div class="key">
+      <span class="lbl">✦ 沼泽之年</span>
+      <p>1969年——渡边二十岁。时代在巨变，而他陷在个人的沼泽中。这是他最迷茫、最孤独的年份。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">冬日探望</div>
+      <div class="en">Winter Visit</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">京都</span>
+      <span class="tag gold">直子</span>
+    </div>
+    <p class="p-en"><span class="hl-b">When the break came, I stuffed my things into my knapsack, put on snow boots, and set out for Kyoto. The odd doctor had been right: the winter mountains blanketed in snow were incredibly beautiful.</span></p>
+    <p class="p-cn">假期一到，我就把行李塞进背包，穿上雪靴，出发去了京都。那个古怪的医生说得没错：被雪覆盖的冬日山峦美得不可思议。</p>
+    <p class="p-en"><span class="hl">As before, I slept two nights in the apartment with Naoko and Reiko, and spent three days with them doing much the same kinds of things as before. Instead of our picnic, we went cross-country skiing.</span></p>
+    <p class="p-cn">和上次一样，我在直子和玲子的公寓里住了两晚，和她们一起度过了三天，做的事情也和上次差不多。只不过野餐换成了越野滑雪。</p>
+    <p class="p-en"><span class="hl-b">Naoko was even less talkative than she had been in the fall.</span> "But don't worry," Naoko told me. <span class="hl">"This is just one of those times. It's a lot more fun for me to listen to you two than to talk myself."</span></p>
+    <p class="p-cn">直子比秋天时更沉默了。"不过别担心，"直子对我说，"这只是又到了那种时候而已。听你们俩说话，比我自己说话要有意思得多。"</p>
+    <p class="p-en"><span class="hl-p">She slid down and touched my penis with her lips, then enveloped it in her warmth and ran her tongue all over it, her long, straight hair swaying over my belly and groin with each movement of her lips until I came for a second time.</span></p>
+    <p class="p-cn">她滑下去，用嘴唇触碰我的那里，然后含在口中，用舌头舔遍，她长长的直发随着嘴唇的动作在我的腹部和胯间摆动，直到我再次射精。</p>
+    <p class="p-en"><span class="hl-g">"Do you think you can remember that?" she asked. "Of course I can," I said. "I'll always remember it."</span></p>
+    <p class="p-cn">"你能记住吗？""当然能。我会永远记住。"</p>
+    <div class="key">
+      <span class="lbl">✦ 冬日的温暖与沉默</span>
+      <p>直子更沉默了，但比任何时候都更渴望用身体交流。她为渡边口交，要求他记住——仿佛预感到这是最后的亲密。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">关于同居的提议</div>
+      <div class="en">The Suggestion to Live Together</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag gold">提议</span>
+      <span class="tag purple">未来</span>
+    </div>
+    <p class="p-en"><span class="hl-b">"I'm thinking of getting out of the dorm when the school year ends and looking for an apartment," I said. "I've had it with dorm life. If I keep working part-time I can pretty much cover my expenses. How about coming to Tokyo to live with me, the way I suggested before?"</span></p>
+    <p class="p-cn">"我打算学期结束后搬出宿舍，找间公寓，"我说，"已经受够了宿舍生活。如果继续打工，基本上能维持生活。你来东京和我一起住吧，就像以前我说过的那样。"</p>
+    <p class="p-en"><span class="hl">"Oh, Toru, thank you. I'm so happy that you would ask me to do something like that!"</span></p>
+    <p class="p-cn">"啊，渡边，谢谢你。你邀请我，我太高兴了。"</p>
+    <p class="p-en"><span class="hl-b">"Why don't I get wet?" Naoko murmured. "That one time was the only time it ever happened. The day of my twentieth birthday, that April. The night you held me in your arms. What is wrong with me?"</span></p>
+    <p class="p-cn">"我为什么不会湿呢？"直子低语道，"只有那一次。我二十岁生日那天，四月。你抱住我的那晚。我到底怎么了？"</p>
+    <p class="p-en"><span class="hl-p">"All of my problems are strictly psychological," said Naoko. "What if I never get better? What if I can never have sex for the rest of my life? Can you keep loving me just the same? Will hands and lips always be enough for you? Or will you solve the sex problem by sleeping with other girls?"</span></p>
+    <p class="p-cn">"我的问题全是心理上的，"直子说，"如果我永远好不了呢？如果我一辈子都无法做爱呢？你还能一样爱我吗？手和嘴唇就足够了吗？还是你会跟别的女孩睡觉来解决性的问题？"</p>
+    <div class="key">
+      <span class="lbl">✦ 未来的可能性</span>
+      <p>渡边提出了同居的建议。但直子的身体问题再次浮现——只有那一次她"湿了"。她的身体拒绝着亲密，如同她的心拒绝着世界。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="stitle">
+      <div class="zh">新的住所</div>
+      <div class="en">The New House</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">搬家</span>
+      <span class="tag gold">独立</span>
+    </div>
+    <p class="p-en"><span class="hl">1970—A YEAR with a whole new sound to it—came along, and that put an end to my teen years. Now I could step ahead into a whole new swamp.</span></p>
+    <p class="p-cn">一九七〇年——一个有着全新声音的年份——到来了，我的十几岁也结束了。现在我可以迈步走进一片全新的沼泽了。</p>
+    <p class="p-en"><span class="hl-b">Once I had the better part of my exams out of the way, I started looking for an apartment in earnest. After a week of searching, I came up with the right place way out in the suburbs of Kichijoji.</span></p>
+    <p class="p-cn">期末考考得差不多之后，我开始认真找公寓。找了一个星期，在吉祥寺郊外找到了一个合适的地方。</p>
+    <p class="p-en"><span class="hl">Nagasawa helped me with the move. He managed to borrow a light truck to transfer my stuff, and, as promised, he gave me his refrigerator, TV, and oversize Thermos bottle.</span></p>
+    <p class="p-cn">永泽帮我搬了家。他借了一辆小卡车来运我的东西，还按约定给了我他的冰箱、电视机和超大号热水瓶。</p>
+    <p class="p-en"><span class="hl-g">"Don't feel sorry for yourself," he said. "Only assholes do that."</span></p>
+    <p class="p-cn">"别可怜自己，"他说，"只有混蛋才可怜自己。"</p>
+    <p class="p-en"><span class="hl-b">We shook hands and went our separate ways, he to his new world, and I back to my swamp.</span></p>
+    <p class="p-cn">我们握了手，各奔东西。他走向他的新世界，我回到我的沼泽。</p>
+    <div class="key">
+      <span class="lbl">✦ 永泽的最后忠告</span>
+      <p>"别可怜自己，只有混蛋才可怜自己。"——永泽留给渡边的忠告，也是他冷酷人生哲学的精髓。之后两人再未见面。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="section" id="s5" style="animation-delay:0.19s">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div class="stitle">
+      <div class="zh">绿子的愤怒</div>
+      <div class="en">Midori's Anger</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag red">冲突</span>
+      <span class="tag gold">绿子</span>
+    </div>
+    <p class="p-en"><span class="hl-b">I was in the thick of painting when Midori popped into my mind. I hadn't been in touch with her for nearly three weeks, I realized, and hadn't even told her I had moved.</span></p>
+    <p class="p-cn">我正忙着刷漆的时候，突然想起了绿子。我意识到已经快三个星期没联系她了，甚至连搬家的事都没告诉她。</p>
+    <p class="p-en">Then the sister, or whoever she was, got back on the line. <span class="hl">"Midori says she's too mad to talk to you. You just up and moved and never said a thing to her, right? Just disappeared and never told her where you were going, right? Well, now you've got her boiling mad. And once she gets mad, she stays that way. Like an animal."</span></p>
+    <p class="p-cn">然后她姐姐又拿起电话："绿子说她气炸了，不想跟你说话。你就这么搬走了，一个字也没跟她说，对吧？就这么消失了，没告诉她你去哪儿了，对吧？她现在火冒三丈。她一旦生起气来，一时半会儿好不了。跟野兽似的。"</p>
+    <p class="p-en"><span class="hl-b">"What a terrible thing it is to wound someone you really care for—and to do it so unconsciously."</span></p>
+    <p class="p-cn">伤害自己真正在乎的人——而且是在不知不觉中——这是多么可怕的事。</p>
+    <p class="p-en"><span class="hl-r">The answer never came.</span></p>
+    <p class="p-cn">回信始终没有来。</p>
+    <div class="key">
+      <span class="lbl">✦ 无心的伤害</span>
+      <p>渡边并不是不爱绿子，相反——他太沉浸于自己的世界，以至于无意识地伤害了最重要的人。绿子的沉默比任何指责都更有力量。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="section" id="s6" style="animation-delay:0.23s">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div class="stitle">
+      <div class="zh">等待春天</div>
+      <div class="en">Waiting for Spring</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">等待</span>
+      <span class="tag gold">孤独</span>
+    </div>
+    <p class="p-en"><span class="hl-b">This was the beginning of one weird spring. I spent my whole break waiting for letters.</span></p>
+    <p class="p-cn">这就是一个奇怪的春天的开始。整个假期我都在等信。</p>
+    <p class="p-en"><span class="hl">I couldn't take a trip, I couldn't go home to see my parents, I couldn't even take a part-time job because there was no telling when a letter might arrive from Naoko saying she wanted me to come see her on such-and-such a date.</span></p>
+    <p class="p-cn">我不能去旅行，不能回家看父母，甚至不能打工，因为不知道直子的信什么时候会来，说想在某某日子见我。</p>
+    <p class="p-en"><span class="hl-b">I spent a day working on the bike: cleaning the rust off, oiling the bearings, pumping up the tires, adjusting the gears, and taking it to a bike repair shop to have a new gear cable installed. It looked like a different bike by the time I was finished.</span></p>
+    <p class="p-cn">我花了一天修自行车：除锈、给轴承上油、给轮胎打气、调整齿轮，还送到修理店换了新的变速线。修好之后，看上去像换了辆新车。</p>
+    <p class="p-en"><span class="hl-p">I sat on the porch and picked my way through The Drifters' "Up on the Roof" as well as I could. I was amazed to find I still remembered most of the chords.</span></p>
+    <p class="p-cn">我坐在门廊上，尽力弹着流浪者乐队的《Up on the Roof》。惊讶地发现大部分和弦都还记得。</p>
+    <div class="key">
+      <span class="lbl">✦ 等待中的静止</span>
+      <p>渡边在等直子的信，也等绿子的回信。他修理自行车、弹吉他、整理花园——用这些琐碎的动作填满无尽的等待。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="section" id="s7" style="animation-delay:0.27s">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div class="stitle">
+      <div class="zh">玲子的来信</div>
+      <div class="en">Reiko's Letter</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag purple">书信</span>
+      <span class="tag red">转折</span>
+    </div>
+    <p class="p-en"><span class="hl-b">I found a letter in the box on the afternoon of April 4. "Reiko Ishida," it said on the back. I made a nice, clean cut across the seal with my scissors and went out to the porch to read it. I had a feeling this was not going to be good news, and I was right.</span></p>
+    <p class="p-cn">四月四日下午，我在信箱里发现了一封信。背面写着"石田玲子"。我用剪刀整齐地裁开封口，走到门廊上去读。我有种预感这不是好消息——果然没错。</p>
+    <p class="p-en"><span class="hl">"Naoko has been struggling to write you a letter, but she could never seem to write one through to the end. Her condition is not good, I have to say in all honesty."</span></p>
+    <p class="p-cn">"直子一直在努力给你写信，但始终没能写完一封。我必须坦诚地说，她的状况不太好。"</p>
+    <p class="p-en"><span class="hl-b">"Whenever she would try to write a letter, she would hear people talking to her, which made it impossible for her to write. The voices would interfere with her attempts to choose her words."</span></p>
+    <p class="p-cn">"每当她试图写信时，就会听到有人对她说话，使她无法写下去。那些声音干扰她选择词语。"</p>
+    <p class="p-en"><span class="hl-r">"She is having trouble now just holding an ordinary conversation. She can't find the right words to speak, and that puts her into a terribly confused state—confused and frightened."</span></p>
+    <p class="p-cn">"她现在连普通的对话都有困难。找不到合适的词语来表达，这让她陷入极度混乱和恐惧的状态。"</p>
+    <div class="key" style="border-left-color:#e8997a;">
+      <span class="lbl" style="color:#e8997a;">✦ 崩塌的信号</span>
+      <p>直子的病情急转直下。失去了写信的能力，丧失了交谈的能力，"声音"越来越多。玲子的信宣告了希望的搁浅。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="section" id="s8" style="animation-delay:0.31s">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <div class="stitle">
+      <div class="zh">春天的绝望</div>
+      <div class="en">Spring Despair</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag red">绝望</span>
+      <span class="tag purple">存在</span>
+    </div>
+    <p class="p-en"><span class="hl">After I had finished reading it, I stayed on the porch and let my eyes wander out to the garden, full now with the freshness of spring. An old cherry tree stood there, its blossoms nearing the height of their glory.</span></p>
+    <p class="p-cn">读完信后，我待在门廊上，目光漫无目的地投向花园。花园里充满了春天的新绿。一棵老樱树立在那里，樱花即将迎来盛放的高潮。</p>
+    <p class="p-en"><span class="hl-b">I spent the day watching the garden, propped against a pillar and stroking Seagull. I felt completely drained. The afternoon deepened, twilight approached, and bluish shadows enveloped the garden. Seagull disappeared, but I went on staring at the cherry blossoms.</span></p>
+    <p class="p-cn">我靠在柱子上，一边抚摸着海鸥，一边望着花园，度过了一整天。我感到彻底的精疲力竭。午后渐深，黄昏将至，青色的暮霭笼罩了花园。海鸥不见了，但我还在盯着樱花看。</p>
+    <p class="p-en"><span class="hl-r">In the spring gloom, they looked like flesh that had burst through the skin over festering wounds. The garden filled up with the sweet, heavy stench of rotting flesh. And that's when I thought of Naoko's flesh.</span></p>
+    <p class="p-cn">在春天的暮色中，它们看上去像是腐烂的伤口上绽开的皮肉。花园里弥漫着甜腻沉重的腐肉气息。就在那时，我想起了直子的身体。</p>
+    <p class="p-en"><span class="hl">Why did such a beautiful body have to be so sick? I wondered. Why didn't they just leave Naoko alone?</span></p>
+    <p class="p-cn">为什么那么美丽的身体非生病不可呢？我想。为什么不索性放过直子呢？</p>
+    <p class="p-en"><span class="hl-b">I spent three straight days after that all but walking on the bottom of the sea. I hardly could hear what people said to me... I sat leaning against the wall, staring up at the ceiling... I didn't bathe, I didn't shave. This is how the three days went by.</span></p>
+    <p class="p-cn">之后整整三天，我几乎像是在海底行走。别人说什么我都听不见……我靠着墙坐着，盯着天花板……不洗澡、不刮胡子。三天就这么过去了。</p>
+    <div class="key" style="border-left-color:#e8997a;">
+      <span class="lbl" style="color:#e8997a;">✦ 腐烂的春天</span>
+      <p>村上最震撼的意象之一：盛开的樱花在渡边眼中化为腐烂伤口上的绽肉。春天不再是生机的象征，而是死亡的腐臭。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="section" id="s9" style="animation-delay:0.35s">
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <div class="stitle">
+      <div class="zh">绿子的原谅</div>
+      <div class="en">Midori's Forgiveness</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag green">和解</span>
+      <span class="tag gold">对话</span>
+    </div>
+    <p class="p-en"><span class="hl">"SHIT, WATANABE, what happened to you?" Midori asked. "You're all skin and bones!"</span></p>
+    <p class="p-cn">"喂，渡边，你怎么搞的？"绿子问，"都瘦得皮包骨了！"</p>
+    <p class="p-en"><span class="hl-b">Midori put her hands on my shoulders and looked me in the eye with a twisted scowl that soon turned into a sweet smile. "It's true," she said. "Something's different, kinda. You've changed."</span></p>
+    <p class="p-cn">绿子把手放在我肩上，皱着眉仔细端详我的脸，但很快那扭曲的表情变成了温柔的微笑。"真的，"她说，"好像有哪里不一样了。你变了。"</p>
+    <p class="p-en"><span class="hl-g">"I know, I know. But tell me, Watanabe, you haven't had sex for six months?" "Not once." "So, that time you put me to bed, you must have really wanted it bad."</span></p>
+    <p class="p-cn">"好了好了，不过说真的，渡边，你半年没做爱了？""一次也没有。""那上次你送我回家的时候，一定忍得很辛苦吧。"</p>
+    <p class="p-en"><span class="hl-p">"Look, you're the best friend I've got now," I said. "I don't want to lose you." "You know, if you had tried to force yourself on me that time, I wouldn't have been able to resist, I was so exhausted."</span></p>
+    <p class="p-cn">"你是我现在最好的朋友了，"我说，"我不想失去你。""你知道吗，那天你就算硬来，我也抵抗不了，我太累了。"</p>
+    <p class="p-en"><span class="hl-b">"A little before that, I decided I was going to believe in you. A hundred percent. That's how I managed to sleep like that with total peace of mind. I knew I'd be all right, I'd be safe with you there."</span></p>
+    <p class="p-cn">"在那之前，我就决定要相信你了。百分之百。所以才能那么安心地睡过去。我知道有你在，我不会有事的。"</p>
+    <div class="key">
+      <span class="lbl">✦ 百分之百的信任</span>
+      <p>绿子原谅了渡边，不是因为不生气，而是因为她决定"百分之百地相信他"。这是比爱情更深的情感——完全的信任。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="section" id="s10" style="animation-delay:0.39s">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="stitle">
+      <div class="zh">长椅上的信</div>
+      <div class="en">The Letter from the Bench</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag purple">书信</span>
+      <span class="tag gold">感情</span>
+    </div>
+    <p class="p-en"><span class="hl-b">"I'm writing this letter to you while you're off buying drinks. This is the first time in my life I've ever written a letter to somebody sitting next to me on a bench, but I feel it's the only way I can get through to you. I mean, you're hardly listening to anything I say."</span></p>
+    <p class="p-cn">"我在你买饮料的时候给你写这封信。这是我生平第一次给坐在旁边长椅上的人写信，但我觉得只有这样你才能听进去。因为你根本没在听我说什么。"</p>
+    <p class="p-en"><span class="hl-r">"Do you realize you did something terrible to me today? You never even noticed that my hairstyle had changed, did you?"</span></p>
+    <p class="p-cn">"你知道你今天做了多么过分的事吗？你根本没注意到我换发型了，对吧？"</p>
+    <p class="p-en"><span class="hl">"But don't get me wrong. I'm not totally mad at you. I'm just sad. You were so nice to me when I was having my problems, but now that you're having yours, it seems there's not a thing I can do for you. You're all locked up in that little world of yours, and when I try knocking on the door, you just sort of look up for a second and go right back inside."</span></p>
+    <p class="p-cn">"但别误会。我不是完全生你的气。我只是难过。我有困难的时候你对我那么好，可轮到你有困难了，我却什么都帮不上。你把自己关在那个小世界里，我试着敲门，你只是抬头看一眼，又缩回去了。"</p>
+    <p class="p-en"><span class="hl-b">"If you had, I would have ripped this letter up and said, 'Let's go to your place. I'll make you a nice supper. And afterward we can get in bed and cuddle.' But you're about as sensitive as a steel plate. Good-bye."</span></p>
+    <p class="p-cn">"如果你发现了，我就会撕掉这封信，说'带我去你家吧。我给你做顿好吃的。然后我们上床拥抱'。可你的感觉跟铁板一样迟钝。再见。"</p>
+    <div class="key">
+      <span class="lbl">✦ 未被察觉的爱</span>
+      <p>绿子换了发型，带了睡衣和牙刷——她原本计划今晚去渡边的新家。但她选择用一封信来表达被忽视的痛苦。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 11 -->
+<div class="section" id="s11" style="animation-delay:0.43s">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div class="stitle">
+      <div class="zh">孤独的四月</div>
+      <div class="en">A Lonely April</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">季节</span>
+      <span class="tag red">孤独</span>
+    </div>
+    <p class="p-en"><span class="hl-b">April was too lonely a month to spend all alone. In April, everyone around me looked happy. People would throw their coats off and enjoy each other's company in the sunshine—talking, playing catch, holding hands. But I was always by myself.</span></p>
+    <p class="p-cn">四月是一个太孤独的月份，不能独自度过。四月里，周围的人看起来都很幸福。人们脱去外套，在阳光下享受彼此的陪伴——聊天、投球、牵手。但我却总是一个人。</p>
+    <p class="p-en"><span class="hl-r">Naoko, Midori, Nagasawa: all of them had gone away from where I stood. Now I had no one to say "Good morning" to or "Have a nice day." I even missed Storm Trooper.</span></p>
+    <p class="p-cn">直子、绿子、永泽：所有人都从我站的地方离开了。现在我连说"早安"或"祝你愉快"的人都没有了。我甚至想念突击队员。</p>
+    <p class="p-en"><span class="hl">In the deepening spring of May, I had no choice but to recognize the trembling of my heart. It usually happened as the sun was going down. In the pale evening gloom, when the soft fragrance of magnolias hung in the air, my heart would swell without warning, and tremble, and lurch with a stab of pain.</span></p>
+    <p class="p-cn">在日渐深浓的五月春光中，我不得不承认自己内心的颤抖。通常这发生在日落时分。在苍白的暮色中，当木兰的幽香浮在空气中时，我的心会毫无预兆地膨胀、颤抖，然后被一阵剧痛猛地拽住。</p>
+    <p class="p-en"><span class="hl-b">At those times I would write to Naoko. In my letters to her, I would describe only things that were touching or pleasant or beautiful: the fragrance of grasses, the caress of a spring breeze, the light of the moon, a movie I'd seen, a song I liked, a book that had moved me. I myself would be comforted by letters like this when I would reread what I had written.</span></p>
+    <p class="p-cn">每当那时我就给直子写信。在信里，我只写那些触动我的、愉快的、美丽的事物：青草的香气、春风的抚慰、月光、看过的电影、喜欢的歌、感动我的书。重读自己写的信时，我自己也会得到安慰。</p>
+    <div class="key">
+      <span class="lbl">✦ 孤独的极致</span>
+      <p>直子入院，绿子离开，永泽毕业——所有人都不在了。渡边陷入了有生以来最深的孤独，四月成为最孤独的月份。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  挪威的森林 · Norwegian Wood · 村上春树 · 第十章 · 共11段 · 双语对照
+</footer>
+
+</div>
+
+<script>
+  const toggle = document.getElementById('toggleCn');
+  const main = document.querySelector('.main');
+  const label = document.getElementById('toggleLabel');
+  toggle.addEventListener('change', function() {
+    main.classList.toggle('show-cn', this.checked);
+    label.classList.toggle('checked', this.checked);
+  });
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() {
+    menuBtn.classList.toggle('active');
+    nav.classList.toggle('open');
+    backdrop.classList.toggle('show');
+  }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => {
+    a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); });
+  });
+</script>
+</body>
+</html>

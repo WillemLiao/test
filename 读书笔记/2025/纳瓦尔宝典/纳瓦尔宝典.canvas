@@ -1,0 +1,43 @@
+{
+	"nodes":[
+		{"id":"group01wealth","type":"group","x":-60,"y":-200,"width":750,"height":2100,"color":"3","label":"第一部分：财富篇"},
+		{"id":"group02happiness","type":"group","x":1640,"y":-200,"width":760,"height":1800,"color":"4","label":"第二部分：幸福篇"},
+		{"id":"group00intro","type":"group","x":750,"y":50,"width":600,"height":530,"color":"6","label":"前言与背景"},
+		{"id":"node01intro","type":"text","text":"## 前言部分\n\n### 关于本书\n- 编者声明与阅读指南\n- 推文和访谈格式说明\n\n### 推荐序\n- **樊登：** 财富与幸福源自选择\n- **范冰：** 一场反直觉的精神瑜伽\n- **蒂姆·费里斯：** 纳瓦尔的智慧与勇气\n\n### 纳瓦尔背景\n- 9岁从印度移民美国\n- 单亲贫困家庭长大\n- 史岱文森高中→达特茅斯学院\n- AngelList创始人\n- 投资200+公司（推特、优步等）","x":780,"y":90,"width":540,"height":470,"color":"6"},
+		{"id":"node04leverage","type":"text","text":"## 杠杆（Leverage）\n\n**三种杠杆：**\n\n### 1. 劳动力杠杆\n- 让别人为你工作\n- 最古老、争夺最激烈\n- 需要许可才能使用\n\n### 2. 资本杠杆\n- 运用金钱\n- 需要展现专长、责任感和判断力\n- 需要许可\n\n### 3. 代码和媒体（推荐）\n- 软件和内容产品\n- 复制边际成本为零\n- 不需要许可\n- 睡觉时也能为你工作\n- **新富阶层的杠杆**","x":350,"y":220,"width":320,"height":360,"color":"3"},
+		{"id":"node06responsibility","type":"text","text":"## 承担责任\n\n**重要性：**\n- 勇于以个人名义承担商业风险\n- 社会将根据责任大小回报你\n\n**实践：**\n- 建立可信的判断力记录\n- 在实际操作中展现判断力\n- 对产出负责，而非投入时间\n\n**回报：**\n股权 + 杠杆效应","x":350,"y":630,"width":320,"height":330,"color":"1"},
+		{"id":"node03expertise","type":"text","text":"## 专长（Specific Knowledge）\n\n**定义：**\n无法通过培训获得的知识\n\n**特征：**\n- 追求真正的兴趣和热爱\n- 对你像玩耍，对他人很吃力\n- 需要师傅带徒弟传授\n- 高度技术性或创造性\n- 不能被外包或自动化\n\n**如何积累：**\n- 找到如玩耍般的工作\n- 长期深耕一个领域\n- 培养独特的技能组合","x":-10,"y":280,"width":320,"height":300,"color":"2"},
+		{"id":"node08learning","type":"text","text":"## 学习与成长\n\n### 热爱阅读\n- 费曼学习法\n- 不必从头到尾读完\n- 反复阅读经典\n\n### 心智模型\n- 进化论\n- 复杂性理论\n- 经济学原理\n\n### 基础学科\n- 微观经济学、博弈论\n- 心理学、说服术\n- 数学、计算机","x":-30,"y":1540,"width":320,"height":260,"color":"6"},
+		{"id":"node09action","type":"text","text":"## 行动指南\n\n**三个重大决定：**\n1. 在哪里生活\n2. 和谁在一起\n3. 从事什么职业\n\n**工作原则：**\n- 学会销售 + 学会构建\n- 保持耐心\n- 做到全球顶尖\n- 共事的人比努力程度更重要\n\n**没有快速致富的教程**","x":330,"y":1540,"width":320,"height":260,"color":"2"},
+		{"id":"node07principles","type":"text","text":"## 财富创造的其他关键原则\n\n### 复利思维\n- 投资交友，着眼长远\n- 选择有长期发展前景的行业\n- 找到可以长期合作的人\n- 生活中所有回报都来自复利\n\n### 时薪思维\n- 设定大胆的个人时薪并严格执行\n- 分清主次，聚焦重点\n- 低于时薪的任务选择外包或忽略\n\n### 四种运气\n1. 盲目的运气\n2. 坚持不懈的运气\n3. 善于发现的运气\n4. 独特的运气（专长吸引）","x":-10,"y":980,"width":680,"height":520,"color":"5"},
+		{"id":"node05judgment","type":"text","text":"## 判断力 > 努力程度\n\n**核心观点：**\n- 靠判断力赚钱，而非劳作\n- 判断力是杠杆的倍增器\n\n**如何培养：**\n- 从经验中学习\n- 学习基本技能\n- 清晰思考\n- 摆脱自我束缚\n- 掌握决策技巧\n\n**巴菲特案例：**\n- 用一年斟酌判断\n- 用一天采取行动\n- 一天的行动影响几十年","x":-10,"y":610,"width":320,"height":350,"color":"4"},
+		{"id":"node16summary","type":"text","text":"## 核心要点总结\n\n### 财富创造\n**把自己产品化 = 专长 × 责任 × 杠杆**\n\n找到独特技能 → 承担责任 → 利用杠杆（代码/媒体）→ 创造规模化价值 → 获得财富自由\n\n### 幸福获得\n**幸福 = 消除缺憾感 = 活在当下 + 心境平和 + 接受现实**\n\n减少欲望 → 培养好习惯 → 关爱自己 → 自我塑造 → 内心平静\n\n### 终极目标\n**健康的身体 + 平静的心灵 + 充满爱的家庭**","x":720,"y":1880,"width":600,"height":400,"color":"5"},
+		{"id":"node02wealth-core","type":"text","text":"## 财富创造核心原则\n\n### 如何致富（推特风暴）\n\n**核心公式：**\n*财富 = 专长 × 责任 × 杠杆*\n\n**关键理念：**\n- 追求财富，而非金钱或地位\n- 财富 = 睡觉时也能赚钱的资产\n- 不能靠出租时间致富\n- 必须拥有股权\n- 为社会提供其有需求但无从获得的东西\n- 实现规模化\n\n**总结：把自己产品化**","x":-10,"y":-150,"width":320,"height":380,"color":"1"},
+		{"id":"central01a2b3c4d5e6","type":"text","text":"# 纳瓦尔宝典\n## The Almanack of Naval Ravikant\n\n**副标题：** 财富与幸福指南\n\n**作者：** 纳瓦尔·拉维坎特\n**编者：** 埃里克·乔根森\n\n---\n\n*硅谷投资人、AngelList创始人的智慧结晶*\n\n**核心主题：**\n1. 如何创造财富\n2. 如何获得幸福","x":780,"y":-550,"width":500,"height":400,"color":"5"},
+		{"id":"node11desire","type":"text","text":"## 幸福的障碍\n\n### 欲望\n- **欲望 = 主动选择的不开心**\n- 欲望是一份你和自己签订的合约\n- 在得到欲望之物前，你不会快乐\n\n### 成功陷阱\n- 成功不一定带来幸福\n- 外在成就无法填补内心空虚\n\n### 嫉妒\n- **嫉妒是幸福的敌人**\n- 比较心态破坏幸福\n- 每个人的道路都是独特的","x":1690,"y":240,"width":320,"height":320,"color":"1"},
+		{"id":"node13self","type":"text","text":"## 自我塑造\n\n### 选择自我塑造\n- 人格不是固定的\n- 可以主动改变\n- 成为自己想成为的人\n\n### 选择自我成长\n- 持续学习\n- 不断进化\n- 突破舒适区\n\n### 选择解放自己\n- 摆脱社会期待\n- 摆脱他人评价\n- 获得真正的自由","x":1690,"y":610,"width":320,"height":300,"color":"5"},
+		{"id":"node15resources","type":"text","text":"## 推荐资源\n\n### 图书推荐（非虚构类）\n- 《人类简史》《未来简史》- 尤瓦尔·赫拉利\n- 《穷查理宝典》- 查理·芒格\n- 《理性乐观派》- 马特·里德利\n- 《黑天鹅》《反脆弱》- 纳西姆·塔勒布\n\n### 哲学经典\n- 乔达摩（佛陀）\n- 老子《道德经》\n- 理查德·费曼\n- 朱迪亚·珀尔\n\n### 科幻推荐\n- 道格拉斯·亚当斯\n- 特德·姜\n- 伊恩·班克斯\n\n### 原则清单\n- 2008年生命公式\n- 2016年个人原则","x":1690,"y":960,"width":680,"height":340,"color":"2"},
+		{"id":"node12habits","type":"text","text":"## 幸福源于好习惯\n\n### 关爱自己\n- **健康第一**\n- 饮食：清淡饮食\n- 运动：每日锻炼\n- 睡眠：充足休息\n\n### 冥想\n- 培养觉知力\n- 观察思想而不陷入\n- 每日练习\n\n### 精神力量\n- 阅读哲学经典\n- 理性佛教\n- 从第一性原理思考\n\n### 选择做自己\n- 真诚表达\n- 不在乎他人评价\n- 按自己的价值观生活","x":2050,"y":240,"width":320,"height":380,"color":"4"},
+		{"id":"node14meaning","type":"text","text":"## 生命的意义\n\n### 理性佛教\n- 去除宗教外衣的佛学智慧\n- 关注当下\n- 减少执念\n\n### 价值观\n- 诚实\n- 真诚\n- 爱\n- 自由\n\n### 人生公式\n*幸福 = 健康 + 财富 + 良好的人际关系*\n\n**终极追求：**\n内心平静 + 时间自由","x":2050,"y":610,"width":320,"height":300,"color":"6"},
+		{"id":"node10happiness-core","type":"text","text":"## 幸福的本质\n\n### 幸福是一种技能\n- 可以通过练习习得\n- 需要主动选择\n\n### 幸福的定义\n**幸福 = 消除缺憾感**\n\n### 三个关键\n1. **活在当下**\n   - 唯一拥有的是当下\n   - 过去和未来都是幻象\n\n2. **心境平和**\n   - 内心宁静\n   - 不被外界干扰\n\n3. **接受现实**\n   - 于接受中寻找幸福","x":1690,"y":-150,"width":320,"height":370,"color":"3"}
+	],
+	"edges":[
+		{"id":"edge01","fromNode":"central01a2b3c4d5e6","fromSide":"left","toNode":"node02wealth-core","toSide":"top","color":"3","label":"财富篇"},
+		{"id":"edge02","fromNode":"central01a2b3c4d5e6","fromSide":"right","toNode":"node10happiness-core","toSide":"top","color":"4","label":"幸福篇"},
+		{"id":"edge03","fromNode":"central01a2b3c4d5e6","fromSide":"bottom","toNode":"node01intro","toSide":"top","label":"前言"},
+		{"id":"edge04","fromNode":"node02wealth-core","fromSide":"bottom","toNode":"node03expertise","toSide":"top","label":"专长"},
+		{"id":"edge05","fromNode":"node02wealth-core","fromSide":"right","toNode":"node04leverage","toSide":"top","label":"杠杆"},
+		{"id":"edge06","fromNode":"node02wealth-core","fromSide":"bottom","toNode":"node05judgment","toSide":"left","label":"判断力"},
+		{"id":"edge07","fromNode":"node04leverage","fromSide":"bottom","toNode":"node06responsibility","toSide":"top","label":"责任"},
+		{"id":"edge08","fromNode":"node03expertise","fromSide":"bottom","toNode":"node07principles","toSide":"left"},
+		{"id":"edge09","fromNode":"node05judgment","fromSide":"bottom","toNode":"node08learning","toSide":"top"},
+		{"id":"edge10","fromNode":"node06responsibility","fromSide":"bottom","toNode":"node09action","toSide":"top"},
+		{"id":"edge11","fromNode":"node10happiness-core","fromSide":"bottom","toNode":"node11desire","toSide":"top","label":"障碍"},
+		{"id":"edge12","fromNode":"node10happiness-core","fromSide":"right","toNode":"node12habits","toSide":"top","label":"习惯"},
+		{"id":"edge13","fromNode":"node11desire","fromSide":"bottom","toNode":"node13self","toSide":"top"},
+		{"id":"edge14","fromNode":"node12habits","fromSide":"bottom","toNode":"node14meaning","toSide":"top"},
+		{"id":"edge15","fromNode":"node13self","fromSide":"bottom","toNode":"node15resources","toSide":"left"},
+		{"id":"edge16","fromNode":"group01wealth","fromSide":"bottom","toNode":"node16summary","toSide":"left","color":"5","label":"总结"},
+		{"id":"edge17","fromNode":"node15resources","fromSide":"left","toNode":"node16summary","toSide":"right","color":"5","label":"总结"}
+	]
+}

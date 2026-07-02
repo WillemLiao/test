@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第6章 世界尽头 · 影子 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; cursor: pointer; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">影子<small>第6章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>古梦的真面目</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>读梦的理由</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>触摸光</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>最初的试炼</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>心是什么</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>两个世界的记忆</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>影子的剥离</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>影子的愤怒</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>体制的牢笼</a>
+    <a class="nav-item" data-section="s10"><span class="num">10</span>月光下的散步</a>
+    <a class="nav-item" data-section="s11"><span class="num">11</span>荒凉的职工区</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第6章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">影子</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">古梦的真面目</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">神秘</span></div>
+    <p>女孩把第一个古老的梦放在桌上的时候，我一时未能认出这便是所谓古梦。我目不转睛地注视良久，然后抬起脸，望着站在身旁的女孩。她一言不发，只顾俯视桌上的古梦。我觉得这物体不大符合"古梦"这个名称。我从"古梦"这一字眼的韵味中联想到的是古书，或者形状远为模糊不清的什么物体。</p>
+    <p>"这就是古梦！"女孩开口道。口气淡然漠然，飘然无依，与其是对我加以说明，莫如说是在自言自语地确认什么。"准确说来，古梦在这里边。"</p>
+    <p>我不得其解，但仍点了下头。</p>
+    <p>"拿起来看看。"她说。</p>
+    <p>我轻轻拿在手上，用目光仔细扫描。但无论如何也看不出古梦的蛛丝马迹，没有什么任何可供捕捉的线索，不过是一块动物头骨而已。动物不大，骨的表面大概由于日光长期照射的关系而变得十分干燥，褪去了固有的颜色。向前长长突起的下颚微微张开地固定着，仿佛在倾诉什么的时候突然冻僵了。两个小小的眼窝尽管已失去眼球，却仍在盯视着往里扩展的虚无的房间。</p>
+    <p>头骨轻得异乎寻常，因此作为物体的存在感已丧失殆尽，从中感觉不到任何生命的余温。所有的血肉、记忆、体温尽皆荡然无存。额头中间有个手感粗糙的小坑，我把指头贴在坑上摩挲着观察了半天，推想可能是角被拔除的遗痕。</p>
+    <p>"是镇上独角兽的头骨吧？"我试着问。</p>
+    <p>她点点头，静静地说："古梦就渗入这里边被封闭起来了。"</p>
+    <div class="key"><span class="lbl">✦ 物质化的梦</span><p>古梦不是抽象的精神存在，而是渗入动物头骨的实体。独角兽的头骨是梦的容器——这个世界尽头最核心的设定在此揭晓。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">读梦的理由</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">哲学</span></div>
+    <p>"从这里可以读出古梦？"</p>
+    <p>"这就是读梦人的工作嘛。"</p>
+    <p>"读出来的梦怎么处理好呢？"</p>
+    <p>"无所谓处理，只消读出来就行了。"</p>
+    <p>"这可不大好明白。"我说，"从中读取古梦这点我明白，但就此为止却叫人莫名其妙。若是这样，我觉得这工作毫无意义。大凡工作总该有个目的才是——譬如把梦抄写出来，依序整理分类。"</p>
+    <p>女孩摇摇头："至于意义，我也解释不好意义在哪里。我想你只要不断读下去，恐怕就会自然而然地体会出来。但不管怎样，意义那东西对你的工作本身没有多大关系。"</p>
+    <p>我把头盖骨放回桌面，从远处再次审视，令人联想起虚无的深深的沉默将头骨整个包笼起来，但是这沉默并非来自外部，而有可能如烟雾一般从头骨内部喷涌而出。总之是一种不可思议的沉默，简直像要把头骨紧紧连接在地球的核心。头骨则默然无语，径自把没有实体的视线投向虚空的一点。</p>
+    <p>越看我越强烈地感到这头骨在向我诉说什么，周围甚至漾出令人伤感的气氛。而我却不能将充斥于此的伤感准确地表达出来。我已经失去贴切的语言。</p>
+    <div class="key"><span class="lbl">✦ 无目的的工作</span><p>"只消读出来就行了"——世界尽头的工作没有目的性，只有过程。这是对现实世界功利逻辑的彻底否定，也是主角必须适应的第一课。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">触摸光</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">规则</span><span class="tag gold">仪式</span></div>
+    <p>"读就是了。"说着，我再次把桌上的头骨拿在手里，用手心测了测重量。"反正我好像已别无选择。"</p>
+    <p>女孩微微一笑，从我手里接过头骨，用双层抹布小心擦去表面的灰尘，使其增加了亮度，又放回桌面。</p>
+    <p>"那好，向你说一下古梦的读法。"她说，"当然，我只是做个样子，实际上是读不出来的，能读出来的仅限于你。好好看着：首先头骨要正面对着自己，两手的指头轻轻放在太阳穴位置。"</p>
+    <p>她把手指贴在头骨两侧，强调似的看着我。</p>
+    <p>"其次，定定地注视头骨前额。注视时不要用力，要轻轻地、柔和地，但不能移开视线，无论怎么晃眼都不能移开。"</p>
+    <p>"晃眼？"</p>
+    <p>"嗯，是的。盯视之间，头骨开始发光发热，你可以用指尖静静触摸那光线，那一来你就可以读取古梦了。"</p>
+    <p>我在头脑里把女孩说的顺序重复一遍。我无法想象她所说的光是怎样一种光，感触如何，但大致顺序已了然于心。在久久凝视她放在头骨上的纤细手指的时间里，一股强烈的感觉向我袭来——以前我恍惚在某处看过这头骨！那如被漂洗过的骨骼的白色和额头的小坑，使我产生了奇妙的心灵震颤，一如第一次目睹女孩面庞之时。至于这是准确的记忆断片，还是时间和空间的瞬间扭曲带来的错觉，我无从判断。</p>
+    <div class="key"><span class="lbl">✦ 既视感的震颤</span><p>主角对头骨产生既视感，如同初见女孩时一样。记忆碎片在世界尽头反复浮现，暗示"冷酷仙境"与"世界尽头"两条线之间存在隐秘的连通。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">最初的试炼</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">氛围</span></div>
+    <p>"怎么了？"女孩问道。</p>
+    <p>我摇摇头："没怎么，想点事情。你刚才说的顺序我想可以记住。往下只剩下实际操作了，是吧？"</p>
+    <p>"先吃饭吧。"她说，"工作起来可就挤不出时间了。"</p>
+    <p>她从里面小厨房端来一只锅，放在炉上加温。锅里是杂烩菜，有元葱和马铃薯。不一会，锅热了，发出惬意的声响。女孩把菜盛进盘子，连同夹有核桃仁的面包一起端上桌来。</p>
+    <p>我们相对而坐，一声不响地往嘴里送东西。饭菜本身很简单，调味料也全是我过去从未尝过的，但决不算坏，吃罢觉得全身暖融融的。接着来了热茶，深色，带有中草药般的苦味。</p>
+    <p>读梦并不像女孩嘴上说的那么轻松自在。那光线实在过于细弱，且如迷宫一样紊乱，不管怎样往指尖集中精力都无法顺利触摸下去。但我还是能在指尖清楚地感觉出古梦的存在，它犹如向前涌动的图形序列。可是我无法将其作为明确的形象加以把握，只不过感觉到它的确存在而已。</p>
+    <p>当我好歹读罢两个梦时，时间已过了十点。我把释放出古梦的头骨还给女孩，摘下眼镜，用手指慢慢揉了揉早已滞涩的眼球。</p>
+    <p>"累吧？"女孩问。</p>
+    <p>"有点儿。"我回答，"眼睛还不适应，看着看着，眼睛就把古梦的光吸了进去，以至脑袋里开始作痛，尽管痛得不很厉害。总之眼睛变得模模糊糊，没有办法紧盯不放。"</p>
+    <p>"起初都是如此。"她说，"一开始眼睛是不习惯，很难读得顺利，但不久就会习以为常。别担心，慢慢干一段时间再说。"</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">心是什么</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">哲学</span></div>
+    <p>把古梦放回书库后，女孩开始做下班的准备。她打开炉盖，用小铲把烧得通红的煤块取出，放进装有细沙的桶里埋好。</p>
+    <p>"不能把疲劳装在心里。"她说，"我妈妈总是这样告诉我。她说身体或许对疲劳奈何不得，但要使心解脱出来。"</p>
+    <p>"完全正确。"</p>
+    <p>"不过说实话，我还不大懂得心是怎么一回事。不知道它的准确含义，不明白该如何使用，仅仅记住这个字眼罢了。"</p>
+    <p>"心不是使用的。"我说，"心只是存在于那里，同风一样，你只要感觉出它的律动即可。"</p>
+    <p>她盖上炉盖，把搪瓷壶和杯子拿去里边冲洗，洗罢穿上蓝得如同被切割下来后长久失去原来记忆的一方天宇的粗布外套，若有所思地在已熄火的炉前伫立良久。</p>
+    <p>"你是从别处来这里的？"女孩忽然想起似的问。</p>
+    <p>"是的。"</p>
+    <p>"那里是怎样一个地方呢？"</p>
+    <p>"什么都不记得了。"我说，"对不起，实在什么也记不起来，就好像在身影被剥夺时关于古老世界的记忆也一起不知去向了一样。反正是个很远很远的地方。"</p>
+    <p>"你可懂得什么是心？"</p>
+    <p>"我想是懂得的。"</p>
+    <p>"我妈妈也曾有心来着，"她说，"不料在我七岁时消失了。这肯定因为妈妈和你同样拥有过心。"</p>
+    <div class="key"><span class="lbl">✦ 心的消失</span><p>女孩的母亲"心消失了"——世界尽头的人在逐渐失去内在。主角说"心只是存在于那里，同风一样"，但这个世界的人连感受风的能力都在丧失。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">两个世界的记忆</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">记忆</span></div>
+    <p>"消失？"</p>
+    <p>"嗯，是消失。不过不谈这个了。在这里谈论什么消失是不吉利的。讲讲你住过的地方，一两件总想得起来吧？"</p>
+    <p>"想得起来的只有两件。"我说，"一是那里没有围墙，二是我们都是拖着影子走路的。"</p>
+    <p>不错，我们是拖着影子走路的，而我来到这里时，却不得不把自己的影子交给看门人保管。</p>
+    <p>"带着影子是不能进入这座镇子的。"看门人说，"或者舍弃影子，或是放弃进镇，随你选择。"</p>
+    <p>于是我舍弃了影子。</p>
+    <p>看门人叫我站在门旁空地上。下午三时的太阳将我的身影清清楚楚地印在地面。</p>
+    <p>"老实别动！"说着，看门人从衣袋里掏出小刀，将锋利的刀尖插进影子与地面间的空隙，忽左忽右地划动了一会，便把身影利利索索地从地面上割去了。</p>
+    <div class="key"><span class="lbl">✦ 记忆的两件</span><p>主角仅剩的两条记忆——没有围墙、拖着影子——恰好是这个世界最缺乏的两样东西。记忆在被剥夺的瞬间才显得珍贵。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">影子的剥离</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">场景</span></div>
+    <p>影子抵抗似的略微颤抖了几下，但由于已同地面分离，最后还是没了气力，瘫软地坐在凳子上。离开身体的影子看上去要比预想的寒伧得多，一副疲惫不堪的样子。</p>
+    <p>看门人收回刀刃，同我一起久久注视着脱离本体的影子。</p>
+    <p>"如何，独立后的影子挺怪的吧？"他说，"影子那玩意儿毫无用处，徒增分量而已。"</p>
+    <p>"抱歉，看来不得不同你分开一段时间了。"我凑到影子旁边说道，"原本没这个打算，实在是迫不得已。你就暂时忍耐一下，一个人待在这里，好么？"</p>
+    <p>"暂时指多长时间？"影子问。</p>
+    <p>我说不知道。</p>
+    <p>"往后你怕是要后悔的吧？"影子低声说，"详细的我倒不清楚，不过人和影子分开，总像不大对头。我觉得这里有问题，这个场所也有问题。人离开影子无法生存，影子离开人也无以存在。然而我们两个却在两相分开的情况下安然无事，这肯定有问题。你就不这样认为？"</p>
+    <p>"我也认为确实不自然。"我说，"但这个地方从一开始就一切都不自然。在不自然的地方，只能迁就不自然，别无良策。"</p>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">影子的愤怒</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag purple">存在</span></div>
+    <p>影子摇摇头："纯属大道理。我可不信大道理。这里的空气不适合我，跟其他地方的空气不一样，对我对你都没有益处。你不应该抛弃我。这以前我们两个不是合作得很好吗？干嘛偏要把我甩掉？"</p>
+    <p>归根结蒂，事情为时已晚。影子已经被人从我身上剥离掉了。</p>
+    <p>"过些日子安顿下来，我再来领你。"我说，"这终归是权宜之计，不至于长此以往。两人总还会朝夕相伴的。"</p>
+    <p>影子低低喟叹一声，用有气无力的散焦的目光向上看着我。午后三时的太阳照着我们两人。我失去了影子，影子失去了本体。</p>
+    <p>"那恐怕不过是你一厢情愿的推测罢了。"影子说，"事情不会称心如愿的。我总有一种不良预感。还是找机会逃离这里，两人一起重返原来的世界！"</p>
+    <p>"老地方回不去了，不晓得如何回去。你也同样不晓得吧？"</p>
+    <p>"眼下是这样。但我要全力找出回去的途径。我想时常跟你谈谈，什么时候来见我？"</p>
+    <p>我点点头，手放在影子背上，然后往看门人那里走去。我同影子交谈的时间里，看门人一直在拾广场上的石子，把它们扔到与人无碍的场所。</p>
+    <div class="key"><span class="lbl">✦ 影子即本能</span><p>影子是本我、欲望和记忆的象征。它不相信"大道理"，只想逃离。主角对影子说"权宜之计"，但影子早已预感——事态不会称心如愿。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">体制的牢笼</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">规则</span><span class="tag blue">世界</span></div>
+    <p>我一到身旁，看门人便用衬衣襟擦去手上沾的白土，一只大手放在我的背部。我分辨不出这是亲密程度的表现，还是为了让我认识其手力的强劲。</p>
+    <p>"你的影子我来小心保管就是。"看门人说，"一日三餐保证供应，每天还让外出散步一次，所以你只管放心，根本用不着担心。"</p>
+    <p>"可以时常相见么？"</p>
+    <p>"这个嘛，"看门人说，"不可能任何时候都无拘无束，但也不是不可以见面，如果时机到来，情况允许，我有兴致的话。"</p>
+    <p>"要是我想请你归还影子，结果会怎么样呢？"</p>
+    <p>"看来你还不大明白这儿的体制。"看门人依然把手放在我背部，"在这个地方，任何人都不得有影子，一旦进来就再也不得出去。也就是说，你刚才的问话毫无意义。"</p>
+    <p>这么着，我失去了自己的影子。</p>
+    <div class="key"><span class="lbl">✦ 单向地穴</span><p>"一旦进来就再也不得出去"——世界尽头是单向的。看门人不直接回答能否归还影子，而是以体制的名义宣告问话的无效性。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header"><div class="section-num">10</div><div class="stitle"><div class="zh">月光下的散步</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag red">对话</span></div>
+    <p>走出图书馆，我提出送女孩回家。</p>
+    <p>"不必送我，"她说，"我不怕夜黑，再说又和你住的方向相反。"</p>
+    <p>"很想送送。"我说，"好像挺兴奋的，回去也不能马上入睡。"</p>
+    <p>我们两人并肩向南走过旧桥。仍然带有寒意的春风摇曳着河中沙洲的柳枝，直刺刺泻下的月光为脚下的卵石路镀上一层闪亮的银辉。空气湿润润沉甸甸地在地面往来徘徊。女孩把一度松开的头发重新扎成一束，往前盘了一圈后塞到风衣里面。</p>
+    <p>"你的头发非常漂亮。"我说。</p>
+    <p>"谢谢。"</p>
+    <p>"过去也有人夸过你的头发？"</p>
+    <p>"没有，你是第一个。"</p>
+    <p>"被人夸是怎样一种心情？"</p>
+    <p>"不知道。"说着。她望着我的脸。双手插在风衣袋，"我知道你在夸我的头发，但实际并不完全如此。我的头发在你心中构成了别的什么——你莫不是在说那个吧？"</p>
+    <p>"不不，我是在说你的头发。"</p>
+    <p>女孩淡淡一笑，仿佛在空中寻觅什么。"别见怪，我只是还不大习惯你的说话方式。"</p>
+    <p>"没关系，很快就会习惯的。"我说。</p>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.33s">
+  <div class="section-header"><div class="section-num">11</div><div class="stitle"><div class="zh">荒凉的职工区</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">空间</span><span class="tag gold">描写</span></div>
+    <p>女孩的家在职工住宅区。这个区位于工厂区的一角，颇有些荒凉。其实厂区本身也一片凄凉光景。往日大运河绿水盈盈，货轮和游艇往来穿梭，如今已水门紧闭，水干见底的河段随处可见。白花花硬邦邦的泥块，犹如巨大古生物布满皱纹的死尸一样鼓胀出来。河岸用来装卸货物的宽大石阶现已派不上用场，惟见丰茂的杂草顺着石缝盘根错节。旧瓶子和生锈的机器零件在泥土中探头探脑，平甲板的木船在一旁日益腐朽。</p>
+    <p>运河岸边，寂无人息的废工厂接连不断。门扇紧闭，窗口玻璃荡然无存，墙壁爬满常春藤，安全楼梯的扶手锈迹斑斑，杂草丛生。</p>
+    <p>穿过沿河排列的工厂，便是职工住宅。清一色是五层旧楼。女孩告诉我：原本是有钱人住的格调典雅的公寓，后来随着时代的变迁，已被分割成条条块块，供贫苦的职工居住。但这些职工今天已不是职工，他们赖以就业的工厂差不多都已关门大吉，一身技术也已无用武之地，顶多按照镇上的要求做一点零碎活计。女孩的父亲也是职工中的一员。</p>
+    <p>过得运河最后一座带有矮扶手的石桥，便是女孩家所在的地段。楼与楼之间以长廊连接，使人联想起中世纪攻城用的云梯。</p>
+    <p>时近午夜，几乎所有的窗口都已没了灯火。她拉着我的手，活像逃避头上吃人巨鸟的视线似的，快步穿过迷宫样的甬路，随后在一栋楼前站定，向我道声再见。</p>
+    <p>"晚安。"</p>
+    <p>言毕，我一个人走上西山坡，返回自己的住处。</p>
+    <div class="key"><span class="lbl">✦ 世界的废墟化</span><p>工厂倒闭、运河干涸、职工失业——世界尽头不仅是幻境，也呈现着现实的衰败景象。女孩拉着主角快速穿过甬路，像躲避什么巨鸟的视线，暗示危机隐藏在夜色中。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch05.html" class="nav-ch">‹ 第5章</a>
+    <a href="ch07.html" class="nav-ch">第7章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第6章 · 世界尽头 · 影子</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心经白话翻译 — 信息图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+    background: #eef4ed;
+    color: #1e2a21;
+    padding: 40px 20px;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    padding: 60px 30px 50px;
+    background: linear-gradient(135deg, #2d5a3d 0%, #1a3b27 100%);
+    color: #e8f0e6;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: "";
+    position: absolute;
+    top: -40px; left: -40px; right: -40px; bottom: -40px;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+  .header h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .header .sub {
+    font-size: 15px;
+    opacity: 0.7;
+    letter-spacing: 3px;
+    position: relative;
+  }
+
+  .full-text {
+    background: #fafff8;
+    padding: 40px 36px;
+    border-left: 1px solid #d0dfcc;
+    border-right: 1px solid #d0dfcc;
+    line-height: 2.2;
+    font-size: 16px;
+    color: #2a3d2e;
+    text-align: justify;
+  }
+  .full-text .label {
+    display: inline-block;
+    font-size: 13px;
+    color: #2d5a3d;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #2d5a3d;
+    padding-bottom: 4px;
+  }
+
+  .segment {
+    background: #fafff8;
+    border-left: 1px solid #d0dfcc;
+    border-right: 1px solid #d0dfcc;
+    border-top: 1px solid #d0dfcc;
+    padding: 36px;
+    transition: background 0.2s;
+  }
+  .segment:last-of-type {
+    border-bottom: 1px solid #d0dfcc;
+    border-radius: 0 0 12px 12px;
+  }
+  .segment:hover {
+    background: #f4fcf1;
+  }
+
+  .seg-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: #2d5a3d;
+    color: #e8f0e6;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 50%;
+    margin-bottom: 14px;
+  }
+  .original {
+    font-size: 15px;
+    line-height: 2;
+    color: #1e2a21;
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 3px solid #2d5a3d;
+    font-weight: 500;
+  }
+  .vernacular {
+    font-size: 15px;
+    line-height: 2;
+    color: #3d5a44;
+    padding-left: 14px;
+    border-left: 3px solid #8bb89a;
+  }
+  .vernacular::before {
+    content: "白话 ";
+    font-size: 12px;
+    color: #8bb89a;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #7a9a82;
+    font-size: 12px;
+    letter-spacing: 2px;
+    border-top: 1px solid #d0dfcc;
+    margin-top: 40px;
+  }
+
+  /* 导航 */
+  .nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 100;
+  }
+  .nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(45, 90, 61, 0.08);
+    color: #2d5a3d;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 1px solid rgba(45, 90, 61, 0.12);
+  }
+  .nav a:hover,
+  .nav a.active {
+    background: #2d5a3d;
+    color: #e8f0e6;
+    border-color: #2d5a3d;
+    transform: scale(1.15);
+  }
+  .nav .nav-label {
+    display: none;
+    position: absolute;
+    right: 46px;
+    background: #2d5a3d;
+    color: #e8f0e6;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .nav a:hover .nav-label {
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    .nav { display: none; }
+  }
+  @media (max-width: 600px) {
+    .header h1 { font-size: 22px; letter-spacing: 4px; }
+    .segment { padding: 24px 18px; }
+    .full-text { padding: 28px 18px; }
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .segment:hover { background: #fafff8; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .seg-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .nav { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 导航 -->
+  <nav class="nav" id="sideNav">
+    <a href="#full" data-target="full" class="active">
+      全
+      <span class="nav-label">经文</span>
+    </a>
+    <a href="#seg1" data-target="seg1">
+      1
+      <span class="nav-label">观自在</span>
+    </a>
+    <a href="#seg2" data-target="seg2">
+      2
+      <span class="nav-label">五蕴皆空</span>
+    </a>
+    <a href="#seg3" data-target="seg3">
+      3
+      <span class="nav-label">诸法空相</span>
+    </a>
+    <a href="#seg4" data-target="seg4">
+      4
+      <span class="nav-label">空寂</span>
+    </a>
+    <a href="#seg5" data-target="seg5">
+      5
+      <span class="nav-label">渡彼岸</span>
+    </a>
+    <a href="#seg6" data-target="seg6">
+      6
+      <span class="nav-label">三世诸佛</span>
+    </a>
+    <a href="#seg7" data-target="seg7">
+      7
+      <span class="nav-label">大神咒</span>
+    </a>
+    <a href="#seg8" data-target="seg8">
+      8
+      <span class="nav-label">揭谛</span>
+    </a>
+  </nav>
+
+  <!-- 标题 -->
+  <div class="header">
+    <h1>般若波罗蜜多心经</h1>
+    <div class="sub">白话文翻译 · Youtube 版</div>
+  </div>
+
+  <!-- 全文 -->
+  <div id="full" class="full-text">
+    <div class="label">☸ 经文</div>
+    观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。<br>
+    舍利子，色不异空，空不异色，色即是空，空即是色，受想行识，亦复如是。<br>
+    舍利子，是诸法空相，不生不灭，不垢不净，不增不减。<br>
+    是故空中无色，无受想行识，无眼耳鼻舌身意，无色声香味触法，无眼界，乃至无意识界。无无明，亦无无明尽，乃至无老死，亦无老死尽。无苦集灭道，无智亦无得。<br>
+    以无所得故，菩提萨埵，依般若波罗蜜多故，心无挂碍，无挂碍故，无有恐怖，远离颠倒梦想，究竟涅磐。三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。<br>
+    故知般若波罗蜜多，是大神咒，是大明咒，是无上咒，是无等等咒，能除一切苦，真实不虚。<br>
+    故说般若波罗蜜多咒，即说咒曰：波罗揭谛，波罗僧揭谛，菩提萨婆诃。
+  </div>
+
+  <!-- 分段 1：观自在菩萨 -->
+  <div id="seg1" class="segment">
+    <div class="seg-num">1</div>
+    <div class="original">观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。</div>
+    <div class="vernacular">
+      保持平等心的状态，去觉知观照内心生起的一切，可以使无明的有情众生，走向离苦解脱的彼岸。以这个方式持续的修行，当修行深入到具足智慧的时候，就可以证入到五蕴皆空的境界。通过证得这一境界，可使众生去除一切的痛苦。
+    </div>
+  </div>
+
+  <!-- 分段 2：色不异空 -->
+  <div id="seg2" class="segment">
+    <div class="seg-num">2</div>
+    <div class="original">舍利子，色不异空，空不异色，色即是空，空即是色，受想行识，亦复如是。</div>
+    <div class="vernacular">
+      舍利子，在这种五蕴皆空的境界中，潜意识中负责信息处理的五蕴会停止运转。而由于五蕴运转的停止，潜意识将不再产生任何内容。比如，当色蕴停止运转时，你将看不到颜色，听不到声音，闻不到气味，尝不到味道，也感知不到身体的存在，没有任何的回忆和幻想，所有因色蕴而产生的东西都不复存在。这就是所谓的色即是空，空即是色，色不异空，空不异色。同理，受蕴、想蕴、行蕴、识蕴，也跟色蕴一样，都停止了运转，自然也就不再产生任何的受想行识。
+    </div>
+  </div>
+
+  <!-- 分段 3：诸法空相 -->
+  <div id="seg3" class="segment">
+    <div class="seg-num">3</div>
+    <div class="original">舍利子，是诸法空相，不生不灭，不垢不净，不增不减。</div>
+    <div class="vernacular">
+      舍利子，在这种状态下，潜意识处于一种完全空寂的状态，不再有任何内容的生起，唯有不生不灭、不垢不净、不增不减的本我存在。
+    </div>
+  </div>
+
+  <!-- 分段 4：空中无色 -->
+  <div id="seg4" class="segment">
+    <div class="seg-num">4</div>
+    <div class="original">是故空中无色，无受想行识，无眼耳鼻舌身意，无色声香味触法，无眼界，乃至无意识界。无无明，亦无无明尽，乃至无老死，亦无老死尽。无苦集灭道，无智亦无得。</div>
+    <div class="vernacular">
+      在这种空寂的状态下，你将感知不到外部世界的任何信息，不会再产生任何的回忆幻想，也没有任何的感受，没有任何的思考想像，也没有任何的习性反应，没有任何的识别与判断。眼根、耳根、鼻根、舌根、身根、意根，这六个根门都停止了运转。所以在意识的层面，没有关于色蕴的内容，没有任何的颜色光线、声音、气味、味道，没有任何触觉上的感知，也不再有任何的回忆想像，没有任何对于外在世界的感知，也没有任何内在的意识活动。在这种涅槃寂静的状态下，没有无明，没有无明灭尽的过程，没有老死，没有老死灭尽的过程，也没有痛苦产生消失的过程，没有任何知识性的思考辨析，也没有什么可以获得的。一切思维概念性的东西都没有，唯有无边的寂静。在这样的状态下，自然也没有什么可以获得的，因为这就是即空无一物又圆满至极的境界。
+    </div>
+  </div>
+
+  <!-- 分段 5：心无挂碍 -->
+  <div id="seg5" class="segment">
+    <div class="seg-num">5</div>
+    <div class="original">以无所得故，菩提萨埵，依般若波罗蜜多故，心无挂碍，无挂碍故，无有恐怖，远离颠倒梦想，究竟涅磐。</div>
+    <div class="vernacular">
+      有情众生们，快快渡到彼岸去吧。依照这个修智慧的法门去修行，去渡到彼岸，让自己的内心没有任何牵挂，没有任何的恐惧害怕，远离一切虚幻的颠倒幻想，证得究竟的涅槃，实现本我完全自在的解脱。
+    </div>
+  </div>
+
+  <!-- 分段 6：三世诸佛 -->
+  <div id="seg6" class="segment">
+    <div class="seg-num">6</div>
+    <div class="original">三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。</div>
+    <div class="vernacular">
+      在过去、现在乃至未来，证得佛陀果位的人，都是依靠这个方法修行到智慧圆满，将平等心和觉知能力发挥到极致，实现了完全的解脱。
+    </div>
+  </div>
+
+  <!-- 分段 7：大神咒 -->
+  <div id="seg7" class="segment">
+    <div class="seg-num">7</div>
+    <div class="original">故知般若波罗蜜多，是大神咒，是大明咒，是无上咒，是无等等咒，能除一切苦，真实不虚。</div>
+    <div class="vernacular">
+      所以这个修行智慧的法门，是一个非常好非常顶级的法门，能够帮我们去除一切痛苦，真实不虚，确定无疑。所以要谨记这个修行智慧的法门，去依法修行。
+    </div>
+  </div>
+
+  <!-- 分段 8：揭谛 -->
+  <div id="seg8" class="segment">
+    <div class="seg-num">8</div>
+    <div class="original">故说般若波罗蜜多咒，即说咒曰：波罗揭谛，波罗僧揭谛，菩提萨婆诃。</div>
+    <div class="vernacular">
+      走吧，走吧，大家一起走吧，一起渡到彼岸去吧。
+    </div>
+  </div>
+
+  <div class="footer">— 般若波罗蜜多心经 · 白话翻译 · Youtube 版 —</div>
+</div>
+
+<script>
+(function() {
+  var navLinks = document.querySelectorAll('#sideNav a');
+  var sections = [];
+  navLinks.forEach(function(link) {
+    var id = link.getAttribute('data-target');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link, top: 0, bottom: 0 });
+  });
+
+  function update() {
+    var scrollY = window.scrollY + 160;
+    var current = null;
+    for (var i = 0; i < sections.length; i++) {
+      if (scrollY >= sections[i].top && scrollY < sections[i].bottom) {
+        current = sections[i];
+        break;
+      }
+    }
+    if (!current && sections.length > 0) {
+      current = sections[sections.length - 1];
+    }
+    navLinks.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+
+  function recalc() {
+    sections.forEach(function(s) {
+      s.top = s.el.offsetTop;
+      s.bottom = s.top + s.el.offsetHeight;
+    });
+    update();
+  }
+
+  window.addEventListener('scroll', update);
+  window.addEventListener('resize', recalc);
+  recalc();
+})();
+</script>
+</body>
+</html>

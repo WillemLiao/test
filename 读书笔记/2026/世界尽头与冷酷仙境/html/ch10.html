@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第10章 世界尽头 · 舞舞舞 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; cursor: pointer; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">舞舞舞<small>第10章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>广场上的影子</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>绘制地图的命令</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>看门人的阻挡</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>围墙的威力</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>世界尽头的法则</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>桥上的记忆</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>独角兽的秋天</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第10章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">舞舞舞</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">广场上的影子</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag blue">场景</span></div>
+    <p>一个阴天的下午，我来到看守人小屋跟前。我的影子此时正在帮看守人修理木板车。两人把车拉到广场正中，拆下旧垫板和侧板，把新的换上。看门人用熟练的手势把新木板刨光，影子则用锤子敲打。看来影子的模样较之与我分别时几乎没什么变化，身体情况也不像很糟，但动作总好像有点不大自然，眼角现出了似乎不快的皱纹。</p>
+    <p>我一走近，两人便停手抬起脸来。</p>
+    <p>"有什么事？"看门人问。</p>
+    <p>"嗯，有句话要说。"</p>
+    <p>"工作马上就完，在里边等一下。"看门人往下看着刚才刨的木板说道。</p>
+    <p>影子瞟了我一眼，旋即继续工作，估计对我满肚子意见。</p>
+    <p>我走进看门人小屋，坐在桌前等待看门人返回。桌上一如往常地乱七八糟。看门人收拾桌面只限于磨刀之时。脏乎乎的碟盘、水杯、烟斗、咖啡末儿和木屑一片狼藉，惟独壁架上排列的刀具井然有序，倒也赏心悦目。</p>
+    <p>看门人好久都没返回。我胳膊搭着椅背，百无聊赖地望天花板消磨时间。镇上时间多得令人忍无可忍，人们也就自然而然地各自学会了打发时间的方法。</p>
+    <div class="key"><span class="lbl">✦ 时间的重量</span><p>"镇上时间多得令人忍无可忍"——在世界尽头，时间是过剩的资产。看门人拖延会见，主角学会了望天花板发呆。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">绘制地图的命令</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag green">指令</span><span class="tag purple">策略</span></div>
+    <p>又过了一会，门开了，但进来的不是看门人，是我的影子。</p>
+    <p>"没工夫慢慢谈，"影子在我身旁边走边说，"只是来仓库取钉子。"</p>
+    <p>他打开里面的门，从右侧仓库取出钉盒。</p>
+    <p>"注意，好好听着，"影子一面比试盒中钉子的长度一面说，"先绘一张镇子的地图。不要问别人，要用你自己的脚自己的眼睛实地勘察。大凡眼睛看到的，一律绘下，不得漏掉，哪怕再微不足道。"</p>
+    <p>"可要花时间的哟！"我说。</p>
+    <p>"赶在秋天结束之前交给我，"影子快速说道，"再配上文字说明。尤其要注意围墙的形状、东面的森林、河的入口和出口。就这些，记住了？"</p>
+    <p>言毕，影子看也没看我一眼，径自开门离去。影子走后，我将他的话复述一遍：围墙的形状、东面的森林、河的入口和出口。绘制地图——主意的确不错。这样既可把握镇的基本结构，又能有效地利用剩余时间，更可欣慰的是影子仍信赖我。</p>
+    <div class="key"><span class="lbl">✦ 地图的密码</span><p>影子以取钉子为由短暂接近，实则传递秘密指令。绘制地图是逃脱的前奏——围墙形状、森林、河的出入口，正是寻找出路的关键。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">看门人的阻挡</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag green">规则</span></div>
+    <p>稍顷，看门人来了。他进屋先用毛巾擦了把汗，又擦去手上的污垢，这才一屁股坐在我对面。</p>
+    <p>"那么，什么事啊？"</p>
+    <p>"来见见影子。"我回答。</p>
+    <p>看门人连连点头，给烟斗装满烟，划火柴点燃。</p>
+    <p>"现在不行。"看门人说，"抱歉，还为时太早，时下这个季节影子还很有力气，要等白天再短一点才成，我不会亏待他的。"</p>
+    <p>说罢，他用手指把火柴杆折为两段，扔进桌上的碟子里。</p>
+    <p>"这也是为了你好。要是在中间阶段同影子藕断丝连，日后会有很多麻烦，我见过好几个这样的例子。我不至于为难他，你就再忍耐些日子。"</p>
+    <p>我默默点头。一来我说什么他都不会理睬，二来反正我已同影子大致谈过了，往下只消等待看门人给我机会就是。</p>
+    <p>看门人从椅子上欠身立起，走到水龙头前用大大的瓷杯喝了好几杯水。</p>
+    <p>"工作可顺利？"</p>
+    <p>"啊，一点点习惯了。"我说。</p>
+    <p>"那就好。"看门人接着说道，"做工作最好认认真真、踏踏实实。工作不踏实，人难免想入非非。"</p>
+    <p>外面继续传来影子敲钉子的声音。</p>
+    <div class="key"><span class="lbl">✦ 想入非非的警戒</span><p>"工作不踏实，人难免想入非非"——看门人深谙控制之道：用劳动填满思考空间，防止居民产生逃离的念头。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">围墙的威力</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">空间</span><span class="tag gold">描写</span></div>
+    <p>"如何，不一块散散步去？"看门人提议，"让你见识一下有趣的东西。"</p>
+    <p>我随着看门人走到门外。广场上，影子正在车上敲打最后一块木块。除去支柱和车轴，车已焕然一新。</p>
+    <p>看门人穿过广场，把我领到围墙瞭望楼下。这是个闷热而阴沉的下午，从西面鼓胀上来的乌云遮掩了围墙上空，看情形马上就要下雨了。看门人身上的衬衫已被汗水整个浸透，紧紧裹着他巨大的躯体，散发出令人作呕的气味。</p>
+    <p>"这是围墙。"看门人用手心像拍马一样拍了几下墙壁，"高七米，把镇子团团围住。能翻越它的只有飞鸟。出入口仅这一道门。过去还有东门，现在已被封死。你都看见了，墙是用砖砌的，但不是普通砖，任何人都甭想碰伤它毁坏它，无论大炮还是地震、狂风。"</p>
+    <p>说罢，看门人从脚下拾起一截木棍，用刀削尖。刀快得简直富有诗意，转眼间木棍就成了小楔子。</p>
+    <p>"好么，注意看着。"看门人说，"砖与砖之间没有黏合物，因为无此必要。砖块相互紧贴紧靠，其缝隙连一根头发丝都别想伸进。"</p>
+    <p>看门人用锐利的楔尖在砖块之间戳了戳，竟连一毫米也戳不进去。继而，看门人扔开楔子，用刀尖划着砖块表面。声音尖锐刺耳，却留不下丝毫伤痕。他看了看刀尖，然后收起刀放入衣袋。</p>
+    <p>"对这围墙任何人都奈何不得，爬也爬不上。因为这墙无懈可击。"</p>
+    <div class="key"><span class="lbl">✦ 无懈可击的墙</span><p>围墙高七米、砖缝连发丝都插不进——看门人近乎炫耀地展示世界的牢不可破。但他说"能翻越它的只有飞鸟"，暗示出口的线索。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">世界尽头的法则</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">哲学</span><span class="tag green">规则</span></div>
+    <p>"记住：谁都休想从这里出去，趁早死了那份心思。"随后，看门人把大手放在我背上，"晓得你心里不好受，但这过程任何人都要经历，你也必须学会忍耐。那以后就会时来运转，就再也不会烦恼不会痛苦，四大皆空。什么瞬间心情之类，那东西一文不值。忘掉影子，我不会为难他。这里是世界尽头。世界到此为止，再无出路，所以你也无处可去。"</p>
+    <p>如此言毕，看门人又拍了一下我的背。</p>
+    <p>回来的路上，我在旧桥正中靠在栏杆上，眼望流水思索看门人的话。</p>
+    <p>至于我是何以抛弃原来世界而不得不来到这世界尽头的，我却无论如何也无从记起，记不起其过程、意义和目的。是某种东西、某种力量——是某种岂有此理的强大力量将我送到这里来的！因而我才失去了身影和记忆，并正在失去心。</p>
+    <div class="key"><span class="lbl">✦ 正在失去心</span><p>"正在失去心"——主角明确意识到自己正在被世界尽头同化。看门人的"四大皆空"不是解脱，而是意识的死亡。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">桥上的记忆</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">描写</span></div>
+    <p>水流在我脚下发出舒心惬意的声响。河中有块沙洲，上面生着柳树，依依长垂的柳枝随着水波得意地摇曳不止。河水妩媚多姿，晶莹澄澈，深处的岩石附近，游鱼历历可数。看河的时间里，我不知不觉恢复了平素沉静的心情。</p>
+    <p>桥下是石阶，可以下到河中沙洲。柳树荫下有一凳，周围常有几头独角兽歇息。我时常下到那里，掏出衣袋里的面包，撕成一块块喂它们。它们几经迟疑，终于悄然伸长脖子，在我手心舔起面包屑来，而这往往只限于年老者或幼小者。</p>
+    <p>随着秋意日深，它们那使人联想到一泓深湖的眼睛渐渐增加了悲哀之色。树叶褪绿，百草凋零，告诉它们忍饥挨饿的漫长冬季正一天天逼近。而且如老人所预言的，那对我恐怕也是漫长而难熬的季节。</p>
+    <div class="key"><span class="lbl">✦ 独角兽的悲哀</span><p>独角兽眼睛里的悲哀之色随秋意加深——动物的哀愁倒映着主角自身的处境。冬季对所有生命都是考验，包括读梦人。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch09.html" class="nav-ch">‹ 第9章</a>
+    <a href="ch11.html" class="nav-ch">第11章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第10章 · 世界尽头 · 舞舞舞</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

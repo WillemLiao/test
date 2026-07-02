@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第22章 世界尽头 · 入夜的水边 · 世界尽头与冷酷仙境</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0ea;
+    font-family: "Noto Serif SC","Source Han Serif SC","STSong","SimSun","Songti SC",serif;
+    color: #2c2416;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav { position: fixed; top: 0; right: 0; width: 200px; height: 100vh; background: #f0ebe3; border-left: 1px solid #ddd2c4; padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #d5c9b8; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 12px; font-size: 13px; font-weight: 700; color: #b8864e; border-bottom: 1px solid #ddd2c4; }
+  .nav-title small { display: block; font-size: 11px; font-weight: 400; color: #8b7a65; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 5px 16px; color: #8b7a65; text-decoration: none; font-size: 13px; transition: all 0.2s; border-left: 2px solid transparent; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-item:hover { color: #b8864e; background: rgba(184,134,78,0.04); border-left-color: #b8864e; }
+  .nav-item .num { width: 20px; height: 20px; border-radius: 50%; background: #e5ddd0; color: #8b7a65; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .nav-item:hover .num { background: #b8864e; color: #fff; }
+  .nav-item.active { color: #b8864e; background: rgba(184,134,78,0.08); border-left-color: #b8864e; }
+  .nav-item.active .num { background: #b8864e; color: #fff; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 11px; color: #b8aa96; border-top: 1px solid #ddd2c4; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .main { flex: 1; max-width: calc(100% - 200px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #b8864e, transparent); }
+  header h1 { font-size: 28px; font-weight: 700; color: #b8864e; letter-spacing: 3px; }
+  header h1 small { display: block; font-size: 12px; color: #8b7a65; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
+  header .meta { color: #8b7a65; font-size: 14px; margin-top: 5px; }
+  header .meta .sub { color: #b8864e; }
+  .ch-nav { display: flex; justify-content: space-between; margin-bottom: 24px; padding: 0 4px; }
+  .nav-ch { display: inline-block; padding: 6px 14px; font-size: 13px; color: #8b7a65; text-decoration: none; border: 1px solid #ddd2c4; border-radius: 6px; transition: 0.2s; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .nav-ch:hover { background: #b8864e; color: #fff; border-color: #b8864e; }
+  .section { margin-bottom: 28px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .section-num { width: 28px; height: 28px; border-radius: 50%; background: #b8864e; color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Helvetica Neue",Arial,sans-serif; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 16px; font-weight: 700; color: #5a4030; letter-spacing: 2px; }
+  .sline { flex: 0 0 30px; height: 1px; background: linear-gradient(90deg, rgba(184,134,78,0.3), transparent); }
+  .body { background: #fffcf7; border-radius: 10px; padding: 18px 22px; border: 1px solid #e6dccf; transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(184,134,78,0.15); }
+  .body p { font-size: 15px; line-height: 2; color: #3d3224; margin-bottom: 8px; text-align: justify; text-indent: 2em; }
+  .body p:last-child { margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: #f5f0ea; color: #8b7a65; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .tag.gold { background: rgba(184,134,78,0.1); color: #b8864e; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5c9e; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #5a7f99; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b87a5e; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #5a9e84; }
+  .key { border-left: 3px solid #b8864e; background: rgba(184,134,78,0.04); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 11px; font-weight: 700; color: #b8864e; letter-spacing: 2px; display: block; margin-bottom: 3px; font-family: "Noto Sans SC","Microsoft YaHei",sans-serif; }
+  .key p { font-size: 14px; color: #5a4a3a; margin-bottom: 0; text-indent: 0; }
+  footer { text-align: center; padding: 30px 20px; color: #b8aa96; font-size: 12px; }
+  footer a { color: #b8864e; text-decoration: none; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(240,235,227,0.95); border: 1px solid #ddd2c4; border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #b8864e; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 22px; }
+    .section { margin-bottom: 20px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 15px; }
+    .body { padding: 12px 14px; }
+    .body p { font-size: 14px; line-height: 1.85; }
+    .section-num { width: 24px; height: 24px; font-size: 12px; }
+    .sline { flex: 0 0 15px; }
+    .ch-nav { flex-wrap: wrap; gap: 8px; }
+    footer { font-size: 11px; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 19px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 13px; line-height: 1.8; }
+    .stitle .zh { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">入夜的水边<small>第22章 · 世界尽头</small></div>
+  <div class="nav-list">
+    <a class="nav-item" data-section="s1"><span class="num">1</span>灰色的烟</a>
+    <a class="nav-item" data-section="s2"><span class="num">2</span>解脱与轮回</a>
+    <a class="nav-item" data-section="s3"><span class="num">3</span>雪后晴日</a>
+    <a class="nav-item" data-section="s4"><span class="num">4</span>避光的日子</a>
+    <a class="nav-item" data-section="s5"><span class="num">5</span>女孩的温暖</a>
+    <a class="nav-item" data-section="s6"><span class="num">6</span>封闭的心</a>
+    <a class="nav-item" data-section="s7"><span class="num">7</span>资料室寻乐器</a>
+    <a class="nav-item" data-section="s8"><span class="num">8</span>无名旅行箱</a>
+    <a class="nav-item" data-section="s9"><span class="num">9</span>冷月西下</a>
+  </div>
+  <div class="nav-footer"><a href="index.html">目录</a></div>
+</nav>
+<div class="main">
+<header>
+  <h1>世界尽头<small>第22章 · 世界尽头与冷酷仙境</small></h1>
+  <div class="meta"><span class="sub">入夜的水边</span> · 村上春树</div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header"><div class="section-num">1</div><div class="stitle"><div class="zh">灰色的烟</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">日常</span></div>
+    <p>如老人所言，烟天天不断。灰濛濛的烟从苹果林一带升起，直接融入上空阴沉沉厚墩墩的云层。静静观望之间，不由会产生一阵错觉，以为所有的云絮都是从苹果林里产生的。升烟时刻为下午三点整，持续时间的长短则取决于死兽的数量。若是风雪交加或骤然降温之夜的翌日，那令人联想起山火的粗大烟柱便一连持续几个小时。</p>
+    <p>人们为什么就不想方设法使它们免于一死呢？委实令人费解。</p>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header"><div class="section-num">2</div><div class="stitle"><div class="zh">解脱与轮回</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag green">规则</span></div>
+    <p>"干嘛不找地方给它们搭窝棚呢？"我利用下国际象棋的间隙询问老人，"干嘛不保护兽们免受风雪和严寒的摧残呢？其实也费不了多少麻烦，只要稍微有围墙，带个顶棚，就不知可以挽救多少生命了。"</p>
+    <p>"无济于事。"老人头不抬眼不撩地说，"就算搭窝棚兽们也不肯进去。自古以来它们就始终露天睡觉，即使丢掉性命也不改初衷。它们宁愿顶风冒雪寒流袭身。"</p>
+    <p>大校把僧正放在王的正面，森森然加固阵角，两侧用双角埋下火线，静等我挥兵进击。</p>
+    <p>"听起来好像兽们自愿找死似的。"我说。</p>
+    <p>"在某种意义上，很可能的确如此。但对它们来说则是自然而然的，寒冷也罢痛苦也罢。在它们身上，或许不失为一种解脱。"</p>
+    <p>见老人再不言语，我将猴塞到壁的旁边，以诱使壁移位走开。大校始而中计，继而猛醒，将骑士撤后一步，把防御范围如针山一般缩于一处。</p>
+    <p>"你也似乎渐渐狡猾起来了嘛！"老人笑道。</p>
+    <p>"还远远不是你的对手。"我也笑着说，"不过你说的解脱是什么意思？"</p>
+    <p>"就是说它们可能由于死而得到拯救。不错，它们是死了，但到春天又重新降世，获得新生。"</p>
+    <p>"新生儿长大后又再次痛苦地死去，对吧？它们何必这么折磨自己呢？"</p>
+    <p>"命中注定。"老人说。</p>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header"><div class="section-num">3</div><div class="stitle"><div class="zh">雪后晴日</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag blue">氛围</span></div>
+    <p>雪断断续续下了三天三夜，之后魔术般地朗然大晴。太阳把久违的光线投在冰封雪掩的镇子上，于是积雪消融，水声四起，银辉闪烁，炫目耀眼。到处传来雪团从树枝落到地上的声响。为了避光，我拉合窗帘蜷缩在房间里不动。我可以把身体藏在拉得严严实实的厚窗帘后面，然而无法逃避光线。银装素裹的镇子如一块切割得恰到好处的巨大宝石，从所有角度反射着阳光，把锐不可挡的光线巧妙地投入屋内，刺激我的双眼。</p>
+    <p>在这样的下午，我只好俯卧在床，把眼睛贴在枕头上，倾听着鸟鸣。鸣声各种各样的鸟时而飞来我的窗边，时而飞去别的窗口，它们知道住在官舍的老人每人都在窗台上撒有面包屑。也可以听到老人们坐在官舍朝阳处聊天的语声，惟独我一人远远避开太阳温煦的爱抚。</p>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header"><div class="section-num">4</div><div class="stitle"><div class="zh">避光的日子</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">日常</span><span class="tag purple">孤独</span></div>
+    <p>日落时分，我从床上爬起，用冷水洗了下浮肿的眼睛，戴上墨镜，走下积雪的山坡，来到图书馆。在这明晃晃的阳光刺痛眼睛的日子，我读的梦没有往常那么多。处理罢一两个头骨，古梦发出的光便刺得眼睛如针扎一般痛，眼球里面渺茫的空间也变得滞重起来，仿佛填满了沙子，指尖亦随之失去了平素微妙的感觉。</p>
+    <p>每当这时，女孩就用湿冷的毛巾轻揉我的眼睛，热一些清汤或牛奶让我喝下去。而清汤也好牛奶也好，都似乎异常滞涩，舌感不适，味道也不够柔和。但喝得多了，便渐渐习惯了，能品味出其特有的香味。</p>
+    <p>我这么一说，女孩不无欣慰地微微一笑。</p>
+    <p>"这说明你已开始慢慢习惯这个地方了。"她说，"这地方的食物和别处的略有不同。我们用种类极少的材料做出很多花样，看似肉而不是肉，看似蛋而不是蛋，看似咖啡而不是咖啡，一切都做得模棱两可似是而非……"</p>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.19s">
+  <div class="section-header"><div class="section-num">5</div><div class="stitle"><div class="zh">女孩的温暖</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">日常</span></div>
+    <p>"你现在怕还需求什么吧？"女孩问。</p>
+    <p>"我？除你以外？"</p>
+    <p>"说不明白，只是突然这样觉得。如果还有需求，说不定你封闭的心会由于冬天的关系而多少开启一点。"</p>
+    <p>"我需要的是阳光。"我摘下墨镜，用布擦墨镜片，重新戴上，"可这又得不到，眼睛承受不了阳光。"</p>
+    <p>"肯定是微不足道的东西，打开你心扉的微不足道的事。如同刚才我用手指按摩你眼睛一样，应该有什么办法打开你的心。想不起来？在往日居住的地方，心变硬闭紧时你做什么来着？"</p>
+    <p>我耐住性子逐一搜寻所剩无几的记忆残片，可惜一无所获。</p>
+    <p>"不成啊，一样也想不起来。固有的记忆已丧失殆尽。"</p>
+    <p>"哪怕再小的也好，想起来只管脱口而出。两人一块儿想想看，我很想多少帮你一把。"</p>
+    <div class="key"><span class="lbl">✦ 打开心扉的钥匙</span><p>女孩试图帮助他找回打开心扉的方法，但记忆已被剥夺。这是世界尽头篇中情感最细腻的段落之一——她想要帮助他，却无从下手。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.23s">
+  <div class="section-header"><div class="section-num">6</div><div class="stitle"><div class="zh">封闭的心</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag purple">思辨</span><span class="tag red">人物</span></div>
+    <p>"最后再读一个古梦。"我说。</p>
+    <p>"你看上去很累，还是明天再继续吧，嗯？别勉强，反正古梦多久都会等你的。"</p>
+    <p>"不，总比没事闲待着好受，至少读梦时间里可以什么都不想。"</p>
+    <p>女孩看着我的脸，稍顷点下头，从桌旁起身，消失在书库里。我把下巴支在桌上，闭起眼睛，沉浸在黑暗中。冬天将持续多长时间呢？老人说冬天漫长而难熬，而眼下冬天才刚刚开始，我的影子能够挺过这漫长的冬季吗？不光影子，就连我本身能否在如此纷纭复杂忐忑不安的心境中度过冬日都是疑问。</p>
+    <p>她把头骨放在桌上，一如往常地拿湿布拭去灰尘，再用干布磨擦。我依然支颏坐着，定定地注视她手指的动作。</p>
+    <p>"我能为你做点什么吗？"她蓦地抬起脸来。</p>
+    <p>"你已经做得很好了。"我说。</p>
+    <p>她停下擦头骨的手，坐在椅子上，迎面看着我："我说的不是这个，而是别的，比如睡到你床上。"</p>
+    <p>我摇摇头说："不，不是想同你睡觉。你这么说我倒高兴……"</p>
+    <p>纵使我的心再封闭僵化，也无论冬天如何使我痛苦，现在我都不能同她在此睡觉。如果那样，我的心势必比现在还要困惑得多，失落感也将更为深重。我觉得，大概是这镇子希望我同她睡觉，对他们来说，这个办法最容易掌握我的心。</p>
+    <div class="key"><span class="lbl">✦ 镇子的陷阱</span><p>"大概是这镇子希望我同她睡觉"——他拒绝的不是她，而是镇子设置的情感陷阱。在世界尽头，连亲密关系都可能是被操控的。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.27s">
+  <div class="section-header"><div class="section-num">7</div><div class="stitle"><div class="zh">资料室寻乐器</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对话</span><span class="tag gold">回忆</span></div>
+    <p>"想听一下你母亲的情况。"我说。</p>
+    <p>她淡淡一笑："那似乎不大公平。"</p>
+    <p>"正是这样。"我说，"你现在不是仍然喜欢母亲吗？"</p>
+    <p>我看着她手中的头骨，再次在依稀的记忆中往来搜寻。这回有什么拨动了我的心弦。</p>
+    <p>"是歌！"我说。</p>
+    <p>"你也会说那个？"</p>
+    <p>"歌不是说的，是唱的。"</p>
+    <p>我做了个深呼吸，想唱点什么。可是，居然一首也无从想起。所有的歌都已离我远去。我闭目喟叹一声。</p>
+    <p>"不行，想不起来。"</p>
+    <p>"说不定这座楼尽头处的资料室里有那样的东西。说是资料室，现在塞的全是过去的破烂货，我也只是一晃看过一眼。如何，不找找看？"</p>
+    <p>"找找看。"我说，"反正今天看来读不成古梦了。"</p>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.31s">
+  <div class="section-header"><div class="section-num">8</div><div class="stitle"><div class="zh">无名旅行箱</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">描写</span><span class="tag purple">思辨</span></div>
+    <p>我们穿过一排排摆满头骨的大书库，进入另一条走廊。房间的大半个空间堆的是大大小小各种各样的皮包，约有一百个吧，而且皮包命中注定似的积满了大量灰尘。</p>
+    <p>我一连开了几个旅行箱和手提包，内容大同小异，无非衣物和最低限度的日用品，仿佛是赶在出门旅行之前急匆匆随手塞进去的。每个旅行者都缺少某件一般应备的随身用品，给人一种不甚正常的印象。任何人旅行时都不至于仅仅携带衣物和牙具。总之，箱里包里找不到任何使人感觉到其持有者的人品和生活的东西。</p>
+    <p>衣服十有八九被虫蛀过，并且都没标名字，仿佛有个人把所有名字和个性从每件衣物上逐个一丝不苟地剔除一净，剩下来的无非每个时代所必然产生的无名遗物而已。</p>
+    <p>打开五六个旅行箱和手提包之后，我便失去了兴趣。一来灰尘势不可挡，二来哪个看上去都绝对不可能有乐器。</p>
+    <p>"走吧，"我说，"灰尘太厉害，眼睛都痛了。"</p>
+    <div class="key"><span class="lbl">✦ 匿名的遗物</span><p>"仿佛有个人把所有名字和个性从每件衣物上逐个一丝不苟地剔除一净"——这些旅行箱正是世界尽头居民的隐喻：每个人都被剥夺了名字和个性，只留下不带任何特征的空壳。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.35s">
+  <div class="section-header"><div class="section-num">9</div><div class="stitle"><div class="zh">冷月西下</div></div><div class="sline"></div></div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">氛围</span><span class="tag blue">结尾</span></div>
+    <p>和女孩分手后，我一个人爬上西山。凛冽的季节风像要把我卷走似的从背后吹来，在树林中发出撕裂长空般的尖锐的呼啸声。回头看去，但见几乎缺了半边的冷月，形单影只地悬浮在钟塔的上方，周围涌动着厚厚的云团。月光之下，河面黑乎乎的，犹如流动的焦油。</p>
+    <p>蓦地，我想起在资料室旅行箱中发现的似乎很暖和的围巾，尽管被虫子蛀出几个大洞，但若多围几层，仍足以御寒。我想不妨问问看门人，那样许多事都可了然于心。包括那些货物的所有者是谁，我能否使用里边的东西。围巾也不缠地站在这寒风之中，耳朵痛得真如刀割一般，明天就去见看门人。况且也需要了解一下我影子的情况。</p>
+    <p>我重新转身，沿冰冻的山坡路朝官舍走去，把镇子抛在后面。</p>
+    <div class="key"><span class="lbl">✦ 缺月与焦油</span><p>"几乎缺了半边的冷月……河面黑乎乎的，犹如流动的焦油"——村上的月夜意象总是荒凉而美丽。这一章在孤独的脚步中结束，预示着即将到来的影子会面。</p></div>
+  </div>
+</div>
+
+<div class="ch-nav" style="margin-top:36px;padding-top:20px;border-top:1px solid #e6dccf">
+    <a href="ch21.html" class="nav-ch">‹ 第21章</a>
+    <a href="ch23.html" class="nav-ch">第23章 ›</a>
+  </div>
+<footer><a href="index.html">目录</a> · 第22章 · 世界尽头 · 入夜的水边</footer>
+</div>
+<script>
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  var backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(function(a) { a.addEventListener('click', function(e) { e.preventDefault(); var t = document.getElementById(this.getAttribute('data-section')); if (t) t.scrollIntoView({ behavior: 'smooth' }); if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var secs = document.querySelectorAll('.section[id^="s"]');
+    var items = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          items.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('data-section') === id); });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    secs.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

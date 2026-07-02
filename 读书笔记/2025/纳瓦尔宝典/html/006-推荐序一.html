@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>推荐序一 — 财富与幸福源自选择</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", serif;
+  background: #f5f0ea;
+  color: #2c2416;
+  padding: 30px 20px;
+}
+.container { max-width: 880px; margin: 0 auto; }
+
+.hero {
+  text-align: center;
+  padding: 60px 30px 44px;
+  background: linear-gradient(160deg, #3d2b1f, #1f140e);
+  color: #eadbc5;
+  border-radius: 16px 16px 0 0;
+}
+.hero .ch { font-size: 12px; letter-spacing: 6px; opacity: .45; margin-bottom: 8px; }
+.hero h1 { font-size: 28px; letter-spacing: 6px; line-height: 1.4; }
+.hero .byline { font-size: 15px; opacity: .6; margin-top: 10px; letter-spacing: 2px; }
+.hero .sub { font-size: 13px; opacity: .4; margin-top: 4px; letter-spacing: 1px; }
+
+.body {
+  background: #fffcf7;
+  padding: 36px 40px 20px;
+  border-left: 1px solid #e6dccf;
+  border-right: 1px solid #e6dccf;
+}
+
+/* highlight quote */
+.highlight {
+  background: #f8f2ea;
+  border-left: 4px solid #b8864e;
+  padding: 20px 24px;
+  margin: 0 0 24px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #3d2b1f;
+  border-radius: 0 8px 8px 0;
+}
+
+.sec-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #6b4a2a;
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e6dccf;
+}
+
+/* profile card */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+}
+.profile .avatar {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, #b8864e, #8b6f50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.profile .info h3 { font-size: 16px; color: #2c2416; }
+.profile .info p { font-size: 13px; color: #8b7a65; margin-top: 2px; }
+
+/* commons grid */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px 0 18px;
+}
+.tag {
+  background: #faf6f0;
+  border: 1px solid #ece3d8;
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-align: center;
+  font-size: 13px;
+  color: #4a3a2a;
+  line-height: 1.5;
+}
+
+/* card */
+.card {
+  border: 1px solid #ece3d8;
+  border-radius: 10px;
+  margin: 10px 0 18px;
+  overflow: hidden;
+}
+.card-head {
+  background: #f0e8dc;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4a3a2a;
+  letter-spacing: 2px;
+}
+.card-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #3d3224;
+}
+
+/* paradox box */
+.paradox {
+  background: #3d2b1f;
+  color: #eadbc5;
+  border-radius: 10px;
+  padding: 22px 26px;
+  margin: 16px 0 20px;
+  text-align: center;
+}
+.paradox h3 {
+  font-size: 14px;
+  letter-spacing: 4px;
+  opacity: .6;
+  margin-bottom: 10px;
+}
+.paradox .big {
+  font-size: 22px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.paradox .small {
+  font-size: 13px;
+  opacity: .6;
+  margin-top: 10px;
+}
+
+.footer {
+  background: #fffcf7;
+  padding: 18px 40px;
+  border: 1px solid #e6dccf;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #a69580;
+}
+
+@media (max-width: 640px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 22px; }
+  .body { padding: 24px 18px; }
+  .profile { flex-direction: column; text-align: center; }
+}
+@media print {
+  body { background: #fff; }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .paradox { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <div class="ch">FOREWORD I</div>
+  <h1>财富与幸福源自选择</h1>
+  <div class="byline">—— 推荐序一</div>
+  <div class="sub">纳瓦尔宝典 · The Almanack of Naval Ravikant</div>
+</div>
+
+<div class="body">
+
+  <!-- 作者 -->
+  <div class="profile">
+    <div class="avatar">📖</div>
+    <div class="info">
+      <h3>樊登博士</h3>
+      <p>"樊登读书"创始人</p>
+    </div>
+  </div>
+
+  <!-- 金句 -->
+  <div class="highlight">
+    放低自我是获得幸福的最有效方法。<br>
+    你越是喂养自己的自大，对生活和整个世界的不满就越会吞噬你。
+  </div>
+
+  <!-- 核心观点 -->
+  <div class="sec-title">🧭 核心观点</div>
+
+  <div class="card">
+    <div class="card-head">自由与幸福源自选择</div>
+    <div class="card-body">
+      我们相信自由和幸福并不来自外在物质的满足，而是来自我们自身所做出的选择。
+    </div>
+  </div>
+
+  <!-- 共同的阅读谱系 -->
+  <div class="sec-title">📚 共同的阅读谱系</div>
+  <div class="grid-3">
+    <div class="tag">佛陀</div>
+    <div class="tag">老子</div>
+    <div class="tag">达尔文</div>
+    <div class="tag">费曼</div>
+    <div class="tag">塔勒布</div>
+    <div class="tag">道金斯</div>
+    <div class="tag">查理·芒格</div>
+    <div class="tag">尤瓦尔·赫拉利</div>
+    <div class="tag">卡洛·罗韦利</div>
+  </div>
+
+  <!-- 成功学悖论 -->
+  <div class="sec-title">⚡ 成功学悖论</div>
+
+  <div class="paradox">
+    <h3>THE PARADOX</h3>
+    <div class="big">成功没法教</div>
+    <div class="small">这恰恰是关于成功最应该被知道的东西。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">真假成功学</div>
+    <div class="card-body">
+      <p style="margin-bottom:8px;"><strong>真正的好书</strong> — 敢于说出世界真相，让你获得启发，开始自我进步和迭代。</p>
+      <p style="margin-bottom:8px;"><strong>"成功学"骗子</strong> — 承诺读了某本书就能获得财富和方法。</p>
+      <p><strong>关键区分</strong> — 有人等着被打造，有人在自我探索。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">纳瓦尔语录</div>
+    <div class="card-body">
+      <p style="margin-bottom:8px;">"如果社会可以培训你，那么社会也可以培训他人来取代你。"</p>
+      <p style="margin-bottom:8px;">"大家都能学会的东西是不可能让你致富的。"</p>
+      <p>"只有你自己学到的东西，才是属于你独有的能力。"</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">— 纳瓦尔宝典 · 第 6 章 —</div>
+
+</div>
+</body>
+</html>

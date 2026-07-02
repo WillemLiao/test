@@ -1,0 +1,1721 @@
+{
+	"type": "excalidraw",
+	"version": 2,
+	"source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.19.1",
+	"elements": [
+		{
+			"type": "rectangle",
+			"version": 2,
+			"versionNonce": 176696203,
+			"isDeleted": false,
+			"id": "title",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 100,
+			"y": 50,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#a5d8ff",
+			"width": 560,
+			"height": 60,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [],
+			"updated": 1768916305957,
+			"link": null,
+			"locked": false,
+			"index": "a0",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 2,
+			"versionNonce": 1644848805,
+			"isDeleted": false,
+			"id": "gLBOveaI",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 120,
+			"y": 68,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 420,
+			"height": 25,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916305957,
+			"link": null,
+			"locked": false,
+			"fontSize": 20,
+			"fontFamily": 1,
+			"text": "史铁生《好运设计》：一场关于幸福的哲学实验",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": null,
+			"originalText": "史铁生《好运设计》：一场关于幸福的哲学实验",
+			"lineHeight": 1.25,
+			"baseline": 17,
+			"autoResize": true,
+			"index": "a1",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "text",
+			"version": 2,
+			"versionNonce": 1731232299,
+			"isDeleted": false,
+			"id": "intro",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 164,
+			"y": 140,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 432,
+			"height": 60,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916305957,
+			"link": null,
+			"locked": false,
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "一个沉浸式的转世投胎指南\n史铁生带着读者设计下一世：怎么完美怎么来，怎么好怎么来\n经过四个版本的更迭，最终得出关于幸福的终极答案",
+			"textAlign": "center",
+			"verticalAlign": "top",
+			"containerId": null,
+			"originalText": "一个沉浸式的转世投胎指南\n史铁生带着读者设计下一世：怎么完美怎么来，怎么好怎么来\n经过四个版本的更迭，最终得出关于幸福的终极答案",
+			"lineHeight": 1.25,
+			"baseline": 54,
+			"autoResize": true,
+			"index": "a2",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"version": 100,
+			"versionNonce": 968093547,
+			"isDeleted": false,
+			"id": "v1-box",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 29.28888400378679,
+			"y": 223.00000011153185,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#ffec99",
+			"width": 280,
+			"height": 180,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "v1-text"
+				},
+				{
+					"id": "arrow1",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow2",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916853151,
+			"link": null,
+			"locked": false,
+			"index": "a2V",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 100,
+			"versionNonce": 1885492107,
+			"isDeleted": false,
+			"id": "v1-text",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 97.54571994128678,
+			"y": 234.25000011153185,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 143.486328125,
+			"height": 157.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916848879,
+			"link": null,
+			"locked": false,
+			"fontSize": 14,
+			"fontFamily": 1,
+			"text": "版本 1.0：绝对完美版\n\n✓ 聪明、漂亮、健康\n✓ 普通知识分子家庭\n✓ 欢快童年，母爱教育\n✓ 各类竞赛得奖\n✓ 体育全能\n✓ 名牌大学，完美爱情\n❌ 问题：太圆满了",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "v1-box",
+			"originalText": "版本 1.0：绝对完美版\n\n✓ 聪明、漂亮、健康\n✓ 普通知识分子家庭\n✓ 欢快童年，母爱教育\n✓ 各类竞赛得奖\n✓ 体育全能\n✓ 名牌大学，完美爱情\n❌ 问题：太圆满了",
+			"lineHeight": 1.25,
+			"baseline": 144,
+			"autoResize": true,
+			"index": "a3",
+			"hasTextLink": false,
+			"rawText": "版本 1.0：绝对完美版\n\n✓ 聪明、漂亮、健康\n✓ 普通知识分子家庭\n✓ 欢快童年，母爱教育\n✓ 各类竞赛得奖\n✓ 体育全能\n✓ 名牌大学，完美爱情\n❌ 问题：太圆满了"
+		},
+		{
+			"type": "rectangle",
+			"version": 189,
+			"versionNonce": 3952075,
+			"isDeleted": false,
+			"id": "cosmic-box",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 429.32524033459566,
+			"y": 199.9999996691913,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#ffd43b",
+			"width": 287.73846066540443,
+			"height": 203,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "iVkz8ejg"
+				},
+				{
+					"id": "arrow1",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow6",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916678313,
+			"link": null,
+			"locked": false,
+			"index": "a5V",
+			"hasTextLink": false
+		},
+		{
+			"type": "arrow",
+			"version": 255,
+			"versionNonce": 1229270219,
+			"isDeleted": false,
+			"id": "arrow1",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 320.2888840037868,
+			"y": 320.2131824829749,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 98.03635633080893,
+			"height": 1.9663480669816522,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916848913,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "v1-box",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5499413129607663,
+					0.5499413129607663
+				]
+			},
+			"endBinding": {
+				"elementId": "cosmic-box",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.4324559026664698,
+					0.5675440973335313
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					98.03635633080893,
+					-1.9663480669816522
+				]
+			],
+			"index": "a5l",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "text",
+			"version": 204,
+			"versionNonce": 1319525483,
+			"isDeleted": false,
+			"id": "iVkz8ejg",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 482.1944706672979,
+			"y": 205.2499996691913,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 182,
+			"height": 192.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916678313,
+			"link": null,
+			"locked": false,
+			"fontSize": 14,
+			"fontFamily": 1,
+			"text": "宇宙视角的启示\n\n地球没有月圆月缺\n= 没有潮汐 = 没有引力\n= 死亡\n\n宇宙正在走向热寂\n但此刻正在旋转、飞驰、高歌\n\n死亡之前的波澜壮阔\n才是幸运者得天独厚的机会",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "cosmic-box",
+			"originalText": "宇宙视角的启示\n\n地球没有月圆月缺\n= 没有潮汐 = 没有引力\n= 死亡\n\n宇宙正在走向热寂\n但此刻正在旋转、飞驰、高歌\n\n死亡之前的波澜壮阔\n才是幸运者得天独厚的机会",
+			"lineHeight": 1.25,
+			"baseline": 144,
+			"autoResize": true,
+			"index": "a6",
+			"hasTextLink": false,
+			"rawText": "宇宙视角的启示\n\n地球没有月圆月缺\n= 没有潮汐 = 没有引力\n= 死亡\n\n宇宙正在走向热寂\n但此刻正在旋转、飞驰、高歌\n\n死亡之前的波澜壮阔\n才是幸运者得天独厚的机会"
+		},
+		{
+			"type": "rectangle",
+			"version": 123,
+			"versionNonce": 909892997,
+			"isDeleted": false,
+			"id": "v2-box",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 29.326828667297804,
+			"y": 478.149492336489,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#ffc9c9",
+			"width": 280,
+			"height": 203,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "v2-text"
+				},
+				{
+					"id": "arrow2",
+					"type": "arrow"
+				},
+				{
+					"id": "x5lT8B1M",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916878245,
+			"link": null,
+			"locked": false,
+			"index": "a6V",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 106,
+			"versionNonce": 1146086629,
+			"isDeleted": false,
+			"id": "v2-text",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 79.2155005422978,
+			"y": 483.399492336489,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 180.22265625,
+			"height": 192.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916878245,
+			"link": null,
+			"locked": false,
+			"fontSize": 14,
+			"fontFamily": 1,
+			"text": "版本 2.0：苦尽甜来\n\n设置一个大困难\n→ 生一场大病\n→ 躺在病榻多年\n→ 奇迹康复，精力旺盛\n→ 爱人的父母接受你\n→ 终成眷属\n\n❌ 问题：幸福感是一次性的\n苦尽甜来后呢？",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "v2-box",
+			"originalText": "版本 2.0：苦尽甜来\n\n设置一个大困难\n→ 生一场大病\n→ 躺在病榻多年\n→ 奇迹康复，精力旺盛\n→ 爱人的父母接受你\n→ 终成眷属\n\n❌ 问题：幸福感是一次性的\n苦尽甜来后呢？",
+			"lineHeight": 1.25,
+			"baseline": 144,
+			"autoResize": true,
+			"index": "a7",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"version": 6,
+			"versionNonce": 962130507,
+			"isDeleted": false,
+			"id": "v3-box",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 410,
+			"y": 460,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#b2f2bb",
+			"width": 280,
+			"height": 185,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "v3-text"
+				},
+				{
+					"id": "x5lT8B1M",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916874327,
+			"link": null,
+			"locked": false,
+			"index": "a9V",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 5,
+			"versionNonce": 190299973,
+			"isDeleted": false,
+			"id": "v3-text",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 438.888671875,
+			"y": 465,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 222.22265625,
+			"height": 175,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916543656,
+			"link": null,
+			"locked": false,
+			"fontSize": 14,
+			"fontFamily": 1,
+			"text": "版本 3.0：不断胜利\n\n不断设置小困难\n→ 一次一次战胜\n→ 一直获得幸福感\n→ 一直是个胜利者\n\n❌ 致命问题：遇到无法战胜的死亡\n一生的胜利被一笔勾销\n比一生不幸的人还要痛苦",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "v3-box",
+			"originalText": "版本 3.0：不断胜利\n\n不断设置小困难\n→ 一次一次战胜\n→ 一直获得幸福感\n→ 一直是个胜利者\n\n❌ 致命问题：遇到无法战胜的死亡\n一生的胜利被一笔勾销\n比一生不幸的人还要痛苦",
+			"lineHeight": 1.25,
+			"baseline": 144,
+			"autoResize": true,
+			"index": "aA",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"version": 62,
+			"versionNonce": 648767595,
+			"isDeleted": false,
+			"id": "process-box",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 25.121793999999998,
+			"y": 740.287784,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#d0bfff",
+			"width": 640,
+			"height": 110,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "ZJb3h1DX"
+				},
+				{
+					"id": "arrow4",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow8",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow3",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"index": "aAV",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 59,
+			"versionNonce": 429466379,
+			"isDeleted": false,
+			"id": "ZJb3h1DX",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 34.545805230468744,
+			"y": 745.287784,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 621.1519775390625,
+			"height": 100,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"fontSize": 16,
+			"fontFamily": 1,
+			"text": "绝境的出路：只剩「过程」\n\n只要你关心的是结果，无论怎样都会落入绝境\n一个只想让过程精彩的人是无法被剥夺的 —— 死神也无法将精彩的过程变成不精彩的过\n程",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "process-box",
+			"originalText": "绝境的出路：只剩「过程」\n\n只要你关心的是结果，无论怎样都会落入绝境\n一个只想让过程精彩的人是无法被剥夺的 —— 死神也无法将精彩的过程变成不精彩的过程",
+			"lineHeight": 1.25,
+			"baseline": 58,
+			"autoResize": true,
+			"index": "aB",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "rectangle",
+			"version": 202,
+			"versionNonce": 1471028299,
+			"isDeleted": false,
+			"id": "v4-box",
+			"fillStyle": "solid",
+			"strokeWidth": 3,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 14.710070999999989,
+			"y": 964.8477500000002,
+			"strokeColor": "#e03131",
+			"backgroundColor": "#ff8787",
+			"width": 640,
+			"height": 168,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "v4-text"
+				},
+				{
+					"id": "arrow5",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow9",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow4",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"index": "aBV",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 164,
+			"versionNonce": 601512683,
+			"isDeleted": false,
+			"id": "v4-text",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 73.71007099999999,
+			"y": 970.0977500000002,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 522,
+			"height": 157.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"fontSize": 18,
+			"fontFamily": 1,
+			"text": "版本 4.0：终极结论\n\n为了让你幸福，必须给你痛苦\n—— 不仅要小痛苦，还要大痛苦\n—— 不仅要一时痛苦，还要一世痛苦\n\n「我不知道怎么办了。上帝爱我。我们的设计只剩这一句话了。」",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "v4-box",
+			"originalText": "版本 4.0：终极结论\n\n为了让你幸福，必须给你痛苦\n—— 不仅要小痛苦，还要大痛苦\n—— 不仅要一时痛苦，还要一世痛苦\n\n「我不知道怎么办了。上帝爱我。我们的设计只剩这一句话了。」",
+			"lineHeight": 1.25,
+			"baseline": 84,
+			"autoResize": true,
+			"index": "aC",
+			"hasTextLink": false,
+			"rawText": "版本 4.0：终极结论\n\n为了让你幸福，必须给你痛苦\n—— 不仅要小痛苦，还要大痛苦\n—— 不仅要一时痛苦，还要一世痛苦\n\n「我不知道怎么办了。上帝爱我。我们的设计只剩这一句话了。」"
+		},
+		{
+			"type": "rectangle",
+			"version": 98,
+			"versionNonce": 581975723,
+			"isDeleted": false,
+			"id": "final-box",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 23.472063444234106,
+			"y": 1192.0890004423406,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#a5d8ff",
+			"width": 640,
+			"height": 140,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "ebYx8LaI"
+				},
+				{
+					"id": "arrow5",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916888229,
+			"link": null,
+			"locked": false,
+			"index": "aFV",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 90,
+			"versionNonce": 1663643979,
+			"isDeleted": false,
+			"id": "ebYx8LaI",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 127.4720634442341,
+			"y": 1205.8390004423406,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 432,
+			"height": 112.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916888229,
+			"link": null,
+			"locked": false,
+			"fontSize": 18,
+			"fontFamily": 1,
+			"text": "核心启示：幸福必须与遗憾和残缺并存\n\n「命定的局限尽可永在，不屈的挑战却不可须臾或缺」\n\n幸福不是目的，而是追求过程中的精彩挥洒",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "final-box",
+			"originalText": "核心启示：幸福必须与遗憾和残缺并存\n\n「命定的局限尽可永在，不屈的挑战却不可须臾或缺」\n\n幸福不是目的，而是追求过程中的精彩挥洒",
+			"lineHeight": 1.25,
+			"baseline": 84,
+			"autoResize": true,
+			"index": "aG",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"version": 67,
+			"versionNonce": 892076101,
+			"isDeleted": false,
+			"id": "arrow2",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 169.08364155483417,
+			"y": 402.8331799704751,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 4.507614547142367,
+			"height": 64.31631236601385,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916878246,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "v1-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.49926699125374063,
+					0.9990732214385736
+				]
+			},
+			"endBinding": {
+				"elementId": "v2-box",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.4570557339750653,
+					0.4570557339750649
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-4.507614547142367,
+					64.31631236601385
+				]
+			],
+			"index": "aI",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "arrow",
+			"version": 246,
+			"versionNonce": 1748404651,
+			"isDeleted": false,
+			"id": "arrow3",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 539.7349320000001,
+			"y": 645.118828,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 190.98563254682313,
+			"height": 95.96805206650004,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"startBinding": null,
+			"endBinding": {
+				"elementId": "process-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.505667977270589,
+					0.007264509695455052
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-190.98563254682313,
+					95.96805206650004
+				]
+			],
+			"index": "aJ",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "arrow",
+			"version": 154,
+			"versionNonce": 1328208939,
+			"isDeleted": false,
+			"id": "arrow4",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 349.0911106531337,
+			"y": 846.7922281672907,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 0.9631931000324698,
+			"height": 122.67040439731397,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "process-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.5062020572705214,
+					0.9682222197026424
+				]
+			},
+			"endBinding": {
+				"elementId": "v4-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.5239753636768222,
+					0.027469539075026108
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					0.9631931000324698,
+					122.67040439731397
+				]
+			],
+			"index": "aK",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "arrow",
+			"version": 351,
+			"versionNonce": 422236139,
+			"isDeleted": false,
+			"id": "arrow5",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 352.6643121531878,
+			"y": 1122.1481358649187,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 10.708017700010828,
+			"height": 76.73766669762767,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916888229,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "v4-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.528053501801856,
+					0.9363118206245146
+				]
+			},
+			"endBinding": {
+				"elementId": "final-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.49763161095147324,
+					0.04854858657289794
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-10.708017700010828,
+					76.73766669762767
+				]
+			],
+			"index": "aKV",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "ellipse",
+			"version": 146,
+			"versionNonce": 247140299,
+			"isDeleted": false,
+			"id": "circle1",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 816.7666648884681,
+			"y": 259.88723100568,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#fff4e6",
+			"width": 200,
+			"height": 120,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "4z1POOft"
+				},
+				{
+					"id": "arrow6",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916652230,
+			"link": null,
+			"locked": false,
+			"index": "aLV",
+			"roundness": null,
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 157,
+			"versionNonce": 1677516395,
+			"isDeleted": false,
+			"id": "4z1POOft",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 874.5559867698133,
+			"y": 293.71082413448715,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 84,
+			"height": 52.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916652230,
+			"link": null,
+			"locked": false,
+			"fontSize": 14,
+			"fontFamily": 1,
+			"text": "没有痛苦\n= 没有幸福\n幸福是幸福感",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "circle1",
+			"originalText": "没有痛苦\n= 没有幸福\n幸福是幸福感",
+			"lineHeight": 1.25,
+			"baseline": 44,
+			"autoResize": true,
+			"index": "aM",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"version": 196,
+			"versionNonce": 213602027,
+			"isDeleted": false,
+			"id": "arrow6",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 728.063701,
+			"y": 316.1405460274921,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 77.79400545119711,
+			"height": 6.621716689812615,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916678363,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "cosmic-box",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5016740200523344,
+					0.5016740200523342
+				]
+			},
+			"endBinding": {
+				"elementId": "circle1",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5001,
+					0.6060996407144656
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					77.79400545119711,
+					6.621716689812615
+				]
+			],
+			"index": "aO",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "ellipse",
+			"version": 68,
+			"versionNonce": 712244939,
+			"isDeleted": false,
+			"id": "circle2",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 816.7666647750431,
+			"y": 482.5974401172118,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#e3fafc",
+			"width": 200,
+			"height": 120,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "ZgsKN5sx"
+				}
+			],
+			"updated": 1768916593863,
+			"link": null,
+			"locked": false,
+			"index": "aOV",
+			"roundness": null,
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 39,
+			"versionNonce": 415231339,
+			"isDeleted": false,
+			"id": "ZgsKN5sx",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 853.5559866563883,
+			"y": 516.421033246019,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 126,
+			"height": 52.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916593863,
+			"link": null,
+			"locked": false,
+			"fontSize": 14,
+			"fontFamily": 1,
+			"text": "苦尽甜来后呢？\n幸福感只是一次性的\n日子比幸福长得多",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "circle2",
+			"originalText": "苦尽甜来后呢？\n幸福感只是一次性的\n日子比幸福长得多",
+			"lineHeight": 1.25,
+			"baseline": 44,
+			"autoResize": true,
+			"index": "aP",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"version": 2,
+			"versionNonce": 823200389,
+			"isDeleted": false,
+			"id": "arrow7",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 690,
+			"y": 550,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 110,
+			"height": 0,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916305957,
+			"link": null,
+			"locked": false,
+			"startBinding": null,
+			"endBinding": null,
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					110,
+					0
+				]
+			],
+			"index": "aR",
+			"hasTextLink": false
+		},
+		{
+			"type": "ellipse",
+			"version": 116,
+			"versionNonce": 829693643,
+			"isDeleted": false,
+			"id": "circle3",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 794.5155443327022,
+			"y": 726.5310204461275,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#f3d9fa",
+			"width": 200,
+			"height": 120,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "1dCU022w"
+				},
+				{
+					"id": "arrow10",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow8",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"index": "aRV",
+			"roundness": null,
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 77,
+			"versionNonce": 180096363,
+			"isDeleted": false,
+			"id": "1dCU022w",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 852.3048662140475,
+			"y": 760.3546135749347,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 84,
+			"height": 52.5,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"fontSize": 14,
+			"fontFamily": 1,
+			"text": "死亡无法战胜\n一生的胜利\n被一笔勾销",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "circle3",
+			"originalText": "死亡无法战胜\n一生的胜利\n被一笔勾销",
+			"lineHeight": 1.25,
+			"baseline": 44,
+			"autoResize": true,
+			"index": "aS",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"version": 61,
+			"versionNonce": 1582114827,
+			"isDeleted": false,
+			"id": "arrow8",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 664.5603400505557,
+			"y": 798.5070692660234,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 119.71839424211282,
+			"height": 3.6645300864653336,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916884929,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "process-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.9991227282039933,
+					0.5292662296911224
+				]
+			},
+			"endBinding": {
+				"elementId": "circle3",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5001,
+					0.5411383649237546
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					119.71839424211282,
+					-3.6645300864653336
+				]
+			],
+			"index": "aU",
+			"hasTextLink": false
+		},
+		{
+			"type": "rectangle",
+			"version": 89,
+			"versionNonce": 390945029,
+			"isDeleted": false,
+			"id": "lewis-box",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 800.578331,
+			"y": 935.7169739999999,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "#ffc9c9",
+			"width": 220,
+			"height": 222,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 3
+			},
+			"boundElements": [
+				{
+					"type": "text",
+					"id": "WKmBs4hN"
+				},
+				{
+					"id": "arrow9",
+					"type": "arrow"
+				},
+				{
+					"id": "arrow10",
+					"type": "arrow"
+				}
+			],
+			"updated": 1768916983912,
+			"link": null,
+			"locked": false,
+			"index": "aUV",
+			"hasTextLink": false
+		},
+		{
+			"type": "text",
+			"version": 87,
+			"versionNonce": 212201573,
+			"isDeleted": false,
+			"id": "WKmBs4hN",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 852.078331,
+			"y": 941.0919739999999,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 117,
+			"height": 211.25,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": null,
+			"boundElements": [],
+			"updated": 1768916983912,
+			"link": null,
+			"locked": false,
+			"fontSize": 13,
+			"fontFamily": 1,
+			"text": "《我的梦想》延伸\n\n刘易斯跑步失败\n→ 茫然的眼神\n→ 史铁生动摇\n\n上帝从来不对任何人\n施舍「最幸福」\n\n奥林匹斯山上的神火\n不是为了战胜他人\n而是为了向诸神\n炫耀人类的不屈",
+			"textAlign": "center",
+			"verticalAlign": "middle",
+			"containerId": "lewis-box",
+			"originalText": "《我的梦想》延伸\n\n刘易斯跑步失败\n→ 茫然的眼神\n→ 史铁生动摇\n\n上帝从来不对任何人\n施舍「最幸福」\n\n奥林匹斯山上的神火\n不是为了战胜他人\n而是为了向诸神\n炫耀人类的不屈",
+			"lineHeight": 1.25,
+			"baseline": 124,
+			"autoResize": true,
+			"index": "aV",
+			"hasTextLink": false,
+			"rawText": ""
+		},
+		{
+			"type": "arrow",
+			"version": 116,
+			"versionNonce": 766811077,
+			"isDeleted": false,
+			"id": "arrow9",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 666.210071,
+			"y": 1051.3319402959366,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 137.88238224942938,
+			"height": 1.7848128320144951,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916983912,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "v4-box",
+				"mode": "orbit",
+				"fixedPoint": [
+					1.001117560860362,
+					0.5168461515709643
+				]
+			},
+			"endBinding": {
+				"elementId": "lewis-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.01597328295195139,
+					0.5127484390266767
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					137.88238224942938,
+					-1.7848128320144951
+				]
+			],
+			"index": "aX",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"type": "arrow",
+			"version": 147,
+			"versionNonce": 1996667147,
+			"isDeleted": false,
+			"id": "arrow10",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"angle": 0,
+			"x": 906.6262691799539,
+			"y": 924.7169739999998,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"width": 6.942966817647402,
+			"height": 67.26294141616665,
+			"seed": 1,
+			"groupIds": [],
+			"frameId": null,
+			"roundness": {
+				"type": 2
+			},
+			"boundElements": [],
+			"updated": 1768916987847,
+			"link": null,
+			"locked": false,
+			"startBinding": {
+				"elementId": "lewis-box",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5355718245784312,
+					0.4644281754215684
+				]
+			},
+			"endBinding": {
+				"elementId": "circle3",
+				"mode": "orbit",
+				"fixedPoint": [
+					0.5126913293756116,
+					0.5001
+				]
+			},
+			"lastCommittedPoint": null,
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					-6.942966817647402,
+					-67.26294141616665
+				]
+			],
+			"index": "aY",
+			"hasTextLink": false,
+			"moveMidPointsWithElement": false
+		},
+		{
+			"id": "x5lT8B1M",
+			"type": "arrow",
+			"x": 308.55587685363184,
+			"y": 609.3433255688287,
+			"width": 104.56356879917684,
+			"height": 51.214633899642536,
+			"angle": 0,
+			"strokeColor": "#1e1e1e",
+			"backgroundColor": "transparent",
+			"fillStyle": "solid",
+			"strokeWidth": 2,
+			"strokeStyle": "solid",
+			"roughness": 1,
+			"opacity": 100,
+			"groupIds": [],
+			"frameId": null,
+			"index": "aa",
+			"roundness": {
+				"type": 2
+			},
+			"seed": 1714982763,
+			"version": 51,
+			"versionNonce": 660761125,
+			"isDeleted": false,
+			"boundElements": null,
+			"updated": 1768916878230,
+			"link": null,
+			"locked": false,
+			"points": [
+				[
+					0,
+					0
+				],
+				[
+					104.56356879917684,
+					-51.214633899642536
+				]
+			],
+			"startBinding": {
+				"elementId": "v2-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.9972466006654788,
+					0.6462750405533977
+				]
+			},
+			"endBinding": {
+				"elementId": "v3-box",
+				"mode": "inside",
+				"fixedPoint": [
+					0.011140877331459567,
+					0.5304253603739795
+				]
+			},
+			"startArrowhead": null,
+			"endArrowhead": "arrow",
+			"elbowed": false,
+			"moveMidPointsWithElement": false
+		}
+	],
+	"appState": {
+		"theme": "light",
+		"viewBackgroundColor": "#ffffff",
+		"currentItemStrokeColor": "#1e1e1e",
+		"currentItemBackgroundColor": "transparent",
+		"currentItemFillStyle": "solid",
+		"currentItemStrokeWidth": 2,
+		"currentItemStrokeStyle": "solid",
+		"currentItemRoughness": 1,
+		"currentItemOpacity": 100,
+		"currentItemFontFamily": 1,
+		"currentItemFontSize": 16,
+		"currentItemTextAlign": "left",
+		"currentItemStartArrowhead": null,
+		"currentItemEndArrowhead": "arrow",
+		"currentItemArrowType": "round",
+		"currentItemFrameRole": null,
+		"scrollX": 79.51967759310241,
+		"scrollY": -412.47797737508256,
+		"zoom": {
+			"value": 0.766281
+		},
+		"currentItemRoundness": "round",
+		"gridSize": 20,
+		"gridStep": 5,
+		"gridModeEnabled": false,
+		"gridColor": {
+			"Bold": "rgba(217, 217, 217, 0.5)",
+			"Regular": "rgba(230, 230, 230, 0.5)"
+		},
+		"currentStrokeOptions": null,
+		"frameRendering": {
+			"enabled": true,
+			"clip": true,
+			"name": true,
+			"outline": true,
+			"markerName": true,
+			"markerEnabled": true
+		},
+		"objectsSnapModeEnabled": true,
+		"activeTool": {
+			"type": "selection",
+			"customType": null,
+			"locked": false,
+			"fromSelection": false,
+			"lastActiveTool": null
+		},
+		"disableContextMenu": false
+	},
+	"files": {}
+}

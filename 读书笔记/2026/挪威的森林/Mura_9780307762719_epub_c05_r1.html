@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挪威的森林 第五章 · 信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a14;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #d4cfc4;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav {
+    position: fixed;
+    top: 0; right: 0;
+    width: 210px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f0f1e 0%, #14142a 100%);
+    border-left: 1px solid rgba(255,255,255,0.04);
+    padding: 24px 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+  }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #334; border-radius: 2px; }
+  .nav-title {
+    text-align: center;
+    padding: 0 14px 16px;
+    font-size: 0.7em;
+    font-weight: 700;
+    color: #e3a869;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-title small {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 300;
+    color: #667788;
+    margin-top: 3px;
+  }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 16px;
+    color: #667788;
+    text-decoration: none;
+    font-size: 0.7em;
+    font-weight: 300;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover {
+    color: #e3a869;
+    background: rgba(227,168,105,0.04);
+    border-left-color: #e3a869;
+  }
+  .nav-item .num {
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    color: #556;
+    font-size: 0.6em;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .nav-item:hover .num { background: #e3a869; color: #0a0a14; }
+  .nav-footer {
+    padding: 14px;
+    text-align: center;
+    font-size: 0.55em;
+    color: #445;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .main {
+    flex: 1;
+    max-width: calc(100% - 210px);
+    padding: 50px 60px 60px;
+  }
+  header {
+    text-align: center;
+    padding: 30px 20px 36px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 50px; height: 1px;
+    background: linear-gradient(90deg, transparent, #e3a869, transparent);
+  }
+  header h1 { font-size: 1.7em; font-weight: 700; color: #e3a869; letter-spacing: 0.15em; }
+  header h1 small { display: block; font-size: 0.35em; color: #667788; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #667788; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+
+  .toggle-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    background: rgba(255,255,255,0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .toggle-bar span { font-size: 0.75em; color: #667788; font-weight: 300; }
+  .switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .slider {
+    position: absolute; inset: 0;
+    background: #2a2a3e;
+    border-radius: 12px;
+    transition: 0.3s;
+  }
+  .switch .slider::before {
+    content: '';
+    position: absolute;
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background: #667788;
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+  .switch input:checked + .slider { background: rgba(227,168,105,0.3); }
+  .switch input:checked + .slider::before { transform: translateX(20px); background: #e3a869; }
+  .toggle-label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .toggle-label .label-en, .toggle-label .label-cn { font-size: 0.72em; transition: color 0.3s; font-weight: 500; }
+  .toggle-label .label-en { color: #e3a869; }
+  .toggle-label .label-cn { color: #667788; }
+  .toggle-label.checked .label-en { color: #667788; }
+  .toggle-label.checked .label-cn { color: #e3a869; }
+
+  .section {
+    margin-bottom: 36px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .section-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #e3a869;
+    color: #0a0a14;
+    font-weight: 700; font-size: 0.75em;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 1.05em; font-weight: 700; color: #e3a869; letter-spacing: 0.04em; }
+  .stitle .en { font-size: 0.65em; color: #667788; font-weight: 300; margin-top: 1px; }
+  .sline { flex: 0 0 40px; height: 1px; background: linear-gradient(90deg, rgba(227,168,105,0.3), transparent); }
+  .body {
+    background: linear-gradient(135deg, #12121f 0%, #16162a 100%);
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: border-color 0.25s;
+  }
+  .body:hover { border-color: rgba(227,168,105,0.15); }
+  .body p { font-family: 'Noto Serif SC', serif; font-size: 0.9em; line-height: 1.85; color: #c8c3b8; margin-bottom: 10px; text-align: justify; }
+  .body p:last-child { margin-bottom: 0; }
+  .p-en { font-family: 'Noto Serif SC', serif; }
+  .p-cn {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #9a9a8e;
+    font-size: 0.82em;
+    line-height: 1.75;
+    display: none;
+    border-top: 1px dashed rgba(255,255,255,0.04);
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+  .show-cn .p-cn { display: block; }
+
+  .hl { color: #f0d8a8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(227,168,105,0.15) 60%); padding: 0 2px; }
+  .hl-r { color: #e8997a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-b { color: #8ab8d4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #b896d4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #7dc4a4; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+
+  .key {
+    border-left: 3px solid #e3a869;
+    background: rgba(227,168,105,0.04);
+    padding: 10px 14px;
+    margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .key .lbl { font-size: 0.58em; font-weight: 700; color: #e3a869; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .key p { font-size: 0.85em; color: #d4c8b0; margin-bottom: 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag { font-size: 0.58em; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: rgba(255,255,255,0.04); color: #667788; }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #e3a869; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #b896d4; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #8ab8d4; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #e8997a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #7dc4a4; }
+
+  .dots { text-align: center; padding: 6px 0 24px; color: #334; font-size: 0.9em; letter-spacing: 0.3em; }
+  footer { text-align: center; padding: 30px 20px; color: #445; font-size: 0.65em; font-weight: 300; }
+
+  .menu-btn {
+    display: none;
+    position: fixed;
+    top: 14px; right: 14px;
+    width: 40px; height: 40px;
+    background: rgba(15,15,30,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    z-index: 200;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    transition: 0.2s;
+  }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #e3a869; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav {
+      position: fixed;
+      top: 0; right: -280px;
+      width: 260px;
+      height: 100vh;
+      transition: right 0.3s ease;
+      z-index: 100;
+    }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header { padding: 20px 10px 28px; margin-bottom: 24px; }
+    header h1 { font-size: 1.3em; }
+    .toggle-bar { margin-bottom: 20px; }
+    .section { margin-bottom: 24px; }
+    .section-header { gap: 8px; }
+    .stitle .zh { font-size: 0.95em; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; line-height: 1.75; }
+    .p-cn { font-size: 0.78em; }
+    .key { padding: 8px 12px; }
+    .key p { font-size: 0.8em; }
+    .section-num { width: 26px; height: 26px; font-size: 0.65em; }
+    .sline { flex: 0 0 20px; }
+    header h1 small { font-size: 0.3em; }
+    footer { font-size: 0.55em; }
+  }
+  @media (max-width: 480px) {
+    .main { padding: 44px 10px 30px; }
+    header h1 { font-size: 1.1em; }
+    body { font-size: 15px; }
+    .body { padding: 10px 12px; border-radius: 8px; }
+    .body p { font-size: 0.78em; }
+    .p-cn { font-size: 0.74em; }
+    .key { padding: 6px 10px; margin: 8px 0; }
+    .section { margin-bottom: 18px; }
+    .tag { font-size: 0.5em; padding: 1px 6px; }
+    .stitle .zh { font-size: 0.85em; }
+    header h1 small { font-size: 0.28em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+
+<nav class="nav" id="nav">
+  <div class="nav-title">
+    挪威的森林
+    <small>第五章 · 4段</small>
+  </div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>直子的来信</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>阿美寮的生活</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>关于变形</a>
+    <a class="nav-item" href="#s4"><span class="num">4</span>邀请</a>
+  </div>
+  <div class="nav-footer">村上春树</div>
+</nav>
+
+<div class="main">
+
+<header>
+  <h1>挪威的森林<small>NORWEGIAN WOOD</small></h1>
+  <div class="author">村上春树 · Haruki Murakami</div>
+</header>
+
+<div class="toggle-bar">
+  <label class="toggle-label" id="toggleLabel">
+    <span class="label-en">EN</span>
+    <span class="switch">
+      <input type="checkbox" id="toggleCn">
+      <span class="slider"></span>
+    </span>
+    <span class="label-cn">中文</span>
+  </label>
+</div>
+
+<!-- 1 -->
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">直子的来信</div>
+      <div class="en">Naoko's Letter · Seven Pages from Ami Hostel</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">书信</span>
+      <span class="tag purple">内心</span>
+    </div>
+    <p class="p-en"><span class="hl">"THANKS FOR YOUR LETTER," WROTE NAOKO. HER FAMILY HAD forwarded it "here," she said.</span> Far from upsetting her, its arrival had made her very happy, and in fact she had been on the point of writing to me herself.</p>
+    <p class="p-cn"><span class="hl">"谢谢你的来信。"直子写道。她的家人把信转到了"这里"。</span>信的到来不但没有让她难过，反而使她非常高兴，事实上她也正准备给我写信。</p>
+    <p class="p-en"><span class="hl-b">Having read that much, I opened my window, took off my jacket, and sat on the bed. I could hear pigeons cooing in a nearby roost. The breeze stirred the curtains. Holding the seven pages of letter paper from Naoko, I gave myself up to an endless stream of feelings.</span> It seemed as if the colors of the real world around me had begun to drain away from my having done nothing more than read a few lines she had written. I closed my eyes and spent a long time collecting my thoughts. Finally, after one deep breath, I continued reading.</p>
+    <p class="p-cn"><span class="hl-b">读到这里，我打开窗户，脱下夹克，坐在床上。我能听到附近鸽巢里鸽子的咕咕声。微风拂动窗帘。握着直子写来的七页信纸，我任由无尽的思绪流淌。</span>仿佛只读了几行她写的字，周围现实世界的色彩便开始消退。我闭上眼睛，花了很长时间整理思绪。最后，深呼一口气，继续往下读。</p>
+    <p class="p-en"><span class="hl">"It's almost four months since I came here," she went on.</span></p>
+    <p class="p-cn"><span class="hl">"我来这里快四个月了。"她继续写道。</span></p>
+    <p class="p-en">I've thought a lot about you in that time. The more I've thought, the more I've come to feel that I was unfair to you. I probably should have been a better, fairer person when it came to the way I treated you.</p>
+    <p class="p-cn">这段时间我想了很多。越想越觉得自己对你不公平。我在对待你的方式上本该做得更好、更公平才对。</p>
+    <p class="p-en"><span class="hl-b">This may not be the most normal way to look at things, though. Girls my age never use the word fair. Ordinary girls as young as I am are basically indifferent to whether things are fair or not. The central question for them is not whether something is fair but whether or not it's beautiful or will make them happy. Fair is a man's word, finally, but I can't help feeling that it is also exactly the right word for me now.</span> And because questions of beauty and happiness have become such difficult and convoluted propositions for me now, I suspect, I find myself clinging instead to other standards—like, whether or not something is fair or honest or universally true.</p>
+    <p class="p-cn"><span class="hl-b">不过，这种看法也许不太正常。我这个年龄的女孩子从来不用"公平"这个词。像我这样年轻的普通女孩，根本不在乎事情是否公平。对她们而言，核心问题不在于是否公平，而在于是否美好、是否能让她们快乐。"公平"终究是男人的词汇，但我又忍不住觉得，这恰恰是现在最适合我的词。</span>因为对我来说，关于美和幸福的问题如今变得如此艰难和复杂，我发现自己转而 clung 向其他标准——比如某事是否公平、是否诚实、是否具有普遍的真实性。</p>
+    <p class="p-en"><span class="hl">In any case, though, I believe that I have not been fair to you and that, as a result, I must have led you around in circles and hurt you deeply. In doing so, however, I have led myself around in circles and hurt myself just as deeply.</span> I say this not as an excuse or a means of self-justification but because it is true. If I have left a wound inside you, it is not just your wound but mine as well. So please try not to hate me. I am a flawed human being—a far more flawed human being than you realize. Which is precisely why I do not want you to hate me. Because if you were to do that, I would really go to pieces. <span class="hl-p">I can't do what you can do: I can't slip inside my shell and wait for things to pass. I don't know for a fact that you are really like that, but sometimes you give me that impression. I often envy that in you, which may be why I led you around in circles so much.</span></p>
+    <p class="p-cn"><span class="hl">总之，我认为我对你不公平，结果一定让你团团转，深深地伤害了你。但在这个过程中，我也让自己团团转，同样深深地伤害了自己。</span>我这样说不是为了找借口或自我辩护，因为这是事实。如果我给你留下了伤口，那不仅仅是你的伤口，也是我的。所以请不要恨我。我是一个有缺陷的人——远比你所意识到的更有缺陷。正因如此，我才不希望你恨我。因为如果你那样做，我真的会崩溃。<span class="hl-p">我不能像你那样：我不能缩进自己的壳里等待事情过去。我并不确定你是否真是那样，但有时你给我那种印象。我常常羡慕你这一点，也许正因如此我才让你绕了那么多圈子。</span></p>
+    <p class="p-en"><span class="hl-g">This may be an overanalytical way of looking at things. Don't you agree? The therapy they perform here is certainly not overanalytical, but when you are under treatment for several months the way I am here, like it or not, you become more or less analytical. "This was caused by that, and that means this, because of which thus-and-such." Like that. I can't tell whether this kind of analysis is trying to simplify the world or subdivide it.</span></p>
+    <p class="p-cn"><span class="hl-g">这也许是一种过度分析的方式，你不觉得吗？这里采用的治疗方法当然不是过度分析的，但像我这样在这里接受几个月治疗后，不管你喜不喜欢，你都会或多或少变得喜欢分析。"这是因为那个，那意味着这个，因此所以如此这般。"诸如此类。我分辨不出这种分析是在试图简化世界还是在细分它。</span></p>
+    <p class="p-en"><span class="hl-b">In any case, I myself feel that I am far closer to recovery than I was at one time, and people here tell me this is true. This is the first time in a long time that I have been able to sit down and calmly write a letter.</span></p>
+    <p class="p-cn"><span class="hl-b">不管怎样，我自己觉得比从前好多了，接近痊愈了，这里的人也这么说。这是很久以来我第一次能够坐下来平静地写信。</span></p>
+    <div class="key">
+      <span class="lbl">✦ 公平与变形</span>
+      <p>直子用"公平"而非"美"或"幸福"来衡量世界——这是她内心变化的重要信号。她感到自己让渡边绕了圈子，也让自己绕了圈子。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">阿美寮的生活</div>
+      <div class="en">Life at Ami Hostel · Vegetables, Stars, and Quiet</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">场景</span>
+      <span class="tag gold">疗养院</span>
+    </div>
+    <p class="p-en"><span class="hl">Clean air, a quiet world cut off from the outside, a daily schedule for living, regular exercise: those are what I needed, it seems. How wonderful it is to be able to write someone a letter! To feel like conveying your thoughts to a person, to sit at your desk and pick up a pen, to put your thoughts into words like this is truly marvelous.</span> Of course, once I do put them into words, I find I can only express a fraction of what I want to say, but that's all right. I'm happy just to be able to feel I want to write to someone.</p>
+    <p class="p-cn"><span class="hl">清新的空气、与外界隔绝的安静世界、规律的生活作息、定期运动——看来这些就是我需要的。能够给一个人写信是多好的事啊！想要向一个人传达你的想法，坐在桌前拿起笔，将思绪化为文字——这真是太美妙了。</span>当然，一旦付诸文字，我发现只能表达我想说的很小一部分，但这没关系。能感觉到想要给某个人写信，这本身就让我开心。</p>
+    <p class="p-en">The number of people living here is right around seventy. In addition, the staff (doctors, nurses, office staff, etc.) come to just over twenty. <span class="hl-b">It's such a wide-open place, these are not big numbers at all. Far from it: it might be closer to say the place is on the empty side. It's big and filled with nature and everybody lives quietly—so quietly you sometimes feel that this is the normal, real world. Which of course it's not. We can have it this way because we live here under certain preconditions.</span></p>
+    <p class="p-cn">住在这里的人大约有七十个。此外，工作人员（医生、护士、行政人员等）有二十多人。<span class="hl-b">地方很开阔，这点人数根本不算多。倒不如说这个地方有点空旷。它很大，充满了自然气息，每个人都安静地生活——安静到你有时觉得这才是正常的、真实的世界。当然并非如此。我们能这样生活，是因为我们在这里遵循着某些前提条件。</span></p>
+    <p class="p-en"><span class="hl">I play tennis and basketball. Basketball teams are made up of both staff and (I hate the word, but there's no way around it) patients. When I'm absorbed in a game, though, I lose track of who are the patients and who are staff. This is kind of strange.</span></p>
+    <p class="p-cn"><span class="hl">我打网球和篮球。篮球队由工作人员和（我讨厌这个词，但没办法）患者混编而成。不过一旦投入比赛，我就分不清谁是患者谁是工作人员了。这有点奇怪。</span></p>
+    <p class="p-en">In addition to playing sports, all participate in the raising of vegetables: tomatoes, eggplants, cucumbers, watermelon, strawberries, scallions, cabbage, daikon radishes, and on and on. We raise just about everything. We use hot houses, too. <span class="hl-b">The people here know a lot about vegetable farming, and they put a lot of energy into it. They read books on the subject and call in experts and talk from morning to night about which fertilizer to use and the condition of the soil and stuff like that. I have come to love growing vegetables. It's marvelous to watch different fruits and vegetables getting bigger and bigger each day. Have you ever raised watermelon? They swell up, just like some kind of little animals.</span></p>
+    <p class="p-cn">除了运动，所有人都参与种植蔬菜：西红柿、茄子、黄瓜、西瓜、草莓、大葱、卷心菜、白萝卜等等。我们几乎什么都种。还用了温室。<span class="hl-b">这里的人对蔬菜种植很在行，投入了大量精力。他们读相关书籍，请专家来，从早到晚讨论用什么肥料、土壤状况如何之类的事情。我已经爱上了种蔬菜。看着各种果蔬一天天长大真是太神奇了。你种过西瓜吗？它们鼓起来，就像某种小动物一样。</span></p>
+    <p class="p-en"><span class="hl-g">We eat freshly picked fruits and vegetables every day. They also serve meat and fish, of course, but when you're living here you feel less and less like eating those because the vegetables are so fresh and delicious. Sometimes we go out and gather wild plants and mushrooms. We have experts on that kind of thing (come to think of it, this place is crawling with experts) who tell us which plants to pick and which to avoid.</span></p>
+    <p class="p-cn"><span class="hl-g">我们每天都吃现摘的水果和蔬菜。当然也供应肉和鱼，但住在这里你会越来越不想吃那些，因为蔬菜太新鲜太美味了。有时我们会出去采摘野菜和蘑菇。我们有这方面的专家（说起来，这个地方到处都是专家），他们告诉我们哪些可以采、哪些要避开。</span></p>
+    <p class="p-en"><span class="hl">When we're not farming, we read or listen to music or knit. We don't have TV or radio, but we do have a very decent library with books and records. The record collection has everything from Mahler symphonies to the Beatles, and I'm always borrowing records to listen to in my room.</span></p>
+    <p class="p-cn"><span class="hl">不种地的时候，我们就读书、听音乐或者编织。我们没有电视和收音机，但有一个相当不错的图书馆，藏书和唱片都很丰富。唱片收藏从马勒交响曲到披头士应有尽有，我经常借唱片回房间听。</span></p>
+    <div class="key">
+      <span class="lbl">✦ 世外桃源</span>
+      <p>阿美寮的生活平静、规律、与世隔绝。种菜、打球、观星——直子在这里逐渐恢复，但也坦言"不想离开"本身就是个问题。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">关于变形</div>
+      <div class="en">On Deformity · Accepting Who We Are</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag purple">哲学</span>
+      <span class="tag gold">治疗</span>
+    </div>
+    <p class="p-en"><span class="hl">I know this will sound strange, but when I look at the people around me during a game, they all look equally deformed.</span></p>
+    <p class="p-cn"><span class="hl">我知道这听起来很奇怪，但当我打球时看着周围的人，他们看起来全都同样地"变形"。</span></p>
+    <p class="p-en"><span class="hl-b">I said this one day to the doctor in charge of my case, and he told me that, in a sense, what I was feeling was right, that we are in here not to correct the deformation but to accustom ourselves to it: that one of our problems was our inability to recognize and accept our own deformities.</span></p>
+    <p class="p-cn"><span class="hl-b">有一天我把这件事告诉了主治医生。他说，从某种意义上说，我的感觉是对的——我们来到这里不是为了矫正变形，而是为了让自己习惯变形：我们的问题之一在于无法认识和接受自身的变形。</span></p>
+    <p class="p-en"><span class="hl">Just as each person has certain idiosyncracies in the way he or she walks, people have idiosyncracies in the way they think and feel and see things, and though you might want to correct them, it doesn't happen overnight, and if you try to force the issue in one case, something else might go funny.</span></p>
+    <p class="p-cn"><span class="hl">就像每个人都有自己独特的走路姿势一样，人们在思考、感受和看待事物的方式上也有自己的特质。你也许想要纠正它们，但这不是一夜之间能做到的，如果你在一个问题上强行纠正，其他地方可能又出问题。</span></p>
+    <p class="p-en"><span class="hl-p">He gave me a very simplified explanation, of course, and it's just one small part of the problems we have, but I think I understand what he was trying to say. It may well be that we can never fully adapt to our own deformities. Unable to find a place inside ourselves for the very real pain and suffering that these deformities cause, we come here to get away from such things.</span></p>
+    <p class="p-cn"><span class="hl-p">当然，他给我的解释非常简化，只是我们问题的一小部分，但我想我理解他想表达的意思。也许我们永远无法完全适应自己的变形。由于无法在内心为这些变形带来的真实痛苦找到安放之处，我们来到这里逃离这些东西。</span></p>
+    <p class="p-en"><span class="hl-g">As long as we are here, we can get by without hurting others or being hurt by them because we know that we are "deformed." That's what distinguishes us from the outside world: most people go about their lives there unconscious of their deformities, while in this little world of ours the deformities themselves are a precondition. Just as Indians wear feathers on their heads to show which tribes they belong to, we wear our deformities in the open. And we live quietly so as not to hurt one another.</span></p>
+    <p class="p-cn"><span class="hl-g">只要我们在这里，就能在不伤害他人也不被他人伤害的情况下过下去，因为我们都清楚自己是"变形"的。这就是我们与外面世界的区别：外面的大多数人毫不在意自己的变形而生活着，而在这个小世界里，变形本身就是一个前提条件。就像印第安人在头上插羽毛表明自己的部落归属一样，我们把变形公开展示出来。我们安静地生活，以免互相伤害。</span></p>
+    <p class="p-en"><span class="hl-b">The one real problem with this facility is that once you're here you don't want to leave—or you're afraid to leave. As long as we're here, we feel calm and peaceful. Our deformities seem natural. We think we've recovered. But we can never be sure that the outside world would accept us in the same way.</span></p>
+    <p class="p-cn"><span class="hl-b">这里的一个真正问题是：一旦你来了，你就不想离开——或者说你害怕离开。只要我们在这里，就感到平静安宁。我们的变形似乎变得自然了。我们以为自己康复了。但我们永远无法确定外面的世界是否会以同样的方式接纳我们。</span></p>
+    <div class="key">
+      <span class="lbl" style="border-left-color:#b896d4;">✦ 变形的哲学</span>
+      <p>"我们来到这里不是为了矫正变形，而是为了让自己习惯变形。"——这是全书最核心的疗愈理念。阿美寮的居民公开佩戴着自己的"变形"，如同印第安人的羽饰。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="stitle">
+      <div class="zh">邀请</div>
+      <div class="en">The Invitation · A Visit to Ami Hostel</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">书信</span>
+      <span class="tag gold">转折</span>
+    </div>
+    <p class="p-en"><span class="hl">My doctor says it's time I began having contact with "outside people"—meaning normal people in the normal world. When he says that, the only face I see is yours.</span> To tell the truth, I don't want to see my parents. They're too upset over me, and seeing them puts me in a bad mood. Plus, there are things I have to explain to you. I'm not sure I can explain them very well, but they're important things I can't go on avoiding any longer.</p>
+    <p class="p-cn"><span class="hl">我的医生说，我该开始接触"外面的人"了——也就是正常世界里的正常人。他这么说的时候，我脑中浮现的唯一面孔就是你。</span>说实话，我不想见父母。他们为我太焦虑了，见到他们只会让我心情变糟。而且，我有一些事情必须向你解释。我不确定是否能解释清楚，但它们很重要，是我不能再继续回避的事情。</p>
+    <p class="p-en"><span class="hl-b">Still, you shouldn't feel that I'm a burden to you. The one thing I don't want to be is a burden to anyone. I can sense the good feelings you have for me. They make me very happy. All I am doing in this letter is trying to convey that happiness to you. Those good feelings of yours are probably just what I need at this point in my life. Please forgive me if anything I've written here upsets you. As I said before, I am a far more flawed human being than you realize.</span></p>
+    <p class="p-cn"><span class="hl-b">不过你不必觉得我是你的负担。我最不愿成为的就是任何人的负担。我能感觉到你对我的好感。这让我非常开心。我写这封信，只是想把这幸福传达给你。你的那些好感大概正是我此刻的人生所需要的。如果信里有什么让你不安的话，请原谅我。正如我之前说过的，我是一个比你意识到的更有缺陷的人。</span></p>
+    <p class="p-en"><span class="hl-p">I sometimes wonder: IF you and I had met under absolutely ordinary circumstances, and IF we had liked each other, what would have happened? If I had been normal and you had been normal (which, of course, you are) and there had been no Kizuki, what would have happened? Of course, this "IF" is way too big. I'm trying hard at least to be fair and honest. It's all I can do at this point. I hope to convey some small part of my feelings to you this way.</span></p>
+    <p class="p-cn"><span class="hl-p">我有时会想：如果我们在完全普通的情况下相遇，如果我们彼此喜欢，会怎样呢？如果我是正常的，你是正常的（你当然是正常的），没有木月，又会怎样呢？当然，这个"如果"太大了。我至少努力做到公平和诚实。这是我目前唯一能做的事。我希望通过这种方式向你传达我的一点点感受。</span></p>
+    <p class="p-en"><span class="hl-g">Unlike an ordinary hospital, this facility has free visiting hours. As long as you call the day before, you can come anytime. You can even eat with me, and there's a place for you to stay. Please come and see me sometime when it's convenient for you. I look forward to seeing you. I'm enclosing a map. Sorry this turned into such a long letter.</span></p>
+    <p class="p-cn"><span class="hl-g">和普通医院不同，这里的探视时间很自由。只要你提前一天打电话，随时都可以来。你甚至可以和我一起吃饭，也有地方给你住。请在你方便的时候来看看我。我期待见到你。附上一张地图。抱歉写了这么长的信。</span></p>
+    <p class="p-en"><span class="hl-b">I read Naoko's letter all the way through, and then I read it again. After that I went downstairs, bought a Coke from the vending machine, and drank it while reading the letter one more time. I put the seven pages of letter paper back into the envelope and laid it on my desk.</span></p>
+    <p class="p-cn"><span class="hl-b">我把直子的信从头到尾读了一遍，然后又读了一遍。然后下楼，从自动售货机买了一瓶可乐，一边喝一边又把信读了一遍。我把七页信纸放回信封，放在桌上。</p>
+    <p class="p-en"><span class="hl">After putting the letter away in my desk drawer, I changed clothes and went out. I was afraid that if I stayed near the letter I would end up reading it ten, twenty, who knew how many times? I walked the streets of Tokyo on Sunday without a destination, as I had always done with Naoko.</span></p>
+    <p class="p-cn"><span class="hl">把信收进书桌抽屉后，我换了衣服出门去。我担心如果我待在信旁边，会忍不住再读十遍二十遍——谁知道多少次？我像从前和直子一起时那样，在周日的东京街头漫无目的地走着。</span></p>
+    <p class="p-en"><span class="hl-g">Then I picked up The Magic Mountain again, reading and sipping brandy and waiting to get sleepy. Even so, I didn't fall asleep until after one o'clock in the morning.</span></p>
+    <p class="p-cn"><span class="hl-g">然后我再次拿起《魔山》，一边读一边啜着白兰地，等着困意袭来。即便如此，直到凌晨一点以后我才睡着。</span></p>
+    <div class="key">
+      <span class="lbl">✦ 邀约与等待</span>
+      <p>直子终于邀请渡边去阿美寮看望她。渡边反复读信，夜不能寐——漫长的等待之后，通往直子世界的门终于再次打开。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  挪威的森林 · Norwegian Wood · 村上春树 · 第五章 · 共4段 · 双语对照
+</footer>
+
+</div>
+
+<script>
+  const toggle = document.getElementById('toggleCn');
+  const main = document.querySelector('.main');
+  const label = document.getElementById('toggleLabel');
+  toggle.addEventListener('change', function() {
+    main.classList.toggle('show-cn', this.checked);
+    label.classList.toggle('checked', this.checked);
+  });
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() {
+    menuBtn.classList.toggle('active');
+    nav.classList.toggle('open');
+    backdrop.classList.toggle('show');
+  }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => {
+    a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); });
+  });
+</script>
+</body>
+</html>
