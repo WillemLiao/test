@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挪威的森林 第九章 · 可视化信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(125,196,164,0.08), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #3d8a68;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(125,196,164,0.4);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #4a7a9e;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #223;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  /* ===== 通用节 ===== */
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(125,196,164,0.1);
+    border: 1px solid rgba(125,196,164,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #a8743a;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ===== 时空对照 ===== */
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card {
+    padding: 26px 24px;
+    position: relative;
+  }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #151020, #1a152a); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.1em;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .time-card.now .year { color: #3d8a68; }
+  .time-card.then .year { color: #7c5fa8; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #8a7565;
+    margin-top: 16px;
+    line-height: 1.7;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(125,196,164,0.05);
+    color: #3d8a68;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  /* ===== 情感弧线 ===== */
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  /* ===== 核心意象 ===== */
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(125,196,164,0.2); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  /* ===== 人物 ===== */
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+  .char.t .avatar circle:last-of-type { stroke: #3d8a68; }
+  .char.n .avatar circle:last-of-type { stroke: #7c5fa8; }
+
+  /* ===== 金句卡片 ===== */
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(125,196,164,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.82em;
+    color: #756030;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.72em;
+    color: #75604f;
+    line-height: 1.7;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== 悖论/终局 ===== */
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #121a20 100%);
+    border: 1px solid rgba(125,196,164,0.15);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #3d8a68;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, rgba(125,196,164,0.04), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #3d8a68;
+    line-height: 1.5;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.82em;
+    color: #5ca484;
+    margin-top: 8px;
+  }
+  .finale .note {
+    margin-top: 24px;
+    font-size: 0.72em;
+    color: #98826f;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.8em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="kanji">第 九 章</div>
+  <div class="en">CHAPTER&nbsp;&nbsp;NINE</div>
+  <div class="ch">绿子家过夜 · 春天的熊 · 生日毛衣</div>
+  <div class="meta">挪威的森林 · 村上春树 · Haruki Murakami · 1987</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 时空对照 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+    </div>
+    <div>
+      <h2>同一夜 · 两个房间</h2>
+      <div class="sub">TWO ROOMS · 大塚的厨房与阿美寮的灯下</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card now">
+      <div class="year">大塚 · 夜</div>
+      <div class="place">小林书店二楼 · 父亲的睡衣</div>
+      <div class="desc">绿子让他在父亲的祭坛前上过香，让她在他怀里入睡。"春天的熊"使两人搂得越来越紧。夜间他下楼，从落满灰尘的书架上挑了一本《在轮下》——八年前读过的黑塞——付钱在收款机旁。窗外灯光像月光，绿子睡得像死去一样。</div>
+    </div>
+    <div class="time-card then">
+      <div class="year">同时 · 山中</div>
+      <div class="place">阿美寮 · 十一月的早晚寒意</div>
+      <div class="desc">直子每周回信，信不长。她写道："夜里孤独的时候，有人从黑暗中对我说话——就像夜里树木在风中呻吟那样。木月、我姐姐——他们总是那样对我说话。"她和玲子采蘑菇、捡栗子，说他信里那个绿子"也许爱上你了"。</div>
+    </div>
+  </div>
+  <div class="time-gap">同 一 夜 · 一 个 在 床 上 抱 着 春 天 的 熊 一 个 在 信 里 听 见 亡 魂</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>十段情感弧线</h2>
+      <div class="sub">EMOTIONAL ARC · 从道歉到生日毛衣</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#b8553a"></i>亲密 / 温暖</span>
+      <span><i style="background:#4a7a9e"></i>记忆 / 怅惘</span>
+      <span><i style="background:#7c5fa8"></i>痛苦 / 冲突</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 贯穿全章的隐喻</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect width="110" height="120" fill="#0c1410"/>
+          <!-- 三叶草山坡 -->
+          <path d="M0 95 Q55 80 110 95 L110 120 L0 120 Z" fill="#1a2818" opacity="0.85"/>
+          <path d="M0 100 Q55 88 110 100 L110 120 L0 120 Z" fill="#16221a"/>
+          <!-- 滚动轨迹 -->
+          <path d="M22 78 q8 -6 14 0 q6 6 14 0 q8 -6 16 0 q6 6 12 0" fill="none" stroke="#3a5a3a" stroke-width="0.5" stroke-dasharray="2 2" opacity="0.55"/>
+          <!-- 小熊 -->
+          <g fill="#5a4838" stroke="#3a2818" stroke-width="0.5">
+            <!-- 身体 -->
+            <ellipse cx="64" cy="78" rx="11" ry="8"/>
+            <!-- 头 -->
+            <circle cx="74" cy="72" r="6"/>
+            <!-- 耳朵 -->
+            <circle cx="71" cy="67" r="2.2"/>
+            <circle cx="78" cy="67" r="2.2"/>
+            <!-- 四肢 -->
+            <ellipse cx="58" cy="82" rx="4" ry="3"/>
+            <ellipse cx="68" cy="84" rx="3.6" ry="2.6"/>
+          </g>
+          <!-- 小熊眼睛 -->
+          <circle cx="75" cy="71" r="0.8" fill="#e8e0c8"/>
+          <circle cx="77" cy="71" r="0.8" fill="#e8e0c8"/>
+          <!-- 小熊鼻子 -->
+          <ellipse cx="78" cy="73" rx="1" ry="0.7" fill="#f6f0e3"/>
+          <!-- 三叶草 -->
+          <g fill="#3d8a68" opacity="0.85">
+            <g transform="translate(18 92)">
+              <circle cx="0" cy="-2" r="1.8"/>
+              <circle cx="-1.8" cy="1" r="1.8"/>
+              <circle cx="1.8" cy="1" r="1.8"/>
+              <line x1="0" y1="2" x2="0" y2="6" stroke="#5a8a64" stroke-width="0.5"/>
+            </g>
+            <g transform="translate(36 100)">
+              <circle cx="0" cy="-2" r="1.6"/>
+              <circle cx="-1.5" cy="1" r="1.6"/>
+              <circle cx="1.5" cy="1" r="1.6"/>
+              <line x1="0" y1="2" x2="0" y2="5" stroke="#5a8a64" stroke-width="0.5"/>
+            </g>
+            <g transform="translate(48 108)">
+              <circle cx="0" cy="-1.6" r="1.4"/>
+              <circle cx="-1.3" cy="0.8" r="1.4"/>
+              <circle cx="1.3" cy="0.8" r="1.4"/>
+            </g>
+            <g transform="translate(88 102)">
+              <circle cx="0" cy="-1.8" r="1.7"/>
+              <circle cx="-1.6" cy="1" r="1.7"/>
+              <circle cx="1.6" cy="1" r="1.7"/>
+            </g>
+          </g>
+          <!-- 一朵太阳/春光 -->
+          <g stroke="#a8743a" stroke-width="0.6" fill="none" opacity="0.45">
+            <circle cx="84" cy="24" r="4"/>
+            <line x1="84" y1="18" x2="84" y2="14"/>
+            <line x1="84" y1="30" x2="84" y2="34"/>
+            <line x1="74" y1="24" x2="70" y2="24"/>
+            <line x1="94" y1="24" x2="98" y2="24"/>
+            <line x1="76" y1="16" x2="73" y2="13"/>
+            <line x1="92" y1="16" x2="95" y2="13"/>
+            <line x1="76" y1="32" x2="73" y2="35"/>
+            <line x1="92" y1="32" x2="95" y2="35"/>
+          </g>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#3d8a68">春天的熊</h3>
+        <div class="en-sub">THE SPRING BEAR · "我就这么喜欢你"</div>
+        <p>春天原野里，小熊毛茸茸像天鹅绒、眼睛圆鼓鼓，走过来对你说："你好，小姐，和我一块儿打滚玩好么？" 你就和小熊抱在一起，顺着长满三叶草的山坡咕噜咕噜滚下去，整整玩了一天。这是村上最著名的比喻：用最童真的画面说最深切的爱。</p>
+        <div class="quote" style="border-color:#3d8a68">"That is the best thing I've ever heard."</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <defs>
+            <linearGradient id="sweater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5a1a1a"/>
+              <stop offset="100%" stop-color="#2a0a0a"/>
+            </linearGradient>
+          </defs>
+          <rect width="110" height="120" fill="#100c0c"/>
+          <!-- 毛衣主体 -->
+          <g fill="url(#sweater)" stroke="#3a1010" stroke-width="0.6">
+            <!-- 圆领 -->
+            <path d="M30 38 Q40 30 55 30 Q70 30 80 38 L84 84 Q55 90 26 84 Z"/>
+            <ellipse cx="55" cy="38" rx="15" ry="4" fill="#2a0a0a"/>
+            <!-- 两只袖子 -->
+            <path d="M30 40 Q18 50 16 76 Q22 78 28 74 L32 60 Z"/>
+            <path d="M80 40 Q92 50 94 76 Q88 78 82 74 L78 60 Z"/>
+          </g>
+          <!-- 针织纹理 -->
+          <g stroke="#7a2828" stroke-width="0.35" opacity="0.55">
+            <!-- 上半部（玲子的好那一半） -->
+            <g>
+              <path d="M30 44 h50 M30 49 h50 M30 54 h50 M30 59 h50"/>
+              <path d="M30 46 q5 1.5 10 0 M45 46 q5 1.5 10 0 M60 46 q5 1.5 10 0"/>
+            </g>
+            <!-- 中线（分界） -->
+            <path d="M28 62 h54" stroke="#9a3030" stroke-width="0.6" opacity="0.7"/>
+            <!-- 下半部（直子的差那一半） -->
+            <g opacity="0.6">
+              <path d="M30 67 h50 M30 72 h50 M30 77 h50"/>
+              <path d="M28 69 q4 1 8 0 M42 69 q4 1 8 0 M56 69 q4 1 8 0"/>
+              <path d="M30 74 q6 1 12 0 M50 74 q6 1 12 0"/>
+            </g>
+          </g>
+          <!-- 两根织针 -->
+          <g stroke="#b8b8c8" stroke-width="0.8" opacity="0.55">
+            <line x1="22" y1="30" x2="6" y2="14"/>
+            <line x1="88" y1="30" x2="104" y2="14"/>
+            <circle cx="6" cy="14" r="1.6" fill="#b8b8c8"/>
+            <circle cx="104" cy="14" r="1.6" fill="#b8b8c8"/>
+          </g>
+          <!-- 一根线团 -->
+          <circle cx="16" cy="106" r="7" fill="none" stroke="#7a2828" stroke-width="0.7" opacity="0.7"/>
+          <g stroke="#7a2828" stroke-width="0.4" opacity="0.5">
+            <line x1="10" y1="106" x2="22" y2="106"/>
+            <line x1="16" y1="100" x2="16" y2="112"/>
+            <path d="M10 102 q6 4 12 0 M10 110 q6 -4 12 0"/>
+          </g>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#b8553a">生日毛衣</h3>
+        <div class="en-sub">THE BIRTHDAY SWEATER · 两人各织一半的酒红圆领</div>
+        <p>二十岁生日三天后，直子的包裹寄到：一件酒红色圆领毛衣和一封信。"织得好的一半是玲子的，织得差的一半是我的。玲子做什么都那么好，有时候看着她我都恨自己。" 织针与线团，两人隔着八百公里的山中合织一件衣物——合两人那份幸福为一份。</p>
+        <div class="quote" style="border-color:#b8553a">"If I had done it all by myself, it would have taken until next Valentine's Day."</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect width="110" height="120" fill="#0a0e14"/>
+          <!-- 小林书店外景（卷帘门半拉下） -->
+          <!-- 卷帘条纹 -->
+          <g stroke="#3a3a40" stroke-width="0.5" opacity="0.6">
+            <line x1="14" y1="62" x2="96" y2="62"/>
+            <line x1="14" y1="66" x2="96" y2="66"/>
+            <line x1="14" y1="70" x2="96" y2="70"/>
+            <line x1="14" y1="74" x2="96" y2="74"/>
+            <line x1="14" y1="78" x2="96" y2="78"/>
+            <line x1="14" y1="82" x2="96" y2="82"/>
+            <line x1="14" y1="86" x2="96" y2="86"/>
+            <line x1="14" y1="90" x2="96" y2="90"/>
+          </g>
+          <!-- "临时停业"牌子 -->
+          <g>
+            <rect x="42" y="44" width="26" height="14" fill="#d8d0c0" stroke="#5a4a3a" stroke-width="0.4" rx="1"/>
+            <text x="55" y="54" text-anchor="middle" font-size="3.4" fill="#3a2a2a" font-family="Noto Sans SC,sans-serif">临时停业</text>
+          </g>
+          <!-- 屋脊 -->
+          <path d="M14 62 L55 36 L96 62" fill="none" stroke="#5a4a3a" stroke-width="0.8"/>
+          <!-- 招牌 -->
+          <rect x="34" y="58" width="42" height="6" fill="#3a2a20" stroke="#5a4030" stroke-width="0.4"/>
+          <text x="55" y="63" text-anchor="middle" font-size="3.6" fill="#8a7050" font-family="Noto Sans SC,sans-serif">小林书店</text>
+          <!-- 橱窗内微光 -->
+          <rect x="22" y="92" width="20" height="18" fill="#a8743a" opacity="0.12"/>
+          <rect x="68" y="92" width="20" height="18" fill="#a8743a" opacity="0.08"/>
+          <!-- 街灯 -->
+          <g>
+            <line x1="6" y1="120" x2="6" y2="72" stroke="#3a3a40" stroke-width="0.6"/>
+            <circle cx="6" cy="70" r="2.4" fill="#a8743a" opacity="0.7"/>
+            <circle cx="6" cy="70" r="5" fill="#a8743a" opacity="0.12"/>
+          </g>
+          <!-- 自动售货机 -->
+          <g>
+            <rect x="100" y="86" width="9" height="22" fill="#1a2a2a" stroke="#3a5050" stroke-width="0.4"/>
+            <rect x="102" y="89" width="5" height="4" fill="#3d8a68" opacity="0.5"/>
+            <rect x="102" y="95" width="5" height="4" fill="#b8553a" opacity="0.5"/>
+          </g>
+          <!-- 一只乌鸦停在屋顶 -->
+          <path d="M70 32 q3 -3 6 0 q3 3 0 4 z" fill="#1a1a1a"/>
+          <!-- 凌晨微光 -->
+          <path d="M0 14 q55 -6 110 0" fill="none" stroke="#3d8a68" stroke-width="0.4" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#7c5fa8">搁浅的书店</h3>
+        <div class="en-sub">THE ABANDONED BOOKSTORE · "像搁浅在海滩上的残骸"</div>
+        <p>卷帘门上"临时停业"，店里一半书架空着，杂志打捆准备退货。绿子说："爸为这事那么辛苦，一点点还贷款，到底几乎什么也没剩下。一切都像河上的泡沫一样消散了。" 渡边住了下来，读完黑塞的《在轮下》——八年前读过的书，现在穿着死人的睡衣重读——天亮留下一张纸条悄悄离开。</p>
+        <div class="quote" style="border-color:#7c5fa8">"It all melted away, like foam on a river."</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个人</h2>
+      <div class="sub">TWO PEOPLE · 一个在怀里 一个在信里</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char t">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <!-- 短发 -->
+        <path d="M22 26 Q32 20 42 26" fill="none" stroke="#3d8a68" stroke-width="0.8" opacity="0.7"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#3d8a68" stroke-width="1.6"/>
+        <!-- 两只手镯 -->
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#3d8a68" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="14" cy="54" r="1.6" fill="none" stroke="#3d8a68" stroke-width="0.8" opacity="0.7"/>
+        <circle cx="50" cy="54" r="1.6" fill="none" stroke="#3d8a68" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+      <h3 style="color:#3d8a68">绿&nbsp;子</h3>
+      <div class="role">小林书店的女儿 · 父亲刚去世的女孩</div>
+      <p>"我活了二十年，从来没跟任何人任性过一次。" 她带渡边去SM影院、半夜爬树未遂，在他怀里听"春天的熊"入睡。明亮、粗暴、坦诚——她什么都敢说，什么都敢看，唯独怕没人抱她。</p>
+    </div>
+    <div class="char n">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <!-- 长发 -->
+        <path d="M22 30 Q19 44 25 52 M42 30 Q45 44 39 52" fill="none" stroke="#7c5fa8" stroke-width="1.0" opacity="0.55"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#7c5fa8" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#7c5fa8" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <h3 style="color:#7c5fa8">直&nbsp;子</h3>
+      <div class="role">阿美寮的住客 · 写着短小回信的远方</div>
+      <p>每周回信，信都不长。"夜里孤独时有人从黑暗对我说话——就像树木在风中。" 她已经能平静地写信、采蘑菇、织毛衣，但她说"清晰文字只能表达想说的很小一部分"。她为他寄出二十岁生日毛衣——把自己那份幸福留给了他。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 第九章的四颗钉子</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">"Like a spring bear," I said. "A spring bear?" Midori looked up again. "What's that all about? A spring bear." … "You're walking through a field all by yourself one day in spring, and this sweet little bear cub with velvet fur and shiny little eyes comes walking along. And he says to you, 'Hi, there, little lady. Want to tumble with me?' So you and the bear cub spend the whole day in each other's arms, tumbling down this clover-covered hill. Nice, huh?"</div>
+      <div class="q-cn">"就像春天的熊一样。""春天的熊？"绿子又抬起头，"春天的熊怎么回事？"……"春天原野里，你一个人正走着，对面走来一只可爱的小熊，毛茸茸的像天鹅绒，眼睛圆鼓鼓的。它对你说：'你好，小姐，和我一块儿打滚玩好么？'接着你就和小熊抱在一起，顺着长满三叶草的山坡咕噜咕噜滚下去，整整玩了一天。"</div>
+      <div class="q-tag" style="color:#3d8a68">§6 全书最经典的表白</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"But I'm so lonely! I want to be with someone! … you're the only one I can do stuff like that to! I have never been able to have my own way with anybody, not once in the twenty years I've been alive."</div>
+      <div class="q-cn">"可我太寂寞了！我想跟人待在一起！……你是我唯一可以这样对待的人！我活了二十年，从来没有跟任何人任性过一次。"</div>
+      <div class="q-tag" style="color:#b8553a">§5 强悍外表下的孤独</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"When I'm lonely at night, people talk to me from the darkness. They talk to me the way trees moan in the wind at night. Kizuki; my sister: they talk to me like that all the time. They're lonely too, and looking for someone to talk to."</div>
+      <div class="q-cn">"夜里孤独的时候，有人从黑暗中对我说话。就像夜里树木在风中呻吟那样对我说话。木月，我姐姐——他们总是那样对我说话。他们也很孤独，在找人说活。"</div>
+      <div class="q-tag" style="color:#7c5fa8">§9 直子来信</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"Happy Birthday! I hope you have a happy year being twenty. My own year of being twenty looks as if it's going to end with me as miserable as ever, but I'd really like it if you could have your share of happiness and mine combined. Really."</div>
+      <div class="q-cn">"生日快乐！希望你的二十岁是幸福的一年。我自己的二十岁，看来就要像现在这样凄凄惨惨地结束了，但我真的希望你能把你那份幸福和我的那份合在一起。真的。"</div>
+      <div class="q-tag" style="color:#4a7a9e">§10 直子织的毛衣</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>她为他织毛衣<br/>她写信说"我喜欢你"<br/>而渡边爱的是直子</h3>
+    <p>绿子在床上让他抱，让他丢出口袋里的"春天的熊"；直子在远方为他织毛衣，让玲子各织一半——两个女人都把"幸福"的份额塞给渡边。但渡边爱的是直子。被爱者无论如何成为最孤独的那一个——因为他必须把一个推开而让另一个受伤，而第三个还活在十七岁的台球桌旁。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">颜色和款式是我们挑的。生日快乐。</div>
+  <div class="line-en">We picked the color and the style. Happy Birthday.</div>
+  <div class="note">第九章最后一句。<br/>玲子的便条上写：颜色和款式是我们挑的。两个人隔山合织，一人一半——这是阿美寮那一侧能为渡边做的最后一件事。整章在两件衣物里收束：父亲的睡衣、绿子织的毛衣——一件去，一件来。</div>
+</div>
+
+<footer>挪威的森林 · Norwegian Wood · 村上春树 · 第九章全景信息图</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  // 10 段：[段号, 温暖(0-1), 怅惘(0-1), 痛苦(0-1), 标签, 颜色]
+  // 1永泽的道歉 2绿子旅行归来 3卫生棉条的故事 4情色电影 5绿子家过夜 6春天的熊 7父亲的遗照前 8读《在轮下》 9直子的来信 10生日毛衣
+  const segs = [
+    {n:1,  t:0.30, m:0.40, p:0.25, l:'道歉', c:'#4a7a9e'},
+    {n:2,  t:0.55, m:0.25, p:0.10, l:'归来', c:'#3d8a68'},
+    {n:3,  t:0.50, m:0.20, p:0.15, l:'棉条', c:'#a8743a'},
+    {n:4,  t:0.40, m:0.25, p:0.20, l:'电影', c:'#b8553a'},
+    {n:5,  t:0.85, m:0.30, p:0.10, l:'过夜', c:'#b8553a'},
+    {n:6,  t:0.95, m:0.20, p:0.05, l:'熊',   c:'#3d8a68'},
+    {n:7,  t:0.30, m:0.55, p:0.40, l:'遗照', c:'#7c5fa8'},
+    {n:8,  t:0.25, m:0.70, p:0.35, l:'轮下', c:'#4a7a9e'},
+    {n:9,  t:0.15, m:0.85, p:0.55, l:'直子', c:'#7c5fa8'},
+    {n:10, t:0.70, m:0.30, p:0.20, l:'毛衣', c:'#b8553a'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){
+    return 190 - val * 160;
+  }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#7c5fa8', 0.05);
+  plot('m', '#4a7a9e', 0.05);
+  plot('t', '#b8553a', 0.07);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>

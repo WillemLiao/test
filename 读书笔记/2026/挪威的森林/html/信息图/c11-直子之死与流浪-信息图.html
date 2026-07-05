@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挪威的森林 第十一章 · 可视化信息图 · 全书终章</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(232,153,122,0.12), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3.6em;
+    font-weight: 900;
+    color: #b8553a;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(232,153,122,0.5);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #7c5fa8;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .meta .fin7 { color: #b8553a; letter-spacing: 0.2em; }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #223;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  /* ===== 通用节 ===== */
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(232,153,122,0.1);
+    border: 1px solid rgba(232,153,122,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #b8553a;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ===== 时空对照 ===== */
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card {
+    padding: 26px 24px;
+    position: relative;
+  }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #151020, #1a152a); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8em;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .time-card.now .year { color: #4a7a9e; }
+  .time-card.then .year { color: #3d8a68; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #8a7565;
+    margin-top: 16px;
+    line-height: 1.7;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(232,153,122,0.05);
+    color: #b8553a;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  /* ===== 情感弧线 ===== */
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  /* ===== 核心意象 ===== */
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(232,153,122,0.2); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  /* ===== 人物 ===== */
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+
+  /* ===== 金句卡片 ===== */
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(232,153,122,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.82em;
+    color: #756030;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.72em;
+    color: #75604f;
+    line-height: 1.7;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== 悖论/终局 ===== */
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #efe7d5 100%);
+    border: 1px solid rgba(184,150,212,0.15);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #7c5fa8;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 60px 30px 50px;
+    background: linear-gradient(180deg, rgba(232,153,122,0.06), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.7em;
+    font-weight: 700;
+    color: #b8553a;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.88em;
+    color: #c8876a;
+    margin-top: 12px;
+  }
+  .finale .note {
+    margin-top: 28px;
+    font-size: 0.75em;
+    color: #98826f;
+    line-height: 1.8;
+  }
+  .finale .note b { color: #b8553a; font-weight: 700; }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.4em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+    .finale .line { font-size: 1.35em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="kanji">第 十 一 章</div>
+  <div class="en">CHAPTER&nbsp;&nbsp;ELEVEN</div>
+  <div class="ch">直子之死 · 流浪 · 玲子告别</div>
+  <div class="meta">挪威的森林 · 村上春树 · Haruki Murakami · 1987 · <span class="fin7">全 书 终 章</span></div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 时空对照 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8553a" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <div>
+      <h2>时空双线</h2>
+      <div class="sub">TWO SCENES · 由一捧灰，到一个电话</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card now">
+      <div class="year">1970.08</div>
+      <div class="place">神户 · 一场安静的葬礼</div>
+      <div class="desc">八月底，直子的葬礼在没有外人前来的安静中举行。火化后，"她已经不在这个世界上，变成了一捧灰。"渡边回了东京，看完东京所有新上映的电影，跳上第一列开往远方的特快列车。</div>
+    </div>
+    <div class="time-card then">
+      <div class="year">1970.10</div>
+      <div class="place">东京某处 · 一个电话亭</div>
+      <div class="desc">流浪一月归来，玲子来访——弹完五十首歌，办了"自己的葬礼"，然后乘火车去旭川。十月初，渡边拨通绿子的电话，说"我在这世上想要的只有你"。绿子轻声问："你现在在哪里？"</div>
+    </div>
+  </div>
+  <div class="time-gap">相 隔 约 <b>1</b> 个 月 · 由 死 亡 走 向 新 生 的 微 光</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8553a" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>十段情感弧线</h2>
+      <div class="sub">EMOTIONAL ARC · 从一捧灰，到新生微光</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#b8553a"></i>亲密 / 温暖</span>
+      <span><i style="background:#4a7a9e"></i>记忆 / 怅惘</span>
+      <span><i style="background:#7c5fa8"></i>痛苦 / 冲突</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8553a" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 终章的三件物品</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <defs>
+            <radialGradient id="ashGrad" cx="50%" cy="60%" r="70%">
+              <stop offset="0%" stop-color="#1a1620"/>
+              <stop offset="100%" stop-color="#08080c"/>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="110" height="120" fill="url(#ashGrad)"/>
+          <!-- 飘散的灰烬碎片 -->
+          <g fill="#9a8a7a" opacity="0.55">
+            <circle cx="20" cy="22" r="1"/>
+            <circle cx="35" cy="38" r="1.5"/>
+            <circle cx="28" cy="55" r="0.8"/>
+            <circle cx="48" cy="68" r="1.2"/>
+            <circle cx="58" cy="82" r="0.7"/>
+            <circle cx="68" cy="48" r="1"/>
+            <circle cx="78" cy="30" r="1.3"/>
+            <circle cx="86" cy="58" r="0.8"/>
+            <circle cx="90" cy="78" r="1.1"/>
+            <circle cx="15" cy="68" r="0.9"/>
+            <circle cx="40" cy="20" r="0.7"/>
+            <circle cx="64" cy="18" r="0.9"/>
+          </g>
+          <g fill="#c8b898" opacity="0.3">
+            <circle cx="22" cy="40" r="0.6"/>
+            <circle cx="50" cy="30" r="0.6"/>
+            <circle cx="78" cy="42" r="0.6"/>
+            <circle cx="32" cy="78" r="0.7"/>
+          </g>
+          <!-- 张开的手掌 silhouette -->
+          <g fill="#7c5fa8" opacity="0.7">
+            <path d="M44 102 q-6 -22 -2 -28 q3 -2 5 0 q1 -10 7 -3 q1 -8 6 -1 q1 -3 5 -1 q6 4 0 32 z"/>
+            <!-- 手指间隙 -->
+          </g>
+          <g fill="none" stroke="#7c5fa8" stroke-width="1" opacity="0.7">
+            <line x1="48" y1="80" x2="48" y2="68"/>
+            <line x1="55" y1="76" x2="55" y2="62"/>
+            <line x1="62" y1="78" x2="62" y2="64"/>
+            <line x1="68" y1="82" x2="70" y2="68"/>
+          </g>
+          <!-- 一小堆灰烬 -->
+          <ellipse cx="56" cy="106" rx="22" ry="3" fill="#3a3a4a" opacity="0.7"/>
+          <!-- 直子离世象征：一道极淡的烟雾轻升 -->
+          <path d="M56 100 q-2 -10 2 -22 q2 -8 -2 -18" fill="none" stroke="#7a6a7a" stroke-width="0.6" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#7c5fa8">一捧灰</h3>
+        <div class="en-sub">A FISTFUL OF ASH · 比世上一切都更彻底的结束</div>
+        <p>神户安静的葬礼之后，直子已经不在这个世界上，"变成了一捧灰"。他给绿子写了张短笺就跳上特快列车——每月的流浪既没让他振作，也没减轻直子之死的打击。归来时，他"几乎和离开时一样"。</p>
+        <div class="quote" style="border-color:#7c5fa8">"她 已 经 变 成 了 一 捧 灰。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <defs>
+            <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1a1a2e"/>
+              <stop offset="60%" stop-color="#0e1622"/>
+              <stop offset="100%" stop-color="#f5f0e6"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="110" height="120" fill="url(#skyG)"/>
+          <!-- 月 -->
+          <circle cx="78" cy="22" r="6" fill="#a8743a" opacity="0.5"/>
+          <circle cx="78" cy="22" r="9" fill="#a8743a" opacity="0.15"/>
+          <circle cx="78" cy="22" r="13" fill="#a8743a" opacity="0.06"/>
+          <!-- 远方轮廓 -->
+          <ellipse cx="40" cy="28" rx="22" ry="2" fill="#3a4a5a" opacity="0.4"/>
+          <!-- 海平面 -->
+          <line x1="0" y1="56" x2="110" y2="56" stroke="#3a4a5a" stroke-width="0.7" opacity="0.55"/>
+          <!-- 海 -->
+          <rect x="0" y="56" width="110" height="40" fill="#12182a"/>
+          <!-- 海浪 curves -->
+          <path d="M0 72 q15 -3 30 0 q15 3 30 0 q15 -3 30 0 q15 3 30 0" fill="none" stroke="#4a6a8a" stroke-width="1" opacity="0.6"/>
+          <path d="M0 82 q15 -2 30 0 q15 2 30 0 q15 -2 30 0 q15 2 30 0" fill="none" stroke="#6a8aaa" stroke-width="1" opacity="0.45"/>
+          <path d="M0 92 q12 -2 24 0 q12 2 24 0 q12 -2 24 0 q12 2 24 0" fill="none" stroke="#8aa8c8" stroke-width="1" opacity="0.5"/>
+          <!-- 沙滩 -->
+          <ellipse cx="55" cy="116" rx="58" ry="8" fill="#1a1a1a"/>
+          <!-- 漂流木与火堆 -->
+          <g opacity="0.8">
+            <rect x="22" y="106" width="18" height="2.5" rx="1" fill="#5a4a3a" transform="rotate(8 31 107)"/>
+            <rect x="20" y="103" width="2.5" height="5" rx="1" fill="#5a4a3a" transform="rotate(-12 21 105)"/>
+            <rect x="38" y="104" width="2.5" height="5" rx="1" fill="#5a4a3a" transform="rotate(20 39 106)"/>
+            <!-- 火焰 -->
+            <ellipse cx="30" cy="101" rx="4" ry="5" fill="#b8553a" opacity="0.85"/>
+            <ellipse cx="30" cy="100" rx="2.5" ry="3.4" fill="#8a5e20" opacity="0.9"/>
+            <ellipse cx="30" cy="99" rx="1.2" ry="1.8" fill="#fff" opacity="0.7"/>
+          </g>
+          <!-- 独坐的旅人 silhouette -->
+          <g opacity="0.72">
+            <circle cx="62" cy="100" r="3" fill="#4a7a9e"/>
+            <path d="M58 108 q-2 -6 4 -6 q6 0 4 6 z" fill="#4a7a9e"/>
+          </g>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#4a7a9e">海岸与浪</h3>
+        <div class="en-sub">COAST AND WAVES · 没有名字的一段流浪</div>
+        <p>他向离东京尽可能远的海岸移动——也许是鸟取，也许是兵库北岸。他拾漂流木生火，烤买来的鱼干，听海浪想直子。"在那种陌生的地方让自己入睡。"夜里，海浪带来记忆，记忆又一次次把他冲回岸边。</p>
+        <div class="quote" style="border-color:#4a7a9e">"海 浪 像 潮 水 一 样 把 记 忆 涌 来。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <defs>
+            <radialGradient id="gbGrad" cx="50%" cy="45%" r="60%">
+              <stop offset="0%" stop-color="#3a2818"/>
+              <stop offset="100%" stop-color="#1a1208"/>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="110" height="120" fill="#0c0a14"/>
+          <!-- 吉他箱轮廓 -->
+          <ellipse cx="55" cy="60" rx="25" ry="28" fill="url(#gbGrad)" stroke="#8a6a3a" stroke-width="0.8" opacity="0.92"/>
+          <!-- 颈 -->
+          <rect x="51.5" y="14" width="7" height="34" fill="#2a1a0a" stroke="#8a6a3a" stroke-width="0.5"/>
+          <!-- 琴头 -->
+          <rect x="48" y="8" width="14" height="8" rx="2" fill="#1a0a04" stroke="#8a6a3a" stroke-width="0.6"/>
+          <g fill="#8a6a3a">
+            <circle cx="51" cy="11" r="1"/>
+            <circle cx="59" cy="11" r="1"/>
+            <circle cx="51" cy="14" r="1"/>
+            <circle cx="59" cy="14" r="1"/>
+          </g>
+          <!-- 音孔 -->
+          <circle cx="55" cy="62" r="7" fill="#0a0608" stroke="#5a4a2a" stroke-width="0.8"/>
+          <circle cx="55" cy="62" r="3.5" fill="#1a0a04"/>
+          <!-- 琴弦 -->
+          <g stroke="#c8b898" stroke-width="0.4" opacity="0.75">
+            <line x1="53" y1="14" x2="53" y2="86"/>
+            <line x1="54.3" y1="14" x2="54.3" y2="86"/>
+            <line x1="55.7" y1="14" x2="55.7" y2="86"/>
+            <line x1="57" y1="14" x2="57" y2="86"/>
+          </g>
+          <!-- 声波 / 向上的音符 -->
+          <g fill="none" stroke="#3d8a68" stroke-width="0.8" opacity="0.7">
+            <path d="M30 38 q-2 -4 -7 -2"/>
+            <path d="M80 32 q3 -4 8 -1"/>
+            <path d="M26 50 q-3 -3 -8 0"/>
+            <path d="M84 50 q3 -3 8 0"/>
+          </g>
+          <!-- 底部一行火柴代表 51 首歌 -->
+          <g stroke="#7a6a3a" stroke-width="1.6" opacity="0.85">
+            <line x1="14" y1="106" x2="17" y2="106"/>
+            <line x1="20" y1="106" x2="23" y2="106"/>
+            <line x1="26" y1="106" x2="29" y2="106"/>
+            <line x1="32" y1="106" x2="35" y2="106"/>
+            <line x1="38" y1="106" x2="41" y2="106"/>
+            <line x1="44" y1="106" x2="47" y2="106"/>
+            <line x1="50" y1="106" x2="53" y2="106"/>
+            <line x1="56" y1="106" x2="59" y2="106"/>
+            <line x1="62" y1="106" x2="65" y2="106"/>
+            <line x1="68" y1="106" x2="71" y2="106"/>
+            <line x1="74" y1="106" x2="77" y2="106"/>
+          </g>
+          <!-- 最后一根火柴燃烧 -->
+          <line x1="80" y1="106" x2="83" y2="106" stroke="#7a6a3a" stroke-width="1.6"/>
+          <ellipse cx="86" cy="106" rx="3" ry="2" fill="#b8553a" opacity="0.92"/>
+          <ellipse cx="86.5" cy="105.5" rx="1.8" ry="1.4" fill="#8a5e20"/>
+          <!-- "50" 微小数字暗示 -->
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#3d8a68">五十一首歌</h3>
+        <div class="en-sub">FIFTY-ONE SONGS · 一场不那么悲伤的葬礼</div>
+        <p>玲子让渡边每听完一首就摆一根火柴。她弹了披头士、巴卡拉克、巴萨诺瓦、拉威尔、德彪西——还有两遍《挪威的森林》。第五十一首是她最爱的巴赫赋格曲。"我希望你忘掉那场悲伤的葬礼，只记住我们这场。"</p>
+        <div class="quote" style="border-color:#3d8a68">"我 们 自 己 的 葬 礼 — — 不 那 么 悲 伤 的。"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8553a" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个人</h2>
+      <div class="sub">TWO PEOPLE · 共享同一个死者的生者</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#4a7a9e" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#4a7a9e" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="22" y1="30" x2="26" y2="30" stroke="#4a7a9e" stroke-width="1.4"/>
+        <line x1="38" y1="30" x2="42" y2="30" stroke="#4a7a9e" stroke-width="1.4"/>
+      </svg>
+      <h3 style="color:#4a7a9e">渡边&nbsp;彻</h3>
+      <div class="role">叙述者 · 21 岁 · 海岸归来的生者</div>
+      <p>从直子变成一捧灰起，他将睡袋摊在沙滩上整月，吞廉价威士忌入睡。回到东京后他像博物馆看守人，把那间为直子留的房间挂上白布。直到玲子来：五十首歌、一次身体结合、一段送别——他才走向电话亭，对绿子说出"我在这世上想要的只有你"。</p>
+    </div>
+    <div class="char">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#7c5fa8" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#7c5fa8" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- 几缕翘起的发丝 -->
+        <g stroke="#7c5fa8" stroke-width="1" opacity="0.8" fill="none">
+          <path d="M26 19 q-2 -4 -1 -6"/>
+          <path d="M36 17 q-1 -4 1 -6"/>
+        </g>
+        <!-- 吉他 small hint -->
+        <ellipse cx="44" cy="50" rx="3" ry="4" fill="none" stroke="#3d8a68" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+      <h3 style="color:#7c5fa8">玲&nbsp;子</h3>
+      <div class="role">告别者 · 38 岁 · 八年后走出疗养院</div>
+      <p>"我害怕——怕得差点就这样疯掉。"八年的疗养院生活结束后，她穿直子的衣服、把直子的吉他带来东京。五十首歌是为直子办的葬礼，第五十一首巴赫赋格之后，她轻声问渡边："和我做爱好吗？"翌日，她坐火车去旭川，留下一段空白与一段新生。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8553a" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 终章的四颗钉子</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">"I had learned one thing from Kizuki's death, and I believed that I had made it a part of myself in the form of a philosophy: 'Death is not the opposite of life but an innate part of life.'"</div>
+      <div class="q-cn">从木月之死中我学到了一件事，并且相信已将它转化为自身哲学的一部分："死不是生的对立面，而是生的一部分。"</div>
+      <div class="q-tag" style="color:#7c5fa8">§4 死的哲学</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"No truth can cure the sorrow we feel from losing a loved one. No truth, no sincerity, no strength, no kindness can cure that sorrow. All we can do is see it through to the end and learn something from it."</div>
+      <div class="q-cn">没有任何真理能治愈失去所爱之人的悲伤。没有真理，没有真诚，没有力量，没有善意能治愈那种悲伤。我们所能做的只有坚持到底，从中学习些什么。</div>
+      <div class="q-tag" style="color:#b8553a">§4 悲伤无法被治愈</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"'Please give all my clothes to Reiko.' She was a funny one, don't you think? Why would she be concerned about her clothes of all things when she's getting ready to die? Who gives a damn about clothes? She must have had tons of other things she wanted to say."</div>
+      <div class="q-cn">"请把我所有的衣服都送给玲子。"她真是个有趣的人，你不觉得吗？都要死了，为什么偏偏在意衣服？谁还在乎衣服？她一定有太多太多其他想说的话。</div>
+      <div class="q-tag" style="color:#4a7a9e">§6 一行字的遗嘱</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"I have to talk to you. I have a million things to talk to you about. A million things we have to talk about. All I want in this world is you. I want to see you and talk. I want the two of us to begin everything from the beginning."</div>
+      <div class="q-cn">我必须跟你谈谈。有太多太多话要对你说。有太多太多事要商量。我在这世上想要的只有你。我想见你，想和你说话。我想我们俩从头开始一切。</div>
+      <div class="q-tag" style="color:#3d8a68">§10 全书倒数第二段</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>死者永远年轻<br/>生者必须长大</h3>
+    <p>初秋的午后，光线与一年前去京都探望直子时一模一样。每个季节轮回都在增加生者与死者之间的距离——"木月永远是十七岁，直子永远是二十一岁"。而死越深地嵌入生，生者越要承担其全部重量：去办一场不那么悲伤的葬礼，去拨通一个电话，去说从头开始一切。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">你现在在哪里？</div>
+  <div class="line-en">"Where are you now?"</div>
+  <div class="note">这是<b>全书的最后一句话</b>。<br/>绿子以"世间所有的蒙蒙细雨落在世间所有的新剪草坪上的那种沉默"回应渡边，<br/>然后轻声问出这一句。渡边抬起头："我现在在哪里？我完全不知道。"<br/>他从"这个没有地方的地方的中心"向绿子一遍又一遍地呼喊——<br/>小说戛然而止，他的回答留给每一位读到这里的人。</div>
+</div>
+
+<footer>挪威的森林 · Norwegian Wood · 村上春树 · 第十一章全景信息图 · 全书终章</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  // 10 段：温暖、怅惘、痛苦
+  const segs = [
+    {n:1,  t:0.00, m:0.65, p:1.00, l:'一捧灰'},
+    {n:2,  t:0.05, m:0.80, p:0.85, l:'流浪'},
+    {n:3,  t:0.35, m:0.55, p:0.75, l:'渔夫'},
+    {n:4,  t:0.10, m:0.90, p:0.70, l:'归途'},
+    {n:5,  t:0.45, m:0.55, p:0.45, l:'玲子来'},
+    {n:6,  t:0.50, m:0.85, p:0.30, l:'初秋'},
+    {n:7,  t:0.05, m:0.80, p:0.95, l:'告白'},
+    {n:8,  t:0.65, m:0.50, p:0.35, l:'50首'},
+    {n:9,  t:0.85, m:0.30, p:0.20, l:'一夜'},
+    {n:10, t:0.70, m:0.50, p:0.25, l:'告别'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){
+    return 190 - val * 160;
+  }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#7c5fa8', 0.05);
+  plot('m', '#4a7a9e', 0.05);
+  plot('t', '#b8553a', 0.07);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>

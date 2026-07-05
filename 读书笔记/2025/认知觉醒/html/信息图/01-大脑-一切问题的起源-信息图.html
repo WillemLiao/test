@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>认知觉醒 第一章 · 可视化信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(74,122,158,0.12), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #a8743a;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(74,122,158,0.4);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #4a7a9e;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #5a4a3a;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  /* ===== 通用节 ===== */
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(74,122,158,0.10);
+    border: 1px solid rgba(74,122,158,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #4a7a9e;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ===== 时空对照 ===== */
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card { padding: 26px 24px; position: relative; }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #e5dccb, #d8cdb6); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.55em;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+  .time-card.now .year { color: #4a7a9e; }
+  .time-card.then .year { color: #b8553a; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #7d6a55;
+    margin-top: 16px;
+    line-height: 1.7;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(74,122,158,0.06);
+    color: #4a7a9e;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  /* ===== 情感弧线 ===== */
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  /* ===== 核心意象 ===== */
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(74,122,158,0.25); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  /* ===== 人物 ===== */
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+
+  /* ===== 金句卡片 ===== */
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(74,122,158,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.9em;
+    color: #4a4030;
+    line-height: 1.75;
+    font-weight: 500;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.66em;
+    color: #8a7a6a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== 悖论/终局 ===== */
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #efe7d5 100%);
+    border: 1px solid rgba(184,85,58,0.18);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #b8553a;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, rgba(74,122,158,0.04), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    color: #4a7a9e;
+    line-height: 1.55;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.82em;
+    color: #6890b0;
+    margin-top: 8px;
+  }
+  .finale .note {
+    margin-top: 24px;
+    font-size: 0.72em;
+    color: #98826f;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.8em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="kanji">第 一 章</div>
+  <div class="en">CHAPTER&nbsp;&nbsp;ONE</div>
+  <div class="ch">大 脑 · 一切问题的起源</div>
+  <div class="meta">周岭 · Zhou Ling · 三重大脑</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 双线对照 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7a9e" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <div>
+      <h2>双脑对照</h2>
+      <div class="sub">TWO BRAINS · 一部七拼八凑的组装机</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card then">
+      <div class="year">3.6 亿年前</div>
+      <div class="place">本能脑诞生 · "100 岁老人"</div>
+      <div class="desc">爬行动物为适应陆地生活演化出原始反射模块：遇险战斗或逃跑，遇食捕食，遇心仪异性追求。既无情感也无理智，仅靠简单本能反应——鳄鱼、蜥蜴、蛇都还活着。运行速度极快，掌管潜意识和生理系统。</div>
+    </div>
+    <div class="time-card now">
+      <div class="year">250 万年前</div>
+      <div class="place">理智脑登场 · "1 岁宝宝"</div>
+      <div class="desc">人类在前额区进化出"新皮层"，让我们产生语言、创造艺术、发展科技、建立文明。这个宝宝再聪明，若在两位成年人面前也会显得势单力薄——发育晚、神经元占比小、运行速度只有 40 次/秒。</div>
+    </div>
+  </div>
+  <div class="time-gap">相 差 <b>3.5</b> 亿 年 · 这个 1 岁宝宝势单力薄</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7a9e" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>十段大脑弧线</h2>
+      <div class="sub">BRAIN ARC · 理智脑是怎样被两位老员工围殴的</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#3d8a68"></i>清醒 / 觉醒</span>
+      <span><i style="background:#4a7a9e"></i>理性 / 远见</span>
+      <span><i style="background:#b8553a"></i>本能 / 冲突</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7a9e" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 贯穿第一章的三个隐喻</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <circle cx="55" cy="60" r="44" fill="none" stroke="#b8553a" stroke-width="1.5"/>
+          <circle cx="55" cy="60" r="29" fill="none" stroke="#a8743a" stroke-width="1.5"/>
+          <circle cx="55" cy="60" r="14" fill="#f5f0e6" stroke="#4a7a9e" stroke-width="1.5"/>
+          <text x="55" y="22" text-anchor="middle" font-size="9" fill="#b8553a" font-family="Noto Serif SC, serif" font-weight="700">本能脑</text>
+          <text x="55" y="106" text-anchor="middle" font-size="9" fill="#a8743a" font-family="Noto Serif SC, serif" font-weight="700">情绪脑</text>
+          <text x="55" y="63" text-anchor="middle" font-size="9" fill="#4a7a9e" font-family="Noto Serif SC, serif" font-weight="700">理智</text>
+          <text x="14" y="63" font-size="8" fill="#7a6a5a" font-family="serif">3.6亿</text>
+          <text x="78" y="63" font-size="8" fill="#7a6a5a" font-family="serif">2亿</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#7c5fa8">三重大脑</h3>
+        <div class="en-sub">TRIUNE BRAIN · 由内到外的进化时差</div>
+        <p>大脑并非预先设计好的，而是由不同模块"堆砌"而成——像一台七拼八凑组装出来的电脑：主板是老的、显卡是旧的、中央处理器却是新的。年代久远的本能脑、相对古老的情绪脑、非常年轻的理智脑，三位一体、缺一不可。</p>
+        <div class="quote" style="border-color:#7c5fa8">"由内到外至少有三重大脑：本能脑、情绪脑、理智脑。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f5f0e6"/>
+          <circle cx="30" cy="42" r="11" fill="none" stroke="#b8553a" stroke-width="1.4"/>
+          <path d="M22 40 q8 -2 16 0" stroke="#b8553a" stroke-width="0.6" fill="none"/>
+          <path d="M22 44 q8 1 16 0" stroke="#b8553a" stroke-width="0.6" fill="none"/>
+          <path d="M26 48 q4 4 8 0" stroke="#b8553a" stroke-width="0.6" fill="none"/>
+          <path d="M30 53 q-3 9 -6 20 M30 53 q3 9 6 20 M30 62 q-7 2 -12 11" stroke="#b8553a" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+          <circle cx="82" cy="55" r="7" fill="none" stroke="#4a7a9e" stroke-width="1.4"/>
+          <circle cx="79" cy="54" r="1" fill="#4a7a9e"/>
+          <circle cx="85" cy="54" r="1" fill="#4a7a9e"/>
+          <path d="M79 58 q3 1 6 0" stroke="#4a7a9e" stroke-width="0.6" fill="none"/>
+          <path d="M82 62 q-1 8 -2 18 M82 62 q1 8 2 18 M82 70 q-4 1 -7 6 M82 70 q4 1 7 6" stroke="#4a7a9e" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+          <text x="30" y="98" text-anchor="middle" font-size="9" fill="#b8553a" font-family="Noto Serif SC, serif" font-weight="700">100 岁</text>
+          <text x="82" y="98" text-anchor="middle" font-size="9" fill="#4a7a9e" font-family="Noto Serif SC, serif" font-weight="700">1 岁</text>
+          <text x="55" y="63" text-anchor="middle" font-size="11" fill="#75604f" font-family="serif" font-style="italic">vs</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#4a7a9e">1 岁宝宝 vs 100 岁老人</h3>
+        <div class="en-sub">AGE METAPHOR · 理智脑的年龄类比</div>
+        <p>把本能脑比作 100 岁的老人，情绪脑是 55 岁的中年人，理智脑则好比一个不满 1 岁的宝宝。这个宝宝再聪明，若在两个成年人面前也会显得势单力薄——这就是为什么我们做不成事：不是因为愿望不够强烈，而是默认天性太过强大。</p>
+        <div class="quote" style="border-color:#4a7a9e">"理智脑虽然高级，但比起本能脑和情绪脑，它的力量实在是太弱小了。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <circle cx="40" cy="42" r="10" fill="none" stroke="#a8743a" stroke-width="1.4"/>
+          <path d="M28 38 q12 -8 24 0" fill="#a8743a" opacity="0.45"/>
+          <circle cx="36" cy="42" r="0.9" fill="#3a3530"/>
+          <circle cx="44" cy="42" r="0.9" fill="#3a3530"/>
+          <path d="M37 46 q3 1 6 0" stroke="#3a3530" stroke-width="0.6" fill="none"/>
+          <path d="M40 52 q-8 22 -4 45 M40 52 q8 22 4 45 M40 60 q-12 4 -16 16 M40 60 q12 4 16 16" stroke="#a8743a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <path d="M30 72 q10 -8 20 0 q10 8 18 0 q8 -4 14 4" fill="none" stroke="#b8553a" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="86" cy="80" r="2.6" fill="#b8553a"/>
+          <path d="M88 80 l4 -1 M88 80 l4 1" stroke="#b8553a" stroke-width="0.9" stroke-linecap="round"/>
+          <path d="M44 42 q-2 -3 -4 -1 q-1 2 1 3 q3 2 4 2 q0 0 1 -2 q1 -2 -1 -3 q-1 -1 -2 1z" fill="#b8553a" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#b8553a">农夫与蛇</h3>
+        <div class="en-sub">THE FARMER & THE SNAKE · 用错对象的心</div>
+        <p>农夫把冻僵的蛇放进怀里取暖，蛇醒来反而咬他一口。若农夫懂一点大脑知识就不会犯这种低级错误——蛇只有本能脑，不知感恩为何物。而愚昧的农夫以为蛇也有善恶之心、会知恩图报。错误的认知，让我们像救蛇的农夫一样做蠢事。</p>
+        <div class="quote" style="border-color:#b8553a">"我怜悯恶人，我该死，应该受报应。"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7a9e" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个人</h2>
+      <div class="sub">TWO EMPLOYEES · 大脑这家公司里的三方博弈</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#4a7a9e" stroke-width="1.6"/>
+        <circle cx="29" cy="28" r="1.3" fill="#4a7a9e"/>
+        <circle cx="35" cy="28" r="1.3" fill="#4a7a9e"/>
+        <path d="M28 32 q4 1 8 0" fill="none" stroke="#3a3530" stroke-width="0.9"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#4a7a9e" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M30 40 L29 47 L33 47 L32 40 Z" fill="#4a7a9e"/>
+        <text x="48" y="22" font-size="10" fill="#4a7a9e" font-family="serif" font-weight="700">1</text>
+      </svg>
+      <h3 style="color:#4a7a9e">理&nbsp;智&nbsp;脑</h3>
+      <div class="role">公司的经理 · 1 岁的宝宝</div>
+      <p>富有远见且身居高位，但因为太年轻而没威信。他学习知识、提升认知、运用策略，对两位老员工既尊重、包容又巧妙驱动，让他们开开心心把活干了——他不是来干活的，而是来驱动的。</p>
+    </div>
+    <div class="char">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="25" cy="30" r="8" fill="none" stroke="#b8553a" stroke-width="1.4"/>
+        <circle cx="40" cy="28" r="9" fill="none" stroke="#a8743a" stroke-width="1.4"/>
+        <path d="M23 30 q4 -1 6 0 M37 28 q4 -1 6 0" stroke="#3a3530" stroke-width="0.5" fill="none"/>
+        <path d="M14 54c1-9 5-13 12-13s11 4 12 13" fill="none" stroke="#b8553a" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M28 54c2-11 5-14 12-14s12 4 14 14" fill="none" stroke="#a8743a" stroke-width="1.4" stroke-linecap="round"/>
+        <text x="48" y="20" font-size="10" fill="#b8553a" font-family="serif" font-weight="700">!</text>
+      </svg>
+      <h3 style="color:#b8553a">本能脑 + 情绪脑</h3>
+      <div class="role">两位老员工 · 100 岁与 55 岁</div>
+      <p>一个资历很老、一个年富力强，但都没什么文化也没什么事业心，只在乎眼前的舒适与安逸。力气大、运行快、神经元占八成。一旦掌控局面，他们还会迫使经理为自己糟糕的选择"合理化"。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7a9e" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 第一章的四颗钉子</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">理智脑对大脑的控制能力很弱，所以我们在生活中做的大部分决策往往源于本能和情绪，而非理智。</div>
+      <div class="q-cn">The rational brain controls us only weakly — most of our daily decisions actually stem from instinct and emotion, not reason.</div>
+      <div class="q-tag" style="color:#b8553a">§1 默认天性的胜利</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">理智脑虽然高级，但比起本能脑和情绪脑，它的力量实在是太弱小了。</div>
+      <div class="q-cn">The rational brain may be advanced, but compared to the instinctual and emotional brains, it is far too weak.</div>
+      <div class="q-tag" style="color:#4a7a9e">§2 弱小的四因</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">大多数时候我们以为自己在思考，其实都是在对自身的行为和欲望进行合理化。</div>
+      <div class="q-cn">Most of the time we think we are thinking — we are actually just rationalizing our own behavior and desires.</div>
+      <div class="q-tag" style="color:#7c5fa8">§3 自我解释的动物</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">理智脑不是直接干活的，干活是本能脑和情绪脑的事情；上天赋予理智脑智慧，是让它驱动本能和情绪，而不是直接取代它们。</div>
+      <div class="q-cn">The rational brain doesn't do the work itself — that's the instinct and emotion brains' job. Its wisdom is to drive them, not replace them.</div>
+      <div class="q-tag" style="color:#a8743a">§4 驱动而非取代</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>明明知道，但就是做不到<br/>特别想要，但就是得不到</h3>
+    <p>这不是意志力不够，而是大脑这家公司的产权结构出了问题：1 岁的经理下指令，100 岁和 55 岁的两位老员工根本不放在眼里。我们越是用力对抗本能与情绪，越把自己搞得精疲力竭——出路不在对抗，而在驱动。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">理智脑不是直接干活的，<br/>它的智慧是驱动本能和情绪，而不是取代它们。</div>
+  <div class="line-en">The rational brain doesn't do the work — its wisdom is to drive instinct and emotion, not to replace them.</div>
+  <div class="note">第一章的核心论断。<br/>学会释放本能脑和情绪脑的强大力量，我们就会无往不胜。</div>
+</div>
+
+<footer>认知觉醒 · 周岭 · 第一章全景信息图</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const segs = [
+    {n:1,  t:0.20, m:0.55, p:0.30, l:'不了解己', c:'#4a7a9e'},
+    {n:2,  t:0.40, m:0.75, p:0.15, l:'三重大脑', c:'#4a7a9e'},
+    {n:3,  t:0.15, m:0.35, p:0.80, l:'农夫与蛇', c:'#b8553a'},
+    {n:4,  t:0.35, m:0.60, p:0.40, l:'七拼八凑', c:'#7c5fa8'},
+    {n:5,  t:0.20, m:0.45, p:0.85, l:'理智脑弱', c:'#b8553a'},
+    {n:6,  t:0.15, m:0.55, p:0.70, l:'默认天性', c:'#b8553a'},
+    {n:7,  t:0.10, m:0.40, p:0.90, l:'明知做不到', c:'#b8553a'},
+    {n:8,  t:0.30, m:0.55, p:0.55, l:'经理被藐', c:'#7c5fa8'},
+    {n:9,  t:0.65, m:0.60, p:0.30, l:'用知识',   c:'#3d8a68'},
+    {n:10, t:0.85, m:0.55, p:0.20, l:'驱动不取代',c:'#a8743a'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){ return 190 - val * 160; }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#b8553a', 0.06);
+  plot('m', '#4a7a9e', 0.06);
+  plot('t', '#3d8a68', 0.08);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>认知觉醒 结语 觉知 · 可视化信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(124,95,168,0.10), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #a8743a;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(227,168,105,0.4);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #7c5fa8;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #223;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(227,168,105,0.1);
+    border: 1px solid rgba(227,168,105,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #a8743a;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card {
+    padding: 26px 24px;
+    position: relative;
+  }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #ebe3d2, #e5dccb); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.9em;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  .time-card.now .year { color: #4a7a9e; }
+  .time-card.then .year { color: #b8553a; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #6a5c4f;
+    margin-top: 16px;
+    line-height: 1.75;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(227,168,105,0.05);
+    color: #a8743a;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(227,168,105,0.2); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+  .char.m .avatar circle:last-of-type { stroke: #4a7a9e; }
+  .char.s .avatar circle:last-of-type { stroke: #b8553a; }
+
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(227,168,105,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.88em;
+    color: #756030;
+    line-height: 1.75;
+    font-weight: 500;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.7em;
+    color: #75604f;
+    line-height: 1.7;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #efe7d5 100%);
+    border: 1px solid rgba(232,153,122,0.15);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #b8553a;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, rgba(232,153,122,0.04), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #b8553a;
+    line-height: 1.5;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.82em;
+    color: #c8876a;
+    margin-top: 8px;
+  }
+  .finale .note {
+    margin-top: 24px;
+    font-size: 0.72em;
+    color: #98826f;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.8em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="kanji">结 语</div>
+  <div class="en">EPILOGUE</div>
+  <div class="ch">一流的生活不是富有，而是觉知</div>
+  <div class="meta">周岭 · Zhou Ling · 认知觉醒 · 2020</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 时间对照 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <div>
+      <h2>十年双像</h2>
+      <div class="sub">TWO DECADES · 失重的我 vs 觉知的我</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card then">
+      <div class="year">10 年 前</div>
+      <div class="place">真空地带 · 失重感</div>
+      <div class="desc">与好友聊往事，他们提及的诸多细节我全无印象。"眼前就像出现了一个真空地带，我竟想不起自己这几年到底做了什么。"——生活像无声溪水流过身边，定睛一看，什么也没留下。第一次体到焦虑。</div>
+    </div>
+    <div class="time-card now">
+      <div class="year">现 在</div>
+      <div class="place">10 年记录 + 每日反思</div>
+      <div class="desc">2010 元旦起做日程记录，2014 改用电子日志；2017 读《好好学习》后开始"每日反思"。"有了觉知，我们就能慢慢过上一流的生活。"觉知，自古就是精英的自我修炼方式。</div>
+    </div>
+  </div>
+  <div class="time-gap">1 0 年 记 录 · <b>3</b> 年 反 思 · 一念觉知</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>十二段情感弧线</h2>
+      <div class="sub">EMOTIONAL ARC · 从失重到觉醒的张力</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#b8553a"></i>踏实 / 觉醒</span>
+      <span><i style="background:#4a7a9e"></i>困惑 / 反思</span>
+      <span><i style="background:#7c5fa8"></i>失重 / 痛苦</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 觉知三件物</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <!-- 笔记本 -->
+          <rect x="20" y="18" width="68" height="80" rx="3" fill="#fbf7ed" stroke="#4a7a9e" stroke-width="1.4"/>
+          <line x1="24" y1="18" x2="24" y2="98" stroke="#4a7a9e" stroke-width="0.8"/>
+          <line x1="28" y1="18" x2="28" y2="98" stroke="#4a7a9e" stroke-width="0.5" stroke-dasharray="2 2"/>
+          <!-- 条目 -->
+          <g font-family="Noto Sans SC, sans-serif" font-size="6" fill="#4a7a9e">
+            <text x="34" y="30">2010.1.1</text>
+            <line x1="34" y1="34" x2="80" y2="34" stroke="#4a7a9e" stroke-width="0.6"/>
+            <line x1="34" y1="40" x2="74" y2="40" stroke="#4a7a9e" stroke-width="0.5" opacity="0.6"/>
+            <text x="34" y="50">2014.1.1</text>
+            <line x1="34" y1="54" x2="80" y2="54" stroke="#4a7a9e" stroke-width="0.6"/>
+            <line x1="34" y1="60" x2="76" y2="60" stroke="#4a7a9e" stroke-width="0.5" opacity="0.6"/>
+            <text x="34" y="70">2017.2.</text>
+            <line x1="34" y1="74" x2="80" y2="74" stroke="#4a7a9e" stroke-width="0.6"/>
+            <line x1="34" y1="80" x2="70" y2="80" stroke="#4a7a9e" stroke-width="0.5" opacity="0.6"/>
+            <line x1="34" y1="86" x2="78" y2="86" stroke="#4a7a9e" stroke-width="0.5" opacity="0.6"/>
+            <line x1="34" y1="92" x2="68" y2="92" stroke="#4a7a9e" stroke-width="0.5" opacity="0.6"/>
+          </g>
+          <!-- 旁笔 -->
+          <g transform="translate(98 56) rotate(35)" stroke="#a8743a" stroke-width="1.2" fill="none">
+            <line x1="0" y1="-12" x2="0" y2="14" stroke-linecap="round"/>
+            <path d="M-3 -8 L0 -14 L3 -8 Z" fill="#a8743a" stroke="none"/>
+            <line x1="-2" y1="14" x2="2" y2="14" stroke-width="2"/>
+          </g>
+          <text x="55" y="112" text-anchor="middle" font-size="8" fill="#4a7a9e" font-family="Noto Sans SC, sans-serif" letter-spacing="1">时 间 日 志</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#4a7a9e">日程记录</h3>
+        <div class="en-sub">TIME LOG · 觉知的第一根脊柱</div>
+        <p>2010 元旦，做第一笔记录。2014 改用手机日历。10 年间从未中断——"提高了我对时间的敏感度"。每记一笔浪费掉的时间，心里就有愧疚，便不自觉地减少浪费。日子从无声溪水，变成可被看见的踪迹。</p>
+        <div class="quote" style="border-color:#4a7a9e">"如果一直被外界的安排牵着走，即便每天过得很'充实'，又有什么意义呢？"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <!-- 三阶 -->
+          <g fill="none" stroke="#7c5fa8" stroke-width="1.5" stroke-linejoin="round">
+            <rect x="14" y="76" width="26" height="22" fill="#fbf7ed"/>
+            <rect x="42" y="54" width="26" height="22" fill="#fbf7ed"/>
+            <rect x="70" y="32" width="26" height="22" fill="#fbf7ed"/>
+          </g>
+          <g fill="#7c5fa8" font-size="10" font-family="Noto Serif SC, serif" font-weight="700">
+            <text x="27" y="92" text-anchor="middle">①</text>
+            <text x="55" y="70" text-anchor="middle">②</text>
+            <text x="83" y="48" text-anchor="middle">③</text>
+          </g>
+          <g font-size="7" font-family="Noto Sans SC, sans-serif" fill="#7c5fa8" text-anchor="middle">
+            <text x="27" y="106">描述</text>
+            <text x="55" y="84">分析</text>
+            <text x="83" y="62">改进</text>
+          </g>
+          <!-- 顶光 -->
+          <g transform="translate(83 22)" stroke="#7c5fa8" stroke-width="0.8" opacity="0.7" fill="none">
+            <line x1="0" y1="-7" x2="0" y2="-3"/>
+            <line x1="-7" y1="0" x2="-3" y2="0"/>
+            <line x1="7" y1="0" x2="3" y2="0"/>
+            <line x1="-5" y1="-5" x2="-2" y2="-2"/>
+            <line x1="5" y1="-5" x2="2" y2="-2"/>
+            <circle cx="0" cy="0" r="2.5" fill="#7c5fa8" opacity="0.6"/>
+          </g>
+          <text x="55" y="14" text-anchor="middle" font-size="8" fill="#7c5fa8" font-family="Noto Sans SC, sans-serif" letter-spacing="1">触 动 复 盘</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#7c5fa8">每日反思三步</h3>
+        <div class="en-sub">DAILY REFLECTION · 大道至简的复盘术</div>
+        <p>留意每天最触动自己的点——欣喜的感悟或难受的困惑，记下来复盘：①描述经过以回忆场景；②分析原因多问几个为什么；③改进措施提炼出一个认知点或行动点。暗含三大底层原理：触动学习法、元认知、刻意练习。</p>
+        <div class="quote" style="border-color:#7c5fa8">"反思的最终目的是改变，而不是形式的完美。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f5f0e6"/>
+          <!-- 时间溪流 -->
+          <g fill="none" stroke="#a8743a" stroke-width="1" opacity="0.55">
+            <path d="M2 86 q28 -6 52 2 q28 8 54 -3"/>
+            <path d="M2 92 q28 -2 52 6 q28 8 54 -3"/>
+          </g>
+          <!-- 几颗闪光的晶石 -->
+          <g>
+            <path d="M30 84 L38 76 L46 84 L38 92 Z" fill="#a8743a"/>
+            <path d="M30 84 L38 76 L46 84" fill="#fbf7ed" opacity="0.75" stroke="#a8743a" stroke-width="0.6"/>
+          </g>
+          <g>
+            <path d="M60 78 L68 70 L76 78 L68 86 Z" fill="#a8743a"/>
+            <path d="M60 78 L68 70 L76 78" fill="#fbf7ed" opacity="0.75" stroke="#a8743a" stroke-width="0.6"/>
+          </g>
+          <g>
+            <path d="M72 86 L80 78 L88 86 L80 94 Z" fill="#a8743a"/>
+            <path d="M72 86 L80 78 L88 86" fill="#fbf7ed" opacity="0.75" stroke="#a8743a" stroke-width="0.6"/>
+          </g>
+          <!-- 闪星 -->
+          <g stroke="#a8743a" stroke-width="1" fill="none" opacity="0.9">
+            <g transform="translate(38 58)">
+              <path d="M0 -5 L0 5 M-5 0 L5 0"/>
+            </g>
+            <g transform="translate(68 56)">
+              <path d="M0 -6 L0 6 M-6 0 L6 0"/>
+            </g>
+            <g transform="translate(82 64)">
+              <path d="M0 -4 L0 4 M-4 0 L4 0"/>
+            </g>
+          </g>
+          <text x="55" y="22" text-anchor="middle" font-size="8" fill="#a8743a" font-family="Noto Sans SC, sans-serif" letter-spacing="1">时 溪 拾 石</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#a8743a">认知晶石</h3>
+        <div class="en-sub">COGNITIVE CRYSTALS · 时间溪流拾石打磨</div>
+        <p>每日反思好比在时间溪流中拾取一块闪亮小石头，精心打磨。不久后身上便有一大袋认知晶石——生活的印记与结晶。有了这些晶石打底，生命质量和密度将远超那些不反思的人；"即使没有万贯家财，也可以通过提升觉知来增强感知世界、完善自我的能力。"</p>
+        <div class="quote" style="border-color:#a8743a">"痛苦哪里是什么坏事，那简直是上天给我们的成长信号与提示！"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个人</h2>
+      <div class="sub">TWO PEOPLE · 沉睡者 vs 觉知者</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char s">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#b8553a" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#b8553a" stroke-width="1.6" stroke-linecap="round"/>
+        <g stroke="#b8553a" stroke-width="1.4" stroke-linecap="round" fill="none">
+          <path d="M27 28 Q29 30 31 28"/>
+          <path d="M33 28 Q35 30 37 28"/>
+        </g>
+        <g stroke="#b8553a" stroke-width="0.9" fill="none" opacity="0.6">
+          <path d="M44 16 Q48 12 53 16 Q56 18 53 22"/>
+        </g>
+      </svg>
+      <h3 style="color:#b8553a">沉睡者</h3>
+      <div class="role">随波逐流 · 十年浑噩</div>
+      <p>每天按部就班生活，却像什么也没做。生命如无声溪水从身边流过，定睛一看什么也没留下。被人提起往事，"模模糊糊记得发生过这件事，但很多细节都像是第一次听到。"原地不动者即使站立很久，也两手空空。</p>
+    </div>
+    <div class="char m">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#4a7a9e" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#4a7a9e" stroke-width="1.6" stroke-linecap="round"/>
+        <g fill="#4a7a9e">
+          <circle cx="28" cy="28" r="1.4"/>
+          <circle cx="36" cy="28" r="1.4"/>
+        </g>
+        <g fill="#a8743a" transform="translate(50 18)">
+          <path d="M0 -4 L1.2 -1.2 L4 0 L1.2 1.2 L0 4 L-1.2 1.2 L-4 0 L-1.2 -1.2 Z"/>
+        </g>
+      </svg>
+      <h3 style="color:#4a7a9e">觉知者</h3>
+      <div class="role">每日反思 · 觉知生活</div>
+      <p>记性依然不好，但几秒后能非常准确地说出：某年某月某日某时、有哪些人、做了什么。每日反思三个月记录触动点，第 160 天萌生开公众号写作。坦言"这是一条精英自我修炼的路"：曾子"吾日三省"，富兰克林"每日觉察十三美德"。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 结语的四颗晶石</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">这些年我都做了什么？眼前就像出现了一个真空地带，我竟想不起自己这几年到底做了什么。生活就像无声的溪水，每天从身边流过，但定睛一看，什么也没有留下。</div>
+      <div class="q-cn">——10 年前那个让周岭背上汗毛直竖的瞬间，觉醒的种子在那一刻埋下。</div>
+      <div class="q-tag" style="color:#b8553a">§1 觉醒的起点</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">有了这些认知晶石打底，我们的生命质量和密度将远远超过那些不反思的人。</div>
+      <div class="q-cn">甚至在很小的年纪就可以拥有比同龄人更高的认知水平——因为那些只行走不反思的人，即使在生活长河中站上很久，也依然两手空空。</div>
+      <div class="q-tag" style="color:#a8743a">§2 大道至简 · 认知晶石</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">无论何时，都要把对方的情绪和意见分开对待，这样，即使在最糟糕的事情中也能学到有用的东西。</div>
+      <div class="q-cn">面对领导用词刻薄的批评，反思让我释然：他出发点是好的，对大多数人都是这脾气，并非针对我。把意见与情绪分离，是把痛苦炼成晶石的关键。</div>
+      <div class="q-tag" style="color:#4a7a9e">§2 反思示例 · 情绪与意见分离</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">有了觉知，我们就能慢慢过上一流的生活，即使它来得不会那么快。</div>
+      <div class="q-cn">普通人觉醒的起点在觉知——当能觉知什么是好、什么是不好的，就必然会主动做出新的选择。觉知不是终点，是一流生活的开头。</div>
+      <div class="q-tag" style="color:#7c5fa8">§4 过一流的生活 · 全章末段</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>锦衣玉食的人<br/>未必过着一流的生活</h3>
+    <p>一流生活与财富无关，与觉知相连。觉知到自己含胸驼背，便挺胸抬头；觉知到时间在悄悄流失，便动手记录；觉知到痛苦里藏着成长信号，便在难受里暗喜——"我知道自我提升的机会又来了。"这是消除大半人生烦恼的状态。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">有了觉知，我们就能慢慢过上一流的生活，即使它来得不会那么快。</div>
+  <div class="line-en">A first-rate life is not about wealth, but awareness.</div>
+  <div class="note">结语最后一句话。<br/>从不被记得的"那些年"，到可被随时召回的某年某月某时——觉知起，一流生活才有了入口。</div>
+</div>
+
+<footer>认知觉醒 · 周岭 · 结语全景信息图</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const segs = [
+    {n:1,  t:0.30, m:0.50, p:0.20, l:'漫步', c:'#98826f'},
+    {n:2,  t:0.05, m:0.60, p:0.85, l:'失重', c:'#b8553a'},
+    {n:3,  t:0.55, m:0.35, p:0.30, l:'记录', c:'#4a7a9e'},
+    {n:4,  t:0.60, m:0.40, p:0.20, l:'外挂', c:'#4a7a9e'},
+    {n:5,  t:0.30, m:0.65, p:0.40, l:'惘',   c:'#7c5fa8'},
+    {n:6,  t:0.78, m:0.30, p:0.15, l:'反思', c:'#3d8a68'},
+    {n:7,  t:0.70, m:0.35, p:0.20, l:'160天', c:'#a8743a'},
+    {n:8,  t:0.65, m:0.40, p:0.15, l:'三步', c:'#7c5fa8'},
+    {n:9,  t:0.55, m:0.45, p:0.20, l:'三理', c:'#4a7a9e'},
+    {n:10, t:0.40, m:0.50, p:0.55, l:'痛',   c:'#b8553a'},
+    {n:11, t:0.70, m:0.30, p:0.15, l:'不缚', c:'#a8743a'},
+    {n:12, t:0.92, m:0.25, p:0.10, l:'一流', c:'#3d8a68'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){
+    return 190 - val * 160;
+  }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#7c5fa8', 0.05);
+  plot('m', '#4a7a9e', 0.05);
+  plot('t', '#b8553a', 0.07);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>

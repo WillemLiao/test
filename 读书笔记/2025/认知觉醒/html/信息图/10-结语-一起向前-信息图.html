@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>认知觉醒 后记 一起向前 · 可视化信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(232,153,122,0.10), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #a8743a;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(227,168,105,0.4);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #b8553a;
+    letter-spacing: 0.16em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #223;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(227,168,105,0.1);
+    border: 1px solid rgba(227,168,105,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #a8743a;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card {
+    padding: 26px 24px;
+    position: relative;
+  }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #ebe3d2, #e5dccb); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.1em;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  .time-card.now .year { color: #4a7a9e; }
+  .time-card.then .year { color: #b8553a; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #6a5c4f;
+    margin-top: 16px;
+    line-height: 1.75;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(227,168,105,0.05);
+    color: #a8743a;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(227,168,105,0.2); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+  .char.m .avatar circle:last-of-type { stroke: #4a7a9e; }
+  .char.s .avatar circle:last-of-type { stroke: #b8553a; }
+
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(227,168,105,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.88em;
+    color: #756030;
+    line-height: 1.75;
+    font-weight: 500;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.7em;
+    color: #75604f;
+    line-height: 1.7;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #efe7d5 100%);
+    border: 1px solid rgba(232,153,122,0.15);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #b8553a;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, rgba(232,153,122,0.04), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #b8553a;
+    line-height: 1.5;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.82em;
+    color: #c8876a;
+    margin-top: 8px;
+  }
+  .finale .note {
+    margin-top: 24px;
+    font-size: 0.72em;
+    color: #98826f;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.8em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="kanji">结 语</div>
+  <div class="en">ENDING</div>
+  <div class="ch">共同改变，一起前行</div>
+  <div class="meta">周岭 · Zhou Ling · 认知觉醒 · 后记</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 起点 vs 抵达 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <div>
+      <h2>三年双时</h2>
+      <div class="sub">TWO MOMENTS · 求而不得 vs 亲手创造</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card then">
+      <div class="year">2016</div>
+      <div class="place">寻找一本醍醐灌顶的觉醒之书</div>
+      <div class="desc">在个人改变和成长的路上，一直希望找到一本能让自己醍醐灌顶的认知觉醒之书，可惜到现在都没有遇到完全满意的。读到李笑来《斯坦福大学创业成长课》中那句话："如果你想要的东西还不存在，那就亲自动手将它创造出来。"</div>
+    </div>
+    <div class="time-card now">
+      <div class="year">2019</div>
+      <div class="place">不到 3 年 · 心意之作呈现</div>
+      <div class="desc">没想到 3 年不到，这本心意之作就呈现在这里了。封面蓝红双色——蓝色代表理性的力量，红色代表感性的力量，中间留白隐约构成人的大脑，寓意用知识和智慧驱动两种力量，便获得认知觉醒。</div>
+    </div>
+  </div>
+  <div class="time-gap"><b>3</b> 年 时 光 · 从 读 到 写 · 一念之间把它做出来</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>十段情感弧线</h2>
+      <div class="sub">EMOTIONAL ARC · 从求而不得到一起前行</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#b8553a"></i>踏实 / 温情</span>
+      <span><i style="background:#4a7a9e"></i>沉静 / 反思</span>
+      <span><i style="background:#7c5fa8"></i>焦虑 / 遗憾</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 全书的三个收束</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <!-- 光圈 -->
+          <ellipse cx="55" cy="50" rx="42" ry="14" fill="#a8743a" opacity="0.08"/>
+          <!-- 手捧 -->
+          <g fill="#fbf7ed" stroke="#a8743a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 96 Q30 72 42 66 Q48 60 55 64 Q62 60 68 66 Q80 72 82 96 L82 102 L28 102 Z"/>
+          </g>
+          <!-- 手指分隔 -->
+          <g stroke="#a8743a" stroke-width="0.7" fill="none" opacity="0.6">
+            <line x1="48" y1="68" x2="48" y2="96"/>
+            <line x1="62" y1="68" x2="62" y2="96"/>
+          </g>
+          <!-- 种子 -->
+          <g>
+            <ellipse cx="55" cy="62" rx="7" ry="4" fill="#a8743a"/>
+            <ellipse cx="55" cy="61" rx="3" ry="1.5" fill="#fbf7ed" opacity="0.6"/>
+          </g>
+          <!-- 萌芽 -->
+          <g stroke="#3d8a68" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M55 58 L55 42 M55 46 Q50 40 48 40 M55 46 Q60 40 62 40"/>
+          </g>
+          <!-- 顶部光晕 -->
+          <g stroke="#a8743a" stroke-width="0.7" fill="none" opacity="0.5">
+            <circle cx="55" cy="36" r="7" stroke-dasharray="1 2"/>
+          </g>
+          <text x="55" y="22" text-anchor="middle" font-size="8" fill="#a8743a" font-family="Noto Sans SC, sans-serif" letter-spacing="1">动 手 创 造</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#a8743a">动手创造</h3>
+        <div class="en-sub">CREATE IT YOURSELF · 想要的不存在，那就造出来</div>
+        <p>李笑来书里那句话嵌进周岭心里——"如果你想要的东西还不存在，那就亲自动手将它创造出来。"读书就是这样：大段大段读过后，最后那一两句话打动你、改变你，阅读的意义就实现了。心中动了念头："要不自己写一本？"</p>
+        <div class="quote" style="border-color:#a8743a">"没想到 3 年不到，这本心意之作就呈现在这里了。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f5f0e6"/>
+          <ellipse cx="55" cy="60" rx="48" ry="40" fill="#4a7a9e" opacity="0.06"/>
+          <!-- 灯塔本体 -->
+          <g fill="none" stroke="#4a7a9e" stroke-width="1.5" stroke-linejoin="round">
+            <path d="M48 102 L48 50 Q48 44 55 44 Q62 44 62 50 L62 102 Z" fill="#fbf7ed"/>
+            <line x1="42" y1="102" x2="68" y2="102" stroke-width="1.4"/>
+            <rect x="51" y="52" width="8" height="10" fill="#a8743a" opacity="0.85"/>
+            <path d="M46 44 Q46 36 55 36 Q64 36 64 44 Q64 48 60 48 L50 48 Q46 48 46 44 Z" fill="#fbf7ed"/>
+            <line x1="55" y1="36" x2="55" y2="30" stroke-linecap="round"/>
+            <circle cx="55" cy="28" r="2" fill="#a8743a" stroke="none"/>
+          </g>
+          <!-- 光束 -->
+          <g fill="#a8743a" opacity="0.18">
+            <path d="M55 56 L102 40 L102 70 Z"/>
+          </g>
+          <g fill="#a8743a" opacity="0.32">
+            <path d="M55 56 L92 44 L92 68 Z"/>
+          </g>
+          <!-- 一颗隐隐的亮点 -->
+          <circle cx="58" cy="58" r="3" fill="#a8743a" opacity="0.85"/>
+          <text x="55" y="22" text-anchor="middle" font-size="8" fill="#4a7a9e" font-family="Noto Sans SC, sans-serif" letter-spacing="1">心 智 灯 塔</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#4a7a9e">心智灯塔</h3>
+        <div class="en-sub">MENTAL LIGHTHOUSE · 照亮心智，指引迷茫</div>
+        <p>蓝红封面寓意驱动理性和感性的两种力量，留白即人的大脑。周岭期待这本书成为成长领域的显著地标，"为更多希望成长的迷茫者指路"，"穿透未来 50 年时光"——因为理论很底层，主题来自真实需求，已远 经过作者与读者的验证。</p>
+        <div class="quote" style="border-color:#4a7a9e">"愿本书照亮你的心智世界，成为你前行路上的灯塔。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <!-- 路径 -->
+          <path d="M14 100 Q40 72 56 52 Q72 32 96 30" fill="none" stroke="#a8743a" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"/>
+          <!-- 一串脚印 -->
+          <g fill="#b8553a">
+            <g transform="translate(18 100) rotate(-12)">
+              <ellipse cx="0" cy="0" rx="3" ry="5"/>
+              <circle cx="-1.8" cy="-6" r="1"/>
+              <circle cx="-0.2" cy="-7" r="1"/>
+              <circle cx="1.4" cy="-6.8" r="0.9"/>
+              <circle cx="3" cy="-6" r="0.8"/>
+            </g>
+            <g transform="translate(31 88) rotate(-12) scale(0.95)">
+              <ellipse cx="0" cy="0" rx="3" ry="5"/>
+              <circle cx="-1.8" cy="-6" r="1"/>
+              <circle cx="-0.2" cy="-7" r="1"/>
+              <circle cx="1.4" cy="-6.8" r="0.9"/>
+              <circle cx="3" cy="-6" r="0.8"/>
+            </g>
+            <g transform="translate(44 74) rotate(-12) scale(0.9)" opacity="0.88">
+              <ellipse cx="0" cy="0" rx="3" ry="5"/>
+              <circle cx="-1.8" cy="-6" r="1"/>
+              <circle cx="-0.2" cy="-7" r="1"/>
+              <circle cx="1.4" cy="-6.8" r="0.9"/>
+              <circle cx="3" cy="-6" r="0.8"/>
+            </g>
+            <g transform="translate(58 58) rotate(-12) scale(0.85)" opacity="0.82">
+              <ellipse cx="0" cy="0" rx="3" ry="5"/>
+              <circle cx="-1.8" cy="-6" r="1"/>
+              <circle cx="-0.2" cy="-7" r="1"/>
+              <circle cx="1.4" cy="-6.8" r="0.9"/>
+              <circle cx="3" cy="-6" r="0.8"/>
+            </g>
+          </g>
+          <!-- 终点：新光 -->
+          <g transform="translate(96 30)">
+            <circle cx="0" cy="0" r="5" fill="#3d8a68"/>
+            <g fill="#a8743a">
+              <path d="M0 -9 L1.4 -3 L7 -4 L2.5 0 L7 4 L1.4 3 L0 9 L-1.4 3 L-7 4 L-2.5 0 L-7 -4 L-1.4 -3 Z"/>
+            </g>
+          </g>
+          <text x="55" y="20" text-anchor="middle" font-size="8" fill="#3d8a68" font-family="Noto Sans SC, sans-serif" letter-spacing="1">向 前 脚 印</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#3d8a68">向前的脚印</h3>
+        <div class="en-sub">FORWARD FOOTSTEPS · 终点也是新的起点</div>
+        <p>这本书不是终点，而是邀约。读完那句"我会努力成为你的榜样，而你也一定会成为更多人的榜样"，每个被触动的读者都可以将自己的成长刻成下一段脚印——把所学所悟变成真实的改变，再照亮下一位迷茫者。</p>
+        <div class="quote" style="border-color:#3d8a68">"也愿更多的人能发现本书，共同觉醒，一起前行。"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个人</h2>
+      <div class="sub">TWO PEOPLE · 起点的寻找者 vs 已抵达的同行者</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char s">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#b8553a" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#b8553a" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- 眉蹙 -->
+        <g stroke="#b8553a" stroke-width="1.3" stroke-linecap="round" fill="none">
+          <path d="M26 24 L30 26"/>
+          <path d="M34 26 L38 24"/>
+        </g>
+        <!-- 问号 -->
+        <g stroke="#b8553a" stroke-width="1.1" fill="none" stroke-linecap="round" transform="translate(50 16)">
+          <path d="M-3 -3 Q-3 -6 0 -6 Q3 -6 3 -3 Q3 -1 0 0 L0 1"/>
+          <circle cx="0" cy="3.5" r="0.8" fill="#b8553a" stroke="none"/>
+        </g>
+      </svg>
+      <h3 style="color:#b8553a">起点的寻找者</h3>
+      <div class="role">求而不得 · 想找一本觉醒之书</div>
+      <p>3 年前，他一直希望找到一本能让自己醍醐灌顶的认知觉醒之书，可惜一直没有遇到完全满意的。读到《斯坦福大学创业成长课》里那句话，他怔在那里——也许这正是觉醒的起点：承认它不存在，然后去创造它。</p>
+    </div>
+    <div class="char m">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#4a7a9e" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#4a7a9e" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- 灯塔小光 -->
+        <g transform="translate(50 16)">
+          <circle cx="0" cy="0" r="2.6" fill="#a8743a"/>
+        </g>
+        <g stroke="#a8743a" stroke-width="0.8" fill="none" opacity="0.7" stroke-linecap="round">
+          <line x1="50" y1="16" x2="54" y2="12"/>
+          <line x1="50" y1="16" x2="54" y2="20"/>
+          <line x1="50" y1="16" x2="46" y2="12"/>
+          <line x1="50" y1="16" x2="46" y2="20"/>
+        </g>
+      </svg>
+      <h3 style="color:#4a7a9e">已抵达的同行者</h3>
+      <div class="role">亲手创造 · 邀你一起前行</div>
+      <p>不到 3 年，心意之作呈现。他承认自己写作水平有限、思考不够透彻，仍恳请大家包涵。但他把这书送给因常年两地而缺席陪伴的女儿——"我知道你最终会理解我的。我会努力成为你的榜样，而你也一定会成为更多人的榜样。"</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 后记的四颗星</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">如果你想要的东西还不存在，那就亲自动手将它创造出来。</div>
+      <div class="q-cn">李笑来《斯坦福大学创业成长课》里的一句话，被周岭牢记在心。"读书大概就是这样——大段读过，最后那一两句话打动了你、改变了你，阅读的意义就实现了。"</div>
+      <div class="q-tag" style="color:#a8743a">§1 触发与起点 · 2016</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">我相信这本书会成为成长领域的一个显著地标，为更多希望成长的迷茫者指路。</div>
+      <div class="q-cn">"我甚至坚信这本书至少可以穿透未来50年的时光，因为书中的理论很底层，主题也来自最真实的需求。"只要人类的进化机制不变，每一代人都或多或少会遇到同样的困惑。</div>
+      <div class="q-tag" style="color:#4a7a9e">§2 期待与地标</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">我知道你最终会理解我的。我会努力成为你的榜样，而你也一定会成为更多人的榜样！</div>
+      <div class="q-cn">常年两地，作者在女儿成长路上时常缺位，便把这本书作为礼物送给她。时光是条单行道，有些事情一旦错过便无法重来——这是弥补，也是承诺。</div>
+      <div class="q-tag" style="color:#b8553a">§3 写给女儿 · 私心</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">愿本书照亮你的心智世界，成为你前行路上的灯塔，也愿更多的人能发现本书，共同觉醒，一起前行。</div>
+      <div class="q-cn">封面蓝红双色，留白即大脑——理性与感性同时被知识与智慧驱动时，认知就觉醒了。这是这本书的全部使命，也是一个独自走到此刻的旅人，留给后来人的回望。</div>
+      <div class="q-tag" style="color:#3d8a68">§末 段 · 全书收束</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>一本书的完成<br/>是读者启程的开始</h3>
+    <p>周岭把这本心意之作当成送给女儿、送给后来者的礼物——可若它真正完成使命，必是发生在你看完这一段之后：哪怕只有一个点触动你并真实地改变了你，那它就值得。终点不是写完最后一字，而是你迈出的下一脚印。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">也愿更多的人能发现本书，共同觉醒，一起前行。</div>
+  <div class="line-en">Awaken together. Walk forward together.</div>
+  <div class="note">后记的最后一句话，也是全书的收束。<br/>从 2016 那句"亲自动手将它创造出来"，到此刻的"一起前行"——动心起念，亲自动手，照见彼此，再一起往前。</div>
+</div>
+
+<footer>认知觉醒 · 周岭 · 后记全景信息图</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const segs = [
+    {n:1,  t:0.55, m:0.30, p:0.20, l:'触动', c:'#a8743a'},
+    {n:2,  t:0.18, m:0.45, p:0.72, l:'缺失', c:'#b8553a'},
+    {n:3,  t:0.62, m:0.35, p:0.15, l:'心动', c:'#a8743a'},
+    {n:4,  t:0.72, m:0.25, p:0.12, l:'3年', c:'#3d8a68'},
+    {n:5,  t:0.55, m:0.50, p:0.10, l:'地标', c:'#4a7a9e'},
+    {n:6,  t:0.60, m:0.30, p:0.18, l:'普适', c:'#a8743a'},
+    {n:7,  t:0.30, m:0.50, p:0.30, l:'不足', c:'#7c5fa8'},
+    {n:8,  t:0.85, m:0.45, p:0.25, l:'礼物', c:'#b8553a'},
+    {n:9,  t:0.82, m:0.40, p:0.15, l:'榜样', c:'#3d8a68'},
+    {n:10, t:0.95, m:0.30, p:0.05, l:'前行', c:'#3d8a68'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){
+    return 190 - val * 160;
+  }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#7c5fa8', 0.05);
+  plot('m', '#4a7a9e', 0.05);
+  plot('t', '#b8553a', 0.07);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>

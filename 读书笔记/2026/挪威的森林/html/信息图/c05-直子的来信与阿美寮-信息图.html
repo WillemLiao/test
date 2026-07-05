@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挪威的森林 第五章 · 可视化信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(184,150,212,0.08), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #7c5fa8;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(184,150,212,0.4);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #4a7a9e;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #223;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  /* ===== 通用节 ===== */
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(227,168,105,0.1);
+    border: 1px solid rgba(227,168,105,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #a8743a;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ===== 时空对照 ===== */
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card {
+    padding: 26px 24px;
+    position: relative;
+  }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #151020, #1a152a); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.1em;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .time-card.now .year { color: #4a7a9e; }
+  .time-card.then .year { color: #b8553a; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #8a7565;
+    margin-top: 16px;
+    line-height: 1.7;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(184,150,212,0.05);
+    color: #7c5fa8;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  /* ===== 情感弧线 ===== */
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  /* ===== 核心意象 ===== */
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(184,150,212,0.2); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  /* ===== 人物 ===== */
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+  .char.t .avatar circle:last-of-type { stroke: #4a7a9e; }
+  .char.n .avatar circle:last-of-type { stroke: #b8553a; }
+
+  /* ===== 金句卡片 ===== */
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(227,168,105,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.82em;
+    color: #756030;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.72em;
+    color: #75604f;
+    line-height: 1.7;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== 悖论/终局 ===== */
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #efe7d5 100%);
+    border: 1px solid rgba(184,150,212,0.15);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #7c5fa8;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, rgba(184,150,212,0.04), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #7c5fa8;
+    line-height: 1.5;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.82em;
+    color: #a886c4;
+    margin-top: 8px;
+  }
+  .finale .note {
+    margin-top: 24px;
+    font-size: 0.72em;
+    color: #98826f;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.8em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="kanji">第 五 章</div>
+  <div class="en">CHAPTER&nbsp;&nbsp;FIVE</div>
+  <div class="ch">直子的来信 · 阿美寮 · 深山疗养</div>
+  <div class="meta">挪威的森林 · 村上春树 · Haruki Murakami · 1987</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 时空对照 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c5fa8" stroke-width="1.6"><rect x="4" y="6" width="16" height="12" rx="1"/><path d="M4 7l8 6 8-6"/></svg>
+    </div>
+    <div>
+      <h2>一封信的两端</h2>
+      <div class="sub">TWO ENDS OF ONE LETTER · 七页信纸两地同时跳动</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card now">
+      <div class="year">1969 · 秋</div>
+      <div class="place">东京 · 渡边的出租屋</div>
+      <div class="desc">读完开头几句，他打开窗子，坐到床上。鸽子咕咕，微风拂动窗帘。握着七页信纸，"现实世界的色彩便开始消退"——一遍不行，他下楼买了可乐又重读一遍。</div>
+    </div>
+    <div class="time-card then">
+      <div class="year">同时 · 山中</div>
+      <div class="place">阿美寮 · 夜七点半</div>
+      <div class="desc">她已经吃完晚饭、洗过澡了。窗外漆黑，看不见一盏灯，连平时清晰的星星也被云遮住。这是她很久以来第一次能心平气和地坐下来写信——把"公平"和"变形"押进字里行间。</div>
+    </div>
+  </div>
+  <div class="time-gap">一 封 <b>七页</b> 信 · 两个分隔的世界同时跳动</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c5fa8" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>四段情感弧线</h2>
+      <div class="sub">EMOTIONAL ARC · 从信纸展开到凌晨一点的失眠</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#b8553a"></i>亲密 / 温暖</span>
+      <span><i style="background:#4a7a9e"></i>记忆 / 怅惘</span>
+      <span><i style="background:#7c5fa8"></i>痛苦 / 冲突</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c5fa8" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 贯穿全章的隐喻</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <defs>
+            <linearGradient id="envelope" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4a2838"/>
+              <stop offset="100%" stop-color="#2a1820"/>
+            </linearGradient>
+          </defs>
+          <rect width="110" height="120" fill="#0f0d14"/>
+          <!-- 信纸（7页叠）从信封上方露出 -->
+          <g>
+            <rect x="34" y="20" width="46" height="68" fill="#e8d8c8" stroke="#5a4a3a" stroke-width="0.4" opacity="0.92"/>
+            <rect x="32" y="22" width="46" height="68" fill="#d4c8a8" stroke="#5a4a3a" stroke-width="0.4" opacity="0.9"/>
+          </g>
+          <!-- 信纸的字行（小而工整的字体） -->
+          <g stroke="#7a6a5a" stroke-width="0.45" opacity="0.8">
+            <line x1="36" y1="30" x2="74" y2="30"/>
+            <line x1="36" y1="36" x2="74" y2="36"/>
+            <line x1="36" y1="42" x2="68" y2="42"/>
+            <line x1="36" y1="48" x2="74" y2="48"/>
+            <line x1="36" y1="54" x2="62" y2="54"/>
+            <line x1="36" y1="60" x2="74" y2="60"/>
+            <line x1="36" y1="66" x2="70" y2="66"/>
+            <line x1="36" y1="72" x2="58" y2="72"/>
+            <line x1="36" y1="78" x2="72" y2="78"/>
+            <line x1="36" y1="84" x2="66" y2="84"/>
+          </g>
+          <!-- 信封（粉色）覆盖下半部 -->
+          <path d="M20 50 L55 32 L90 50 L90 96 L20 96 Z" fill="url(#envelope)" stroke="#6a3838" stroke-width="0.6"/>
+          <path d="M20 50 L55 70 L90 50" fill="none" stroke="#6a3838" stroke-width="0.5" opacity="0.85"/>
+          <path d="M20 96 L55 70 L90 96" fill="none" stroke="#6a3838" stroke-width="0.5" opacity="0.5"/>
+          <!-- 蜡封 -->
+          <circle cx="55" cy="70" r="5" fill="#9a3030" opacity="0.85"/>
+          <path d="M55 66 L55 74 M51 70 L59 70" stroke="#3a1818" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#b8553a">七页来信</h3>
+        <div class="en-sub">SEVEN PAGES · 粉色信封上工整到几乎不像女孩的字</div>
+        <p>她的名字和地址被工整地写在粉色信封正面，"just a bit too precisely formed for those of a girl"。背面写着"阿美寮"——来自法语的"ami"——朋友。她在里面写"公平"，写"变形"，写西瓜，写"请来看我"。</p>
+        <div class="quote" style="border-color:#b8553a">"收到信让人真的很幸福，能写下文字的这点小事，竟让人觉得如此不可思议。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <defs>
+            <linearGradient id="nightSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f5f0e6"/>
+              <stop offset="70%" stop-color="#0a0c1a"/>
+              <stop offset="100%" stop-color="#101018"/>
+            </linearGradient>
+          </defs>
+          <rect width="110" height="120" fill="url(#nightSky)"/>
+          <!-- 远山 -->
+          <path d="M0 100 L20 70 L40 88 L60 60 L80 88 L100 75 L110 95 L110 120 L0 120 Z" fill="#12121c" stroke="#20263a" stroke-width="0.5"/>
+          <!-- 近山 -->
+          <path d="M0 110 L25 90 L45 100 L65 85 L90 102 L110 92 L110 120 L0 120 Z" fill="#1a1a24" stroke="#3a3a4a" stroke-width="0.5"/>
+          <!-- 阿美寮主楼 -->
+          <g fill="#f6f0e3" stroke="#3a2a3a" stroke-width="0.5">
+            <rect x="45" y="80" width="24" height="22"/>
+            <path d="M43 80 L71 80 L57 70 Z"/>
+          </g>
+          <!-- 窗户暖光 -->
+          <rect x="49" y="85" width="3" height="3" fill="#a8743a" opacity="0.85"/>
+          <rect x="55" y="85" width="3" height="3" fill="#a8743a" opacity="0.7"/>
+          <rect x="61" y="85" width="3" height="3" fill="#a8743a" opacity="0.55"/>
+          <!-- 烟囱一缕烟 -->
+          <path d="M60 70 Q58 64 60 58 Q62 52 60 46" fill="none" stroke="#3a4050" stroke-width="0.5" opacity="0.5"/>
+          <!-- 星星 -->
+          <g fill="#e8e0c8">
+            <circle cx="15" cy="15" r="0.9"/>
+            <circle cx="28" cy="22" r="1.3"/>
+            <circle cx="42" cy="12" r="0.7"/>
+            <circle cx="58" cy="20" r="1.0"/>
+            <circle cx="72" cy="14" r="0.9"/>
+            <circle cx="86" cy="24" r="1.1"/>
+            <circle cx="98" cy="16" r="0.7"/>
+            <circle cx="35" cy="40" r="0.7"/>
+            <circle cx="78" cy="38" r="0.8"/>
+            <circle cx="22" cy="48" r="0.6"/>
+            <circle cx="50" cy="50" r="0.7"/>
+          </g>
+          <!-- 一道星座连线（人马或处女） -->
+          <g stroke="#e8e0c8" stroke-width="0.3" opacity="0.4" fill="none">
+            <line x1="28" y1="22" x2="42" y2="12"/>
+            <line x1="42" y1="12" x2="58" y2="20"/>
+            <line x1="58" y1="20" x2="72" y2="14"/>
+            <line x1="72" y1="14" x2="86" y2="24"/>
+          </g>
+          <!-- 一片云挡住星星 -->
+          <path d="M20 32 Q40 28 60 32 Q80 36 100 30" fill="none" stroke="#3a4050" stroke-width="0.8" opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#7c5fa8">阿美寮之夜</h3>
+        <div class="en-sub">AMI HOSTEL AT NIGHT · 山中疗养院的星空</div>
+        <p>七十位住客，二十多位工作人员。地方很大，人却很少。等到太阳一落山便没有什么可做，所以这里的人都成了星星、鸟类、花卉的专家。"我通常能从这里清楚看到星星——但今天有云。"黑夜与远山之间，一栋开着三扇暖灯窗的小楼。</p>
+        <div class="quote" style="border-color:#7c5fa8">"那是处女座，那是人马座。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect width="110" height="120" fill="#0c1010"/>
+          <!-- 温室 -->
+          <path d="M10 60 Q55 35 100 60 L100 105 L10 105 Z" fill="none" stroke="#3a4a3a" stroke-width="0.6" opacity="0.85"/>
+          <line x1="40" y1="46" x2="40" y2="105" stroke="#3a4a3a" stroke-width="0.4" opacity="0.55"/>
+          <line x1="70" y1="46" x2="70" y2="105" stroke="#3a4a3a" stroke-width="0.4" opacity="0.55"/>
+          <!-- 土地 -->
+          <path d="M15 95 L95 95" stroke="#5a4030" stroke-width="0.8" opacity="0.7"/>
+          <!-- 西瓜（一个鼓鼓的） -->
+          <ellipse cx="55" cy="80" rx="14" ry="11" fill="#2a4030" stroke="#3a6040" stroke-width="0.6"/>
+          <path d="M55 69 Q55 75 55 91" stroke="#1a3020" stroke-width="0.5" fill="none"/>
+          <path d="M48 71 Q52 80 50 91" stroke="#1a3020" stroke-width="0.5" fill="none"/>
+          <path d="M62 71 Q58 80 60 91" stroke="#1a3020" stroke-width="0.5" fill="none"/>
+          <!-- 小西瓜（鼓起来像小动物） -->
+          <ellipse cx="34" cy="84" rx="9" ry="7" fill="#2a4030" stroke="#3a6040" stroke-width="0.5"/>
+          <ellipse cx="78" cy="84" rx="8" ry="6.5" fill="#2a4030" stroke="#3a6040" stroke-width="0.5"/>
+          <!-- 藤蔓与叶子 -->
+          <g stroke="#3d8a68" stroke-width="0.7" fill="none" opacity="0.85">
+            <path d="M55 69 q-2 -8 -5 -10"/>
+            <path d="M34 78 q-3 -7 -1 -10"/>
+            <path d="M78 79 q2 -9 5 -11"/>
+          </g>
+          <g fill="#3d8a68" opacity="0.85">
+            <ellipse cx="50" cy="58" rx="3.4" ry="1.7" transform="rotate(-30 50 58)"/>
+            <ellipse cx="32" cy="69" rx="2.8" ry="1.4" transform="rotate(-25 32 69)"/>
+            <ellipse cx="83" cy="69" rx="2.8" ry="1.4" transform="rotate(20 83 69)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#3d8a68">西瓜与蔬菜</h3>
+        <div class="en-sub">WATERMELONS LIKE LITTLE ANIMALS · 一天天鼓起来</div>
+        <p>所有人参与种菜：西红柿、茄子、黄瓜、西瓜、草莓、葱、卷心菜、白萝卜。在温室里读农艺书、请专家，从早到晚讨论肥料与土壤。"我已经爱上了种蔬菜。看着各种果蔬一天天长大，真是太神奇了。你种过西瓜吗？它们鼓起来，就像某种小动物一样。"</p>
+        <div class="quote" style="border-color:#3d8a68">"我已经爱上了种蔬菜。"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c5fa8" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个人</h2>
+      <div class="sub">TWO PEOPLE · 七页信纸两端的两个人</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char n">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <!-- 长发 -->
+        <path d="M22 30 Q19 44 25 52 M42 30 Q45 44 39 52" fill="none" stroke="#b8553a" stroke-width="1.0" opacity="0.55"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#b8553a" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#b8553a" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <h3 style="color:#b8553a">直&nbsp;子</h3>
+      <div class="role">写信者 · 在山中四个月，接近痊愈</div>
+      <p>她说"公平"——一个男人的词；她说自己让渡边绕了圈子，也让自己绕了圈子。她说医生讲变形无法矫正，只能习惯；她说出了一个太大的"如果"。最后她说：请你来看我。</p>
+    </div>
+    <div class="char t">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#4a7a9e" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#4a7a9e" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <h3 style="color:#4a7a9e">渡边&nbsp;彻</h3>
+      <div class="role">收信者 · 在东京的一个周日里游荡</div>
+      <p>读完三遍，又下楼买了可乐再读一遍。换衣服出门，像从前和直子一起那样在周日的东京街头漫无目的地走。回到宿舍拨了长途，预定了明天的探视。然后取出《魔山》，倒一杯白兰地等待。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c5fa8" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 第五章的四颗钉子</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">"If I have left a wound inside you, it is not just your wound but mine as well. So please try not to hate me. I am a flawed human being—a far more flawed human being than you realize."</div>
+      <div class="q-cn">如果我给你留下了伤口，那不仅仅是你的伤口，也是我的。所以请不要恨我。我是一个有缺陷的人——远比你所意识到的更有缺陷。</div>
+      <div class="q-tag" style="color:#b8553a">§1 公平与伤口</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"Just as Indians wear feathers on their heads to show which tribes they belong to, we wear our deformities in the open. And we live quietly so as not to hurt one another."</div>
+      <div class="q-cn">就像印第安人在头上插羽毛表明自己的部落归属一样，我们把变形公开展示出来。我们安静地生活，以免互相伤害。</div>
+      <div class="q-tag" style="color:#7c5fa8">§3 变形的羽饰</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"The one real problem with this facility is that once you're here you don't want to leave—or you're afraid to leave. As long as we're here, we feel calm and peaceful. Our deformities seem natural. We think we've recovered. But we can never be sure that the outside world would accept us in the same way."</div>
+      <div class="q-cn">这里的一个真正问题是：一旦你来了，你就不想离开——或者说你害怕离开。只要我们在这里，就感到平静安宁。我们的变形似乎变得自然了。我们以为自己康复了。但我们永远无法确定外面的世界是否会以同样的方式接纳我们。</div>
+      <div class="q-tag" style="color:#4a7a9e">§3 隐忧</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"I sometimes wonder: IF you and I had met under absolutely ordinary circumstances, and IF we had liked each other, what would have happened? … Of course, this 'IF' is way too big."</div>
+      <div class="q-cn">我有时会想：如果我们在完全普通的情况下相遇，如果我们彼此喜欢，会怎样呢？……当然，这个"如果"太大了。</div>
+      <div class="q-tag" style="color:#3d8a68">§4 那个"如果"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>为了疗愈 你得习惯变形<br/>习惯变形 即是再也不敢离开</h3>
+    <p>阿美寮不矫正变形，只让你与变形共处。习惯了的变形不再刺痛，所以你"感到平静安宁"，"以为自己康复了"。但正是这种安宁，使你一旦来了，就再也不想——或者不敢——离开。温柔与牢笼，是同一件事的两面。疗愈的实现，恰好是疗愈无法被完成的原因。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">即便如此，直到凌晨一点以后我才睡着。</div>
+  <div class="line-en">Even so, I didn't fall asleep until after one o'clock in the morning.</div>
+  <div class="note">第五章的最后一句。<br/>整夜他翻《魔山》——另一部发生在山中疗养院里的小说——啜着白兰地等困意。虚构与他真实等待去探访的阿美寮，在凌晨一点交汇。</div>
+</div>
+
+<footer>挪威的森林 · Norwegian Wood · 村上春树 · 第五章全景信息图</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  // 4 段：[温暖(0-1), 怅惘(0-1), 痛苦(0-1)]
+  // 1直子的来信 2阿美寮的生活 3关于变形 4邀请
+  const segs = [
+    {n:1, t:0.30, m:0.55, p:0.40, l:'来信', c:'#b8553a'},
+    {n:2, t:0.55, m:0.30, p:0.15, l:'生活', c:'#3d8a68'},
+    {n:3, t:0.25, m:0.55, p:0.60, l:'变形', c:'#7c5fa8'},
+    {n:4, t:0.75, m:0.85, p:0.20, l:'如果', c:'#4a7a9e'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){
+    return 190 - val * 160;
+  }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#7c5fa8', 0.05);
+  plot('m', '#4a7a9e', 0.05);
+  plot('t', '#b8553a', 0.07);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>

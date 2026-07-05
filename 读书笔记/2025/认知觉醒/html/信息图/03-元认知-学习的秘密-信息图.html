@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>认知觉醒 第三章 · 可视化信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(168,116,58,0.12), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #a8743a;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(168,116,58,0.4);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #4a7a9e;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #5a4a3a;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  /* ===== 通用节 ===== */
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(61,138,104,0.10);
+    border: 1px solid rgba(61,138,104,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #3d8a68;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ===== 时空对照 ===== */
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card { padding: 26px 24px; position: relative; }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #e5dccb, #d8cdb6); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.55em;
+    font-weight: 900;
+    line-height: 1.25;
+  }
+  .time-card.now .year { color: #3d8a68; }
+  .time-card.then .year { color: #b8553a; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #7d6a55;
+    margin-top: 16px;
+    line-height: 1.7;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(61,138,104,0.06);
+    color: #3d8a68;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  /* ===== 情感弧线 ===== */
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  /* ===== 核心意象 ===== */
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(61,138,104,0.25); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  /* ===== 人物 ===== */
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+
+  /* ===== 金句卡片 ===== */
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(61,138,104,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.9em;
+    color: #4a4030;
+    line-height: 1.75;
+    font-weight: 500;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.66em;
+    color: #8a7a6a;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== 悖论/终局 ===== */
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #efe7d5 100%);
+    border: 1px solid rgba(61,138,104,0.18);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #3d8a68;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, rgba(61,138,104,0.04), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    color: #3d8a68;
+    line-height: 1.55;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.82em;
+    color: #5da886;
+    margin-top: 8px;
+  }
+  .finale .note {
+    margin-top: 24px;
+    font-size: 0.72em;
+    color: #98826f;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.8em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="kanji">第 三 章</div>
+  <div class="en">CHAPTER&nbsp;&nbsp;THREE</div>
+  <div class="ch">元 认 知 · 学习拉开差距的第一秘密</div>
+  <div class="meta">周岭 · Zhou Ling · 人类的终极能力</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 双线对照 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <div>
+      <h2>双线对照</h2>
+      <div class="sub">TWO MINDS · 从被动到主动的一念扇翅</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card then">
+      <div class="year">被动元认知</div>
+      <div class="place">顺其本性 · 只在迫不得已时扇翅</div>
+      <div class="desc">普通人只在遇到问题时被迫启用反思能力，比如遭遇指责、批评时才不得已去反思纠正。处于顺境时，依旧顺着本性生活，该玩手机玩手机、该睡懒觉睡懒觉，对自身行为毫无觉察。似乎只有在迫不得已的情况下，才被迫扇动几下翅膀。</div>
+    </div>
+    <div class="time-card now">
+      <div class="year">主动元认知</div>
+      <div class="place">持续反观 · 主动扇动翅膀的人</div>
+      <div class="desc">即使在没有威胁的情况下也会尝试练习扇动翅膀，让自己不断进化。从被动到主动，是一个转折点——当一个人能主动开启第三视角、开始持续反观自己的思维和行为时，就意味着他真正开始觉醒了，也就有了快速成长的可能。</div>
+    </div>
+  </div>
+  <div class="time-gap">从 被 动 到 主 动 · 一 念 觉 醒 扇 动 翅 膀</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>十段元认知弧线</h2>
+      <div class="sub">METACOGNITION ARC · 一对未扇动的翅膀如何被唤醒</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#3d8a68"></i>觉醒 / 远见</span>
+      <span><i style="background:#a8743a"></i>反思 / 飞翔</span>
+      <span><i style="background:#7c5fa8"></i>失控 / 漂流</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 贯穿第三章的三个隐喻</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <g fill="#a8743a">
+            <path d="M28 32 q16 -10 28 -3 q12 7 26 -4 q-14 9 -24 9 q-12 0 -30 -2z"/>
+          </g>
+          <path d="M40 30 q5 -4 12 0" stroke="#3a2a1a" stroke-width="0.6" fill="none"/>
+          <path d="M55 28 q5 -4 12 0" stroke="#3a2a1a" stroke-width="0.6" fill="none"/>
+          <g stroke="#a8743a" stroke-width="0.7" opacity="0.45">
+            <line x1="32" y1="40" x2="32" y2="92"/>
+            <line x1="55" y1="40" x2="55" y2="92"/>
+            <line x1="78" y1="40" x2="78" y2="92"/>
+          </g>
+          <circle cx="55" cy="95" r="5" fill="none" stroke="#3a3530" stroke-width="1.2"/>
+          <path d="M55 100 q-2 8 0 15 M55 100 q2 8 0 15 M55 105 q-4 0 -6 4 M55 105 q4 0 6 4" stroke="#3a3530" stroke-width="1.1" fill="none" stroke-linecap="round"/>
+          <circle cx="55" cy="95" r="0.8" fill="#a8743a"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#a8743a">飞鸟俯瞰</h3>
+        <div class="en-sub">THE FLYING BIRD · 从高处反观自己的能力</div>
+        <p>仔细观察这个世界上优秀的人，会发现他们几乎都是"飞"着前进的；我们跟不上他们的脚步，可能正是因为自己不会"飞"。早在 15 万年前人类就拥有这种能力——不是身体真的飞到空中，而是意识与本体分离，"飞"到更高处去反观自己。</p>
+        <div class="quote" style="border-color:#a8743a">"我们跟不上他们的脚步，可能正是因为自己不会'飞'。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f5f0e6"/>
+          <ellipse cx="55" cy="56" rx="32" ry="38" fill="#fbf7ed" stroke="#4a7a9e" stroke-width="2"/>
+          <line x1="55" y1="94" x2="55" y2="112" stroke="#4a7a9e" stroke-width="2"/>
+          <circle cx="55" cy="46" r="9" fill="none" stroke="#3a3530" stroke-width="1.2"/>
+          <circle cx="52" cy="46" r="0.9" fill="#3a3530"/>
+          <circle cx="58" cy="46" r="0.9" fill="#3a3530"/>
+          <path d="M38 80 q0 -12 17 -12 q17 0 17 12" fill="none" stroke="#3a3530" stroke-width="1.2"/>
+          <path d="M38 44 q-5 -3 -8 2" fill="none" stroke="#4a7a9e" stroke-width="0.9" opacity="0.6"/>
+          <path d="M72 78 q5 3 8 -2" fill="none" stroke="#4a7a9e" stroke-width="0.9" opacity="0.6"/>
+          <g transform="translate(3 64)">
+            <circle cx="5" cy="0" r="4" fill="none" stroke="#b8553a" stroke-width="1.2"/>
+            <path d="M5 4 q-2 6 0 12 M5 4 q2 6 0 12" stroke="#b8553a" stroke-width="1" fill="none" stroke-linecap="round"/>
+          </g>
+          <line x1="11" y1="64" x2="30" y2="56" stroke="#b8553a" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#4a7a9e">元认知之镜</h3>
+        <div class="en-sub">THE INNER MIRROR · 一个时刻伴随你的"灵魂伴侣"</div>
+        <p>反观，是元认知的起点。当你开始反观自己的思考时，神奇的事情发生了——你能意识到自己在想什么，进而意识到这些想法是否明智，再进一步纠正那些不明智的想法，最终做出更好的选择。就像身边有个"灵魂伴侣"，时刻监控、提醒、指引着你。</p>
+        <div class="quote" style="border-color:#4a7a9e">"反观，是元认知的起点。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#f0e8d6"/>
+          <g fill="#e5dccb" stroke="#5a4a3a" stroke-width="0.8">
+            <rect x="20" y="100" width="80" height="10"/>
+            <rect x="35" y="80" width="65" height="20"/>
+            <rect x="50" y="60" width="50" height="20"/>
+            <rect x="65" y="40" width="35" height="20"/>
+            <rect x="80" y="22" width="20" height="18"/>
+          </g>
+          <g transform="translate(35 92)">
+            <circle cx="0" cy="0" r="4" fill="none" stroke="#b8553a" stroke-width="1.2"/>
+            <path d="M0 4 q-2 5 0 10 M0 4 q2 5 0 10 M0 7 q-3 0 -5 4 M0 7 q3 0 5 4" stroke="#b8553a" stroke-width="1" fill="none" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(90 18)">
+            <circle cx="0" cy="0" r="4" fill="none" stroke="#3d8a68" stroke-width="1.2"/>
+            <path d="M0 4 q-2 5 0 10 M0 4 q2 5 0 10 M0 7 q-3 0 -5 4 M0 7 q3 0 5 4" stroke="#3d8a68" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <path d="M-6 -2 q-6 -6 -10 -1 M6 -2 q6 -6 10 -1" fill="none" stroke="#3d8a68" stroke-width="1"/>
+          </g>
+          <line x1="35" y1="92" x2="35" y2="22" stroke="#a8743a" stroke-width="0.6" stroke-dasharray="2 2"/>
+          <text x="20" y="60" font-size="9" fill="#a8743a" font-family="Noto Serif SC, serif" font-weight="700">差距</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#3d8a68">差距的阶梯</h3>
+        <div class="en-sub">THE LADDER OF GAPS · 真正的竞争力在哪里</div>
+        <p>那些有影响力的杰出人士与普通人的差距，普遍体现在元认知领域——他们总是能在大大小小的选择关口展现摆脱潜意识支配的能力。他们真正的竞争力不在于学习能力，而在于强大的元认知能力；很多学习能力超强的学霸，理智脑虽强大，却未必能过好自己的人生。</p>
+        <div class="quote" style="border-color:#3d8a68">"真正的竞争力不在于学习能力，而在于强大的元认知能力。"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个人</h2>
+      <div class="sub">TWO HELMSMEN · 同一片大海上的两条船</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#3d8a68" stroke-width="1.6"/>
+        <circle cx="29" cy="28" r="1.2" fill="#3d8a68"/>
+        <circle cx="35" cy="28" r="1.2" fill="#3d8a68"/>
+        <path d="M28 32 q4 2 8 0" fill="none" stroke="#3a3530" stroke-width="1" stroke-linecap="round"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#3d8a68" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M16 22 q-7 -3 -9 5 M48 22 q7 -3 9 5" fill="none" stroke="#3d8a68" stroke-width="1.4"/>
+      </svg>
+      <h3 style="color:#3d8a68">思维舵手</h3>
+      <div class="role">主动元认知者 · 会"飞"的人</div>
+      <p>无论是当下的注意力、当天的日程安排，还是长期的人生目标，都力求想清楚意义、进行自我审视和主动控制，而不是随波逐流。他时刻掌握方向舵，主动控制生命之船的航向，是船的真正主人。</p>
+    </div>
+    <div class="char">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#7c5fa8" stroke-width="1.6"/>
+        <path d="M28 28 q2 -1 3 0 M34 28 q2 -1 3 0" stroke="#7c5fa8" stroke-width="0.9" fill="none"/>
+        <path d="M30 33 q2 -1 4 0" fill="none" stroke="#7c5fa8" stroke-width="0.9"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#7c5fa8" stroke-width="1.6" stroke-linecap="round"/>
+        <rect x="37" y="40" width="10" height="14" rx="1.5" fill="none" stroke="#7c5fa8" stroke-width="1.2"/>
+        <path d="M14 56 q5 -3 10 0 q5 3 10 0 q5 -3 10 0 q5 3 10 0" fill="none" stroke="#7c5fa8" stroke-width="0.9" opacity="0.55"/>
+        <text x="50" y="38" font-size="10" fill="#7c5fa8" font-family="serif" font-weight="700">~</text>
+      </svg>
+      <h3 style="color:#7c5fa8">忙碌水手</h3>
+      <div class="role">被动元认知者 · 不会"飞"的人</div>
+      <p>顺着自己的本性做喜欢和舒服的事，精力发散，缺乏觉知。任何偶发的干扰都会分散注意力——一开始只想找一根绳子，最后却牵出一头大象。被"自动驾驶"确实轻松，却只是看着路边风景飞驰而过，不知道自己要去哪里。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3d8a68" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 第三章的四颗钉子</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">我们跟不上他们的脚步，可能正是因为自己不会"飞"。</div>
+      <div class="q-cn">We can't keep up with them — perhaps because we never learned how to "fly".</div>
+      <div class="q-tag" style="color:#a8743a">§1 沉睡的翅膀</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">反观，是元认知的起点。当你开始反观自己的思考时，你能意识到自己在想什么，进而意识到这些想法是否明智，再进一步纠正那些不明智的想法，最终做出更好的选择。</div>
+      <div class="q-cn">Reflection is the starting point of metacognition. The moment you observe your own thinking, you can see what you're thinking, judge if it's wise, correct what isn't — and make better choices.</div>
+      <div class="q-tag" style="color:#4a7a9e">§3 反观的起点</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">我们总是这样，一开始只想找一根绳子，最后却牵出一头大象。</div>
+      <div class="q-cn">We're always like this — start out looking for a rope, and end up dragging out an elephant.</div>
+      <div class="q-tag" style="color:#7c5fa8">§5 元认知不足的表现</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">每一次克制自己，就意味着比以前更强大。</div>
+      <div class="q-cn">Every act of self-restraint makes one stronger than before. — Maxim Gorky</div>
+      <div class="q-tag" style="color:#3d8a68">§6 思维舵手</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>人人都有元认知<br/>却人人差距如此之大</h3>
+    <p>元认知能力人人都有——这是人类成为"万物之灵"的根源，大猩猩也只能分辨镜子里的猩猩是自己。但人人都有，并不意味着人人都会用：从被动元认知到主动元认知，只一字之差，却划分为"迫不得已扇翅"与"主动练习扇翅"两种命运。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">如果人生是大海，每个人都是一条小船，<br/>元认知能力强的人会时刻掌握方向舵，主动控制生命之船的航向。</div>
+  <div class="line-en">If life is the sea, each of us is a small boat — those strong in metacognition always hold the rudder, actively steering their way.</div>
+  <div class="note">第三章的最后一句话。<br/>愿你成为自己的思维舵手，而不只是一个忙碌的水手。</div>
+</div>
+
+<footer>认知觉醒 · 周岭 · 第三章全景信息图</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const segs = [
+    {n:1,  t:0.20, m:0.55, p:0.30, l:'火箭升空',   c:'#4a7a9e'},
+    {n:2,  t:0.50, m:0.55, p:0.15, l:'飞的能力',   c:'#a8743a'},
+    {n:3,  t:0.60, m:0.65, p:0.20, l:'万物之灵',   c:'#3d8a68'},
+    {n:4,  t:0.15, m:0.45, p:0.75, l:'被迫扇翅',   c:'#7c5fa8'},
+    {n:5,  t:0.70, m:0.55, p:0.25, l:'反观起点',   c:'#3d8a68'},
+    {n:6,  t:0.85, m:0.45, p:0.15, l:'灵魂伴侣',   c:'#a8743a'},
+    {n:7,  t:0.20, m:0.45, p:0.85, l:'牵出大象',   c:'#b8553a'},
+    {n:8,  t:0.55, m:0.65, p:0.30, l:'元时间',     c:'#a8743a'},
+    {n:9,  t:0.80, m:0.55, p:0.20, l:'思维舵手',   c:'#3d8a68'},
+    {n:10, t:0.95, m:0.50, p:0.10, l:'每次都更强', c:'#3d8a68'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){ return 190 - val * 160; }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#7c5fa8', 0.06);
+  plot('m', '#4a7a9e', 0.06);
+  plot('t', '#3d8a68', 0.08);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>

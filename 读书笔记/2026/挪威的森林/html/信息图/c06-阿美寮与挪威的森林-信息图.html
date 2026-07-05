@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>挪威的森林 第六章 · 可视化信息图</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(184,150,212,0.10), transparent 60%);
+  }
+  .hero .kanji {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #a8743a;
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 40px rgba(227,168,105,0.4);
+    line-height: 1;
+  }
+  .hero .en {
+    font-size: 0.85em;
+    color: #98826f;
+    letter-spacing: 0.4em;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+  .hero .ch {
+    margin-top: 28px;
+    font-size: 1.05em;
+    color: #7c5fa8;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  .hero .meta {
+    margin-top: 18px;
+    font-size: 0.72em;
+    color: #a89580;
+    letter-spacing: 0.15em;
+  }
+  .hero .scroll-hint {
+    margin-top: 40px;
+    font-size: 0.6em;
+    color: #b8a695;
+    letter-spacing: 0.3em;
+    animation: bob 2s ease-in-out infinite;
+  }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  .divider {
+    text-align: center;
+    color: #223;
+    letter-spacing: 0.6em;
+    padding: 30px 0;
+    font-size: 1.1em;
+  }
+
+  /* ===== 通用节 ===== */
+  .block { padding: 10px 0 40px; }
+  .block-head {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .block-head .ico {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(227,168,105,0.1);
+    border: 1px solid rgba(227,168,105,0.25);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .block-head h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.45em;
+    color: #a8743a;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .block-head .sub {
+    font-size: 0.62em;
+    color: #98826f;
+    letter-spacing: 0.12em;
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  /* ===== 时空对照 ===== */
+  .time-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .time-card {
+    padding: 26px 24px;
+    position: relative;
+  }
+  .time-card.now { background: linear-gradient(135deg, #fbf7ed, #f7f2e6); }
+  .time-card.then { background: linear-gradient(135deg, #151020, #1a152a); }
+  .time-card .year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.1em;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .time-card.now .year { color: #4a7a9e; }
+  .time-card.then .year { color: #7c5fa8; }
+  .time-card .place {
+    font-size: 0.78em;
+    color: #75604f;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .time-card .desc {
+    font-size: 0.7em;
+    color: #8a7565;
+    margin-top: 16px;
+    line-height: 1.7;
+  }
+  .time-gap {
+    text-align: center;
+    padding: 14px;
+    background: rgba(227,168,105,0.05);
+    color: #a8743a;
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .time-gap b { font-size: 1.3em; font-weight: 900; }
+
+  /* ===== 情感弧线 ===== */
+  .arc-box {
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 24px 18px 14px;
+  }
+  .arc-legend {
+    display: flex; gap: 18px; justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.62em;
+  }
+  .arc-legend span { display: flex; align-items: center; gap: 6px; color: #7a6a7a; }
+  .arc-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+
+  /* ===== 核心意象 ===== */
+  .symbols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .sym {
+    display: flex; gap: 18px; align-items: stretch;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+  .sym:hover { border-color: rgba(227,168,105,0.2); }
+  .sym-art {
+    flex: 0 0 130px;
+    display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04), transparent);
+  }
+  .sym-body { padding: 18px 18px 18px 0; flex: 1; }
+  .sym-body h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15em;
+    margin-bottom: 4px;
+  }
+  .sym-body .en-sub { font-size: 0.6em; color: #98826f; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .sym-body p { font-size: 0.74em; line-height: 1.75; color: #75604f; }
+  .sym-body .quote { margin-top: 12px; font-size: 0.7em; color: #8a7050; border-left: 2px solid; padding-left: 10px; line-height: 1.6; }
+
+  /* ===== 人物 ===== */
+  .chars {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .char {
+    text-align: center;
+    background: linear-gradient(135deg, #fbf7ed, #f7f2e6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 26px 18px;
+  }
+  .char .avatar { margin: 0 auto 14px; }
+  .char h3 { font-family: 'Noto Serif SC', serif; font-size: 1.2em; }
+  .char .role { font-size: 0.62em; color: #98826f; letter-spacing: 0.12em; margin: 4px 0 12px; }
+  .char p { font-size: 0.72em; line-height: 1.75; color: #7d6a55; }
+  .char.t .avatar circle:last-of-type, .char.t .avatar path { stroke: #7c5fa8; }
+  .char.n .avatar circle:last-of-type, .char.n .avatar path { stroke: #b8553a; }
+
+  /* ===== 金句卡片 ===== */
+  .quotes { display: grid; gap: 16px; }
+  .qcard {
+    position: relative;
+    background: linear-gradient(135deg, #fbf6ec, #f3eddf);
+    border-radius: 14px;
+    padding: 24px 26px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .qcard::before {
+    content: '"';
+    position: absolute;
+    top: -18px; left: 14px;
+    font-size: 5em;
+    color: rgba(227,168,105,0.12);
+    font-family: serif;
+  }
+  .qcard .q-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.82em;
+    color: #756030;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .qcard .q-cn {
+    margin-top: 10px;
+    font-size: 0.72em;
+    color: #75604f;
+    line-height: 1.7;
+  }
+  .qcard .q-tag {
+    margin-top: 14px;
+    font-size: 0.55em;
+    color: #98826f;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== 悖论/终局 ===== */
+  .paradox {
+    text-align: center;
+    padding: 20px 26px;
+    background: linear-gradient(135deg, #fbf6ec 0%, #efe7d5 100%);
+    border: 1px solid rgba(232,153,122,0.15);
+    border-radius: 14px;
+  }
+  .paradox h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5em;
+    color: #b8553a;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .paradox p { margin-top: 12px; font-size: 0.78em; color: #75604f; line-height: 1.75; }
+
+  .finale {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: linear-gradient(180deg, rgba(232,153,122,0.04), transparent);
+  }
+  .finale .line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #b8553a;
+    line-height: 1.5;
+  }
+  .finale .line-en {
+    font-style: italic;
+    font-size: 0.82em;
+    color: #c8876a;
+    margin-top: 8px;
+  }
+  .finale .note {
+    margin-top: 24px;
+    font-size: 0.72em;
+    color: #98826f;
+    line-height: 1.7;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 50px;
+    color: #b8a695;
+    font-size: 0.62em;
+    letter-spacing: 0.12em;
+  }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 0 14px; }
+    .hero .kanji { font-size: 2.8em; }
+    .time-pair { grid-template-columns: 1fr; }
+    .sym { flex-direction: column; }
+    .sym-art { flex: none; padding: 20px 0; }
+    .sym-body { padding: 0 18px 18px; }
+    .chars { grid-template-columns: 1fr; }
+    .block-head h2 { font-size: 1.2em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="kanji">挪威的森林</div>
+  <div class="en">NORWEGIAN&nbsp;&nbsp;WOOD</div>
+  <div class="ch">第 六 章 · 前往阿美寮</div>
+  <div class="meta">前往阿美寮 · 玲子 · 挪威的森林</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<div class="wrap">
+
+<!-- ===== 时空对照 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    </div>
+    <div>
+      <h2>两个世界</h2>
+      <div class="sub">TWO WORLDS · 一日车程之外的人间与深山</div>
+    </div>
+  </div>
+  <div class="time-pair">
+    <div class="time-card now">
+      <div class="year">1969</div>
+      <div class="place">东京 · 宿舍与日常</div>
+      <div class="desc">将满 20 岁。Storm Trooper 已人去床空，宿舍只剩晚饭时喧嚣的食堂、街上挥舞旗帜的学生、German 课的动词变位表。日子一天天滑过去，他还不自知地，从那一切里"出来"了。</div>
+    </div>
+    <div class="time-card then">
+      <div class="year">深山</div>
+      <div class="place">阿美寮 · 与世隔绝</div>
+      <div class="desc">穿过京都北部高耸入云的杉树林，巴士沿河谷走到底再步行二十分钟。没有电视、没有收音机，黑色铁门大敞却无人看守。第一个迎上来的不是直子，而是握住他手心、翻看老茧的女人——玲子。</div>
+    </div>
+  </div>
+  <div class="time-gap">相隔 <b>一日车程</b> · 一座深山是一道边界</div>
+</div>
+
+<!-- ===== 情感弧线 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M3 14c3-6 4-6 7 0s4 6 7-1 4-3 4-3"/></svg>
+    </div>
+    <div>
+      <h2>十一段情感弧线</h2>
+      <div class="sub">EMOTIONAL ARC · 温度与张力的起伏</div>
+    </div>
+  </div>
+  <div class="arc-box">
+    <div class="arc-legend">
+      <span><i style="background:#b8553a"></i>亲密 / 温暖</span>
+      <span><i style="background:#4a7a9e"></i>记忆 / 怅惘</span>
+      <span><i style="background:#7c5fa8"></i>痛苦 / 冲突</span>
+    </div>
+    <svg viewBox="0 0 720 220" width="100%" style="display:block" id="arcSvg">
+      <g stroke="rgba(0,0,0,0.06)" stroke-width="1">
+        <line x1="0" y1="50" x2="720" y2="50"/>
+        <line x1="0" y1="110" x2="720" y2="110"/>
+        <line x1="0" y1="170" x2="720" y2="170"/>
+      </g>
+      <line x1="0" y1="110" x2="720" y2="110" stroke="rgba(0,0,0,0.10)" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== 核心意象 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg>
+    </div>
+    <div>
+      <h2>三大核心意象</h2>
+      <div class="sub">RECURRING SYMBOLS · 贯穿全章的隐喻</div>
+    </div>
+  </div>
+  <div class="symbols">
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#0c0f14"/>
+          <!-- cedar trees in deep mountain -->
+          <g fill="#0e1a14">
+            <path d="M5 105 L5 60 L1 68 L5 50 L9 60 L5 105Z"/>
+            <path d="M105 105 L105 56 L101 64 L105 46 L109 56 L105 105Z"/>
+            <path d="M14 105 L11 75 L17 80 L14 65 L19 75 L14 105Z"/>
+          </g>
+          <!-- white stone wall -->
+          <rect x="15" y="78" width="80" height="14" fill="#1a1f2a" stroke="#3a4a55" stroke-width="0.8"/>
+          <line x1="35" y1="78" x2="35" y2="92" stroke="#2a3340" stroke-width="0.4"/>
+          <line x1="55" y1="78" x2="55" y2="92" stroke="#2a3340" stroke-width="0.4"/>
+          <line x1="75" y1="78" x2="75" y2="92" stroke="#2a3340" stroke-width="0.4"/>
+          <!-- gate posts -->
+          <rect x="48" y="64" width="4" height="34" fill="#2a3340" stroke="#5a6a78" stroke-width="0.5"/>
+          <rect x="58" y="64" width="4" height="34" fill="#2a3340" stroke="#5a6a78" stroke-width="0.5"/>
+          <!-- open black iron gate (swung inward) -->
+          <path d="M48 70 L36 56 M48 78 L36 70 M48 86 L36 86" stroke="#5a6068" stroke-width="1.2" fill="none"/>
+          <path d="M62 70 L74 56 M62 78 L76 70 M62 86 L76 86" stroke="#5a6068" stroke-width="1.2" fill="none"/>
+          <!-- sign -->
+          <rect x="40" y="44" width="30" height="10" fill="#3a2a1a" stroke="#6a5030" stroke-width="0.5" rx="1"/>
+          <text x="55" y="51" text-anchor="middle" fill="#a89870" font-size="4" font-family="sans-serif">AMI HOSTEL</text>
+          <!-- mist rising -->
+          <path d="M0 100 Q 40 95 80 100 T 110 98" fill="none" stroke="rgba(138,184,212,0.18)" stroke-width="3"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#4a7a9e">阿美寮</h3>
+        <div class="en-sub">AMI HOSTEL · 敞开却不可出的深山疗养院</div>
+        <p>京都北部深山里一座由别墅改建的疗养院。黑色铁门大敞、围墙只一人高、没有锁、没有电视也没有收音机。规则却是"离开了就再也回不来"——彻底自由与彻底放逐之间的边界。</p>
+        <div class="quote" style="border-color:#4a7a9e">"Ami Hostel. Private. No Trespassing."</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <rect x="0" y="0" width="110" height="120" fill="#12100a"/>
+          <!-- guitar body -->
+          <ellipse cx="68" cy="64" rx="22" ry="30" fill="#1a1408" stroke="#a89870" stroke-width="1.2"/>
+          <ellipse cx="68" cy="72" rx="9" ry="11" fill="#0a0810" stroke="#a89870" stroke-width="0.7"/>
+          <circle cx="68" cy="72" r="2" fill="#f6f0e3"/>
+          <!-- strings -->
+          <g stroke="#8a7050" stroke-width="0.3" opacity="0.6">
+            <line x1="66" y1="40" x2="66" y2="100"/>
+            <line x1="68" y1="40" x2="68" y2="100"/>
+            <line x1="70" y1="40" x2="70" y2="100"/>
+          </g>
+          <!-- neck/head -->
+          <rect x="64" y="14" width="8" height="34" fill="#3a2a14" stroke="#a89870" stroke-width="0.6"/>
+          <rect x="62" y="12" width="12" height="6" fill="#5a4030" stroke="#a89870" stroke-width="0.5" rx="1"/>
+          <!-- frets -->
+          <g stroke="#a89870" stroke-width="0.3" opacity="0.5">
+            <line x1="64" y1="22" x2="72" y2="22"/>
+            <line x1="64" y1="28" x2="72" y2="28"/>
+            <line x1="64" y1="34" x2="72" y2="34"/>
+          </g>
+          <!-- porcelain beckoning cat with coin slot -->
+          <ellipse cx="26" cy="78" rx="13" ry="15" fill="#10121a" stroke="#8a7050" stroke-width="1"/>
+          <ellipse cx="26" cy="68" rx="8" ry="8" fill="#10121a" stroke="#8a7050" stroke-width="1"/>
+          <path d="M21 62 L19 56 L24 60Z" fill="#8a7050"/>
+          <path d="M31 62 L33 56 L28 60Z" fill="#8a7050"/>
+          <circle cx="23" cy="68" r="0.8" fill="#3a3320"/>
+          <circle cx="29" cy="68" r="0.8" fill="#3a3320"/>
+          <rect x="21" cy="78" width="10" height="1.2" fill="#3a3320"/>
+          <!-- beckoning paw -->
+          <ellipse cx="38" cy="74" rx="3.5" ry="4.5" fill="#10121a" stroke="#8a7050" stroke-width="0.8"/>
+          <!-- coin slot -->
+          <rect x="22" y="80" width="8" height="1.4" fill="#3a3320"/>
+          <!-- 100-yen coin falling -->
+          <circle cx="26" cy="38" r="6" fill="#a8743a" stroke="#b88a4a" stroke-width="0.6"/>
+          <text x="26" y="41" text-anchor="middle" fill="#4a2a10" font-size="4" font-family="serif">百</text>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#a8743a">玲子的吉他·挪威的森林</h3>
+        <div class="en-sub">REIKO'S GUITAR · 一百日元点一次的歌</div>
+        <p>巴赫赋格曲、《Michelle》、《Julia》、Bossa Nova——玲子把吉他比作"一个温暖的小房间"。直子每次点《Norwegian Wood》都要往瓷猫存钱罐里投一百日元。"这首歌让我幻想自己在深林里徘徊。"</p>
+        <div class="quote" style="border-color:#a8743a">"又冷又暗，没有人来救我。"</div>
+      </div>
+    </div>
+
+    <div class="sym">
+      <div class="sym-art">
+        <svg width="110" height="120" viewBox="0 0 110 120">
+          <defs>
+            <radialGradient id="candleGlow6" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#a8743a" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#a8743a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect x="0" y="0" width="110" height="120" fill="#080612"/>
+          <!-- rain streaks -->
+          <g stroke="rgba(138,184,212,0.45)" stroke-width="0.5">
+            <line x1="10" y1="5" x2="6" y2="35"/>
+            <line x1="25" y1="0" x2="20" y2="42"/>
+            <line x1="40" y1="3" x2="34" y2="48"/>
+            <line x1="55" y1="0" x2="48" y2="55"/>
+            <line x1="70" y1="8" x2="63" y2="50"/>
+            <line x1="90" y1="2" x2="83" y2="42"/>
+            <line x1="100" y1="0" x2="93" y2="40"/>
+            <line x1="15" y1="60" x2="11" y2="100"/>
+            <line x1="35" y1="55" x2="30" y2="100"/>
+            <line x1="60" y1="60" x2="55" y2="105"/>
+            <line x1="80" y1="58" x2="75" y2="100"/>
+            <line x1="98" y1="62" x2="93" y2="100"/>
+            <line x1="5" y1="40" x2="2" y2="80"/>
+            <line x1="105" y1="40" x2="100" y2="85"/>
+          </g>
+          <!-- dark forest silhouettes -->
+          <g fill="#0a081a">
+            <path d="M5 100 L5 70 L1 76 L5 60 L9 66 L5 100Z"/>
+            <path d="M105 100 L105 65 L100 72 L105 55 L110 64 L105 100Z"/>
+            <path d="M18 100 L15 75 L21 80 L18 65 L23 75 L18 100Z"/>
+            <path d="M92 100 L89 75 L95 80 L92 65 L97 75 L92 100Z"/>
+          </g>
+          <!-- the apartment window with candle -->
+          <rect x="40" y="55" width="32" height="38" fill="#0a0814" stroke="#3a2a1a" stroke-width="0.8"/>
+          <circle cx="56" cy="75" r="22" fill="url(#candleGlow6)"/>
+          <rect x="55" y="78" width="2" height="9" fill="#8a7050"/>
+          <ellipse cx="56" cy="76" rx="1.3" ry="2.4" fill="#a8743a"/>
+          <ellipse cx="56" cy="75" rx="0.6" ry="1.2" fill="#fff0d0"/>
+          <line x1="56" y1="55" x2="56" y2="93" stroke="#3a2a1a" stroke-width="0.3"/>
+          <line x1="40" y1="74" x2="72" y2="74" stroke="#3a2a1a" stroke-width="0.3"/>
+        </svg>
+      </div>
+      <div class="sym-body">
+        <h3 style="color:#7c5fa8">深山雨夜</h3>
+        <div class="en-sub">RAIN IN THE MOUNTAINS · 被遗忘的世界尽头</div>
+        <p>比尔·埃文斯、月光、白蜡烛与葡萄酒。三人围坐烛前，仿佛"被遗弃在世界某个遥远角落的唯一幸存者"。雨下了一整夜。"我希望雨一直下，我们三个人就一直呆在一起。"</p>
+        <div class="quote" style="border-color:#7c5fa8">"我们三个人就一直呆在一起。"</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 人物 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><circle cx="8" cy="9" r="3.2"/><circle cx="16" cy="9" r="3.2"/><path d="M2 20c1-4 3-5 6-5M22 20c-1-4-3-5-6-5M8 18h8"/></svg>
+    </div>
+    <div>
+      <h2>两个女人</h2>
+      <div class="sub">TWO PEOPLE · 阿美寮灯火下的两个女人</div>
+    </div>
+  </div>
+  <div class="chars">
+    <div class="char t">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#7c5fa8" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#7c5fa8" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- short bristly hair hint -->
+        <path d="M23 22 q3 -4 9 -4 q6 0 9 4" stroke="#7c5fa8" stroke-width="1" fill="none"/>
+        <path d="M22 24 l-2 2 M26 23 l-1 2 M38 23 l1 2 M42 24 l2 2" stroke="#7c5fa8" stroke-width="0.6" opacity="0.7"/>
+        <!-- cigarette -->
+        <rect x="42" y="32" width="6" height="1.4" fill="#8a7050" opacity="0.8"/>
+        <circle cx="48.5" cy="32.7" r="0.6" fill="#b8553a" opacity="0.8"/>
+        <!-- musical note hint -->
+        <circle cx="44" cy="42" r="1.4" fill="#7c5fa8" opacity="0.7"/>
+        <line x1="45.4" y1="42" x2="45.4" y2="34" stroke="#7c5fa8" stroke-width="0.7" opacity="0.7"/>
+      </svg>
+      <h3 style="color:#7c5fa8">玲&nbsp;子</h3>
+      <div class="role">"音乐医生" · 三十八岁 · 七年囚徒</div>
+      <p>"白天还好，但到了晚上，我就开始流口水，在地上打滚。"——她开玩笑。脸上的皱纹"属于她从出生起就该有的位置"。教音乐、抽烟、用假声说俏皮话。"我没有外面可以回去的世界。"</p>
+    </div>
+    <div class="char n">
+      <svg class="avatar" width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="30" fill="#f0e8d6"/>
+        <circle cx="32" cy="28" r="9" fill="none" stroke="#b8553a" stroke-width="1.6"/>
+        <path d="M14 54c2-11 9-15 18-15s16 4 18 15" fill="none" stroke="#b8553a" stroke-width="1.6" stroke-linecap="round"/>
+        <!-- shoulder-length hair hint -->
+        <path d="M22 30 q0 8 5 11 M42 30 q0 8 -5 11" stroke="#b8553a" stroke-width="0.7" fill="none" opacity="0.7"/>
+        <!-- butterfly barrette -->
+        <circle cx="42" cy="26" r="0.6" fill="#b8553a"/>
+        <path d="M42 25 q-1.5 -2 -3 -1 q1 2 3 1z M42 25 q1.5 -2 3 -1 q-1 2 -3 1z" fill="#b8553a" opacity="0.7"/>
+      </svg>
+      <h3 style="color:#b8553a">直&nbsp;子</h3>
+      <div class="role">二十岁 · 蝴蝶发夹 · 月光下的人</div>
+      <p>头发剪短了，用蝴蝶发夹别住——像个女学生。茶饭能多吃几口了，皮肤晒黑了，年轻的尖刺消失在某一种成熟的宁静背后。她说"放松一秒钟就会散掉"。月夜里褪去衣裳，清晨却像什么都没发生。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 金句 ===== -->
+<div class="block">
+  <div class="block-head">
+    <div class="ico">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a8743a" stroke-width="1.6"><path d="M7 7h10v10H7z"/><path d="M10 11h4M10 14h4"/></svg>
+    </div>
+    <div>
+      <h2>四张金句卡片</h2>
+      <div class="sub">KEY QUOTES · 第六章的四颗钉子</div>
+    </div>
+  </div>
+  <div class="quotes">
+    <div class="qcard">
+      <div class="q-en">"Just living here is the convalescence. A regular routine, exercise, isolation from the outside world, clean air, quiet. Our farmland makes us practically self-sufficient; there's no TV or radio. We're like one of those commune places you hear so much about."</div>
+      <div class="q-cn">"住在这里本身就是疗养。规律作息、运动、与外界隔绝、干净的空气、安静。我们的农田让我们几乎自给自足；没有电视也没有收音机。就像你听说的那种公社一样。"</div>
+      <div class="q-tag" style="color:#4a7a9e">§5 阿美寮的哲学</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"I'm thirty-eight, going on forty. I'm not like Naoko. There's nobody waiting for me to get out, no family to take me back. I don't have any work to speak of, and almost no friends. And after seven years, I don't know what's going on out there."</div>
+      <div class="q-cn">"我已经三十八了，快到四十了。我不像直子。没有人等我出去，没有家庭接我回去。我没有可以说得上话的工作，也几乎没有朋友。而且七年了，我不知道外面发生了什么。"</div>
+      <div class="q-tag" style="color:#7c5fa8">§6 玲子的自白</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"That song can make me feel so sad. I don't know, I guess I imagine myself wandering in a deep wood. I'm all alone and it's cold and dark, and nobody comes to save me. That's why Reiko never plays it unless I request it."</div>
+      <div class="q-cn">"那首歌让我感到如此悲伤。我不知道，大概是我幻想自己在深林里徘徊。独自一人，又冷又暗，没有人来救我。所以玲子从不主动弹它，除非我点。"</div>
+      <div class="q-tag" style="color:#a8743a">§10 Norwegian Wood</div>
+    </div>
+    <div class="qcard">
+      <div class="q-en">"That's why I can't leave this place. I'm afraid to leave and get involved with the outside world. I'm afraid to meet new people and feel new feelings."</div>
+      <div class="q-cn">"那就是我为什么离不开这个地方。我害怕离开，害怕卷入外面的世界。我害怕遇见新人，感受新的情绪。"</div>
+      <div class="q-tag" style="color:#7c5fa8">§6 玲子的托付</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 悖论 ===== -->
+<div class="block">
+  <div class="paradox">
+    <h3>越封闭<br/>越能坦诚</h3>
+    <p>阿美寮没有锁、没有围栏，铁门大敞，谁都可以走。"但是离开了就再也回不来"。在这彻底与世隔绝的地方，却是玲子这辈子唯一敢说"全部"的地方。隔绝外界，恰恰是向自己敞开的前提。</p>
+  </div>
+</div>
+
+<!-- ===== 终局 ===== -->
+<div class="finale">
+  <div class="line">但愿她不会被噩梦侵扰<br/>——我发现自己如此祈愿着</div>
+  <div class="line-en">Let her be spared from anguished dreams, I found myself hoping.</div>
+  <div class="note">第六章的最后一句话。<br/>他回到东京的宿舍，在黑夜里望着空旗杆，想象她在那个奇异的小世界沉睡。</div>
+</div>
+
+<footer>挪威的森林 · Norwegian Wood · 村上春树 · 第六章全景信息图</footer>
+
+</div>
+
+<script>
+(function(){
+  const svg = document.getElementById('arcSvg');
+  const NS = 'http://www.w3.org/2000/svg';
+  // 11 段：[段号, 温暖(0-1), 怅惘(0-1), 痛苦(0-1), 标签, 颜色]
+  const segs = [
+    {n:1,  t:0.10, m:0.60, p:0.10, l:'京都', c:'#4a7a9e'},
+    {n:2,  t:0.05, m:0.80, p:0.30, l:'巴士', c:'#4a7a9e'},
+    {n:3,  t:0.15, m:0.55, p:0.20, l:'大门', c:'#4a7a9e'},
+    {n:4,  t:0.65, m:0.30, p:0.10, l:'玲子', c:'#7c5fa8'},
+    {n:5,  t:0.50, m:0.40, p:0.20, l:'哲学', c:'#a8743a'},
+    {n:6,  t:0.40, m:0.70, p:0.65, l:'七年', c:'#7c5fa8'},
+    {n:7,  t:0.85, m:0.40, p:0.25, l:'重逢', c:'#b8553a'},
+    {n:8,  t:0.80, m:0.30, p:0.10, l:'烛光', c:'#a8743a'},
+    {n:9,  t:0.75, m:0.50, p:0.15, l:'吉他', c:'#a8743a'},
+    {n:10, t:0.30, m:0.85, p:0.70, l:'森林', c:'#7c5fa8'},
+    {n:11, t:0.20, m:0.55, p:0.95, l:'坦白', c:'#b8553a'},
+  ];
+  const W = 720, H = 220, mid = 110;
+  const step = W / (segs.length - 1);
+
+  function y(val){
+    return 190 - val * 160;
+  }
+
+  function plot(field, color, fillOp){
+    let pts = segs.map((s,i) => [i*step, y(s[field])]);
+    let path = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (let i=1;i<pts.length;i++){
+      const [x1,y1] = pts[i-1], [x2,y2] = pts[i];
+      const cx = (x1+x2)/2;
+      path += ' Q' + cx + ' ' + y1 + ' ' + cx + ' ' + ((y1+y2)/2);
+      path += ' Q' + cx + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    }
+    const area = path + ' L' + pts[pts.length-1][0] + ' ' + (H-30) + ' L' + pts[0][0] + ' ' + (H-30) + ' Z';
+    let a = document.createElementNS(NS,'path');
+    a.setAttribute('d', area);
+    a.setAttribute('fill', color);
+    a.setAttribute('opacity', fillOp);
+    svg.appendChild(a);
+    let p = document.createElementNS(NS,'path');
+    p.setAttribute('d', path);
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', color);
+    p.setAttribute('stroke-width', '2');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('opacity','0.9');
+    svg.appendChild(p);
+    pts.forEach((pt,i)=>{
+      let c = document.createElementNS(NS,'circle');
+      c.setAttribute('cx', pt[0]); c.setAttribute('cy', pt[1]);
+      c.setAttribute('r', i===0?5:3.5);
+      c.setAttribute('fill', '#f5f0e6');
+      c.setAttribute('stroke', color); c.setAttribute('stroke-width','2');
+      svg.appendChild(c);
+    });
+  }
+
+  plot('p', '#7c5fa8', 0.05);
+  plot('m', '#4a7a9e', 0.05);
+  plot('t', '#b8553a', 0.07);
+
+  segs.forEach((s,i)=>{
+    let x = i*step;
+    let tx = document.createElementNS(NS,'text');
+    tx.setAttribute('x', x); tx.setAttribute('y', H-12);
+    tx.setAttribute('text-anchor','middle');
+    tx.setAttribute('fill','#98826f');
+    tx.setAttribute('font-size','11');
+    tx.setAttribute('font-family','Noto Sans SC, sans-serif');
+    tx.textContent = s.n + ' ' + s.l;
+    svg.appendChild(tx);
+  });
+})();
+</script>
+
+</body>
+</html>
