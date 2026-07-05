@@ -1,12 +1,12 @@
-﻿const http = require('http');
+const http = require('http');
 const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
 const PORT = Number(process.env.PORT || 8765);
-const MODEL = process.env.OAIPRO_MODEL || 'gpt-3.5-turbo';
-const API_KEY = process.env.OAIPRO_API_KEY || '';
-const CHAT_URL = process.env.OAIPRO_BASE_URL || 'https://api.oaipro.com/v1/chat/completions';
+const MODEL = process.env.OPENCODE_MODEL || 'opencode/deepseek-v4-flash-free';
+const API_KEY = process.env.OPENCODE_API_KEY || '123';
+const CHAT_URL = process.env.OPENCODE_BASE_URL || 'http://127.0.0.1:10000/v1/chat/completions';
 
 function send(res, status, data) {
   res.writeHead(status, {
@@ -33,8 +33,15 @@ function readBody(req) {
   });
 }
 
+function stripReasoning(text) {
+  return String(text || '')
+    .replace(/<think>[\s\S]*?<\/think>/gi, '')
+    .replace(/^[\s\r\n]*<\/think>/i, '')
+    .trim();
+}
+
 function extractFirstJson(text) {
-  const cleaned = String(text || '')
+  const cleaned = stripReasoning(text)
     .replace(/^```(?:json)?/i, '')
     .replace(/```$/i, '')
     .trim();
@@ -78,11 +85,10 @@ function runCurl(args, stdin) {
 }
 
 async function runLLM(prompt) {
-  if (!API_KEY) throw new Error('OAIPRO_API_KEY is not set');
   const body = JSON.stringify({
     model: MODEL,
     messages: [
-      { role: 'system', content: 'You return strict JSON only when asked. Do not use Markdown.' },
+      { role: 'system', content: 'Return strict JSON only. Do not include Markdown, explanations, reasoning, or <think> tags. Hide all internal reasoning.' },
       { role: 'user', content: prompt }
     ],
     temperature: 0.2,
@@ -107,7 +113,7 @@ async function runLLM(prompt) {
 
   if (payload?.error) throw new Error(payload.error.message || JSON.stringify(payload.error));
 
-  const text = payload?.choices?.[0]?.message?.content?.trim();
+  const text = stripReasoning(payload?.choices?.[0]?.message?.content || '');
   if (!text) throw new Error('LLM returned empty content');
   return extractFirstJson(text);
 }function wordPrompt(word, context) {
@@ -122,7 +128,9 @@ async function runLLM(prompt) {
     '- meaningZh, memoryHintZh, exampleZh must be Simplified Chinese.',
     '- base must be the lemma/base form in lowercase.',
     '- meaningZh must match the local context first, then mention other common meanings only if useful.',
-    '- forms must include common inflections and irregular forms, such as plural, past tense, past participle, -ing, comparative/superlative when relevant.',
+    '- forms must include only real common forms for this word and this part of speech in the local context.',
+    '- For nouns, include plural forms when common. Do not invent verb forms like -ed or -ing unless the word is actually used as a verb.',
+    '- For adjectives, include comparative/superlative only when common. Do not invent -ed or -ing forms.',
     '- exampleEn should reuse or adapt the local context when possible.'
   ].join('\n');
 }
@@ -142,21 +150,94 @@ function sentencePrompt(sentence) {
   ].join('\n');
 }
 
+function wordPosText(word) {
+  return String(word?.partOfSpeech || word?.meaning || '').toLowerCase();
+}
+
+function isNounWord(word) {
+  return /(^|\b)(noun|n\.|名词)(\b|$)/.test(wordPosText(word));
+}
+
+function isVerbWord(word) {
+  return /(^|\b)(verb|v\.|动词)(\b|$)/.test(wordPosText(word));
+}
+
+function pluralFor(base) {
+  if (!base || base.length < 2 || /[^a-z]/i.test(base)) return '';
+  if (/[^aeiou]y$/i.test(base)) return base.slice(0, -1) + 'ies';
+  if (/(?:s|x|z|ch|sh)$/i.test(base)) return base + 'es';
+  return base + 's';
+}
+
+function cleanForms(forms, word) {
+  const base = String(word.base || '').toLowerCase().trim();
+  const noun = isNounWord(word);
+  const verb = isVerbWord(word);
+  const seen = new Set();
+  for (const value of forms || []) {
+    const form = String(value || '').toLowerCase().trim();
+    if (!form || form === base || seen.has(form)) continue;
+    const looksVerbish = form === base + 'ed'
+      || form === base + 'ing'
+      || form === base.slice(0, -1) + 'ing'
+      || form === base.slice(0, -1) + 'ed'
+      || form === base.slice(0, -1) + 'ied';
+    const looksPlural = form === base + 's'
+      || form === base + 'es'
+      || form === base.slice(0, -1) + 'ies';
+    if (!verb && looksVerbish) continue;
+    if (!noun && !verb && looksPlural) continue;
+    seen.add(form);
+  }
+  if (noun) {
+    const plural = pluralFor(base);
+    if (plural && plural !== base) seen.add(plural);
+  }
+  return [...seen];
+}
+
 function normalizeWordResult(data, fallback) {
   const base = String(data.base || fallback || '').toLowerCase().trim();
-  return {
+  const word = {
     base,
     partOfSpeech: data.partOfSpeech || '',
     meaningZh: data.meaningZh || '',
     memoryHintZh: data.memoryHintZh || '',
     exampleEn: data.exampleEn || '',
-    exampleZh: data.exampleZh || '',
-    forms: Array.isArray(data.forms)
-      ? [...new Set(data.forms.map(x => String(x).toLowerCase().trim()).filter(Boolean))]
-      : []
+    exampleZh: data.exampleZh || ''
+  };
+  return {
+    ...word,
+    forms: cleanForms(Array.isArray(data.forms) ? data.forms : [], word)
   };
 }
 
+function cleanStoredWord(raw, key) {
+  const item = raw && typeof raw === 'object' ? raw : {};
+  const base = String(item.base || key || '').toLowerCase().trim();
+  const wordForForms = {
+    base,
+    partOfSpeech: item.partOfSpeech || item.ai?.partOfSpeech || '',
+    meaning: item.meaning || item.ai?.meaningZh || ''
+  };
+  const cleaned = { ...item, base };
+  cleaned.forms = cleanForms(Array.isArray(item.forms) ? item.forms : [], wordForForms);
+  if (item.ai && typeof item.ai === 'object') {
+    const aiWord = { ...wordForForms, partOfSpeech: item.ai.partOfSpeech || wordForForms.partOfSpeech };
+    cleaned.ai = { ...item.ai, base, forms: cleanForms(Array.isArray(item.ai.forms) ? item.ai.forms : [], aiWord) };
+  }
+  return cleaned;
+}
+
+function sanitizeStoredWords(words) {
+  const result = {};
+  if (!words || typeof words !== 'object') return result;
+  for (const [key, value] of Object.entries(words)) {
+    const cleaned = cleanStoredWord(value, key);
+    if (cleaned.base) result[cleaned.base] = cleaned;
+  }
+  return result;
+}
 const WORDBOOK_STORE = path.join(__dirname, 'reader-companion-wordbooks.json');
 
 function safeWordbookKey(file) {
@@ -192,7 +273,7 @@ function writeWordbook(file, state) {
   const entry = {
     file: key,
     updatedAt: new Date().toISOString(),
-    words: state && state.words && typeof state.words === 'object' ? state.words : {},
+    words: sanitizeStoredWords(state && state.words),
     deletedWords: state && Array.isArray(state.deletedWords) ? state.deletedWords : []
   };
   store.files[key] = entry;
@@ -220,7 +301,7 @@ function normalizeSentenceResult(data, sentence) {
 const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') return send(res, 200, { ok: true });
   if (req.method === 'GET' && req.url === '/health') {
-    return send(res, 200, { ok: true, provider: 'oaipro', model: MODEL, hasKey: Boolean(API_KEY), baseUrl: CHAT_URL });
+    return send(res, 200, { ok: true, provider: 'opencode', model: MODEL, hasKey: Boolean(API_KEY), baseUrl: CHAT_URL });
   }
 
   try {
@@ -264,9 +345,6 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, '127.0.0.1', () => {
   console.log(`reader companion LLM service listening on http://127.0.0.1:${PORT}`);
 });
-
-
-
 
 
 
