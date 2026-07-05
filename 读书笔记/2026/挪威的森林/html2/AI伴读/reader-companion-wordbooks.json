@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-05T03:36:29.629Z",
+  "updatedAt": "2026-07-05T05:29:23.535Z",
   "files": {
     "reader-companion-inline.html": {
       "file": "reader-companion-inline.html",
@@ -11,7 +11,6 @@
           "meaning": "adjective 佛兰芒的，佛兰德斯的（指比利时北部佛兰德斯地区、其人民或语言，在文学中常指代该地区画派那种阴郁、写实、色调深沉的风景画风格）",
           "note": "可以联想著名的“佛兰芒画派”（Flemish school）。该画派的艺术作品常描绘光线昏暗、细节写实的自然或日常景象，与文中阴冷、忧郁的汉堡雨景完美契合。\nThe cold November rain drenched the earth, lending everything the gloomy air of a Flemish landscape.\n十一月的冷雨淋湿了大地，给一切都罩上了一层佛兰德斯风景画般阴郁的色彩。",
           "forms": [
-            "flemish",
             "fleming",
             "flemings"
           ],
@@ -25,7 +24,6 @@
             "exampleEn": "The cold November rain drenched the earth, lending everything the gloomy air of a Flemish landscape.",
             "exampleZh": "十一月的冷雨淋湿了大地，给一切都罩上了一层佛兰德斯风景画般阴郁的色彩。",
             "forms": [
-              "flemish",
               "fleming",
               "flemings"
             ]
@@ -86,7 +84,7 @@
     },
     "Mura_9780307762719_epub_c02_r1.html__b170c11e513be94d": {
       "file": "Mura_9780307762719_epub_c02_r1.html__b170c11e513be94d",
-      "updatedAt": "2026-07-05T03:36:29.629Z",
+      "updatedAt": "2026-07-05T05:29:23.535Z",
       "words": {
         "compound": {
           "base": "compound",
@@ -148,6 +146,1017 @@
             "exampleZh": "宿舍院落坐落在一个被混凝土墙围绕的大四方院内。",
             "forms": [
               "quadrangles"
+            ]
+          }
+        },
+        "dense": {
+          "base": "dense",
+          "meaning": "adjective 浓密的；密集的",
+          "note": "树叶茂密遮天蔽日\nThe zelkova tree's dense canopy blocked out the sky.\n榉树浓密的树冠遮住了天空",
+          "forms": [
+            "denser",
+            "densest"
+          ],
+          "mastered": false,
+          "createdAt": 1783222868731,
+          "ai": {
+            "base": "dense",
+            "partOfSpeech": "adjective",
+            "meaningZh": "浓密的；密集的",
+            "memoryHintZh": "树叶茂密遮天蔽日",
+            "exampleEn": "The zelkova tree's dense canopy blocked out the sky.",
+            "exampleZh": "榉树浓密的树冠遮住了天空",
+            "forms": [
+              "denser",
+              "densest"
+            ]
+          }
+        },
+        "foundation": {
+          "base": "foundation",
+          "meaning": "noun 基金会（本文语境）；也指基础、地基、粉底",
+          "note": "found（建立）+ation（名词后缀）→建立的机构即基金会；也可联想事物的根基\nThe complex was run by some kind of fishy foundation that centered on an extreme right-wing guy.\n那个宿舍园区由一个可疑的基金会运营，该基金会以某个极右翼人物为核心。",
+          "forms": [
+            "foundations"
+          ],
+          "mastered": false,
+          "createdAt": 1783223970165,
+          "ai": {
+            "base": "foundation",
+            "partOfSpeech": "noun",
+            "meaningZh": "基金会（本文语境）；也指基础、地基、粉底",
+            "memoryHintZh": "found（建立）+ation（名词后缀）→建立的机构即基金会；也可联想事物的根基",
+            "exampleEn": "The complex was run by some kind of fishy foundation that centered on an extreme right-wing guy.",
+            "exampleZh": "那个宿舍园区由一个可疑的基金会运营，该基金会以某个极右翼人物为核心。",
+            "forms": [
+              "foundations"
+            ]
+          }
+        },
+        "complex": {
+          "base": "complex",
+          "meaning": "noun 建筑群，综合大楼；此处指宿舍楼群。亦可作形容词，意为复杂的。",
+          "note": "com（共同） + plex（编织）→ 编织在一起的东西 → 建筑群\nThe dorm complex was run by a fishy foundation.\n这个宿舍楼群由一个可疑的基金会经营。",
+          "forms": [
+            "complexes"
+          ],
+          "mastered": false,
+          "createdAt": 1783224056924,
+          "ai": {
+            "base": "complex",
+            "partOfSpeech": "noun",
+            "meaningZh": "建筑群，综合大楼；此处指宿舍楼群。亦可作形容词，意为复杂的。",
+            "memoryHintZh": "com（共同） + plex（编织）→ 编织在一起的东西 → 建筑群",
+            "exampleEn": "The dorm complex was run by a fishy foundation.",
+            "exampleZh": "这个宿舍楼群由一个可疑的基金会经营。",
+            "forms": [
+              "complexes"
+            ]
+          }
+        },
+        "privileged": {
+          "base": "privileged",
+          "meaning": "adjective 享有特权的，指宿舍楼中存在一个由精英学生组成的特殊俱乐部",
+          "note": "特权的（privilege + ed）→ 一群特殊人物的\nIn the dorm complex there existed a privileged club composed of elite students from various universities.\n在这个宿舍楼里，存在一个由来自不同大学的精英学生组成的特权俱乐部。",
+          "forms": [
+            "more privileged",
+            "most privileged"
+          ],
+          "mastered": false,
+          "createdAt": 1783224113691,
+          "ai": {
+            "base": "privileged",
+            "partOfSpeech": "adjective",
+            "meaningZh": "享有特权的，指宿舍楼中存在一个由精英学生组成的特殊俱乐部",
+            "memoryHintZh": "特权的（privilege + ed）→ 一群特殊人物的",
+            "exampleEn": "In the dorm complex there existed a privileged club composed of elite students from various universities.",
+            "exampleZh": "在这个宿舍楼里，存在一个由来自不同大学的精英学生组成的特权俱乐部。",
+            "forms": [
+              "more privileged",
+              "most privileged"
+            ]
+          }
+        },
+        "compose": {
+          "base": "compose",
+          "meaning": "verb (past participle) 由…组成",
+          "note": "com-共同 + pose-放置 → 放到一起 → 组成\nThe club was composed of elite students from various universities.\n这个俱乐部由来自不同大学的精英学生组成。",
+          "forms": [
+            "composes",
+            "composed",
+            "composing"
+          ],
+          "mastered": false,
+          "createdAt": 1783224528501,
+          "ai": {
+            "base": "compose",
+            "partOfSpeech": "verb (past participle)",
+            "meaningZh": "由…组成",
+            "memoryHintZh": "com-共同 + pose-放置 → 放到一起 → 组成",
+            "exampleEn": "The club was composed of elite students from various universities.",
+            "exampleZh": "这个俱乐部由来自不同大学的精英学生组成。",
+            "forms": [
+              "composes",
+              "composed",
+              "composing"
+            ]
+          }
+        },
+        "political": {
+          "base": "political",
+          "meaning": "adjective 带有政治色彩的，政治的",
+          "note": "政治（zhèngzhì）的形容词形式\nThe dorm complex had a political smell because of its extreme right-wing management.\n这个宿舍区散发着一股政治气味，因为其管理层是极右翼的。",
+          "forms": [
+            "more political",
+            "most political"
+          ],
+          "mastered": false,
+          "createdAt": 1783224543077,
+          "ai": {
+            "base": "political",
+            "partOfSpeech": "adjective",
+            "meaningZh": "带有政治色彩的，政治的",
+            "memoryHintZh": "政治（zhèngzhì）的形容词形式",
+            "exampleEn": "The dorm complex had a political smell because of its extreme right-wing management.",
+            "exampleZh": "这个宿舍区散发着一股政治气味，因为其管理层是极右翼的。",
+            "forms": [
+              "more political",
+              "most political"
+            ]
+          }
+        },
+        "fishy": {
+          "base": "fishy",
+          "meaning": "adjective 可疑的，靠不住的",
+          "note": "fish(鱼)+y → 闻起来有鱼腥味 → 感觉不对劲、可疑\nThere was just one problem with the place: its political smell. The complex was run by some kind of fishy foundation that centered on some kind of extreme right-wing guy.\n这个地方只有一个问题：它的政治气味。这个宿舍区由一个可疑的基金会运营，这个基金会以某个极右翼人物为中心。",
+          "forms": [
+            "fishier",
+            "fishiest",
+            "fishily"
+          ],
+          "mastered": false,
+          "createdAt": 1783224810945,
+          "ai": {
+            "base": "fishy",
+            "partOfSpeech": "adjective",
+            "meaningZh": "可疑的，靠不住的",
+            "memoryHintZh": "fish(鱼)+y → 闻起来有鱼腥味 → 感觉不对劲、可疑",
+            "exampleEn": "There was just one problem with the place: its political smell. The complex was run by some kind of fishy foundation that centered on some kind of extreme right-wing guy.",
+            "exampleZh": "这个地方只有一个问题：它的政治气味。这个宿舍区由一个可疑的基金会运营，这个基金会以某个极右翼人物为中心。",
+            "forms": [
+              "fishier",
+              "fishiest",
+              "fishily"
+            ]
+          }
+        },
+        "elite": {
+          "base": "elite",
+          "meaning": "adjective 精英的；出类拔萃的",
+          "note": "elite 音近'一粒特'，想象一粒特别优秀的种子，是精英。\nThere was a privileged club composed of elite students from various universities.\n有一个由来自不同大学的精英学生组成的特权俱乐部。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783224915760,
+          "ai": {
+            "base": "elite",
+            "partOfSpeech": "adjective",
+            "meaningZh": "精英的；出类拔萃的",
+            "memoryHintZh": "elite 音近'一粒特'，想象一粒特别优秀的种子，是精英。",
+            "exampleEn": "There was a privileged club composed of elite students from various universities.",
+            "exampleZh": "有一个由来自不同大学的精英学生组成的特权俱乐部。",
+            "forms": []
+          }
+        },
+        "solemn": {
+          "base": "solemn",
+          "meaning": "adjective 庄严的，严肃的（尤指仪式、场合等）；不苟言笑的",
+          "note": "solemn 拆解为 'so lemn'，联想为 '如此（so）冷（冷峻）'，即表情严肃、庄重的场面\nEach day at the complex began with the solemn raising of the flag.\n每天，这个园区都以庄严的升旗仪式开始。",
+          "forms": [
+            "more solemn",
+            "most solemn"
+          ],
+          "mastered": false,
+          "createdAt": 1783224926633,
+          "ai": {
+            "base": "solemn",
+            "partOfSpeech": "adjective",
+            "meaningZh": "庄严的，严肃的（尤指仪式、场合等）；不苟言笑的",
+            "memoryHintZh": "solemn 拆解为 'so lemn'，联想为 '如此（so）冷（冷峻）'，即表情严肃、庄重的场面",
+            "exampleEn": "Each day at the complex began with the solemn raising of the flag.",
+            "exampleZh": "每天，这个园区都以庄严的升旗仪式开始。",
+            "forms": [
+              "more solemn",
+              "most solemn"
+            ]
+          }
+        },
+        "anthem": {
+          "base": "anthem",
+          "meaning": "noun 国歌",
+          "note": "升旗时奏响国歌\nEach day at the complex they played the national anthem.\n每天在大院里他们都会演奏国歌。",
+          "forms": [
+            "anthems"
+          ],
+          "mastered": false,
+          "createdAt": 1783225216290,
+          "ai": {
+            "base": "anthem",
+            "partOfSpeech": "noun",
+            "meaningZh": "国歌",
+            "memoryHintZh": "升旗时奏响国歌",
+            "exampleEn": "Each day at the complex they played the national anthem.",
+            "exampleZh": "每天在大院里他们都会演奏国歌。",
+            "forms": [
+              "anthems"
+            ]
+          }
+        },
+        "charge": {
+          "base": "charge",
+          "meaning": "noun 负责，管理（in charge of 短语）；此外还指费用、充电、指控等",
+          "note": "charge 音似‘查职’，检查职务即要负责\nThe head of the east dormitory was in charge of the flag.\n东宿舍的舍监负责掌管校旗。",
+          "forms": [
+            "charges"
+          ],
+          "mastered": false,
+          "createdAt": 1783225266813,
+          "ai": {
+            "base": "charge",
+            "partOfSpeech": "noun",
+            "meaningZh": "负责，管理（in charge of 短语）；此外还指费用、充电、指控等",
+            "memoryHintZh": "charge 音似‘查职’，检查职务即要负责",
+            "exampleEn": "The head of the east dormitory was in charge of the flag.",
+            "exampleZh": "东宿舍的舍监负责掌管校旗。",
+            "forms": [
+              "charges"
+            ]
+          }
+        },
+        "bristly": {
+          "base": "bristly",
+          "meaning": "adjective 短而硬的，粗硬的（多指短发）",
+          "note": "bristle 是刷子上的硬毛，bristly 就是像硬毛那样短而硬的\nHis bristly hair was flecked with gray.\n他短硬的头发夹杂着灰色。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783225380627,
+          "ai": {
+            "base": "bristly",
+            "partOfSpeech": "adjective",
+            "meaningZh": "短而硬的，粗硬的（多指短发）",
+            "memoryHintZh": "bristle 是刷子上的硬毛，bristly 就是像硬毛那样短而硬的",
+            "exampleEn": "His bristly hair was flecked with gray.",
+            "exampleZh": "他短硬的头发夹杂着灰色。",
+            "forms": []
+          }
+        },
+        "flecked": {
+          "base": "flecked",
+          "meaning": "adjective 点缀着…的，带有…斑点的（尤指灰色斑点）",
+          "note": "fleck（斑点，微粒）的过去分词作形容词，想象头发上零星散布着灰色斑点。\nHis bristly hair was flecked with gray.\n他那硬直的头发上零星点缀着灰色。",
+          "forms": [
+            "more flecked",
+            "most flecked"
+          ],
+          "mastered": false,
+          "createdAt": 1783225387307,
+          "ai": {
+            "base": "flecked",
+            "partOfSpeech": "adjective",
+            "meaningZh": "点缀着…的，带有…斑点的（尤指灰色斑点）",
+            "memoryHintZh": "fleck（斑点，微粒）的过去分词作形容词，想象头发上零星散布着灰色斑点。",
+            "exampleEn": "His bristly hair was flecked with gray.",
+            "exampleZh": "他那硬直的头发上零星点缀着灰色。",
+            "forms": [
+              "more flecked",
+              "most flecked"
+            ]
+          }
+        },
+        "sunburned": {
+          "base": "sunburned",
+          "meaning": "adjective 晒伤的",
+          "note": "想象皮肤被太阳晒得发红脱皮，像被轻微灼烧过一样。\nHis sunburned neck bore a long scar.\n他晒伤的脖子上有一道长长的疤痕。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783225465438,
+          "ai": {
+            "base": "sunburned",
+            "partOfSpeech": "adjective",
+            "meaningZh": "晒伤的",
+            "memoryHintZh": "想象皮肤被太阳晒得发红脱皮，像被轻微灼烧过一样。",
+            "exampleEn": "His sunburned neck bore a long scar.",
+            "exampleZh": "他晒伤的脖子上有一道长长的疤痕。",
+            "forms": []
+          }
+        },
+        "neck": {
+          "base": "neck",
+          "meaning": "noun 脖子",
+          "note": "联想：脖子像连接头和身体的桥梁\nHis sunburned neck bore a long scar.\n他那晒黑的脖子上有一道长长的伤疤。",
+          "forms": [
+            "necks"
+          ],
+          "mastered": false,
+          "createdAt": 1783225469805,
+          "ai": {
+            "base": "neck",
+            "partOfSpeech": "noun",
+            "meaningZh": "脖子",
+            "memoryHintZh": "联想：脖子像连接头和身体的桥梁",
+            "exampleEn": "His sunburned neck bore a long scar.",
+            "exampleZh": "他那晒黑的脖子上有一道长长的伤疤。",
+            "forms": [
+              "necks"
+            ]
+          }
+        },
+        "scar": {
+          "base": "scar",
+          "meaning": "noun 伤疤；疤痕",
+          "note": "想起村里的“伤疤”老人 -> scar\nHis sunburned neck bore a long scar.\n他被晒黑的脖子上有一道长长的伤疤。",
+          "forms": [
+            "scars"
+          ],
+          "mastered": false,
+          "createdAt": 1783225474614,
+          "ai": {
+            "base": "scar",
+            "partOfSpeech": "noun",
+            "meaningZh": "伤疤；疤痕",
+            "memoryHintZh": "想起村里的“伤疤”老人 -> scar",
+            "exampleEn": "His sunburned neck bore a long scar.",
+            "exampleZh": "他被晒黑的脖子上有一道长长的伤疤。",
+            "forms": [
+              "scars"
+            ]
+          }
+        },
+        "nakano": {
+          "base": "nakano",
+          "meaning": "proper noun 中野（东京地名，战时设有间谍学校）",
+          "note": "中野间谍学校，联想到谍报训练\nHe was a graduate of the wartime Nakano spy school.\n他是战时中野间谍学校的毕业生。",
+          "forms": [
+            "nakanos"
+          ],
+          "mastered": false,
+          "createdAt": 1783225515335,
+          "ai": {
+            "base": "nakano",
+            "partOfSpeech": "proper noun",
+            "meaningZh": "中野（东京地名，战时设有间谍学校）",
+            "memoryHintZh": "中野间谍学校，联想到谍报训练",
+            "exampleEn": "He was a graduate of the wartime Nakano spy school.",
+            "exampleZh": "他是战时中野间谍学校的毕业生。",
+            "forms": [
+              "nakanos"
+            ]
+          }
+        },
+        "bear": {
+          "base": "bear",
+          "meaning": "verb 带有，有（痕迹、特征）；忍受；承担；支撑",
+          "note": "bore 是 bear 的过去式，脖子 '承受' 了一道疤痕\nHis sunburned neck bore a long scar.\n他晒黑的脖子上留着一道长长的疤痕。",
+          "forms": [
+            "bears",
+            "bore",
+            "borne",
+            "bearing"
+          ],
+          "mastered": false,
+          "createdAt": 1783225536423,
+          "ai": {
+            "base": "bear",
+            "partOfSpeech": "verb",
+            "meaningZh": "带有，有（痕迹、特征）；忍受；承担；支撑",
+            "memoryHintZh": "bore 是 bear 的过去式，脖子 '承受' 了一道疤痕",
+            "exampleEn": "His sunburned neck bore a long scar.",
+            "exampleZh": "他晒黑的脖子上留着一道长长的疤痕。",
+            "forms": [
+              "bears",
+              "bore",
+              "borne",
+              "bearing"
+            ]
+          }
+        },
+        "navy": {
+          "base": "navy",
+          "meaning": "adjective 深蓝色的",
+          "note": "海军制服的颜色，深沉的蓝\nHe always wore a navy blue student uniform.\n他总是穿着一套海军蓝色的学生制服。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783225645109,
+          "ai": {
+            "base": "navy",
+            "partOfSpeech": "adjective",
+            "meaningZh": "深蓝色的",
+            "memoryHintZh": "海军制服的颜色，深沉的蓝",
+            "exampleEn": "He always wore a navy blue student uniform.",
+            "exampleZh": "他总是穿着一套海军蓝色的学生制服。",
+            "forms": []
+          }
+        },
+        "reverentially": {
+          "base": "reverentially",
+          "meaning": "adverb 恭敬地，虔诚地",
+          "note": "来自reverence（尊敬），联想对神父(reverend)般恭敬地做事\nThis he reverentially proffered to Nakano, who would clip it to the rope on the flagpole.\n他恭敬地将旗帜递给中野，中野则将其夹在旗杆的绳子上。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783226297423,
+          "ai": {
+            "base": "reverentially",
+            "partOfSpeech": "adverb",
+            "meaningZh": "恭敬地，虔诚地",
+            "memoryHintZh": "来自reverence（尊敬），联想对神父(reverend)般恭敬地做事",
+            "exampleEn": "This he reverentially proffered to Nakano, who would clip it to the rope on the flagpole.",
+            "exampleZh": "他恭敬地将旗帜递给中野，中野则将其夹在旗杆的绳子上。",
+            "forms": []
+          }
+        },
+        "proffer": {
+          "base": "proffer",
+          "meaning": "verb 恭敬地递上，提供",
+          "note": "pro-向前 + offer提供 → 向前方奉上\nUniform reverentially proffered the folded banner to Nakano.\nUniform恭敬地将折好的旗帜递给了Nakano。",
+          "forms": [
+            "proffers",
+            "proffered",
+            "proffering"
+          ],
+          "mastered": false,
+          "createdAt": 1783226301977,
+          "ai": {
+            "base": "proffer",
+            "partOfSpeech": "verb",
+            "meaningZh": "恭敬地递上，提供",
+            "memoryHintZh": "pro-向前 + offer提供 → 向前方奉上",
+            "exampleEn": "Uniform reverentially proffered the folded banner to Nakano.",
+            "exampleZh": "Uniform恭敬地将折好的旗帜递给了Nakano。",
+            "forms": [
+              "proffers",
+              "proffered",
+              "proffering"
+            ]
+          }
+        },
+        "reign": {
+          "base": "reign",
+          "meaning": "noun 统治；君主统治时期",
+          "note": "谐音'任'，统治的任期\nMay our Lord's reign last forever.\n愿我主的统治永存。",
+          "forms": [
+            "reigns"
+          ],
+          "mastered": false,
+          "createdAt": 1783226444497,
+          "ai": {
+            "base": "reign",
+            "partOfSpeech": "noun",
+            "meaningZh": "统治；君主统治时期",
+            "memoryHintZh": "谐音'任'，统治的任期",
+            "exampleEn": "May our Lord's reign last forever.",
+            "exampleZh": "愿我主的统治永存。",
+            "forms": [
+              "reigns"
+            ]
+          }
+        },
+        "track": {
+          "base": "track",
+          "meaning": "noun 轨道，铁轨；（亦指）路径、踪迹",
+          "note": "track 音似'踹客'，想象工人在轨道上踹开障碍物\nIt seemed unfair that track construction crews were denied the protection of the flag.\n轨道施工队被剥夺了国旗的庇护，这似乎不公平。",
+          "forms": [
+            "tracks"
+          ],
+          "mastered": false,
+          "createdAt": 1783226562088,
+          "ai": {
+            "base": "track",
+            "partOfSpeech": "noun",
+            "meaningZh": "轨道，铁轨；（亦指）路径、踪迹",
+            "memoryHintZh": "track 音似'踹客'，想象工人在轨道上踹开障碍物",
+            "exampleEn": "It seemed unfair that track construction crews were denied the protection of the flag.",
+            "exampleZh": "轨道施工队被剥夺了国旗的庇护，这似乎不公平。",
+            "forms": [
+              "tracks"
+            ]
+          }
+        },
+        "construction": {
+          "base": "construction",
+          "meaning": "noun 施工、建设（此处指轨道铺设）；也可指构造、结构",
+          "note": "con（共同）+struct（建造）+ion（名词后缀）→ 共同建造 → 建设、施工\nThe track construction crews work through the night.\n轨道施工队整夜工作。",
+          "forms": [
+            "constructions"
+          ],
+          "mastered": false,
+          "createdAt": 1783226566673,
+          "ai": {
+            "base": "construction",
+            "partOfSpeech": "noun",
+            "meaningZh": "施工、建设（此处指轨道铺设）；也可指构造、结构",
+            "memoryHintZh": "con（共同）+struct（建造）+ion（名词后缀）→ 共同建造 → 建设、施工",
+            "exampleEn": "The track construction crews work through the night.",
+            "exampleZh": "轨道施工队整夜工作。",
+            "forms": [
+              "constructions"
+            ]
+          }
+        },
+        "deny": {
+          "base": "deny",
+          "meaning": "verb 拒绝给予，剥夺（权利等）",
+          "note": "de（向下）+ ny（你）→ 把你往下压 → 拒绝给予\nI did not know why the flag had to be taken down at night; it seemed unfair that such people were denied the protection of the flag.\n我不知道为什么夜晚必须降旗；在我看来，这些人被剥夺了国旗的保护是不公平的。",
+          "forms": [
+            "denies",
+            "denied",
+            "denying"
+          ],
+          "mastered": false,
+          "createdAt": 1783226611368,
+          "ai": {
+            "base": "deny",
+            "partOfSpeech": "verb",
+            "meaningZh": "拒绝给予，剥夺（权利等）",
+            "memoryHintZh": "de（向下）+ ny（你）→ 把你往下压 → 拒绝给予",
+            "exampleEn": "I did not know why the flag had to be taken down at night; it seemed unfair that such people were denied the protection of the flag.",
+            "exampleZh": "我不知道为什么夜晚必须降旗；在我看来，这些人被剥夺了国旗的保护是不公平的。",
+            "forms": [
+              "denies",
+              "denied",
+              "denying"
+            ]
+          }
+        },
+        "protection": {
+          "base": "protection",
+          "meaning": "noun 保护，庇护，保障",
+          "note": "pro-（向前）+ tect（覆盖）= 在前面遮挡，引申为保护\nIt seemed unfair to me that such people were denied the protection of the flag.\n在我看来，这些人被剥夺了国旗的庇护，实在不公平。",
+          "forms": [
+            "protections"
+          ],
+          "mastered": false,
+          "createdAt": 1783226617367,
+          "ai": {
+            "base": "protection",
+            "partOfSpeech": "noun",
+            "meaningZh": "保护，庇护，保障",
+            "memoryHintZh": "pro-（向前）+ tect（覆盖）= 在前面遮挡，引申为保护",
+            "exampleEn": "It seemed unfair to me that such people were denied the protection of the flag.",
+            "exampleZh": "在我看来，这些人被剥夺了国旗的庇护，实在不公平。",
+            "forms": [
+              "protections"
+            ]
+          }
+        },
+        "filth": {
+          "base": "filth",
+          "meaning": "noun 污秽，肮脏（指肮脏的环境或物品）",
+          "note": "filth 音似 '废物'，废物的堆集就是肮脏\nThe filth of these all-male rooms was horrifying.\n这些全是男生的房间里污秽不堪，令人震惊。",
+          "forms": [
+            "filths"
+          ],
+          "mastered": false,
+          "createdAt": 1783226728563,
+          "ai": {
+            "base": "filth",
+            "partOfSpeech": "noun",
+            "meaningZh": "污秽，肮脏（指肮脏的环境或物品）",
+            "memoryHintZh": "filth 音似 '废物'，废物的堆集就是肮脏",
+            "exampleEn": "The filth of these all-male rooms was horrifying.",
+            "exampleZh": "这些全是男生的房间里污秽不堪，令人震惊。",
+            "forms": [
+              "filths"
+            ]
+          }
+        },
+        "horrifying": {
+          "base": "horrifying",
+          "meaning": "adjective 令人震惊的，骇人的（指极其肮脏、可怕）",
+          "note": "horror（恐怖）的现在分词形式作形容词，想象那种让人毛骨悚然的肮脏\nThe filth of these all-male rooms was horrifying.\n这些全是男生的房间的肮脏令人震惊。",
+          "forms": [
+            "more horrifying",
+            "most horrifying"
+          ],
+          "mastered": false,
+          "createdAt": 1783226732959,
+          "ai": {
+            "base": "horrifying",
+            "partOfSpeech": "adjective",
+            "meaningZh": "令人震惊的，骇人的（指极其肮脏、可怕）",
+            "memoryHintZh": "horror（恐怖）的现在分词形式作形容词，想象那种让人毛骨悚然的肮脏",
+            "exampleEn": "The filth of these all-male rooms was horrifying.",
+            "exampleZh": "这些全是男生的房间的肮脏令人震惊。",
+            "forms": [
+              "more horrifying",
+              "most horrifying"
+            ]
+          }
+        },
+        "moldy": {
+          "base": "moldy",
+          "meaning": "adjective 发霉的",
+          "note": "霉（méi）表示霉菌，联想到食物长毛腐烂\nMoldy mandarin orange skins clung to the bottoms of wastebaskets.\n发霉的橘子皮粘在废纸篓底部。",
+          "forms": [
+            "moldier",
+            "moldiest"
+          ],
+          "mastered": false,
+          "createdAt": 1783226757106,
+          "ai": {
+            "base": "moldy",
+            "partOfSpeech": "adjective",
+            "meaningZh": "发霉的",
+            "memoryHintZh": "霉（méi）表示霉菌，联想到食物长毛腐烂",
+            "exampleEn": "Moldy mandarin orange skins clung to the bottoms of wastebaskets.",
+            "exampleZh": "发霉的橘子皮粘在废纸篓底部。",
+            "forms": [
+              "moldier",
+              "moldiest"
+            ]
+          }
+        },
+        "mandarin": {
+          "base": "mandarin",
+          "meaning": "noun 柑橘；蜜橘（皮薄易剥的小柑橘）",
+          "note": "mandarin 听起来像‘满大人’，但这里指橘子；记住满大人爱吃橘子\nThe moldy mandarin orange skins clung to the bottoms of wastebaskets.\n发霉的柑橘皮粘在废纸篓的底部。",
+          "forms": [
+            "mandarins",
+            "mandarin oranges"
+          ],
+          "mastered": false,
+          "createdAt": 1783226768383,
+          "ai": {
+            "base": "mandarin",
+            "partOfSpeech": "noun",
+            "meaningZh": "柑橘；蜜橘（皮薄易剥的小柑橘）",
+            "memoryHintZh": "mandarin 听起来像‘满大人’，但这里指橘子；记住满大人爱吃橘子",
+            "exampleEn": "The moldy mandarin orange skins clung to the bottoms of wastebaskets.",
+            "exampleZh": "发霉的柑橘皮粘在废纸篓的底部。",
+            "forms": [
+              "mandarins",
+              "mandarin oranges"
+            ]
+          }
+        },
+        "cling": {
+          "base": "cling",
+          "meaning": "verb 粘住，附着（在…上）",
+          "note": "像保鲜膜（cling film）一样紧紧粘住。\nMoldy mandarin orange skins clung to the bottoms of wastebaskets.\n发霉的橘子皮粘在废纸篓底部。",
+          "forms": [
+            "clings",
+            "clinging",
+            "clung"
+          ],
+          "mastered": false,
+          "createdAt": 1783226792327,
+          "ai": {
+            "base": "cling",
+            "partOfSpeech": "verb",
+            "meaningZh": "粘住，附着（在…上）",
+            "memoryHintZh": "像保鲜膜（cling film）一样紧紧粘住。",
+            "exampleEn": "Moldy mandarin orange skins clung to the bottoms of wastebaskets.",
+            "exampleZh": "发霉的橘子皮粘在废纸篓底部。",
+            "forms": [
+              "clings",
+              "clinging",
+              "clung"
+            ]
+          }
+        },
+        "wastebasket": {
+          "base": "wastebasket",
+          "meaning": "noun 废纸篓",
+          "note": "废纸+篮子，装垃圾的小篓子\nThe bottoms of the wastebaskets were covered with moldy mandarin orange skins.\n废纸篓底部覆盖着发霉的橘子皮。",
+          "forms": [
+            "wastebaskets"
+          ],
+          "mastered": false,
+          "createdAt": 1783226797784,
+          "ai": {
+            "base": "wastebasket",
+            "partOfSpeech": "noun",
+            "meaningZh": "废纸篓",
+            "memoryHintZh": "废纸+篮子，装垃圾的小篓子",
+            "exampleEn": "The bottoms of the wastebaskets were covered with moldy mandarin orange skins.",
+            "exampleZh": "废纸篓底部覆盖着发霉的橘子皮。",
+            "forms": [
+              "wastebaskets"
+            ]
+          }
+        },
+        "cloud": {
+          "base": "cloud",
+          "meaning": "noun 尘土等的云状物；云",
+          "note": "灰尘像云一样布满天空\nAny wind that would blow through would raise clouds of dust.\n任何一阵风吹过都会扬起尘土如云。",
+          "forms": [
+            "clouds"
+          ],
+          "mastered": false,
+          "createdAt": 1783226811721,
+          "ai": {
+            "base": "cloud",
+            "partOfSpeech": "noun",
+            "meaningZh": "尘土等的云状物；云",
+            "memoryHintZh": "灰尘像云一样布满天空",
+            "exampleEn": "Any wind that would blow through would raise clouds of dust.",
+            "exampleZh": "任何一阵风吹过都会扬起尘土如云。",
+            "forms": [
+              "clouds"
+            ]
+          }
+        },
+        "sanitary": {
+          "base": "sanitary",
+          "meaning": "adjective 极其清洁的，一尘不染的（如停尸房般无菌的整洁感）",
+          "note": "san（山） + itary → 像山一样干净的？更实用：想起医院里的sanitary（卫生）要求，容不下一粒灰尘。\nMy room, on the other hand, was as sanitary as a morgue.\n相反，我的房间干净得像停尸房一样。",
+          "forms": [
+            "more sanitary",
+            "most sanitary"
+          ],
+          "mastered": false,
+          "createdAt": 1783226878121,
+          "ai": {
+            "base": "sanitary",
+            "partOfSpeech": "adjective",
+            "meaningZh": "极其清洁的，一尘不染的（如停尸房般无菌的整洁感）",
+            "memoryHintZh": "san（山） + itary → 像山一样干净的？更实用：想起医院里的sanitary（卫生）要求，容不下一粒灰尘。",
+            "exampleEn": "My room, on the other hand, was as sanitary as a morgue.",
+            "exampleZh": "相反，我的房间干净得像停尸房一样。",
+            "forms": [
+              "more sanitary",
+              "most sanitary"
+            ]
+          }
+        },
+        "morgue": {
+          "base": "morgue",
+          "meaning": "noun 太平间（比喻极其干净、死寂的地方）",
+          "note": "莫（mo）如尸体（gue → corpse），停尸房干净得没有生气\nMy room was as sanitary as a morgue.\n我的房间干净得像太平间一样。",
+          "forms": [
+            "morgues"
+          ],
+          "mastered": false,
+          "createdAt": 1783226884134,
+          "ai": {
+            "base": "morgue",
+            "partOfSpeech": "noun",
+            "meaningZh": "太平间（比喻极其干净、死寂的地方）",
+            "memoryHintZh": "莫（mo）如尸体（gue → corpse），停尸房干净得没有生气",
+            "exampleEn": "My room was as sanitary as a morgue.",
+            "exampleZh": "我的房间干净得像太平间一样。",
+            "forms": [
+              "morgues"
+            ]
+          }
+        },
+        "spotless": {
+          "base": "spotless",
+          "meaning": "adjective 一尘不染的，极其干净的",
+          "note": "spot（斑点）+ less（没有）→ 没有斑点的，引申为十分干净\nThe floor and window were spotless.\n地板和窗户一尘不染。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783226897463,
+          "ai": {
+            "base": "spotless",
+            "partOfSpeech": "adjective",
+            "meaningZh": "一尘不染的，极其干净的",
+            "memoryHintZh": "spot（斑点）+ less（没有）→ 没有斑点的，引申为十分干净",
+            "exampleEn": "The floor and window were spotless.",
+            "exampleZh": "地板和窗户一尘不染。",
+            "forms": []
+          }
+        },
+        "mattress": {
+          "base": "mattress",
+          "meaning": "noun 床垫；（语境中）每周晾晒的床垫",
+          "note": "垫在床上的垫子，形状像一张大平板\nMy room was as sanitary as a morgue—the floor and window were spotless, the mattresses were aired each week.\n我的房间像太平间一样干净——地板和窗户一尘不染，床垫每周都要晾晒。",
+          "forms": [
+            "mattresses"
+          ],
+          "mastered": false,
+          "createdAt": 1783226950461,
+          "ai": {
+            "base": "mattress",
+            "partOfSpeech": "noun",
+            "meaningZh": "床垫；（语境中）每周晾晒的床垫",
+            "memoryHintZh": "垫在床上的垫子，形状像一张大平板",
+            "exampleEn": "My room was as sanitary as a morgue—the floor and window were spotless, the mattresses were aired each week.",
+            "exampleZh": "我的房间像太平间一样干净——地板和窗户一尘不染，床垫每周都要晾晒。",
+            "forms": [
+              "mattresses"
+            ]
+          }
+        },
+        "launder": {
+          "base": "launder",
+          "meaning": "verb 洗（衣物）；洗涤。也可指洗钱（非法资金转移）",
+          "note": "launder 拆分联想：lawn（草坪）+ der（的），想象在草坪上晾晒洗好的衣物。\nThe curtains were laundered once a month.\n窗帘每月洗一次。",
+          "forms": [
+            "launders",
+            "laundering",
+            "laundered"
+          ],
+          "mastered": false,
+          "createdAt": 1783226980970,
+          "ai": {
+            "base": "launder",
+            "partOfSpeech": "verb",
+            "meaningZh": "洗（衣物）；洗涤。也可指洗钱（非法资金转移）",
+            "memoryHintZh": "launder 拆分联想：lawn（草坪）+ der（的），想象在草坪上晾晒洗好的衣物。",
+            "exampleEn": "The curtains were laundered once a month.",
+            "exampleZh": "窗帘每月洗一次。",
+            "forms": [
+              "launders",
+              "laundering",
+              "laundered"
+            ]
+          }
+        },
+        "major": {
+          "base": "major",
+          "meaning": "verb 主修（大学里的专业）",
+          "note": "major 作形容词是‘主要的’，作动词指在大学里主修某个科目，常和 in 搭配。\nWhen I told him I was majoring in drama, he looked surprised.\n当我告诉他我主修戏剧时，他看起来很惊讶。",
+          "forms": [
+            "majors",
+            "majored",
+            "majoring"
+          ],
+          "mastered": false,
+          "createdAt": 1783227041011,
+          "ai": {
+            "base": "major",
+            "partOfSpeech": "verb",
+            "meaningZh": "主修（大学里的专业）",
+            "memoryHintZh": "major 作形容词是‘主要的’，作动词指在大学里主修某个科目，常和 in 搭配。",
+            "exampleEn": "When I told him I was majoring in drama, he looked surprised.",
+            "exampleZh": "当我告诉他我主修戏剧时，他看起来很惊讶。",
+            "forms": [
+              "majors",
+              "majored",
+              "majoring"
+            ]
+          }
+        },
+        "drama": {
+          "base": "drama",
+          "meaning": "noun 戏剧（专业）",
+          "note": "drama 音似“抓马”，可联想大学里的“抓马剧”专业\nI told him I was majoring in drama.\n我告诉他我主修戏剧。",
+          "forms": [
+            "dramas"
+          ],
+          "mastered": false,
+          "createdAt": 1783227093665,
+          "ai": {
+            "base": "drama",
+            "partOfSpeech": "noun",
+            "meaningZh": "戏剧（专业）",
+            "memoryHintZh": "drama 音似“抓马”，可联想大学里的“抓马剧”专业",
+            "exampleEn": "I told him I was majoring in drama.",
+            "exampleZh": "我告诉他我主修戏剧。",
+            "forms": [
+              "dramas"
+            ]
+          }
+        },
+        "politics": {
+          "base": "politics",
+          "meaning": "noun 政治",
+          "note": "politic（政治的）+ s，指政治事务\nHe was 100-percent indifferent to politics.\n他对政治百分之百地漠不关心。",
+          "forms": [
+            "politicses"
+          ],
+          "mastered": false,
+          "createdAt": 1783227171750,
+          "ai": {
+            "base": "politics",
+            "partOfSpeech": "noun",
+            "meaningZh": "政治",
+            "memoryHintZh": "politic（政治的）+ s，指政治事务",
+            "exampleEn": "He was 100-percent indifferent to politics.",
+            "exampleZh": "他对政治百分之百地漠不关心。",
+            "forms": [
+              "politicses"
+            ]
+          }
+        },
+        "indifferent": {
+          "base": "indifferent",
+          "meaning": "adjective 不关心的，冷漠的",
+          "note": "in（不）+ different（不同）→ 对什么都觉得没区别 → 漠不关心\nHe was 100-percent indifferent to politics.\n他对政治百分之百地漠不关心。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783227180168,
+          "ai": {
+            "base": "indifferent",
+            "partOfSpeech": "adjective",
+            "meaningZh": "不关心的，冷漠的",
+            "memoryHintZh": "in（不）+ different（不同）→ 对什么都觉得没区别 → 漠不关心",
+            "exampleEn": "He was 100-percent indifferent to politics.",
+            "exampleZh": "他对政治百分之百地漠不关心。",
+            "forms": []
+          }
+        },
+        "nation": {
+          "base": "nation",
+          "meaning": "noun 全体国民；国家",
+          "note": "nation 拆成 nat (出生) + ion (名词后缀)，意为出生地，即国家\nHe did Radio Calisthenics with the rest of the nation.\n他和全国的其他人一起做广播体操。",
+          "forms": [
+            "nations"
+          ],
+          "mastered": false,
+          "createdAt": 1783228804133,
+          "ai": {
+            "base": "nation",
+            "partOfSpeech": "noun",
+            "meaningZh": "全体国民；国家",
+            "memoryHintZh": "nation 拆成 nat (出生) + ion (名词后缀)，意为出生地，即国家",
+            "exampleEn": "He did Radio Calisthenics with the rest of the nation.",
+            "exampleZh": "他和全国的其他人一起做广播体操。",
+            "forms": [
+              "nations"
+            ]
+          }
+        },
+        "calisthenics": {
+          "base": "calisthenics",
+          "meaning": "noun 广播体操；健美体操",
+          "note": "Cali-（美丽）+ sthenics（力量）→ 健美的体操\nHe was up at six each morning with the strains of \"May Our Lord's Reign.\" He'd get dressed, wash his face—forever. Then Radio Calisthenics with the rest of the nation.\n他每天早上六点起床，伴随着《愿主统治》的旋律。他穿好衣服，洗脸——永远洗个不停。然后和全国民众一起做广播体操。",
+          "forms": [
+            "calisthenicses"
+          ],
+          "mastered": false,
+          "createdAt": 1783228822570,
+          "ai": {
+            "base": "calisthenics",
+            "partOfSpeech": "noun",
+            "meaningZh": "广播体操；健美体操",
+            "memoryHintZh": "Cali-（美丽）+ sthenics（力量）→ 健美的体操",
+            "exampleEn": "He was up at six each morning with the strains of \"May Our Lord's Reign.\" He'd get dressed, wash his face—forever. Then Radio Calisthenics with the rest of the nation.",
+            "exampleZh": "他每天早上六点起床，伴随着《愿主统治》的旋律。他穿好衣服，洗脸——永远洗个不停。然后和全国民众一起做广播体操。",
+            "forms": [
+              "calisthenicses"
+            ]
+          }
+        },
+        "routine": {
+          "base": "routine",
+          "meaning": "noun 例行事务；常规；固定程序",
+          "note": "联想'route（路线）'，每天走同一条路，形成固定程序\nI've been doing the same thing every day for ten years, and once I start I do the whole routine unconsciously.\n十年来我每天都做同样的事，一旦开始，就会不自觉地完成整套例行程序。",
+          "forms": [
+            "routines"
+          ],
+          "mastered": false,
+          "createdAt": 1783229148403,
+          "ai": {
+            "base": "routine",
+            "partOfSpeech": "noun",
+            "meaningZh": "例行事务；常规；固定程序",
+            "memoryHintZh": "联想'route（路线）'，每天走同一条路，形成固定程序",
+            "exampleEn": "I've been doing the same thing every day for ten years, and once I start I do the whole routine unconsciously.",
+            "exampleZh": "十年来我每天都做同样的事，一旦开始，就会不自觉地完成整套例行程序。",
+            "forms": [
+              "routines"
+            ]
+          }
+        },
+        "unconscious": {
+          "base": "unconscious",
+          "meaning": "adverb 不自觉地；无意识地",
+          "note": "un-（不）+ conscious（有意识的）+ -ly（副词后缀）→ 无意识地\nOnce I start, I do the whole routine unconsciously.\n一旦开始，我就会不自觉地完成整个过程。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783229178759,
+          "ai": {
+            "base": "unconscious",
+            "partOfSpeech": "adverb",
+            "meaningZh": "不自觉地；无意识地",
+            "memoryHintZh": "un-（不）+ conscious（有意识的）+ -ly（副词后缀）→ 无意识地",
+            "exampleEn": "Once I start, I do the whole routine unconsciously.",
+            "exampleZh": "一旦开始，我就会不自觉地完成整个过程。",
+            "forms": []
+          }
+        },
+        "chuckle": {
+          "base": "chuckle",
+          "meaning": "verb 轻声笑，暗自发笑",
+          "note": "chuck（轻拍）+le（小动作），像轻轻拍打一样的小声笑\nNaoko chuckled when I told her the story of Storm Trooper and his Radio Calisthenics.\n当我给她讲风暴兵和广播体操的故事时，直子轻声笑了。",
+          "forms": [
+            "chuckles",
+            "chuckling",
+            "chuckled"
+          ],
+          "mastered": false,
+          "createdAt": 1783229363528,
+          "ai": {
+            "base": "chuckle",
+            "partOfSpeech": "verb",
+            "meaningZh": "轻声笑，暗自发笑",
+            "memoryHintZh": "chuck（轻拍）+le（小动作），像轻轻拍打一样的小声笑",
+            "exampleEn": "Naoko chuckled when I told her the story of Storm Trooper and his Radio Calisthenics.",
+            "exampleZh": "当我给她讲风暴兵和广播体操的故事时，直子轻声笑了。",
+            "forms": [
+              "chuckles",
+              "chuckling",
+              "chuckled"
             ]
           }
         }
