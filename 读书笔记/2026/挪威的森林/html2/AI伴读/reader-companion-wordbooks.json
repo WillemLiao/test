@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-05T03:36:29.629Z",
+  "files": {
+    "reader-companion-inline.html": {
+      "file": "reader-companion-inline.html",
+      "updatedAt": "2026-07-04T15:18:34.656Z",
+      "words": {
+        "flemish": {
+          "base": "flemish",
+          "meaning": "adjective 佛兰芒的，佛兰德斯的（指比利时北部佛兰德斯地区、其人民或语言，在文学中常指代该地区画派那种阴郁、写实、色调深沉的风景画风格）",
+          "note": "可以联想著名的“佛兰芒画派”（Flemish school）。该画派的艺术作品常描绘光线昏暗、细节写实的自然或日常景象，与文中阴冷、忧郁的汉堡雨景完美契合。\nThe cold November rain drenched the earth, lending everything the gloomy air of a Flemish landscape.\n十一月的冷雨淋湿了大地，给一切都罩上了一层佛兰德斯风景画般阴郁的色彩。",
+          "forms": [
+            "flemish",
+            "fleming",
+            "flemings"
+          ],
+          "mastered": false,
+          "createdAt": 1783172641970,
+          "ai": {
+            "base": "flemish",
+            "partOfSpeech": "adjective",
+            "meaningZh": "佛兰芒的，佛兰德斯的（指比利时北部佛兰德斯地区、其人民或语言，在文学中常指代该地区画派那种阴郁、写实、色调深沉的风景画风格）",
+            "memoryHintZh": "可以联想著名的“佛兰芒画派”（Flemish school）。该画派的艺术作品常描绘光线昏暗、细节写实的自然或日常景象，与文中阴冷、忧郁的汉堡雨景完美契合。",
+            "exampleEn": "The cold November rain drenched the earth, lending everything the gloomy air of a Flemish landscape.",
+            "exampleZh": "十一月的冷雨淋湿了大地，给一切都罩上了一层佛兰德斯风景画般阴郁的色彩。",
+            "forms": [
+              "flemish",
+              "fleming",
+              "flemings"
+            ]
+          }
+        },
+        "melody": {
+          "base": "melody",
+          "meaning": "noun 旋律，曲调；优美的音乐",
+          "note": "词根记忆：mel- 表示“甜”（如 mellifluous 甜美的），-ody 表示“歌”（如 comedy 喜剧）。合在一起指“甜美的歌声”，即“旋律”。\nThe sweet melody of \"Norwegian Wood\" never failed to send a shudder through me.\n《挪威的森林》那甜美的旋律总能让我浑身一颤。",
+          "forms": [
+            "melodies"
+          ],
+          "mastered": false,
+          "createdAt": 1783172643490,
+          "ai": {
+            "base": "melody",
+            "partOfSpeech": "noun",
+            "meaningZh": "旋律，曲调；优美的音乐",
+            "memoryHintZh": "词根记忆：mel- 表示“甜”（如 mellifluous 甜美的），-ody 表示“歌”（如 comedy 喜剧）。合在一起指“甜美的歌声”，即“旋律”。",
+            "exampleEn": "The sweet melody of \"Norwegian Wood\" never failed to send a shudder through me.",
+            "exampleZh": "《挪威的森林》那甜美的旋律总能让我浑身一颤。",
+            "forms": [
+              "melodies"
+            ]
+          }
+        }
+      },
+      "deletedWords": []
+    },
+    "Mura_9780307762719_epub_c01_r1.html__132a6f3058515919": {
+      "file": "Mura_9780307762719_epub_c01_r1.html__132a6f3058515919",
+      "updatedAt": "2026-07-04T15:45:45.533Z",
+      "words": {},
+      "deletedWords": [
+        "be",
+        "mountain",
+        "just",
+        "fail"
+      ]
+    },
+    "Mura_9780307762719_epub_c11_r1.html__fb38dbc78f680100": {
+      "file": "Mura_9780307762719_epub_c11_r1.html__fb38dbc78f680100",
+      "updatedAt": "2026-07-04T13:52:32.378Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "Mura_9780307762719_epub_c01_r1.html__a0136c38105dd445": {
+      "file": "Mura_9780307762719_epub_c01_r1.html__a0136c38105dd445",
+      "updatedAt": "2026-07-04T13:57:57.638Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "index.html__7822227ebdfd65ce": {
+      "file": "index.html__7822227ebdfd65ce",
+      "updatedAt": "2026-07-04T14:22:32.900Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "Mura_9780307762719_epub_c02_r1.html__b170c11e513be94d": {
+      "file": "Mura_9780307762719_epub_c02_r1.html__b170c11e513be94d",
+      "updatedAt": "2026-07-05T03:36:29.629Z",
+      "words": {
+        "compound": {
+          "base": "compound",
+          "meaning": "noun 围墙内的建筑群；化合物",
+          "note": "围墙内有多个建筑物，就像化合物里有多种元素。\nThe dormitory compound on the hill was surrounded by a concrete wall.\n山上的宿舍围墙内有一个大院子。",
+          "forms": [
+            "compounds"
+          ],
+          "mastered": false,
+          "createdAt": 1783222380877,
+          "ai": {
+            "base": "compound",
+            "partOfSpeech": "noun",
+            "meaningZh": "围墙内的建筑群；化合物",
+            "memoryHintZh": "围墙内有多个建筑物，就像化合物里有多种元素。",
+            "exampleEn": "The dormitory compound on the hill was surrounded by a concrete wall.",
+            "exampleZh": "山上的宿舍围墙内有一个大院子。",
+            "forms": [
+              "compounds"
+            ]
+          }
+        },
+        "concrete": {
+          "base": "concrete",
+          "meaning": "noun 具体的建筑材料；混凝土",
+          "note": "围墙由混凝土构成\nThe dormitory compound sat on a large quadrangle surrounded by a concrete wall.\n宿舍院落坐落在一个大四方形内，四周被一堵混凝土墙包围。",
+          "forms": [
+            "concretes"
+          ],
+          "mastered": false,
+          "createdAt": 1783222400237,
+          "ai": {
+            "base": "concrete",
+            "partOfSpeech": "noun",
+            "meaningZh": "具体的建筑材料；混凝土",
+            "memoryHintZh": "围墙由混凝土构成",
+            "exampleEn": "The dormitory compound sat on a large quadrangle surrounded by a concrete wall.",
+            "exampleZh": "宿舍院落坐落在一个大四方形内，四周被一堵混凝土墙包围。",
+            "forms": [
+              "concretes"
+            ]
+          }
+        },
+        "quadrangle": {
+          "base": "quadrangle",
+          "meaning": "noun 四边形；四方院",
+          "note": "四个角的形状\nThe dormitory compound sat on a large quadrangle surrounded by a concrete wall.\n宿舍院落坐落在一个被混凝土墙围绕的大四方院内。",
+          "forms": [
+            "quadrangles"
+          ],
+          "mastered": false,
+          "createdAt": 1783222589625,
+          "ai": {
+            "base": "quadrangle",
+            "partOfSpeech": "noun",
+            "meaningZh": "四边形；四方院",
+            "memoryHintZh": "四个角的形状",
+            "exampleEn": "The dormitory compound sat on a large quadrangle surrounded by a concrete wall.",
+            "exampleZh": "宿舍院落坐落在一个被混凝土墙围绕的大四方院内。",
+            "forms": [
+              "quadrangles"
+            ]
+          }
+        }
+      },
+      "deletedWords": []
+    }
+  }
+}
