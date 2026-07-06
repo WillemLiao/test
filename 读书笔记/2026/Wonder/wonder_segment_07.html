@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 友情与生日</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #f5f0e6; font-family: 'Noto Sans SC', sans-serif; color: #3a3530; display: flex; min-height: 100vh; }
+  .nav { position: fixed; top: 0; right: 0; width: 210px; height: 100vh; background: linear-gradient(180deg, #ebe3d2 0%, #e5dccb 100%); border-left: 1px solid rgba(0,0,0,0.06); padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #b8a695; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 16px; font-size: 0.7em; font-weight: 700; color: #a8743a; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .nav-title small { display: block; font-size: 0.7em; font-weight: 300; color: #7a6a7a; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 6px 16px; color: #7a6a7a; text-decoration: none; font-size: 0.7em; font-weight: 300; transition: all 0.2s; border-left: 2px solid transparent; }
+  .nav-item:hover { color: #a8743a; background: rgba(227,168,105,0.04); border-left-color: #a8743a; }
+  .nav-item .num { width: 17px; height: 17px; border-radius: 50%; background: rgba(0,0,0,0.04); color: #98826f; font-size: 0.6em; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+  .nav-item:hover .num { background: #a8743a; color: #f5f0e6; }
+  .nav-item.active { color: #a8743a; background: rgba(227,168,105,0.08); border-left-color: #a8743a; }
+  .nav-item.active .num { background: #a8743a; color: #f5f0e6; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 0.55em; color: #a89580; border-top: 1px solid rgba(0,0,0,0.06); }
+  .main { flex: 1; max-width: calc(100% - 210px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #a8743a, transparent); }
+  header h1 { font-size: 1.5em; font-weight: 700; color: #a8743a; letter-spacing: 0.12em; }
+  header h1 small { display: block; font-size: 0.35em; color: #7a6a7a; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #7a6a7a; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+  header .segment-summary { max-width: 600px; margin: 16px auto 0; font-size: 0.78em; color: #7a6a7a; font-weight: 300; line-height: 1.7; padding: 12px 18px; background: rgba(0,0,0,0.03); border-radius: 8px; }
+  .section { margin-bottom: 36px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .section-num { width: 30px; height: 30px; border-radius: 50%; background: #a8743a; color: #f5f0e6; font-weight: 700; font-size: 0.75em; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 1.05em; font-weight: 700; color: #a8743a; letter-spacing: 0.04em; }
+  .stitle .en { font-size: 0.65em; color: #7a6a7a; font-weight: 300; margin-top: 1px; }
+  .sline { flex: 0 0 40px; height: 1px; background: linear-gradient(90deg, rgba(227,168,105,0.3), transparent); }
+  .body { background: linear-gradient(135deg, #fbf7ed 0%, #f7f2e6 100%); border-radius: 12px; padding: 20px 24px; border: 1px solid rgba(0,0,0,0.06); transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(227,168,105,0.15); }
+  .body p { font-family: 'Noto Serif SC', serif; font-size: 0.9em; line-height: 1.85; color: #4a4438; margin-bottom: 10px; text-align: justify; }
+  .body p:last-child { margin-bottom: 0; }
+  .highlight { color: #8a5e20; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(227,168,105,0.15) 60%); padding: 0 2px; }
+  .hl-b { color: #4a7a9e; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-r { color: #b8553a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #7c5fa8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #3d8a68; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+  .key { border-left: 3px solid #a8743a; background: rgba(227,168,105,0.04); padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 0.58em; font-weight: 700; color: #a8743a; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .key p { font-size: 0.85em; color: #6a4f30; margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag { font-size: 0.58em; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: rgba(0,0,0,0.06); color: #7a6a7a; }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #a8743a; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5fa8; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #4a7a9e; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b8553a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #3d8a68; }
+  footer { text-align: center; padding: 30px 20px; color: #a89580; font-size: 0.65em; font-weight: 300; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(15,15,30,0.9); border: 1px solid rgba(0,0,0,0.10); border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #a8743a; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header h1 { font-size: 1.3em; }
+    .section { margin-bottom: 24px; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">Wonder<small>第7段 · 4章</small></div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>Jack Will</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>October Precept</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>Apples</a>
+    <a class="nav-item" href="#s4"><span class="num">4</span>Halloween</a>
+  </div>
+  <div class="nav-footer">R. J. Palacio</div>
+</nav>
+<div class="main">
+<header>
+  <h1>Wonder<small>段七 · 友情与生日 · 暗流涌动的十月</small></h1>
+  <div class="author">R. J. Palacio</div>
+  <div class="segment-summary">
+    Jack 和 Auggie 的友谊日渐深厚——他们一起在课堂上偷着乐，一起编造"粘液枪"的幻想。Auggie 的十岁生日派对来了，但大部分同学都没有来。十月到了，万圣节即将来临。
+  </div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">Jack Will</div>
+      <div class="en">Jack Will · "Dude, you should sue your doctor!"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag green">友谊</span><span class="tag gold">幽默</span></div>
+    <p>I hung out with Jack in homeroom, English, history, computer, music, and science — every class we had together. The teachers assigned seats, and I ended up next to Jack in every single one. <span class="hl-b">Either the teachers were told to put us together, or it was a totally incredible coincidence.</span></p>
+    <p>One time a huge eighth grader knocked me down on the stairs. When he helped me up and saw my face, he just said: "Whoa!" <span class="hl-g">For some reason, me and Jack started cracking up. "That guy made the funniest face!"</span></p>
+    <p>Jack whispered: <span class="highlight">"Do you ever want to beat those kids up? I think you should get a secret squirt gun attached to your eyes. Every time someone stares at you, squirt them in the face." "With some green slime." "No: with slug juice mixed with dog pee."</span></p>
+    <p>Then Jack asked: "Are you always going to look this way? Can't you get plastic surgery or something?" <span class="hl-r">I smiled: "Hello? This <em>is</em> after plastic surgery!" Jack clapped his hand over his forehead. "Dude, you should sue your doctor!"</span></p>
+    <p>We laughed so hard Mr. Roche made us switch chairs with the kids next to us.</p>
+    <div class="key"><span class="lbl">✦ 真正的友谊</span><p>Jack 是唯一一个能拿 Auggie 的脸开玩笑的人——这恰恰说明他不把它当回事。能一起笑出来的,才是真朋友。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">十月的格言</div>
+      <div class="en">Mr. Browne's October Precept · "Your deeds are your monuments"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">格言</span><span class="tag purple">思考</span></div>
+    <p>Mr. Browne's precept for October was: <span class="highlight">YOUR DEEDS ARE YOUR MONUMENTS.</span></p>
+    <p>He told us this was written on an Egyptian guy's tombstone from thousands of years ago. Our homework was to write a paragraph about what it meant.</p>
+    <p><span class="hl-g">This is what I wrote: "This precept means that we should be remembered for the things we do. The things we do are the most important things of all. They are more important than what we say or what we look like. … Your deeds are like your monuments. Built with memories instead of with stone."</span></p>
+    <div class="key"><span class="lbl">✦ 行为的丰碑</span><p>一个十岁孩子写下了全书最深刻的感悟：我们的外表不重要,我们的行为才是留给世界的纪念碑。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">苹果</div>
+      <div class="en">Apples · "The apple doesn't fall far from the tree"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">生日</span><span class="tag red">冷落</span></div>
+    <p>My birthday is October 10. I like my birthday: 10/10. I asked Mom if I could have a big bowling party and invite everyone in my homeroom plus Summer. <span class="hl-r">"I have to invite everyone because I don't want anyone to get their feelings hurt."</span></p>
+    <p>A couple of weeks later, I asked who was coming. <span class="hl-b">"Jack Will, Summer. Reid Kingsley. Both Maxes." "That's it? That's like five people."</span></p>
+    <p>Mom said a lot of people had plans. <span class="hl-p">"What did Julian give as his reason?" "His mom was the only person who didn't RSVP at all. I guess the apple doesn't fall far from the tree."</span></p>
+    <p>The party was small but great. Jack, Summer, Reid, Tristan, both Maxes, and Christopher came from Bridgeport. All the grown-ups bowled in the lane next to ours. It felt like a lot of people were there.</p>
+    <div class="key"><span class="lbl">✦ 五个人就够了</span><p>全班 20+ 人,只有 5 个同学来了。但 Auggie 说"派对很棒"——因为他学会了看杯子里还有多少水,而不是空了多少。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.15s">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="stitle">
+      <div class="zh">万圣节</div>
+      <div class="en">Halloween · Boba Fett vs. Unicorn</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">万圣节</span><span class="tag green">Summer</span></div>
+    <p>At lunch Summer asked what I was going to be for Halloween. <span class="highlight">"Boba Fett."</span> She wanted to be a unicorn but thought it was too dorky. <span class="hl-g">"Who cares what other people think, right?" I said.</span></p>
+    <p>Summer hardly ever sees me during the day — the only class we have together is English. But ever since that first lunch, we've sat at the summer table together every day, just the two of us.</p>
+    <p><span class="hl-b">"You know, that's what I like best about you. I feel like I can tell you anything."</span></p>
+    <p>I gave her a thumbs-up. "Cool beans."</p>
+    <div class="key"><span class="lbl">✦ 夏天和独角兽</span><p>Summer 想扮成独角兽却不敢,Auggie 说"管别人怎么想"——这两个被主流排斥的孩子,在午餐桌上找到了最安全的港湾。</p></div>
+  </div>
+</div>
+
+<footer>Wonder · R. J. Palacio · 第7段 · 友情与生日 · 共4章 · 阅读时间约8分钟</footer>
+</div>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => { a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var obsSections = document.querySelectorAll('.section[id^="s"]');
+    var obsNavItems = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { var id = entry.target.id; obsNavItems.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('href') === '#' + id); }); }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    obsSections.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

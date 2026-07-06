@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 认识 Auggie · 不普通的普通男孩</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5f0e6;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #3a3530;
+    display: flex;
+    min-height: 100vh;
+  }
+  .nav {
+    position: fixed; top: 0; right: 0;
+    width: 210px; height: 100vh;
+    background: linear-gradient(180deg, #ebe3d2 0%, #e5dccb 100%);
+    border-left: 1px solid rgba(0,0,0,0.06);
+    padding: 24px 0; overflow-y: auto; z-index: 100;
+    display: flex; flex-direction: column;
+  }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #b8a695; border-radius: 2px; }
+  .nav-title {
+    text-align: center; padding: 0 14px 16px;
+    font-size: 0.7em; font-weight: 700; color: #a8743a;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .nav-title small {
+    display: block; font-size: 0.7em; font-weight: 300;
+    color: #7a6a7a; margin-top: 3px;
+  }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item {
+    display: flex; align-items: center; gap: 7px;
+    padding: 6px 16px; color: #7a6a7a;
+    text-decoration: none; font-size: 0.7em; font-weight: 300;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover { color: #a8743a; background: rgba(227,168,105,0.04); border-left-color: #a8743a; }
+  .nav-item .num {
+    width: 17px; height: 17px; border-radius: 50%;
+    background: rgba(0,0,0,0.04); color: #98826f;
+    font-size: 0.6em; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: all 0.2s;
+  }
+  .nav-item:hover .num { background: #a8743a; color: #f5f0e6; }
+  .nav-item.active { color: #a8743a; background: rgba(227,168,105,0.08); border-left-color: #a8743a; }
+  .nav-item.active .num { background: #a8743a; color: #f5f0e6; }
+  .nav-footer {
+    padding: 14px; text-align: center;
+    font-size: 0.55em; color: #a89580;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .main {
+    flex: 1; max-width: calc(100% - 210px);
+    padding: 50px 60px 60px;
+  }
+  header {
+    text-align: center; padding: 30px 20px 36px;
+    margin-bottom: 36px; position: relative;
+  }
+  header::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 50px; height: 1px;
+    background: linear-gradient(90deg, transparent, #a8743a, transparent);
+  }
+  header h1 { font-size: 1.5em; font-weight: 700; color: #a8743a; letter-spacing: 0.12em; }
+  header h1 small { display: block; font-size: 0.35em; color: #7a6a7a; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #7a6a7a; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+  header .segment-summary {
+    max-width: 600px; margin: 16px auto 0;
+    font-size: 0.78em; color: #7a6a7a; font-weight: 300;
+    line-height: 1.7; padding: 12px 18px;
+    background: rgba(0,0,0,0.03); border-radius: 8px;
+  }
+  .section {
+    margin-bottom: 36px;
+    opacity: 0; transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 12px;
+  }
+  .section-num {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #a8743a; color: #f5f0e6;
+    font-weight: 700; font-size: 0.75em;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .stitle { flex: 1; }
+  .stitle .zh {
+    font-size: 1.05em; font-weight: 700;
+    color: #a8743a; letter-spacing: 0.04em;
+  }
+  .stitle .en {
+    font-size: 0.65em; color: #7a6a7a;
+    font-weight: 300; margin-top: 1px;
+  }
+  .sline {
+    flex: 0 0 40px; height: 1px;
+    background: linear-gradient(90deg, rgba(227,168,105,0.3), transparent);
+  }
+  .body {
+    background: linear-gradient(135deg, #fbf7ed 0%, #f7f2e6 100%);
+    border-radius: 12px; padding: 20px 24px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: border-color 0.25s;
+  }
+  .body:hover { border-color: rgba(227,168,105,0.15); }
+  .body p {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.9em; line-height: 1.85;
+    color: #4a4438; margin-bottom: 10px;
+    text-align: justify;
+  }
+  .body p:last-child { margin-bottom: 0; }
+  .highlight {
+    color: #8a5e20; font-weight: 700;
+    background: linear-gradient(180deg, transparent 60%, rgba(227,168,105,0.15) 60%);
+    padding: 0 2px;
+  }
+  .hl-b { color: #4a7a9e; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-r { color: #b8553a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #7c5fa8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #3d8a68; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+  .key {
+    border-left: 3px solid #a8743a;
+    background: rgba(227,168,105,0.04);
+    padding: 10px 14px; margin: 12px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .key .lbl {
+    font-size: 0.58em; font-weight: 700; color: #a8743a;
+    letter-spacing: 0.08em; display: block; margin-bottom: 3px;
+  }
+  .key p { font-size: 0.85em; color: #6a4f30; margin-bottom: 0; }
+  .tags {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    margin-bottom: 10px;
+  }
+  .tag {
+    font-size: 0.58em; padding: 2px 8px; border-radius: 8px;
+    font-weight: 500;
+    background: rgba(0,0,0,0.06); color: #7a6a7a;
+  }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #a8743a; }
+  .tag.purple { background: rgba(138,107,170,0.1); color: #7c5fa8; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #4a7a9e; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b8553a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #3d8a68; }
+  .dots {
+    text-align: center; padding: 6px 0 24px;
+    color: #b8a695; font-size: 0.9em; letter-spacing: 0.3em;
+  }
+  footer {
+    text-align: center; padding: 30px 20px;
+    color: #a89580; font-size: 0.65em; font-weight: 300;
+  }
+  .menu-btn {
+    display: none; position: fixed;
+    top: 14px; right: 14px;
+    width: 40px; height: 40px;
+    background: rgba(15,15,30,0.9);
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 8px; z-index: 200;
+    cursor: pointer; align-items: center;
+    justify-content: center; flex-direction: column;
+    gap: 4px; transition: 0.2s;
+  }
+  .menu-btn span {
+    display: block; width: 18px; height: 2px;
+    background: #a8743a; border-radius: 1px;
+    transition: 0.3s;
+  }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+  .viz {
+    margin-bottom: 26px;
+    background: linear-gradient(135deg, #fbf7ed 0%, #f7f2e6 100%);
+    border-radius: 12px; padding: 22px 24px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .viz-title {
+    font-size: 0.62em; font-weight: 700; color: #7a6a7a;
+    letter-spacing: 0.12em; margin-bottom: 14px; text-align: center;
+  }
+  .sym-strip {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 18px;
+  }
+  .sym-cell {
+    text-align: center; padding: 12px 8px;
+    background: rgba(0,0,0,0.04); border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .sym-cell .nm { font-size: 0.65em; font-weight: 700; font-family: 'Noto Serif SC', serif; }
+  .sym-cell .ds { font-size: 0.55em; color: #98826f; margin-top: 3px; line-height: 1.5; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header h1 { font-size: 1.3em; }
+    .section { margin-bottom: 24px; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+
+<nav class="nav" id="nav">
+  <div class="nav-title">
+    Wonder
+    <small>第1段 · 3章</small>
+  </div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>Ordinary</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>Why I Didn't Go to School</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>How I Came to Life</a>
+  </div>
+  <div class="nav-footer">R. J. Palacio</div>
+</nav>
+
+<div class="main">
+
+<header>
+  <h1>Wonder<small>段一 · 认识 Auggie · 不普通的普通男孩</small></h1>
+  <div class="author">R. J. Palacio</div>
+  <div class="segment-summary">
+    十岁的 August Pullman 出生就带着一张与众不同的脸——做过二十七次手术，从未上过学，一直在家被妈妈保护着。<br>
+    但他和所有十岁男孩一样：爱《星球大战》、吃冰淇淋、有一只叫 Daisy 的狗。<br>
+    三章内容从 Auggie 自己的视角，讲述他"不普通"的出身、害怕上学的原因、以及他那充满荒诞幽默的出生故事。
+  </div>
+</header>
+
+<div class="viz">
+  <div class="viz-title">段一 · 核心主题</div>
+  <div class="sym-strip">
+    <div class="sym-cell">
+      <div class="nm" style="color:#4a7a9e">Ordinary</div>
+      <div class="ds">普通的内核<br>不普通的外表</div>
+    </div>
+    <div class="sym-cell">
+      <div class="nm" style="color:#7c5fa8">二十七次手术</div>
+      <div class="ds">从出生开始的拼搏<br>每一年都在恢复</div>
+    </div>
+    <div class="sym-cell">
+      <div class="nm" style="color:#a8743a">出生的故事</div>
+      <div class="ds">放屁的护士<br>晕倒的医生 ·<br>妈妈眼中的漂亮眼</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">不普通的普通男孩</div>
+      <div class="en">Ordinary · "I know I'm not an ordinary ten-year-old kid"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">开场</span>
+      <span class="tag gold">自我认知</span>
+    </div>
+    <p><span class="highlight">I KNOW I'M not an ordinary ten-year-old kid. I mean, sure, I do ordinary things. I eat ice cream. I ride my bike. I play ball. I have an XBox. Stuff like that makes me ordinary. I guess. And I feel ordinary. Inside. But I know ordinary kids don't make other ordinary kids run away screaming in playgrounds. I know ordinary kids don't get stared at wherever they go.</span></p>
+    <p><span class="hl-b">If I found a magic lamp and I could have one wish, I would wish that I had a normal face that no one ever noticed at all.</span> I would wish that I could walk down the street without people seeing me and then doing that look-away thing. Here's what I think: the only reason I'm not ordinary is that no one else sees me that way.</p>
+    <p>But I'm kind of used to how I look by now. I know how to pretend I don't see the faces people make. We've all gotten pretty good at that sort of thing: me, Mom and Dad, Via. Actually, I take that back: Via's not so good at it. She can get really annoyed when people do something rude. Like, for instance, one time in the playground some older kids made some noises. I don't even know what the noises were exactly because I didn't hear them myself, but Via heard and she just started yelling at the kids. That's the way she is. I'm not that way.</p>
+    <p>Via doesn't see me as ordinary. She says she does, but if I were ordinary, she wouldn't feel like she needs to protect me as much. And Mom and Dad don't see me as ordinary, either. They see me as extraordinary. <span class="hl-p">I think the only person in the world who realizes how ordinary I am is me.</span></p>
+    <p><span class="highlight">My name is August, by the way. I won't describe what I look like. Whatever you're thinking, it's probably worse.</span></p>
+    <div class="key">
+      <span class="lbl">✦ 全书第一句</span>
+      <p>"I know I'm not an ordinary ten-year-old kid"—— 一句话概括全书核心。Auggie 渴望的是"正常"，而不是"特别"。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">为什么不去上学</div>
+      <div class="en">Why I Didn't Go to School · "I am pretty much totally and completely petrified"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag blue">背景</span>
+      <span class="tag purple">恐惧</span>
+    </div>
+    <p>NEXT WEEK I start fifth grade. Since I've never been to a real school before, <span class="highlight">I am pretty much totally and completely petrified.</span> People think I haven't gone to school because of the way I look, but it's not that. It's because of all the surgeries I've had. <span class="hl-b">Twenty-seven since I was born.</span> The bigger ones happened before I was even four years old, so I don't remember those. But I've had two or three surgeries every year since then (some big, some small), and because I'm little for my age, and I have some other medical mysteries that doctors never really figured out, I used to get sick a lot. That's why my parents decided it was better if I didn't go to school. I'm much stronger now, though. The last surgery I had was eight months ago, and I probably won't have to have any more for another couple of years.</p>
+    <p>Mom homeschools me. She used to be a children's-book illustrator. She draws really great fairies and mermaids. Her boy stuff isn't so hot, though. She once tried to draw me a Darth Vader, but it ended up looking like some weird mushroom-shaped robot. I haven't seen her draw anything in a long time. I think she's too busy taking care of me and Via.</p>
+    <p><span class="hl-p">I can't say I always wanted to go to school because that wouldn't be exactly true. What I wanted was to go to school, but only if I could be like every other kid going to school.</span> Have lots of friends and hang out after school and stuff like that.</p>
+    <p>I have a few really good friends now. Christopher is my best friend, followed by Zachary and Alex. We've known each other since we were babies. And since they've always known me the way I am, they're used to me. When we were little, we used to have playdates all the time, but then Christopher moved to Bridgeport in Connecticut. That's more than an hour away from where I live in North River Heights, which is at the top tip of Manhattan. And Zachary and Alex started going to school. It's funny: even though Christopher's the one who moved far away, I still see him more than I see Zachary and Alex. They have all these new friends now. If we bump into each other on the street, they're still nice to me, though. They always say hello.</p>
+    <p>I have other friends, too, but not as good as Christopher and Zack and Alex were.</p>
+    <div class="key">
+      <span class="lbl">✦ 手术数字</span>
+      <p>"二十七次手术"—— Auggie 的整个童年围绕医院展开。不去上学不是因为脸，而是因为身体一直在恢复。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">出生的故事</div>
+      <div class="en">How I Came to Life · "Mom tells this story because it makes me laugh"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags">
+      <span class="tag gold">幽默</span>
+      <span class="tag red">分娩</span>
+    </div>
+    <p><span class="hl-b">I LIKE WHEN Mom tells this story because it makes me laugh so much.</span> It's not funny in the way a joke is funny, but when Mom tells it, Via and I just start cracking up.</p>
+    <p>So when I was in my mom's stomach, no one had any idea I would come out looking the way I look. Mom had had Via four years before, and that had been such a "walk in the park" (Mom's expression) that there was no reason to run any special tests. About two months before I was born, the doctors realized there was something wrong with my face, but they didn't think it was going to be bad. They told Mom and Dad I had a cleft palate and some other stuff going on. They called it "small anomalies."</p>
+    <p>There were two nurses in the delivery room the night I was born. One was very nice and sweet. <span class="hl-r">The other one, Mom said, did not seem at all nice or sweet. She had very big arms and (here comes the funny part), she kept farting.</span> Like, she'd bring Mom some ice chips, and then fart. She'd check Mom's blood pressure, and fart. Mom says it was unbelievable because the nurse never even said excuse me! Meanwhile, Mom's regular doctor wasn't on duty that night, so Mom got stuck with this cranky kid doctor she and Dad nicknamed Doogie after some old TV show or something (they didn't actually call him that to his face). But Mom says that even though everyone in the room was kind of grumpy, Dad kept making her laugh all night long.</p>
+    <p>When I came out of Mom's stomach, she said the whole room got very quiet. Mom didn't even get a chance to look at me because the nice nurse immediately rushed me out of the room. Dad was in such a hurry to follow her that he dropped the video camera, which broke into a million pieces. And then Mom got very upset and tried to get out of bed to see where they were going, but <span class="hl-r">the farting nurse put her very big arms on Mom to keep her down in the bed. They were practically fighting, because Mom was hysterical and the farting nurse was yelling at her to stay calm, and then they both started screaming for the doctor. But guess what? He had fainted! Right on the floor!</span> So when the farting nurse saw that he had fainted, she started pushing him with her foot to get him to wake up, yelling at him the whole time: "What kind of doctor are you? What kind of doctor are you? Get up! Get up!" And then all of a sudden <span class="hl-r">she let out the biggest, loudest, smelliest fart in the history of farts. Mom thinks it was actually the fart that finally woke the doctor up.</span></p>
+    <p><span class="hl-p">Mom says the farting nurse turned out to be a very nice woman.</span> She stayed with Mom the whole time. Didn't leave her side even after Dad came back and the doctors told them how sick I was. Mom remembers exactly what the nurse whispered in her ear when the doctor told her I probably wouldn't live through the night: "Everyone born of God overcometh the world." And the next day, after I had lived through the night, it was that nurse who held Mom's hand when they brought her to meet me for the first time.</p>
+    <p>Mom says by then they had told her all about me. She had been preparing herself for the seeing of me. <span class="highlight">But she says that when she looked down into my tiny mushed-up face for the first time, all she could see was how pretty my eyes were.</span></p>
+    <p>Mom is beautiful, by the way. And Dad is handsome. Via is pretty. In case you were wondering.</p>
+    <div class="key">
+      <span class="lbl">✦ 全书最幽默·最心酸的一段</span>
+      <p>放屁的护士、晕倒的医生、插满管子的婴儿——但妈妈第一次看到 Auggie 时，"只看到他的眼睛有多漂亮"。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Wonder · R. J. Palacio · 第1段 · 认识 Auggie · 共3章 · 阅读时间约8分钟
+</footer>
+
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() {
+    menuBtn.classList.toggle('active');
+    nav.classList.toggle('open');
+    backdrop.classList.toggle('show');
+  }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => {
+    a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); });
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    var obsSections = document.querySelectorAll('.section[id^="s"]');
+    var obsNavItems = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          obsNavItems.forEach(function(ni) {
+            ni.classList.toggle('active', ni.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    obsSections.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

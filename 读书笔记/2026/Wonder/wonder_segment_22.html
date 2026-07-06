@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · August · 毕业</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #eef3f0; font-family: 'Noto Sans SC', sans-serif; color: #3a3a35; display: flex; min-height: 100vh; }
+  .nav { position: fixed; top: 0; right: 0; width: 210px; height: 100vh; background: linear-gradient(180deg, #dce8e2 0%, #d2e2da 100%); border-left: 1px solid rgba(0,0,0,0.06); padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #8aaa9a; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 16px; font-size: 0.7em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .nav-title small { display: block; font-size: 0.7em; font-weight: 300; color: #6a7a7a; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 6px 16px; color: #6a7a7a; text-decoration: none; font-size: 0.7em; font-weight: 300; transition: all 0.2s; border-left: 2px solid transparent; }
+  .nav-item:hover { color: #5a8a7a; background: rgba(90,138,122,0.04); border-left-color: #5a8a7a; }
+  .nav-item .num { width: 17px; height: 17px; border-radius: 50%; background: rgba(0,0,0,0.04); color: #7a7a6f; font-size: 0.6em; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+  .nav-item:hover .num { background: #5a8a7a; color: #eef3f0; }
+  .nav-item.active { color: #5a8a7a; background: rgba(90,138,122,0.08); border-left-color: #5a8a7a; }
+  .nav-item.active .num { background: #5a8a7a; color: #eef3f0; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 0.55em; color: #7a8a7a; border-top: 1px solid rgba(0,0,0,0.06); }
+  .main { flex: 1; max-width: calc(100% - 210px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #5a8a7a, transparent); }
+  header h1 { font-size: 1.5em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.12em; }
+  header h1 small { display: block; font-size: 0.35em; color: #6a7a7a; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #6a7a7a; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+  header .segment-summary { max-width: 600px; margin: 16px auto 0; font-size: 0.78em; color: #6a7a7a; font-weight: 300; line-height: 1.7; padding: 12px 18px; background: rgba(0,0,0,0.03); border-radius: 8px; }
+  .section { margin-bottom: 36px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .section-num { width: 30px; height: 30px; border-radius: 50%; background: #5a8a7a; color: #eef3f0; font-weight: 700; font-size: 0.75em; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 1.05em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.04em; }
+  .stitle .en { font-size: 0.65em; color: #6a7a7a; font-weight: 300; margin-top: 1px; }
+  .sline { flex: 0 0 40px; height: 1px; background: linear-gradient(90deg, rgba(90,138,122,0.3), transparent); }
+  .body { background: linear-gradient(135deg, #f0faf4 0%, #e8f5ee 100%); border-radius: 12px; padding: 20px 24px; border: 1px solid rgba(0,0,0,0.06); transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(90,138,122,0.15); }
+  .body p { font-family: 'Noto Serif SC', serif; font-size: 0.9em; line-height: 1.85; color: #4a4a38; margin-bottom: 10px; text-align: justify; }
+  .body p:last-child { margin-bottom: 0; }
+  .highlight { color: #3a7a6a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(90,138,122,0.15) 60%); padding: 0 2px; }
+  .hl-b { color: #4a7a9e; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-r { color: #b8553a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #7c5fa8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #3d8a68; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+  .hl-o { color: #b87a3a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(212,170,120,0.12) 60%); padding: 0 2px; }
+  .key { border-left: 3px solid #5a8a7a; background: rgba(90,138,122,0.04); padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 0.58em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .key p { font-size: 0.85em; color: #3a5a4a; margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag { font-size: 0.58em; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: rgba(0,0,0,0.06); color: #6a7a7a; }
+  .tag.teal { background: rgba(90,138,122,0.1); color: #5a8a7a; }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #a8743a; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #4a7a9e; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b8553a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #3d8a68; }
+  footer { text-align: center; padding: 30px 20px; color: #7a8a7a; font-size: 0.65em; font-weight: 300; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(15,15,30,0.9); border: 1px solid rgba(0,0,0,0.10); border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #5a8a7a; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header h1 { font-size: 1.3em; }
+    .section { margin-bottom: 24px; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">Wonder<small>第22段 · 13章</small></div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>Aftermath</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>Home</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>Bear</a>
+    <a class="nav-item" href="#s4"><span class="num">4</span>The Shift</a>
+    <a class="nav-item" href="#s5"><span class="num">5</span>Ducks</a>
+    <a class="nav-item" href="#s6"><span class="num">6</span>The Last Precept</a>
+    <a class="nav-item" href="#s7"><span class="num">7</span>The Drop-Off</a>
+    <a class="nav-item" href="#s8"><span class="num">8</span>Take Your Seats</a>
+    <a class="nav-item" href="#s9"><span class="num">9</span>A Simple Thing</a>
+    <a class="nav-item" href="#s10"><span class="num">10</span>Awards</a>
+    <a class="nav-item" href="#s11"><span class="num">11</span>Floating</a>
+    <a class="nav-item" href="#s12"><span class="num">12</span>Pictures</a>
+    <a class="nav-item" href="#s13"><span class="num">13</span>The Walk Home</a>
+  </div>
+  <div class="nav-footer">R. J. Palacio</div>
+</nav>
+<div class="main">
+<header>
+  <h1>Wonder<small>段二二 · August · 毕业</small></h1>
+  <div class="author">R. J. Palacio</div>
+  <div class="segment-summary">
+    August 带着撕裂的卫衣和血淋淋的胳膊回到家。一只叫 Bear 的黑色小狗在门口等着他。学校里发生了翻天覆地的变化——曾经孤立他的男孩们现在叫他"小兄弟"。Tushman 校长告诉他一个秘密:Julian 不会回来了。毕业典礼上,Tushman 发表了关于善良的演讲。然后他念出了一个名字:August Pullman——Henry Ward Beecher 奖章。全场起立。掌声如雨。五年级的最后一程,August 对妈妈说:"谢谢你让我去上学。"
+  </div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">后果</div>
+      <div class="en">Aftermath · "I wondered if Eddie had taken my hearing aids as a souvenir."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">回家</span><span class="tag teal">妈妈</span></div>
+    <p>Mom was waiting at school when the bus arrived. Mr. Tushman had called about the "situation." The camp director searched for the hearing aid in the morning — nothing. Broarwood would reimburse them. <span class="hl-r">"I wondered if Eddie had taken my hearing aids with him as a kind of souvenir. Something to remember the orc."</span></p>
+    <p>Mom hugged him tight but didn't slam him with questions. Kids who never said anything to him nodded hello, patted his back. Mr. Tushman gave him a quick, tight hug without saying anything.</p>
+    <div class="key"><span class="lbl">✦ 纪念品</span><p>August 用"纪念品"这个词来描述 Eddie 可能拿走他助听器的动机——这个黑色幽默里藏着一个十岁孩子对恶意的透彻理解。他知道那些人不只是暴躁,他们想要一个关于"怪物"的纪念品。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">回家</div>
+      <div class="en">Home · "Am I always going to have to worry about jerks like that?"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag teal">对话</span><span class="tag gold">信仰</span></div>
+    <p>On the walk home, August automatically looked for Daisy in the bay window — forgot for a second she wasn't there. Inside, Mom dropped the duffel and wrapped her arms around him, kissing his head and face like she was breathing him in. <span class="hl-g">"It's okay, Mom, I'm fine."</span> She made him a grilled cheese and chocolate milk with froth — the special way.</p>
+    <p>He told her about the trip — except for that one night, it was awesome. She said: <span class="hl-b">"Don't let them ruin your whole trip. You were there for more than forty-eight hours, and that awful part lasted one hour."</span> He asked the big question: <span class="highlight">"Mom? Am I always going to have to worry about jerks like that? Like when I grow up, is it always going to be like this?"</span></p>
+    <p>She took her time. <span class="hl-g">"There are always going to be jerks in the world, Auggie. But I really believe, and Daddy really believes, that there are more good people on this earth than bad people, and the good people watch out for each other and take care of each other. Just like Jack was there for you. And Amos. And those other kids."</span> He mentioned that Miles and Henry hadn't been nice to him all year. <span class="hl-b">"Sometimes people surprise us."</span></p>
+    <div class="key"><span class="lbl">✦ 好人比坏人多</span><p>August 在经历了那晚之后问了一个关乎一生的问题。Isabel 的回答不是"你会没事的",而是"好人比坏人多,好人会照顾彼此"。这不是鸡汤——在那个下午,客厅里有巧克力牛奶和烤奶酪的香味,而在门外,一只新的小狗正在等着敲门。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">小熊</div>
+      <div class="en">Bear · "That's what we should call him!"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">新成员</span><span class="tag teal">治愈</span></div>
+    <p>Dad and Via came home early — Dad couldn't wait to see him. They brought a big white cardboard box. Inside: the cutest little black puppy — furry, pointy snout, bright black eyes, floppy ears. <span class="hl-g">"We called the puppy Bear because when Mom first saw him, she said he looked just like a little bear cub."</span> August stayed home from school the next day to play with Bear. Via stayed home too. They brought out all of Daisy's old toys. <span class="highlight">"It was fun hanging out with Via all day, just the two of us. It was like old times, like before I started going to school."</span></p>
+    <div class="key"><span class="lbl">✦ 小熊与旧玩具</span><p>在恐惧之后,Daisy 死后,Bear 来了。旧的玩具、新的小狗、姐姐的整天陪伴。这是一个家庭在创伤之后的愈合仪式。Pullman 家没有停留在那晚的惊恐里——他们用一只黑熊小狗继续向前走。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="stitle">
+      <div class="zh">转变</div>
+      <div class="en">The Shift · "There was a big shift in the way things were."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">地震</span><span class="tag gold">成名</span></div>
+    <p>When August went back to school, everything had changed. <span class="highlight">"A monumental shift. A seismic shift. Maybe even a cosmic shift. Everyone — not just in our grade but every grade — had heard about what had happened."</span> The story grew with each telling — cornfield mazes, deep dark woods, a major fistfight. But two things stayed the same in every version: August got picked on because of his face, and Jack and Amos and Henry and Miles protected him. <span class="hl-b">"And now that they'd protected me, I was different to them. It was like I was one of them."</span> The jocks called him "little dude." Big dudes he barely knew knuckle-punched him in the hallways. Amos became super popular. Julian, who missed the whole thing, was completely out of the loop. He still gave dirty looks — but he was the only one. <span class="hl-g">"And me and Jack, we couldn't care less."</span></p>
+    <div class="key"><span class="lbl">✦ 宇宙性的转变</span><p>August 用了"宇宙性"这个词。从被孤立到被保护,一夜之间。不是因为他的脸变了,而是因为别人看到了他的勇气。Julian 错过了这一切——他选择不去自然之旅的那一天,是整个故事的分水岭。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div class="stitle">
+      <div class="zh">鸭子</div>
+      <div class="en">Ducks · "Sometimes a duck is just a duck!"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">鸭子</span><span class="tag teal">Tushman</span></div>
+    <p>Tushman called August into his office. They'd found the broken hearing aid in Eddie's locker — mangled, bent. Tushman asked if August wanted to press charges. <span class="hl-r">"Trust me: that Eddie kid is not learning any lessons."</span> Julian was not coming back to Beecher Prep next year — his parents thought it wasn't "a good fit." August noticed his self-portrait as a duck hanging behind Tushman's desk now, framed. <span class="hl-b">"Why a duck?"</span> asked Tushman, expecting symbolism about ugly ducklings. August laughed: <span class="highlight">"It's because I think I look like a duck."</span> Tushman laughed for thirty seconds. <span class="hl-g">"Sometimes a duck is just a duck!"</span></p>
+    <div class="key"><span class="lbl">✦ 鸭子就是鸭子</span><p>全书最幽默的一页。Tushman 期望一个关于丑小鸭变天鹅的隐喻,而 August 只是诚实地回答:"因为我长得像鸭子。"在这一刻,August 已经完全接纳了自己的外貌——他不害怕把它变成一句笑话。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div class="stitle">
+      <div class="zh">最后的箴言</div>
+      <div class="en">The Last Precept · "Just follow the day and reach for the sun!"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag green">Browne</span><span class="tag gold">暑假</span></div>
+    <p>On the last day of English class, Mr. Browne's chalkboard read: <span class="highlight">"MR. BROWNE'S JUNE PRECEPT: JUST FOLLOW THE DAY AND REACH FOR THE SUN! (The Polyphonic Spree) Have a great summer vacation, Class 5B! It's been a great year and you've been a wonderful group of students."</span> He asked them to send postcards with their own precepts over the summer.</p>
+    <div class="key"><span class="lbl">✦ 朝着太阳</span><p>Mr. Browne 的最后一条箴言——来自一支名为 The Polyphonic Spree 的乐队。它不是拉丁文,不是名人名言,而是一句简单的"追随每一天,伸手去够太阳"。一个五年级的孩子听完这句话,走出了教室,再也没有回来过。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div class="stitle">
+      <div class="zh">送行</div>
+      <div class="en">The Drop-Off · "You threw out my astronaut helmet?!"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">秘密</span><span class="tag blue">爸爸</span></div>
+    <p>Graduation day. Dad drove August to the auditorium. In the car, their favorite song came on — "Wheels" by singer-songwriter. They sang together: <span class="hl-b">"I'm the ugliest guy on the Lower East Side, but I've got wheels and you want to go for a ride."</span> Dad mentioned hating the old astronaut helmet. August remembered being heartbroken when it got lost. <span class="hl-r">"Oh, it didn't get lost. I threw it out."</span> August couldn't believe it. Dad explained: <span class="highlight">"I just couldn't stand seeing you wear that thing on your head anymore. … I missed seeing your face, Auggie. I know you don't always love it, but you have to understand … I love it. I love this face of yours, Auggie, completely and passionately."</span> August made Dad promise never to throw anything away again, and extracted a future Xbox and red Porsche as hush money. Then he asked: <span class="hl-g">"Can you guys not kiss me a lot after graduation? It's kind of embarrassing."</span> Dad promised to try.</p>
+    <div class="key"><span class="lbl">✦ 头盔的秘密</span><p>全书最大的秘密之一——Nate Pullman 偷偷扔掉了 August 的宇航员头盔,因为他再也受不了看不见儿子的脸了。他说"I love this face of yours, completely and passionately"时,August 没有哭,而是用它来敲诈了一台 Xbox。这对父子之间的默契——用一个秘密换来一个笑话——是全书最好的结尾之一。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <div class="stitle">
+      <div class="zh">请入座</div>
+      <div class="en">Take Your Seats, Everyone · "When did Summer get so hot?"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">典礼</span><span class="tag gold">暗恋</span></div>
+    <p>Jack and August walked into Beecher Prep's Upper School auditorium — huge, sparkly chandeliers, red velvet walls. Ms. Rubin alphabetized them. Summer walked over in a light pink dress. <span class="hl-b">"Wow, Summer, you look awesome."</span> Jack muttered: <span class="hl-r">"When did Summer get so hot?"</span> August laughed: <span class="hl-g">"Shut up, dude."</span> The program listed: Headmaster's Opening Remarks, Middle-School Director's Address (<em>Light and Day</em> by the choir), Fifth-Grade Student Commencement Address by Ximena Chin, Awards Presentation, Roll Call. Jack groaned: <span class="hl-b">"We're going to be here all freakin' day."</span> August asked about awards. Jack said Charlotte and Ximena would win everything — <span class="hl-r">"Not unless they give awards for the most Cs!"</span></p>
+    <div class="key"><span class="lbl">✦ 粉红色连衣裙</span><p>在毕业典礼的喧闹中,Jack 第一次注意到 Summer 穿了一条粉红色连衣裙。一个简单的瞬间,一个男孩突然发现一个女孩"变美了"。五年级结束了,初中即将开始——不仅对 August,对所有人的生活都是如此。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s9" style="animation-delay:0.27s">
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <div class="stitle">
+      <div class="zh">一件简单的事</div>
+      <div class="en">A Simple Thing · "Shall we make a new rule of life … always to try to be a little kinder than is necessary?"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag teal">演讲</span><span class="tag gold">善良</span></div>
+    <p>Mr. Tushman's speech was the centerpiece of the ceremony. He talked about being at the cusp — between childhood and everything that comes after. He quoted J. M. Barrie: <span class="highlight">"Shall we make a new rule of life … always to try to be a little kinder than is necessary?"</span> He repeated it: <span class="hl-b">"Kinder than is necessary. Because it's not enough to be kind. One should be kinder than needed."</span></p>
+    <p>Then he quoted Christopher Nolan's <em>Under the Eye of the Clock</em>: <span class="hl-g">"It was at moments such as these that Joseph recognized the face of God in human form. It glimmered in their kindness to him, it glowed in their keenness, it hinted in their caring, indeed it caressed in their gaze."</span> Tushman removed his glasses: <span class="highlight">"Such a simple thing, kindness. A nice word of encouragement given when needed. An act of friendship. A passing smile. … If every single person in this room made it a rule that wherever you are, whenever you can, you will try to act a little kinder than is necessary — the world really would be a better place."</span></p>
+    <div class="key"><span class="lbl">✦ 比必要更善良一点</span><p>这是全书的主题演讲——Tushman 花了一整年酝酿的箴言。"Kindness"这个词在 Wonder 里出现了多少次已经数不清了,但在这里,Tushman 把它定义为一种选择,一种不是出于必要而是出于意愿的行为。上帝的面孔闪烁在人类的善意中——他花了二十年才找到这句话。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s10" style="animation-delay:0.30s">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div class="stitle">
+      <div class="zh">颁奖</div>
+      <div class="en">Awards · "Will August Pullman please come up here?"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">荣誉</span><span class="tag teal">奖章</span></div>
+    <p>August zoned out during other speeches, then tuned in for High Honor Roll — his name was called. He stood and bowed. Academic excellence medals: Ximena gold, Charlotte silver. Charlotte won music gold. Amos won sports — August was thrilled. Summer won creative writing gold — August yelled "Woo-hoo, Summer!" Then Tushman introduced the final award: the Henry Ward Beecher medal, for students notable or exemplary. He quoted Beecher: <span class="highlight">"Greatness lies not in being strong, but in the right using of strength. … He is the greatest whose strength carries up the most hearts by the attraction of his own."</span> Tushman's voice cracked. He cleared his throat. <span class="hl-b">"Without further ado, this year I am very proud to award the Henry Ward Beecher medal to the student whose quiet strength has carried up the most hearts. So will August Pullman please come up here to receive this award?"</span></p>
+    <div class="key"><span class="lbl">✦ 升起最多心灵的人</span><p>Tushman 在一整年的观察之后,选择了 Henry Ward Beecher 自己的话来定义 greatness——不是强大,而是用力量升起最多心灵的人。在台上他两次哽咽。他不是在念稿,他是在说出他这一整年看到的:August 用他的存在改变了每一个接触过他的人。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s11" style="animation-delay:0.33s">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div class="stitle">
+      <div class="zh">漂浮</div>
+      <div class="en">Floating · "It was a standing ovation. For me."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">起立</span><span class="tag blue">星战</span></div>
+    <p>August didn't register what was happening. Kids pushed him up — hands on his back, high-fives. <span class="hl-r">"Aug-gie! Aug-gie! Aug-gie!"</span> Jack led the chant. Amos shouted: <span class="hl-b">"Woo-hoo, little dude!"</span> Summer mouthed "cool beans." All his teachers were cheering. Then — <span class="highlight">"the most amazing thing happened: everyone started standing up. Not just the front rows, but the whole audience suddenly got up on their feet, whooping, hollering, clapping like crazy. It was a standing ovation. For me."</span> Mr. Tushman placed the gold medal over his head like the Olympics. <span class="hl-g">"It felt like I was watching myself in a movie. … It was like that last scene in Star Wars Episode IV when Luke Skywalker, Han Solo, and Chewbacca are being applauded for destroying the Death Star. I could almost hear the Star Wars theme music playing in my head."</span> He didn't destroy a Death Star. He just got through the fifth grade. <span class="hl-b">"And that's not easy, even if you're not me."</span></p>
+    <div class="key"><span class="lbl">✦ 我也是个普通人</span><p>全场起立的那一刻,August 想起了《星球大战》。他用流行文化的比喻来消化这个不可思议的时刻——因为这是唯一能让超现实变得可以理解的方式。而最后那句"即使你不是我"——他没有在炫耀自己的与众不同,他是在说:五年级对每个人来说都很难。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s12" style="animation-delay:0.36s">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div class="stitle">
+      <div class="zh">照片</div>
+      <div class="en">Pictures · "For the first time I can remember, I wasn't even thinking about my face."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">合影</span><span class="tag teal">接纳</span></div>
+    <p>Reception under a huge white tent. Mom and Dad hugged him like crazy. Via swung him left and right. Miranda cried more than anyone and squeezed him so tight Via had to pry her off. Dad got a group shot with August, Summer, and Jack. <span class="highlight">"We put our arms around each other's shoulders, and for the first time I can remember, I wasn't even thinking about my face. I was just smiling a big fat happy smile for all the different cameras clicking away at me."</span> More kids came — Reid, Maya, Charlotte, the two Maxes, Henry, Miles, Savanna, Amos, Ximena. Everyone. <span class="hl-g">"We were all laughing and squeezing in tight against each other, and no one seemed to care if it was my face that was next to theirs or not. In fact, it kind of felt like everyone wanted to get close to me."</span></p>
+    <div class="key"><span class="lbl">✦ 我甚至没有想过我的脸</span><p>全书最完美的照片——不是某个具体的画面,而是 August 第一次在人群中完全忘记了自己的脸。一个整本书都在被注视的孩子,在这个下午终于成为了被拥抱的人。他不需要再担心别人的目光,因为所有人都在争着站在他身边。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s13" style="animation-delay:0.39s">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div class="stitle">
+      <div class="zh">回家的路</div>
+      <div class="en">The Walk Home · "You really are a wonder, Auggie."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">终点</span><span class="tag teal">起点</span></div>
+    <p>They walked home for cake and ice cream — Jack, Summer, parents, Justin, Via, Miranda. A perfect June day — blue sky, warm but not hot. Everyone was happy. August still felt like he was floating, Star Wars hero music in his head. He walked with Summer and Jack, cracking up at everything. He noticed Mom hanging back, smiling to herself. He took a few steps back and surprised her with a hug. <span class="highlight">"Thank you for making me go to school," I said quietly. She hugged me close and leaned down and kissed the top of my head. "Thank you, Auggie," she answered softly. "For what?" "For everything you've given us. For coming into our lives. For being you." She bent down and whispered in my ear. "You really are a wonder, Auggie. You are a wonder."</span></p>
+    <div class="key"><span class="lbl">✦ 你真是个奇迹</span><p>Isabel Pullman 在全书的最后一句话里用了书名。但她说"a wonder"时的语气不是骄傲,不是感叹——是一个母亲在五月的阳光里,对儿子说出的最简单的真理。那个曾经不想上学、不敢过夜、在头盔后面躲藏了两年的孩子,现在走在回家的路上,身后跟着一群朋友,头顶播放着《星球大战》的主题曲。他确实是一个奇迹。</p></div>
+  </div>
+</div>
+
+<footer>Wonder · R. J. Palacio · 第22段 · August · 共13章 · 阅读时间约25分钟</footer>
+</div>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => { a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var obsSections = document.querySelectorAll('.section[id^="s"]');
+    var obsNavItems = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { var id = entry.target.id; obsNavItems.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('href') === '#' + id); }); }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    obsSections.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

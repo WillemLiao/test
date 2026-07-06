@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · Justin · 宇宙的公平</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #eef3f0; font-family: 'Noto Sans SC', sans-serif; color: #3a3a35; display: flex; min-height: 100vh; }
+  .nav { position: fixed; top: 0; right: 0; width: 210px; height: 100vh; background: linear-gradient(180deg, #dce8e2 0%, #d2e2da 100%); border-left: 1px solid rgba(0,0,0,0.06); padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #8aaa9a; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 16px; font-size: 0.7em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .nav-title small { display: block; font-size: 0.7em; font-weight: 300; color: #6a7a7a; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 6px 16px; color: #6a7a7a; text-decoration: none; font-size: 0.7em; font-weight: 300; transition: all 0.2s; border-left: 2px solid transparent; }
+  .nav-item:hover { color: #5a8a7a; background: rgba(90,138,122,0.04); border-left-color: #5a8a7a; }
+  .nav-item .num { width: 17px; height: 17px; border-radius: 50%; background: rgba(0,0,0,0.04); color: #7a7a6f; font-size: 0.6em; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+  .nav-item:hover .num { background: #5a8a7a; color: #eef3f0; }
+  .nav-item.active { color: #5a8a7a; background: rgba(90,138,122,0.08); border-left-color: #5a8a7a; }
+  .nav-item.active .num { background: #5a8a7a; color: #eef3f0; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 0.55em; color: #7a8a7a; border-top: 1px solid rgba(0,0,0,0.06); }
+  .main { flex: 1; max-width: calc(100% - 210px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #5a8a7a, transparent); }
+  header h1 { font-size: 1.5em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.12em; }
+  header h1 small { display: block; font-size: 0.35em; color: #6a7a7a; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #6a7a7a; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+  header .segment-summary { max-width: 600px; margin: 16px auto 0; font-size: 0.78em; color: #6a7a7a; font-weight: 300; line-height: 1.7; padding: 12px 18px; background: rgba(0,0,0,0.03); border-radius: 8px; }
+  .section { margin-bottom: 36px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .section-num { width: 30px; height: 30px; border-radius: 50%; background: #5a8a7a; color: #eef3f0; font-weight: 700; font-size: 0.75em; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 1.05em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.04em; }
+  .stitle .en { font-size: 0.65em; color: #6a7a7a; font-weight: 300; margin-top: 1px; }
+  .sline { flex: 0 0 40px; height: 1px; background: linear-gradient(90deg, rgba(90,138,122,0.3), transparent); }
+  .body { background: linear-gradient(135deg, #f0faf4 0%, #e8f5ee 100%); border-radius: 12px; padding: 20px 24px; border: 1px solid rgba(0,0,0,0.06); transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(90,138,122,0.15); }
+  .body p { font-family: 'Noto Serif SC', serif; font-size: 0.9em; line-height: 1.85; color: #4a4a38; margin-bottom: 10px; text-align: justify; }
+  .body p:last-child { margin-bottom: 0; }
+  .highlight { color: #3a7a6a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(90,138,122,0.15) 60%); padding: 0 2px; }
+  .hl-b { color: #4a7a9e; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-r { color: #b8553a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #7c5fa8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #3d8a68; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+  .hl-o { color: #b87a3a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(212,170,120,0.12) 60%); padding: 0 2px; }
+  .key { border-left: 3px solid #5a8a7a; background: rgba(90,138,122,0.04); padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 0.58em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .key p { font-size: 0.85em; color: #3a5a4a; margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag { font-size: 0.58em; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: rgba(0,0,0,0.06); color: #6a7a7a; }
+  .tag.teal { background: rgba(90,138,122,0.1); color: #5a8a7a; }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #a8743a; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #4a7a9e; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b8553a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #3d8a68; }
+  footer { text-align: center; padding: 30px 20px; color: #7a8a7a; font-size: 0.65em; font-weight: 300; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(15,15,30,0.9); border: 1px solid rgba(0,0,0,0.10); border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #5a8a7a; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header h1 { font-size: 1.3em; }
+    .section { margin-bottom: 24px; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">Wonder<small>第18段 · 8章</small></div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>Olivia's Brother</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>Valentine's Day</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>Our Town</a>
+    <a class="nav-item" href="#s4"><span class="num">4</span>Ladybug</a>
+    <a class="nav-item" href="#s5"><span class="num">5</span>The Bus Stop</a>
+    <a class="nav-item" href="#s6"><span class="num">6</span>Rehearsal</a>
+    <a class="nav-item" href="#s7"><span class="num">7</span>Bird</a>
+    <a class="nav-item" href="#s8"><span class="num">8</span>The Universe</a>
+  </div>
+  <div class="nav-footer">R. J. Palacio</div>
+</nav>
+<div class="main">
+<header>
+  <h1>Wonder<small>段十八 · Justin 的视角 · 宇宙的公平</small></h1>
+  <div class="author">R. J. Palacio</div>
+  <div class="segment-summary">
+    Via 的男朋友 Justin 第一次见到 August——蓄谋已久的"镇定"在关门瞬间崩溃。他送给 Via 一条心形项链,也走进了 Pullman 家那个与他自己家庭截然不同的世界。排练《小城风光》时,他意外得知粉头发 Miranda 和 Via 曾是挚友。而 Via 终于崩溃了——她害怕 August 出现在她的新学校。深夜,Justin 在床上冥想:宇宙是一场四百万分之一的彩票,但它会照料自己最脆弱的造物。
+  </div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">第一次见到 Auggie</div>
+      <div class="en">Olivia's Brother · "So, what did you think?"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag teal">初见</span><span class="tag gold">掩饰</span></div>
+    <p><span class="highlight">"The first time I meet Olivia's little brother, I have to admit I'm totally taken by surprise."</span> Justin knew about the "syndrome," had heard descriptions, but seeing August in person was something else entirely — a little kid in a baseball cap, sitting in front of him with a totally normal-looking curly-haired boy named Jack.</p>
+    <p>He shook both their hands, tried not to focus on the face. <span class="hl-b">"Cool room,"</span> he said. Olivia pushed down August's baseball cap. After she led him out and closed the door, they heard the two boys laughing and singing: "I'm from Brooklyn!"</p>
+    <p>They'd been dating two months. Justin had noticed her the second she sat down at his cafeteria table — olive skin, the bluest eyes he'd ever seen. She didn't flirt; she looked you right in the eye, daring you. So he looked right back, daring her right back. She didn't tell him about August until their third date — "craniofacial anomaly." The one word she didn't use was "deformed," because that would have registered.</p>
+    <p>In her room, she asked nervously: <span class="hl-r">"So, what did you think? Are you shocked?" "No," I lie. She smiles and looks away. "You're shocked."</span> She picked up a polar bear from her bed, kissed its nose, tossed it to him with a little smile. Justin thought maybe that meant she believed him. Or at least that she wanted to.</p>
+    <div class="key"><span class="lbl">✦ 目击的力量</span><p>这是全书第一次有人用"第一次见 Auggie"的视角来叙述。Justin 的诚实——他承认自己需要掩饰恐惧——让 Via 对爱情的试探显得格外脆弱。而那句"你被shock到了"是她整个青春期的注脚:她在问每一个走近她生活的人。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.06s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">情人节与晚餐</div>
+      <div class="en">Valentine's Day · "I can't remember the last time anyone in my family said that."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag teal">家庭</span><span class="tag red">反差</span></div>
+    <p>Justin gave Olivia a heart necklace for Valentine's Day; she gave him a messenger bag made out of old floppy disks — earrings from circuit boards, dresses from t-shirts, bags from old jeans. She wanted to be a geneticist and find cures for people like her brother.</p>
+    <p>Meeting her parents at a Mexican restaurant: his tics came out from nerves — hard blinks, head pulls. The waiter's expression when he saw August went unmentioned by everyone. <span class="hl-b">"I look at Olivia and she smiles at me. She knows. She sees the waiter's face. She sees my tics. Olivia is a girl who sees everything."</span></p>
+    <p>Dinner was wonderful — her parents actually listened to his music, asked about his fiddle. Afterward at their house, old Daisy threw up in the hallway. Nate carried her like a baby and told the story of buying her from a homeless guy for twenty bucks. <span class="highlight">"You've never smelled anything so bad in your life!"</span></p>
+    <p><span class="hl-g">"I kind of know how she feels. I like Olivia's family. They laugh a lot."</span> Justin's own family: divorced parents who hate each other, a half-brother who barely knows he exists. There's a word like "overprotective" but no word for the opposite. <span class="hl-r">"Olivia's family tell each other 'I love you' all the time. I can't remember the last time anyone in my family said that to me."</span> By the time he went home, his tics had all stopped.</p>
+    <div class="key"><span class="lbl">✦ 什么是正常的家庭</span><p>Pullman 家的温暖恰恰通过一个来自破碎家庭的外人视角才被完整呈现。"By the time I go home, my tics have all stopped."——家是一个治愈的地方,即便它有让人反胃的狗呕吐物。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.09s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">小城风光的试镜</div>
+      <div class="en">Our Town · "I don't love people staring at me."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">戏剧</span><span class="tag gold">巧合</span></div>
+    <p>The spring show was <em>Our Town</em>. Via dared Justin to try out for the lead — the Stage Manager — and somehow he got it. Total fluke. The pink-haired girl Miranda got Emily Gibbs. Via got a bit part and the understudy. Justin was more disappointed than she was; she seemed relieved. <span class="hl-g">"I don't love people staring at me."</span> He wondered if she'd blown her audition on purpose.</p>
+    <p>Six weeks until opening night. Memorizing lines, rehearsals, band practice, finals, time with Olivia — it was going to be brutal. Mr. Davenport was already manic. Word was he'd originally planned <em>The Elephant Man</em> and changed to <em>Our Town</em> at the last minute, costing them a week of rehearsal.</p>
+    <div class="key"><span class="lbl">✦ 象人的隐喻</span><p>从《象人》(The Elephant Man)改成《小城风光》(Our Town)——一个关于畸形与歧视的故事被替换成关于平凡生活的诗篇。在 Wonder 的宇宙里,这或许是最意味深长的幕后改动。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s4" style="animation-delay:0.12s">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div class="stitle">
+      <div class="zh">瓢虫之愿</div>
+      <div class="en">Ladybug · "Don't you want to know what I wished for?"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag teal">温柔</span><span class="tag gold">练习</span></div>
+    <p>Warm March evening, sitting on the front stoop going over lines. Justin recited: <span class="highlight">"Yes, the sun's come up over a thousand times. Summers and winters have cracked the mountains a little bit more …"</span> He couldn't remember the rest. Via prompted: <span class="hl-b">"All that can happen in a thousand days."</span></p>
+    <p>A ladybug appeared out of nowhere. Via cupped her hands over it: <span class="hl-g">"See? A good luck sign."</span> She made him close his eyes and make a wish. When he opened them, the ladybug spread its wings and flitted away, as if on cue. <span class="hl-r">"Don't you want to know what I wished for?"</span> he asked, kissing her. She shook her head shyly, looking up at the sky — which, at that very moment, was the exact color of her eyes. <span class="highlight">"I made a wish, too," she said mysteriously.</span></p>
+    <div class="key"><span class="lbl">✦ 不可言说的愿望</span><p>Via 有太多可以许愿的事——August 的健康、新学校的适应、剧院的角色——以至于 Justin 完全猜不到她此刻最想要什么。瓢虫是全书最轻盈的意象之一,在一个装满重量的故事里短暂地展开翅膀。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s5" style="animation-delay:0.15s">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div class="stitle">
+      <div class="zh">巴士站的小战争</div>
+      <div class="en">The Bus Stop · "I'm going to be an overprotective dad someday."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag red">对抗</span><span class="tag teal">保护</span></div>
+    <p>Justin was saying goodbye to Olivia with a nice long kiss when Isabel, Auggie, Jack, and Daisy came down the stoop. Slightly awkward. She asked Justin to walk Jack to the bus stop. <span class="hl-b">"You don't have to stay with me,"</span> said Jack in his low gravelly voice. <span class="hl-b">"Auggie's mom is way too overprotective."</span></p>
+    <p>At the bus stop, Jack borrowed a dollar for gum. Justin watched him cross the street and remembered taking the subway alone at that age — way too young. <span class="highlight">"I'm going to be an overprotective dad someday, I know it. My kids are going to know I care."</span></p>
+    <p>Three kids appeared — Julian and his two "gorillas," Henry and Miles. They trailed Jack from the store making throw-up noises. Jack came back like nothing happened, blowing a bubble. "Just some jerks from my school." He pulled out a crumpled list — three columns of names, the whole grade turned against him. <span class="hl-r">"He leaves me notes that say 'everybody hates you.'"</span> Justin pointed to the neutrals column — if Jack got them on his side, things would even up. Jack shot him a look like he was the stupidest guy on earth. Then it hit Justin: <span class="hl-g">this was all about Jack being friends with August.</span></p>
+    <p>The bus came. Jack waved goodbye. Two blocks later Justin spotted the three kids in front of a bagel place. Something possessed him: he took off his glasses, tucked his fiddle case under his arm pointy-side up, and walked over mean-faced. <span class="highlight">"Don't mess with Jack. Mess with him again and you will be very, very sorry."</span> He tapped his fiddle case for effect. They nodded in unison, ice cream dripping onto their hands. Justin sprinted down the subway stairs two at a time.</p>
+    <div class="key"><span class="lbl">✦ 琴盒里的手枪</span><p>全书最滑稽也最帅气的镜头——温和的小提琴手为了保护一个五年级男孩,假装琴盒里有家伙。这是"选择善良"的另一种形式:有时候善良需要一点 Clint Eastwood 式的表演才能生效。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s6" style="animation-delay:0.18s">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <div class="stitle">
+      <div class="zh">宇航员头盔</div>
+      <div class="en">Rehearsal · "The universe was not kind to Auggie Pullman."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag blue">揭露</span><span class="tag gold">旧友</span></div>
+    <p>As opening night approached, Justin got to know the cast better — including the pink-haired girl playing Emily. She wasn't as stuck-up as he'd assumed, given her crowd. One day they were sitting backstage waiting for a spotlight fix. <span class="hl-b">"So how long have you and Olivia been dating?"</span> she asked out of the blue. <span class="hl-b">"Have you met her brother?"</span></p>
+    <p>Justin was stunned. Miranda used to be Via's best friend. She'd known Auggie since he was a baby. She called her <em>Via</em> — only family did that. She pulled out her wallet, rifled through pictures, and handed one over: a little boy in shorts and a t-shirt on a sunny day — wearing an astronaut helmet that covered his entire head. <span class="hl-g">"It was like a hundred degrees that day, but he wouldn't take that helmet off for anything. He wore it for like two years straight."</span> She was the one who gave it to him. <span class="highlight">"The universe was not kind to Auggie Pullman."</span></p>
+    <div class="key"><span class="lbl">✦ 钱包里的旧照片</span><p>Miranda 随身带着 Auggie 的照片——一个她几乎见不到的孩子。她给 Justin 看这张照片时的骄傲和温柔,和她那身粉头发朋克外表形成可怕的对比。这是全书唯一一次在 Miranda 翻钱包之前我们就已经看到了她的另一面。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s7" style="animation-delay:0.21s">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <div class="stitle">
+      <div class="zh">林中之鸟</div>
+      <div class="en">Bird · "I just don't feel like …"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag red">愧疚</span><span class="tag teal">保护</span></div>
+    <p>Justin confronted Olivia about Miranda. <span class="hl-r">"I don't know who that pink-haired cheerleader is. The girl I knew was a total dork who collected American Girl dolls."</span> A big fat tear rolled down her cheek. He thought she was crying about him — but she wasn't.</p>
+    <p><span class="hl-b">"I haven't told my parents about the show … I don't want them to come! If they come, they'll bring Auggie with them, and I just don't feel like …"</span> She couldn't finish. <span class="highlight">"It's just been so nice being in a new school where nobody knows about him, you know? Nobody's whispering about it behind my back."</span> She swore she'd never been embarrassed by him before — but now she was terrified. <span class="hl-r">"I'm an awful person!"</span></p>
+    <p>Justin put his arm around her. <span class="hl-g">"You're not an awful person. … You're entitled, Olivia. You've dealt with a lot your whole life."</span> He thought of a bird sometimes, how her feathers got ruffled when she was mad, and when she was fragile like this, she was a little lost bird looking for its nest. So he gave her his wing to hide under.</p>
+    <div class="key"><span class="lbl">✦ 第二次尴尬</span><p>Via 在整个故事中最诚实的时刻——不是因为讨厌 August,而是因为终于有了一个"没有人知道的自己"。这不是背叛,而是长达一生的重压第一次有了释放的缝隙。Justin 的回应堪称教科书:不评判、不解决问题、只是提供一个巢。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s8" style="animation-delay:0.24s">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <div class="stitle">
+      <div class="zh">宇宙的公平</div>
+      <div class="en">The Universe · "The universe takes care of all its birds."</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag teal">哲学</span><span class="tag gold">宽慰</span></div>
+    <p>Justin couldn't sleep. His head was full of monologue lines, elements of the periodic table, theorems, Olivia, Auggie. Miranda's words kept coming back: <span class="hl-r">"The universe was not kind to Auggie Pullman."</span></p>
+    <p>He couldn't stop thinking: <span class="highlight">"What did that little kid ever do to deserve his sentence? What did the parents do? Or Olivia?"</span> A doctor once said the odds of Auggie's combination of syndromes was one in four million. So wasn't the universe just a giant lottery? You buy a ticket when you're born, and it's all random whether you get a good one or a bad one.</p>
+    <p>But then a softer thought soothed him — <span class="hl-g">"like a flatted third on a major chord"</span>: no, it's not all random. If it were, the universe would abandon us completely. And it doesn't. It takes care of its most fragile creations in ways we can't see. Like parents who adore you blindly. A big sister who feels guilty for being human over you. A gravelly-voiced kid whose friends left him over you. A pink-haired girl who carries your picture in her wallet. <span class="highlight">"Maybe it is a lottery, but the universe makes it all even out in the end. The universe takes care of all its birds."</span></p>
+    <div class="key"><span class="lbl">✦ 降低大三度的和弦</span><p>Justin 是全书的音乐家——他用"flatted third on a major chord"来形容慰藉,这个比喻精致且只可能来自他的视角。从四百万分之一的噩运到宇宙照顾所有小鸟——这个转变是全书最温柔的哲学命题。它不是宗教,是爱。</p></div>
+  </div>
+</div>
+
+<footer>Wonder · R. J. Palacio · 第18段 · Justin · 共8章 · 阅读时间约20分钟</footer>
+</div>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => { a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var obsSections = document.querySelectorAll('.section[id^="s"]');
+    var obsNavItems = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { var id = entry.target.id; obsNavItems.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('href') === '#' + id); }); }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    obsSections.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>

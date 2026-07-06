@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · Jack · 和解</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #eef3f0; font-family: 'Noto Sans SC', sans-serif; color: #3a3a35; display: flex; min-height: 100vh; }
+  .nav { position: fixed; top: 0; right: 0; width: 210px; height: 100vh; background: linear-gradient(180deg, #dce8e2 0%, #d2e2da 100%); border-left: 1px solid rgba(0,0,0,0.06); padding: 24px 0; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
+  .nav::-webkit-scrollbar { width: 3px; }
+  .nav::-webkit-scrollbar-track { background: transparent; }
+  .nav::-webkit-scrollbar-thumb { background: #8aaa9a; border-radius: 2px; }
+  .nav-title { text-align: center; padding: 0 14px 16px; font-size: 0.7em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.1em; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .nav-title small { display: block; font-size: 0.7em; font-weight: 300; color: #6a7a7a; margin-top: 3px; }
+  .nav-list { padding: 10px 0; flex: 1; }
+  .nav-item { display: flex; align-items: center; gap: 7px; padding: 6px 16px; color: #6a7a7a; text-decoration: none; font-size: 0.7em; font-weight: 300; transition: all 0.2s; border-left: 2px solid transparent; }
+  .nav-item:hover { color: #5a8a7a; background: rgba(90,138,122,0.04); border-left-color: #5a8a7a; }
+  .nav-item .num { width: 17px; height: 17px; border-radius: 50%; background: rgba(0,0,0,0.04); color: #7a7a6f; font-size: 0.6em; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.2s; }
+  .nav-item:hover .num { background: #5a8a7a; color: #eef3f0; }
+  .nav-item.active { color: #5a8a7a; background: rgba(90,138,122,0.08); border-left-color: #5a8a7a; }
+  .nav-item.active .num { background: #5a8a7a; color: #eef3f0; }
+  .nav-footer { padding: 14px; text-align: center; font-size: 0.55em; color: #7a8a7a; border-top: 1px solid rgba(0,0,0,0.06); }
+  .main { flex: 1; max-width: calc(100% - 210px); padding: 50px 60px 60px; }
+  header { text-align: center; padding: 30px 20px 36px; margin-bottom: 36px; position: relative; }
+  header::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 1px; background: linear-gradient(90deg, transparent, #5a8a7a, transparent); }
+  header h1 { font-size: 1.5em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.12em; }
+  header h1 small { display: block; font-size: 0.35em; color: #6a7a7a; font-weight: 300; letter-spacing: 0.12em; margin-top: 5px; }
+  header .author { color: #6a7a7a; font-size: 0.78em; margin-top: 5px; font-weight: 300; }
+  header .segment-summary { max-width: 600px; margin: 16px auto 0; font-size: 0.78em; color: #6a7a7a; font-weight: 300; line-height: 1.7; padding: 12px 18px; background: rgba(0,0,0,0.03); border-radius: 8px; }
+  .section { margin-bottom: 36px; opacity: 0; transform: translateY(16px); animation: fadeUp 0.5s ease forwards; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .section-num { width: 30px; height: 30px; border-radius: 50%; background: #5a8a7a; color: #eef3f0; font-weight: 700; font-size: 0.75em; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .stitle { flex: 1; }
+  .stitle .zh { font-size: 1.05em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.04em; }
+  .stitle .en { font-size: 0.65em; color: #6a7a7a; font-weight: 300; margin-top: 1px; }
+  .sline { flex: 0 0 40px; height: 1px; background: linear-gradient(90deg, rgba(90,138,122,0.3), transparent); }
+  .body { background: linear-gradient(135deg, #f0faf4 0%, #e8f5ee 100%); border-radius: 12px; padding: 20px 24px; border: 1px solid rgba(0,0,0,0.06); transition: border-color 0.25s; }
+  .body:hover { border-color: rgba(90,138,122,0.15); }
+  .body p { font-family: 'Noto Serif SC', serif; font-size: 0.9em; line-height: 1.85; color: #4a4a38; margin-bottom: 10px; text-align: justify; }
+  .body p:last-child { margin-bottom: 0; }
+  .highlight { color: #3a7a6a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(90,138,122,0.15) 60%); padding: 0 2px; }
+  .hl-b { color: #4a7a9e; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(138,184,212,0.12) 60%); padding: 0 2px; }
+  .hl-r { color: #b8553a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(232,153,122,0.12) 60%); padding: 0 2px; }
+  .hl-p { color: #7c5fa8; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(184,150,212,0.12) 60%); padding: 0 2px; }
+  .hl-g { color: #3d8a68; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(125,196,164,0.12) 60%); padding: 0 2px; }
+  .hl-o { color: #b87a3a; font-weight: 700; background: linear-gradient(180deg, transparent 60%, rgba(212,170,120,0.12) 60%); padding: 0 2px; }
+  .key { border-left: 3px solid #5a8a7a; background: rgba(90,138,122,0.04); padding: 10px 14px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+  .key .lbl { font-size: 0.58em; font-weight: 700; color: #5a8a7a; letter-spacing: 0.08em; display: block; margin-bottom: 3px; }
+  .key p { font-size: 0.85em; color: #3a5a4a; margin-bottom: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .tag { font-size: 0.58em; padding: 2px 8px; border-radius: 8px; font-weight: 500; background: rgba(0,0,0,0.06); color: #6a7a7a; }
+  .tag.teal { background: rgba(90,138,122,0.1); color: #5a8a7a; }
+  .tag.gold { background: rgba(227,168,105,0.1); color: #a8743a; }
+  .tag.blue { background: rgba(106,159,181,0.1); color: #4a7a9e; }
+  .tag.red { background: rgba(201,125,94,0.1); color: #b8553a; }
+  .tag.green { background: rgba(100,180,150,0.1); color: #3d8a68; }
+  footer { text-align: center; padding: 30px 20px; color: #7a8a7a; font-size: 0.65em; font-weight: 300; }
+  .menu-btn { display: none; position: fixed; top: 14px; right: 14px; width: 40px; height: 40px; background: rgba(15,15,30,0.9); border: 1px solid rgba(0,0,0,0.10); border-radius: 8px; z-index: 200; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 4px; transition: 0.2s; }
+  .menu-btn span { display: block; width: 18px; height: 2px; background: #5a8a7a; border-radius: 1px; transition: 0.3s; }
+  .menu-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.active span:nth-child(2) { opacity: 0; }
+  .menu-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+  @media (max-width: 900px) {
+    .menu-btn { display: flex; }
+    body { flex-direction: column; }
+    .nav { position: fixed; top: 0; right: -280px; width: 260px; height: 100vh; transition: right 0.3s ease; z-index: 100; }
+    .nav.open { right: 0; }
+    .nav-backdrop.show { display: block; }
+    .main { max-width: 100%; padding: 50px 14px 40px; }
+    header h1 { font-size: 1.3em; }
+    .section { margin-bottom: 24px; }
+    .body { padding: 14px 16px; }
+    .body p { font-size: 0.82em; }
+  }
+</style>
+</head>
+<body>
+<div class="nav-backdrop" id="navBackdrop"></div>
+<button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+<nav class="nav" id="nav">
+  <div class="nav-title">Wonder<small>第17段 · 3章</small></div>
+  <div class="nav-list">
+    <a class="nav-item" href="#s1"><span class="num">1</span>Weirdly Enough</a>
+    <a class="nav-item" href="#s2"><span class="num">2</span>The Letters</a>
+    <a class="nav-item" href="#s3"><span class="num">3</span>Despite What Tushman Said</a>
+  </div>
+  <div class="nav-footer">R. J. Palacio</div>
+</nav>
+<div class="main">
+<header>
+  <h1>Wonder<small>段十七 · Jack 的视角 · 和解</small></h1>
+  <div class="author">R. J. Palacio</div>
+  <div class="segment-summary">
+    停学在家的 Jack 终于向妈妈坦白了万圣节的真相。一封封电子邮件揭示了这场风波的背后:Julian 的妈妈试图将 August 赶出学校,Tushman 先生用一封优雅而坚定的信回击。而 Jack 和 August 之间的短信——"ok"——只用两个字就修复了破碎的友谊。但回到学校,迎接 Jack 的是 Julian 精心策划的冷暴力。
+  </div>
+</header>
+
+<div class="section" id="s1" style="animation-delay:0.03s">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div class="stitle">
+      <div class="zh">巧合的圣诞卡</div>
+      <div class="en">Weirdly Enough · "People aren't always so great"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag gold">坦白</span><span class="tag teal">母子</span></div>
+    <p>When Jack got home from suspension, the mail held holiday cards from both Julian's and August's families. Julian's was a picture of him in a tie. August's featured a cute old dog with reindeer antlers: <span class="hl-b">"Ho-Ho-Ho! … Peace on Earth. Love, Nate, Isabel, Olivia, August (and Daisy)."</span></p>
+    <p>Jack's mom looked at August's card carefully. <span class="hl-g">"We're very lucky, Jack. There's so much we take for granted. …" "I know."</span></p>
+    <p>Jack told her about Julian's mom Photoshopping August out of the class picture. <span class="hl-r">"That's just awful," said Mom. "People are just … they're not always so great."</span></p>
+    <p>Then Jack finally told her everything: why he punched Julian, that August was his ex-friend now, and the whole truth about Halloween. <span class="highlight">"Is that why you hit Julian?" "No." And then I told her why. And I told her about Halloween.</span></p>
+    <div class="key"><span class="lbl">✦ 圣诞狗</span><span class="blk">Pullman 家的圣诞卡是狗狗戴着麋鹿角,Albans 家是穿着领带的 Julian。两张卡片放在一起,已经说明了一切——哪个家庭更在乎孩子真正需要什么。</span></div>
+  </div>
+</div>
+
+<div class="section" id="s2" style="animation-delay:0.07s">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div class="stitle">
+      <div class="zh">信件与短信</div>
+      <div class="en">The Letters · "ok" · "yes dude we'r frenz agen"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag teal">正直</span><span class="tag gold">和解</span></div>
+    <p><span class="highlight">Jack wrote to Mr. Tushman: "I am very, very sorry for punching Julian. … I would really rather not tell you why I did what I did because it doesn't really make it right anyway."</span></p>
+    <p>Mr. Tushman replied: <span class="hl-b">"One thing I've learned after being a middle-school director for twenty years: there are almost always more than two sides to every story. … While nothing justifies striking another student—ever—I also know good friends are sometimes worth defending. Keep up the good work, and keep being the fine boy we all know you are."</span></p>
+    <p>Then came Julian's mother's email — attacking August's admission to Beecher Prep, calling him a burden. Mr. Tushman's response was masterful: <span class="highlight">"August does not have special needs. He is neither disabled, handicapped, nor developmentally delayed in any way. … I did not think asking these children to be especially kind to a new student would place any extra 'burdens or hardships' on them. In fact, I thought it would teach them a thing or two about empathy, and friendship, and loyalty. As it turns out, Jack Will didn't need to learn any of these virtues—he already had them in abundance."</span></p>
+    <p>Jack sent a Facebook friend request. He left a message: <span class="hl-r">"Hey august. Its me Jack Will. I noticed im not on ur friends list anymore. Hope u friend me agen cuz im really sorry. I know why ur mad at me now Im sorry I didn't mean the stuff I said. I was so stupid. I hope u can 4give me."</span></p>
+    <p>The text messages flew back and forth. August's first reply: <span class="hl-g">"got ur message u know why im mad at u now?? did Summer tell u?"</span> Jack told him about "Bleeding Scream." August asked: <span class="hl-b">"whyd u punch him????????"</span> Jack: <span class="hl-r">"I dunno"</span> August: <span class="hl-b">"liar. I bet he said something about me right?"</span></p>
+    <p>Then August asked the question that had been haunting him: <span class="highlight">"wud u really wan to kill urself if u wer me???"</span> Jack's answer was immediate: <span class="hl-g">"no!!!!! I swear on my life. but dude- I would want 2 kill myself if I were Julian ;)"</span></p>
+    <p>August: <span class="hl-b">"lol. yes dude we'r frenz agen."</span></p>
+    <div class="key"><span class="lbl">✦ 朋友了</span><p>整本书最动人的和解——没有长篇大论,没有拥抱。"ok"和"lol"就足够了。两个五年级的孩子用最笨拙的拼写修复了友谊。而 Tushman 的信和 Melissa 的邮件之间,展现了成年世界的善与恶各是什么样的。</p></div>
+  </div>
+</div>
+
+<div class="section" id="s3" style="animation-delay:0.11s">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div class="stitle">
+      <div class="zh">没有全新的开始</div>
+      <div class="en">Despite What Tushman Said · "Welcome to my world!"</div>
+    </div>
+    <div class="sline"></div>
+  </div>
+  <div class="body">
+    <div class="tags"><span class="tag red">冷暴力</span><span class="tag gold">代价</span></div>
+    <p><span class="highlight">"Despite what Tushman said, there was no 'clean slate' when I went back to school in January. In fact, things were totally weird from the second I got to my locker."</span></p>
+    <p>Amos barely nodded. Henry looked away. Tristan looked nervous, like he was afraid of Jack. <span class="hl-r">"I've got a form of the Plague now, is what I thought. This is Julian's payback."</span></p>
+    <p>At lunch, Jack sat with Luca and Isaiah — middle-of-the-road kids. They got their food and never came back. He found a table way on the other end of the cafeteria — near Julian. <span class="hl-g">"They weren't at Julian's table, but they were near him, like on the fringe of popularity."</span></p>
+    <p>Jack sat alone. <span class="highlight">"It felt really awful being at the table by myself. I felt like everyone was watching me. It also made me feel like I had no friends. I decided to skip lunch and go read in the library."</span></p>
+    <div class="key"><span class="lbl">✦ 一个人的午餐桌</span><p>Jack 终于明白了 August 每天都在经历什么。Julian 用一场派对就让他失去了所有"普通朋友"——所谓的男孩战争,骨子里是残忍的孤立游戏。</p></div>
+  </div>
+</div>
+
+<footer>Wonder · R. J. Palacio · 第17段 · Jack · 共3章 · 阅读时间约12分钟</footer>
+</div>
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  const backdrop = document.getElementById('navBackdrop');
+  function toggleNav() { menuBtn.classList.toggle('active'); nav.classList.toggle('open'); backdrop.classList.toggle('show'); }
+  menuBtn.addEventListener('click', toggleNav);
+  backdrop.addEventListener('click', toggleNav);
+  document.querySelectorAll('.nav-item').forEach(a => { a.addEventListener('click', () => { if (nav.classList.contains('open')) toggleNav(); }); });
+  document.addEventListener('DOMContentLoaded', function() {
+    var obsSections = document.querySelectorAll('.section[id^="s"]');
+    var obsNavItems = document.querySelectorAll('.nav-item');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { var id = entry.target.id; obsNavItems.forEach(function(ni) { ni.classList.toggle('active', ni.getAttribute('href') === '#' + id); }); }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+    obsSections.forEach(function(s) { observer.observe(s); });
+  });
+</script>
+</body>
+</html>
