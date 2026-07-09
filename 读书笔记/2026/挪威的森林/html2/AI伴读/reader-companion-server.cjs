@@ -281,6 +281,34 @@ function writeWordbook(file, state) {
   return { ok: true, path: WORDBOOK_STORE, file: key, updatedAt: entry.updatedAt, wordCount: Object.keys(entry.words).length };
 }
 
+
+function normalizeLocalPath(input) {
+  let value = String(input || '').trim().replace(/^['"]|['"]$/g, '');
+  if (!value) throw new Error('path required');
+  if (value.startsWith('file://')) {
+    const url = new URL(value);
+    value = decodeURIComponent(url.pathname || '');
+    if (/^\/[a-zA-Z]:\//.test(value)) value = value.slice(1);
+    value = value.replace(/\//g, path.sep);
+  }
+  const resolved = path.resolve(value);
+  if (!/\.x?html?$/i.test(resolved)) throw new Error('only html files are supported');
+  return resolved;
+}
+
+function readLocalHtmlFile(input) {
+  const filePath = normalizeLocalPath(input);
+  const stat = fs.statSync(filePath);
+  if (!stat.isFile()) throw new Error('not a file');
+  if (stat.size > 20 * 1024 * 1024) throw new Error('html file too large');
+  return {
+    path: filePath,
+    name: path.basename(filePath),
+    size: stat.size,
+    lastModified: stat.mtimeMs,
+    text: fs.readFileSync(filePath, 'utf8')
+  };
+}
 function normalizeSentenceResult(data, sentence) {
   const asArray = value => Array.isArray(value) ? value.map(String).filter(Boolean) : [];
   return {
@@ -305,6 +333,12 @@ const server = http.createServer(async (req, res) => {
   }
 
   try {
+
+    if (req.method === 'GET' && req.url.startsWith('/api/read-file')) {
+      const url = new URL(req.url, 'http://127.0.0.1');
+      const filePath = url.searchParams.get('path') || '';
+      return send(res, 200, readLocalHtmlFile(filePath));
+    }
     if (req.method === 'GET' && req.url === '/api/wordbooks') {
       return send(res, 200, readWordbookStore());
     }

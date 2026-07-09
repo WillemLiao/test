@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-05T05:29:23.535Z",
+  "updatedAt": "2026-07-09T16:08:17.465Z",
   "files": {
     "reader-companion-inline.html": {
       "file": "reader-companion-inline.html",
@@ -1161,6 +1161,1616 @@
           }
         }
       },
+      "deletedWords": []
+    },
+    "wonder_segment_01.html__78aad25d1b265b39": {
+      "file": "wonder_segment_01.html__78aad25d1b265b39",
+      "updatedAt": "2026-07-09T13:12:09.638Z",
+      "words": {
+        "ordinary": {
+          "base": "ordinary",
+          "meaning": "adjective 普通的，平凡的",
+          "note": "ordinary = 普通的，想象'ordinary'就是'普通的'，与extraordinary（非凡的）相对\nI'm not an ordinary ten-year-old kid.\n我不是一个普通的十岁小孩。",
+          "forms": [
+            "more ordinary",
+            "most ordinary"
+          ],
+          "mastered": false,
+          "createdAt": 1783346476544,
+          "ai": {
+            "base": "ordinary",
+            "partOfSpeech": "adjective",
+            "meaningZh": "普通的，平凡的",
+            "memoryHintZh": "ordinary = 普通的，想象'ordinary'就是'普通的'，与extraordinary（非凡的）相对",
+            "exampleEn": "I'm not an ordinary ten-year-old kid.",
+            "exampleZh": "我不是一个普通的十岁小孩。",
+            "forms": [
+              "more ordinary",
+              "most ordinary"
+            ]
+          }
+        },
+        "stuff": {
+          "base": "stuff",
+          "meaning": "noun 东西，玩意儿（指不具体的事物或活动）",
+          "note": "stuff 音似“斯达夫”，想象沙发里塞满各种东西\nStuff like that makes me ordinary.\n诸如此类的事情让我觉得自己很普通。",
+          "forms": [
+            "stuffs"
+          ],
+          "mastered": false,
+          "createdAt": 1783346531718,
+          "ai": {
+            "base": "stuff",
+            "partOfSpeech": "noun",
+            "meaningZh": "东西，玩意儿（指不具体的事物或活动）",
+            "memoryHintZh": "stuff 音似“斯达夫”，想象沙发里塞满各种东西",
+            "exampleEn": "Stuff like that makes me ordinary.",
+            "exampleZh": "诸如此类的事情让我觉得自己很普通。",
+            "forms": [
+              "stuffs"
+            ]
+          }
+        },
+        "scream": {
+          "base": "scream",
+          "meaning": "verb 尖叫",
+          "note": "想象一个孩子害怕得发出尖厉的叫声\nOrdinary kids don't make other ordinary kids run away screaming in playgrounds.\n普通的孩子不会让其他普通孩子在操场上尖叫着逃走。",
+          "forms": [
+            "screams",
+            "screaming",
+            "screamed"
+          ],
+          "mastered": false,
+          "createdAt": 1783346576996,
+          "ai": {
+            "base": "scream",
+            "partOfSpeech": "verb",
+            "meaningZh": "尖叫",
+            "memoryHintZh": "想象一个孩子害怕得发出尖厉的叫声",
+            "exampleEn": "Ordinary kids don't make other ordinary kids run away screaming in playgrounds.",
+            "exampleZh": "普通的孩子不会让其他普通孩子在操场上尖叫着逃走。",
+            "forms": [
+              "screams",
+              "screaming",
+              "screamed"
+            ]
+          }
+        },
+        "stare": {
+          "base": "stare",
+          "meaning": "verb 被盯着看，凝视",
+          "note": "张大眼睛长时间地看\nOrdinary kids don't get stared at wherever they go.\n普通孩子不会走到哪儿都被人盯着看。",
+          "forms": [
+            "stares",
+            "staring",
+            "stared"
+          ],
+          "mastered": false,
+          "createdAt": 1783346636027,
+          "ai": {
+            "base": "stare",
+            "partOfSpeech": "verb",
+            "meaningZh": "被盯着看，凝视",
+            "memoryHintZh": "张大眼睛长时间地看",
+            "exampleEn": "Ordinary kids don't get stared at wherever they go.",
+            "exampleZh": "普通孩子不会走到哪儿都被人盯着看。",
+            "forms": [
+              "stares",
+              "staring",
+              "stared"
+            ]
+          }
+        },
+        "pretty": {
+          "base": "pretty",
+          "meaning": "adverb 相当；颇",
+          "note": "pretty作副词时表示程度，相当于 quite 或 fairly。\nWe've all gotten pretty good at that sort of thing.\n我们都变得相当擅长那种事了。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783513966899,
+          "ai": {
+            "base": "pretty",
+            "partOfSpeech": "adverb",
+            "meaningZh": "相当；颇",
+            "memoryHintZh": "pretty作副词时表示程度，相当于 quite 或 fairly。",
+            "exampleEn": "We've all gotten pretty good at that sort of thing.",
+            "exampleZh": "我们都变得相当擅长那种事了。",
+            "forms": []
+          }
+        },
+        "sort": {
+          "base": "sort",
+          "meaning": "noun 种类，类型",
+          "note": "sort 和 kind 都表示'种类'，但 sort 更口语化\nWe've all gotten pretty good at that sort of thing.\n我们都对这种把戏很在行了。",
+          "forms": [
+            "sorts"
+          ],
+          "mastered": false,
+          "createdAt": 1783513986696,
+          "ai": {
+            "base": "sort",
+            "partOfSpeech": "noun",
+            "meaningZh": "种类，类型",
+            "memoryHintZh": "sort 和 kind 都表示'种类'，但 sort 更口语化",
+            "exampleEn": "We've all gotten pretty good at that sort of thing.",
+            "exampleZh": "我们都对这种把戏很在行了。",
+            "forms": [
+              "sorts"
+            ]
+          }
+        },
+        "annoyed": {
+          "base": "annoyed",
+          "meaning": "adjective 恼怒的；生气的",
+          "note": "an（恼怒）类似“恼”，加-ed表示状态\nShe can get really annoyed when people do something rude.\n当人们做粗鲁的事情时，她会非常生气。",
+          "forms": [
+            "more annoyed",
+            "most annoyed"
+          ],
+          "mastered": false,
+          "createdAt": 1783514031272,
+          "ai": {
+            "base": "annoyed",
+            "partOfSpeech": "adjective",
+            "meaningZh": "恼怒的；生气的",
+            "memoryHintZh": "an（恼怒）类似“恼”，加-ed表示状态",
+            "exampleEn": "She can get really annoyed when people do something rude.",
+            "exampleZh": "当人们做粗鲁的事情时，她会非常生气。",
+            "forms": [
+              "more annoyed",
+              "most annoyed"
+            ]
+          }
+        },
+        "instance": {
+          "base": "instance",
+          "meaning": "noun 例子，实例",
+          "note": "in（在…里）+ stance（站姿）→ 站在具体场合里 → 例子\nFor instance, one time in the playground some older kids made some noises.\n例如，有一次在操场上一些大孩子发出了一些噪音。",
+          "forms": [
+            "instances"
+          ],
+          "mastered": false,
+          "createdAt": 1783514041708,
+          "ai": {
+            "base": "instance",
+            "partOfSpeech": "noun",
+            "meaningZh": "例子，实例",
+            "memoryHintZh": "in（在…里）+ stance（站姿）→ 站在具体场合里 → 例子",
+            "exampleEn": "For instance, one time in the playground some older kids made some noises.",
+            "exampleZh": "例如，有一次在操场上一些大孩子发出了一些噪音。",
+            "forms": [
+              "instances"
+            ]
+          }
+        },
+        "exactly": {
+          "base": "exactly",
+          "meaning": "adverb 确切地；精确地；正是",
+          "note": "exact（精确） + -ly 副词后缀 → 精确地\nI don't even know what the noises were exactly because I didn't hear them myself.\n我甚至不知道那些噪音确切是什么，因为我自己没听到。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783514252589,
+          "ai": {
+            "base": "exactly",
+            "partOfSpeech": "adverb",
+            "meaningZh": "确切地；精确地；正是",
+            "memoryHintZh": "exact（精确） + -ly 副词后缀 → 精确地",
+            "exampleEn": "I don't even know what the noises were exactly because I didn't hear them myself.",
+            "exampleZh": "我甚至不知道那些噪音确切是什么，因为我自己没听到。",
+            "forms": []
+          }
+        },
+        "extraordinary": {
+          "base": "extraordinary",
+          "meaning": "adjective 非凡的，特别的",
+          "note": "extra-（超出）+ ordinary（普通）→ 超出普通的，即非凡的\nMom and Dad don't see me as ordinary. They see me as extraordinary.\n爸爸妈妈不认为我平凡。他们觉得我非同一般。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783514434656,
+          "ai": {
+            "base": "extraordinary",
+            "partOfSpeech": "adjective",
+            "meaningZh": "非凡的，特别的",
+            "memoryHintZh": "extra-（超出）+ ordinary（普通）→ 超出普通的，即非凡的",
+            "exampleEn": "Mom and Dad don't see me as ordinary. They see me as extraordinary.",
+            "exampleZh": "爸爸妈妈不认为我平凡。他们觉得我非同一般。",
+            "forms": []
+          }
+        },
+        "grade": {
+          "base": "grade",
+          "meaning": "noun 年级",
+          "note": "grade 音似 '格的'，学校每个年级都有自己的格子教室\nNext week I start fifth grade.\n下周我就要上五年级了。",
+          "forms": [
+            "grades"
+          ],
+          "mastered": false,
+          "createdAt": 1783514676032,
+          "ai": {
+            "base": "grade",
+            "partOfSpeech": "noun",
+            "meaningZh": "年级",
+            "memoryHintZh": "grade 音似 '格的'，学校每个年级都有自己的格子教室",
+            "exampleEn": "Next week I start fifth grade.",
+            "exampleZh": "下周我就要上五年级了。",
+            "forms": [
+              "grades"
+            ]
+          }
+        },
+        "completely": {
+          "base": "completely",
+          "meaning": "adverb 完全地；彻底地",
+          "note": "com-（加强）+ plete（充满）+ ly（副词后缀）→ 完全充满 → 完全地\nI am pretty much totally and completely petrified.\n我几乎完全被吓呆了。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783514707737,
+          "ai": {
+            "base": "completely",
+            "partOfSpeech": "adverb",
+            "meaningZh": "完全地；彻底地",
+            "memoryHintZh": "com-（加强）+ plete（充满）+ ly（副词后缀）→ 完全充满 → 完全地",
+            "exampleEn": "I am pretty much totally and completely petrified.",
+            "exampleZh": "我几乎完全被吓呆了。",
+            "forms": []
+          }
+        },
+        "petrified": {
+          "base": "petrified",
+          "meaning": "adjective 吓呆的，惊恐万分的",
+          "note": "想象自己像石头一样僵住，一动也不敢动\nI am pretty much totally and completely petrified.\n我几乎完完全全被吓呆了。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783514715498,
+          "ai": {
+            "base": "petrified",
+            "partOfSpeech": "adjective",
+            "meaningZh": "吓呆的，惊恐万分的",
+            "memoryHintZh": "想象自己像石头一样僵住，一动也不敢动",
+            "exampleEn": "I am pretty much totally and completely petrified.",
+            "exampleZh": "我几乎完完全全被吓呆了。",
+            "forms": []
+          }
+        },
+        "surgery": {
+          "base": "surgery",
+          "meaning": "noun （外科）手术",
+          "note": "surgeon（外科医生）做的手术，sur- 表示“在上”，gery 来自希腊语 ergon（工作），即“在上面动工”——想象医生在病人身上进行切除或修复。\nI've had twenty-seven surgeries since I was born.\n我从出生到现在已经做过二十七次手术。",
+          "forms": [
+            "surgeries"
+          ],
+          "mastered": false,
+          "createdAt": 1783515180368,
+          "ai": {
+            "base": "surgery",
+            "partOfSpeech": "noun",
+            "meaningZh": "（外科）手术",
+            "memoryHintZh": "surgeon（外科医生）做的手术，sur- 表示“在上”，gery 来自希腊语 ergon（工作），即“在上面动工”——想象医生在病人身上进行切除或修复。",
+            "exampleEn": "I've had twenty-seven surgeries since I was born.",
+            "exampleZh": "我从出生到现在已经做过二十七次手术。",
+            "forms": [
+              "surgeries"
+            ]
+          }
+        },
+        "medical": {
+          "base": "medical",
+          "meaning": "adjective 医学的；医疗的",
+          "note": "medic（医生）+ al（形容词后缀） → 与医学相关的\nI have some other medical mysteries that doctors never really figured out.\n我有一些医生从未真正搞明白的医学谜团。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783515356742,
+          "ai": {
+            "base": "medical",
+            "partOfSpeech": "adjective",
+            "meaningZh": "医学的；医疗的",
+            "memoryHintZh": "medic（医生）+ al（形容词后缀） → 与医学相关的",
+            "exampleEn": "I have some other medical mysteries that doctors never really figured out.",
+            "exampleZh": "我有一些医生从未真正搞明白的医学谜团。",
+            "forms": []
+          }
+        },
+        "mystery": {
+          "base": "mystery",
+          "meaning": "noun 医学上未能解释的谜团；泛指神秘莫测的事物",
+          "note": "my + story → 我的故事像谜一样\nI have some other medical mysteries that doctors never really figured out.\n我还有一些医生从未真正弄清楚的医学谜团。",
+          "forms": [
+            "mysteries"
+          ],
+          "mastered": false,
+          "createdAt": 1783515365447,
+          "ai": {
+            "base": "mystery",
+            "partOfSpeech": "noun",
+            "meaningZh": "医学上未能解释的谜团；泛指神秘莫测的事物",
+            "memoryHintZh": "my + story → 我的故事像谜一样",
+            "exampleEn": "I have some other medical mysteries that doctors never really figured out.",
+            "exampleZh": "我还有一些医生从未真正弄清楚的医学谜团。",
+            "forms": [
+              "mysteries"
+            ]
+          }
+        },
+        "figure": {
+          "base": "figure",
+          "meaning": "verb 弄明白，弄清楚（常用于 figure out 短语中）",
+          "note": "想象一张图（figure），把碎片拼在一起就明白了。\nDoctors never figured out the cause of his illness.\n医生们从未弄明白他生病的原因。",
+          "forms": [
+            "figures",
+            "figured",
+            "figuring"
+          ],
+          "mastered": false,
+          "createdAt": 1783515376434,
+          "ai": {
+            "base": "figure",
+            "partOfSpeech": "verb",
+            "meaningZh": "弄明白，弄清楚（常用于 figure out 短语中）",
+            "memoryHintZh": "想象一张图（figure），把碎片拼在一起就明白了。",
+            "exampleEn": "Doctors never figured out the cause of his illness.",
+            "exampleZh": "医生们从未弄明白他生病的原因。",
+            "forms": [
+              "figures",
+              "figured",
+              "figuring"
+            ]
+          }
+        },
+        "sick": {
+          "base": "sick",
+          "meaning": "adjective 生病的；患病的；不适的",
+          "note": "s（死）+ ick（像 ill 变形）→ 病得要死\nI used to get sick a lot because of my surgeries.\n因为手术，我以前经常生病。",
+          "forms": [
+            "sicker",
+            "sickest"
+          ],
+          "mastered": false,
+          "createdAt": 1783516082565,
+          "ai": {
+            "base": "sick",
+            "partOfSpeech": "adjective",
+            "meaningZh": "生病的；患病的；不适的",
+            "memoryHintZh": "s（死）+ ick（像 ill 变形）→ 病得要死",
+            "exampleEn": "I used to get sick a lot because of my surgeries.",
+            "exampleZh": "因为手术，我以前经常生病。",
+            "forms": [
+              "sicker",
+              "sickest"
+            ]
+          }
+        },
+        "couple": {
+          "base": "couple",
+          "meaning": "noun 几个，两三个",
+          "note": "couple 原意是一对，引申为两三个；a couple of years = 两三年\nI probably won't have to have any more for another couple of years.\n我可能再过个两三年都不需要再做手术了。",
+          "forms": [
+            "couples"
+          ],
+          "mastered": false,
+          "createdAt": 1783516327540,
+          "ai": {
+            "base": "couple",
+            "partOfSpeech": "noun",
+            "meaningZh": "几个，两三个",
+            "memoryHintZh": "couple 原意是一对，引申为两三个；a couple of years = 两三年",
+            "exampleEn": "I probably won't have to have any more for another couple of years.",
+            "exampleZh": "我可能再过个两三年都不需要再做手术了。",
+            "forms": [
+              "couples"
+            ]
+          }
+        },
+        "illustrator": {
+          "base": "illustrator",
+          "meaning": "noun 插画家，插图作者",
+          "note": "illustrate（图解说明）+ -or（表示人）= 做插图的人\nShe used to be a children's-book illustrator.\n她曾经是一名童书插画家。",
+          "forms": [
+            "illustrators"
+          ],
+          "mastered": false,
+          "createdAt": 1783516389348,
+          "ai": {
+            "base": "illustrator",
+            "partOfSpeech": "noun",
+            "meaningZh": "插画家，插图作者",
+            "memoryHintZh": "illustrate（图解说明）+ -or（表示人）= 做插图的人",
+            "exampleEn": "She used to be a children's-book illustrator.",
+            "exampleZh": "她曾经是一名童书插画家。",
+            "forms": [
+              "illustrators"
+            ]
+          }
+        },
+        "fairy": {
+          "base": "fairy",
+          "meaning": "noun 仙子，小精灵（常指童话中有翅膀的魔法生物）",
+          "note": "童话故事里带翅膀的小精灵，像仙女\nShe draws really great fairies and mermaids.\n她画的小仙子和美人鱼非常棒。",
+          "forms": [
+            "fairies"
+          ],
+          "mastered": false,
+          "createdAt": 1783516405442,
+          "ai": {
+            "base": "fairy",
+            "partOfSpeech": "noun",
+            "meaningZh": "仙子，小精灵（常指童话中有翅膀的魔法生物）",
+            "memoryHintZh": "童话故事里带翅膀的小精灵，像仙女",
+            "exampleEn": "She draws really great fairies and mermaids.",
+            "exampleZh": "她画的小仙子和美人鱼非常棒。",
+            "forms": [
+              "fairies"
+            ]
+          }
+        },
+        "mermaid": {
+          "base": "mermaid",
+          "meaning": "noun 美人鱼",
+          "note": "maid 是少女，mermaid 就是海里的少女\nShe draws really great fairies and mermaids.\n她画的仙女和美人鱼非常棒。",
+          "forms": [
+            "mermaids"
+          ],
+          "mastered": false,
+          "createdAt": 1783516460775,
+          "ai": {
+            "base": "mermaid",
+            "partOfSpeech": "noun",
+            "meaningZh": "美人鱼",
+            "memoryHintZh": "maid 是少女，mermaid 就是海里的少女",
+            "exampleEn": "She draws really great fairies and mermaids.",
+            "exampleZh": "她画的仙女和美人鱼非常棒。",
+            "forms": [
+              "mermaids"
+            ]
+          }
+        },
+        "weird": {
+          "base": "weird",
+          "meaning": "adjective 奇怪的，怪异的，不寻常的",
+          "note": "音似'哇的'，看到一个奇怪的东西发出'哇'的惊叹\nThe drawing looked like some weird mushroom-shaped robot.\n那幅画看起来像一个奇怪的蘑菇形机器人。",
+          "forms": [
+            "weirder",
+            "weirdest"
+          ],
+          "mastered": false,
+          "createdAt": 1783516486866,
+          "ai": {
+            "base": "weird",
+            "partOfSpeech": "adjective",
+            "meaningZh": "奇怪的，怪异的，不寻常的",
+            "memoryHintZh": "音似'哇的'，看到一个奇怪的东西发出'哇'的惊叹",
+            "exampleEn": "The drawing looked like some weird mushroom-shaped robot.",
+            "exampleZh": "那幅画看起来像一个奇怪的蘑菇形机器人。",
+            "forms": [
+              "weirder",
+              "weirdest"
+            ]
+          }
+        },
+        "bump": {
+          "base": "bump",
+          "meaning": "verb （偶然）碰见，偶遇",
+          "note": "想象走路时突然撞到（bump）一个老朋友——就是偶遇\nIf we bump into each other on the street, they're still nice to me.\n如果我们在街上偶然碰到，他们对我还是很好。",
+          "forms": [
+            "bumps",
+            "bumped",
+            "bumping"
+          ],
+          "mastered": false,
+          "createdAt": 1783600995405,
+          "ai": {
+            "base": "bump",
+            "partOfSpeech": "verb",
+            "meaningZh": "（偶然）碰见，偶遇",
+            "memoryHintZh": "想象走路时突然撞到（bump）一个老朋友——就是偶遇",
+            "exampleEn": "If we bump into each other on the street, they're still nice to me.",
+            "exampleZh": "如果我们在街上偶然碰到，他们对我还是很好。",
+            "forms": [
+              "bumps",
+              "bumped",
+              "bumping"
+            ]
+          }
+        },
+        "joke": {
+          "base": "joke",
+          "meaning": "noun 笑话；玩笑（让人发笑的话或故事）",
+          "note": "讲笑话让人笑\nIt's not funny in the way a joke is funny\n它的好笑不像笑话那种好笑",
+          "forms": [
+            "jokes"
+          ],
+          "mastered": false,
+          "createdAt": 1783601180649,
+          "ai": {
+            "base": "joke",
+            "partOfSpeech": "noun",
+            "meaningZh": "笑话；玩笑（让人发笑的话或故事）",
+            "memoryHintZh": "讲笑话让人笑",
+            "exampleEn": "It's not funny in the way a joke is funny",
+            "exampleZh": "它的好笑不像笑话那种好笑",
+            "forms": [
+              "jokes"
+            ]
+          }
+        },
+        "stomach": {
+          "base": "stomach",
+          "meaning": "noun 肚子；胃",
+          "note": "stomach → stone + mach，想象肚子里有块石头那么沉\nSo when I was in my mom's stomach, no one had any idea I would come out looking the way I look.\n所以当我在妈妈的肚子里时，没人知道我出生后会长这样。",
+          "forms": [
+            "stomachs",
+            "stomaches"
+          ],
+          "mastered": false,
+          "createdAt": 1783601233642,
+          "ai": {
+            "base": "stomach",
+            "partOfSpeech": "noun",
+            "meaningZh": "肚子；胃",
+            "memoryHintZh": "stomach → stone + mach，想象肚子里有块石头那么沉",
+            "exampleEn": "So when I was in my mom's stomach, no one had any idea I would come out looking the way I look.",
+            "exampleZh": "所以当我在妈妈的肚子里时，没人知道我出生后会长这样。",
+            "forms": [
+              "stomachs",
+              "stomaches"
+            ]
+          }
+        },
+        "test": {
+          "base": "test",
+          "meaning": "noun （医学）检查，化验；（广义）测试，测验",
+          "note": "听到'test'就想到医生让你'测'一下血或做'查'验\nThere was no reason to run any special tests.\n没有任何理由进行任何特殊的检查。",
+          "forms": [
+            "tests"
+          ],
+          "mastered": false,
+          "createdAt": 1783601383556,
+          "ai": {
+            "base": "test",
+            "partOfSpeech": "noun",
+            "meaningZh": "（医学）检查，化验；（广义）测试，测验",
+            "memoryHintZh": "听到'test'就想到医生让你'测'一下血或做'查'验",
+            "exampleEn": "There was no reason to run any special tests.",
+            "exampleZh": "没有任何理由进行任何特殊的检查。",
+            "forms": [
+              "tests"
+            ]
+          }
+        },
+        "cleft": {
+          "base": "cleft",
+          "meaning": "adjective 腭裂的（指上颚裂开）；裂开的",
+          "note": "cl- 像“裂”的声母，-eft 像 left（离开），裂开就是两部分分开了\nI had a cleft palate and some other stuff going on.\n我有腭裂，还有一些其他问题。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783601420244,
+          "ai": {
+            "base": "cleft",
+            "partOfSpeech": "adjective",
+            "meaningZh": "腭裂的（指上颚裂开）；裂开的",
+            "memoryHintZh": "cl- 像“裂”的声母，-eft 像 left（离开），裂开就是两部分分开了",
+            "exampleEn": "I had a cleft palate and some other stuff going on.",
+            "exampleZh": "我有腭裂，还有一些其他问题。",
+            "forms": []
+          }
+        },
+        "anomaly": {
+          "base": "anomaly",
+          "meaning": "noun （医生所说的）小异常，轻微畸形；泛指异常、反常的事物",
+          "note": "anomalies 听起来像 'a normal?' 但其实是 '不正常'。\nThey called it 'small anomalies.'\n他们称之为‘小异常’。",
+          "forms": [
+            "anomalies"
+          ],
+          "mastered": false,
+          "createdAt": 1783601428780,
+          "ai": {
+            "base": "anomaly",
+            "partOfSpeech": "noun",
+            "meaningZh": "（医生所说的）小异常，轻微畸形；泛指异常、反常的事物",
+            "memoryHintZh": "anomalies 听起来像 'a normal?' 但其实是 '不正常'。",
+            "exampleEn": "They called it 'small anomalies.'",
+            "exampleZh": "他们称之为‘小异常’。",
+            "forms": [
+              "anomalies"
+            ]
+          }
+        },
+        "fart": {
+          "base": "fart",
+          "meaning": "verb 放屁",
+          "note": "护士不停放屁的画面，fart 是拟声词\nShe kept farting.\n她不停地放屁。",
+          "forms": [
+            "farts",
+            "farted",
+            "farting"
+          ],
+          "mastered": false,
+          "createdAt": 1783601890508,
+          "ai": {
+            "base": "fart",
+            "partOfSpeech": "verb",
+            "meaningZh": "放屁",
+            "memoryHintZh": "护士不停放屁的画面，fart 是拟声词",
+            "exampleEn": "She kept farting.",
+            "exampleZh": "她不停地放屁。",
+            "forms": [
+              "farts",
+              "farted",
+              "farting"
+            ]
+          }
+        },
+        "chip": {
+          "base": "chip",
+          "meaning": "noun 碎冰（冰屑）",
+          "note": "护士拿冰屑时还在放屁，记住 chips 是碎冰片\nShe'd bring Mom some ice chips, and then fart.\n她给妈妈拿了些冰屑，然后放了个屁。",
+          "forms": [
+            "chips"
+          ],
+          "mastered": false,
+          "createdAt": 1783601902450,
+          "ai": {
+            "base": "chip",
+            "partOfSpeech": "noun",
+            "meaningZh": "碎冰（冰屑）",
+            "memoryHintZh": "护士拿冰屑时还在放屁，记住 chips 是碎冰片",
+            "exampleEn": "She'd bring Mom some ice chips, and then fart.",
+            "exampleZh": "她给妈妈拿了些冰屑，然后放了个屁。",
+            "forms": [
+              "chips"
+            ]
+          }
+        },
+        "regular": {
+          "base": "regular",
+          "meaning": "adjective 定期的，常规的（指平时固定的医生）",
+          "note": "regulate（调节）→ 按规律来的就是regular\nMom's regular doctor wasn't on duty that night.\n妈妈平时的医生那天晚上没值班。",
+          "forms": [
+            "more regular",
+            "most regular"
+          ],
+          "mastered": false,
+          "createdAt": 1783601946101,
+          "ai": {
+            "base": "regular",
+            "partOfSpeech": "adjective",
+            "meaningZh": "定期的，常规的（指平时固定的医生）",
+            "memoryHintZh": "regulate（调节）→ 按规律来的就是regular",
+            "exampleEn": "Mom's regular doctor wasn't on duty that night.",
+            "exampleZh": "妈妈平时的医生那天晚上没值班。",
+            "forms": [
+              "more regular",
+              "most regular"
+            ]
+          }
+        },
+        "duty": {
+          "base": "duty",
+          "meaning": "noun 值班；责任，职责",
+          "note": "联想“due”（该做的），值班就是该你做的任务\nMom's regular doctor wasn't on duty that night.\n妈妈平时看的医生那天晚上不值勤。",
+          "forms": [
+            "duties"
+          ],
+          "mastered": false,
+          "createdAt": 1783601983207,
+          "ai": {
+            "base": "duty",
+            "partOfSpeech": "noun",
+            "meaningZh": "值班；责任，职责",
+            "memoryHintZh": "联想“due”（该做的），值班就是该你做的任务",
+            "exampleEn": "Mom's regular doctor wasn't on duty that night.",
+            "exampleZh": "妈妈平时看的医生那天晚上不值勤。",
+            "forms": [
+              "duties"
+            ]
+          }
+        },
+        "stick": {
+          "base": "stick",
+          "meaning": "verb 被迫接受（不想要的人或事物）",
+          "note": "像被胶水粘住一样甩不掉\nMom got stuck with a cranky kid doctor when her regular doctor wasn't on duty.\n妈妈在主治医生不当班时，被迫接受了一个脾气暴躁的年轻医生。",
+          "forms": [
+            "sticks",
+            "stuck",
+            "sticking"
+          ],
+          "mastered": false,
+          "createdAt": 1783602075724,
+          "ai": {
+            "base": "stick",
+            "partOfSpeech": "verb",
+            "meaningZh": "被迫接受（不想要的人或事物）",
+            "memoryHintZh": "像被胶水粘住一样甩不掉",
+            "exampleEn": "Mom got stuck with a cranky kid doctor when her regular doctor wasn't on duty.",
+            "exampleZh": "妈妈在主治医生不当班时，被迫接受了一个脾气暴躁的年轻医生。",
+            "forms": [
+              "sticks",
+              "stuck",
+              "sticking"
+            ]
+          }
+        },
+        "cranky": {
+          "base": "cranky",
+          "meaning": "adjective 脾气坏的，暴躁的（这里指年轻医生脾气不好）",
+          "note": "cranky 像 crank（曲柄），转不动时让人烦躁\nMom got stuck with this cranky kid doctor who never smiled.\n妈妈摊上了这个脾气暴躁的年轻医生，他从来不笑。",
+          "forms": [
+            "crankier",
+            "crankiest"
+          ],
+          "mastered": false,
+          "createdAt": 1783602083479,
+          "ai": {
+            "base": "cranky",
+            "partOfSpeech": "adjective",
+            "meaningZh": "脾气坏的，暴躁的（这里指年轻医生脾气不好）",
+            "memoryHintZh": "cranky 像 crank（曲柄），转不动时让人烦躁",
+            "exampleEn": "Mom got stuck with this cranky kid doctor who never smiled.",
+            "exampleZh": "妈妈摊上了这个脾气暴躁的年轻医生，他从来不笑。",
+            "forms": [
+              "crankier",
+              "crankiest"
+            ]
+          }
+        },
+        "grumpy": {
+          "base": "grumpy",
+          "meaning": "adjective 坏脾气的，暴躁的；这里指产房里每个人都有些烦躁不满的样子",
+          "note": "grump（v.嘟囔抱怨）+ y → 整天嘟囔抱怨的人就是脾气差的\nMom says that even though everyone in the room was kind of grumpy, Dad kept making her laugh all night long.\n妈妈说，尽管产房里的每个人都有些烦躁，爸爸还是逗了她一整夜。",
+          "forms": [
+            "grumpier",
+            "grumpiest"
+          ],
+          "mastered": false,
+          "createdAt": 1783602151299,
+          "ai": {
+            "base": "grumpy",
+            "partOfSpeech": "adjective",
+            "meaningZh": "坏脾气的，暴躁的；这里指产房里每个人都有些烦躁不满的样子",
+            "memoryHintZh": "grump（v.嘟囔抱怨）+ y → 整天嘟囔抱怨的人就是脾气差的",
+            "exampleEn": "Mom says that even though everyone in the room was kind of grumpy, Dad kept making her laugh all night long.",
+            "exampleZh": "妈妈说，尽管产房里的每个人都有些烦躁，爸爸还是逗了她一整夜。",
+            "forms": [
+              "grumpier",
+              "grumpiest"
+            ]
+          }
+        },
+        "chance": {
+          "base": "chance",
+          "meaning": "noun 机会，可能性；运气",
+          "note": "chan（缠）+ ce（测）→ 缠着测量→ 抓住机会\nMom didn't even get a chance to look at me before the nurse rushed me out of the room.\n妈妈甚至没机会看我一眼，护士就把我抱出了房间。",
+          "forms": [
+            "chances"
+          ],
+          "mastered": false,
+          "createdAt": 1783602352120,
+          "ai": {
+            "base": "chance",
+            "partOfSpeech": "noun",
+            "meaningZh": "机会，可能性；运气",
+            "memoryHintZh": "chan（缠）+ ce（测）→ 缠着测量→ 抓住机会",
+            "exampleEn": "Mom didn't even get a chance to look at me before the nurse rushed me out of the room.",
+            "exampleZh": "妈妈甚至没机会看我一眼，护士就把我抱出了房间。",
+            "forms": [
+              "chances"
+            ]
+          }
+        },
+        "piece": {
+          "base": "piece",
+          "meaning": "noun 碎片；块；片；件",
+          "note": "一片（piece）东西碎了就是碎片\nDad dropped the video camera, which broke into a million pieces.\n爸爸摔了摄像机，摔成了无数碎片。",
+          "forms": [
+            "pieces"
+          ],
+          "mastered": false,
+          "createdAt": 1783602383073,
+          "ai": {
+            "base": "piece",
+            "partOfSpeech": "noun",
+            "meaningZh": "碎片；块；片；件",
+            "memoryHintZh": "一片（piece）东西碎了就是碎片",
+            "exampleEn": "Dad dropped the video camera, which broke into a million pieces.",
+            "exampleZh": "爸爸摔了摄像机，摔成了无数碎片。",
+            "forms": [
+              "pieces"
+            ]
+          }
+        },
+        "practically": {
+          "base": "practically",
+          "meaning": "adverb 几乎，差不多",
+          "note": "practice 是'实践'，但 practically 在句子里常表示'几乎/差一点'，想象成'实践上已经等同于'\nThey were practically fighting.\n他们几乎要打起来了。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783602434522,
+          "ai": {
+            "base": "practically",
+            "partOfSpeech": "adverb",
+            "meaningZh": "几乎，差不多",
+            "memoryHintZh": "practice 是'实践'，但 practically 在句子里常表示'几乎/差一点'，想象成'实践上已经等同于'",
+            "exampleEn": "They were practically fighting.",
+            "exampleZh": "他们几乎要打起来了。",
+            "forms": []
+          }
+        },
+        "hysterical": {
+          "base": "hysterical",
+          "meaning": "adjective 极度情绪失控的，歇斯底里的（指无法控制地大哭、大叫或激动）",
+          "note": "想想hysteria（癔症）加上形容词后缀 -ical，形容一个人像发癔症一样情绪失控\nMom was hysterical and the nurse was yelling at her to stay calm.\n妈妈歇斯底里地哭喊着，护士则对她大喊着让她保持冷静。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783602441630,
+          "ai": {
+            "base": "hysterical",
+            "partOfSpeech": "adjective",
+            "meaningZh": "极度情绪失控的，歇斯底里的（指无法控制地大哭、大叫或激动）",
+            "memoryHintZh": "想想hysteria（癔症）加上形容词后缀 -ical，形容一个人像发癔症一样情绪失控",
+            "exampleEn": "Mom was hysterical and the nurse was yelling at her to stay calm.",
+            "exampleZh": "妈妈歇斯底里地哭喊着，护士则对她大喊着让她保持冷静。",
+            "forms": []
+          }
+        },
+        "faint": {
+          "base": "faint",
+          "meaning": "verb 晕倒，昏厥",
+          "note": "faint（晕倒）与 feint（佯攻）同音，记作“晕倒时身体发软，像在佯装”。\nThe doctor had fainted right on the floor.\n医生直接晕倒在了地板上。",
+          "forms": [
+            "faints",
+            "fainted",
+            "fainting"
+          ],
+          "mastered": false,
+          "createdAt": 1783602490987,
+          "ai": {
+            "base": "faint",
+            "partOfSpeech": "verb",
+            "meaningZh": "晕倒，昏厥",
+            "memoryHintZh": "faint（晕倒）与 feint（佯攻）同音，记作“晕倒时身体发软，像在佯装”。",
+            "exampleEn": "The doctor had fainted right on the floor.",
+            "exampleZh": "医生直接晕倒在了地板上。",
+            "forms": [
+              "faints",
+              "fainted",
+              "fainting"
+            ]
+          }
+        },
+        "overcome": {
+          "base": "overcome",
+          "meaning": "verb (archaic) （圣经用语）胜过，战胜（世界等）",
+          "note": "overcome（克服）+ -eth（古英语第三人称单数后缀）\nEveryone born of God overcometh the world.\n凡从神生的，就胜过世界。",
+          "forms": [
+            "overcomes",
+            "overcoming",
+            "overcame",
+            "overcometh"
+          ],
+          "mastered": false,
+          "createdAt": 1783602729631,
+          "ai": {
+            "base": "overcome",
+            "partOfSpeech": "verb (archaic)",
+            "meaningZh": "（圣经用语）胜过，战胜（世界等）",
+            "memoryHintZh": "overcome（克服）+ -eth（古英语第三人称单数后缀）",
+            "exampleEn": "Everyone born of God overcometh the world.",
+            "exampleZh": "凡从神生的，就胜过世界。",
+            "forms": [
+              "overcomes",
+              "overcoming",
+              "overcame",
+              "overcometh"
+            ]
+          }
+        }
+      },
+      "deletedWords": []
+    },
+    "index.html__3b610dcc34da9e06": {
+      "file": "index.html__3b610dcc34da9e06",
+      "updatedAt": "2026-07-07T13:45:38.206Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "ch01.html__734248521a1f04b4": {
+      "file": "ch01.html__734248521a1f04b4",
+      "updatedAt": "2026-07-07T13:45:48.577Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "index.html__e46774772bfa359f": {
+      "file": "index.html__e46774772bfa359f",
+      "updatedAt": "2026-07-08T12:15:04.000Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "index.html__9eba255da1cf3e7d": {
+      "file": "index.html__9eba255da1cf3e7d",
+      "updatedAt": "2026-07-08T12:35:35.962Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "segment_001.html__1ebba33cf8da6d1a": {
+      "file": "segment_001.html__1ebba33cf8da6d1a",
+      "updatedAt": "2026-07-08T12:36:17.675Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "index.html__15b2ed9b001d8752": {
+      "file": "index.html__15b2ed9b001d8752",
+      "updatedAt": "2026-07-08T14:23:53.995Z",
+      "words": {},
+      "deletedWords": []
+    },
+    "sunrise_segment_01.html__0ef7e014e6b42d8d": {
+      "file": "sunrise_segment_01.html__0ef7e014e6b42d8d",
+      "updatedAt": "2026-07-09T11:58:16.042Z",
+      "words": {
+        "shoulder": {
+          "base": "shoulder",
+          "meaning": "noun 肩膀",
+          "note": "肩膀是‘承受’的部位，‘should’有‘应该’之意，肩膀理应承担重量。\nMy ten-year-old brother, Sid, gives my shoulder a shake.\n我十岁的弟弟希德摇了摇我的肩膀。",
+          "forms": [
+            "shoulders"
+          ],
+          "mastered": false,
+          "createdAt": 1783598295959,
+          "ai": {
+            "base": "shoulder",
+            "partOfSpeech": "noun",
+            "meaningZh": "肩膀",
+            "memoryHintZh": "肩膀是‘承受’的部位，‘should’有‘应该’之意，肩膀理应承担重量。",
+            "exampleEn": "My ten-year-old brother, Sid, gives my shoulder a shake.",
+            "exampleZh": "我十岁的弟弟希德摇了摇我的肩膀。",
+            "forms": [
+              "shoulders"
+            ]
+          }
+        }
+      },
+      "deletedWords": []
+    },
+    "wonder_segment_02.html__a7cc89268864981f": {
+      "file": "wonder_segment_02.html__a7cc89268864981f",
+      "updatedAt": "2026-07-09T14:38:35.216Z",
+      "words": {
+        "bummed": {
+          "base": "bummed",
+          "meaning": "adjective 沮丧的；失望的",
+          "note": "bummed 像 'bum'（流浪汉）+ 'ed'，像流浪汉一样落魄，感到失落\nI was really bummed when Christopher moved away.\n当克里斯托弗搬走时，我真的很沮丧。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783602902369,
+          "ai": {
+            "base": "bummed",
+            "partOfSpeech": "adjective",
+            "meaningZh": "沮丧的；失望的",
+            "memoryHintZh": "bummed 像 'bum'（流浪汉）+ 'ed'，像流浪汉一样落魄，感到失落",
+            "exampleEn": "I was really bummed when Christopher moved away.",
+            "exampleZh": "当克里斯托弗搬走时，我真的很沮丧。",
+            "forms": []
+          }
+        },
+        "figure": {
+          "base": "figure",
+          "meaning": "noun 人偶（特指可动玩偶）",
+          "note": "fig（无花果）→ 玩具 figure 像无花果大小\nWe used to play with our Star Wars action figures.\n我们过去常玩星球大战的动作人偶。",
+          "forms": [
+            "figures"
+          ],
+          "mastered": false,
+          "createdAt": 1783603058953,
+          "ai": {
+            "base": "figure",
+            "partOfSpeech": "noun",
+            "meaningZh": "人偶（特指可动玩偶）",
+            "memoryHintZh": "fig（无花果）→ 玩具 figure 像无花果大小",
+            "exampleEn": "We used to play with our Star Wars action figures.",
+            "exampleZh": "我们过去常玩星球大战的动作人偶。",
+            "forms": [
+              "figures"
+            ]
+          }
+        },
+        "duel": {
+          "base": "duel",
+          "meaning": "verb 决斗",
+          "note": "duel 像'都殴'，两人对打就是决斗\nWe used to spend hours dueling with our lightsabers.\n我们过去常常花好几个小时用光剑决斗。",
+          "forms": [
+            "duels",
+            "dueling",
+            "dueled"
+          ],
+          "mastered": false,
+          "createdAt": 1783603137380,
+          "ai": {
+            "base": "duel",
+            "partOfSpeech": "verb",
+            "meaningZh": "决斗",
+            "memoryHintZh": "duel 像'都殴'，两人对打就是决斗",
+            "exampleEn": "We used to spend hours dueling with our lightsabers.",
+            "exampleZh": "我们过去常常花好几个小时用光剑决斗。",
+            "forms": [
+              "duels",
+              "dueling",
+              "dueled"
+            ]
+          }
+        },
+        "lightsaber": {
+          "base": "lightsaber",
+          "meaning": "noun 光剑（星球大战中的科幻武器）",
+          "note": "挥舞光剑像挥舞发光棍子，星球大战中绝地武士的武器。\nWe used to spend hours dueling with our lightsabers.\n我们常常花好几个小时用光剑对战。",
+          "forms": [
+            "lightsabers"
+          ],
+          "mastered": false,
+          "createdAt": 1783603143629,
+          "ai": {
+            "base": "lightsaber",
+            "partOfSpeech": "noun",
+            "meaningZh": "光剑（星球大战中的科幻武器）",
+            "memoryHintZh": "挥舞光剑像挥舞发光棍子，星球大战中绝地武士的武器。",
+            "exampleEn": "We used to spend hours dueling with our lightsabers.",
+            "exampleZh": "我们常常花好几个小时用光剑对战。",
+            "forms": [
+              "lightsabers"
+            ]
+          }
+        },
+        "fall": {
+          "base": "fall",
+          "meaning": "noun 秋天，秋季",
+          "note": "秋天树叶fall（落下），所以叫fall\nI heard Mom talking about my going to school in the fall.\n我听到妈妈谈论我秋天上学的事。",
+          "forms": [
+            "falls"
+          ],
+          "mastered": false,
+          "createdAt": 1783603195544,
+          "ai": {
+            "base": "fall",
+            "partOfSpeech": "noun",
+            "meaningZh": "秋天，秋季",
+            "memoryHintZh": "秋天树叶fall（落下），所以叫fall",
+            "exampleEn": "I heard Mom talking about my going to school in the fall.",
+            "exampleZh": "我听到妈妈谈论我秋天上学的事。",
+            "forms": [
+              "falls"
+            ]
+          }
+        },
+        "mention": {
+          "base": "mention",
+          "meaning": "verb 提到；说起",
+          "note": "联想\"men\"（人们）+ \"tion\"（动作），人们说起某事\nI had never heard her mention school before.\n我以前从未听她提到过学校。",
+          "forms": [
+            "mentions",
+            "mentioned",
+            "mentioning"
+          ],
+          "mastered": false,
+          "createdAt": 1783603201715,
+          "ai": {
+            "base": "mention",
+            "partOfSpeech": "verb",
+            "meaningZh": "提到；说起",
+            "memoryHintZh": "联想\"men\"（人们）+ \"tion\"（动作），人们说起某事",
+            "exampleEn": "I had never heard her mention school before.",
+            "exampleZh": "我以前从未听她提到过学校。",
+            "forms": [
+              "mentions",
+              "mentioned",
+              "mentioning"
+            ]
+          }
+        },
+        "fraction": {
+          "base": "fraction",
+          "meaning": "noun 分数",
+          "note": "fract- 像 fracture (断裂)，分数就是把整体断裂成几部分。\nI know how bad I am at fractions.\n我知道我分数有多差。",
+          "forms": [
+            "fractions"
+          ],
+          "mastered": false,
+          "createdAt": 1783603328680,
+          "ai": {
+            "base": "fraction",
+            "partOfSpeech": "noun",
+            "meaningZh": "分数",
+            "memoryHintZh": "fract- 像 fracture (断裂)，分数就是把整体断裂成几部分。",
+            "exampleEn": "I know how bad I am at fractions.",
+            "exampleZh": "我知道我分数有多差。",
+            "forms": [
+              "fractions"
+            ]
+          }
+        },
+        "squeeze": {
+          "base": "squeeze",
+          "meaning": "verb 紧握（某人的手）以示安慰或鼓励；挤压，榨取",
+          "note": "想象握住别人的手轻轻用力一握，就像在说『没事的』\nLisa reached over and squeezed her hand.\n丽莎伸手过去，紧握了一下她的手。",
+          "forms": [
+            "squeezes",
+            "squeezed",
+            "squeezing"
+          ],
+          "mastered": false,
+          "createdAt": 1783603504051,
+          "ai": {
+            "base": "squeeze",
+            "partOfSpeech": "verb",
+            "meaningZh": "紧握（某人的手）以示安慰或鼓励；挤压，榨取",
+            "memoryHintZh": "想象握住别人的手轻轻用力一握，就像在说『没事的』",
+            "exampleEn": "Lisa reached over and squeezed her hand.",
+            "exampleZh": "丽莎伸手过去，紧握了一下她的手。",
+            "forms": [
+              "squeezes",
+              "squeezed",
+              "squeezing"
+            ]
+          }
+        },
+        "quietly": {
+          "base": "quietly",
+          "meaning": "adverb 轻声地,安静地",
+          "note": "quiet（安静）+ ly（副词后缀）→ 轻声地\nMom and Dad talked quietly about grown-up things.\n爸爸妈妈轻声地谈论着大人之间的事情。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783606376061,
+          "ai": {
+            "base": "quietly",
+            "partOfSpeech": "adverb",
+            "meaningZh": "轻声地,安静地",
+            "memoryHintZh": "quiet（安静）+ ly（副词后缀）→ 轻声地",
+            "exampleEn": "Mom and Dad talked quietly about grown-up things.",
+            "exampleZh": "爸爸妈妈轻声地谈论着大人之间的事情。",
+            "forms": []
+          }
+        },
+        "pillow": {
+          "base": "pillow",
+          "meaning": "noun 枕头",
+          "note": "音似‘皮楼’，想象用皮做的楼当枕头\nI fell asleep with my head on Via's lap, like she was my pillow.\n我睡着了，头枕在维娅腿上，就像枕着枕头一样。",
+          "forms": [
+            "pillows"
+          ],
+          "mastered": false,
+          "createdAt": 1783606391648,
+          "ai": {
+            "base": "pillow",
+            "partOfSpeech": "noun",
+            "meaningZh": "枕头",
+            "memoryHintZh": "音似‘皮楼’，想象用皮做的楼当枕头",
+            "exampleEn": "I fell asleep with my head on Via's lap, like she was my pillow.",
+            "exampleZh": "我睡着了，头枕在维娅腿上，就像枕着枕头一样。",
+            "forms": [
+              "pillows"
+            ]
+          }
+        },
+        "wrap": {
+          "base": "wrap",
+          "meaning": "verb (past participle) 包裹，缠绕（此处指用毛巾裹着安全带）",
+          "note": "联想：wrapped 像 wrap 的包装纸，把东西严严实实地包起来\na towel wrapped around the seat belt so I wouldn't drool all over her\n一条毛巾裹着安全带，这样我就不会滴口水到她身上了",
+          "forms": [
+            "wraps",
+            "wrapping",
+            "wrapped"
+          ],
+          "mastered": false,
+          "createdAt": 1783606417679,
+          "ai": {
+            "base": "wrap",
+            "partOfSpeech": "verb (past participle)",
+            "meaningZh": "包裹，缠绕（此处指用毛巾裹着安全带）",
+            "memoryHintZh": "联想：wrapped 像 wrap 的包装纸，把东西严严实实地包起来",
+            "exampleEn": "a towel wrapped around the seat belt so I wouldn't drool all over her",
+            "exampleZh": "一条毛巾裹着安全带，这样我就不会滴口水到她身上了",
+            "forms": [
+              "wraps",
+              "wrapping",
+              "wrapped"
+            ]
+          }
+        },
+        "towel": {
+          "base": "towel",
+          "meaning": "noun 毛巾",
+          "note": "towel 音似『套我』，想象毛巾套在安全带上防止滴口水。\nA towel wrapped around the seat belt so I wouldn't drool all over her.\n一条毛巾缠在安全带上，这样我就不会滴口水在她身上。",
+          "forms": [
+            "towels"
+          ],
+          "mastered": false,
+          "createdAt": 1783606455746,
+          "ai": {
+            "base": "towel",
+            "partOfSpeech": "noun",
+            "meaningZh": "毛巾",
+            "memoryHintZh": "towel 音似『套我』，想象毛巾套在安全带上防止滴口水。",
+            "exampleEn": "A towel wrapped around the seat belt so I wouldn't drool all over her.",
+            "exampleZh": "一条毛巾缠在安全带上，这样我就不会滴口水在她身上。",
+            "forms": [
+              "towels"
+            ]
+          }
+        },
+        "drool": {
+          "base": "drool",
+          "meaning": "verb 流口水",
+          "note": "想象婴儿睡觉时流口水的样子\nI wrapped a towel around the seat belt so I wouldn't drool all over Via.\n我用毛巾裹住安全带，免得口水流到维亚身上。",
+          "forms": [
+            "drools",
+            "drooled",
+            "drooling"
+          ],
+          "mastered": false,
+          "createdAt": 1783606470316,
+          "ai": {
+            "base": "drool",
+            "partOfSpeech": "verb",
+            "meaningZh": "流口水",
+            "memoryHintZh": "想象婴儿睡觉时流口水的样子",
+            "exampleEn": "I wrapped a towel around the seat belt so I wouldn't drool all over Via.",
+            "exampleZh": "我用毛巾裹住安全带，免得口水流到维亚身上。",
+            "forms": [
+              "drools",
+              "drooled",
+              "drooling"
+            ]
+          }
+        },
+        "purple": {
+          "base": "purple",
+          "meaning": "adjective 紫色的",
+          "note": "联想深紫罗兰色夜空\nIt was a purple night, and we were driving on a highway full of cars.\n那是一个紫色的夜晚，我们行驶在满是汽车的高速公路上。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783606494028,
+          "ai": {
+            "base": "purple",
+            "partOfSpeech": "adjective",
+            "meaningZh": "紫色的",
+            "memoryHintZh": "联想深紫罗兰色夜空",
+            "exampleEn": "It was a purple night, and we were driving on a highway full of cars.",
+            "exampleZh": "那是一个紫色的夜晚，我们行驶在满是汽车的高速公路上。",
+            "forms": []
+          }
+        },
+        "principal": {
+          "base": "principal",
+          "meaning": "noun 校长（学校负责人）",
+          "note": "学校的首要人物，prince（王子）一样的领导。\nMom tried to comfort me by telling me about the principal Mr. Tushman.\n妈妈试图安慰我，告诉我关于校长塔什曼先生的事情。",
+          "forms": [
+            "principals"
+          ],
+          "mastered": false,
+          "createdAt": 1783606609288,
+          "ai": {
+            "base": "principal",
+            "partOfSpeech": "noun",
+            "meaningZh": "校长（学校负责人）",
+            "memoryHintZh": "学校的首要人物，prince（王子）一样的领导。",
+            "exampleEn": "Mom tried to comfort me by telling me about the principal Mr. Tushman.",
+            "exampleZh": "妈妈试图安慰我，告诉我关于校长塔什曼先生的事情。",
+            "forms": [
+              "principals"
+            ]
+          }
+        },
+        "loudspeaker": {
+          "base": "loudspeaker",
+          "meaning": "noun 扬声器，喇叭（指扩音设备）",
+          "note": "loud（大声的）+ speaker（说话者）→ 让声音变大的设备\nHis name was announced over the loudspeaker.\n他的名字通过扬声器播报出来。",
+          "forms": [
+            "loudspeakers"
+          ],
+          "mastered": false,
+          "createdAt": 1783606764989,
+          "ai": {
+            "base": "loudspeaker",
+            "partOfSpeech": "noun",
+            "meaningZh": "扬声器，喇叭（指扩音设备）",
+            "memoryHintZh": "loud（大声的）+ speaker（说话者）→ 让声音变大的设备",
+            "exampleEn": "His name was announced over the loudspeaker.",
+            "exampleZh": "他的名字通过扬声器播报出来。",
+            "forms": [
+              "loudspeakers"
+            ]
+          }
+        },
+        "giggly": {
+          "base": "giggly",
+          "meaning": "adjective 因紧张或兴奋而咯咯笑的，忍不住笑的",
+          "note": "giggly 来自 giggle (咯咯笑) + y，形容人觉得很好笑、总想笑的状态\nI couldn't stop thinking about all the jokes, which made me kind of giggly.\n我忍不住老是想着那些笑话，所以有点咯咯想笑。",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783607495001,
+          "ai": {
+            "base": "giggly",
+            "partOfSpeech": "adjective",
+            "meaningZh": "因紧张或兴奋而咯咯笑的，忍不住笑的",
+            "memoryHintZh": "giggly 来自 giggle (咯咯笑) + y，形容人觉得很好笑、总想笑的状态",
+            "exampleEn": "I couldn't stop thinking about all the jokes, which made me kind of giggly.",
+            "exampleZh": "我忍不住老是想着那些笑话，所以有点咯咯想笑。",
+            "forms": []
+          }
+        },
+        "movie": {
+          "base": "movie",
+          "meaning": "noun （与the连用）电影院，看电影；影片，电影",
+          "note": "moving picture缩略而来，会动的画面就是电影\nDid you think we were going to the movies?\n你以为我们要去看电影吗？",
+          "forms": [
+            "movies"
+          ],
+          "mastered": false,
+          "createdAt": 1783607826635,
+          "ai": {
+            "base": "movie",
+            "partOfSpeech": "noun",
+            "meaningZh": "（与the连用）电影院，看电影；影片，电影",
+            "memoryHintZh": "moving picture缩略而来，会动的画面就是电影",
+            "exampleEn": "Did you think we were going to the movies?",
+            "exampleZh": "你以为我们要去看电影吗？",
+            "forms": [
+              "movies"
+            ]
+          }
+        },
+        "sneaker": {
+          "base": "sneaker",
+          "meaning": "noun 运动鞋",
+          "note": "sneaker 像 sneak （偷偷） + er，穿运动鞋走路轻便无声，像偷偷走路\n\"He knelt down so I couldn't look at his sneakers but had to look at his face.\"\n“他跪下来，让我无法再看他的运动鞋，而不得不看着他的脸。”",
+          "forms": [
+            "sneakers"
+          ],
+          "mastered": false,
+          "createdAt": 1783607834771,
+          "ai": {
+            "base": "sneaker",
+            "partOfSpeech": "noun",
+            "meaningZh": "运动鞋",
+            "memoryHintZh": "sneaker 像 sneak （偷偷） + er，穿运动鞋走路轻便无声，像偷偷走路",
+            "exampleEn": "\"He knelt down so I couldn't look at his sneakers but had to look at his face.\"",
+            "exampleZh": "“他跪下来，让我无法再看他的运动鞋，而不得不看着他的脸。”",
+            "forms": [
+              "sneakers"
+            ]
+          }
+        },
+        "artist": {
+          "base": "artist",
+          "meaning": "noun 艺术家，画家",
+          "note": "art（艺术）+ ist（人）→ 从事艺术的人\nYou're a great artist.\n你是个伟大的艺术家。",
+          "forms": [
+            "artists"
+          ],
+          "mastered": false,
+          "createdAt": 1783607915208,
+          "ai": {
+            "base": "artist",
+            "partOfSpeech": "noun",
+            "meaningZh": "艺术家，画家",
+            "memoryHintZh": "art（艺术）+ ist（人）→ 从事艺术的人",
+            "exampleEn": "You're a great artist.",
+            "exampleZh": "你是个伟大的艺术家。",
+            "forms": [
+              "artists"
+            ]
+          }
+        }
+      },
+      "deletedWords": []
+    },
+    "wonder_segment_03.html__38d2b1c73e92f004": {
+      "file": "wonder_segment_03.html__38d2b1c73e92f004",
+      "updatedAt": "2026-07-09T15:46:28.410Z",
+      "words": {
+        "sarcastically": {
+          "base": "sarcastically",
+          "meaning": "adverb 讽刺地；讥讽地，挖苦地",
+          "note": "谐音联想：'sa-cas-tic-ally' 像 '啥+卡死+踢客+里'，想象一个人阴阳怪气地指点东西。\nJulian started pointing sarcastically at the objects in the classroom.\n朱利安开始讽刺地指着教室里的物品。",
+          "forms": [
+            "more sarcastically",
+            "most sarcastically"
+          ],
+          "mastered": false,
+          "createdAt": 1783611260031,
+          "ai": {
+            "base": "sarcastically",
+            "partOfSpeech": "adverb",
+            "meaningZh": "讽刺地；讥讽地，挖苦地",
+            "memoryHintZh": "谐音联想：'sa-cas-tic-ally' 像 '啥+卡死+踢客+里'，想象一个人阴阳怪气地指点东西。",
+            "exampleEn": "Julian started pointing sarcastically at the objects in the classroom.",
+            "exampleZh": "朱利安开始讽刺地指着教室里的物品。",
+            "forms": [
+              "more sarcastically",
+              "most sarcastically"
+            ]
+          }
+        },
+        "incubator": {
+          "base": "incubator",
+          "meaning": "noun 培养箱，恒温箱（教室中用于培养微生物的器具）",
+          "note": "in-（里面）+cub（躺）+ator（器具）→ 让东西躺在里面的器具，适合细菌或婴儿生长\nJulian pointed sarcastically: \"That's the incubator.\"\n朱利安嘲讽地指着说：\"那是培养箱。\"",
+          "forms": [
+            "incubators"
+          ],
+          "mastered": false,
+          "createdAt": 1783611300212,
+          "ai": {
+            "base": "incubator",
+            "partOfSpeech": "noun",
+            "meaningZh": "培养箱，恒温箱（教室中用于培养微生物的器具）",
+            "memoryHintZh": "in-（里面）+cub（躺）+ator（器具）→ 让东西躺在里面的器具，适合细菌或婴儿生长",
+            "exampleEn": "Julian pointed sarcastically: \"That's the incubator.\"",
+            "exampleZh": "朱利安嘲讽地指着说：\"那是培养箱。\"",
+            "forms": [
+              "incubators"
+            ]
+          }
+        },
+        "supposedly": {
+          "base": "supposedly",
+          "meaning": "adverb 据说，按照推测（此处为纠正对方用词，暗示正确的词应为supposedly）",
+          "note": "suppose（假设）+d+ly → 按照假定的方式\n\"The word's 'supposedly,' by the way.\"\n“顺便说一下，那个词是'supposedly'。”",
+          "forms": [],
+          "mastered": false,
+          "createdAt": 1783611611090,
+          "ai": {
+            "base": "supposedly",
+            "partOfSpeech": "adverb",
+            "meaningZh": "据说，按照推测（此处为纠正对方用词，暗示正确的词应为supposedly）",
+            "memoryHintZh": "suppose（假设）+d+ly → 按照假定的方式",
+            "exampleEn": "\"The word's 'supposedly,' by the way.\"",
+            "exampleZh": "“顺便说一下，那个词是'supposedly'。”",
+            "forms": []
+          }
+        },
+        "head": {
+          "base": "head",
+          "meaning": "verb 朝…方向去，前往（本地语境）；也可指带领、领导",
+          "note": "head 是“头”，往某个方向走就是“头”朝那个方向去\nWe headed to the performance space.\n我们朝演出场地走去。",
+          "forms": [
+            "heads",
+            "heading",
+            "headed"
+          ],
+          "mastered": false,
+          "createdAt": 1783611700878,
+          "ai": {
+            "base": "head",
+            "partOfSpeech": "verb",
+            "meaningZh": "朝…方向去，前往（本地语境）；也可指带领、领导",
+            "memoryHintZh": "head 是“头”，往某个方向走就是“头”朝那个方向去",
+            "exampleEn": "We headed to the performance space.",
+            "exampleZh": "我们朝演出场地走去。",
+            "forms": [
+              "heads",
+              "heading",
+              "headed"
+            ]
+          }
+        },
+        "corner": {
+          "base": "corner",
+          "meaning": "noun 眼角；角落",
+          "note": "corner = 角落；out of the corner of his eye 指从眼角看，用余光\nWhile Charlotte talked, I noticed Julian staring at me out of the corner of his eye.\n当夏洛特说话时，我注意到朱利安从眼角偷偷看我。",
+          "forms": [
+            "corners"
+          ],
+          "mastered": false,
+          "createdAt": 1783611732833,
+          "ai": {
+            "base": "corner",
+            "partOfSpeech": "noun",
+            "meaningZh": "眼角；角落",
+            "memoryHintZh": "corner = 角落；out of the corner of his eye 指从眼角看，用余光",
+            "exampleEn": "While Charlotte talked, I noticed Julian staring at me out of the corner of his eye.",
+            "exampleZh": "当夏洛特说话时，我注意到朱利安从眼角偷偷看我。",
+            "forms": [
+              "corners"
+            ]
+          }
+        },
+        "dare": {
+          "base": "dare",
+          "meaning": "verb 激将，挑战（某人做某事）",
+          "note": "想象有人直视你说'你敢不敢？'，这就是dare。\nHe looked at me, kind of daring me to look back at him.\n他看着我，有点激将我也回看他。",
+          "forms": [
+            "dares",
+            "dared",
+            "daring"
+          ],
+          "mastered": false,
+          "createdAt": 1783611836050,
+          "ai": {
+            "base": "dare",
+            "partOfSpeech": "verb",
+            "meaningZh": "激将，挑战（某人做某事）",
+            "memoryHintZh": "想象有人直视你说'你敢不敢？'，这就是dare。",
+            "exampleEn": "He looked at me, kind of daring me to look back at him.",
+            "exampleZh": "他看着我，有点激将我也回看他。",
+            "forms": [
+              "dares",
+              "dared",
+              "daring"
+            ]
+          }
+        },
+        "reach": {
+          "base": "reach",
+          "meaning": "verb 到达，抵达（某人/t 某地）",
+          "note": "联想：别人 'reached us' 即『到达我们这里』，reached 和 arrive at 同义\nThe others reached us before I could respond.\n在我回答之前，其他人已经走到了我们这里。",
+          "forms": [
+            "reaches",
+            "reaching",
+            "reached"
+          ],
+          "mastered": false,
+          "createdAt": 1783611947878,
+          "ai": {
+            "base": "reach",
+            "partOfSpeech": "verb",
+            "meaningZh": "到达，抵达（某人/t 某地）",
+            "memoryHintZh": "联想：别人 'reached us' 即『到达我们这里』，reached 和 arrive at 同义",
+            "exampleEn": "The others reached us before I could respond.",
+            "exampleZh": "在我回答之前，其他人已经走到了我们这里。",
+            "forms": [
+              "reaches",
+              "reaching",
+              "reached"
+            ]
+          }
+        },
+        "jerk": {
+          "base": "jerk",
+          "meaning": "noun 混蛋；蠢货（指令人讨厌的人）；（物理）急动（较少用）",
+          "note": "jerk 音似‘这刻’，这刻你只想骂他混蛋。\nJulian's a jerk.\n朱利安是个混蛋。",
+          "forms": [
+            "jerks"
+          ],
+          "mastered": false,
+          "createdAt": 1783611955268,
+          "ai": {
+            "base": "jerk",
+            "partOfSpeech": "noun",
+            "meaningZh": "混蛋；蠢货（指令人讨厌的人）；（物理）急动（较少用）",
+            "memoryHintZh": "jerk 音似‘这刻’，这刻你只想骂他混蛋。",
+            "exampleEn": "Julian's a jerk.",
+            "exampleZh": "朱利安是个混蛋。",
+            "forms": [
+              "jerks"
+            ]
+          }
+        },
+        "dude": {
+          "base": "dude",
+          "meaning": "noun 哥们儿，老兄（口语中对同伴或朋友的称呼）",
+          "note": "读音像'丢的'——好兄弟丢了就很慌\nBut, dude, you're gonna have to talk.\n但是，哥们儿，你得说话。",
+          "forms": [
+            "dudes"
+          ],
+          "mastered": false,
+          "createdAt": 1783611988405,
+          "ai": {
+            "base": "dude",
+            "partOfSpeech": "noun",
+            "meaningZh": "哥们儿，老兄（口语中对同伴或朋友的称呼）",
+            "memoryHintZh": "读音像'丢的'——好兄弟丢了就很慌",
+            "exampleEn": "But, dude, you're gonna have to talk.",
+            "exampleZh": "但是，哥们儿，你得说话。",
+            "forms": [
+              "dudes"
+            ]
+          }
+        }
+      },
+      "deletedWords": []
+    },
+    "wonder_segment_04.html__1af3bf07739110d5": {
+      "file": "wonder_segment_04.html__1af3bf07739110d5",
+      "updatedAt": "2026-07-09T16:08:17.465Z",
+      "words": {},
       "deletedWords": []
     }
   }

@@ -1,0 +1,855 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="eng">
+  <head>
+    <meta content="2e522c78-ce30-4a00-a192-eb606a39ea5e" name="dtb:uid"/>
+    <meta content="3" name="dtb:depth"/>
+    <meta content="calibre (4.1.0)" name="dtb:generator"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Wonder</text>
+  </docTitle>
+  <navMap>
+    <navPoint class="chapter" id="num_1" playOrder="0">
+      <navLabel>
+        <text>Contents</text>
+      </navLabel>
+      <content src="text/part0000.html#0-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_2" playOrder="1">
+      <navLabel>
+        <text>About the Book</text>
+      </navLabel>
+      <content src="text/part0001.html#UGI0-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_3" playOrder="2">
+      <navLabel>
+        <text>Title Page</text>
+      </navLabel>
+      <content src="text/part0002.html#1T140-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_4" playOrder="3">
+      <navLabel>
+        <text>Dedication</text>
+      </navLabel>
+      <content src="text/part0003.html#2RHM0-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_5" playOrder="4">
+      <navLabel>
+        <text>Epigraph</text>
+      </navLabel>
+      <content src="text/part0004.html#3Q280-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_6" playOrder="5">
+      <navLabel>
+        <text>Part One: August</text>
+      </navLabel>
+      <content src="text/part0005.html#4OIQ0-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_7" playOrder="6">
+        <navLabel>
+          <text>Ordinary</text>
+        </navLabel>
+        <content src="text/part0006.html#5N3C0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_8" playOrder="7">
+        <navLabel>
+          <text>Why I Didn’t Go to School</text>
+        </navLabel>
+        <content src="text/part0007.html#6LJU0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_9" playOrder="8">
+        <navLabel>
+          <text>How I Came to Life</text>
+        </navLabel>
+        <content src="text/part0008.html#7K4G0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_10" playOrder="9">
+        <navLabel>
+          <text>Christopher’s House</text>
+        </navLabel>
+        <content src="text/part0009.html#8IL20-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_11" playOrder="10">
+        <navLabel>
+          <text>Driving</text>
+        </navLabel>
+        <content src="text/part0010.html#9H5K0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_12" playOrder="11">
+        <navLabel>
+          <text>Paging Mr. Tushman</text>
+        </navLabel>
+        <content src="text/part0011.html#AFM60-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_13" playOrder="12">
+        <navLabel>
+          <text>Nice Mrs. Garcia</text>
+        </navLabel>
+        <content src="text/part0012.html#BE6O0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_14" playOrder="13">
+        <navLabel>
+          <text>Jack Will, Julian, and Charlotte</text>
+        </navLabel>
+        <content src="text/part0013.html#CCNA0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_15" playOrder="14">
+        <navLabel>
+          <text>The Grand Tour</text>
+        </navLabel>
+        <content src="text/part0014.html#DB7S0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_16" playOrder="15">
+        <navLabel>
+          <text>The Performance Space</text>
+        </navLabel>
+        <content src="text/part0015.html#E9OE0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_17" playOrder="16">
+        <navLabel>
+          <text>The Deal</text>
+        </navLabel>
+        <content src="text/part0016.html#F8900-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_18" playOrder="17">
+        <navLabel>
+          <text>Home</text>
+        </navLabel>
+        <content src="text/part0017.html#G6PI0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_19" playOrder="18">
+        <navLabel>
+          <text>First-Day Jitters</text>
+        </navLabel>
+        <content src="text/part0018.html#H5A40-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_20" playOrder="19">
+        <navLabel>
+          <text>Locks</text>
+        </navLabel>
+        <content src="text/part0019.html#I3QM0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_21" playOrder="20">
+        <navLabel>
+          <text>Around the Room</text>
+        </navLabel>
+        <content src="text/part0020.html#J2B80-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_22" playOrder="21">
+        <navLabel>
+          <text>Lamb to the Slaughter</text>
+        </navLabel>
+        <content src="text/part0021.html#K0RQ0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_23" playOrder="22">
+        <navLabel>
+          <text>Choose Kind</text>
+        </navLabel>
+        <content src="text/part0022.html#KVCC0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_24" playOrder="23">
+        <navLabel>
+          <text>Lunch</text>
+        </navLabel>
+        <content src="text/part0023.html#LTSU0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_25" playOrder="24">
+        <navLabel>
+          <text>The Summer Table</text>
+        </navLabel>
+        <content src="text/part0024.html#MSDG0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_26" playOrder="25">
+        <navLabel>
+          <text>One to Ten</text>
+        </navLabel>
+        <content src="text/part0025.html#NQU20-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_27" playOrder="26">
+        <navLabel>
+          <text>Padawan</text>
+        </navLabel>
+        <content src="text/part0026.html#OPEK0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_28" playOrder="27">
+        <navLabel>
+          <text>Wake Me Up when September Ends</text>
+        </navLabel>
+        <content src="text/part0027.html#PNV60-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_29" playOrder="28">
+        <navLabel>
+          <text>Jack Will</text>
+        </navLabel>
+        <content src="text/part0028.html#QMFO0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_30" playOrder="29">
+        <navLabel>
+          <text>Mr. Browne’s October Precept</text>
+        </navLabel>
+        <content src="text/part0029.html#RL0A0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_31" playOrder="30">
+        <navLabel>
+          <text>Apples</text>
+        </navLabel>
+        <content src="text/part0030.html#SJGS0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_32" playOrder="31">
+        <navLabel>
+          <text>Halloween</text>
+        </navLabel>
+        <content src="text/part0031.html#TI1E0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_33" playOrder="32">
+        <navLabel>
+          <text>School Pictures</text>
+        </navLabel>
+        <content src="text/part0032.html#UGI00-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_34" playOrder="33">
+        <navLabel>
+          <text>The Cheese Touch</text>
+        </navLabel>
+        <content src="text/part0033.html#VF2I0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_35" playOrder="34">
+        <navLabel>
+          <text>Costumes</text>
+        </navLabel>
+        <content src="text/part0034.html#10DJ40-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_36" playOrder="35">
+        <navLabel>
+          <text>The Bleeding Scream</text>
+        </navLabel>
+        <content src="text/part0035.html#11C3M0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_37" playOrder="36">
+        <navLabel>
+          <text>Names</text>
+        </navLabel>
+        <content src="text/part0036.html#12AK80-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_38" playOrder="37">
+      <navLabel>
+        <text>Part Two: Via</text>
+      </navLabel>
+      <content src="text/part0037.html#1394Q0-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_39" playOrder="38">
+        <navLabel>
+          <text>A Tour of the Galaxy</text>
+        </navLabel>
+        <content src="text/part0038.html#147LC0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_40" playOrder="39">
+        <navLabel>
+          <text>Before August</text>
+        </navLabel>
+        <content src="text/part0039.html#1565U0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_41" playOrder="40">
+        <navLabel>
+          <text>Seeing August</text>
+        </navLabel>
+        <content src="text/part0040.html#164MG0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_42" playOrder="41">
+        <navLabel>
+          <text>August Through the Peephole</text>
+        </navLabel>
+        <content src="text/part0041.html#173720-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_43" playOrder="42">
+        <navLabel>
+          <text>High School</text>
+        </navLabel>
+        <content src="text/part0042.html#181NK0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_44" playOrder="43">
+        <navLabel>
+          <text>Major Tom</text>
+        </navLabel>
+        <content src="text/part0043.html#190860-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_45" playOrder="44">
+        <navLabel>
+          <text>After School</text>
+        </navLabel>
+        <content src="text/part0044.html#19UOO0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_46" playOrder="45">
+        <navLabel>
+          <text>The Padawan Bites the Dust</text>
+        </navLabel>
+        <content src="text/part0045.html#1AT9A0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_47" playOrder="46">
+        <navLabel>
+          <text>An Apparition at the Door</text>
+        </navLabel>
+        <content src="text/part0046.html#1BRPS0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_48" playOrder="47">
+        <navLabel>
+          <text>Breakfast</text>
+        </navLabel>
+        <content src="text/part0047.html#1CQAE0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_49" playOrder="48">
+        <navLabel>
+          <text>Genetics 101</text>
+        </navLabel>
+        <content src="text/part0048.html#1DOR00-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_50" playOrder="49">
+        <navLabel>
+          <text>The Punnett Square</text>
+        </navLabel>
+        <content src="text/part0049.html#1ENBI0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_51" playOrder="50">
+        <navLabel>
+          <text>Out with the Old</text>
+        </navLabel>
+        <content src="text/part0050.html#1FLS40-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_52" playOrder="51">
+        <navLabel>
+          <text>October 31</text>
+        </navLabel>
+        <content src="text/part0051.html#1GKCM0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_53" playOrder="52">
+        <navLabel>
+          <text>Trick or Treat</text>
+        </navLabel>
+        <content src="text/part0052.html#1HIT80-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_54" playOrder="53">
+        <navLabel>
+          <text>Time to Think</text>
+        </navLabel>
+        <content src="text/part0053.html#1IHDQ0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_55" playOrder="54">
+      <navLabel>
+        <text>Part Three: Summer</text>
+      </navLabel>
+      <content src="text/part0054.html#1JFUC0-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_56" playOrder="55">
+        <navLabel>
+          <text>Weird Kids</text>
+        </navLabel>
+        <content src="text/part0055.html#1KEEU0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_57" playOrder="56">
+        <navLabel>
+          <text>The Plague</text>
+        </navLabel>
+        <content src="text/part0056.html#1LCVG0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_58" playOrder="57">
+        <navLabel>
+          <text>The Halloween Party</text>
+        </navLabel>
+        <content src="text/part0057.html#1MBG20-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_59" playOrder="58">
+        <navLabel>
+          <text>November</text>
+        </navLabel>
+        <content src="text/part0058.html#1NA0K0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_60" playOrder="59">
+        <navLabel>
+          <text>Warning: This Kid Is Rated R</text>
+        </navLabel>
+        <content src="text/part0059.html#1O8H60-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_61" playOrder="60">
+        <navLabel>
+          <text>The Egyptian Tomb</text>
+        </navLabel>
+        <content src="text/part0060.html#1P71O0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_62" playOrder="61">
+      <navLabel>
+        <text>Part Four: Jack</text>
+      </navLabel>
+      <content src="text/part0061.html#1Q5IA0-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_63" playOrder="62">
+        <navLabel>
+          <text>The Call</text>
+        </navLabel>
+        <content src="text/part0062.html#1R42S0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_64" playOrder="63">
+        <navLabel>
+          <text>Carvel</text>
+        </navLabel>
+        <content src="text/part0063.html#1S2JE0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_65" playOrder="64">
+        <navLabel>
+          <text>Why I Changed My Mind</text>
+        </navLabel>
+        <content src="text/part0064.html#1T1400-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_66" playOrder="65">
+        <navLabel>
+          <text>Four Things</text>
+        </navLabel>
+        <content src="text/part0065.html#1TVKI0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_67" playOrder="66">
+        <navLabel>
+          <text>Ex-Friends</text>
+        </navLabel>
+        <content src="text/part0066.html#1UU540-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_68" playOrder="67">
+        <navLabel>
+          <text>Snow</text>
+        </navLabel>
+        <content src="text/part0067.html#1VSLM0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_69" playOrder="68">
+        <navLabel>
+          <text>Fortune Favors the Bold</text>
+        </navLabel>
+        <content src="text/part0068.html#20R680-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_70" playOrder="69">
+        <navLabel>
+          <text>Private School</text>
+        </navLabel>
+        <content src="text/part0069.html#21PMQ0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_71" playOrder="70">
+        <navLabel>
+          <text>In Science</text>
+        </navLabel>
+        <content src="text/part0070.html#22O7C0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_72" playOrder="71">
+        <navLabel>
+          <text>Partners</text>
+        </navLabel>
+        <content src="text/part0071.html#23MNU0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_73" playOrder="72">
+        <navLabel>
+          <text>Detention</text>
+        </navLabel>
+        <content src="text/part0072.html#24L8G0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_74" playOrder="73">
+        <navLabel>
+          <text>Season’s Greetings</text>
+        </navLabel>
+        <content src="text/part0073.html#25JP20-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_75" playOrder="74">
+        <navLabel>
+          <text>Letters, Emails, Facebook, Texts</text>
+        </navLabel>
+        <content src="text/part0074.html#26I9K0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_76" playOrder="75">
+        <navLabel>
+          <text>Back from Winter Break</text>
+        </navLabel>
+        <content src="text/part0075.html#27GQ60-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_77" playOrder="76">
+        <navLabel>
+          <text>The War</text>
+        </navLabel>
+        <content src="text/part0076.html#28FAO0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_78" playOrder="77">
+        <navLabel>
+          <text>Switching Tables</text>
+        </navLabel>
+        <content src="text/part0077.html#29DRA0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_79" playOrder="78">
+        <navLabel>
+          <text>Why I Didn’t Sit with August the First Day of School</text>
+        </navLabel>
+        <content src="text/part0078.html#2ACBS0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_80" playOrder="79">
+        <navLabel>
+          <text>Sides</text>
+        </navLabel>
+        <content src="text/part0079.html#2BASE0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_81" playOrder="80">
+        <navLabel>
+          <text>August’s House</text>
+        </navLabel>
+        <content src="text/part0080.html#2C9D00-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_82" playOrder="81">
+        <navLabel>
+          <text>The Boyfriend</text>
+        </navLabel>
+        <content src="text/part0081.html#2D7TI0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_83" playOrder="82">
+      <navLabel>
+        <text>Part Five: Justin</text>
+      </navLabel>
+      <content src="text/part0082.html#2E6E40-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_84" playOrder="83">
+        <navLabel>
+          <text>Olivia’s Brother</text>
+        </navLabel>
+        <content src="text/part0083.html#2F4UM0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_85" playOrder="84">
+        <navLabel>
+          <text>Valentine’s Day</text>
+        </navLabel>
+        <content src="text/part0084.html#2G3F80-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_86" playOrder="85">
+        <navLabel>
+          <text>Our Town</text>
+        </navLabel>
+        <content src="text/part0085.html#2H1VQ0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_87" playOrder="86">
+        <navLabel>
+          <text>Ladybug</text>
+        </navLabel>
+        <content src="text/part0086.html#2I0GC0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_88" playOrder="87">
+        <navLabel>
+          <text>The Bus Stop</text>
+        </navLabel>
+        <content src="text/part0087.html#2IV0U0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_89" playOrder="88">
+        <navLabel>
+          <text>Rehearsal</text>
+        </navLabel>
+        <content src="text/part0088.html#2JTHG0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_90" playOrder="89">
+        <navLabel>
+          <text>Bird</text>
+        </navLabel>
+        <content src="text/part0089.html#2KS220-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_91" playOrder="90">
+        <navLabel>
+          <text>The Universe</text>
+        </navLabel>
+        <content src="text/part0090.html#2LQIK0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_92" playOrder="91">
+      <navLabel>
+        <text>Part Six: August</text>
+      </navLabel>
+      <content src="text/part0091.html#2MP360-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_93" playOrder="92">
+        <navLabel>
+          <text>North Pole</text>
+        </navLabel>
+        <content src="text/part0092.html#2NNJO0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_94" playOrder="93">
+        <navLabel>
+          <text>The Auggie Doll</text>
+        </navLabel>
+        <content src="text/part0093.html#2OM4A0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_95" playOrder="94">
+        <navLabel>
+          <text>Lobot</text>
+        </navLabel>
+        <content src="text/part0094.html#2PKKS0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_96" playOrder="95">
+        <navLabel>
+          <text>Hearing Brightly</text>
+        </navLabel>
+        <content src="text/part0095.html#2QJ5E0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_97" playOrder="96">
+        <navLabel>
+          <text>Via’s Secret</text>
+        </navLabel>
+        <content src="text/part0096.html#2RHM00-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_98" playOrder="97">
+        <navLabel>
+          <text>My Cave</text>
+        </navLabel>
+        <content src="text/part0097.html#2SG6I0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_99" playOrder="98">
+        <navLabel>
+          <text>Goodbye</text>
+        </navLabel>
+        <content src="text/part0098.html#2TEN40-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_100" playOrder="99">
+        <navLabel>
+          <text>Daisy’s Toys</text>
+        </navLabel>
+        <content src="text/part0099.html#2UD7M0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_101" playOrder="100">
+        <navLabel>
+          <text>Heaven</text>
+        </navLabel>
+        <content src="text/part0100.html#2VBO80-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_102" playOrder="101">
+        <navLabel>
+          <text>Understudy</text>
+        </navLabel>
+        <content src="text/part0101.html#30A8Q0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_103" playOrder="102">
+        <navLabel>
+          <text>The Ending</text>
+        </navLabel>
+        <content src="text/part0102.html#318PC0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_104" playOrder="103">
+      <navLabel>
+        <text>Part Seven: Miranda</text>
+      </navLabel>
+      <content src="text/part0103.html#3279U0-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_105" playOrder="104">
+        <navLabel>
+          <text>Camp Lies</text>
+        </navLabel>
+        <content src="text/part0104.html#335QG0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_106" playOrder="105">
+        <navLabel>
+          <text>School</text>
+        </navLabel>
+        <content src="text/part0105.html#344B20-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_107" playOrder="106">
+        <navLabel>
+          <text>What I Miss Most</text>
+        </navLabel>
+        <content src="text/part0106.html#352RK0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_108" playOrder="107">
+        <navLabel>
+          <text>Extraordinary, but No One There to See</text>
+        </navLabel>
+        <content src="text/part0107.html#361C60-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_109" playOrder="108">
+        <navLabel>
+          <text>The Performance</text>
+        </navLabel>
+        <content src="text/part0108.html#36VSO0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_110" playOrder="109">
+        <navLabel>
+          <text>After the Show</text>
+        </navLabel>
+        <content src="text/part0109.html#37UDA0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_111" playOrder="110">
+      <navLabel>
+        <text>Part Eight: August</text>
+      </navLabel>
+      <content src="text/part0110.html#38STS0-70894267b99c404fbae9c6466cf40bee"/>
+      <navPoint class="chapter" id="num_112" playOrder="111">
+        <navLabel>
+          <text>The Fifth-Grade Nature Retreat</text>
+        </navLabel>
+        <content src="text/part0111.html#39REE0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_113" playOrder="112">
+        <navLabel>
+          <text>Known For</text>
+        </navLabel>
+        <content src="text/part0112.html#3APV00-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_114" playOrder="113">
+        <navLabel>
+          <text>Packing</text>
+        </navLabel>
+        <content src="text/part0113.html#3BOFI0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_115" playOrder="114">
+        <navLabel>
+          <text>Daybreak</text>
+        </navLabel>
+        <content src="text/part0114.html#3CN040-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_116" playOrder="115">
+        <navLabel>
+          <text>Day One</text>
+        </navLabel>
+        <content src="text/part0115.html#3DLGM0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_117" playOrder="116">
+        <navLabel>
+          <text>The Fairgrounds</text>
+        </navLabel>
+        <content src="text/part0116.html#3EK180-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_118" playOrder="117">
+        <navLabel>
+          <text>Be Kind to Nature</text>
+        </navLabel>
+        <content src="text/part0117.html#3FIHQ0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_119" playOrder="118">
+        <navLabel>
+          <text>The Woods Are Alive</text>
+        </navLabel>
+        <content src="text/part0118.html#3GH2C0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_120" playOrder="119">
+        <navLabel>
+          <text>Alien</text>
+        </navLabel>
+        <content src="text/part0119.html#3HFIU0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_121" playOrder="120">
+        <navLabel>
+          <text>Voices in the Dark</text>
+        </navLabel>
+        <content src="text/part0120.html#3IE3G0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_122" playOrder="121">
+        <navLabel>
+          <text>The Emperor’s Guard</text>
+        </navLabel>
+        <content src="text/part0121.html#3JCK20-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_123" playOrder="122">
+        <navLabel>
+          <text>Sleep</text>
+        </navLabel>
+        <content src="text/part0122.html#3KB4K0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_124" playOrder="123">
+        <navLabel>
+          <text>Aftermath</text>
+        </navLabel>
+        <content src="text/part0123.html#3L9L60-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_125" playOrder="124">
+        <navLabel>
+          <text>Home</text>
+        </navLabel>
+        <content src="text/part0124.html#3M85O0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_126" playOrder="125">
+        <navLabel>
+          <text>Bear</text>
+        </navLabel>
+        <content src="text/part0125.html#3N6MA0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_127" playOrder="126">
+        <navLabel>
+          <text>The Shift</text>
+        </navLabel>
+        <content src="text/part0126.html#3O56S0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_128" playOrder="127">
+        <navLabel>
+          <text>Ducks</text>
+        </navLabel>
+        <content src="text/part0127.html#3P3NE0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_129" playOrder="128">
+        <navLabel>
+          <text>The Last Precept</text>
+        </navLabel>
+        <content src="text/part0128.html#3Q2800-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_130" playOrder="129">
+        <navLabel>
+          <text>The Drop-Off</text>
+        </navLabel>
+        <content src="text/part0129.html#3R0OI0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_131" playOrder="130">
+        <navLabel>
+          <text>Take Your Seats, Everyone</text>
+        </navLabel>
+        <content src="text/part0130.html#3RV940-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_132" playOrder="131">
+        <navLabel>
+          <text>A Simple Thing</text>
+        </navLabel>
+        <content src="text/part0131.html#3STPM0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_133" playOrder="132">
+        <navLabel>
+          <text>Awards</text>
+        </navLabel>
+        <content src="text/part0132.html#3TSA80-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_134" playOrder="133">
+        <navLabel>
+          <text>Floating</text>
+        </navLabel>
+        <content src="text/part0133.html#3UQQQ0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_135" playOrder="134">
+        <navLabel>
+          <text>Pictures</text>
+        </navLabel>
+        <content src="text/part0134.html#3VPBC0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_136" playOrder="135">
+        <navLabel>
+          <text>The Walk Home</text>
+        </navLabel>
+        <content src="text/part0135.html#40NRU0-70894267b99c404fbae9c6466cf40bee"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_137" playOrder="136">
+      <navLabel>
+        <text>Appendix</text>
+      </navLabel>
+      <content src="text/part0136.html#41MCG0-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_138" playOrder="137">
+      <navLabel>
+        <text>Acknowledgments</text>
+      </navLabel>
+      <content src="text/part0137.html#42KT20-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_139" playOrder="138">
+      <navLabel>
+        <text>About the Author</text>
+      </navLabel>
+      <content src="text/part0138.html#43JDK0-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_140" playOrder="139">
+      <navLabel>
+        <text>Copyright</text>
+      </navLabel>
+      <content src="text/part0139.html#44HU60-70894267b99c404fbae9c6466cf40bee"/>
+    </navPoint>
+  </navMap>
+</ncx>

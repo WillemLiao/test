@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+<head><!-- 路径读取修复 2026-07-08 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>本地 HTML · 英语伴读工具</title>
@@ -70,7 +70,7 @@ async function loadDocumentFromFile(file){const text=await file.text();currentDo
 function safePathId(path){return String(path||'').replace(/[^a-zA-Z0-9._-]/g,'_')}
 function pathToFileUrl(path){let s=String(path||'').trim().replace(/^['"]|['"]$/g,'');if(!s)return'';s=s.replace(/\\/g,'/');if(/^[a-zA-Z]:\//.test(s))s='/'+s;return 'file://'+encodeURI(s)}
 function displayNameFromPath(path){return String(path||'').replace(/\\/g,'/').split('/').pop()||'本地 HTML'}
-async function loadDocumentFromPath(path){const url=pathToFileUrl(path);if(!url)throw new Error('请输入本地 HTML 路径');currentDoc={id:safePathId(path),displayName:displayNameFromPath(path),source:'path',path};WORDBOOK_FILE=currentDoc.id;originalHtmlText='';originalHtmlUrl=url;PARAS=[];SECTIONS=[];state=loadState();selectedText='';selectionBox.textContent='还没有选择文本。';meaningInput.value='';noteInput.value='';sentenceBox.innerHTML='选中一句英文后点“AI 拆解句子”。';renderSectionNav();renderReader();renderWordList();updateDocStatus();await loadWordbookFile();updateDocStatus();persistWordbook();toast('已打开：'+currentDoc.displayName)}
+async function loadDocumentFromPath(path){const raw=String(path||'').trim();if(!raw)throw new Error('请输入本地 HTML 路径');const res=await fetch(API+'/api/read-file?path='+encodeURIComponent(raw));const data=await res.json().catch(()=>({}));if(!res.ok)throw new Error(data.error||'读取本地 HTML 失败');const text=String(data.text||'');currentDoc={id:safePathId(data.path||raw),displayName:data.name||displayNameFromPath(raw),source:'path',path:data.path||raw,size:data.size,lastModified:data.lastModified};WORDBOOK_FILE=currentDoc.id;originalHtmlText=text;originalHtmlUrl='';PARAS=[];SECTIONS=[];state=loadState();selectedText='';selectionBox.textContent='还没有选择文本。';meaningInput.value='';noteInput.value='';sentenceBox.innerHTML='选中一句英文后点“AI 拆解句子”。';renderSectionNav();renderReader();renderWordList();updateDocStatus();await loadWordbookFile();updateDocStatus();persistWordbook();toast('已打开：'+currentDoc.displayName)}
 openPathBtn.onclick=async()=>{try{await loadDocumentFromPath(pathInput.value)}catch(e){toast('打开失败：'+e.message)}};
 fileInput.addEventListener('change',async()=>{const file=fileInput.files&&fileInput.files[0];if(!file)return;try{await loadDocumentFromFile(file)}catch(e){toast('打开失败：'+e.message)}});
 reloadCurrentBtn.onclick=()=>fileInput.click();
