@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tom's London Story - 阅读器</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; height: 100vh; overflow: hidden; background: #f5f5f0; color: #2c2c2c; }
+  .app { display: flex; height: 100vh; }
+
+  /* Left Panel */
+  .sidebar { width: 360px; min-width: 360px; background: #fff; border-right: 1px solid #e0ddd5; display: flex; flex-direction: column; overflow: hidden; }
+  .sidebar-header { padding: 20px 20px 12px; border-bottom: 1px solid #e8e5dd; }
+  .sidebar-header h1 { font-size: 16px; font-weight: 700; color: #1a1a1a; letter-spacing: 0.3px; }
+  .sidebar-header p { font-size: 12px; color: #888; margin-top: 2px; }
+
+  .chapter-tabs { display: flex; gap: 4px; padding: 10px 16px; border-bottom: 1px solid #e8e5dd; overflow-x: auto; flex-wrap: wrap; }
+  .chapter-tab { padding: 5px 10px; border-radius: 4px; font-size: 11px; border: 1px solid #ddd; background: #fff; cursor: pointer; color: #555; transition: all .15s; white-space: nowrap; }
+  .chapter-tab:hover { border-color: #b8a88a; color: #5a4a3a; }
+  .chapter-tab.active { background: #b8a88a; color: #fff; border-color: #b8a88a; }
+
+  .sidebar-content { flex: 1; overflow-y: auto; padding: 14px 16px 20px; }
+  .sidebar-content::-webkit-scrollbar { width: 4px; }
+  .sidebar-content::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+  .section-title { font-size: 11px; font-weight: 700; color: #b8a88a; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px; }
+  .section-title:first-of-type { margin-top: 0; }
+
+  .grammar-item { background: #fafaf7; border-radius: 6px; margin-bottom: 8px; border: 1px solid #eeece6; overflow: hidden; }
+  .grammar-header { padding: 8px 10px; font-size: 13px; font-weight: 600; color: #3a3a3a; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .grammar-header:hover { background: #f3f1eb; }
+  .grammar-header .arrow { font-size: 10px; color: #b8a88a; transition: transform .2s; }
+  .grammar-header.open .arrow { transform: rotate(90deg); }
+  .grammar-body { padding: 0 10px 10px; font-size: 13px; line-height: 1.7; color: #555; display: none; }
+  .grammar-body.open { display: block; }
+
+  .word-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .word-tag { background: #f3f1eb; border-radius: 3px; padding: 3px 8px; font-size: 12px; color: #5a4a3a; display: inline-flex; align-items: center; gap: 4px; cursor: default; transition: background .15s; }
+  .word-tag .phonetic { font-size: 10px; color: #999; font-weight: 400; }
+  .word-tag .meaning { font-size: 11px; color: #888; }
+  .word-tag .freq { font-size: 10px; color: #b8a88a; font-weight: 600; }
+  .word-tag.lesson-new { background: #e3dfd0; }
+
+  .new-badge { font-size: 9px; background: #d4c5a8; color: #fff; border-radius: 2px; padding: 1px 4px; margin-left: 4px; vertical-align: middle; }
+
+  /* Right Panel */
+  .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .main-header { padding: 16px 28px; border-bottom: 1px solid #e0ddd5; background: #fff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .main-header .title-area { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .main-header .ch-num { font-size: 13px; color: #b8a88a; font-weight: 600; }
+  .main-header h2 { font-size: 18px; font-weight: 600; color: #1a1a1a; }
+  .main-header .nce-label { font-size: 11px; color: #aaa; }
+
+  .toggle-wrap { display: flex; align-items: center; gap: 8px; }
+  .toggle-btn { padding: 6px 14px; border-radius: 4px; font-size: 12px; border: 1px solid #b8a88a; background: #fff; color: #5a4a3a; cursor: pointer; transition: all .15s; }
+  .toggle-btn:hover { background: #b8a88a; color: #fff; }
+  .toggle-btn.active { background: #b8a88a; color: #fff; }
+
+  .story-area { flex: 1; overflow-y: auto; padding: 24px 28px 40px; position: relative; }
+  .story-area::-webkit-scrollbar { width: 4px; }
+  .story-area::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+  .para-en { font-size: 15px; line-height: 1.9; color: #2c2c2c; margin-bottom: 16px; }
+  .para-en p { margin-bottom: 10px; }
+
+  .para-cn { font-size: 14px; line-height: 1.85; color: #888; margin-bottom: 16px; display: none; }
+  .para-cn.show { display: block; }
+  .para-cn p { margin-bottom: 10px; }
+
+  /* Vocabulary Highlight */
+  .vocab-word { cursor: pointer; border-bottom: 1.5px dashed #d4c5a8; color: #5a4a3a; transition: background .15s; position: relative; }
+  .vocab-word:hover { background: #fff8e0; }
+
+  /* Tooltip */
+  .vocab-tooltip { display: none; position: absolute; z-index: 100; background: #2c2c2c; color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 13px; max-width: 260px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); line-height: 1.5; pointer-events: none; }
+  .vocab-tooltip.show { display: block; }
+  .vocab-tooltip .tt-word { font-weight: 600; margin-right: 6px; }
+  .vocab-tooltip .tt-meaning { color: #e0ddd5; }
+  .vocab-tooltip .tt-phonetic { color: #999; font-size: 12px; display: block; margin-top: 2px; }
+  .vocab-tooltip .tt-lesson { color: #b8a88a; font-size: 11px; display: block; margin-top: 1px; }
+  .vocab-tooltip .tt-frequency { color: #d4c5a8; font-size: 11px; display: block; margin-top: 1px; }
+
+  .empty-state { display: flex; align-items: center; justify-content: center; height: 100%; color: #ccc; font-size: 14px; }
+
+  @media (max-width: 768px) {
+    .app { flex-direction: column; }
+    .sidebar { width: 100%; min-width: unset; max-height: 40vh; border-right: none; border-bottom: 1px solid #e0ddd5; }
+    .main-header { padding: 12px 16px; }
+    .story-area { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h1>Tom's London Story</h1>
+      <p>渐进式英文小说 · NCE Book 2 · Ch1-10</p>
+    </div>
+    <div class="chapter-tabs" id="chapterTabs"></div>
+    <div class="sidebar-content" id="sidebarContent">
+      <div class="empty-state">选择章节开始阅读</div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="main-header" id="mainHeader">
+      <div class="title-area">
+        <span class="ch-num" id="chNum"></span>
+        <h2 id="chTitle"></h2>
+        <span class="nce-label" id="nceLabel"></span>
+      </div>
+      <div class="toggle-wrap">
+        <button class="toggle-btn" id="toggleCn">显示中文</button>
+      </div>
+    </div>
+    <div class="story-area" id="storyArea">
+      <div class="empty-state">选择章节开始阅读</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div class="vocab-tooltip" id="vocabTooltip">
+  <span class="tt-word" id="ttWord"></span>
+  <span class="tt-meaning" id="ttMeaning"></span>
+  <span class="tt-phonetic" id="ttPhonetic"></span>
+  <span class="tt-lesson" id="ttLesson"></span>
+  <span class="tt-frequency" id="ttFrequency"></span>
+</div>
+
+<script>
+// ============================================================
+// DATA: Chapters 1-10
+// ============================================================
+const DATA = {"meta":{"title":"Tom's London Story","description":"Tom从小镇到伦敦打拼的成长小说","total_chapters_planned":96,"grammar_progression":"Ch1-2: 一般现在时/现在进行时 → Ch3: 一般过去时 → Ch4-5: 现在完成时 → Ch6: 冠词 → Ch7: 过去进行时 → Ch8: 比较级/最高级 → Ch9: 过去完成时 → Ch10: 被动语态"},"chapters":[]};
+
+// ---- Chapter 1 ----
+DATA.chapters.push({
+  chapter:1,title:"A New Beginning",nce_lesson:"L1: A Private Conversation",new_words_introduced:12,
+  english:"My name is Tom. I am twenty-five years old. I live in a small town called Greenfield. It is not a very big place. There is one main street with a few shops on it. I work in Mr. Dawson's shop on that street. I do not like my job at all. Mr. Dawson is a very rude man. He speaks to me rudely every single morning. \"Tom, you are late again!\" he always shouts. But I am never late. He is just always angry about something. I see his angry face every day. Sometimes he looks at me angrily for no reason. I bear his bad temper because I need the money. My mother tells me to be patient. But I am tired of this life.\n\nEvery night I have private conversations with myself. I think about my future in the dark. I want to start my own business one day. I want to go to London. London is a big and exciting city. I think about it all the time. These private thoughts give me hope.\n\nLast week I made a big decision. I told my family that I am leaving. My mother was very angry at first. She did not pay any attention to my words. She just talked about money and safety. But my father was different. He is a quiet man. He does not say much. That night he came to my room. We had a long conversation. \"Follow your heart, son,\" he said. That private conversation with my father changed everything.\n\nI bought a train ticket to London. I packed a small bag with my clothes. I said goodbye to my mother at the door. She was still angry, but she hugged me. Then she looked at me angrily one last time. \"Write to me,\" she said. My father walked with me to the station. \"Take care of yourself,\" he said.\n\nThe train ride takes three hours. I have a seat by the window. I look out at the fields and villages. The houses get smaller and smaller as the train moves faster. I think about my old life. I think about Mr. Dawson's rude voice. I will not miss his loud shouting. I will not miss his angry face looking at me angrily every morning. But I will miss my family.\n\nI arrive at the big London station. The station is huge and full of people. Everyone is walking very fast. Some people are running. Others are talking loudly on their phones. A group of children are sitting on a long seat near the wall. I stand still for a moment. Everything feels so big.\n\nI walk out of the station. The street is full of buses and black taxis. The buildings are very tall. I look up at them and my neck gets sore. The noise is much louder than in my town. The people walk much faster. I feel very small.\n\nI find a small hotel. The woman at the front desk is friendly. I pay for one night. My room is very small. There is a bed, a table and a window. I sit on the bed and think about tomorrow. I need to find a job. I need to find a place to live. I have a lot to do. But tonight I am tired. I close my eyes and fall asleep.\n\nThe next morning I wake up early. The sun is shining through the window. I feel better. Yesterday was difficult. Today is a new day. I am ready for it. My new life in London is starting now.",
+  chinese:"我叫汤姆，今年二十五岁。我住在一个叫格林菲尔德的小镇上。那不是个很大的地方。有一条主街，街上开着几家店。我在那条街上的道森先生店里工作。我一点也不喜欢我的工作。道森先生是个非常粗鲁的人。他每天早上都粗鲁地对我说话。\"汤姆，你又迟到了！\"他总是嚷嚷。但我从不迟到。他只是总在为什么事情生气。我每天都能看到他生气的脸。有时候他莫名其妙就生气地看着我。我忍受他的坏脾气因为我需要钱。我妈妈叫我要耐心。但我厌倦了这种生活。\n\n每天晚上我都和自己私底下对话。我在黑暗中思考我的未来。我想有一天开创自己的事业。我想去伦敦。伦敦是个又大又令人兴奋的城市。我一直在想这件事。这些私下的想法给了我希望。\n\n上周我做了一个重大决定。我告诉家人我要离开。我妈妈一开始非常生气。她根本不理会我的话。她只谈钱和安全。但我爸爸不一样。他是个话不多的人。那天晚上他来到我的房间。我们谈了很久。那场和我爸爸私下的谈话改变了一切。\n\n我买了一张去伦敦的火车票。我收拾了一小包衣服。我在门口和妈妈道别。她还在生气，但还是拥抱了我。然后她生气地看了我最后一眼。\"给我写信，\"她说。我爸爸陪我走到车站。\"照顾好自己，\"他说。\n\n火车要坐三个小时。我坐在靠窗的座位上。我看着窗外的田野和村庄。随着火车加速，房子变得越来越小。我想着我的旧生活。我想着道森先生粗鲁的声音。我不会想念他大声嚷嚷。我不会想念他每天早上生气地看着我的那张脸。但我会想念我的家人。\n\n我到达了伦敦的大车站。车站很大，到处都是人。每个人都在快步走。有些人在跑。有些人在电话上大声说话。一群孩子正靠墙坐在一张长座位上。我愣愣地站了一会儿。一切感觉都那么巨大。\n\n我走出车站。街上满是公共汽车和黑色出租车。建筑物非常高。我抬头看它们，脖子都酸了。噪音比我们镇上大得多。人们走路快得多。我感觉自己很渺小。\n\n我找到一家小旅馆。前台的女士很友好。我付了一晚的钱。我的房间非常小。有一张床、一张桌子和一扇窗户。我坐在床上思考明天。我需要找份工作。我需要找个地方住。我有很多事要做。但今晚我累了。我闭上眼睛很快睡着了。\n\n第二天早上我醒得很早。阳光透过窗户照进来。我感觉好多了。昨天很艰难。今天是新的一天。我准备好了。我在伦敦的新生活现在开始了。",
+  grammar_focus:[
+    {point:"一般现在时（Simple Present）",explanation:"表示经常性动作、习惯或客观事实。主语为I/You/We/They时用动词原形（I live, I work）；主语为He/She/It时动词加-s/-es（He speaks, She tells）。否定句用do/does not + 动词原形。本课大量使用一般现在时描述Tom的习惯和客观事实。"},
+    {point:"be动词一般现在时（am/is/are）",explanation:"be动词表示'是'的状态。I用am（I am Tom.），he/she/it用is（He is rude.），we/you/they用are（They are walking.）。否定形式在be后加not。"},
+    {point:"现在进行时（Present Continuous）",explanation:"表示此刻正在进行的动作。结构：am/is/are + 动词-ing。本课例句：Everyone is walking very fast. The sun is shining. A group of children are sitting on a long seat."},
+    {point:"副词修饰动词 vs 形容词",explanation:"形容词修饰名词（He is rude.）；副词修饰动词（He speaks rudely.）。大量副词由'形容词 + -ly'构成：rude→rudely, angry→angrily, loud→loudly。"},
+    {point:"直接引语与感叹句",explanation:"直接引语用引号引用人物说的话。感叹句可表达强烈情感：\"Tom, you are late again!\" he shouts."}
+  ],
+  vocabulary_new:[
+    {word:"private",meaning:"私人的",phonetic:"/ˈpraɪvət/"},{word:"conversation",meaning:"谈话",phonetic:"/ˌkɒnvəˈseɪʃn/"},{word:"theatre",meaning:"剧场",phonetic:"/ˈθɪətə(r)/"},{word:"seat",meaning:"座位",phonetic:"/siːt/"},{word:"play",meaning:"戏；玩耍",phonetic:"/pleɪ/"},{word:"loudly",meaning:"大声地",phonetic:"/ˈlaʊdli/"},{word:"angry",meaning:"生气的",phonetic:"/ˈæŋɡri/"},{word:"angrily",meaning:"生气地",phonetic:"/ˈæŋɡrəli/"},{word:"attention",meaning:"注意",phonetic:"/əˈtenʃn/"},{word:"bear",meaning:"容忍",phonetic:"/beə(r)/"},{word:"business",meaning:"生意",phonetic:"/ˈbɪznəs/"},{word:"rudely",meaning:"无礼地",phonetic:"/ˈruːdli/"}
+  ],
+  word_frequency:{private:"3次",conversation:"3次",theatre:"1次",seat:"2次",play:"0次",loudly:"2次",angry:"5次",angrily:"3次",attention:"1次",bear:"2次",business:"2次",rudely:"2次"}
+});
+
+// ---- Chapter 2 ----
+DATA.chapters.push({
+  chapter:2,title:"The Sunday Visitor",nce_lesson:"L2: Breakfast or Lunch",new_words_introduced:5,
+  english:"I am staying at the small hotel for a few days. The room is cheap but clean. I get up early every morning and go out to look at the city. London is very big. I walk for hours. I look at the tall buildings and the busy streets.\n\nOn Friday evening I go to a theatre near my hotel. I buy a cheap seat at the back. The play is about a young man who moves to a big city. It is exactly like my life. I watch the play carefully. The people around me are talking loudly during the play. I get a little angry. But I do not say anything. I remember my rude boss and how he always talks loudly. I do not want to be rude like him. I just bear the noise.\n\nThe play ends late. I walk back to my hotel in the dark. The streets are still busy. London never sleeps, I think.\n\nSaturday comes. I continue my search for a job. I walk into many shops and restaurants. I ask if they need help. Most of them say no. Some people are rude. They do not pay attention to me. One man looks at me angrily and says, \"Go away!\" I feel sad but I do not give up. I remember my father's words. That private conversation gives me strength.\n\nSunday morning arrives. I never get up early on Sundays. I stay in bed until late. The room is quiet. I think about my mother. I think about our last conversation before I left. She was so angry. But now I understand. She was just worried about me.\n\nJust then, the telephone rings. It is a loud ring. I do not know anyone in London. Who is calling?\n\nI answer the phone. It is my aunt Lucy! She is my mother's sister. She lives in London.\n\n\"Tom! I heard you are in London!\" she says loudly. \"I am coming to see you!\"\n\n\"But I am still having breakfast,\" I say. It is one o'clock in the afternoon.\n\n\"What are you doing?\" she asks.\n\n\"I am having breakfast,\" I repeat.\n\nMy aunt Lucy laughs. \"Do you always get up so late?\" she asks. \"I am outside your hotel! Come down!\"\n\nI am shocked. She is outside! I get dressed quickly. My aunt is waiting for me outside the hotel. She is a tall woman with a friendly face. She hugs me warmly.\n\n\"You look thin,\" she says. \"Come with me. We are having lunch together.\"\n\nWe go to a small restaurant. My aunt talks a lot. She asks me many questions. She is very kind. She tells me about London. She gives me advice about finding a job. She tells me to call her if I need help.\n\n\"Do not bear your problems alone,\" she says. \"That is what family is for.\"\n\nI feel much better after lunch. My aunt is not angry like my mother. She understands why I came to London. She says my mother will understand too, but she needs time.\n\nI walk back to my hotel with a smile. London does not feel so big anymore. I have someone here. I have my aunt Lucy.",
+  chinese:"我在小旅馆住了几天。房间便宜但干净。我每天早上早早起床，出去看这个城市。伦敦非常大。我走好几个小时。我看着高楼大厦和繁忙的街道。\n\n星期五晚上，我去了旅馆附近的一家剧院。我在后排买了个便宜的座位。那出戏讲的是一个年轻人搬到大城市的故事。这简直就是我的生活。我认真地看着戏。我周围的人都在戏进行时大声说话。我有点生气。但我什么也没说。我想起我粗鲁的老板，他总是大声说话。我不想像他一样粗鲁。我只是忍受着噪音。\n\n戏很晚才结束。我摸黑走回旅馆。街上仍然很热闹。伦敦从不睡觉，我想。\n\n星期六到了。我继续找工作。我走进很多商店和餐馆。我问他们是否需要帮手。大多数人都不需要。有些人很粗鲁。他们不理会我。有个人生气地看着我说：\"走开！\"我很难过，但我没有放弃。我想起爸爸的话。那次私下的谈话给了我力量。\n\n星期天早上到了。我星期天从来不早起。我躺在床上直到很晚。房间里很安静。我想起妈妈。我想起我离开前我们最后的对话。她当时那么生气。但现在我明白了。她只是担心我。\n\n就在这时，电话铃响了。铃声很响。我在伦敦谁也不认识。是谁打来的？\n\n我接了电话。是我的姑妈露西！她是我妈妈的妹妹。她住在伦敦。\n\n\"汤姆！我听说你来伦敦了！\"她大声说。\"我来看你！\"\n\n\"但我还在吃早饭，\"我说。现在是下午一点钟。\n\n\"你在干什么？\"她问。\n\n\"我在吃早饭，\"我重复道。\n\n我的姑妈露西笑了。\"你总是起这么晚吗？\"她问。\"我在你旅馆外面！快下来！\"\n\n我震惊了。她在外面！我迅速穿好衣服。姑妈在旅馆外面等我。她是个高个子女人，面带友善。她热情地拥抱了我。\n\n\"你看起来瘦了，\"她说。\"跟我来。我们一起吃午饭。\"\n\n我们去了一个小餐馆。姑妈话很多。她问了我很多问题。她非常友善。她告诉我关于伦敦的事。她给我找工作的建议。她说如果我需要帮助就给她打电话。\n\n\"不要一个人承受你的问题，\"她说。\"家人就是干这个的。\"\n\n吃完午饭后我感觉好多了。姑妈不像我妈妈那样生气。她理解我为什么来伦敦。她说我妈妈最终也会理解的，但她需要时间。\n\n我微笑着走回旅馆。伦敦感觉没那么大了。我在这里有人了。我有我的姑妈露西。",
+  grammar_focus:[
+    {point:"一般现在时 vs 现在进行时",explanation:"一般现在时表示习惯：I never get up early on Sundays.（每周日如此）。现在进行时表示此刻：I am having breakfast.（正在吃）。"},
+    {point:"现在进行时表示已安排的将来",explanation:"现在进行时也可以表示已计划好的将来事件，尤其与come/go等动词连用：I am coming to see you.（已安排好）。"},
+    {point:"频率副词的位置",explanation:"频率副词在实义动词之前（I never get up early.），在be动词之后（I am never late.）。"},
+    {point:"时间介词 on / in / at",explanation:"on + 具体某天（on Sunday）；in + 时间段（in the morning）；at + 具体时间（at one o'clock）。"},
+    {point:"直接引语中的时态",explanation:"直接引语保持原有时态：She asks, 'What are you doing?'"}
+  ],
+  vocabulary_new:[
+    {word:"until",meaning:"直到",phonetic:"/ənˈtɪl/"},{word:"outside",meaning:"外面",phonetic:"/ˌaʊtˈsaɪd/"},{word:"ring",meaning:"（铃）响",phonetic:"/rɪŋ/"},{word:"aunt",meaning:"姑妈",phonetic:"/ɑːnt/"},{word:"repeat",meaning:"重复",phonetic:"/rɪˈpiːt/"}
+  ],
+  word_frequency:{until:"2次",outside:"3次",ring:"2次",aunt:"9次",repeat:"2次"}
+});
+
+// ---- Chapter 3 ----
+DATA.chapters.push({
+  chapter:3,title:"Please Send Me a Postcard",nce_lesson:"L3: Please Send Me a Card",new_words_introduced:11,
+  english:"After meeting my aunt Lucy, I feel much better. She helps me find a job in a small restaurant. The work is hard but the pay is not bad. The boss is not rude like Mr. Dawson. He is a friendly man. He does not shout at me. I am happy with the job.\n\nOne evening I sit in my hotel room. I think about last summer. I went to Italy for two weeks. It was my first trip abroad. I travelled alone. I visited museums in Rome and Florence. The museums were full of beautiful paintings. I sat in public gardens and watched people. The weather was hot and sunny.\n\nA friendly waiter in a small restaurant taught me a few words of Italian. He was a young man from Naples. He laughed loudly when I tried to speak. But he was kind. He lent me a book about Italian art. I read a few lines each night. But I did not understand a single word. The book was too difficult for me.\n\nEvery day I thought about postcards. I wanted to send postcards to my family and friends. But my holidays passed quickly. I did not send a single card. On the last day I made a big decision. I got up early and bought thirty-seven cards. I spent the whole day in my room. I wrote and wrote. But at the end of the day, I did not write a single card! The words did not come to me.\n\nI remember that day very well. I felt very silly. My friends were angry with me. My mother was angry too. \"I did not receive a single postcard from you!\" she said angrily. I could not say anything. I just bore her anger quietly.\n\nNow, sitting in my hotel room, I laugh at that memory. I think about how much has changed. Last summer I was a different person. I worked in Mr. Dawson's shop. I bore his rude behaviour every day. I had private conversations with myself about my dreams. Now I am in London. I have a job. I have my aunt Lucy.\n\nBut something is still missing. I want to send a postcard to my family now. To tell them I am OK. I go out and buy a postcard. It has a picture of Big Ben on it. I write a short message: \"Dear Mum and Dad, I am in London. I have a job. I am fine. Do not worry about me. I will send more news soon. Love, Tom.\"\n\nFinally, I send the postcard. It is a small thing. But it feels important. For the first time, I did not spoil the chance to write. I made a decision and I followed it.\n\nI walk back to my hotel. The streets are quiet tonight. I think about my conversation with my father. \"Follow your heart, son.\" I am doing that now. And it feels right.",
+  chinese:"见过姑妈露西之后，我感觉好多了。她帮我在一家小餐馆找到了一份工作。工作辛苦但薪水不差。老板不像道森先生那样粗鲁。他是个友善的人。他不朝我嚷嚷。我对这份工作很满意。\n\n一天晚上，我坐在旅馆房间里。我想起了去年夏天。我去了意大利两个星期。那是我第一次出国旅行。我一个人去的。我参观了罗马和佛罗伦萨的博物馆。博物馆里满是美丽的画作。我坐在公园里看着人们。天气炎热晴朗。\n\n一家小餐馆里一位友善的服务员教了我几句意大利语。他是个来自那不勒斯的年轻人。我试着说的时候他大声笑了。但他很友善。他借给我一本关于意大利艺术的书。我每天晚上读几行。但我一个字也看不懂。那本书对我来说太难了。\n\n每天我都想着明信片的事。我想给家人和朋友寄明信片。但我的假期过得很快。我一张明信片也没寄出去。到了最后一天，我做了个重大决定。我早早起床，买了三十七张明信片。我在房间里待了一整天。我写啊写。但到了那天结束的时候，我一张也没写成！我想不出该写什么。\n\n我非常清楚地记得那一天。我觉得自己很傻。我的朋友们很生气。我妈妈也很生气。\"我一张明信片都没收到！\"她生气地说。我什么也说不出来。我只能默默地承受她的怒气。\n\n现在，坐在旅馆房间里，我回忆起那段往事笑了。我想起发生了多大的变化。去年夏天我还是个不同的人。我在道森先生店里工作。我每天忍受他的粗鲁行为。我和自己私下对话，谈论我的梦想。现在我在伦敦。我有工作。我有姑妈露西。\n\n但还有些事没完成。我想给家里寄一张明信片。告诉他们我挺好的。我出去买了一张明信片。上面有大本钟的图案。我写了一封短信：\"亲爱的爸爸妈妈，我在伦敦。我找到工作了。我很好。别担心我。我会很快再写信的。爱你们的，汤姆。\"\n\n终于，我寄出了明信片。这是一件小事。但感觉很重要。我第一次没有搞砸写信的机会。我做了一个决定，并且我做到了。\n\n我走回旅馆。今晚的街道很安静。我想起和爸爸的那次谈话。\"追随你的心，儿子。\"我现在正在这么做。而且感觉很对。",
+  grammar_focus:[
+    {point:"一般过去时——规则动词",explanation:"表示过去已发生的动作。规则动词加-ed：travel→travelled, visit→visited。否定用didn't + 动词原形。"},
+    {point:"一般过去时——不规则动词",explanation:"不规则动词过去式：go→went, teach→taught, lend→lent, read→read, make→made, buy→bought, spend→spent, feel→felt, write→wrote, bear→bore。"},
+    {point:"过去时间状语",explanation:"一般过去时常与明确的时间状语连用：last summer, yesterday, on the last day。"},
+    {point:"时间顺序表达",explanation:"叙述过去事件需要用时间词：last summer → every day → on the last day → now。"},
+    {point:"过去与现在的对比",explanation:"用一般过去时回忆过去 + 一般现在时描述现状，形成对比。"}
+  ],
+  vocabulary_new:[
+    {word:"send",meaning:"寄；送",phonetic:"/send/"},{word:"postcard",meaning:"明信片",phonetic:"/ˈpəʊstkɑːd/"},{word:"spoil",meaning:"搞砸",phonetic:"/spɔɪl/"},{word:"museum",meaning:"博物馆",phonetic:"/mjuˈziːəm/"},{word:"public",meaning:"公共的",phonetic:"/ˈpʌblɪk/"},{word:"friendly",meaning:"友好的",phonetic:"/ˈfrendli/"},{word:"waiter",meaning:"服务员",phonetic:"/ˈweɪtə(r)/"},{word:"lend",meaning:"借给",phonetic:"/lend/"},{word:"decision",meaning:"决定",phonetic:"/dɪˈsɪʒn/"},{word:"whole",meaning:"整个的",phonetic:"/həʊl/"},{word:"single",meaning:"单一的",phonetic:"/ˈsɪŋɡl/"}
+  ],
+  word_frequency:{send:"5次",postcard:"8次",spoil:"1次",museum:"3次",public:"1次",friendly:"2次",waiter:"2次",lend:"1次",decision:"2次",whole:"1次",single:"4次"}
+});
+
+// ---- Chapter 4 ----
+DATA.chapters.push({
+  chapter:4,title:"A Letter from Abroad",nce_lesson:"L4: An Exciting Trip",new_words_introduced:6,
+  english:"I have worked at the restaurant for two weeks now. The work is busy but I like it. I wash dishes and clean tables. Sometimes I help the waiter serve food. The pay is not much, but it is enough for my small room.\n\nOne morning the woman at the hotel gives me a letter. I look at it carefully. It is from my brother Tim! He is my younger brother. He left home two years ago.\n\nI open the letter quickly. Tim writes that he is in Australia. He has been there for six months. He works for a big firm in Sydney. He is an engineer. He has already visited many different places in Australia. He has seen beautiful beaches and big mountains. He has just bought a new car. He has gone to Alice Springs, a small town in the centre of Australia. He writes that he will soon visit Darwin. From there he will fly to Perth. My brother has never been abroad before. He is finding this trip very exciting.\n\nI read the letter three times. I feel happy for him. But I also feel a little jealous. Tim is living such an exciting life. He has travelled to so many different places. He has met new people. He has learned new things. He has done all of this while I was sitting in Mr. Dawson's shop, bearing his rude words every day.\n\nBut wait. I am in London now. I have also started a new life. I have not visited many places yet. But I have made a decision to change my life. I have found a job. I have made a new friend — my aunt Lucy. I have sent a postcard home. These are small steps. But they are steps.\n\nI remember my private conversation with my father. He told me to follow my heart. Tim followed his heart to Australia. I followed mine to London. We are both living our dreams.\n\nI write a letter back to Tim. I tell him about London. I tell him about my job at the restaurant. I tell him about our aunt Lucy. I tell him about the play I watched at the theatre. I tell him that I am happy.\n\nI walk to the post office to send the letter. The woman at the counter is friendly. She asks me about the letter. I tell her it is for my brother in Australia. She smiles. \"That is a long way,\" she says. \"Yes,\" I say. \"But he is my brother. He deserves to know I am OK.\"\n\nOn my way back, I pass the theatre where I watched the play last week. I stop for a moment. A man is talking loudly on his phone outside the theatre. He does not pay attention to the people around him. I remember how I got angry at people who talked loudly during the play. Now I just smile. I am learning to bear small annoyances.\n\nLife in London is not easy. But it is exciting. Every day is different. Every day I learn something new. I have received a letter from my brother. I have written a letter to him. For the first time in a long time, I feel connected to the world.",
+  chinese:"我在餐馆已经工作了两个星期了。工作很忙但我很喜欢。我洗盘子和擦桌子。有时候我帮服务员上菜。工资不高，但足够付我那间小屋子的房租了。\n\n一天早上，旅馆的女店员给了我一封信。我仔细看了看。是我弟弟蒂姆寄来的！他是我弟弟。他两年前离开了家。\n\n我迅速打开信。蒂姆说他现在在澳大利亚。他在那里已经六个月了。他在悉尼一家大公司工作。他是一名工程师。他已经去过澳大利亚许多不同的地方了。他看到了美丽的海滩和高山。他刚买了一辆新车。他去了艾丽斯斯普林斯，澳大利亚中部的一个小镇。他写道他很快要去达尔文。从那里他会飞到珀斯。我弟弟以前从未出过国。他觉得这次旅行非常令人兴奋。\n\n我把信读了三遍。我为他感到高兴。但我也有一点嫉妒。蒂姆过着如此精彩的生活。他去了那么多不同的地方。他认识了新的人。他学了新的东西。他做所有这些事的时候，我还在道森先生的店里，每天忍受着他的粗言恶语。\n\n但等等。我现在在伦敦。我也开始了新生活。我还没有去过很多地方。但我已经做了改变生活的决定。我找到了工作。我交了一个新朋友——我的姑妈露西。我寄了一张明信片回家。这些都是小步子。但它们是步子。\n\n我想起和爸爸的那次私下谈话。他叫我追随自己的心。蒂姆追随他的心去了澳大利亚。我追随我的心来到了伦敦。我们都在活出我们的梦想。\n\n我给蒂姆回了一封信。我告诉他关于伦敦的事。我告诉他我在餐馆的工作。我告诉他我们姑妈露西的事。我告诉他我在剧院看的那出戏。我告诉他我很开心。\n\n我走去邮局寄信。柜台的女店员很友善。她问起这封信。我告诉她这是我寄给在澳大利亚的弟弟的。她笑了。\"路很远啊，\"她说。\"是的，\"我说。\"但他是我弟弟。他应该知道我过得很好。\"\n\n回来的路上，我经过上周看戏的那家剧院。我停了一会儿。一个男人正在剧院外对着电话大声说话。他不理会周围的人。我记得当时我对那些在戏进行时大声说话的人有多生气。现在我只是笑了笑。我在学着容忍小烦恼。\n\n伦敦的生活不容易。但它令人兴奋。每一天都不一样。每一天我都在学习新东西。我收到了弟弟的信。我给他回了信。很久以来第一次，我感觉自己和世界有了连接。",
+  grammar_focus:[
+    {point:"现在完成时（Present Perfect）",explanation:"表示过去动作与现在的联系。结构：have/has + 过去分词。本课例句：I have worked for two weeks.（持续到现在）。He has already visited many places.（经历）。"},
+    {point:"have been / have gone 区别",explanation:"have been to = 去过（已回来）；have gone to = 去了（未回来）；have been in = 在某地待了多久。"},
+    {point:"already / yet / never / just",explanation:"already（已经）用于肯定句。just（刚刚）。never（从未）。yet（还）用于否定句和疑问句。"},
+    {point:"现在完成时 vs 一般过去时",explanation:"现在完成时强调与现在的联系（I have received a letter.）。一般过去时强调过去某时的动作（Tim left home two years ago.）。"},
+    {point:"现在完成时表示经历",explanation:"谈论人生经历：I have started a new life. I have found a job. I have made a new friend."}
+  ],
+  vocabulary_new:[
+    {word:"exciting",meaning:"令人兴奋的",phonetic:"/ɪkˈsaɪtɪŋ/"},{word:"receive",meaning:"收到",phonetic:"/rɪˈsiːv/"},{word:"firm",meaning:"公司",phonetic:"/fɜːm/"},{word:"different",meaning:"不同的",phonetic:"/ˈdɪfrənt/"},{word:"centre",meaning:"中心",phonetic:"/ˈsentə(r)/"},{word:"abroad",meaning:"在国外",phonetic:"/əˈbrɔːd/"}
+  ],
+  word_frequency:{exciting:"3次",receive:"3次",firm:"2次",different:"3次",centre:"1次",abroad:"2次"}
+});
+
+// ---- Chapter 5 ----
+DATA.chapters.push({
+  chapter:5,title:"The Private Telephone Service",nce_lesson:"L5: No Wrong Numbers",new_words_introduced:7,
+  english:"After a month at the restaurant, I meet a man named Tony. He comes to eat at the restaurant every day. He is friendly and talks to me often. One day he tells me that he owns a garage. He fixes cars. He needs help.\n\n\"Do you know anything about cars?\" he asks.\n\n\"A little,\" I say. But I know almost nothing.\n\n\"That is OK,\" he says. \"I will teach you.\"\n\nI think about it. The restaurant job is OK. But it is not my dream. I remember my father's words. I make a decision.\n\n\"Yes, I will work for you,\" I say.\n\nTony smiles. \"Good. Start tomorrow.\"\n\nTony's garage is in East London. It is a small place but it has many customers. Tony has just bought another garage in the city centre. The two garages are five miles apart. Tony tells me he has a problem. He cannot get a telephone for his new garage. The telephone company says it will take months.\n\n\"So how do you send messages?\" I ask.\n\nTony smiles. He takes me to the back of the garage. There is a big cage. Inside the cage there are twelve pigeons!\n\n\"Pigeons?\" I say. \"You send messages with pigeons?\"\n\n\"Yes,\" Tony says. \"They are the best service. No wrong numbers. No waiting. No rude telephone operators.\"\n\nYesterday I watched a pigeon carry the first message from the new garage to the old one. Tony wrote a request for spare parts on a small piece of paper. He put the paper in a small tube. He tied the tube to the pigeon's leg. Then he threw the pigeon into the air. The bird flew away. It covered the distance in three minutes. The pigeon arrived at the old garage. The mechanics there received the message. They sent the spare parts back with the same pigeon.\n\nI could not believe it. I had never seen anything like it before. I told Tony it was a very clever idea.\n\n\"Up to now, I have sent a great many requests through my pigeons,\" Tony says. \"The birds have never lost a single message. They are faster than the postal service.\"\n\nNow I work at Tony's garage every day. I clean the tools. I help the mechanics. I learn about car engines. Sometimes I send messages with the pigeons. I write Tony's requests on paper and send the birds off. I repeat this many times a day. It is not difficult but it needs attention. One wrong address and the pigeon goes to the wrong garage.\n\nThe work is hard. My hands get dirty. My back gets sore. But I do not mind. Tony is a good boss. He is not rude like Mr. Dawson. He never shouts at me. When I make a mistake, he explains calmly. He does not get angry.\n\nOne day a customer comes to the garage. He is a rich man. He looks at me and says rudely, \"Are you the mechanic? You look too young.\"\n\nI feel angry. But I remember Mr. Dawson. I remember how it feels to have a rude boss. I do not want to be rude like this man. I bear his words quietly.\n\nTony hears the man. He comes over. \"He is my best worker,\" Tony says. \"If you have a problem, you can leave.\"\n\nThe man says nothing. He pays and leaves. I feel happy. Tony is a good boss. He pays attention to his workers.\n\nAt night I sit in my room. I think about how my life has changed. I have worked at the garage for three weeks now. I have learned many things about cars. I have made a new friend — Tony. I have saved some money. I have sent another postcard to my family. My mother has finally written back. She says she is not angry anymore. She says she misses me.\n\nI look at the London sky from my window. The lights are bright. The city is noisy. But it is my home now. I have a job. I have friends. I have a future.\n\nI think about my brother Tim in Australia. I think about my private conversation with my father. I think about my first day in London. So much has changed in such a short time. And I know there is more to come.",
+  chinese:"在餐馆工作了一个月后，我遇到了一个叫托尼的人。他每天都来餐馆吃饭。他很友善，经常和我聊天。有一天他告诉我他有一家修车厂。他修车。他需要帮手。\n\n\"你懂车吗？\"他问。\n\n\"一点点，\"我说。但其实我几乎什么也不懂。\n\n\"没关系，\"他说。\"我教你。\"\n\n我想了想。餐馆的工作还行。但那不是我的梦想。我想起爸爸的话。我做了个决定。\n\n\"好，我给你干，\"我说。\n\n托尼笑了。\"好，明天开始。\"\n\n托尼的修车厂在东伦敦。地方不大但顾客很多。托尼刚在市中心买了另一家修车厂。两家修车厂相距五英里。托尼告诉我他有个问题。他的新修车厂装不了电话。电话公司说要等好几个月。\n\n\"那你怎么传递信息？\"我问。\n\n托尼笑了。他带我到修车厂后面。那儿有个大笼子。笼子里有十二只鸽子！\n\n\"鸽子？\"我说。\"你用鸽子传信息？\"\n\n\"对，\"托尼说。\"它们是最好的服务。没有错号，不用等，没有粗鲁的电话接线员。\"\n\n昨天我亲眼看着一只鸽子把第一封信从新修车厂带回旧修车厂。托尼把一份备件请求写在一张小纸上。他把纸放进一个小管子里。他把管子绑在鸽子的腿上。然后他把鸽子抛向空中。鸟飞走了。它三分钟就飞完了这段距离。鸽子到达了旧修车厂。那里的修理工收到了信息。他们把备件用同一只鸽子送了回来。\n\n我简直不敢相信。我以前从没见过这种事。我告诉托尼这是个非常聪明的点子。\n\n\"到目前为止，我已经通过我的鸽子发出了大量的请求，\"托尼说。\"这些鸟从来没有丢失过一条信息。它们比邮政服务还快。\"\n\n现在我每天都在托尼的修车厂工作。我清理工具。我帮修理工打下手。我学习汽车发动机。有时候我用鸽子发信息。我把托尼的请求写在纸上，然后把鸟放出去。我每天重复很多次。不难但要很细心。一个地址写错了鸽子就飞到错的修车厂去了。\n\n工作很辛苦。我的手弄得很脏。我的背很酸。但我不介意。托尼是个好老板。他不像道森先生那样粗鲁。他从不朝我嚷嚷。我犯错的时候，他会平静地解释。他不会生气。\n\n有一天一个顾客来到修车厂。他是个有钱人。他看着我粗鲁地说：\"你是修理工？你看起来太年轻了。\"\n\n我感到生气。但我想起了道森先生。我记得有一个粗鲁的老板是什么感觉。我不想像这个人一样粗鲁。我默默地忍受了他的话。\n\n托尼听到了。他走过来。\"他是我最好的工人，\"托尼说。\"如果你有意见，你可以走。\"\n\n那人没说话。付了钱走了。我感到很高兴。托尼是个好老板。他关心他的工人。\n\n晚上我坐在房间里。我想着我的生活发生了多大的变化。我在修车厂已经干了三个星期了。我学到了很多关于车的知识。我交了一个新朋友——托尼。我存了一些钱。我又给家里寄了一张明信片。妈妈终于回信了。她说她已经不生气了。她说她想我。\n\n我从窗户望着伦敦的天空。灯火通明。城市很喧闹。但它现在是属于我的家了。我有工作。我有朋友。我有未来。\n\n我想起在澳大利亚的弟弟蒂姆。我想起和爸爸的那次私下谈话。我想起我在伦敦的第一天。这么短的时间里发生了这么多变化。而且我知道还有更多在等着我。",
+  grammar_focus:[
+    {point:"现在完成时（复习与深化）",explanation:"本课深化现在完成时：I have worked at the garage for three weeks.（持续状态）。The birds have never lost a single message.（零失误记录）。"},
+    {point:"up to now / so far",explanation:"这两短语意味'到目前为止'，是现在完成时的标志词。Up to now, I have sent a great many requests."},
+    {point:"现在完成时 vs 一般过去时（混用）",explanation:"一般过去时叙述具体事件（Yesterday I watched a pigeon...），现在完成时总结经历（I have learned many things...）。"},
+    {point:"can / cannot / could",explanation:"can表示现在的能力或可能性。could是can的过去式：I could not believe it."},
+    {point:"a great many + 可数名词",explanation:"a great many表示'大量的'，后接可数名词复数：a great many requests。"}
+  ],
+  vocabulary_new:[
+    {word:"pigeon",meaning:"鸽子",phonetic:"/ˈpɪdʒɪn/"},{word:"message",meaning:"消息",phonetic:"/ˈmesɪdʒ/"},{word:"cover",meaning:"越过（距离）",phonetic:"/ˈkʌvə(r)/"},{word:"distance",meaning:"距离",phonetic:"/ˈdɪstəns/"},{word:"request",meaning:"请求",phonetic:"/rɪˈkwest/"},{word:"spare part",meaning:"备件",phonetic:"/speə pɑːt/"},{word:"service",meaning:"服务",phonetic:"/ˈsɜːvɪs/"}
+  ],
+  word_frequency:{pigeon:"9次",message:"6次",cover:"1次",distance:"1次",request:"4次","spare part":"2次",service:"2次"}
+});
+
+// ---- Chapter 6 ----
+DATA.chapters.push({
+  chapter:6,title:"The Beggar at the Door",nce_lesson:"L6: Percy Buttons",new_words_introduced:4,
+  english:"After three months at Tony's garage, I have saved enough money. I find a small flat in North London. The flat is not big. There is one bedroom, a kitchen and a living room. But it is my own place. I feel very proud.\n\nThe landlord is an old man named Mr. Brown. He is friendly but a little strange. He talks to himself sometimes. But he is not rude like Mr. Dawson. I think he is a kind man.\n\nMy aunt Lucy helps me move into the flat. She brings some old furniture. A table. Two chairs. A bed. Some plates. \"It is not much,\" she says. \"But it is a start.\"\n\nI remember the private conversation I had with my father. \"Follow your heart.\" I am doing that now. I have my own flat. I have a job at the garage. I have made friends. Life is good.\n\nLast week I send a postcard to my mother. I tell her about the new flat. She writes back. She says she is not angry anymore. She says she is proud of me. I feel happy when I read her letter.\n\nYesterday something strange happens. I am having breakfast in my kitchen. I hear a loud knock at the door. I go to the door and open it. A man is standing outside. He is wearing old clothes. His face is dirty. He looks tired.\n\n\"Good morning, sir,\" the man says. \"Can you give me a meal and a glass of beer?\"\n\nI am surprised. I do not know this man. But he does not look dangerous. He looks hungry.\n\n\"Who are you?\" I ask.\n\n\"My name is Percy Buttons,\" he says. \"I am a beggar. I live on this street.\"\n\nI think for a moment. My mother always tells me to be careful with strangers. But this man looks friendly. And he is hungry.\n\n\"Come in,\" I say.\n\nPercy Buttons walks into my flat. I give him some food and a glass of beer. He eats the food very quickly. He drinks the beer in one mouthful. Then he stands up. He puts his hands on the floor and stands on his head! He sings a song while he is upside down. I cannot believe my eyes.\n\nAfter the song, he stands up again. He puts a piece of cheese in his pocket. \"Thank you for the meal,\" he says. Then he walks out of the door.\n\nI stand there with my mouth open. I have never seen anything like it.\n\nLater that day, I tell my neighbour about the beggar. The neighbour is a friendly woman named Mrs. Jones. She lives in the flat next to mine.\n\n\"Oh, Percy Buttons!\" she says and laughs loudly. \"Everybody knows him. He calls at every house in this street once a month. He always asks for a meal and a glass of beer. In return, he stands on his head and sings a song. He never takes money. He is a strange man, but people like him.\"\n\n\"Does he do this every month?\" I ask.\n\n\"Yes,\" Mrs. Jones says. \"He has done it for years. He never gets angry. He never shouts. He just asks for food and sings. It is his way of life.\"\n\nI think about Percy Buttons. He is a beggar. He has no money. He has no proper home. But he is not rude. He does not steal. He does not hurt anyone. He just asks for a meal and gives a song in return. There is something honest about it.\n\nThat evening I sit in my living room. I look at my small flat. It is not much. But it is mine. I think about how much has changed in a few months. A few months ago I was living in a small town. I was bearing Mr. Dawson's rude words every day. I was having private conversations with myself about my dreams. Now I am in London. I have my own flat. I have a job I like. I have my aunt Lucy. I have met strange and interesting people like Percy Buttons.\n\nI write a letter to my brother Tim. I tell him about the new flat. I tell him about Percy Buttons. \"You will not believe what happened today,\" I write. \"A beggar stood on his head in my kitchen and sang a song! London is full of surprises. When are you coming to visit?\"\n\nI put the letter in an envelope. I will send it tomorrow. I look out of the window at the London sky. The lights are bright. The city is noisy. But it is my home now.\n\nOutside, the street is quiet. I can hear the pigeons on the roof. They remind me of Tony's garage. I smile. Life is good.",
+  chinese:"在托尼的修车厂工作了三个月后，我攒够了钱。我在北伦敦找到了一个小公寓。公寓不大。有一间卧室、一间厨房和一间客厅。但这是我自己的地方。我感到非常自豪。\n\n房东是一位叫布朗先生的老人。他很友善但有点奇怪。他有时候自言自语。但他不像道森先生那样粗鲁。我觉得他是个好人。\n\n我的姑妈露西帮我搬进了公寓。她带来了一些旧家具。一张桌子。两把椅子。一张床。一些盘子。\"不多，\"她说。\"但这是一个开始。\"\n\n我想起和爸爸的那次私下谈话。\"追随你的心。\"我现在正在这么做。我有自己的公寓了。我有修车厂的工作。我交了朋友。生活很好。\n\n上周我给妈妈寄了一张明信片。我告诉她关于新公寓的事。她回信了。她说她已经不生气了。她为我感到骄傲。读她的信时我很开心。\n\n昨天发生了一件奇怪的事。我正在厨房吃早饭。我听到大声的敲门声。我去开门。一个男人站在外面。他穿着旧衣服。他的脸很脏。他看起来很疲惫。\n\n\"早上好，先生，\"他说。\"你能给我一顿饭和一杯啤酒吗？\"\n\n我很惊讶。我不认识这个人。但他看起来不危险。他看起来很饿。\n\n\"你是谁？\"我问。\n\n\"我叫珀西·巴顿斯，\"他说。\"我是个乞丐。我住在这条街上。\"\n\n我想了一会儿。妈妈总是告诉我要小心陌生人。但这个人看起来很友善。而且他很饿。\n\n\"进来吧，\"我说。\n\n珀西·巴顿斯走进我的公寓。我给了他一些食物和一杯啤酒。他很快吃完了食物。他一口气喝完了啤酒。然后他站起来。他把手放在地上，倒立了起来！他倒立着唱了一首歌。我简直不敢相信自己的眼睛。\n\n唱完歌后，他又站起来了。他把一块奶酪放进口袋。\"谢谢你的饭，\"他说。然后他走出了门。\n\n我张着嘴站在那里。我从没见过这种事。\n\n那天晚些时候，我把乞丐的事告诉了我的邻居。邻居是一位叫琼斯太太的友善女人。她住在我隔壁的公寓。\n\n\"哦，珀西·巴顿斯！\"她大声笑了。\"每个人都认识他。他每个月来这条街上的每家每户。他总是一顿饭和一杯啤酒。作为回报，他倒立唱一首歌。他从不收钱。他是个奇怪的人，但大家喜欢他。\"\n\n\"他每个月都这样？\"我问。\n\n\"是的，\"琼斯太太说。\"他这样已经很多年了。他从不生气。他从不嚷嚷。他只是要饭然后唱歌。这是他的生活方式。\"\n\n我思考着珀西·巴顿斯的事。他是个乞丐。他没有钱。他没有像样的家。但他不粗鲁。他不偷东西。他不伤害任何人。他只是要一顿饭，然后唱首歌作为回报。这其中有某种诚实的东西。\n\n那天晚上我坐在客厅里。我看着我的小公寓。它不大。但它是我的。我想着几个月来发生了多大的变化。几个月前我还住在一个小镇上。我每天忍受着道森先生的粗言恶语。我和自己私下对话谈论我的梦想。现在我在伦敦。我有自己的公寓。我有我喜欢的工作。我有姑妈露西。我遇到了像珀西·巴顿斯这样奇怪又有趣的人。\n\n我给弟弟蒂姆写了一封信。我告诉他新公寓的事。我告诉他珀西·巴顿斯的事。\"你不会相信今天发生了什么，\"我写道。\"一个乞丐在我的厨房里倒立着唱了一首歌！伦敦充满了惊喜。你什么时候来看我？\"\n\n我把信放进信封。明天我会寄出去。我望着窗外的伦敦天空。灯火通明。城市很喧闹。但它是我的家了。\n\n外面，街道很安静。我能听到屋顶上的鸽子。它们让我想起托尼的修车厂。我笑了。生活很好。",
+  grammar_focus:[
+    {point:"冠词 a / an / the",explanation:"a/an用于可数名词单数、首次提到：a beggar, a meal。the用于双方都知的、上文提到的：the door, the food。"},
+    {point:"不可数名词",explanation:"food, beer, cheese, money, furniture 不可数。表达数量需加量词：a piece of cheese, a glass of beer。"},
+    {point:"in return",explanation:"表示'作为回报'：He stands on his head and sings in return for the meal。"},
+    {point:"单词复习",explanation:"本课复用了L1-L5的大量单词：rude, private, conversation, bear, angry, loudly, aunt, send, postcard, friendly, decide等。"}
+  ],
+  vocabulary_new:[
+    {word:"beggar",meaning:"乞丐",phonetic:"/ˈbeɡə(r)/"},{word:"food",meaning:"食物",phonetic:"/fuːd/"},{word:"pocket",meaning:"口袋",phonetic:"/ˈpɒkɪt/"},{word:"call at",meaning:"拜访（某地）",phonetic:"/kɔːl æt/"}
+  ],
+  word_frequency:{beggar:"7次",food:"5次",pocket:"1次","call at":"1次"}
+});
+
+// ---- Chapter 7 ----
+DATA.chapters.push({
+  chapter:7,title:"Diamonds at the Airport",nce_lesson:"L7: Too Late",new_words_introduced:13,
+  english:"My brother Tim is coming to visit! He arrives at Heathrow Airport on Saturday. I am very excited. I have not seen him for two years. He has been working in Australia all that time. He has visited many different places there. He has sent me postcards from almost every city. Now he is finally coming to London.\n\nI go to the airport early. The airport is very big. There are people from all over the world. Some are sitting and waiting. Others are walking quickly with their bags. I stand near the main entrance and wait.\n\nI am expecting Tim's plane at eleven o'clock. I look at my watch. It is half past ten. I still have thirty minutes. I find a seat near a window and sit down.\n\nWhile I am sitting there, I notice something strange. Two men in black coats are standing near a door. They look serious. They are not talking to each other. They are just watching the crowd. They look like detectives.\n\nA few minutes later, a woman in a uniform walks past them. She is carrying a small parcel. The parcel looks valuable. The detectives watch her carefully. She walks to a table and puts the parcel down. Then she walks away.\n\nThe detectives move closer to the parcel. While they are watching the parcel, two other men appear. One of them picks up the parcel. The other man distracts a guard. They move quickly. In a few seconds, the parcel is gone! They have stolen it!\n\nThe detectives do not see anything. They are still watching the wrong place. By the time they look back, the parcel is not there anymore. The two men have disappeared into the crowd.\n\nI cannot believe my eyes. I stand up and look around. The two thieves are gone. The detectives are running around and shouting loudly. One detective is talking angrily on his radio. But it is too late. The parcel has disappeared.\n\nLater I hear the news. The parcel was full of diamonds. They were very precious stones. The police searched everywhere. They found the parcel in a car outside the airport. But the diamonds were not in it. The box was full of stones and sand! The thieves had already taken the diamonds out.\n\nI am shocked. I have never seen a robbery before. I tell everything to a policeman. He writes down my words. He says I am a helpful witness.\n\nAt exactly eleven o'clock, Tim's plane arrives. I see him walking through the gate. He looks different. He is taller and stronger. He has a sun tan from Australia. He is carrying a big bag.\n\n\"Tom!\" he shouts and waves.\n\n\"Tim!\" I shout back. We hug. It feels so good to see him.\n\nOn the way home, I tell Tim about the robbery at the airport. \"You will not believe what happened while I was waiting for you!\" I say. I tell him everything. He is very surprised.\n\n\"London is more exciting than I thought!\" he says and laughs loudly.\n\nI smile. My brother is here. We are together. And I have a story to tell him.",
+  chinese:"我弟弟蒂姆要来看我了！他星期六到达希思罗机场。我非常兴奋。我已经两年没见到他了。他一直在澳大利亚工作。他在那里去了许多不同的地方。他几乎从每个城市都给我寄了明信片。现在他终于要来伦敦了。\n\n我早早来到机场。机场非常大。这里有来自世界各地的人。有些人在坐着等。其他人提着包快步走着。我站在主入口附近等着。\n\n我期待蒂姆的飞机十一点到。我看了看手表。十点半。我还有三十分钟。我在靠窗找了个座位坐下。\n\n我正坐在那里的时候，注意到一件奇怪的事。两个穿黑外套的男人正站在一扇门附近。他们看起来很严肃。他们没有互相说话。他们只是在观察人群。他们看起来像侦探。\n\n几分钟后，一个穿制服的女人走过他们身边。她拿着一个小包裹。包裹看起来很贵重。侦探们仔细地看着她。她走到一张桌子前放下包裹。然后她走开了。\n\n侦探们向包裹靠近。就在他们观察包裹的时候，另外两个男人出现了。其中一个人拿起了包裹。另一个人转移了一个保安的注意力。他们动作很快。几秒钟之内，包裹就不见了！他们偷走了它！\n\n侦探们什么也没看到。他们还在看错误的方向。等他们回头的时候，包裹已经不在那里了。那两个男人已经消失在人群中。\n\n我简直不敢相信自己的眼睛。我站起来四处张望。两个小偷已经不见了。侦探们跑来跑去大声喊叫。一个侦探在无线电里生气地说话。但太晚了。包裹已经消失了。\n\n后来我听到了消息。包裹里装满了钻石。那是非常珍贵的宝石。警察到处搜索。他们在机场外的一辆车上找到了包裹。但钻石不在里面。盒子里装满了石头和沙子！小偷已经把钻石拿走了。\n\n我震惊了。我以前从没见过抢劫。我把一切都告诉了警察。他记下了我的话。他说我是一个有用的目击者。\n\n正好在十一点钟，蒂姆的飞机到了。我看到他走出闸口。他看起来不一样了。他更高更壮了。他在澳大利亚晒黑了。他背着一个大包。\n\n\"汤姆！\"他喊着挥手。\n\n\"蒂姆！\"我也喊他。我们拥抱了。见到他的感觉真好。\n\n回家的路上，我告诉蒂姆机场发生的抢劫案。\"你不会相信我等你的时看到了什么！\"我说。我把一切都告诉了他。他很惊讶。\n\n\"伦敦比我想象的更刺激！\"他大声笑了。\n\n我笑了。我弟弟在这里。我们在一起。而且我有个故事要讲给他听。",
+  grammar_focus:[
+    {point:"过去进行时（Past Continuous）",explanation:"表示过去某时刻正在进行的动作。结构：was/were + 动词-ing。本课：While I was sitting there, I noticed something strange."},
+    {point:"过去进行时与一般过去时连用",explanation:"while + 过去进行时（背景），主句一般过去时（突然动作）：While they were watching, two men appeared."},
+    {point:"过去完成时（had + 过去分词）",explanation:"过去的过去：The thieves had already taken the diamonds out.（发生在警察找到之前）。"},
+    {point:"直接引语 vs 间接引语",explanation:"直接引语：\"Tom!\" he shouts.（原话）。间接引语：I tell him everything.（转述）。"},
+    {point:"too + 形容词",explanation:"Too Late! 太晚了！too表示'过于'，常带负面含义。"}
+  ],
+  vocabulary_new:[
+    {word:"detective",meaning:"侦探",phonetic:"/dɪˈtektɪv/"},{word:"airport",meaning:"机场",phonetic:"/ˈeəpɔːt/"},{word:"expect",meaning:"期待；等待",phonetic:"/ɪkˈspekt/"},{word:"valuable",meaning:"贵重的",phonetic:"/ˈvæljuəbl/"},{word:"parcel",meaning:"包裹",phonetic:"/ˈpɑːsl/"},{word:"diamond",meaning:"钻石",phonetic:"/ˈdaɪəmənd/"},{word:"steal",meaning:"偷",phonetic:"/stiːl/"},{word:"main",meaning:"主要的",phonetic:"/meɪn/"},{word:"guard",meaning:"守卫",phonetic:"/ɡɑːd/"},{word:"precious",meaning:"珍贵的",phonetic:"/ˈpreʃəs/"},{word:"stone",meaning:"石头",phonetic:"/stəʊn/"},{word:"sand",meaning:"沙子",phonetic:"/sænd/"}
+  ],
+  word_frequency:{detective:"5次",airport:"5次",expect:"2次",valuable:"2次",parcel:"9次",diamond:"3次",steal:"2次",main:"1次",guard:"1次",precious:"1次",stone:"1次",sand:"1次"}
+});
+
+// ---- Chapter 8 ----
+DATA.chapters.push({
+  chapter:8,title:"The Best Garden",nce_lesson:"L8: The Best and the Worst",new_words_introduced:5,
+  english:"Tim is staying with me for two weeks. He sleeps on the sofa in my living room. Every morning we have breakfast together. He tells me stories about Australia. I tell him stories about London. We talk like we were never apart.\n\nOne morning my neighbour Mrs. Jones knocks on my door. \"Tom! The garden competition is next week! Are you entering?\" she asks.\n\nI have a small garden behind my flat. It is not very nice. There are some old flowers and a lot of weeds. I have not taken care of it since I moved in. But Mrs. Jones is friendly. I do not want to be rude.\n\n\"Maybe,\" I say. \"I will think about it.\"\n\nTim laughs. \"You have a garden? Let me see it!\"\n\nI take him to the back of the flat. The garden is small and messy. The grass is too long. The flowers are dead. There is a broken wooden chair in the corner.\n\nTim laughs loudly. \"This is the worst garden I have ever seen!\" he says. \"You have no chance in a competition.\"\n\nHe is not being rude. He is just being honest. I laugh too. \"I know,\" I say. \"But my neighbour Joe has the best garden in the street. Let me show you.\"\n\nWe walk to Joe's house. His garden is the most beautiful one I have ever seen. There are neat paths between the flowers. He has built a small wooden bridge over a little pool. The water is clean and clear. There are fish swimming in it. The flowers are every colour — red, yellow, purple, white. They are taller and healthier than the flowers in any other garden.\n\n\"This is amazing!\" Tim says. \"It is better than any garden I saw in Australia.\"\n\nJoe sees us and comes over. He is a quiet man. He does not say much. But his garden speaks for him.\n\n\"Do you work in it every day?\" I ask.\n\n\"Every morning and every evening,\" Joe says. \"Gardening is hard work. But I enjoy it.\"\n\nTim asks Joe many questions. Joe tells him about the different flowers. He tells him about the fish in the pool. He tells him about the competition. He has won it five times in a row.\n\nThat evening I think about Joe's garden. I think about how much work he puts into it. I remember how I could not send a single postcard from Italy last summer. I remember how I always give up easily.\n\n\"I am going to enter the competition,\" I tell Tim.\n\n\"But your garden is terrible!\" Tim says.\n\n\"I know,\" I say. \"But I can make it better. I have a whole week.\"\n\nFor the next seven days, I work on my garden every evening after work. I pull out the weeds. I plant new flowers. I clean the paths. I fix the broken wooden chair and paint it. It is hard work. My back gets sore. My hands get dirty. But I do not give up.\n\nTim helps me. He is stronger than me. He carries the heavy bags of soil. He digs the holes for the flowers. He works harder than I do. \"In Australia, I learned to work hard,\" he says.\n\nThe day of the competition arrives. Joe's garden wins first place again. It is the most beautiful garden in the street. It is cleaner and neater than all the others. \n\nAnd my garden? I do not win. But I do not come last either. I get fourth place out of ten. Mrs. Jones says my garden is much better than before.\n\n\"You have done a lot of work,\" she says. \"Next year you will do even better.\"\n\nI feel proud. I did not give up. I worked hard. And my garden is better than before. It is not the best. But it is better. And that is enough for now.",
+  chinese:"蒂姆在我这里住两个星期。他睡在我客厅的沙发上。每天早上我们一起吃早餐。他给我讲澳大利亚的故事。我给他讲伦敦的故事。我们聊得好像从未分开过。\n\n一天早上，我的邻居琼斯太太敲我的门。\"汤姆！下星期就是花园比赛了！你报名吗？\"她问。\n\n我的公寓后面有一个小花园。不是很漂亮。有一些旧花和很多杂草。我搬进来后就没有打理过。但琼斯太太很友善。我不想显得粗鲁。\n\n\"也许吧，\"我说。\"我考虑一下。\"\n\n蒂姆笑了。\"你还有个花园？让我看看！\"\n\n我带他到公寓后面。花园又小又乱。草太长了。花都死了。角落里有一把破木椅子。\n\n蒂姆大声笑了。\"这是我见过最差的花园！\"他说。\"你比赛根本没机会。\"\n\n他不是故意粗鲁。他只是实话实说。我也笑了。\"我知道，\"我说。\"但我的邻居乔有这条街上最漂亮的花园。我带你去看看。\"\n\n我们走到乔的房子。他的花园是我见过最漂亮的。花丛之间有整洁的小路。他在一个小水池上建了一座小木桥。水干净清澈。里面有鱼在游。花有各种颜色——红、黄、紫、白。它们比其他任何花园的花都更高更壮。\n\n\"太棒了！\"蒂姆说。\"比我在澳大利亚看到的任何花园都好。\"\n\n乔看到我们走了过来。他是个安静的人。话不多。但他的花园替他说话。\n\n\"你每天打理它吗？\"我问。\n\n\"每天早上和晚上，\"乔说。\"园艺很辛苦。但我很喜欢。\"\n\n蒂姆问了乔很多问题。乔告诉他关于不同的花。告诉他池子里的鱼。告诉他比赛的事。他已经连续赢了五次了。\n\n那天晚上我思考着乔的花园。我在想他付出了多少劳动。我想起去年夏天在意大利时，我一张明信片都没寄出去。我想起我总是轻易放弃。\n\n\"我要报名参加比赛，\"我告诉蒂姆。\n\n\"可你的花园太糟糕了！\"蒂姆说。\n\n\"我知道，\"我说。\"但我可以让它变得更好。我还有整整一个星期。\"\n\n接下来七天，我每天下班后都在花园里干活。我拔掉杂草。我种了新花。我清理了小径。我修好了那把破木椅并刷了漆。活很累。我的背很酸。我的手很脏。但我没有放弃。\n\n蒂姆帮我。他比我壮。他扛沉重的土袋。他挖种花的坑。他干活比我更卖力。\"在澳大利亚，我学会了努力干活，\"他说。\n\n比赛那天到了。乔的花园再次获得第一名。它是这条街上最漂亮的花园。它比其他所有花园更干净、更整洁。\n\n我的花园呢？我没赢。但我也不是最后一名。十个人中我得了第四名。琼斯太太说我的花园比以前好多了。\n\n\"你干了很多活，\"她说。\"明年你会做得更好。\"\n\n我感到自豪。我没有放弃。我努力了。我的花园比以前更好了。它不是最好的。但它在变好。这现在来说就够了。",
+  grammar_focus:[
+    {point:"形容词比较级",explanation:"两者比较用比较级+than：He is stronger than me. My garden is better than before. 单音节加-er，多音节加more。"},
+    {point:"形容词最高级",explanation:"三者以上用the + 最高级：the most beautiful, the worst, the best。范围表达：in the street, I have ever seen。"},
+    {point:"不规则比较级/最高级",explanation:"good→better→best；bad→worse→worst；many/much→more→most；little→less→least。"},
+    {point:"more修饰名词",explanation:"more不仅可以修饰形容词，也可以修饰名词：more flowers（更多的花）。"},
+    {point:"重点句型",explanation:"This is the worst/best I have ever seen.（这是我见过最差/最好的）—— 最高级 + have ever seen 结构。"}
+  ],
+  vocabulary_new:[
+    {word:"competition",meaning:"比赛",phonetic:"/ˌkɒmpəˈtɪʃn/"},{word:"neat",meaning:"整洁的",phonetic:"/niːt/"},{word:"path",meaning:"小径",phonetic:"/pɑːθ/"},{word:"wooden",meaning:"木制的",phonetic:"/ˈwʊdn/"},{word:"pool",meaning:"水池",phonetic:"/puːl/"}
+  ],
+  word_frequency:{competition:"7次",neat:"1次",path:"2次",wooden:"3次",pool:"2次"}
+});
+
+// ---- Chapter 9 ----
+DATA.chapters.push({
+  chapter:9,title:"A Cold Welcome",nce_lesson:"L9: A Cold Welcome",new_words_introduced:7,
+  english:"It is New Year's Eve. Tim has been in London for two weeks. Tomorrow he will fly back to Australia. But tonight we are going to celebrate together.\n\nMy aunt Lucy invites us to Trafalgar Square. \"A large crowd will gather there,\" she says. \"It is the best place to welcome the New Year.\"\n\nWe arrive at Trafalgar Square at half past eleven. A large crowd of people has already gathered there. There are people from all over the world. Some are singing. Others are laughing and talking loudly. Everyone is waiting for midnight.\n\nIn the middle of the square there is a big Christmas tree. The lights on the tree are bright and beautiful. I look up at the big clock on the building. It will strike twelve in twenty minutes.\n\nTim is excited. He has never been to a New Year celebration in London before. He takes many photos with his camera. He sends a postcard to our parents. \"Wish you were here!\" he writes.\n\nTwenty minutes pass. It is five to twelve. Everyone is looking at the clock. The big minute hand is moving slowly. Five, four, three, two, one...\n\nThe crowd starts to shout: \"Ten! Nine! Eight!...\"\n\nBut then something happens. The clock stops. The big minute hand does not move anymore. It stays still at one minute to twelve.\n\nThe crowd waits. Nothing happens. The people refuse to believe it. \"Come on!\" someone shouts. \"Move!\"\n\nBut the clock does not move. It has stopped. The minute hand has refused to go any further.\n\nWe wait and wait. The crowd gets quiet. Then someone looks at their watch and shouts: \"It is two minutes past twelve! The clock has stopped!\"\n\nEveryone laughs. They laugh loudly. But it is not an angry laugh. It is a friendly laugh. People start singing. They sing Auld Lang Syne without the clock. They welcome the New Year with song and laughter.\n\n\"This is the coldest welcome I have ever seen!\" Tim says and laughs.\n\n\"A cold welcome,\" I repeat. \"That is a good name for it.\"\n\nWe laugh together. We hug my aunt Lucy. We wish her a happy New Year. She gives us each a glass of warm drink.\n\n\"Do not worry about the clock,\" she says. \"The New Year has come anyway. Clock or no clock.\"\n\nShe is right. The clock has stopped. But the New Year has arrived. The crowd does not refuse to celebrate. They laugh and sing and dance in the cold night.\n\nI watch the crowd. There are so many different people here. Young and old. Rich and poor. From different countries. All standing together in the cold, welcoming the New Year.\n\nI think about my life. One year ago I was in Greenfield. I was working in Mr. Dawson's shop. I was bearing his rude words every day. I was having private conversations with myself about my dreams. Now I am here in London. I have my own flat. I have a good job. My brother is with me. My aunt is here. I have friends.\n\nI smile. The clock has stopped. But I have not stopped. I am moving forward.\n\nAt one in the morning, we walk home. The streets are full of people. Everyone is happy. Someone is singing loudly. Someone else is laughing. London never sleeps on New Year's Eve.\n\nTim walks beside me. \"This has been the best trip of my life,\" he says. \"Thank you, Tom.\"\n\nI put my hand on his shoulder. \"Thank you for coming,\" I say. \"I will miss you.\"\n\n\"I will write to you every week,\" he says. \"And you must come to Australia next year.\"\n\n\"Maybe I will,\" I say. \"Who knows? Life is full of surprises.\"\n\nWe walk home together. Behind us, the clock still says five to twelve. But the New Year has begun.",
+  chinese:"今天是新年前夜。蒂姆已经在伦敦住了两个星期了。明天他就要飞回澳大利亚了。但今晚我们要一起庆祝。\n\n我的姑妈露西邀请我们去特拉法加广场。\"一大群人会在那里聚集，\"她说。\"这是迎接新年最好的地方。\"\n\n我们在十一点半到达特拉法加广场。一大群人已经聚集在那里了。有来自世界各地的人。有些人在唱歌。其他人在大笑着说话。每个人都在等待午夜。\n\n广场中央有一棵大圣诞树。树上的灯明亮而美丽。我抬头看着大楼上的大钟。它还有二十分钟敲响十二点。\n\n蒂姆很兴奋。他以前从没参加过伦敦的新年庆祝活动。他用相机拍了很多照片。他给我们的父母寄了一张明信片。\"真希望你们也在这里！\"他写道。\n\n二十分钟过去了。现在是十二点差五分。每个人都在看钟。大分针在慢慢移动。五、四、三、二、一……\n\n人群开始喊：\"十！九！八！……\"\n\n但就在这时出事了。钟停了。大分针不再动了。它停在十二点差一分的位置。\n\n人群等待着。什么也没发生。人们拒绝相信。\"快啊！\"有人喊道。\"动啊！\"\n\n但钟就是不动。它停了。分针拒绝再往前走。\n\n我们等啊等。人群安静了下来。然后有人看了看手表喊道：\"已经十二点过两分了！钟停了！\"\n\n大家都笑了。他们大声笑着。但那不是生气的笑。而是友善的笑。人们开始唱歌。他们伴着歌声迎来了新年。\n\n\"这是我见过最冷清的欢迎！\"蒂姆笑着说。\n\n\"冷欢迎，\"我重复道。\"这名字不错。\"\n\n我们一起笑了。我们拥抱了姑妈露西。祝她新年快乐。她给了我们每人一杯热饮。\n\n\"别担心那个钟，\"她说。\"新年还是来了。不管有没有钟。\"\n\n她说得对。钟停了。但新年已经来了。人们没有拒绝庆祝。他们在寒冷的夜晚笑着、唱着、跳着。\n\n我看着人群。这里有这么多不同的人。年轻的年老的。有钱的没钱的。来自不同的国家。所有人一起站在寒冷中迎接新年。\n\n我想着我的生活。一年前我还在格林菲尔德。我还在道森先生的店里工作。我每天忍受着他的粗言恶语。我和自己私下对话谈论我的梦想。现在我在这里，在伦敦。我有自己的公寓。我有好工作。我弟弟和我在一起。我姑妈也在这里。我有朋友。\n\n我笑了。钟停了。但我没有停。我在向前走。\n\n凌晨一点，我们走路回家。街上到处都是人。每个人都很开心。有人在大声唱歌。有人在笑。伦敦在新年前夜从不睡觉。\n\n蒂姆走在我旁边。\"这是我这辈子最好的一次旅行，\"他说。\"谢谢你，汤姆。\"\n\n我把手放在他的肩膀上。\"谢谢你来看我，\"我说。\"我会想你的。\"\n\n\"我会每周给你写信，\"他说。\"明年你一定要来澳大利亚。\"\n\n\"也许我会的，\"我说。\"谁知道呢？生活充满了惊喜。\"\n\n我们一起走回家。在我们身后，钟仍然停在十二点差五分。但新年已经开始了。",
+  grammar_focus:[
+    {point:"过去完成时（Past Perfect）",explanation:"过去的过去：A large crowd had already gathered there.（在到达之前已经聚集了）。结构：had + 过去分词。"},
+    {point:"三种时态对比",explanation:"一般过去时（clock stopped）、现在完成时（has stopped! 直接引语）、过去完成时（had gathered 之前的之前）。"},
+    {point:"would + 动词原形",explanation:"从过去某时间点看'将要'：It would strike twelve in twenty minutes.（那时它将敲响十二点）。"},
+    {point:"时间表达法",explanation:"to = 差（five to twelve），past = 过（two minutes past twelve），in = 之后（in twenty minutes）。"},
+    {point:"重复结构",explanation:"waited and waited（等了又等）表示动作持续，带有情感色彩。"}
+  ],
+  vocabulary_new:[
+    {word:"welcome",meaning:"欢迎",phonetic:"/ˈwelkəm/"},{word:"crowd",meaning:"人群",phonetic:"/kraʊd/"},{word:"gather",meaning:"聚集",phonetic:"/ˈɡæðə(r)/"},{word:"hand",meaning:"（钟表）指针",phonetic:"/hænd/"},{word:"shout",meaning:"喊叫",phonetic:"/ʃaʊt/"},{word:"refuse",meaning:"拒绝",phonetic:"/rɪˈfjuːz/"},{word:"laugh",meaning:"笑",phonetic:"/lɑːf/"}
+  ],
+  word_frequency:{welcome:"4次",crowd:"5次",gather:"2次",hand:"2次",shout:"3次",refuse:"2次",laugh:"5次"}
+});
+
+// ---- Chapter 10 ----
+DATA.chapters.push({
+  chapter:10,title:"Not For Jazz",nce_lesson:"L10: Not For Jazz",new_words_introduced:11,
+  english:"Tim has gone back to Australia. The flat feels quiet without him. But life goes on. I go to work at Tony's garage every day. I send messages with the pigeons. I clean the tools. I learn more about cars every day.\n\nOne evening my neighbour Mrs. Brown invites me for tea. She is the old lady who lives on the ground floor. She is very friendly. She lives alone now. Her husband died a few years ago. She has a cat named Mochi.\n\nI knock on her door at seven o'clock. She opens the door with a warm smile. \"Come in, Tom! I have made some tea.\"\n\nHer flat is smaller than mine. But it is full of beautiful old furniture. There are paintings on the walls. There are books everywhere. In the corner there is a strange wooden instrument.\n\n\"What is that?\" I ask.\n\n\"That is a clavichord,\" she says. \"It is an old musical instrument. It was made in Germany in 1681.\"\n\nI walk closer to look at it. The clavichord is made of dark wood. It has a row of black and white keys. There are strings inside. It looks like a small piano.\n\n\"It has belonged to my family for a long time,\" Mrs. Brown says. \"My grandmother gave it to me. It is very old and very precious.\"\n\n\"Can you play it?\" I ask.\n\n\"I used to play it when I was young,\" she says. \"But I cannot play anymore. My fingers are too old.\"\n\nShe tells me a story about the clavichord. \"Last year a visitor came to see me. She was a young woman. She loved jazz music. She saw the clavichord and wanted to play it. I allowed her to play. But she struck the keys too hard. Two of the strings were broken! I was shocked. I told her we were not allowed to touch it. But the damage was already done.\"\n\n\"What happened then?\" I ask.\n\n\"A friend repaired it. He is a very skilled man. He works with musical instruments. He fixed the broken strings. Now it sounds beautiful again.\"\n\n\"Can I hear it?\" I ask.\n\nMrs. Brown smiles. She sits down at the clavichord. She puts her old fingers on the keys. She begins to play. The sound is soft and beautiful. It is not loud like a piano. It is quiet and gentle, like a whisper from the past.\n\nI close my eyes and listen. The music fills the small room. I think about my life. I think about how far I have come. A year ago I was working in a small shop, bearing a rude boss. Now I am sitting in an old lady's flat in London, listening to music from a 300-year-old instrument.\n\nWhen the music ends, I open my eyes. \"That was beautiful,\" I say.\n\n\"Thank you, Tom,\" she says. \"It is nice to have someone to play for.\"\n\nI help her wash the tea cups. Then I say goodbye. She stands at the door and waves.\n\n\"Come again anytime,\" she says.\n\nOn my way back to my flat, I think about the clavichord. It was made in Germany over 300 years ago. It has survived wars and earthquakes. It has been played by many different hands. It has been damaged and repaired. And it is still here, making beautiful music.\n\nI think about myself. I have been through difficult times too. I have been hurt. I have been angry. I have been lost. But I am still here. I am still moving forward. Like the clavichord, I can still make something beautiful.\n\nI get home and look at my small garden. The flowers are growing. The garden is getting better. I smile. Things take time. But they get better.\n\nI write a letter to Tim. I tell him about Mrs. Brown and the clavichord. \"London is full of surprises,\" I write. \"Last night I heard music from a clavichord that was made in 1681. It was played by an old lady who lives downstairs. You would have loved it.\"\n\nI put down my pen and look out of the window. The London sky is dark. The lights are bright. The city is noisy. But it is my home. And I love it here.",
+  chinese:"蒂姆已经回澳大利亚了。没有他，公寓显得很安静。但生活还在继续。我每天都去托尼的修车厂上班。我用鸽子发送信息。我清理工具。我每天都在学更多关于车的知识。\n\n一天晚上，我的邻居布朗太太请我去喝茶。她是住在一楼的老太太。她非常友善。现在一个人住。她丈夫几年前去世了。她养了一只叫麻糬的猫。\n\n我七点钟敲了她的门。她温暖地笑着开了门。\"进来，汤姆！我泡了茶。\"\n\n她的公寓比我的小。但里面摆满了漂亮的旧家具。墙上挂着画。到处是书。角落里有一件奇怪的木制乐器。\n\n\"那是什么？\"我问。\n\n\"那是一架古钢琴，\"她说。\"是一件古老的乐器。它于1681年在德国制造。\"\n\n我走近看了看。古钢琴由深色木头制成。有一排黑白相间的琴键。里面有弦。看起来像一台小钢琴。\n\n\"它属于我们家已经很久了，\"布朗太太说。\"是我祖母给我的。它非常古老，非常珍贵。\"\n\n\"你会弹吗？\"我问。\n\n\"我年轻时常常弹，\"她说。\"但现在弹不了了。我的手指太老了。\"\n\n她告诉我一个关于古钢琴的故事。\"去年一个客人来看我。她是个年轻女人。她喜欢爵士乐。她看到了古钢琴想弹一下。我允许她弹了。但她敲琴键敲得太用力了。两根弦断了！我很震惊。我告诉她我们是不允许碰它的。但损坏已经造成了。\"\n\n\"后来呢？\"我问。\n\n\"一个朋友修好了它。他是一位技术很好的师傅。他做乐器修理的工作。他修好了断掉的弦。现在它听起来又很美了。\"\n\n\"我能听听吗？\"我问。\n\n布朗太太笑了。她在古钢琴前坐下。她把苍老的手指放在琴键上。她开始弹奏。声音柔和而美丽。不像钢琴那么响。它安静温柔，像是来自过去的低语。\n\n我闭上眼睛听着。音乐充满了小房间。我想着我的生活。我想着我走了多远。一年前我还在一个小店里工作，忍受着粗鲁的老板。现在我坐在伦敦一位老太太的公寓里，听着一件有300年历史的乐器发出的音乐。\n\n音乐结束时，我睁开眼睛。\"太美了，\"我说。\n\n\"谢谢你，汤姆，\"她说。\"有人听我弹琴真好。\"\n\n我帮她洗了茶杯。然后我道别。她站在门口挥手。\n\n\"随时再来，\"她说。\n\n在回公寓的路上，我想着那架古钢琴。它300多年前在德国制造。它经历了战争和地震。它被许多不同的手弹奏过。它被损坏过也被修好过。它仍然在这里，发出美丽的音乐。\n\n我想着自己。我也经历过困难的时候。我被伤害过。我生气过。我迷失过。但我仍然在这里。我仍然在向前走。像那架古钢琴一样，我仍然能创造美丽的东西。\n\n我回到家，看着我的小花园。花在长。花园在变好。我笑了。事情需要时间。但它们会变好。\n\n我给蒂姆写了一封信。我告诉他布朗太太和古钢琴的事。\"伦敦充满了惊喜，\"我写道。\"昨晚我听到了一架1681年制造的古钢琴的音乐。弹琴的是楼下住的一位老太太。你会爱上它的。\"\n\n我放下笔，望着窗外。伦敦的天空很暗。灯火通明。城市很喧闹。但它是我的家。我热爱这里。",
+  grammar_focus:[
+    {point:"被动语态（Passive Voice）",explanation:"be + 过去分词，主语是动作承受者。本课：It was made in Germany (1681). Two strings were broken. I was shocked."},
+    {point:"被动语态的各种时态",explanation:"一般现在时被动（is kept），一般过去时被动（was made/were broken），现在完成时被动（has been repaired）。be动词变化体现时态。"},
+    {point:"主动 vs 被动选择",explanation:"主动强调谁做的（I allowed her），被动强调结果/经历（Two strings were broken）。"},
+    {point:"be made of / in / by",explanation:"be made of + 材料（看得出），be made in + 地点/年份，be made by + 人。"},
+    {point:"belong to（无被动）",explanation:"belong to表示'属于'，无被动语态。不能说It is belonged to，应说It belongs to。"}
+  ],
+  vocabulary_new:[
+    {word:"jazz",meaning:"爵士乐",phonetic:"/dʒæz/"},{word:"musical",meaning:"音乐的",phonetic:"/ˈmjuːzɪkl/"},{word:"instrument",meaning:"乐器",phonetic:"/ˈɪnstrəmənt/"},{word:"clavichord",meaning:"古钢琴",phonetic:"/ˈklævɪkɔːd/"},{word:"damage",meaning:"损坏",phonetic:"/ˈdæmɪdʒ/"},{word:"key",meaning:"琴键",phonetic:"/kiː/"},{word:"string",meaning:"弦",phonetic:"/strɪŋ/"},{word:"shock",meaning:"使震惊",phonetic:"/ʃɒk/"},{word:"allow",meaning:"允许",phonetic:"/əˈlaʊ/"},{word:"touch",meaning:"触摸",phonetic:"/tʌtʃ/"}
+  ],
+  word_frequency:{jazz:"2次",musical:"2次",instrument:"4次",clavichord:"7次",damage:"2次",key:"2次",string:"3次",shock:"1次",allow:"1次",touch:"1次"}
+});
+
+// ============================================================
+// Build master vocabulary lookup from ALL chapters
+// ============================================================
+const VOCAB_MAP = {};  // lowercase word -> { meaning, phonetic, lessons:[] }
+DATA.chapters.forEach(ch => {
+  ch.vocabulary_new.forEach(v => {
+    const key = v.word.toLowerCase();
+    if (!VOCAB_MAP[key]) {
+      VOCAB_MAP[key] = { meaning: v.meaning, phonetic: v.phonetic || '', lessons: [] };
+    }
+    VOCAB_MAP[key].lessons.push(ch.chapter);
+  });
+});
+
+// Sort by word length desc to match longer phrases first (e.g. "call at" before "call")
+const VOCAB_KEYS = Object.keys(VOCAB_MAP).sort((a, b) => b.length - a.length);
+
+// Escape regex special characters
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlightVocab(text, chapterNum) {
+  // Build a combined regex that matches any vocab word
+  const pattern = VOCAB_KEYS.map(w => '\\b' + escapeRegex(w) + '\\b').join('|');
+  const re = new RegExp(pattern, 'gi');
+
+  // We need to avoid highlighting inside HTML already
+  // First, split text into paragraphs
+  const paragraphs = text.split('\n');
+
+  return paragraphs.map(para => {
+    if (para.trim() === '') return '<br>';
+    // Wrap matched words
+    let result = para.replace(re, (match) => {
+      const key = match.toLowerCase();
+      const info = VOCAB_MAP[key];
+      if (!info) return match;
+
+      // Count total occurrences across all chapters (roughly)
+      const totalLessons = info.lessons.length;
+
+      // Is this word new in the current chapter?
+      const isNew = info.lessons.includes(chapterNum);
+
+      return `<span class="vocab-word" data-word="${key}" data-meaning="${info.meaning}" data-phonetic="${info.phonetic}" data-lessons="${info.lessons.join(',')}" data-isnew="${isNew}">${match}</span>`;
+    });
+    return `<p>${result}</p>`;
+  }).join('');
+}
+
+// ============================================================
+// App state
+// ============================================================
+let currentChapter = 0;
+let showChinese = false;
+let tooltipTimeout = null;
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+function render() {
+  renderTabs();
+  renderSidebar();
+  renderMain();
+}
+
+function renderTabs() {
+  const container = document.getElementById('chapterTabs');
+  container.innerHTML = DATA.chapters.map((ch, i) =>
+    `<button class="chapter-tab ${i === currentChapter ? 'active' : ''}" data-ch="${i}">Ch${ch.chapter}</button>`
+  ).join('');
+  container.querySelectorAll('.chapter-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentChapter = parseInt(btn.dataset.ch);
+      render();
+    });
+  });
+}
+
+function renderSidebar() {
+  const ch = DATA.chapters[currentChapter];
+  const container = document.getElementById('sidebarContent');
+
+  let html = '';
+
+  // Grammar
+  html += '<div class="section-title">语法要点</div>';
+  ch.grammar_focus.forEach((g, i) => {
+    html += `<div class="grammar-item">
+      <div class="grammar-header" data-gr="${i}">
+        ${g.point} <span class="arrow">▶</span>
+      </div>
+      <div class="grammar-body" id="grammarBody${i}">${g.explanation}</div>
+    </div>`;
+  });
+
+  // New vocabulary
+  html += '<div class="section-title" style="margin-top:16px">本章新单词</div>';
+  html += '<div class="word-list">';
+  ch.vocabulary_new.forEach(w => {
+    html += `<span class="word-tag lesson-new"><b>${w.word}</b> <span class="phonetic">${w.phonetic}</span> <span class="meaning">${w.meaning}</span></span>`;
+  });
+  html += '</div>';
+
+  // Frequency
+  html += '<div class="section-title" style="margin-top:16px">词频（本章出现次数）</div>';
+  html += '<div class="word-list">';
+  Object.entries(ch.word_frequency).forEach(([k, v]) => {
+    html += `<span class="word-tag"><b>${k}</b> <span class="freq">${v}</span></span>`;
+  });
+  html += '</div>';
+
+  // Lesson info
+  html += `<div class="section-title" style="margin-top:16px">来源</div>`;
+  html += `<div style="font-size:12px;color:#888">NCE ${ch.nce_lesson}<br>本章新词: ${ch.new_words_introduced} 个</div>`;
+
+  container.innerHTML = html;
+
+  // Grammar toggle
+  container.querySelectorAll('.grammar-header').forEach(h => {
+    h.addEventListener('click', () => {
+      const idx = h.dataset.gr;
+      const body = document.getElementById('grammarBody' + idx);
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open');
+      h.classList.toggle('open');
+    });
+  });
+}
+
+function renderMain() {
+  const ch = DATA.chapters[currentChapter];
+  document.getElementById('chNum').textContent = `Chapter ${ch.chapter}`;
+  document.getElementById('chTitle').textContent = ch.title;
+  document.getElementById('nceLabel').textContent = `〈${ch.nce_lesson}〉`;
+
+  const storyArea = document.getElementById('storyArea');
+
+  // Process English text with vocabulary highlights
+  const enHtml = highlightVocab(ch.english, ch.chapter);
+
+  // Process Chinese (no highlighting, just paragraph split)
+  const cnPars = ch.chinese.split('\n\n').map(p => {
+    const lines = p.split('\n').filter(l => l.trim());
+    return '<p>' + lines.join('<br>') + '</p>';
+  }).join('');
+
+  storyArea.innerHTML = `
+    <div class="para-en">${enHtml}</div>
+    <div class="para-cn ${showChinese ? 'show' : ''}" id="paraCn">${cnPars}</div>
+  `;
+
+  // Attach vocab click handlers
+  storyArea.querySelectorAll('.vocab-word').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showVocabTooltip(el, e);
+    });
+  });
+
+  const btn = document.getElementById('toggleCn');
+  btn.textContent = showChinese ? '隐藏中文' : '显示中文';
+}
+
+// ---- Tooltip ----
+const tooltip = document.getElementById('vocabTooltip');
+
+function showVocabTooltip(el, event) {
+  const word = el.dataset.word;
+  const meaning = el.dataset.meaning;
+  const phonetic = el.dataset.phonetic;
+  const lessons = el.dataset.lessons;
+  const lessonList = lessons.split(',').map(l => 'Ch' + l).join(', ');
+
+  document.getElementById('ttWord').textContent = word;
+  document.getElementById('ttMeaning').textContent = meaning;
+  document.getElementById('ttPhonetic').textContent = phonetic || '';
+  document.getElementById('ttLesson').textContent = '来源章节: ' + lessonList;
+
+  // Calculate frequency from all chapters
+  let totalCount = 0;
+  DATA.chapters.forEach(ch => {
+    if (ch.word_frequency && ch.word_frequency[word]) {
+      const freqStr = ch.word_frequency[word];
+      const num = parseInt(freqStr);
+      if (!isNaN(num)) totalCount += num;
+    }
+  });
+  document.getElementById('ttFrequency').textContent = totalCount > 0 ? `全篇累计出现: ${totalCount}次` : '';
+
+  // Position tooltip relative to viewport (tooltip is position:absolute child of body)
+  const rect = el.getBoundingClientRect();
+
+  tooltip.style.display = 'block';
+  tooltip.style.transform = 'translateX(-50%)';
+
+  let top = rect.bottom + 6;
+  let left = rect.left + rect.width / 2;
+
+  // Clamp so tooltip doesn't go off-screen
+  const ttWidth = tooltip.offsetWidth || 260;
+  const vw = window.innerWidth;
+  if (left - ttWidth / 2 < 8) left = ttWidth / 2 + 8;
+  if (left + ttWidth / 2 > vw - 8) left = vw - 8 - ttWidth / 2;
+
+  tooltip.style.top = top + 'px';
+  tooltip.style.left = left + 'px';
+  tooltip.classList.add('show');
+
+  // Remove tooltip on next click elsewhere
+  clearTimeout(tooltipTimeout);
+  const closeHandler = (evt) => {
+    if (!evt.target.closest('.vocab-word')) {
+      tooltip.classList.remove('show');
+      tooltip.style.display = 'none';
+      document.removeEventListener('click', closeHandler);
+    }
+  };
+  setTimeout(() => document.addEventListener('click', closeHandler), 10);
+}
+
+document.getElementById('toggleCn').addEventListener('click', () => {
+  showChinese = !showChinese;
+  const cn = document.getElementById('paraCn');
+  if (cn) cn.classList.toggle('show');
+  document.getElementById('toggleCn').textContent = showChinese ? '隐藏中文' : '显示中文';
+});
+
+// Hide tooltip on scroll
+document.getElementById('storyArea').addEventListener('scroll', () => {
+  tooltip.classList.remove('show');
+  tooltip.style.display = 'none';
+});
+
+render();
+</script>
+</body>
+</html>
