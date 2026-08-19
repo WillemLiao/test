@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第61单元 排练室里的秘密与维娅的眼泪</title>
+<style>
+:root{--c:#7a6aa8;--bg:#f0edf7;--nav:#ded7ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第五部 · 贾斯汀</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 61 单元 · 排练室里的秘密与维娅的眼泪</div>
+    <div class="unit-en">Rehearsal · Bird</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1123 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Five: Justin</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>演出进入倒计时，贾斯汀在台上拉小提琴拖延背台词，还渐渐认识了那个粉发女孩米兰达——原来她是维娅从小的好友，自称十年前送奥吉一个宇航员头盔当礼物。贾斯汀回头质问维娅为何没告诉他，维娅掉下眼泪，最后说出让她崩溃的秘密：她没告诉父母要演出的事，她不想让他们和奥吉来，因为这会让她在校友面前再次成为“那个有特殊弟弟的女生”。她哭着骂自己是“糟糕的人”，贾斯汀温柔抱住她。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>拉琴拖延，顺便认识了米兰达</h2>
+            <div class="seg-en">she brings me good luck</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 245 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">后台排练</span><span class="tag">米兰达</span><span class="tag">拉琴拖时间</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意贾斯汀对片场新人的判断在悄悄转变：他原以为米兰达所混的那圈人很傲，却发现她“其实蛮不错”。</div>
+        <div class="body">
+<p>THE PLAY IS taking up most of my time as we get closer to opening night. lots of lines to remember. long monologues where it’s just me talking. olivia had this great idea, though, and it’s helping. i have my fiddle with me onstage and play it a bit while i’m talking. It’s not written that way, but mr. davenport thinks it adds an extra-folksy element to have the stage manager plucking on a fiddle. and for me it’s so great because whenever i need a second to remember my next line, i just start playing a little “soldier’s joy” on my fiddle and it buys me some time.</p>
+<p>i’ve gotten to know the kids in the show a lot better, especially the pink-haired girl who plays emily. turns out she’s not nearly as stuck-up as i thought she was, given the crowd she hangs out with. her boyfriend’s this built jock who’s a big deal on the varsity sports circuit at school. it’s a whole world that i have nothing to do with, so i’m kind of surprised that this miranda girl turns out to be kind of nice.</p>
+<p>one day we’re sitting on the floor backstage waiting for the tech guys to fix the main spotlight.</p>
+<p>so how long have you and olivia been dating? she asks out of the blue.</p>
+<p>about four months now, i say.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>快开演了，演出几乎占满贾斯汀的时间。他有个好办法：上台时带着小提琴，背不下去就拨几个“士兵的快乐”的调子争取时间，导演也觉得这样有乡土味。他渐渐熟悉了剧组的人，尤其那个演艾米丽的粉发女孩米兰达，她其实不像他以为的那么傲。一天大家坐在后台等灯光师傅修主灯，她突然没头没脑地问他跟维娅交往多久了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>whenever i need a second to remember my next line, i just start playing a little &quot;soldier's joy&quot; on my fiddle and it buys me some time.</blockquote><p class="note">buy me some time = 为我争取时间。buy time = 拖延、争取时间。贾斯汀用拉琴给自己留出想台词的停顿。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>monologue</b> <span class="pos">n.</span> 独白、长段台词</li><li><b>folksy</b> <span class="pos">adj.</span> 乡土味的、朴实的</li><li><b>stuck-up</b> <span class="pos">adj.</span> 傲慢的、摆架子的</li><li><b>varsity</b> <span class="pos">adj.</span> 校队的（varsity sports 校际竞技）</li><li><b>out of the blue</b> <span class="pos">phr.</span> 突然地、毫无预兆地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>她竟来自奥吉的生活：那个宇航员头盔</h2>
+            <div class="seg-en">i'm the one who gave him that helmet</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 267 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">宇航员头盔</span><span class="tag">米兰达与奥吉</span><span class="tag">旧照片</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>宇航员头盔是全书的重要意象：米兰达为奥吉戴上它，也给了他“藏起来”的庇护——贾斯汀开始意识到米兰达和这个家庭的深厚牵连。</div>
+        <div class="body">
+<p>have you met her brother? she says casually.</p>
+<p>it’s so unexpected that i can’t hide my surprise.</p>
+<p>you know olivia’s brother? i ask.</p>
+<p>via didn’t tell you? we used to be good friends. i’ve known auggie since he was a baby.</p>
+<p>oh, yeah, i think i knew that, i answer. i don’t want to let on that olivia had not told me any of this. i don’t want to let on how surprised i am that she called her via. nobody but olivia’s family calls her via, and here this pink-haired girl, who i thought was a stranger, is calling her via.</p>
+<p>miranda laughs and shakes her head but she doesn’t say anything. there’s an awkward silence and then she starts fishing through her bag and pulls out her wallet. she rifles through a couple of pictures and then hands one to me. it’s of a little boy in a park on a sunny day. he’s wearing shorts and a t-shirt—and an astronaut helmet that covers his entire head.</p>
+<p>it was like a hundred degrees that day, she says, smiling at the picture. but he wouldn’t take that helmet off for anything. he wore it for like two years straight, in the winter, in the summer, at the beach. it was crazy.</p>
+<p>yeah, i’ve seen pictures in olivia’s house.</p>
+<p>i’m the one who gave him that helmet, she says. she sounds a little proud of that. she takes the picture and carefully inserts it back into her wallet.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达随口问贾斯汀见没见过维娅的弟弟，他藏不住惊讶。她说自己从前和维娅是好朋友，奥吉从小她就认识。最让贾斯汀意外的是她竟叫她“维娅”——一般只有家人才这么叫。她从钱包里摸出一张照片：一个晴日公园里的男孩，穿着短裤短袖，戴着罩住整个脑袋的宇航员头盔。她说那天热得出奇，可奥吉死也不肯摘，那头盔连着戴了两年，冬天夏天海边都不摘。她说头盔是她送的，语气有点得意。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>it was like a hundred degrees that day, she says, smiling at the picture. but he wouldn't take that helmet off for anything.</blockquote><p class="note">for anything = 无论如何（也肯）。米兰达记得天热得要命，可奥吉死活不摘头盔——这句把奥吉童年的画面和她的在意都写活了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>helmet</b> <span class="pos">n.</span> 头盔</li><li><b>out of the blue</b> <span class="pos">phr.</span> 突然地、毫无征兆地</li><li><b>rifle through</b> <span class="pos">phr.</span> 翻拣、快速翻阅</li><li><b>wallet</b> <span class="pos">n.</span> 钱包</li><li><b>two years straight</b> <span class="pos">n.</span> 连续两年、整整两年</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>你为什么不告诉我你和米兰达是朋友</h2>
+            <div class="seg-en">you could have mentioned it</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">恋人争执</span><span class="tag">米兰达往事</span><span class="tag">欲言又止</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>冲突的引爆点不是气话本身而是那颗“突然滚下脸颊的泪”——维娅的崩溃另有原因，这才是下一段的钥匙。</div>
+        <div class="body">
+<p>cool, i answer.</p>
+<p>so you’re okay with it? she says, looking at me.</p>
+<p>i look at her blankly. okay with what?</p>
+<p>she raises her eyebrows like she doesn’t believe me. you know what i’m talking about, she says, and takes a long drink from her water bottle. let’s face it, she continues, the universe was not kind to auggie pullman.</p>
+<p>WHY DIDN’T YOU tell me that you and miranda navas used to be friends? i say to olivia the next day. i’m really annoyed at her for not telling me this.</p>
+<p>it’s not a big deal, she answers defensively, looking at me like i’m weird.</p>
+<p>it is a big deal, i say. i looked like an idiot. how could you not tell me? you’ve always acted like you don’t even know her.</p>
+<p>i don’t know her, she answers quickly. i don’t know who that pink-haired cheerleader is. the girl i knew was a total dork who collected american girl dolls.</p>
+<p>oh come on, olivia.</p>
+<p>you come on!</p>
+<p>you could have mentioned it to me at some point, i say quietly, pretending not to notice the big fat tear that’s suddenly rolling down her cheek.</p>
+<p>she shrugs, fighting back bigger tears.</p>
+<p>it’s okay, i’m not mad, i say, thinking the tears are about me.</p>
+<p>i honestly don’t care if you’re mad, she says spitefully.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>第二天贾斯汀气冲冲地质问维娅怎么没告诉他她和米兰达曾是好朋友，说自己当时傻得像白痴。她辩解地说不算什么，还说自己根本不认识“那个粉发拉拉队长”，她认识的女孩是个收集美国女孩娃娃的呆子。两人争了起来，贾斯汀轻声说她本该早点提一句，却假装没看见一颗大眼泪突然滚下她的脸颊；她强忍更大哭，竟赌气地说“我才不在乎你生不生气”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>i was looking at her blankly. okay with what? she raises her eyebrows like she doesn't believe me.</blockquote><p class="note">look blankly = 茫然地看；raise one's eyebrows = 挑眉毛（表示怀疑）。米兰达那句“你对奥吉的事无动于衷？”，让贾斯汀一时接不上话。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>annoyed at</b> <span class="pos">adj.</span> 对……恼怒的</li><li><b>defensively</b> <span class="pos">adv.</span> 防备地、护着自己地</li><li><b>blankly</b> <span class="pos">adv.</span> 茫然地、面无表情地</li><li><b>dork</b> <span class="pos">n.</span> 呆子、书呆子</li><li><b>spitefully</b> <span class="pos">adv.</span> 赌气地、刻薄地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>我的秘密：我不想让他们来看戏</h2>
+            <div class="seg-en">i don't want them to come</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 306 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">维娅的自责</span><span class="tag">隐瞒演出</span><span class="tag">姐姐的羞耻</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>维娅的委屈是全书核心之一：她爱奥吉，可“成为那个特殊男孩的姐姐”让她在社交圈备受煎熬——她埋藏多年的羞耻第一次在贾斯汀面前崩溃。</div>
+        <div class="body">
+<p>oh, that’s real nice, i fire back.</p>
+<p>she doesn’t say anything. the tears are about to come.</p>
+<p>olivia, what’s the matter? i say.</p>
+<p>she shakes her head like she doesn’t want to talk about it, but all of a sudden the tears start rolling a mile a minute.</p>
+<p>i’m sorry, it’s not you, justin. i’m not crying because of you, she finally says through her tears.</p>
+<p>then why are you crying?</p>
+<p>because i’m an awful person.</p>
+<p>what are you talking about?</p>
+<p>she’s not looking at me, wiping her tears with the palm of her hand.</p>
+<p>i haven’t told my parents about the show, she says quickly.</p>
+<p>i shake my head because i don’t quite get what she’s telling me. that’s okay, i say. it’s not too late, there are still tickets available—</p>
+<p>i don’t want them to come to the show, justin, she interrupts impatiently. don’t you see what i’m saying? i don’t want them to come! if they come, they’ll bring auggie with them, and i just don’t feel like …</p>
+<p>here she’s hit by another round of crying that doesn’t let her finish talking. i put my arm around her.</p>
+<p>i’m an awful person! she says through her tears.</p>
+<p>you’re not an awful person, i say softly.</p>
+<p>yes i am! she sobs. it’s just been so nice being in a new school where nobody knows about him, you know? nobody’s whispering about it behind my back. it’s just been so nice, justin. but if he comes to the play, then everyone will talk about it, everyone will know. … i don’t know why i’m feeling like this. … i swear i’ve never been embarrassed by him before.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀回嘴“那可真好”，她眼泪止不住地流。她终于说“对不起，不是因为你”，原来她是真哭，跟贾斯汀无关。贾斯汀问他她为什么哭，她说因为自己是“糟糕的人”，然后坦白：她还没告诉父母要出演的事；她不想让他们来看戏，因为一旦他们来就会带上奥吉。她哭着解释自己的心情——在新学校没人知道奥吉、没人背地里议论，让她觉得非常舒服；可如果他来，所有人都会知道、会讨论。她断断续续说她从没为奥吉感到丢脸过。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>i don't want them to come, justin, she interrupts impatiently. don't you see what i'm saying? i don't want them to come! if they come, they'll bring auggie with them.</blockquote><p class="note">这是全段转折点：维娅哭里夹着急切打断，坦白她不想让奥吉来，怕所有人再次记住她“那个特殊弟弟的姐姐”的身份。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fire back</b> <span class="pos">phr.</span> 回嘴、反击</li><li><b>a mile a minute</b> <span class="pos">phr.</span> 飞快地、止不住地（形容眼泪）</li><li><b>sobs</b> <span class="pos">v.</span> 啜泣、哭得抽噎</li><li><b>whispering</b> <span class="pos">v.</span> 低声议论、背后说闲话</li><li><b>embarrassed</b> <span class="pos">adj.</span> 感到难为情、尴尬的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>维娅像一只想躲进巢里的小鸟</h2>
+            <div class="seg-en">a little lost bird looking for its nest</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 64 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">小鸟比喻</span><span class="tag">温柔相拥</span><span class="tag">安抚</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>结尾的“小鸟”比喻是全段的抒情落点：维娅的骄傲外壳下是需要庇护的脆弱，贾斯汀选择做她的翅膀和巢。</div>
+        <div class="body">
+<p>i know, i know, i say, soothing her. you’re entitled, olivia. you’ve dealt with a lot your whole life.</p>
+<p>olivia reminds me of a bird sometimes, how her feathers get all ruffled when she’s mad. and when she’s fragile like this, she’s a little lost bird looking for its nest.</p>
+<p>so i give her my wing to hide under.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀轻声安抚，说她是受委屈但理所当然的，她这一生已经承担了太多。他在心里把维娅比作小鸟——生气时羽毛会炸起，脆弱时像一只找不到巢的迷失小鸟。于是他给她自己的翅膀躲进去。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>when she's fragile like this, she's a little lost bird looking for its nest. so i give her my wing to hide under.</blockquote><p class="note">fragile = 脆弱的；look for its nest = 寻找自己的巢；give her my wing = 给她我的翅膀庇护她。这是极温柔的抒情结尾。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>entitled</b> <span class="pos">adj.</span> 应该的、理所当然的（you're entitled 你有权利这样想）</li><li><b>ruffled</b> <span class="pos">adj.</span> 炸毛的、竖起的（ruffled feathers 炸开的羽毛）</li><li><b>fragile</b> <span class="pos">adj.</span> 脆弱的、易碎的</li><li><b>soothe</b> <span class="pos">v.</span> 安抚、宽慰</li><li><b>nest</b> <span class="pos">n.</span> 鸟巢、窝</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_60.html">← 上一单元</a>
+    <a href="wonder_unit_62.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第61/96 单元 · 第五部 · 贾斯汀 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u61.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

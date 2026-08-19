@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第68单元 向达西说再见</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 68 单元 · 向达西说再见</div>
+    <div class="unit-en">Goodbye</div>
+    <div class="unit-stats">
+      <span>⏱ 约 7 分钟</span>
+      <span>📄 569 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>正当奥吉躲在玩偶洞穴里，维娅冲进来说“妈妈要跟你谈谈”，还不客气地提醒他“不是每件事都围着你转”。原来达西病得很重，妈妈要送它去市区宠物医院。奥吉还以为是再像以前那样告诉他要向维娅道歉，却发现达西躺在地上直喘气，妈妈和维娅都在哭。妈妈说“也许该跟达西说再见了”，奥吉坚决不信他们会放弃它。妈妈抱着达西进出租车，孩子们蹲在门口一个个跟达西吻别、说“我爱你”，看着妈妈那伤心欲绝的一挥手。妈妈走后，维娅和奥吉紧紧抱在一起，哭成一片。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>不是关于你的事，是达西</h2>
+            <div class="seg-en">Daisy's sick</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 248 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">达西病了</span><span class="tag">急诊兽医</span><span class="tag">不愿接受</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意一个家庭信号被点破：妈妈欲言又止地提到“达西老了、病了很多次”，而奥吉还在天真地相信一定能治好——他已察觉气氛不对。</div>
+        <div class="body">
+<p>“AUGGIE,” SAID VIA. “Come quick. Mom needs to talk to you.”</p>
+<p>“I’m not apologizing!”</p>
+<p>“This isn’t about you!” she yelled. “Not everything in the world is about you, Auggie! Now hurry up. Daisy’s sick. Mom’s taking her to the emergency vet. Come say goodbye.”</p>
+<p>I pushed the pillows off my face and looked up at her. That’s when I saw she was crying. “What do you mean ‘goodbye’?”</p>
+<p>“Come on!” she said, holding out her hand.</p>
+<p>I took her hand and followed her down the hall to the kitchen. Daisy was lying down sideways on the floor with her legs straight out in front of her. She was panting a lot, like she’d been running in the park. Mom was kneeling beside her, stroking the top of her head.</p>
+<p>“What happened?” I asked.</p>
+<p>“She just started whimpering all of a sudden,” said Via, kneeling down next to Mom.</p>
+<p>I looked down at Mom, who was crying, too.</p>
+<p>“I’m taking her to the animal hospital downtown,” she said. “The taxi’s coming to pick me up.”</p>
+<p>“The vet’ll make her better, right?” I said.</p>
+<p>Mom looked at me. “I hope so, honey,” she said quietly. “But I honestly don’t know.”</p>
+<p>“Of course he will!” I said.</p>
+<p>“Daisy’s been sick a lot lately, Auggie. And she’s old …”</p>
+<p>“But they can fix her,” I said, looking at Via to agree with me, but Via wouldn’t look up at me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅冲进房间喊“奥吉，快来，妈妈要跟你谈谈”。奥吉赌气说“我才不道歉！”维娅吼他“这不是关于你的事！不是世界上每件事都围着你转！赶紧的，达西病了，妈妈要带它去急诊兽医那儿，来跟它说再见。”奥吉推开脸上的枕头抬头，看到维娅在哭，问“你说的‘再见’是什么意思？”他抓住她伸出的手，跟着到厨房。达西侧躺在地板上，四条腿直直伸着，喘得很厉害，像刚刚在公园跑过。妈妈跪在它旁边轻抚它的头顶。奥吉问怎么了，维娅说它突然呜呜叫。奥吉低头看妈妈也在哭。妈妈说带它去市里动物医院，出租车快到了。奥吉追问“兽医会治好它吧？”妈妈平静地说“我希望如此，宝贝，可老实说我不确定”。奥吉急声说当然会治得好，妈妈叹气“达西最近病了好多次，而且它老了”，奥吉坚持“可他们能治好它”，看向维娅想得到认同，可维娅不肯抬头看他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Not everything in the world is about you, Auggie!</blockquote><p class="note">这句话是维娅第一次直接点醒奥吉：世界不是围着他转的。句中“not everything … is about you”重心在“不是每件事都事关你”。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>apologize</b> <span class="pos">v.</span> 道歉</li><li><b>emergency vet</b> <span class="pos">n.</span> 急诊兽医</li><li><b>pant</b> <span class="pos">v.</span> （狗）喘气、气喘吁吁</li><li><b>whimper</b> <span class="pos">v.</span> 呜咽、低声哀叫</li><li><b>stroke</b> <span class="pos">v.</span> 轻抚、抚摸</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>跟达西说再见</h2>
+            <div class="seg-en">I love you, Daisy</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 263 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">道别</span><span class="tag">伤心的一挥手</span><span class="tag">全家落泪</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>把握这个长镜头的情绪重量：从“阻止妈妈”到“跟达西逐个道别”，最后定格在妈妈隔着出租车窗那伤心的一挥手。</div>
+        <div class="body">
+<p>Mom’s lips were trembling. “I think it might be time we say goodbye to Daisy, Auggie. I’m sorry.”</p>
+<p>“No!” I said.</p>
+<p>“We don’t want her to suffer, Auggie,” she said.</p>
+<p>The phone rang. Via picked it up, said, “Okay, thanks,” and then hung up.</p>
+<p>“The taxi’s outside,” she said, wiping her tears with the backs of her hands.</p>
+<p>“Okay, Auggie, open the door for me, sweetie?” said Mom, picking Daisy up very gently like she was a huge droopy baby.</p>
+<p>“Please, no, Mommy?” I cried, putting myself in front of the door.</p>
+<p>“Honey, please,” said Mom. “She’s very heavy.”</p>
+<p>“What about Daddy?” I cried.</p>
+<p>“He’s meeting me at the hospital,” Mom said. “He doesn’t want Daisy to suffer, Auggie.”</p>
+<p>Via moved me away from the door and held it open for Mom.</p>
+<p>“My cell phone’s on if you need anything,” Mom said to Via. “Can you cover her with the blanket?”</p>
+<p>Via nodded, but she was crying hysterically now.</p>
+<p>“Say goodbye to Daisy, kids,” Mom said, tears streaming down her face.</p>
+<p>“I love you, Daisy,” Via said, kissing Daisy on the nose. “I love you so much.”</p>
+<p>“Bye, little girlie …,” I whispered into Daisy’s ear. “I love you. …”</p>
+<p>Mom carried Daisy down the stoop. The taxi driver had opened the back door and we watched her get in. Just before she closed the door, Mom looked up at us standing by the entrance to the building and she gave us a little wave. I don’t think I’ve ever seen her look sadder.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈的嘴唇发抖，说“奥吉，我想也许是时候跟达西说再见了，对不起”。奥吉喊“不！”妈妈说“我们不想让它受苦”。电话响了，维娅接起来说了声“好，谢谢”挂断，说“出租车到了”，用手背抹眼泪。妈妈让奥吉开门，她非常小心地像抱一大团软塌塌的婴儿一样抱起达西。奥吉哭喊着堵住门口“求你了，不要，妈妈！”妈妈柔声说“宝贝，它很重”。奥吉问“爸爸呢？”妈妈说他在医院等她，他也不想让达西受苦。维娅把奥吉从门边拉开，为妈妈把门敞开。妈妈对维娅嘱咐“我手机开着，需要就打我电话；你能帮它盖条毯子吗？”维娅点头，却已经哭得不可开交。妈妈脸上挂满泪水说“孩子们，跟达西说再见吧”。维娅亲了亲达西的鼻子“我爱你，达西，好爱你”。奥吉凑到达西耳边轻声说“再见了，小姑娘……我爱你……”妈妈抱着达西走下台阶，出租车司机开了后门，奥吉他们看着妈妈上车，关门前妈妈抬头朝站在门口他们挥了下手——奥吉从没见过她这么伤心的样子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“I love you, Daisy,” said Via, kissing Daisy on the nose. I love you so much.</blockquote><p class="note">kiss on the nose = 亲在鼻子上。孩子们跟陪伴多年的狗做最后道别，言语朴素却格外动人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>suffer</b> <span class="pos">v.</span> 受苦、承受痛苦</li><li><b>tremble</b> <span class="pos">v.</span> 颤抖、发抖</li><li><b>hang up</b> <span class="pos">phr.</span> 挂断电话</li><li><b>hysterically</b> <span class="pos">adv.</span> 歇斯底里地、情绪失控地</li><li><b>whisper</b> <span class="pos">v.</span> 低声说、耳语</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>车门关上那一刻</h2>
+            <div class="seg-en">we cried a million tears</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 58 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">飞吻</span><span class="tag">和解</span><span class="tag">抱头痛哭</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一小段虽短，却是和解的开关：一声“对不起”和那个飞吻，让先前吃饭时的吵架在眼泪里烟消云散。</div>
+        <div class="body">
+<p>“I love you, Mommy!” said Via.</p>
+<p>“I love you, Mommy!” I said. “I’m sorry, Mommy!”</p>
+<p>Mom blew a kiss to us and closed the door. We watched the car leave and then Via closed the door. She looked at me a second, and then she hugged me very, very tight while we both cried a million tears.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>出租车即将带妈妈和达西离开，维娅和奥吉冲着车喊“我爱你，妈妈！”奥吉还补了一句“妈妈对不起！”妈妈朝两个孩子飞了个吻，然后关上车门。他们目送汽车开走，维娅关上门，看了奥吉一会儿，然后把他紧紧抱在怀里，两人一起哭出无数滴眼泪。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I'm sorry, Mommy!</blockquote><p class="note">一句“对不起”既是对刚才餐桌闹脾气道歉，也道出家人同陷悲伤时不由自主的情感。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>blow a kiss</b> <span class="pos">phr.</span> 飞吻（隔空送吻）</li><li><b>hug</b> <span class="pos">v.</span> 拥抱</li><li><b>a million</b> <span class="pos">adj.</span> （夸张说法）无数、不计其数</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_67.html">← 上一单元</a>
+    <a href="wonder_unit_69.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第68/96 单元 · 第六部 · 奥吉 · 约 7 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u68.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第1单元 普通男孩奥吉</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-left:0}.main{margin-left:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 1 单元 · 普通男孩奥吉</div>
+    <div class="unit-en">Ordinary · Why I Didn’t Go to School</div>
+    <div class="unit-stats">
+      <span>⏱ 约 11 分钟</span>
+      <span>📄 851 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>十岁男孩奥古斯特（昵称奥吉）因为面部畸形做过二十七次手术，从没上过真正的学校。他反复强调自己其实是个普通孩子——吃冰淇淋、骑车、打球——只是别人一看到他就会尖叫或移开目光。这一单元里他完成自我介绍：解释自己不上学是因为手术和生病而不是长相，妈妈在家教他，他真正的愿望是像其他孩子一样有很多朋友。同时他最好的朋友克里斯托弗搬走了，让他有些失落。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我是普通孩子，但别人不这么看</h2>
+            <div class="seg-en">I'm not an ordinary kid</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 260 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自我介绍</span><span class="tag">普通与特殊</span><span class="tag">被注视的日常</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意奥吉反复强调“我其实很普通”——别人怎么看他与他怎么看待自己形成对比，这是全书最重要的主题。</div>
+        <div class="body">
+<p>I KNOW I’M not an ordinary ten-year-old kid. I mean, sure, I do ordinary things. I eat ice cream. I ride my bike. I play ball. I have an XBox. Stuff like that makes me ordinary. I guess. And I feel ordinary. Inside. But I know ordinary kids don’t make other ordinary kids run away screaming in playgrounds. I know ordinary kids don’t get stared at wherever they go.</p>
+<p>If I found a magic lamp and I could have one wish, I would wish that I had a normal face that no one ever noticed at all. I would wish that I could walk down the street without people seeing me and then doing that look-away thing. Here’s what I think: the only reason I’m not ordinary is that no one else sees me that way.</p>
+<p>But I’m kind of used to how I look by now. I know how to pretend I don’t see the faces people make. We’ve all gotten pretty good at that sort of thing: me, Mom and Dad, Via. Actually, I take that back: Via’s not so good at it. She can get really annoyed when people do something rude. Like, for instance, one time in the playground some older kids made some noises. I don’t even know what the noises were exactly because I didn’t hear them myself, but Via heard and she just started yelling at the kids. That’s the way she is. I’m not that way.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉介绍自己：他做普通的事、感觉也很普通，但普通孩子不会让别的孩子在操场上尖叫逃跑，也不会走到哪里都被盯着看。他许愿能有一张没人注意的正常面孔。他说全家人都习惯了别人脸上的表情，学会了假装没看见。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I know ordinary kids don't get stared at wherever they go.</blockquote><p class="note">stared at = 被人盯着看。奥吉说“我知道普通孩子不会走到哪里都被盯着看”，一句话点出他的日常处境：被注视、被围观是他的生活常态。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>ordinary</b> <span class="pos">adj.</span> 普通的、平常的</li><li><b>scream</b> <span class="pos">v.</span> 尖叫</li><li><b>stare at</b> <span class="pos">phr.</span> 盯着看</li><li><b>magic lamp</b> <span class="pos">n.</span> 神灯（童话里的阿拉丁神灯，可许愿）</li><li><b>pretend</b> <span class="pos">v.</span> 假装</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我叫奥吉，下周就要上学了</h2>
+            <div class="seg-en">My name is August</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 249 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自我介绍</span><span class="tag">手术史</span><span class="tag">开学恐惧</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住两个数字背景：27 次手术、从没上过学。奥吉说“无论你想什么，只会更糟”，这句话为全书设下了悬念。</div>
+        <div class="body">
+<p>Via doesn’t see me as ordinary. She says she does, but if I were ordinary, she wouldn’t feel like she needs to protect me as much. And Mom and Dad don’t see me as ordinary, either. They see me as extraordinary. I think the only person in the world who realizes how ordinary I am is me.</p>
+<p>My name is August, by the way. I won’t describe what I look like. Whatever you’re thinking, it’s probably worse.</p>
+<p>NEXT WEEK I start fifth grade. Since I’ve never been to a real school before, I am pretty much totally and completely petrified. People think I haven’t gone to school because of the way I look, but it’s not that. It’s because of all the surgeries I’ve had. Twenty-seven since I was born. The bigger ones happened before I was even four years old, so I don’t remember those. But I’ve had two or three surgeries every year since then (some big, some small), and because I’m little for my age, and I have some other medical mysteries that doctors never really figured out, I used to get sick a lot. That’s why my parents decided it was better if I didn’t go to school. I’m much stronger now, though. The last surgery I had was eight months ago, and I probably won’t have to have any more for another couple of years.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>姐姐维娅总想保护奥吉，爸妈觉得他“非凡”，只有奥吉自己觉得自己普通。他自我介绍“我叫奥古斯特”，并拒绝描述自己的长相。下周他就要上五年级——他从没上过真正的学校，怕得要命；不去上学不是因为长相，而是因为他出生以来做过二十七次手术。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Whatever you're thinking, it's probably worse.</blockquote><p class="note">全书最著名的一句之一：“无论你在想什么，实际情况大概更糟。”奥吉拒绝描述自己的长相，把想象空间留给读者。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>petrified</b> <span class="pos">adj.</span> 吓呆的、非常害怕的</li><li><b>surgery</b> <span class="pos">n.</span> 手术</li><li><b>homeschool</b> <span class="pos">v.</span> 在家教育（不上学，由父母教）</li><li><b>protect</b> <span class="pos">v.</span> 保护</li><li><b>probably</b> <span class="pos">adv.</span> 可能、大概</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>妈妈在家教我，还有三个老朋友</h2>
+            <div class="seg-en">Mom homeschools me</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 267 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">在家教育</span><span class="tag">友谊</span><span class="tag">内心愿望</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意奥吉真正渴望的不是“上学”本身，而是“像其他孩子一样”——朋友、玩伴、正常的生活。这是他内心的核心愿望。</div>
+        <div class="body">
+<p>Mom homeschools me. She used to be a children’s-book illustrator. She draws really great fairies and mermaids. Her boy stuff isn’t so hot, though. She once tried to draw me a Darth Vader, but it ended up looking like some weird mushroom-shaped robot. I haven’t seen her draw anything in a long time. I think she’s too busy taking care of me and Via.</p>
+<p>I can’t say I always wanted to go to school because that wouldn’t be exactly true. What I wanted was to go to school, but only if I could be like every other kid going to school. Have lots of friends and hang out after school and stuff like that.</p>
+<p>I have a few really good friends now. Christopher is my best friend, followed by Zachary and Alex. We’ve known each other since we were babies. And since they’ve always known me the way I am, they’re used to me. When we were little, we used to have playdates all the time, but then Christopher moved to Bridgeport in Connecticut. That’s more than an hour away from where I live in North River Heights, which is at the top tip of Manhattan. And Zachary and Alex started going to school. It’s funny: even though Christopher’s the one who moved far away, I still see him more than I see Zachary and Alex. They have all these new friends now. If we bump into each other on the street, they’re still nice to me, though. They always say hello.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉的妈妈以前是童书插画师，在家给他上课。奥吉坦白说：他并不总是想上学，他真正想要的是“像其他孩子一样”——有很多朋友，放学后一起玩。他有几个从小认识的好朋友：最好的克里斯托弗搬去了康涅狄格州，扎卡里和亚历克斯则开始上学了，见面越来越少。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>What I wanted was to go to school, but only if I could be like every other kid going to school.</blockquote><p class="note">理解奥吉的关键句：他想要的不是学校，而是“普通孩子的生活”。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>illustrator</b> <span class="pos">n.</span> 插画师</li><li><b>fairy</b> <span class="pos">n.</span> 仙女、小精灵</li><li><b>mermaid</b> <span class="pos">n.</span> 美人鱼</li><li><b>playdate</b> <span class="pos">n.</span> （儿童）约好一起玩的时间</li><li><b>hang out</b> <span class="pos">phr.</span> 一起出去玩、闲逛</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>生日派对的差别待遇</h2>
+            <div class="seg-en">Birthday parties</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 75 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">生日派对</span><span class="tag">社交距离</span><span class="tag">细微失落</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一小段很短（约 1 分钟）。注意“谁邀请他、谁不邀请他”透露出的社交冷暖——奥吉其实很在意这些细节。</div>
+        <div class="body">
+<p>I have other friends, too, but not as good as Christopher and Zack and Alex were. For instance, Zack and Alex always invited me to their birthday parties when we were little, but Joel and Eamonn and Gabe never did. Emma invited me once, but I haven’t seen her in a long time. And, of course, I always go to Christopher’s birthday. Maybe I’m making too big a deal about birthday parties.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉还有别的朋友，但都比不上克里斯托弗、扎克和亚历克斯。小时候扎克和亚历克斯总请他参加生日派对，乔尔、伊蒙和盖布却从不邀请他；艾玛只请过他一次。他怀疑自己是不是把生日派对这件事想得太严重了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Maybe I'm making too big a deal about birthday parties.</blockquote><p class="note">make a big deal about = 把……看得太严重。奥吉用一句自我安慰结束：也许是我把生日派对看得太重了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>invite</b> <span class="pos">v.</span> 邀请</li><li><b>birthday party</b> <span class="pos">n.</span> 生日派对</li><li><b>bump into</b> <span class="pos">phr.</span> 偶然遇见、撞见</li><li><b>deal</b> <span class="pos">n.</span> 事情；make a big deal 小题大做</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <span></span>
+    <a href="wonder_unit_02.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第1/96 单元 · 第一部 · 奥吉 · 约 11 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u01.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

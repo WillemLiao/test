@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第53单元 夏洛特的纸条与朱利安布下的局</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 53 单元 · 夏洛特的纸条与朱利安布下的局</div>
+    <div class="unit-en">The War · Switching Tables</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1064 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>夏洛特偷偷在杰克的储物柜里留纸条，约他放学后到301教室单独见面，把真相告诉他：寒假里朱利安办了一场全校大半师生都出席的大型派对，席间挨个跟人说「杰克因为情绪问题才打人」「他爸妈求学校才没开除他」「杰克是被迫才跟奥吉做朋友」。朱利安劝男生们「为了杰克好」别再理他。杰克因此被全班孤立，去食堂换桌也被午餐老师当场训斥，最后是被夏默和奥吉招手叫去才坐下。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>情报头子夏洛特的秘密纸条</h2>
+            <div class="seg-en">I found a note inside my locker</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">秘密纸条</span><span class="tag">通风报信</span><span class="tag">圣诞派对</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意夏洛特「锁门+咬指甲+要求保密」的小心翼翼——她冒着被孤立的风险来通风报信，衬托出局势的紧张。</div>
+        <div class="body">
+<p>IT WAS CHARLOTTE who had the inside scoop on why everyone was dissing me. I found a note inside my locker at the end of the day.</p>
+<p class="q">Meet me in room 301 right after school. Come by yourself! Charlotte.</p>
+<p>She was already inside the room when I walked in. “Sup,” I said.</p>
+<p>“Hey,” she said. She went over to the door, looked left and right, and then closed the door and locked it from the inside. Then she turned to face me and started biting her nail as she talked. “Look, I feel bad about what’s going on and I just wanted to tell you what I know. Promise you won’t tell anyone I talked to you?”</p>
+<p>“Promise.”</p>
+<p>“So Julian had this huge holiday party over winter break,” she said. “I mean, huge. My sister’s friend had had her sweet sixteen at the same place last year. There were like two hundred people there, so I mean it’s a huge place.”</p>
+<p>“Yeah, and?”</p>
+<p>“Yeah, and … well, pretty much everybody in the whole grade was there.”</p>
+<p>“Not everybody,” I joked.</p>
+<p>“Right, not everybody. Duh. But like even parents were there, you know. Like my parents were there. You know Julian’s mom is the vice president of the school board, right? So she knows a lot of people. Anyway, so basically what happened at the party was that Julian went around telling everyone that you punched him because you had emotional problems. …”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>放学时杰克在自己储物柜里发现一张纸条，约他放学后一个人到301教室见面，落款夏洛特。杰克进去时她已经在了，特意锁上门才开始咬指甲说话，要求他发誓不告诉任何人。她把情报告诉杰克：寒假朱利安办了一场极其盛大的派对，整个年级几乎都去了——那地方大得能办她姐姐的奢华成人礼。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She went over to the door, looked left and right, and then closed the door and locked it from the inside.</blockquote><p class="note">looked left and right = 左右张望。这一连串动作写夏洛特的神秘与谨慎，说明整件事已经升级成需要遮掩的秘密。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>locker</b> <span class="pos">n.</span> 储物柜</li><li><b>promise</b> <span class="pos">v.</span> 保证、承诺</li><li><b>huge</b> <span class="pos">adj.</span> 巨大的、盛大的</li><li><b>the whole grade</b> <span class="pos">phr.</span> 整个年级</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>派对上的谎言：你是因为情绪问题才打人</h2>
+            <div class="seg-en">You punched him because you had emotional problems</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">造谣抹黑</span><span class="tag">重审奥吉资格</span><span class="tag">艺术展风波</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意朱利安措辞的隐蔽性：「他有情绪问题」「他爸妈求情」——把杰克塑造成加害者，把自己包装成受害者和大度的一方。</div>
+        <div class="body">
+<p>“What?!”</p>
+<p>“And that you would have gotten expelled, but his parents begged the school not to expel you …”</p>
+<p>“What?!”</p>
+<p>“And that none of it would have happened in the first place if Tushman hadn’t forced you to be friends with Auggie. He said his mom thinks that you, quote unquote, snapped under the pressure. …”</p>
+<p>I couldn’t believe what I was hearing. “No one bought into that, right?” I said.</p>
+<p>She shrugged. “That’s not even the point. The point is he’s really popular. And, you know, my mom heard that his mom is actually pushing the school to review Auggie’s application to Beecher.”</p>
+<p>“Can she do that?”</p>
+<p>“It’s about Beecher not being an inclusion school. That’s a type of school that mixes normal kids with kids with special needs.”</p>
+<p>“That’s just stupid. Auggie doesn’t have special needs.”</p>
+<p>“Yeah, but she’s saying that if the school is changing the way they usually do things in some ways …”</p>
+<p>“But they’re not changing anything!”</p>
+<p>“Yeah, they did. Didn’t you notice they changed the theme of the New Year Art Show? In past years fifth graders painted self-portraits, but this year they made us do those ridiculous self-portraits as animals, remember?”</p>
+<p>“So big freakin’ deal.”</p>
+<p>“I know! I’m not saying I agree, I’m just saying that’s what she’s saying.”</p>
+<p>“I know, I know. This is just so messed up. …”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>夏洛特透露朱利安在派对上到处说：杰克是因为情绪问题才打他，本来会被开除，是他父母求学校才网开一面，还说要不是图什曼逼杰克跟奥吉做朋友，这一切根本不会发生。杰克气得不敢相信。夏洛特还说他妈妈正在推动学校重新审查奥吉的入学资格，理由是学校为奥吉改变了惯例——连艺术展的主题都从自画像换成了动物画像。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He said his mom thinks that you, quote unquote, snapped under the pressure.</blockquote><p class="note">quote unquote = 所谓（引号语气）；snapped under the pressure = 在压力下崩溃。朱利安借妈妈之口给杰克贴标签。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>expelled</b> <span class="pos">adj.</span> 被开除的</li><li><b>beg</b> <span class="pos">v.</span> 恳求、祈求</li><li><b>snap</b> <span class="pos">v.</span> 突然崩溃、绷断</li><li><b>review</b> <span class="pos">v.</span> 重新审查、复核</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>为你好才孤立你：朱利安的洗脑</h2>
+            <div class="seg-en">For your own good</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 263 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">男生的战争</span><span class="tag">为你好式霸凌</span><span class="tag">女生中立</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>看朱利安如何用「为你好」包装霸凌——这是全书里「打着善意旗号的排挤」最典型的一句。</div>
+        <div class="body">
+<p>“I know. Anyway, Julian said that he thinks being friends with Auggie is bringing you down, and that for your own good you need to stop hanging out with him so much. And if you start losing all your old friends, it’ll be like a big wake-up call. So basically, for your own good, he’s going to stop being your friend completely.”</p>
+<p>“News flash: I stopped being his friend completely first!”</p>
+<p>“Yeah, but he’s convinced all the boys to stop being your friend—for your own good. That’s why nobody’s talking to you.”</p>
+<p>“You’re talking to me.”</p>
+<p>“Yeah, well, this is more of a boy thing,” she explained. “The girls are staying neutral. Except Savanna’s group, because they’re going out with Julian’s group. But to everybody else this is really a boy war.”</p>
+<p>I nodded. She tilted her head to one side and pouted like she felt sorry for me.</p>
+<p>“Is it okay that I told you all this?” she said.</p>
+<p>“Yeah! Of course! I don’t care who talks to me or not,” I lied. “This is all just so dumb.”</p>
+<p>She nodded.</p>
+<p>“Hey, does Auggie know any of this?”</p>
+<p>“Of course not. At least, not from me.”</p>
+<p>“And Summer?”</p>
+<p>“I don’t think so. Look, I better go. Just so you know, my mom thinks Julian’s mom is a total idiot. She said she thinks people like her are more concerned about what their kids’ class pictures look like than doing the right thing. You heard about the Photoshopping, right?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>夏洛特说朱利安声称跟奥吉做朋友只会把杰克拖垮，为了他好，他要彻底不再做杰克的朋友，也劝所有男生别理杰克。杰克嘴硬说「是我先不跟他做朋友的」，夏洛特点破这是「男生的战争」，女生保持中立，只有萨瓦娜那伙因为是朱利安女友的圈子才跟着站队。临走前夏洛特转述她妈妈的话：朱利安的妈妈才是个大傻瓜，只在乎自家孩子的合影长什么样。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Julian said that he thinks being friends with Auggie is bringing you down, and that for your own good you need to stop hanging out with him so much.</blockquote><p class="note">bring you down = 把你拖垮；for your own good = 为了你好。朱利安把孤立杰克说成是「为他考虑」。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bring you down</b> <span class="pos">phr.</span> 把你拖垮、拖累你</li><li><b>for your own good</b> <span class="pos">phr.</span> 为了你好</li><li><b>neutral</b> <span class="pos">adj.</span> 中立的</li><li><b>wake-up call</b> <span class="pos">n.</span> 警钟、当头棒喝</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>换桌被抓，午餐老师的当众训斥</h2>
+            <div class="seg-en">That's not allowed, boys!</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 293 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">再次换桌</span><span class="tag">老师训斥</span><span class="tag">当众难堪</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克与老师的态度反差：老师试图维护规矩和公平，杰克却怕被当众羞辱，宁可溜走也不愿当众坐回那张空桌子。</div>
+        <div class="body">
+<p>“Yeah, that was just sick.”</p>
+<p>“Totally,” she answered, nodding. “Anyway, I better go. I just wanted you to know what was up and stuff.”</p>
+<p>“Thanks, Charlotte.”</p>
+<p>“I’ll let you know if I hear anything else,” she said. Before she went out, she looked left and right outside the door to make sure no one saw her leaving. I guess even though she was neutral, she didn’t want to be seen with me.</p>
+<p>THE NEXT DAY at lunch, stupid me, I sat down at a table with Tristan, Nino, and Pablo. I thought maybe they were safe because they weren’t really considered popular, but they weren’t out there playing D&amp;D at recess, either. They were sort of in-betweeners. And, at first, I thought I scored because they were basically too nice to not acknowledge my presence when I walked over to the table. They all said “Hey,” though I could tell they looked at each other. But then the same thing happened that happened yesterday: our lunch table was called, they got their food, and then headed toward a new table on the other side of the cafeteria.</p>
+<p>Unfortunately, Mrs. G, who was the lunch teacher that day, saw what happened and chased after them.</p>
+<p>“That’s not allowed, boys!” she scolded them loudly. “This is not that kind of school. You get right back to your table.”</p>
+<p>Oh great, like that was going to help. Before they could be forced to sit back down at the table, I got up with my tray and walked away really fast. I could hear Mrs. G call my name, but I pretended not to hear and just kept walking to the other side of the cafeteria, behind the lunch counter.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>第二天午饭，杰克坐到特里斯坦、尼诺和帕波罗那桌，以为他们不算太受欢迎会比较安全。他们确实先打了招呼，可等餐号一响，三人领了饭就奔食堂另一头的新桌去了。当天的午餐老师G太太看到这一幕追上去大声训斥：「这不许，学校的规矩不是这样！」他们只得灰溜溜返回，杰克却端着餐盘快步溜进了食堂另一头的餐柜后面，假装没听见老师喊自己的名字。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;That's not allowed, boys!&quot; she scolded them loudly. &quot;This is not that kind of school.&quot;</blockquote><p class="note">G太太的意思是：这不是那种可以随意排挤人的学校，你们回到自己桌上。可她挡不住人心的冷落。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>scold</b> <span class="pos">v.</span> 训斥、责备</li><li><b>acknowledge</b> <span class="pos">v.</span> 承认、理会</li><li><b>pretend not to hear</b> <span class="pos">phr.</span> 假装没听见</li><li><b>tray</b> <span class="pos">n.</span> 餐盘</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>奥吉和夏默招手叫我过去</h2>
+            <div class="seg-en">Sit with us, Jack</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 22 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">雪中送炭</span><span class="tag">奥吉与夏默</span><span class="tag">重新落座</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>被一整个等级排挤的时刻，奥吉和夏默的招手是这单元唯一的暖色——杰克又有了可以坐下的地方。</div>
+        <div class="body">
+<p>“Sit with us, Jack.”</p>
+<p>It was Summer. She and August were sitting at their table, and they were both waving me over.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这一小段很短（不到1分钟）。杰克刚想躲进食堂角落，就听到有人喊「杰克，跟我们坐吧」——是夏默。她正和奥吉坐在他们的桌边，两人都朝他挥手示意。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;Sit with us, Jack.&quot;</blockquote><p class="note">sit with us = 跟我们坐一起。短短一句，却是这单元里对杰克最重的善意。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>wave</b> <span class="pos">v.</span> 挥手、招手</li><li><b>sit with</b> <span class="pos">phr.</span> 和……坐在一起</li><li><b>both</b> <span class="pos">pron.</span> 两者都、两个都</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_52.html">← 上一单元</a>
+    <a href="wonder_unit_54.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第53/96 单元 · 第四部 · 杰克 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u53.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

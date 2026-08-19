@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第89单元 去毕业典礼路上，爸爸坦白扔了头盔</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 89 单元 · 去毕业典礼路上，爸爸坦白扔了头盔</div>
+    <div class="unit-en">The Drop-Off</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 647 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>毕业典礼在比彻预科高中部礼堂举行，爸爸开车送穿得整整齐齐的奥吉去会场，提前到了就在车里听歌等时间。父子俩轻松说笑，奥吉反复确认领带、头发没问题，爸爸夸他长大、帅气得体。聊着聊着爸爸提起以前那个被奥吉嫌弃的星战小辫子，还有奥吉爱戴的天文头盔——然后随口坦白：那头盔不是丢了，是他当年偷偷扔掉的。奥吉一听火冒三丈，因为那头盔是米兰达送的、对他意义重大，而爸爸笨拙地道歉，说他实在受不了看那东西遮住奥吉的脸。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>车里等时间，父子听歌说笑</h2>
+            <div class="seg-en">Dad drove me to the auditorium</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 247 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">毕业典礼</span><span class="tag">父子独处</span><span class="tag">打扮出门</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住毕业当天的仪式感：奥吉特意为这一天打理外表（剪头发、新鞋、发胶），这在他的人生里极其少见，说明这个时刻对他有多重要。</div>
+        <div class="body">
+<p>THE GRADUATION CEREMONY was held in the Beecher Prep Upper School auditorium. It was only about a fifteen-minute walk from our house to the other campus building, but Dad drove me because I was all dressed up and had on new shiny black shoes that weren’t broken in yet and I didn’t want my feet to hurt. Students were supposed to arrive at the auditorium an hour before the ceremony started, but we got there even earlier, so we sat in the car and waited. Dad turned on the CD player, and our favorite song come on. We both smiled and started bobbing our heads to the music.</p>
+<p>Dad sang along with the song: “Andy would bicycle across town in the rain to bring you candy.”</p>
+<p>“Hey, is my tie on straight?” I said.</p>
+<p>He looked and straightened it a tiny bit as he kept on singing: “And John would buy the gown for you to wear to the prom …”</p>
+<p>“Does my hair look okay?” I said.</p>
+<p>He smiled and nodded. “Perfect,” he said. “You look great, Auggie.”</p>
+<p>“Via put some gel in it this morning,” I said, pulling down the sun visor and looking in the little mirror. “It doesn’t look too puffy?”</p>
+<p>“No, it’s very, very cool, Auggie. I don’t think you’ve ever had it this short before, have you?”</p>
+<p>“No, I got it cut yesterday. I think it makes me look more grown-up, don’t you?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>毕业典礼在比彻预科高中部礼堂举行，离家步行只要十五分钟，但爸爸开车送奥吉，因为他穿着新皮鞋还没走熟、怕脚疼。他们提前到了，就坐在车里等，CD机放出父子都爱的那首歌，两人跟着音乐摇头晃脑。爸爸跟着唱，奥吉却忙着问领带直不直、头发好不好看，爸爸笑着把他的领带轻轻拨正，说“你看起来很棒，奥吉”。奥吉说早上维娅给他头发抹了发胶，问会不会太蓬，还说他刚把头发剪短，觉得这样更显成熟。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You look great, Auggie.</blockquote><p class="note">这句话未必逐字唯一对，注意奥吉这里在意的是“我看着是否正常/成熟”——对一个平时被外貌困扰的孩子，爸爸这句肯定分量很重。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>auditorium</b> <span class="pos">n.</span> 礼堂、大会堂</li><li><b>broken in</b> <span class="pos">phr.</span> （新鞋）被穿软、穿合脚</li><li><b>bob</b> <span class="pos">v.</span> 上下晃动（这里指跟着音乐点头）</li><li><b>tie</b> <span class="pos">n.</span> 领带</li><li><b>gel</b> <span class="pos">n.</span> 发胶、啫喱</li><li><b>grown-up</b> <span class="pos">adj.</span> 成熟的、大人的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>回忆星战小辫子和天文头盔</h2>
+            <div class="seg-en">You hate that braid, didn't you</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">父子回忆</span><span class="tag">星战辫子</span><span class="tag">头盔的秘密</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意父子回忆里那条暗线：那头盔是米兰达送的、奥吉天天戴着——爸爸那句“我把它扔了”为下一段的冲突埋下伏笔。</div>
+        <div class="body">
+<p>“Definitely!” He was smiling, looking at me and nodding. “But I’m the luckiest guy on the Lower East Side, ’cause I got wheels, and you want to go for a ride.”</p>
+<p>“Look at you, Auggie!” he said, smiling from ear to ear. “Look at you, looking so grown-up and spiffy. I can’t believe you’re graduating from the fifth grade!”</p>
+<p>“I know, it’s pretty awesome, right?” I nodded.</p>
+<p>“It feels like just yesterday that you started.”</p>
+<p>“Remember I still had that Star Wars braid hanging from the back of my head?”</p>
+<p>“Oh my gosh, that’s right,” he said, rubbing his palm over his forehead.</p>
+<p>“You hated that braid, didn’t you, Dad?”</p>
+<p>“Hate is too strong a word, but I definitely didn’t love it.”</p>
+<p>“You hated it, come on, admit it,” I teased.</p>
+<p>“No, I didn’t hate it.” He smiled, shaking his head. “But I will admit to hating that astronaut helmet you used to wear, do you remember?”</p>
+<p>“The one Miranda gave me? Of course I remember! I used to wear that thing all the time.”</p>
+<p>“Good God, I hated that thing,” he laughed, almost more to himself.</p>
+<p>“I was so bummed when it got lost,” I said.</p>
+<p>“Oh, it didn’t get lost,” he answered casually. “I threw it out.”</p>
+<p>“Wait. What?” I said. I honestly didn’t think I heard him right.</p>
+<p>“The day is beautiful, and so are you,” he was singing.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>爸爸夸奥吉是东下城最幸运的小子，又说看他穿得这么成熟帅气，简直不敢相信五年级就要毕业了，感觉他好像昨天才入学。奥吉提起自己以前脑后挂着星战小辫子，问爸爸是不是讨厌那条辫子，爸爸说“讨厌”这个词太重，但确实不太喜欢。奥吉又逗他承认，爸爸笑着说但他承认更讨厌奥吉以前那个天文头盔——米兰达送的那个。奥吉说头盔丢掉时他难过极了，爸爸却随口说：它没丢，是我把它扔了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Oh, it didn't get lost. I threw it out.</blockquote><p class="note">爸爸轻描淡写地坦白“它没丢，是我扔的”——对上奥吉珍藏多年的回忆，这句轻飘飘的话立刻引爆了奥吉的情绪。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>spiffy</b> <span class="pos">adj.</span> 时髦的、体面的</li><li><b>braid</b> <span class="pos">n.</span> 辫子</li><li><b>tease</b> <span class="pos">v.</span> 逗、开玩笑地揶揄</li><li><b>astronaut</b> <span class="pos">n.</span> 宇航员</li><li><b>helmet</b> <span class="pos">n.</span> 头盔</li><li><b>bummed</b> <span class="pos">adj.</span> 沮丧的、难过的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“你把它扔了？！”</h2>
+            <div class="seg-en">I couldn't stand seeing that thing cover your face</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 157 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">父子冲突</span><span class="tag">善意与误解</span><span class="tag">父亲的心结</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住爸爸那句“我受不了看那东西盖住你的脸”——这句话透露出爸爸深埋的煎熬：他希望奥吉不再躲在头盔后面、敢以真面目面对世界。</div>
+        <div class="body">
+<p>“Dad!” I said, turning the volume down.</p>
+<p>“What?” he said.</p>
+<p>“You threw it out?!”</p>
+<p>He finally looked at my face and saw how mad I was. I couldn’t believe he was being so matter-of-fact about the whole thing. I mean, to me this was a major revelation, and he was acting like it was no big deal.</p>
+<p>“Auggie, I couldn’t stand seeing that thing cover your face anymore,” he said clumsily.</p>
+<p>“Dad, I loved that helmet! It meant a lot to me! I was bummed beyond belief when it got lost—don’t you remember?”</p>
+<p>“Of course I remember, Auggie,” he said softly. “Ohh, Auggie, don’t be mad. I’m sorry. I just couldn’t stand seeing you wear that thing on your head anymore, you know? I didn’t think it was good for you.” He was trying to look me in the eye, but I wouldn’t look at him.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉调低音乐音量质问爸爸：“你把它扔了？！”他不敢相信爸爸说得这么轻描淡写，要知道那头盔对他来说是天大的事。爸爸笨拙地解释：他实在受不了看那个东西盖住奥吉的脸。奥吉很委屈——那可是他爱的东西，米兰达送的头盔对他意义重大，丢掉时他难过到极点。爸爸放软语气道歉，说他只是受不了看奥吉戴着那东西，觉得对奥吉不好，他努力想让奥吉直视他，可奥吉扭过头不肯看他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I couldn't stand seeing that thing cover your face anymore.</blockquote><p class="note">爸爸藏了多年的心里话：他看不下去那头盔一直遮着奥吉的脸。他扔掉头盔，是怕奥吉用头盔把自己藏起来——虽然是好意，却弄伤了奥吉的感情。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>volume</b> <span class="pos">n.</span> 音量</li><li><b>matter-of-fact</b> <span class="pos">adj.</span> 轻描淡写的、就事论事的</li><li><b>revelation</b> <span class="pos">n.</span> 惊人的真相、揭示</li><li><b>clumsy</b> <span class="pos">adj.</span> 笨拙的、不自然的</li><li><b>beyond belief</b> <span class="pos">phr.</span> 难以置信地（这里指难过到极点）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_88.html">← 上一单元</a>
+    <a href="wonder_unit_90.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第89/96 单元 · 第八部 · 奥吉 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u89.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

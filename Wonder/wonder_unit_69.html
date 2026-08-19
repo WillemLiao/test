@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第69单元 达西的玩具堆成小山</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 69 单元 · 达西的玩具堆成小山</div>
+    <div class="unit-en">Daisy’s Toys</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 827 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>贾斯汀半个多钟头后赶来，抱了抱奥吉说“抱歉，奥吉”。一家人把达西散在家里的玩具收拢堆在茶几上，盯着那堆玩具发呆。维娅说达西是世上最棒的狗，并讲起达西发病时痛得失态、还咬了妈妈一口——这让奥吉震惊。两小时后爸妈回来，达西没有跟着，爸爸哽咽着讲了兽医的事：达西胃里长了巨大肿瘤，爸妈不忍让它痛苦，在爸爸怀里握着它道别安息。那晚奥吉第一次看见爸爸哭，也看见妈妈趴在维娅床边安慰她；奥吉自己爬上玩偶堆成的“小山”，想象达西蹭着他、用湿漉漉的舌头舔他的脸入睡。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>堆在茶几上的玩具</h2>
+            <div class="seg-en">the greatest dog in the world</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">玩具小山</span><span class="tag">达西咬了妈妈</span><span class="tag">家人内疚</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住一个家庭内疚点：维娅说“爸爸说得对，不该让它拖到这么糟”，暗示爸爸早注意到达西病重，只是家人没及时处理。</div>
+        <div class="body">
+<p>JUSTIN CAME OVER about half an hour later. He gave me a big hug and said: “Sorry, Auggie.” We all sat down in the living room, not saying anything. For some reason, Via and I had taken all of Daisy’s toys from around the house and had put them in a little pile on the coffee table. Now we just stared at the pile.</p>
+<p>“She really is the greatest dog in the world,” said Via.</p>
+<p>“I know,” said Justin, rubbing Via’s back.</p>
+<p>“She just started whimpering, like all of a sudden?” I said.</p>
+<p>Via nodded. “Like two seconds after you left the table,” she said. “Mom was going to go after you, but Daisy just started, like, whimpering.”</p>
+<p>“Like how?” I said.</p>
+<p>“Just whimpering, I don’t know,” said Via.</p>
+<p>“Like howling?” I asked.</p>
+<p>“Auggie, like whimpering!” she answered impatiently. “She just started moaning, like something was really hurting her. And she was panting like crazy. Then she just kind of plopped down, and Mom went over and tried to pick her up, and whatever, she was obviously hurting. She bit Mom.”</p>
+<p>“What?” I said.</p>
+<p>“When Mom tried to touch her stomach, Daisy bit her hand,” Via explained.</p>
+<p>“Daisy never bites anybody!” I answered.</p>
+<p>“She wasn’t herself,” said Justin. “She was obviously in pain.”</p>
+<p>“Daddy was right,” said Via. “We shouldn’t have let her get this bad.”</p>
+<p>“What do you mean?” I said. “He knew she was sick?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>大约半个钟头后贾斯汀来了，给了奥吉一个大大的拥抱，说“抱歉，奥吉”。大家坐在客厅都不说话。不知为何，奥吉和维娅把达西散在家里的玩具都收起来，在茶几上堆成一小堆，现在大家只盯着那堆玩具看。维娅说“它真是世上最棒的狗”，贾斯汀拍着维娅的背说“我知道”。奥吉问达西是不是突然就呜咽起来，维娅点头说“你才离开桌子两秒它就开始呜咽了；妈妈正要去追你，达西却开始‘呜呜’叫”。奥吉追着问“像什么样？”维娅不耐烦地解释“就是呜呜叫，我不懂；它开始像特别疼那样呻吟，疯狂喘气，然后扑通倒下；妈妈过去想抱起它，可它明显很痛苦——它咬了妈妈一口”。奥吉惊问“什么？”维娅说“妈妈碰它肚子时，达西咬了她的手”。奥吉惊呼“达西从来不咬人！”贾斯汀说“那不是它了，它明显在痛”。维娅说“爸爸说得对，我们本不该让它拖到这么糟”。奥吉追问“什么意思？他知道它病了吗？”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“She really is the greatest dog in the world,” said Via.</blockquote><p class="note">greatest = 最了不起的。维娅在沉默中先开口，用一句话给达西下评语，也启动了这场悲伤的谈话。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>stare at</b> <span class="pos">phr.</span> 盯着看、凝视</li><li><b>pile</b> <span class="pos">n.</span> 一堆、（整齐的）一摞</li><li><b>moan</b> <span class="pos">v.</span> 呻吟、发出痛苦的声响</li><li><b>plop down</b> <span class="pos">phr.</span> 扑通一声倒下</li><li><b>bite</b> <span class="pos">v.</span> 咬（bit bitten 过去式/过去分词）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>爸爸怀里安静地走了</h2>
+            <div class="seg-en">she died in Daddy's arms</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 323 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">兽医诊断</span><span class="tag">胃部肿块</span><span class="tag">安静离世</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全单元最沉的一段：通过爸爸之口再现达西在怀里平静离世，正面写“死亡没有痛苦、像是睡着”，是给孩子的温柔解释。</div>
+        <div class="body">
+<p>“Auggie, Mom’s taken her to the vet like three times in the last two months. She’s been throwing up left and right. Haven’t you noticed?”</p>
+<p>“But I didn’t know she was sick!”</p>
+<p>Via didn’t say anything, but she put her arm around my shoulders and pulled me closer to her. I started to cry again.</p>
+<p>“I’m sorry, Auggie,” she said softly. “I’m really sorry about everything, okay? You forgive me? You know how much I love you, right?”</p>
+<p>I nodded. Somehow that fight didn’t matter much now.</p>
+<p>“Was Mommy bleeding?” I asked.</p>
+<p>“It was just a nip,” said Via. “Right there.” She pointed to the bottom of her thumb to show me exactly where Daisy had bitten Mom.</p>
+<p>“Did it hurt her?”</p>
+<p>“Mommy’s okay, Auggie. She’s fine.”</p>
+<p>Mom and Dad came home two hours later. We knew the second they opened the door and Daisy wasn’t with them that Daisy was gone. We all sat down in the living room around the pile of Daisy’s toys. Dad told us what happened at the animal hospital, how the vet took Daisy for some X-rays and blood tests, then came back and told them she had a huge mass in her stomach. She was having trouble breathing. Mom and Dad didn’t want her to suffer, so Daddy picked her up in his arms like he always liked to do, with her legs straight up in the air, and he and Mom kissed her goodbye over and over again and whispered to her while the vet put a needle into her leg. And then after about a minute she died in Daddy’s arms. It was so peaceful, Daddy said. She wasn’t in any pain at all. Like she was just going to sleep. A couple of times while he talked, Dad’s voice got trembly and he cleared his throat.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅告诉奥吉，妈妈最近两个月带达西去看过三次兽医，达西“左吐右吐”，问奥吉难道没注意到。奥吉说“可我不知道它病了！”维娅没说话，只是把胳膊搭在他肩头把他搂近，奥吉又哭了。维娅轻声说“对不起，奥吉，真的为一切道歉好吗？你原谅我吗？你知道我多爱你，对吗？”奥吉点头，觉得刚才那场架此刻已经不重要。他问妈妈有没有流血，维娅说只是轻轻咬了一下，指着拇指根给他看达西咬的位置。问妈妈疼不疼，维娅说“妈妈没事”。两小时后爸妈回家，门一开见达西没跟着，大家就知道它已经不在了。大家围坐在客厅那堆玩具旁，爸爸讲医院的事：兽医给达西拍X光、验血，回来说它胃里长了个大肿块，还呼吸困难。爸妈不愿它受苦，爸爸像往常那样把达西抱在怀里——腿直直朝天——夫妻俩一遍遍亲它、对它低语，兽医给它腿扎了针，约一分钟后达西在爸爸怀里去世。爸爸说它很安详，一点不疼，像睡着了一样。讲的时候爸爸声音几次发颤、清了清嗓子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It was so peaceful, Daddy said. She wasn't in any pain at all. Like she was just going to sleep.</blockquote><p class="note">peaceful = 平静安详的；in pain = 痛苦中。爸爸这样描写达西的告别：毫无痛苦，就像睡着，给孩子的悲伤一个温柔的落点。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>left and right</b> <span class="pos">phr.</span> 频繁地、（这里指）止不住地</li><li><b>forgive</b> <span class="pos">v.</span> 原谅</li><li><b>nip</b> <span class="pos">n.</span> 轻咬、叮咬</li><li><b>mass</b> <span class="pos">n.</span> 肿块、团块</li><li><b>clear his throat</b> <span class="pos">phr.</span> 清嗓子（忍住情绪）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>第一次看见爸爸哭</h2>
+            <div class="seg-en">I've never seen Dad cry before</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 262 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">爸爸落泪</span><span class="tag">妈妈的安慰</span><span class="tag">梦见达西入睡</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住视角切换：奥吉第一次见到爸爸哭——这个一贯坚强的角色卸下盔甲，恰恰触动奥吉，随后他懂事地悄悄退出，不再打扰家人。</div>
+        <div class="body">
+<p>I’ve never seen Dad cry before, but I saw him cry tonight. I had gone into Mom and Dad’s bedroom looking for Mom to put me to bed, but saw Dad sitting on the edge of the bed, taking off his socks. His back was to the door, so he didn’t know I was there. At first I thought he was laughing because his shoulders were shaking, but then he put his palms on his eyes and I realized he was crying. It was the quietest crying I’ve ever heard. Like a whisper. I was going to go over to him, but then I thought maybe he was whisper-crying because he didn’t want me or anyone else to hear him. So I walked out and went to Via’s room, and I saw Mom lying next to Via on the bed, and Mom was whispering to Via, who was crying.</p>
+<p>So I went to my bed and put on my pajamas without anyone telling me to and put the night-light on and turned the light off and crawled into the little mountain of stuffed animals I had left on my bed earlier. It felt like that all had happened a million years ago. I took my hearing aids off and put them on the night table and pulled the covers up to my ears and imagined Daisy snuggling with me, her big wet tongue licking my face all over like it was her favorite face in the world. And that’s how I fell asleep.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说自己以前从没见过爸爸哭，可今晚看见了。他走进爸妈的房间想找妈妈哄他睡觉，却看见爸爸坐在床边脱袜子，背对着门没发现他。起初看到爸爸肩膀发抖他还以为在笑，接着爸爸把双手捂在眼睛上，奥吉才意识到他在哭——是他听过的最安静的哭声，像耳语一样。奥吉本想过去，又想爸爸低声哭也许是不想让他或别人听见，就退了出去，来到维娅房间，看见妈妈侧躺在维娅身边，正低声安慰哭着的维娅。于是奥吉自己爬上床，不用人催就穿上睡衣，开夜灯关大灯，钻进早些时候堆在床上那堆毛绒玩偶里。他觉得那件事仿佛是一百万年前发生的。他摘下助听器放在床头柜上，把被子拉到耳朵边，想象达西蜷在他身边、用它湿漉漉的大舌头把他的脸整个舔过，像他的脸是它最喜欢的脸似的——就这样睡着了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It was the quietest crying I've ever heard. Like a whisper.</blockquote><p class="note">whisper = 耳语、低语。奥吉用“像耳语一样的哭声”写爸爸压抑的悲伤，也明白那是不愿让人听见的爱人的泪。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>palm</b> <span class="pos">n.</span> 手掌（palms 复数）</li><li><b>snuggle</b> <span class="pos">v.</span> 依偎、蜷缩贴近</li><li><b>lick</b> <span class="pos">v.</span> 舔</li><li><b>pajamas</b> <span class="pos">n.</span> 睡衣（通常用复数）</li><li><b>night-light</b> <span class="pos">n.</span> 小夜灯</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_68.html">← 上一单元</a>
+    <a href="wonder_unit_70.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第69/96 单元 · 第六部 · 奥吉 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u69.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

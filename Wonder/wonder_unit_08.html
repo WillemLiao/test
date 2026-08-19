@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第8单元 三个同学带着我逛学校</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 8 单元 · 三个同学带着我逛学校</div>
+    <div class="unit-en">The Grand Tour</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 721 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>图什曼安排杰克·威尔、朱利安和夏洛特带奥吉逛学校。四人默默爬楼梯上三楼，朱利安像导游一样挨个开门介绍：301号晨会教室、科学实验室，还争论往届科学老师吹的是大号还是中音号。在科学实验室里，朱利安点着一排设备反客为主地“教学”，夏洛特和杰克看不下去，问奥吉会不会说话、知不知道橡皮。奥吉紧张得只能盯着地板，最后鼓起勇气问了一句“晨会到底是什么”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>朱利安带路，一路讲个不停</h2>
+            <div class="seg-en">This is our homeroom</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 260 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">逛校园</span><span class="tag">晨会教室</span><span class="tag">同学争执</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>看朱利安这个孩子：他虽然一路介绍却从不看奥吉一眼；而夏洛特和杰克显得更自然——这三位同学的性格从这里就开始分化。</div>
+        <div class="body">
+<p>JACK WILL, JULIAN, CHARLOTTE, and I went down a big hallway to some wide stairs. No one said a word as we walked up to the third floor.</p>
+<p>When we got to the top of the stairs, we went down a little hallway full of lots of doors. Julian opened the door marked 301.</p>
+<p>“This is our homeroom,” he said, standing in front of the half-opened door. “We have Ms. Petosa. They say she’s okay, at least for homeroom. I heard she’s really strict if you get her for math, though.”</p>
+<p>“That’s not true,” said Charlotte. “My sister had her last year and said she’s totally nice.”</p>
+<p>“Not what I heard,” answered Julian, “but whatever.” He closed the door and continued walking down the hallway.</p>
+<p>“This is the science lab,” he said when he got to the next door. And just like he did two seconds ago, he stood in front of the half-opened door and started talking. He didn’t look at me once while he talked, which was okay because I wasn’t looking at him, either. “You won’t know who you have for science until the first day of school, but you want to get Mr. Haller. He used to be in the lower school. He would play this giant tuba in class.”</p>
+<p>“It was a baritone horn,” said Charlotte.</p>
+<p>“It was a tuba!” answered Julian, closing the door.</p>
+<p>“Dude, let him go inside so he can check it out,” Jack Will told him, pushing past Julian and opening the door.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉跟着杰克、朱利安和夏洛特爬上三楼，一路没人说话。朱利安带他们到301号晨会教室门口，说班主任是Petosa太太，有人说她人不错，只是数学很严。他又走到科学实验室门口照例介绍，说科学老师最好能分到Haller先生，他以前会拎着一把超大号来上课——夏洛特纠正那是“中音号”，两人争执起来。最后还是杰克推开自己赶以前的门，说“兄弟，让他进去看看再说”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Dude, let him go inside so he can check it out,</blockquote><p class="note">dude = 兄弟、哥们（口语称呼）；check it out = 进去看看。杰克直接替奥吉推开门，是三人里最随和的一个。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>homeroom</b> <span class="pos">n.</span> 晨会教室（固定班级集合地）</li><li><b>strict</b> <span class="pos">adj.</span> 严格的</li><li><b>tuba</b> <span class="pos">n.</span> 大号（低音铜管乐器）</li><li><b>baritone horn</b> <span class="pos">n.</span> 中音号</li><li><b>check it out</b> <span class="pos">phr.</span> 去看看、了解一下</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>科学教室里的“教学”与沉默</h2>
+            <div class="seg-en">Hey, can you talk?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">科学教室</span><span class="tag">被问会不会说话</span><span class="tag">紧张到词穷</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“你会说话吗”这句很扎心：奥吉因为紧张几乎不说话，被当成不会说话；同时注意朱利安“怕碰到他”的小动作，暴露他心里先入为主的嫌弃。</div>
+        <div class="body">
+<p>“Go inside if you want,” Julian said. It was the first time he looked at me.</p>
+<p>I shrugged and walked over to the door. Julian moved out of the way quickly, like he was afraid I might accidentally touch him as I passed by him.</p>
+<p>“Nothing much to see,” Julian said, walking in after me. He started pointing to a bunch of stuff around the room. “That’s the incubator. That big black thing is the chalkboard. These are the desks. These are chairs. Those are the Bunsen burners. This is a gross science poster. This is chalk. This is the eraser.”</p>
+<p>“I’m sure he knows what an eraser is,” Charlotte said, sounding a little like Via.</p>
+<p>“How would I know what he knows?” Julian answered. “Mr. Tushman said he’s never been to a school before.”</p>
+<p>“You know what an eraser is, right?” Charlotte asked me.</p>
+<p>I admit I was feeling so nervous that I didn’t know what to say or do except look at the floor.</p>
+<p>“Hey, can you talk?” asked Jack Will.</p>
+<p>“Yeah.” I nodded. I still really hadn’t looked at any of them yet, not directly.</p>
+<p>“You know what an eraser is, right?” asked Jack Will.</p>
+<p>“Of course!” I mumbled.</p>
+<p>“I told you there was nothing to see in here,” said Julian, shrugging.</p>
+<p>“I have a question …,” I said, trying to keep my voice steady. “Um. What exactly is homeroom? Is that like a subject?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>朱利安第一次看向奥吉，让他想进去就进去，却在奥吉经过时飞快让开，像怕被碰到；随后他在教室里边走边点着设备一一“教”：这是孵化器、黑板、桌子、椅子、本生灯……夏洛特听不下去，说“他肯定知道橡皮是什么”。奥吉紧张得只会看地板，杰克问“嘿，你会说话吗”，他才点头嗯了一声，杰克又问了一遍橡皮，他终于闷声说“当然会”。朱利安耸耸肩说“我就说这里没什么好看的”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I admit I was feeling so nervous that I didn't know what to say or do except look at the floor.</blockquote><p class="note">除了看地板以外不知道说什么做什么”（except look at the floor），奥吉把紧张写得具体：只能无措地盯着地面。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shrug</b> <span class="pos">v.</span> 耸肩</li><li><b>incubator</b> <span class="pos">n.</span> 孵化器</li><li><b>Bunsen burner</b> <span class="pos">n.</span> 本生灯（实验室酒精灯式加热器）</li><li><b>eraser</b> <span class="pos">n.</span> 橡皮擦</li><li><b>nervous</b> <span class="pos">adj.</span> 紧张的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“晨会是什么？你叫杰克还是杰克·威尔？”</h2>
+            <div class="seg-en">Jack Will or just Jack?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 219 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">晨会的解释</span><span class="tag">名字的小误会</span><span class="tag">气氛稍缓</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>气氛在这里稍稍松弛：因为“你会不会说话”的质疑已经过去，奥吉主动提问、还闹出“杰克威尔”的小误会，三个人开始有点正常地相处。</div>
+        <div class="body">
+<p>“No, that’s just your group,” explained Charlotte, ignoring Julian’s smirk. “It’s like where you go when you get to school in the morning and your homeroom teacher takes attendance and stuff like that. In a way, it’s your main class even though it’s not really a class. I mean, it’s a class, but—”</p>
+<p>“I think he gets it, Charlotte,” said Jack Will.</p>
+<p>“Do you get it?” Charlotte asked me.</p>
+<p>“Yeah.” I nodded at her.</p>
+<p>“Okay, let’s get out of here,” said Jack Will, walking away.</p>
+<p>“Wait, Jack, we’re supposed to be answering questions,” said Charlotte.</p>
+<p>Jack Will rolled his eyes a little as he turned around.</p>
+<p>“Do you have any more questions?” he asked.</p>
+<p>“Um, no,” I answered. “Oh, well, actually, yes. Is your name Jack or Jack Will?”</p>
+<p>“Jack is my first name. Will is my last name.”</p>
+<p>“Oh, because Mr. Tushman introduced you as Jack Will, so I thought …”</p>
+<p>“Ha! You thought his name was Jackwill!” laughed Julian.</p>
+<p>“Yeah, some people call me by my first and last name,” Jack said, shrugging. “I don’t know why. Anyway, can we go now?”</p>
+<p>“Let’s go to the performance space next,” said Charlotte, leading the way out of the science room. “It’s very cool. You’ll like it, August.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>夏洛特解释“晨会”就是早上到校先集合的班级、老师点名的那个地方，杰克让她别讲太细，奥吉只好点头说懂了。离开科学教室前，夏洛特不肯走，坚持要问完奥吉的问题。奥吉终于问到“你是叫杰克还是杰克·威尔”，杰克说杰克是名、威尔是姓——朱利安立刻笑话奥吉刚才误以为他叫“杰克威尔”。一群人嬉闹着往表演空间走，夏洛特说那里很酷，奥吉你会喜欢的。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Ha! You thought his name was Jackwill!</blockquote><p class="note">朱利安笑话奥吉把他名字连在一起的理解。一句玩笑让沉闷的氛围松动，也显出名与姓连读的误会由来。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>attendance</b> <span class="pos">n.</span> 点名、出勤</li><li><b>in a way</b> <span class="pos">phr.</span> 从某种意义上说</li><li><b>supposed to</b> <span class="pos">phr.</span> 本应、应该</li><li><b>performance space</b> <span class="pos">n.</span> 演出空间、表演场地</li><li><b>roll his eyes</b> <span class="pos">phr.</span> 翻白眼（表示不耐烦）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_07.html">← 上一单元</a>
+    <a href="wonder_unit_09.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第8/96 单元 · 第一部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u08.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

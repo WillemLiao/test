@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第43单元 妈妈接来的那个电话</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 43 单元 · 妈妈接来的那个电话</div>
+    <div class="unit-en">The Call</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 615 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>视角切换到杰克——接下来这一整个部分的叙述者都是杰克。八月的某天，杰克的爸妈接到中学部校长图什曼先生的电话，想让杰克给一个即将入学、从没上过真学校的孩子当“欢迎伙伴”。杰克一开始百般不愿意，直到他猛然猜出：那个需要陪伴的新孩子，就是那个叫奥吉的男孩。平静的对话里，一个对杰克来说“麻烦”的任务正向他逼近。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>中学部校长的电话来了</h2>
+            <div class="seg-en">This is Amanda Will</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 293 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">叙述者切换</span><span class="tag">校长电话</span><span class="tag">欢迎伙伴的请求</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意叙述者已经变成杰克了，从这里开始是杰克的口吻和视角——这一整部分都由杰克讲述。</div>
+        <div class="body">
+<p>SO IN AUGUST my parents got this call from Mr. Tushman, the middle-school director. And my Mom said: “Maybe he calls all the new students to welcome them,” and my dad said: “That’s a lot of kids he’d be calling.” So my mom called him back, and I could hear her talking to Mr. Tushman on the phone. This is exactly what she said:</p>
+<p>“Oh, hi, Mr. Tushman. This is Amanda Will, returning your call? Pause. Oh, thank you! That’s so nice of you to say. He is looking forward to it. Pause. Yes. Pause. Yeah. Pause. Oh. Sure. Long pause. Ohhh. Uh-huh. Pause. Well, that’s so nice of you to say. Pause. Sure. Ohh. Wow. Ohhhh. Super long pause. I see, of course. I’m sure he will. Let me write it down … got it. I’ll call you after I’ve had a chance to talk to him, okay? Pause. No, thank you for thinking of him. Bye bye!”</p>
+<p>And when she hung up, I was like, “what’s up, what did he say?”</p>
+<p>And Mom said: “Well, it’s actually very flattering but kind of sad, too. See, there’s this boy who’s starting middle school this year, and he’s never been in a real school environment before because he was homeschooled, so Mr. Tushman talked to some of the lower-school teachers to find out who they thought were some of the really, really great kids coming into fifth grade, and the teachers must have told him you were an especially nice kid—which I already knew, of course—and so Mr. Tushman is wondering if he could count on you to sort of shepherd this new boy around a bit?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>八月的某天，杰克爸妈接到中学部校长图什曼先生的电话。妈妈端出客套方式打电话，电话这头只说些“哦”“好的”“真是太谢谢您了”。挂断后妈妈告诉杰克：有个今年上中学的男孩从没上过真学校、一直是家教，校长希望杰克能多陪陪这个新孩子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Maybe he calls all the new students to welcome them, and my dad said: &quot;That's a lot of kids he'd be calling.&quot;</blockquote><p class="note">爸爸妈妈对校长的来电各有猜测——一个说是在欢迎新生，一个说那样要打太多电话。注意对话里妈妈“长停顿”的表演式客套，为后文埋伏笔。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>director</b> <span class="pos">n.</span> 校长、主任</li><li><b>return your call</b> <span class="pos">phr.</span> 回电话</li><li><b>flattering</b> <span class="pos">adj.</span> 令人高兴的、吹捧的</li><li><b>homeschool</b> <span class="pos">v.</span> 在家教育、不上学</li><li><b>shepherd</b> <span class="pos">v.</span> 带领、照看（像放羊一样带着某人）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>学校的“欢迎伙伴”任务</h2>
+            <div class="seg-en">Welcome buddy</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 265 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">欢迎伙伴</span><span class="tag">推脱不去</span><span class="tag">脸上的秘密</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住两个关键设定：这个任务叫“welcome buddy（欢迎伙伴）”，以及那孩子脸上“有点毛病”——这直接指向奥吉。</div>
+        <div class="body">
+<p>“Like let him hang out with me?” I said.</p>
+<p>“Exactly,” said Mom. “He called it being a ‘welcome buddy.’”</p>
+<p>“But why me?”</p>
+<p>“I told you. Your teachers told Mr. Tushman that you were the kind of kid who’s known for being a good egg. I mean, I’m so proud that they think so highly of you. …”</p>
+<p>“Why is it sad?”</p>
+<p>“What do you mean?”</p>
+<p>“You said it’s flattering but kind of sad, too.”</p>
+<p>“Oh.” Mom nodded. “Well, apparently this boy has some sort of … um, I guess there’s something wrong with his face … or something like that. Not sure. Maybe he was in an accident. Mr. Tushman said he’d explain a bit more when you come to the school next week.”</p>
+<p>“School doesn’t start till September!”</p>
+<p>“He wants you to meet this kid before school starts.”</p>
+<p>“Do I have to?”</p>
+<p>Mom looked a bit surprised.</p>
+<p>“Well, no, of course not,” she said, “but it would be the nice thing to do, Jack.”</p>
+<p>“If I don’t have to do it,” I said, “I don’t want to do it.”</p>
+<p>“Can you at least think about it?”</p>
+<p>“I’m thinking about it and I don’t want to do it.”</p>
+<p>“Well, I’m not going to force you,” she said, “but at least think about it some more, okay? I’m not calling Mr. Tushman back until tomorrow, so just sit with it a bit. I mean, Jack, I really don’t think it’s that much to ask that you spend a little extra time with some new kid. …”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈解释，图什曼先生管这个任务叫“欢迎伙伴”，就是让杰克陪新孩子一起玩。杰克问“为什么是我”，妈妈转述老师的话：老师们向校长推荐了几个特别好的孩子，其中之一就是杰克。杰克追问为什么“又高兴又难过”，妈妈说那孩子脸上好像有点毛病。杰克借口说学校九月份才开学，妈妈却说校长要他开学前就去见这个孩子——杰克干脆直接说不想去。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Well, apparently this boy has some sort of ... um, I guess there's something wrong with his face ... or something like that.</blockquote><p class="note">妈妈支支吾吾地说那孩子“脸上有点毛病”。welcome buddy 是图什曼给的正式叫法，类似“陪新生打交道的伙伴”。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>buddy</b> <span class="pos">n.</span> 伙伴、哥们儿</li><li><b>good egg</b> <span class="pos">n.</span> 好人、靠得住的人</li><li><b>force</b> <span class="pos">v.</span> 强迫</li><li><b>sit with it</b> <span class="pos">phr.</span> （把这件事）放一放、先想想</li><li><b>think highly of</b> <span class="pos">phr.</span> 对……评价很高、很看重</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>我猜到那个孩子是奥吉</h2>
+            <div class="seg-en">He's deformed</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 57 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">奥吉的身份</span><span class="tag">刺耳的称呼</span><span class="tag">母子分歧</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克的用词“deformed（畸形）”很刺耳，妈妈立刻纠正——他的称呼和妈妈的态度形成鲜明对比。</div>
+        <div class="body">
+<p>“It’s not just that he’s a new kid, Mom,” I answered. “He’s deformed.”</p>
+<p>“That’s a terrible thing to say, Jack.”</p>
+<p>“He is, Mom.”</p>
+<p>“You don’t even know who it is!”</p>
+<p>“Yeah, I do,” I said, because I knew the second she started talking about him that it was that kid named August.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克反驳妈妈说：这不只是因为他是新同学——因为“他面部变形”。妈妈觉得这话很难听，杰克却坚持说没错。妈妈说他根本不知道是谁，杰克却说他知道——妈妈一提起这个孩子，他就猜到是那个叫奥吉的男生了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Yeah, I do, I said, because I knew the second she started talking about him that it was that kid named August.</blockquote><p class="note">deformed = 畸形的、变形的。杰克一听到这个孩子的信息就猜到是奥吉，the second = 一……就……（表示时间极短）。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>deformed</b> <span class="pos">adj.</span> 畸形的、变形的</li><li><b>terrible</b> <span class="pos">adj.</span> 不好的、难听的</li><li><b>the second</b> <span class="pos">conj.</span> 一……就……（表立刻）</li><li><b>named</b> <span class="pos">adj.</span> 名叫……的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_42.html">← 上一单元</a>
+    <a href="wonder_unit_44.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第43/96 单元 · 第四部 · 杰克 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u43.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

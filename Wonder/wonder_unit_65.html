@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第65单元 我把自己装扮成了洛鲍特</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 65 单元 · 我把自己装扮成了洛鲍特</div>
+    <div class="unit-en">Lobot</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 722 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>从小到大医生就说奥吉迟早要戴助听器，可奥吉最恨自己的耳朵，也一直害怕戴。他的听力越来越差，脑子里那片“海洋声”越来越响，把人声都淹没了，可他不愿告诉爸妈，只盼能撑过五年级。十月年度体检的听力测试他没过，医生送他去专科取耳模，给他配了一副要套在头带上的助听器，因为奥吉没有外耳。奥吉死活不肯戴，还赌气说戴上就像《星球大战》里的“洛鲍特”。好心的耳医科普了助听器的构造，把助听器戴到他头上又打开，等他自己听到差别。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我讨厌我这对耳朵</h2>
+            <div class="seg-en">my ears are the ones I hate the most</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">听力变差</span><span class="tag">我最恨的耳朵</span><span class="tag">年度体检</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>把握两个信息：奥吉的听力在快速变差（海洋声淹没人声），以及他对耳朵的深深厌恶——这是他长期压抑的不安。</div>
+        <div class="body">
+<p>EVER SINCE I was little, the doctors told my parents that someday I’d need hearing aids. I don’t know why this always freaked me out a bit: maybe because anything to do with my ears bothers me a lot.</p>
+<p>My hearing was getting worse, but I hadn’t told anyone about it. The ocean sound that was always in my head had been getting louder. It was drowning out people’s voices, like I was underwater. I couldn’t hear teachers if I sat in the back of the class. But I knew if I told Mom or Dad about it, I’d end up with hearing aids—and I was hoping I could make it through the fifth grade without having that happen.</p>
+<p>But then in my annual checkup in October I flunked the audiology test and the doctor was like, “Dude, it’s time.” And he sent me to a special ear doctor who took impressions of my ears.</p>
+<p>Out of all my features, my ears are the ones I hate the most. They’re like tiny closed fists on the sides of my face. They’re too low on my head, too. They look like squashed pieces of pizza dough sticking out of the top of my neck or something. Okay, maybe I’m exaggerating a little. But I really hate them.</p>
+<p>When the ear doctor first pulled the hearing aids out for me and Mom to look at, I groaned.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉从小就知道会有这么一天要戴助听器，可任何跟耳朵有关的东西都让他害怕。他的听力在变差，脑子里的“海洋声”越来越响，像泡在水里一样淹没了别人的说话声，坐在教室后排就听不清老师，但他不敢告诉爸妈，希望能撑过五年级。结果十月年度体检的听力测试他没合格，医生说“兄弟，时候到了”，把他送去专科医生那里，医生给他的耳朵取了模型。在所有五官里，奥吉最恨的是自己的耳朵——它们像脸颊两侧的小拳头，生得太低，又像从脖子上冒出来的被压扁的披萨面团。当耳医把助听器拿出来给他们看时，奥吉叹了口气。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Out of all my features, my ears are the ones I hate the most.</blockquote><p class="note">features 这里指“五官、面部特征”。奥吉用了“squashed pieces of pizza dough”(压扁的披萨面团)这种滑稽比喻，其实是自卑的掩饰。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hearing aid</b> <span class="pos">n.</span> 助听器</li><li><b>drown out</b> <span class="pos">phr.</span> 淹没（声音）、盖过</li><li><b>flunk</b> <span class="pos">v.</span> 不及格、未通过（考试）</li><li><b>impression</b> <span class="pos">n.</span> （耳道）印模、取模</li><li><b>squashed</b> <span class="pos">adj.</span> 被压扁的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我不要戴，我会像洛鲍特</h2>
+            <div class="seg-en">I'll look like Lobot!</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 323 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">拒绝戴助听器</span><span class="tag">星球大战</span><span class="tag">耳医的共鸣</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这个温馨的转折：原本严肃的戴助听器被《星球大战》的“洛鲍特”玩笑冲淡——耳医投其所好，拉近了距离。</div>
+        <div class="body">
+<p>“I am not wearing that thing,” I announced, folding my arms in front of me.</p>
+<p>“I know they probably look kind of big,” said the ear doctor, “but we had to attach them to the headband because we had no other way of making them so they’d stay in your ears.”</p>
+<p>See, normal hearing aids usually have a part that wraps around the outer ear to hold the inner bud in place. But in my case, since I don’t have outer ears, they had to put the earbuds on this heavy-duty headband that was supposed to wrap around the back of my head.</p>
+<p>“I can’t wear that, Mom,” I whined.</p>
+<p>“You’ll hardly notice them,” said Mom, trying to be cheerful. “They look like headphones.”</p>
+<p>“Headphones? Look at them, Mom!” I said angrily. “I’ll look like Lobot!”</p>
+<p>“Which one is Lobot?” said Mom calmly.</p>
+<p>“Lobot?” The ear doctor smiled as he looked at the headphones and made some adjustments. “The Empire Strikes Back? The bald guy with the cool bionic radio-transmitter thing that wraps around the back of his skull?”</p>
+<p>“I’m drawing a blank,” said Mom.</p>
+<p>“You know Star Wars stuff?” I asked the ear doctor.</p>
+<p>“Know Star Wars stuff?” he answered, slipping the thing over my head. “I practically invented Star Wars stuff!” He leaned back in his chair to see how the headband fit and then took it off again.</p>
+<p>“Now, Auggie, I want to explain what all this is,” he said, pointing to the different parts of one of the hearing aids. “This curved piece of plastic over here connects to the tubing on the ear mold. That’s why we took those impressions back in December, so that this part that goes inside your ear fits nice and snug. This part here is called the tone hook, okay? And this thing is the special part we’ve attached to this cradle here.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉抱着手臂宣布“我绝不戴这东西”。耳医解释因为奥吉没有外耳，只好把耳塞接在一条包住后脑的重型头带上。奥吉向妈妈撒娇说戴不了，妈妈哄他说“你几乎不会感觉到它们，看起来像耳机”。奥吉却生气地说自己会像“洛鲍特”。妈妈不懂谁是洛鲍特，耳医却来了精神，说《帝国反击战》里那个光头、后脑缠着酷炫无线电发射器的家伙；奥吉惊讶地问医生懂不懂《星球大战》，医生得意地说“我简直发明了星球大战”，并把头带套到他头上又摘下。接着医生指着助听器的各部分耐心科普：弯曲的塑料件连着耳模上的管子、语调钩，还有装在底座上的特殊部件。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Know Star Wars stuff? he answered, slipping the thing over my head. I practically invented Star Wars stuff!</blockquote><p class="note">invent 这里是夸张说法“创造了、发明了”，意思是“我对星球大战熟得不行”。headband 指包住头的头带。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>headband</b> <span class="pos">n.</span> 头带、束发带</li><li><b>whine</b> <span class="pos">v.</span> 哼哼唧唧、撒娇抱怨</li><li><b>cheerful</b> <span class="pos">adj.</span> 开朗的、欢快的</li><li><b>skull</b> <span class="pos">n.</span> 头骨、骷髅头</li><li><b>bionic</b> <span class="pos">adj.</span> 仿生学的、电子增强的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>戴上去的瞬间，眼泪下来了</h2>
+            <div class="seg-en">And then he turned them on.</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 153 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">照镜落泪</span><span class="tag">自暴自弃</span><span class="tag">打开助听器</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全单元的情绪顶点：奥吉照镜落泪、自暴自弃，但结尾医生“turn them on”打开助听器——悬念留给下一单元，看他听到什么。</div>
+        <div class="body">
+<p>“The Lobot part,” I said miserably.</p>
+<p>“Hey, Lobot is cool,” said the ear doctor. “It’s not like we’re saying you’re going to look like Jar Jar, you know? That would be bad.” He slid the earphones on my head again carefully. “There you go, August. So how’s that?”</p>
+<p>“Totally uncomfortable!” I said.</p>
+<p>“You’ll get used to them very quickly,” he said.</p>
+<p>I looked in the mirror. My eyes started tearing up. All I saw were these tubes jutting out from either side of my head—like antennas.</p>
+<p>“Do I really have to wear this, Mom?” I said, trying not to cry. “I hate them. They don’t make any difference!”</p>
+<p>“Give it a second, buddy,” said the doctor. “I haven’t even turned them on yet. Wait until you hear the difference: you’ll want to wear them.”</p>
+<p>“No I won’t!”</p>
+<p>And then he turned them on.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉痛苦地把那部件叫作“洛鲍特那部分”，耳医安慰他“嘿，洛鲍特很酷啊，又不是让你看起来像杰·杰·艾布斯那种”。医生小心地把耳机戴回奥吉头上问感觉如何，奥吉说“一点也不舒服”，医生说他很快就会习惯。奥吉照了照镜子，眼泪涌了出来——他看到自己脑袋两侧翘出两根管子，像天线一样，他忍着泪问妈妈“我真的非戴不可吗？我讨厌它们，它们一点用都没有！”医生劝他再等等，“我还没开着呢，等你听到差别你就会想戴的”，奥吉倔强地说“我才不会”，然后医生把助听器打开了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And then he turned them on.</blockquote><p class="note">turn on = 打开（电器）。全段最后一句戛然而止，医生打开助听器，奥吉将听见一个全新的世界——也是无声的悬念。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>miserably</b> <span class="pos">adv.</span> 痛苦地、凄惨地</li><li><b>tear up</b> <span class="pos">phr.</span> 眼眶含泪、涌出泪水</li><li><b>jut out</b> <span class="pos">phr.</span> 突出、伸出</li><li><b>antenna</b> <span class="pos">n.</span> 天线（antennas 复数）</li><li><b>turn on</b> <span class="pos">phr.</span> 打开（电源、设备）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_64.html">← 上一单元</a>
+    <a href="wonder_unit_66.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第65/96 单元 · 第六部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u65.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

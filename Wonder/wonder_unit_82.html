@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第82单元 树林里的“外星人”：一场残忍的羞辱</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 82 单元 · 树林里的“外星人”：一场残忍的羞辱</div>
+    <div class="unit-en">Alien</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 953 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉和杰克往回走，迎头撞上一群从树林里出来抽烟放炮的七、八年级大孩子。手电照到奥吉的脸上，这些人尖叫着、指着他起哄，骂他是“咕噜”“外星人”“兽人”，尤其是那个叫埃迪的男生，一遍遍把手电往他脸上照。杰克护着奥吉，却也被埃迪推倒。眼看要动手，阿莫斯带着亨利和迈尔斯突然出现，替他们解围；可奥吉经过埃迪身边时，埃迪拽住他帽子把他狠狠拉倒，阿莫斯见状像辆怪兽卡车一样朝埃迪撞过去，两人一起摔在地上。混乱中有人拉着奥吉一路狂奔逃跑。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>手电照到我的脸上，他们在尖叫</h2>
+            <div class="seg-en">What is that?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">偶遇大孩子</span><span class="tag">手电照耀</span><span class="tag">恐惧的真相</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住奥吉起初的困惑：他以为大家在怕虫子，直到发现手电对准的是自己的脸——他不知道这些人的反应是因为他的长相。</div>
+        <div class="body">
+<p>WE HEADED BACK the way we came, in the direction of the giant screen. That’s when we walked straight into a group of kids we didn’t know. They’d just come out of the woods, doing stuff I’m sure they didn’t want their teachers to know about. I could smell the smoke now, the smell of both firecrackers and cigarettes. They pointed a flashlight at us. There were six of them: four boys and two girls. They looked like they were in the seventh grade.</p>
+<p>“What school are you from?” one of the boys called out.</p>
+<p>“Beecher Prep!” Jack started to answer, when all of a sudden one of the girls started screaming.</p>
+<p>“Oh my God!” she shrieked, holding her hand over her eyes like she was crying. I figured maybe a huge bug had just flown into her face or something.</p>
+<p>“No way!” one of the boys cried out, and he started flicking his hand in the air like he’d just touched something hot. And then he covered his mouth. “No freakin’ way, man! No freakin’ way!”</p>
+<p>All of them started half laughing and half covering their eyes now, pushing each other and cursing loudly.</p>
+<p>“What is that?” said the kid who was pointing the flashlight at us, and it was only then that I realized that the flashlight was pointed right at my face, and what they were talking about—screaming about—was me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉和杰克原路朝大屏幕方向走，迎面撞上一群不认识的孩子，他们刚从树林里出来，肯定没干好事——奥吉闻到了鞭炮和香烟混在一起的味道。七个人里有六个男生两个女生，看着像七年级的。他们拿手电照向奥吉，其中一个女生突然尖叫起来，用手捂住眼睛像在哭，另一个男生一边拍手一边骂“没门”，这群人又笑又捂眼睛地互相推搡。奥吉一开始以为是有虫子飞进女生眼睛，直到拿手电那家伙问“那是什么”，他才意识到手电正对着自己的脸——他们尖叫的、议论的，正是他自己。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>and it was only then that I realized that the flashlight was pointed right at my face, and what they were talking about—screaming about—was me.</blockquote><p class="note">这是刺痛人心的一刻：奥吉一直以为他们叫的是虫子，直到发现手电对着自己的脸，才知道他们尖叫的对象正是自己。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>flashlight</b> <span class="pos">n.</span> 手电筒</li><li><b>cigarette</b> <span class="pos">n.</span> 香烟</li><li><b>shriek</b> <span class="pos">v.</span> 尖叫、尖声喊叫</li><li><b>flick</b> <span class="pos">v.</span> 甩动、弹开</li><li><b>curse</b> <span class="pos">v.</span> 骂脏话、诅咒</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>“看，它是咕噜！”埃迪一遍遍地嘲弄</h2>
+            <div class="seg-en">It's Gollum!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 257 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">言语羞辱</span><span class="tag">咕噜绰号</span><span class="tag">埃迪的挑衅</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“羞辱的话语”：埃迪用《指环王》咕噜、外星人、兽人来形容奥吉，还用“你男朋友”来挖苦为奥吉出头的杰克——这是身体欺凌之前的言语攻击。</div>
+        <div class="body">
+<p>“Let’s get out of here,” Jack said to me quietly, and he pulled me by my sweatshirt sleeve and started walking away from them.</p>
+<p>“Wait wait wait!” yelled the guy with the flashlight, cutting us off. He pointed the flashlight right in my face again, and now he was only about five feet away. “Oh man! Oh man!!” he said, shaking his head, his mouth wide open. “What happened to your face?”</p>
+<p>“Stop it, Eddie,” said one of the girls.</p>
+<p>“I didn’t know we were watching Lord of the Rings tonight!” he said. “Look, guys, it’s Gollum!”</p>
+<p>This made his friends hysterical.</p>
+<p>Again we tried to walk away from them, and again the kid named Eddie cut us off. He was at least a head taller than Jack, who was about a head taller than me, so the guy looked huge to me.</p>
+<p>“No man, it’s Alien!” said one of the other kids.</p>
+<p>“No, no, no, man. It’s an orc!” laughed Eddie, pointing the flashlight in my face again. This time he was right in front of us.</p>
+<p>“Leave him alone, okay?” said Jack, pushing the hand holding the flashlight away.</p>
+<p>“Make me,” answered Eddie, pointing the flashlight in Jack’s face now.</p>
+<p>“What’s your problem, dude?” said Jack.</p>
+<p>“Your boyfriend’s my problem!”</p>
+<p>“Jack, let’s just go,” I said, pulling him by the arm.</p>
+<p>“Oh man, it talks!” screamed Eddie, shining the flashlight in my face again. Then one of the other guys threw a firecracker at our feet.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克低声叫奥吉快走，拉着他要离开，那个拿手电叫埃迪的男生却不断拦路，把手电又对到奥吉鼻子跟前，摇着头张大嘴问“你这张脸怎么了”。一个女生喊埃迪住手，埃迪却笑着说“我没听说今晚看《指环王》啊？各位，是咕噜！”，这话逗得他朋友狂笑不止。埃迪比杰克高一个头，杰克又比奥吉高一个头，所以埃迪在奥吉眼里高得吓人。他们几次想走都走不掉，别的小孩在喊“不，是《异形》！”“是兽人！”。杰克推开埃迪的手让他别再照了，埃迪挑衅说“你让我试试”，杰克回骂，埃迪却嘲讽他“你男朋友就是我的麻烦”。奥吉拉杰克快走，埃迪又尖叫“哦它还开口说话”，并朝他们脚边扔了一个鞭炮。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I didn't know we were watching Lord of the Rings tonight! Look, guys, it's Gollum!</blockquote><p class="note">Gollum 是《指环王》里丑陋的怪物咕噜。埃迪故意用这个比喻当众羞辱奥吉，把他当作取乐的“怪物”。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hysterical</b> <span class="pos">adj.</span> 狂笑不止的、歇斯底里的</li><li><b>orc</b> <span class="pos">n.</span> （奇幻作品里的）兽人、半兽人</li><li><b>mess with</b> <span class="pos">phr.</span> 招惹、找麻烦</li><li><b>freak</b> <span class="pos">n.</span> 怪人、怪物（辱骂用语）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>阿莫斯像辆怪兽卡车撞向埃迪</h2>
+            <div class="seg-en">Amos rammed Eddie like a monster truck</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 310 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">阿莫斯挺身而出</span><span class="tag">朋友互助</span><span class="tag">身体冲突</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是关键反转：之前一直对杰克冷战的阿莫斯，此刻却毫不犹豫站出来保护他们，甚至为此撞倒埃迪——朋友情谊胜过了过去的小恩怨。</div>
+        <div class="body">
+<p>Jack tried to push past Eddie, but Eddie shoved his hands into Jack’s shoulders and pushed him hard, which made Jack fall backward.</p>
+<p>“Eddie!” screamed one of the girls.</p>
+<p>“Look,” I said, stepping in front of Jack and holding my hands up in the air like a traffic cop. “We’re a lot smaller than you guys …”</p>
+<p>“Are you talking to me, Freddie Krueger? I don’t think you want to mess with me, you ugly freak,” said Eddie. And this was the point where I knew I should run away as fast as I could, but Jack was still on the ground and I wasn’t about to leave him.</p>
+<p>“Yo, dude,” said a new voice behind us. “What’s up, man?”</p>
+<p>Eddie spun around and pointed his flashlight toward the voice. For a second, I couldn’t believe who it was.</p>
+<p>“Leave them alone, dude,” said Amos, with Miles and Henry right behind him.</p>
+<p>“Says who?” said one of the guys with Eddie.</p>
+<p>“Just leave them alone, dude,” Amos repeated calmly.</p>
+<p>“Are you a freak, too?” said Eddie.</p>
+<p>“They’re all a bunch of freaks!” said one of his friends.</p>
+<p>Amos didn’t answer them but looked at us. “Come on, guys, let’s go. Mr. Tushman’s waiting for us.”</p>
+<p>I knew that was a lie, but I helped Jack get up, and we started walking over to Amos. Then out of the blue, the Eddie guy grabbed my hood as I passed by him, yanking it really hard so I was pulled backward and fell flat on my back. It was a hard fall, and I hurt my elbow pretty bad on a rock. I couldn’t really see what happened afterward, except that Amos rammed into the Eddie guy like a monster truck and they both fell down to the ground next to me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>埃迪把杰克推到在地，女生们喊他名字让他停手。奥吉像交通警察一样举着双手挡在杰克面前说他们比这群人小得多，埃迪却骂他“弗莱迪·克鲁格，丑八怪怪物，你最好别惹我”。奥吉知道该逃，可杰克还躺在地上他不肯丢下他。这时背后传来阿莫斯的声音，他带着亨利和迈尔斯出现了，让他们别找麻烦。埃迪一个同伴说“你骂我也算怪物吗”，阿莫斯不理会，只叫他们快走，说图什曼先生在外面等——奥吉知道这是个谎话。可就在经过埃迪身边时，埃迪一把抓住奥吉的帽子猛地一拽，奥吉仰面摔倒，手肘磕在石头上疼得不行。紧接着，阿莫斯像辆怪兽卡车一样朝埃迪撞过去，两人一起摔在奥吉身旁。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Amos rammed into the Eddie guy like a monster truck and they both fell down to the ground next to me.</blockquote><p class="note">ram into = 猛撞向。ram like a monster truck 把阿莫斯的冲撞比作怪兽卡车那么猛，写他护友的决心。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shove</b> <span class="pos">v.</span> 用力推、推搡</li><li><b>traffic cop</b> <span class="pos">n.</span> 交通警察</li><li><b>yank</b> <span class="pos">v.</span> 猛拉、拽</li><li><b>ram into</b> <span class="pos">phr.</span> 猛撞向</li><li><b>monster truck</b> <span class="pos">n.</span> 怪兽卡车（巨型越野赛车）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>有人拉着我，在漆黑中拼命逃跑</h2>
+            <div class="seg-en">Don't stop!</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 145 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">混乱狂奔</span><span class="tag">黑夜里逃亡</span><span class="tag">恐惧感</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>感受这段狂奔的混乱与恐惧：奥吉被一只手在漆黑中拽着跑，连谁在拉着自己都无法确定——被斗与逃离交织成一片噩梦般的混乱。</div>
+        <div class="body">
+<p>Everything got really crazy after that. Someone pulled me up by my sleeve and yelled, “Run!” and someone else screamed, “Get ’em!” at the same time, and for a few seconds I actually had two people pulling the sleeves of my sweatshirt in opposite directions. I heard them both cursing, until my sweatshirt ripped and the first guy yanked me by my arm and started pulling me behind him as we ran, which I did as fast as I could. I could hear footsteps just behind us, chasing us, and voices shouting and girls screaming, but it was so dark I didn’t know whose voices they were, only that everything felt like we were underwater. We were running like crazy, and it was pitch black, and whenever I started to slow down, the guy pulling me by my arm would yell, “Don’t stop!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>之后场面彻底乱了：有人拽着奥吉的袖子喊“快跑”，另一头又有人喊“抓住他们！”，有短短几秒奥吉的两只袖子被两个人朝相反的方向拉扯，连帽衫都给扯破了。走在前面的那个人抓住他的胳膊拽着他拼命跑，奥吉使尽全力跟上，身后传来追赶的脚步声、喊叫声和女孩子的尖叫。四周黑得伸手不见五指，奥吉看不清是谁在说话，只觉得一切都像在水里一样模糊。他只要一慢下来，那个拽着他跑的人就喊“别停！”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Don't stop!</blockquote><p class="note">整段结尾只剩这个词组“别停！”。绝境中拉奥吉逃跑的人只靠这句反复给他打气，简洁却充满紧张。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>rip</b> <span class="pos">v.</span> 撕破、裂开</li><li><b>pitch black</b> <span class="pos">phr.</span> 一团漆黑、伸手不见五指的</li><li><b>underwater</b> <span class="pos">adj.</span> 在水下的；像在水里一样模糊的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_81.html">← 上一单元</a>
+    <a href="wonder_unit_83.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第82/96 单元 · 第八部 · 奥吉 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u82.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第71单元 替补演员</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 71 单元 · 替补演员</div>
+    <div class="unit-en">Understudy</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 806 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>达西走后几天，维娅带回家三张话剧票。演出当晚，她临出门前抱了抱奥吉，说自己为当他的姐姐而骄傲。这是奥吉第一次走进维娅的高中，学校大得离谱；唯一让他别扭的是戴了助听器就戴不了棒球帽，他一路低着头跟在妈妈后面。到场后爸妈为妈妈又忘带眼镜和剧本里的八卦聊得热闹，奥吉却执着地问“为什么叫替补演员”。灯暗戏开场，是《我们的小镇》，贾斯汀坐在破椅子上调琴，奥吉一听就知道自己会喜欢。当“艾米丽”登场，妈妈以为那是变身很多的米兰达，奥吉却惊讶地认出——那就是维娅！</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>第一次踏进姐姐的高中</h2>
+            <div class="seg-en">I was proud to be your sister</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">进高中</span><span class="tag">想遮脸</span><span class="tag">忘带眼镜</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓一个细节：奥吉进了新学校立刻想遮脸（头盔/低头）——助听器让他不能戴帽子，也侧面写出他的不自在。</div>
+        <div class="body">
+<p>VIA BROUGHT HOME three tickets to her school play a few days after Daisy died. We never mentioned the fight we had over dinner again. On the night of the play, right before she and Justin were leaving to get to their school early, she gave me a big hug and told me she loved me and she was proud to be my sister.</p>
+<p>This was my first time in Via’s new school. It was much bigger than her old school, and a thousand times bigger than my school. More hallways. More room for people. The only really bad thing about my bionic Lobot hearing aids was the fact that I couldn’t wear a baseball cap anymore. In situations like these, baseball caps come in really handy. Sometimes I wish I could still get away with wearing that old astronaut helmet I used to wear when I was little. Believe it or not, people would think seeing a kid in an astronaut helmet was a lot less weird than seeing my face. Anyway, I kept my head down as I walked right behind Mom through the long bright hallways.</p>
+<p>We followed the crowd to the auditorium, where students handed out programs at the front entrance. We found seats in the fifth row, close to the middle. As soon as we sat down, Mom started looking inside her pocketbook.</p>
+<p>“I can’t believe I forgot my glasses!” she said.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>达西去世几天后，维娅带回家三张她高中话剧的票，家人都没再提起餐桌上的那次争吵。演出当晚，维娅和贾斯汀要提前去学校，临走前她给了奥吉一个大大的拥抱，说爱他、为自己是他的姐姐而骄傲。这是奥吉第一次来维娅的新学校，它比旧学校大得多，更比自己的学校大上一千倍，走廊更多、人更多。他唯一的困扰是戴了“仿生洛鲍特助听器”就不能再戴棒球帽——这种场合棒球帽可真派得上用场；他甚至怀念小时候能随时顶着那顶旧“宇航员头盔”。他说，别不信，大家看见戴宇航员头盔的孩子，会觉得比我这张脸正常得多。所以他一直低着头，紧紧跟在妈妈身后走过又长又亮的走廊。他们跟着人群来到礼堂，门口有学生分发节目单，找到第五排靠中间的位置坐下，妈妈马上翻起她的手提包，懊恼地说“我居然忘带眼镜了！”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>people would think seeing a kid in an astronaut helmet was a lot less weird than seeing my face.</blockquote><p class="note">weird = 古怪的、奇怪的。奥吉说大家会觉得“戴宇航员头盔”比“看我的脸”正常，一句话道出他内心的自我认知。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>auditorium</b> <span class="pos">n.</span> 礼堂、剧场</li><li><b>program</b> <span class="pos">n.</span> 节目单</li><li><b>pocketbook</b> <span class="pos">n.</span> （手提）钱包、小包</li><li><b>weird</b> <span class="pos">adj.</span> 古怪的、奇怪的</li><li><b>astronaut</b> <span class="pos">n.</span> 宇航员</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>剧本上找不到维娅的照片</h2>
+            <div class="seg-en">She's an understudy</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">替补演员</span><span class="tag">维娅没照片</span><span class="tag">大人的八卦</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对话的暗示：奥吉在台下追问“为什么叫替补”，大人们却只顾聊米兰达爸爸的八卦——维娅“替补却没照片、被视而不见”的处境正在浮现。</div>
+        <div class="body">
+<p>Dad shook his head. Mom was always forgetting her glasses, or her keys, or something or other. She is flaky that way.</p>
+<p>“You want to move closer?” said Dad.</p>
+<p>Mom squinted at the stage. “No, I can see okay.”</p>
+<p>“Speak now or forever hold your peace,” said Dad.</p>
+<p>“I’m fine,” answered Mom.</p>
+<p>“Look, there’s Justin,” I said to Dad, pointing out Justin’s picture in the program.</p>
+<p>“That’s a nice picture of him,” he answered, nodding.</p>
+<p>“How come there’s no picture of Via?” I said.</p>
+<p>“She’s an understudy,” said Mom. “But, look: here’s her name.”</p>
+<p>“Why do they call her an understudy?” I asked.</p>
+<p>“Wow, look at Miranda’s picture,” said Mom to Dad. “I don’t think I would have recognized her.”</p>
+<p>“Why do they call it understudy?” I repeated.</p>
+<p>“It’s what they call someone who replaces an actor if he can’t perform for some reason,” answered Mom.</p>
+<p>“Did you hear Martin’s getting remarried?” Dad said to Mom.</p>
+<p>“Are you kidding me?!” Mom answered, like she was surprised.</p>
+<p>“Who’s Martin?” I asked.</p>
+<p>“Miranda’s father,” Mom answered, and then to Dad: “Who told you?”</p>
+<p>“I ran into Miranda’s mother in the subway. She’s not happy about it. He has a new baby on the way and everything.”</p>
+<p>“Wow,” said Mom, shaking her head.</p>
+<p>“What are you guys talking about?” I said.</p>
+<p>“Nothing,” answered Dad.</p>
+<p>“But why do they call it understudy?” I said.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>爸爸摇头，妈妈总忘带眼镜、钥匙之类的东西，爸爸说她就是这种“丢三落四”的人。爸爸问要不要往前坐，妈妈眯起眼看舞台说不用“我这样能看清”。爸爸打趣“现在不说就永远别说了”，妈妈答“我没事”。奥吉指着节目单上贾斯汀的照片对爸爸说“看，那有贾斯汀”，爸爸点头“他这张拍得不错”。奥吉问“怎么没有维娅的照片？”妈妈解释“她是替补演员，不过你看，这儿有她的名字”。奥吉不解“为什么管她叫替补演员？”大人们却聊起别的——妈妈说“哇，看米兰达的照片，我差点认不出她”。奥吉再问“为什么叫替补演员？”妈妈答“替补是指那个演员临时不能上场时替换他的人”。爸爸又对妈妈说“你听说马丁要再婚了吗？”妈妈惊呼“开玩笑吧？！”奥吉问“马丁是谁？”妈妈答“米兰达的爸爸”，又对爸爸“谁告诉你的？”爸爸说“在地铁里遇到米兰达的妈妈，她不太开心，马丁和新人又要生孩子了”。妈妈摇头“哇”。奥吉问“你们在聊什么？”爸爸答“没事”。奥吉坚持问“可为什么叫替补演员啊？”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She's an understudy, said Mom. But, look: here's her name.</blockquote><p class="note">understudy = 替补演员。家人把目光落在米兰达与别人家的八卦上，而维娅只是区区的“替补”，奥吉隐约替姐姐抱不平。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>understudy</b> <span class="pos">n.</span> 替补演员</li><li><b>flaky</b> <span class="pos">adj.</span> 丢三落四的、不靠谱的</li><li><b>squint</b> <span class="pos">v.</span> 眯起眼睛看</li><li><b>forever hold your peace</b> <span class="pos">phr.</span> （戏语）现在不说就永远保持沉默</li><li><b>remarried</b> <span class="pos">adj.</span> 再婚的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>灯暗，戏开场</h2>
+            <div class="seg-en">I felt smart sitting there</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 266 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">戏开场</span><span class="tag">我们的小镇</span><span class="tag">期待米兰达</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意奥吉被打动的瞬间：这出“大人味”的戏让他觉得自己也聪明了——他正在被真正的艺术吸引，而不只是儿童剧。</div>
+        <div class="body">
+<p>“I don’t know, Auggie Doggie,” Dad answered. “Maybe because the actors kind of study under the main actors or something? I really don’t know.”</p>
+<p>I was going to say something else but then the lights went down. The audience got very quiet very quickly.</p>
+<p>“Daddy, can you please not call me Auggie Doggie anymore?” I whispered in Dad’s ear.</p>
+<p>Dad smiled and nodded and gave me a thumbs-up.</p>
+<p>The play started. The curtain opened. The stage was completely empty except for Justin, who was sitting on an old rickety chair tuning his fiddle. He was wearing an old-fashioned type of suit and a straw hat.</p>
+<p>“This play is called ‘Our Town,’” he said to the audience. “It was written by Thornton Wilder; produced and directed by Philip Davenport. … The name of the town is Grover’s Corners, New Hampshire—just across the Massachusetts line: latitude 42 degrees 40 minutes; longitude 70 degrees 37 minutes. The First Act shows a day in our town. The day is May 7, 1901. The time is just before dawn.”</p>
+<p>I knew right then and there that I was going to like the play. It wasn’t like other school plays I’ve been to, like The Wizard of Oz or Cloudy with a Chance of Meatballs. No, this was grown-up seeming, and I felt smart sitting there watching it.</p>
+<p>A little later in the play, a character named Mrs. Webb calls out for her daughter, Emily. I knew from the program that that was the part Miranda was playing, so I leaned forward to get a better look at her.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>爸爸打趣说“我也不知道，奥吉伙计，也许因为配角要跟着主角们‘学习’（研究）？我真不知道”。奥吉还想问，灯却暗了下来，观众迅速安静。他贴着爸爸耳朵小声说“爸爸，能不能别再叫我奥吉伙计了？”爸爸笑着点头，竖起大拇指。戏开始了，幕布拉起，舞台空荡荡的，只有贾斯汀坐在一张旧吱呀作响的椅子上调他的小提琴，穿着老式西装、戴顶草帽。他对观众说“这出戏叫《我们的小镇》，作者桑顿·怀尔德……小镇名叫格罗弗转角，新罕布什尔州……第一幕讲我们镇上一天的事，日子是1901年5月7日，时间就在黎明前”。奥吉那时就知道自己会喜欢这出戏，它不像别的校园戏《绿野仙踪》或《多云转肉丸》，很“大人”，坐在台下看着让它觉得自己也变聪明了。戏演到一半，一个叫韦布太太的角色喊她的女儿艾米丽，奥吉从节目单得知那是米兰达的角色，于是身子前倾想看清楚她。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I knew right then and there that I was going to like the play.</blockquote><p class="note">right then and there = 就在那一刻。奥吉因这出更像“大人的戏”而立刻生出好感，也被“说自己变聪明”的体验打动。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>rickety</b> <span class="pos">adj.</span> 摇摇晃晃的、快散架的</li><li><b>fiddle</b> <span class="pos">n.</span> 小提琴（口语说法）</li><li><b>curtain</b> <span class="pos">n.</span> 幕布、帷幕</li><li><b>lean forward</b> <span class="pos">phr.</span> 身体前倾</li><li><b>dawn</b> <span class="pos">n.</span> 黎明、拂晓</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>台上的是维娅，不是米兰达</h2>
+            <div class="seg-en">It's Via!</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 54 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">维娅顶替登场</span><span class="tag">被认出</span><span class="tag">爸爸早知情</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>剧情的反转与高潮：区区“替补”的维娅顶替米兰达登场——妈妈没认出，奥吉却一眼认出，而爸爸似乎早已心知肚明原在偷笑。</div>
+        <div class="body">
+<p>“That’s Miranda,” Mom whispered to me, squinting at the stage when Emily walked out. “She looks so different. …”</p>
+<p>“It’s not Miranda,” I whispered. “It’s Via.”</p>
+<p>“Oh my God!” said Mom, lurching forward in her seat.</p>
+<p>“Shh!” said Dad.</p>
+<p>“It’s Via,” Mom whispered to him.</p>
+<p>“I know,” whispered Dad, smiling. “Shhh!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>当“艾米丽”走出来，妈妈眯着眼对奥吉低语“那就是米兰达啊，她看起来变了好多……”。奥吉却悄声说“那不是米兰达，是维娅”。“天啊！”妈妈猛地往前探身。“嘘！”爸爸制止。“是维娅，”妈妈低声告诉他。“我知道，”爸爸微笑低语，“嘘！”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>That's Miranda, Mom whispered to me, squinting at the stage when Emily walked out. She looks so different. ...</blockquote><p class="note">so different = 变化好大。妈妈以为台上是变样的米兰达，却被奥吉一句“那是维娅”点破——姐姐的能力与用心在这一刻被家人看见。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>lurch forward</b> <span class="pos">phr.</span> 身体猛地前倾</li><li><b>squint</b> <span class="pos">v.</span> 眯起眼看</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_70.html">← 上一单元</a>
+    <a href="wonder_unit_72.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第71/96 单元 · 第六部 · 奥吉 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u71.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

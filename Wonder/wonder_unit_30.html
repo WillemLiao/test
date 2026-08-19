@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第30单元 走进新学校，我只想做平凡的我</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 30 单元 · 走进新学校，我只想做平凡的我</div>
+    <div class="unit-en">High School</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 649 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>维娅聊起上学这件事：小学时全家都认识奥吉、奥吉几乎算是学校的常客；到了中学知道的人变少，她第一次成为“那个有畸形弟弟的女孩”；而中学这三个字的魅力正在于它和家分开，她能在那里只做 Olivia。她最好的朋友是米兰达和伊拉，三人小学就认识，默契到不用解释。三人一起进了福克纳高中，曾让他们尖叫庆祝，可进了高中她却看不懂她们之间发生了什么。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>小学时奥吉是学校的常客</h2>
+            <div class="seg-en">A fixture at PS 22</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 298 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">小学生活</span><span class="tag">奥吉的常客</span><span class="tag">不想被定义</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅在意的是“被弟弟定义”而不是弟弟本身——她不介意有个先天缺陷的弟弟，只介意别人用这件事概括她。</div>
+        <div class="body">
+<p>WHAT I ALWAYS loved most about middle school was that it was separate and different from home. I could go there and be Olivia Pullman—not Via, which is my name at home. Via was what they called me in elementary school, too. Back then, everyone knew all about us, of course. Mom used to pick me up after school, and August was always in the stroller. There weren’t a lot of people who were equipped to babysit for Auggie, so Mom and Dad brought him to all my class plays and concerts and recitals, all the school functions, the bake sales and the book fairs. My friends knew him. My friends’ parents knew him. My teachers knew him. The janitor knew him. (“Hey, how ya doin’, Auggie?” he’d always say, and give August a high five.) August was something of a fixture at PS 22.</p>
+<p>But in middle school a lot of people didn’t know about August. My old friends did, of course, but my new friends didn’t. Or if they knew, it wasn’t necessarily the first thing they knew about me. Maybe it was the second or third thing they’d hear about me. “Olivia? Yeah, she’s nice. Did you hear she has a brother who’s deformed?” I always hated that word, but I knew it was how people described Auggie. And I knew those kinds of conversations probably happened all the time out of earshot, every time I left the room at a party, or bumped into groups of friends at the pizza place. And that’s okay. I’m always going to be the sister of a kid with a birth defect: that’s not the issue. I just don’t always want to be defined that way.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说她最爱中学的一点是它和家分开，在那里她能当“奥利维亚”而不是家里的“维娅”。小学时奥吉常坐婴儿车陪她上各种活动，爸妈的朋友、老师、连清洁工都认识他，见到他会击掌，奥吉可说是 PS 22 的常客。可到了中学很多人不知道奥吉，她开始被人私下称作“那个弟弟畸形的女孩”，她恨那个词，却也知道自己永远逃不掉这个身份，只是不想被它定义。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Olivia? Yeah, she’s nice. Did you hear she has a brother who’s deformed?”</blockquote><p class="note">deformed = 畸形的。这句话是别人背后议论维娅的版本，她本人讨厌这个词，但明白它就是别人描述弟弟的方式。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>stroller</b> <span class="pos">n.</span> 婴儿车</li><li><b>recital</b> <span class="pos">n.</span> 表演会、演奏会</li><li><b>janitor</b> <span class="pos">n.</span> 清洁工、看门人</li><li><b>fixture</b> <span class="pos">n.</span> 固定成员、（这里指）常客</li><li><b>out of earshot</b> <span class="pos">phr.</span> 在听不见的地方、背后</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>一起尖叫进同一所高中</h2>
+            <div class="seg-en">Our own little group</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 318 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">三人友谊</span><span class="tag">给奥吉打扮</span><span class="tag">进同一所高中</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住三人友谊的亲密与默契，这为后面米兰达在暑假悄悄疏远维娅的转变做下铺垫。</div>
+        <div class="body">
+<p>The best thing about high school is that hardly anybody knows me at all. Except Miranda and Ella, of course. And they know not to go around talking about it.</p>
+<p>Miranda, Ella, and I have known each other since the first grade. What’s so nice is we never have to explain things to one another. When I decided I wanted them to call me Olivia instead of Via, they got it without my having to explain.</p>
+<p>They’ve known August since he was a little baby. When we were little, our favorite thing to do was play dress up with Auggie; load him up with feather boas and big hats and Hannah Montana wigs. He used to love it, of course, and we thought he was adorably cute in his own way. Ella said he reminded her of E.T. She didn’t say this to be mean, of course (though maybe it was a little bit mean). The truth is, there’s a scene in the movie when Drew Barrymore dresses E.T. in a blond wig: and that was a ringer for Auggie in our Miley Cyrus heyday.</p>
+<p>Throughout middle school, Miranda, Ella, and I were pretty much our own little group. Somewhere between super popular and well-liked: not brainy, not jocks, not rich, not druggies, not mean, not goody-goody, not huge, not flat. I don’t know if the three of us found each other because we were so alike in so many ways, or that because we found each other, we’ve become so alike in so many ways. We were so happy when we all got into Faulkner High School. It was such a long shot that all three of us would be accepted, especially when almost no one else from our middle school was. I remember how we screamed into our phones the day we got our acceptance letters.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说中学里几乎没人认识她，只有米兰达和伊拉不宣扬她的秘密。三人从一年级就是好友，默契到她想改叫 Olivia，两人不问就懂。小时候她们最爱把奥吉打扮成女装玩，伊拉说他像 E.T.，还提到电影里给 E.T. 戴金色假发的镜头，简直和她们给奥吉戴麦莉假发的情形一模一样。整个中学三人自成一群，不高不低、不好不坏，一起进入福克纳高中那天，三人对着手机尖叫庆祝。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>We were so happy when we all got into Faulkner High School.</blockquote><p class="note">get into = 被录取、进入。三小无猜的好友一起挤进同一所高中，是维娅口中无比开心的时刻。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>dress up</b> <span class="pos">phr.</span> 打扮、变装</li><li><b>feather boa</b> <span class="pos">n.</span> 羽毛围巾</li><li><b>wig</b> <span class="pos">n.</span> 假发</li><li><b>long shot</b> <span class="pos">n.</span> 渺茫的希望、不太可能成功的事</li><li><b>acceptance letter</b> <span class="pos">n.</span> 录取通知书</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>可进了高中，一切都变了</h2>
+            <div class="seg-en">Nothing like I thought</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 33 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">友谊变味</span><span class="tag">悬念引子</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一句把话停在半空——“完全不像我想的那样”，为后面米兰达的疏远与维娅的失落做预告。</div>
+        <div class="body">
+<p>This is why I haven’t understood what’s been going on with us lately, now that we’re actually in high school. It’s nothing like how I thought it would be.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅点出她一直想不通的事：真的进了高中后，她们之间出了问题，和她的想象完全不一样。这一小段只有一句话，是下面友谊裂痕的引子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It’s nothing like how I thought it would be.</blockquote><p class="note">nothing like = 一点也不像。维娅用简短一句收束：高中后的友情一点也不符合她的预期，留下悬念。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>lately</b> <span class="pos">adv.</span> 最近</li><li><b>nothing like</b> <span class="pos">phr.</span> 一点也不像</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_29.html">← 上一单元</a>
+    <a href="wonder_unit_31.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第30/96 单元 · 第二部 · 维娅 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u30.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

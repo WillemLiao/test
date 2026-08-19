@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第81单元 林边的火堆声与萤火虫之夜</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 81 单元 · 林边的火堆声与萤火虫之夜</div>
+    <div class="unit-en">Be Kind to Nature · The Woods Are Alive</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 926 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>露天电影夜开场，广播宣布今晚放的是《音乐之声》，全场欢呼。别人起哄喝倒彩，奥吉却高兴地鼓掌，因为那是姐姐维娅最爱的电影。电影看到罗尔夫和二姐唱那段很无聊的《你十六岁十七岁的年纪》时，杰克说要上厕所，两人一路跳着避开睡袋上空手去了场地边缘的树林——他们明知不该越过橙色路障，也没带手电。奥吉没法走太深，就近找了棵树，这时他闻见一股像鞭炮的可疑气味。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>广播宣布：今晚放《音乐之声》</h2>
+            <div class="seg-en">Be kind to nature</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 330 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">电影之夜开场</span><span class="tag">爱护自然</span><span class="tag">音乐之声</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意那些“规则”——尤其是‘别越过橙色路障、别进树林’这条会在后面直接引发情节，先在脑子里记住它。</div>
+        <div class="body">
+<p>AN ANNOUNCEMENT CAME over the huge speakers next to the stadium lights:</p>
+<p>“Welcome, everyone. Welcome to the twenty-third annual Big Movie Night at the Broarwood Nature Reserve. Welcome, teachers and students from … MS 342: the William Heath School. …” A big cheer went up on the left side of the field. “Welcome, teachers and students from Glover Academy. …” Another cheer went up, this time from the right side of the field. “And welcome, teachers and students from … the Beecher Prep School!” Our whole group cheered as loudly as we could. “We’re thrilled to have you as our guests here tonight, and thrilled that the weather is cooperating—in fact, can you believe what a beautiful night this is?” Again, everyone whooped and hollered. “So as we prepare the movie, we do ask that you take a few moments to listen to this important announcement. The Broarwood Nature Reserve, as you know, is dedicated to preserving our natural resources and the environment. We ask that you leave no litter behind. Clean up after yourselves. Be kind to nature and it will be kind to you. We ask that you keep that in mind as you walk around the grounds. Do not venture beyond the orange cones at the edges of the fairgrounds. Do not go into the cornfields or the woods. Please keep the free roaming to a minimum. Even if you don’t feel like watching the movie, your fellow students may feel otherwise, so please be courteous: no talking, no playing music, no running around. The restrooms are located on the other side of the concession stands. After the movie is over, it will be quite dark, so we ask that all of you stay with your schools as you make your way back to your buses. Teachers, there’s usually at least one lost party on Big Movie Nights at Broarwood: don’t let it happen to you! Tonight’s movie presentation will be … The Sound of Music!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>球场喇叭传来欢迎辞：今晚是布罗伍德保护区第二十三届大电影之夜，广播逐一欢迎三所学校，念到比彻预备时全场欢呼。接着经理念了一段规矩：别乱丢垃圾、爱护自然、别越过橙椎、别进玉米地和树林、少乱跑、对别人礼貌、电影结束要跟着自己的学校走，还提醒“布罗伍德大电影之夜每年至少丢一个人”。最后宣布今晚放映的是《音乐之声》。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Be kind to nature and it will be kind to you.</blockquote><p class="note">be kind to = 对……友善。广播这句“善待自然，自然也会善待你”是全场的环保口号，后面剧情就发生在他们无视规矩走进树林的地方。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>litter</b> <span class="pos">n.</span> 垃圾、废弃物</li><li><b>venture</b> <span class="pos">v.</span> 冒险前往、擅自走进</li><li><b>cone</b> <span class="pos">n.</span> 锥形路障（orange cone 橙色塑料椎）</li><li><b>roam</b> <span class="pos">n.</span> 游荡、到处走</li><li><b>courteous</b> <span class="pos">adj.</span> 有礼貌的、客气的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>有人朝屏幕扔汽水罐，奥吉想起了维娅</h2>
+            <div class="seg-en">The Sound of Music</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">音乐之声开演</span><span class="tag">对维娅的思念</span><span class="tag">别校孩子的无礼</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一层对比：别校孩子嘲笑《音乐之声》，奥吉却因为这是维娅最爱的电影而由衷开心——电影对每个人的意义不同。</div>
+        <div class="body">
+<p>I immediately started clapping, even though I’d seen it a few times before, because it was Via’s favorite movie of all time. But I was surprised that a whole bunch of kids (not from Beecher) booed and hissed and laughed. Someone from the right side of the field even threw a soda can at the screen, which seemed to surprise Mr. Tushman. I saw him stand up and look in the direction of the can thrower, though I knew he couldn’t see anything in the dark.</p>
+<p>The movie started playing right away. The stadium lights dimmed. Maria the nun was standing at the top of the mountain twirling around and around. It had gotten chilly all of a sudden, so I put on my yellow Montauk hoodie and adjusted the volume on my hearing aids and leaned against my backpack and started watching.</p>
+<p>The hills are alive …</p>
+<p>SOMEWHERE AROUND THE boring part where the guy named Rolf and the oldest daughter are singing You are sixteen, going on seventeen, Jack nudged me.</p>
+<p>“Dude, I’ve got to pee,” he said.</p>
+<p>We both got up and kind of hopscotched over the kids who were sitting or lying down on the sleeping bags. Summer waved as we passed and I waved back.</p>
+<p>There were lots of kids from the other schools walking around by the food trucks, playing the carnival games, or just hanging out.</p>
+<p>Of course, there was a huge line for the toilets.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉立刻鼓起掌来，因为他看过这部电影好几遍，而且那是姐姐维娅有史以来最喜欢的片子。可一群别校的孩子起哄、嘘声、嘲笑，甚至有人朝屏幕扔了一个汽水罐，把图什曼先生都惊到了，他站起身朝投罐的方向看，但黑暗里其实什么也看不见。电影很快开演，球场灯暗下来，玛丽亚修女站在山顶打着转。天突然变凉，奥吉穿上他的黄色蒙托克连帽衫，调好助听器音量，靠着背包看了起来。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I immediately started clapping, even though I'd seen it a few times before, because it was Via's favorite movie of all time.</blockquote><p class="note">favorite movie of all time = 有史以来最爱的电影。奥吉即便看过还是鼓掌，因为这是姐姐维娅最心爱的片子。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>clap</b> <span class="pos">v.</span> 拍手、鼓掌</li><li><b>boo</b> <span class="pos">v.</span> 发出嘘声喝倒彩</li><li><b>hiss</b> <span class="pos">v.</span> 发出嘶声、嘘声</li><li><b>dim</b> <span class="pos">v.</span> 调暗、变暗</li><li><b>hoodie</b> <span class="pos">n.</span> 连帽衫</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>排队太麻烦，杰克决定去树林里解决</h2>
+            <div class="seg-en">Forget the line, I'll find a tree</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 290 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">违规进林</span><span class="tag">亨利迈尔斯冷战</span><span class="tag">树林里的怪声</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓两组线索：一是亨利和迈尔斯还在跟杰克冷战、见面连话也不说，而阿莫斯已放下恩怨；二是树林里传来不像昆虫的“噼啪”声——这是后面诡异情节的引子。</div>
+        <div class="body">
+<p>“Forget this, I’ll just find a tree,” said Jack.</p>
+<p>“That’s gross, Jack. Let’s just wait,” I answered.</p>
+<p>But he headed off to the row of trees at the edge of the field, which was past the orange cones that we were specifically told not to go past. And of course I followed him. And of course we didn’t have our flashlights because we forgot to bring them. It was so dark now we literally couldn’t see ten steps ahead of us as we walked toward the woods. Luckily, the movie gave off some light, so when we saw a flashlight coming toward us out of the woods, we knew immediately that it was Henry, Miles, and Amos. I guess they hadn’t wanted to wait on line to use the toilets, either.</p>
+<p>Miles and Henry were still not talking to Jack, but Amos had let go of the war a while ago. And he nodded hello to us as they passed by.</p>
+<p>“Be careful of the bears!” shouted Henry, and he and Miles laughed as they walked away.</p>
+<p>Amos shook his head at us like, Don’t pay attention to them.</p>
+<p>Jack and I walked a little farther until we were just inside the woods. Then Jack hunted around for the perfect tree and finally did his business, though it felt like he was taking forever.</p>
+<p>The woods were loud with strange sounds and chirps and croaks, like a wall of noise coming out of the trees. Then we started hearing loud snaps not far from us, almost like cap gun pops, that definitely weren’t insect noises. And far away, like in another world, we could hear Raindrops on roses and whiskers on kittens.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>电影演到无趣的段落时，杰克推了推奥吉说要去尿尿。两人起身，像玩跳房子一样从睡袋上跳过，萨默尔朝他们招手。小吃车旁有很多别校的小孩在玩。厕所排着长队，杰克说不等了，干脆找棵树。奥吉说那很恶心让他等等，可杰克还是走向场地边那一排树——那是被明令“不许越过”的橙椎后面，奥吉当然也跟了上去，而且两人都忘带手电。黑漆漆的几乎走不过十步，幸好电影的光还亮着，他们看见树林里出来一只手电，认出是亨利、迈尔斯和阿莫斯（他们也不愿排队）。亨利和迈尔斯还在和杰克冷战，阿莫斯却早已放下恩怨，还朝他们点头打招呼。亨利走时故意喊“小心熊！”，和阿莫斯一笑置之。杰克找了棵树方便起来，远处传来“玫瑰上的雨滴和猫咪的胡须”的歌声，树林里却全是陌生的怪声和噼啪声。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The woods were loud with strange sounds and chirps and croaks, like a wall of noise coming out of the trees.</blockquote><p class="note">chirp = 鸟/虫的唧唧声；croak = 呱呱的叫声。奥吉把树林里的噪声比作“从树里涌出的一堵声音的墙”，暗示这里很不寻常。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>nudge</b> <span class="pos">v.</span> 用肘轻推提醒</li><li><b>hopscotch</b> <span class="pos">v.</span> 玩跳房子式地跳跃（一闪而过）</li><li><b>gross</b> <span class="pos">adj.</span> 恶心的、令人反感的</li><li><b>let go of</b> <span class="pos">phr.</span> 放下、不再计较</li><li><b>cap gun</b> <span class="pos">n.</span> 玩具的手枪（能发啪的响声）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>远处传来一股像鞭炮的味道</h2>
+            <div class="seg-en">Smells like firecrackers</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 60 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">神秘气味</span><span class="tag">树边私下交谈</span><span class="tag">警觉</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>那句“好像鞭炮”的气味很关键——它不是普通的自然味道，为接下来意外的真相埋下疑问。</div>
+        <div class="body">
+<p>“Ah, that’s much better,” said Jack, zipping up.</p>
+<p>“Now I have to pee,” I said, which I did on the nearest tree. No way I was going farther in like Jack did.</p>
+<p>“Do you smell that? Like firecrackers,” he said, coming over to me.</p>
+<p>“Oh yeah, that’s what that is,” I answered, zipping up. “Weird.”</p>
+<p>“Let’s go.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克拉好拉链说好多了，奥吉也只肯在最近的一棵树上解决，不敢学杰克走那么深。奥吉问闻到一股像鞭炮的味道没有，杰克走过来说闻到了，奥吉边拉拉链边回答“哦对，是这个味”，嘟囔了一句“真奇怪”，然后催杰克赶快走。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Do you smell that? Like firecrackers, he said, coming over to me.</blockquote><p class="note">firecracker = 鞭炮、爆竹。奥吉在林边闻到像鞭炮一样的气味并觉得“真奇怪”，为下面的发现埋下悬念。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>zip up</b> <span class="pos">phr.</span> 拉上拉链</li><li><b>firecracker</b> <span class="pos">n.</span> 鞭炮、烟火</li><li><b>weird</b> <span class="pos">adj.</span> 奇怪的、怪异的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_80.html">← 上一单元</a>
+    <a href="wonder_unit_82.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第81/96 单元 · 第八部 · 奥吉 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u81.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

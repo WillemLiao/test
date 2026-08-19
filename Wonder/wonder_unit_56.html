@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第56单元 维娅的男朋友贾斯汀</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 56 单元 · 维娅的男朋友贾斯汀</div>
+    <div class="unit-en">The Boyfriend</div>
+    <div class="unit-stats">
+      <span>⏱ 约 4 分钟</span>
+      <span>📄 305 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>两分钟后维娅带着男友贾斯汀回到房间。贾斯汀留着长发、戴小圆眼镜，拎着一个一端带尖的长银色琴盒。他有点紧张（大概是第一次见奥吉），自我介绍说琴盒里是「小提琴」。维娅介绍他在一个Zydeco乐队当提琴手——那种源自路易斯安那州、偏克里奥尔风格的音乐。奥吉起哄猜那是把机枪，贾斯汀笑着应和没人敢惹你。大家叽叽喳喳聊完，维娅带贾斯汀回自己房间，奥吉和杰克却因贾斯汀一本正经说「我来自布鲁克林」笑成一团。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>拎着银琴盒的贾斯汀登场</h2>
+            <div class="seg-en">Are you Via's boyfriend?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">新出场角色</span><span class="tag">小提琴手</span><span class="tag">初见奥吉</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意细节：贾斯汀第一次见奥吉时的紧张，和奥吉起哄问「是不是你男朋友」的画风——维娅与贾斯汀的关系初见端倪。</div>
+        <div class="body">
+<p>TWO MINUTES LATER the sister came back with this guy named Justin. Seemed like a cool enough dude. Longish hair. Little round glasses. He was carrying a big long shiny silver case that ended in a sharp point on one end.</p>
+<p>“Justin, this is my little brother, August,” said Via. “And that’s Jack.”</p>
+<p>“Hey, guys,” said Justin, shaking our hands. He seemed a little nervous. I guess maybe it was because he was meeting August for the first time. Sometimes I forget what a shock it is the first time you meet him. “Cool room.”</p>
+<p>“Are you Via’s boyfriend?” Auggie asked mischievously, and his sister pulled his cap down over his face.</p>
+<p>“What’s in your case?” I said. “A machine gun?”</p>
+<p>“Ha!” answered the boyfriend. “That’s funny. No, it’s a, uh … fiddle.”</p>
+<p>“Justin’s a fiddler,” said Via. “He’s in a zydeco band.”</p>
+<p>“What the heck is a zydeco band?” said Auggie, looking at me.</p>
+<p>“It’s a type of music,” said Justin. “Like Creole music.”</p>
+<p>“What’s Creole?” I said.</p>
+<p>“You should tell people that’s a machine gun,” said Auggie. “Nobody would ever mess with you.”</p>
+<p>“Ha, I guess you’re right,” Justin said, nodding and tucking his hair behind his ears. “Creole’s the kind of music they play in Louisiana,” he said to me.</p>
+<p>“Are you from Louisiana?” I asked.</p>
+<p>“No, um,” he answered, pushing up his glasses. “I’m from Brooklyn.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅带着一个叫贾斯汀的男生回到房间：长头发、小圆眼镜，手里拎着一个一端带锋利尖头的长银色琴盒，看着挺酷。经过介绍握手时贾斯汀有点紧张——大概是因为第一次见奥吉。奥吉坏笑着问他是不是维娅的男朋友，维娅当即把他的帽子拉下来盖住脸。杰克调侃琴盒里是不是机枪，贾斯汀笑着说是「小提琴」。维娅说贾斯汀在Zydeco乐队当提琴手，奥吉和杰克一头雾水，贾斯汀解释那是克里奥尔风格的音乐、路易斯安那州人玩的。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Are you Via's boyfriend? Auggie asked mischievously, and his sister pulled his cap down over his face.</blockquote><p class="note">mischievously = 调皮地、坏坏地。奥吉故意逗姐姐，被维娅一顶帽子压脸上，姐弟斗嘴的日常很鲜活。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fiddle</b> <span class="pos">n.</span> 小提琴（口语）</li><li><b>zydeco</b> <span class="pos">n.</span> 柴迪科（美国路易斯安那州的克里奥尔风格音乐）</li><li><b>mischievously</b> <span class="pos">adv.</span> 调皮地、恶作剧地</li><li><b>case</b> <span class="pos">n.</span> 琴盒、箱盒</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我来自布鲁克林</h2>
+            <div class="seg-en">I'm from Brooklyn</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 63 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">笑点收尾</span><span class="tag">模仿口吻</span><span class="tag">轻松友谊</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>结尾的笑点：贾斯汀「来自布鲁克林」vs「在Zydeco乐队玩路易斯安那音乐」的错位感，逗得两人狂笑——友情的轻松时刻。</div>
+        <div class="body">
+<p>I don’t know why this made me want to laugh.</p>
+<p>“Come on, Justin,” said Via, pulling him by the hand. “Let’s go hang out in my room.”</p>
+<p>“Okay, see you guys later. Bye,” he said.</p>
+<p>“Bye!”</p>
+<p>“Bye!”</p>
+<p>As soon as they left the room, Auggie looked at me, smiling.</p>
+<p>“I’m from Brooklyn,” I said, and we both started laughing hysterically.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这一小段极短（约1分钟）。贾斯汀一本正经地说自己来自布鲁克林，杰克不知为何觉得好笑。维娅拉着贾斯汀去她房间玩，两人道别后，奥吉看了杰克一眼笑起来，杰克学着贾斯汀的口吻重复「我来自布鲁克林」，两人顿时笑到发疯。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;I'm from Brooklyn,&quot; I said, and we both started laughing hysterically.</blockquote><p class="note">hysterically = 歇斯底里地、笑得停不下来。一个无关紧要的细节让两人笑作一团，正是亲密伙伴才有的默契。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hang out</b> <span class="pos">phr.</span> 一起玩、闲逛</li><li><b>hysterically</b> <span class="pos">adv.</span> 大笑不止地</li><li><b>by the hand</b> <span class="pos">phr.</span> （牵着）手</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_55.html">← 上一单元</a>
+    <a href="wonder_unit_57.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第56/96 单元 · 第四部 · 杰克 · 约 4 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u56.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

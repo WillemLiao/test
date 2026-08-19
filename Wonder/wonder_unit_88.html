@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第88单元 图什曼先生：朱利安要离开了</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 88 单元 · 图什曼先生：朱利安要离开了</div>
+    <div class="unit-en">Ducks · The Last Precept</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1046 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>结业前一天，图什曼先生叫奥吉到办公室，告诉他找到了自然营里欺负他们的七年级学生，其中带头的是埃迪·约翰逊，还找回了被砸坏的助听器头带，问奥吉要不要起诉，奥吉拒绝了。接着两人聊起这一年，图什曼夸奥吉是优等生，并告诉他一个重要消息：朱利安·阿尔班明年不回比彻预科了。奥吉还惊讶地发现，自己画的那只鸭子自画像被裱起来就挂在图什曼先生办公桌后面。最后一场英语课上，布朗先生留下六月格言，请大家暑假寄明信片给他。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>找回被砸坏的助听器头带</h2>
+            <div class="seg-en">Press charges</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 269 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">助听器</span><span class="tag">起诉选择</span><span class="tag">结业前夕</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住奥吉对这件事的态度：他没有追究到底，而是淡淡地说要配新助听器——这一年他已经学会不再纠缠过去的事。</div>
+        <div class="body">
+<p>THE DAY BEFORE the last day of school, Mr. Tushman called me into his office to tell me they had found out the names of the seventh graders from the nature retreat. He read off a bunch of names that didn’t mean anything to me, and then he said the last name: “Edward Johnson.”</p>
+<p>I nodded.</p>
+<p>“You recognize the name?” he said.</p>
+<p>“They called him Eddie.”</p>
+<p>“Right. Well, they found this in Edward’s locker.” He handed me what was left of my hearing aid headband. The right piece was completely gone and the left one was mangled. The band that connected the two, the Lobot part, was bent down the middle.</p>
+<p>“His school wants to know if you want to press charges,” said Mr. Tushman.</p>
+<p>I looked at my hearing aid.</p>
+<p>“No, I don’t think so.” I shrugged. “I’m being fitted for new ones anyway.”</p>
+<p>“Hmm. Why don’t you talk about it with your parents tonight? I’ll call your mom tomorrow to talk about it with her, too.”</p>
+<p>“Would they go to jail?” I asked.</p>
+<p>“No, not jail. But they’d probably go to juvie court. And maybe they’ll learn a lesson that way.”</p>
+<p>“Trust me: that Eddie kid is not learning any lessons,” I joked.</p>
+<p>He sat down behind his desk.</p>
+<p>“Auggie, why don’t you sit down a second?” he said.</p>
+<p>I sat down. All the things on his desk were the same as when I first walked into his office last summer: the same mirrored cube, the same little globe floating in the air. That felt like ages ago.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>结业前一天，图什曼先生把奥吉叫进办公室，告诉他找到了自然营里那帮七年级学生的名字，最后一个是爱德华·约翰逊，大家叫他埃迪。图什曼递给奥吉残缺的助听器头带——右片完全没了，左边被弄坏了，中间的连接带从中间弯折。学校问奥吉要不要起诉，奥吉耸耸肩说不用，反正要配新的了。图什曼让他回家和父母商量，还说他们可能会上少年法庭、长点教训。奥吉开玩笑说埃迪那孩子可学不了什么教训。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Trust me: that Eddie kid is not learning any lessons.</blockquote><p class="note">奥吉拿埃迪打趣说那孩子可不会学什么教训，用幽默轻轻化解了沉重的话题，也显示他不再为这件事愤怒。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>press charges</b> <span class="pos">phr.</span> （对某人）提起诉讼、告发</li><li><b>mangled</b> <span class="pos">adj.</span> 被弄坏得很厉害的、扭曲的</li><li><b>shrug</b> <span class="pos">v.</span> 耸肩（表示不在乎、无所谓）</li><li><b>jail</b> <span class="pos">n.</span> 监狱</li><li><b>juvie court</b> <span class="pos">n.</span> 少年法庭（处理未成年人案件的法庭）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>这一年对你好吗，奥吉？</h2>
+            <div class="seg-en">Has it been a good year for you</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 245 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">师生谈心</span><span class="tag">这一年回顾</span><span class="tag">善意关怀</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意图什曼先生不是随便聊聊，他在温和地了解奥吉的真实感受——他说教师知道的比孩子以为的多，为下文揭示朱利安的事做铺垫。</div>
+        <div class="body">
+<p>“Hard to believe this year’s almost over, huh?” he said, almost like he was reading my mind.</p>
+<p>“Yeah.”</p>
+<p>“Has it been a good year for you, Auggie? Has it been okay?”</p>
+<p>“Yeah, it’s been good.” I nodded.</p>
+<p>“I know academically it’s been a great year for you. You’re one of our top students. Congrats on the High Honor Roll.”</p>
+<p>“Thanks. Yeah, that’s cool.”</p>
+<p>“But I know it’s had its share of ups and downs,” he said, raising his eyebrows. “Certainly, that night at the nature reserve was one of the low points.”</p>
+<p>“Yeah.” I nodded. “But it was also kind of good, too.”</p>
+<p>“In what way?”</p>
+<p>“Well, you know, how people stood up for me and stuff?”</p>
+<p>“That was pretty wonderful,” he said, smiling.</p>
+<p>“Yeah.”</p>
+<p>“I know in school things got a little hairy with Julian at times.”</p>
+<p>I have to admit: he surprised me with that one.</p>
+<p>“You know about that stuff?” I asked him.</p>
+<p>“Middle-school directors have a way of knowing about a lot of stuff.”</p>
+<p>“Do you have, like, secret security cameras in the hallways?” I joked.</p>
+<p>“And microphones everywhere,” he laughed.</p>
+<p>“No, seriously?”</p>
+<p>He laughed again. “No, not seriously.”</p>
+<p>“Oh!”</p>
+<p>“But teachers know more than kids think, Auggie. I wish you and Jack had come to me about the mean notes that were left in your lockers.”</p>
+<p>“How do you know about that?” I said.</p>
+<p>“I’m telling you: middle-school directors know all.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>图什曼先生让奥吉坐下聊天，说这一年快结束了，夸奥吉学业出色、上了优等生荣誉榜，但也直言这一年有起有落，自然营那晚是低谷。奥吉说那晚其实也有好的地方——有人站出来为他挺身而出。图什曼还提到他跟朱利安之间的事，说自己作为初中部主任什么都知道，还遗憾奥吉和杰克没早把储物柜里那些恶意纸条的事告诉他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>But teachers know more than kids think, Auggie.</blockquote><p class="note">图什曼告诉奥吉老师知道的比孩子想象的多，这句为之后告诉奥吉他其实知情朱利安的所作所为做了铺垫，也让奥吉感到被理解。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>academically</b> <span class="pos">adv.</span> 在学业上</li><li><b>Honor Roll</b> <span class="pos">n.</span> 优等生荣誉榜</li><li><b>ups and downs</b> <span class="pos">phr.</span> 起起落落、有顺有逆</li><li><b>stand up for</b> <span class="pos">phr.</span> 站出来支持、为……说话</li><li><b>hairy</b> <span class="pos">adj.</span> 棘手的、令人紧张的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>朱利安明年不回来了</h2>
+            <div class="seg-en">Julian Albans is not coming back</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 256 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">朱利安离校</span><span class="tag">鸭子自画像</span><span class="tag">才华被认可</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意两个转折：一是朱利安要离开的惊人消息，二是那幅鸭子自画像被老师珍视地裱起来的细节——全校都认可了奥吉的才华。</div>
+        <div class="body">
+<p>“It wasn’t that big a deal,” I answered. “And we wrote notes, too.”</p>
+<p>He smiled. “I don’t know if it’s public yet,” he said, “though it will be soon anyway, but Julian Albans is not coming back to Beecher Prep next year.”</p>
+<p>“What!” I said. I honestly couldn’t hide how surprised I was.</p>
+<p>“His parents don’t think Beecher Prep is a good fit for him,” Mr. Tushman continued, raising his shoulders.</p>
+<p>“Wow, that’s big news,” I said.</p>
+<p>“Yeah, I thought you should know.”</p>
+<p>Then suddenly I noticed that the pumpkin portrait that used to be behind his desk was gone and my drawing, my Self-Portrait as an Animal that I drew for the New Year Art Show, was now framed and hanging behind his desk.</p>
+<p>“Hey, that’s mine!” I pointed.</p>
+<p>Mr. Tushman turned around like he didn’t know what I was talking about. “Oh, that’s right!” he said, tapping his forehead. “I’ve been meaning to show this to you for months now.”</p>
+<p>“My self-portrait as a duck.” I nodded.</p>
+<p>“I love this piece, Auggie,” he said. “When your art teacher showed it to me, I asked her if I could keep it for my wall. I hope that’s okay with you.”</p>
+<p>“Oh, yeah! Sure. What happened to the pumpkin portrait?”</p>
+<p>“Right behind you.”</p>
+<p>“Oh, yeah. Nice.”</p>
+<p>“I’ve been meaning to ask you since I hung this up …,” he said, looking at it. “Why did you choose to represent yourself as a duck?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说那些纸条不算什么大不了的事。图什曼先生告诉他一个或许还没公开的消息：朱利安明年不回来了，他父母觉得比彻预科不适合他。奥吉非常惊讶。接着奥吉突然发现，办公桌后原来挂南瓜画像的地方，现在挂起了他自己在新年艺术展上画的动物自画像——一只鸭子。图什曼说美术老师把画给他看，他就想留在这面墙上，并问奥吉为什么把自己画成鸭子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Julian Albans is not coming back to Beecher Prep next year.</blockquote><p class="note">朱利安要被转走了。奥吉那句脱口而出的惊呼说明他完全没料到——这个一直排挤他的人，从此退出了他的校园生活。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>public</b> <span class="pos">adj.</span> 公开的；be public 被大家知道</li><li><b>a good fit</b> <span class="pos">phr.</span> 合适、契合（这里指学校适合朱利安）</li><li><b>framed</b> <span class="pos">adj.</span> 装裱在画框里的</li><li><b>self-portrait</b> <span class="pos">n.</span> 自画像</li><li><b>point</b> <span class="pos">v.</span> 用手指点、指出来</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>因为我觉得自己长得像鸭子</h2>
+            <div class="seg-en">Sometimes a duck is just a duck</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 270 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">鸭子自画像</span><span class="tag">幽默坦诚</span><span class="tag">毕业告别</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是一个轻松温暖的瞬间：有时候鸭子就只是鸭子——图什曼先生想多了，而奥吉平淡的实话反而最动人，也象征他不被丑小鸭变天鹅的故事定义。</div>
+        <div class="body">
+<p>“What do you mean?” I answered. “That was the assignment.”</p>
+<p>“Yes, but why a duck?” he said. “Is it safe to assume that it was because of the story of the … um, the duckling that turns into a swan?”</p>
+<p>“No,” I laughed, shaking my head. “It’s because I think I look like a duck.”</p>
+<p>“Oh!” said Mr. Tushman, his eyes opening wide. He started laughing. “Really? Huh. Here I was looking for symbolism and metaphors and, um … sometimes a duck is just a duck!”</p>
+<p>“Yeah, I guess,” I said, not quite getting why he thought that was so funny. He laughed to himself for a good thirty seconds.</p>
+<p>“Anyway, Auggie, thanks for chatting with me,” he said, finally. “I just want you to know it’s truly a pleasure having you here at Beecher Prep, and I’m really looking forward to next year.” He reached across the desk and we shook hands. “See you tomorrow at graduation.”</p>
+<p>“See you tomorrow, Mr. Tushman.”</p>
+<p>THIS WAS WRITTEN on Mr. Browne’s chalkboard when we walked into English class for the last time:</p>
+<p class="q">MR. BROWNE’S JUNE PRECEPT:</p>
+<p class="q">JUST FOLLOW THE DAY AND REACH FOR THE SUN!</p>
+<p class="q">(The Polyphonic Spree)</p>
+<p class="q">Have a great summer vacation, Class 5B!</p>
+<p class="q">It’s been a great year and you’ve been a wonderful group of students.</p>
+<p class="q">If you remember, please send me a postcard this summer with YOUR personal precept. It can be something you made up for yourself or something you’ve read somewhere that means something to you. (If so, don’t forget the attribution, please!) I really look forward to getting them.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>图什曼先生问奥吉为什么把自己画成鸭子，是否因为丑小鸭变天鹅的故事。奥吉笑着说不是，是因为他觉得自己长得就像鸭子。图什曼先是眼睛睁大，随即大笑，说自己一直在找象征和隐喻，但有时候鸭子就只是鸭子。最后他感谢奥吉聊天，说很荣幸奥吉在比彻预科，期待明年，握手道别，约好毕业典礼见。英语课后，布朗先生在黑板上留下六月格言：跟随每一天、伸手够太阳，并请学生暑假寄明信片分享自己的格言。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Sometimes a duck is just a duck!</blockquote><p class="note">图什曼忙着在画里找深刻的象征意义，奥吉却老实说自己就是觉得长得像鸭子。鸭子就是鸭子——这句不带哲理的实话，恰恰是最有哲理、也最感动人的回答。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>assignment</b> <span class="pos">n.</span> 作业、创作任务</li><li><b>assume</b> <span class="pos">v.</span> 假定、猜测</li><li><b>duckling</b> <span class="pos">n.</span> 小鸭子</li><li><b>swan</b> <span class="pos">n.</span> 天鹅</li><li><b>symbolism</b> <span class="pos">n.</span> 象征意义</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>布朗先生的六月格言与地址</h2>
+            <div class="seg-en">Please send me a postcard this summer</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 6 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">格言邀请</span><span class="tag">明信片</span><span class="tag">结尾伏笔</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全书埋下的一根线：布朗先生邀请每个学生自己创作格言并寄给他，后面会收拢成毕业典礼上奥吉的那段话。</div>
+        <div class="body">
+<p class="q">Tom Browne</p>
+<p class="q">563 Sebastian Place</p>
+<p class="q">Bronx, NY 10053</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>最后这段是一个小结尾：布朗先生（汤普森·布朗）在留言里留下自己的姓名和住址——布朗克斯区塞巴斯蒂安大街563号，纽约市。这是在请学生们暑假把写着自己格言的明信片寄到这里给他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Tom Browne, 563 Sebastian Place, Bronx, NY 10053</blockquote><p class="note">布朗先生公开自己的住址，只是为了让孩子们暑假寄明信片给他——这个细小的举动透着他对学生的在意与信任。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>postcard</b> <span class="pos">n.</span> 明信片</li><li><b>precept</b> <span class="pos">n.</span> 格言、行为准则</li><li><b>attribution</b> <span class="pos">n.</span> 出处、引用来源说明</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_87.html">← 上一单元</a>
+    <a href="wonder_unit_89.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第88/96 单元 · 第八部 · 奥吉 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u88.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

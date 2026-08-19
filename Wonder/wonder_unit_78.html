@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第78单元 临行整理与黎明时分的告别</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 78 单元 · 临行整理与黎明时分的告别</div>
+    <div class="unit-en">Packing · Daybreak</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1110 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>出发前夜，妈妈帮奥吉收拾行李，纯蓝的带轮行李箱里没有一丝标志。奥吉一连串问出他的担心：睡不着怎么办、做噩梦了怎么办；他提出偷偷带上他的玩具熊巴布，藏进袋底谁都不知道。妈妈一边叮嘱他喷驱虫水、擦防晒、游泳要摘助听器，一边感慨这一年奥吉长大了很多。夜里奥吉自己读《纳尼亚传奇》入睡；第二天黎明他瞥见过世的狗黛西的影子，胸口充满力量，最后把巴布留在床上、贴了张纸条让妈妈想他时就抱着玩——他没带走巴布，说明他真的开始独立了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>睡不着和做噩梦怎么办？把巴布藏进袋底</h2>
+            <div class="seg-en">What if I can't sleep?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">行李收拾</span><span class="tag">分离焦虑</span><span class="tag">玩具熊巴布</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意奥吉用一连串“what if（万一……怎么办）”问出所有恐惧，这暴露了他虽然想去露营、却依然怕独自在外过夜的紧张。</div>
+        <div class="body">
+<p>MOM HELPED ME pack the night before the big trip. We put all the clothes I was taking on my bed, and she folded everything neatly and put it inside the bag while I watched. It was a plain blue rolling duffel, by the way: no logos or artwork.</p>
+<p>“What if I can’t sleep at night?” I asked.</p>
+<p>“Take a book with you. Then if you can’t sleep, you can pull out your flashlight, and read for a bit until you get sleepy,” she answered.</p>
+<p>I nodded. “What if I have a nightmare?”</p>
+<p>“Your teachers will be there, sweetie,” she said. “And Jack. And your friends.”</p>
+<p>“I can bring Baboo,” I said. That was my favorite stuffed animal when I was little. A small black bear with a soft black nose.</p>
+<p>“You don’t really sleep with him anymore, do you?” said Mom.</p>
+<p>“No, but I keep him in my closet in case I wake up in the middle of the night and can’t get back to sleep,” I said. “I could hide him in my bag. No one would know.”</p>
+<p>“Then let’s do that.” Mom nodded, getting Baboo from inside my closet.</p>
+<p>“I wish they allowed cell phones,” I said.</p>
+<p>“I know, me too!” she said. “Though I know you’re going to have a great time, Auggie. You sure you want me to pack Baboo?”</p>
+<p>“Yeah, but way down where no one can see him,” I said.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>出发前夜妈妈帮奥吉叠衣服装箱，新袋子是纯蓝的，没有标志。奥吉问睡不着怎么办，妈妈说带上书用小手电读。他又担心做噩梦，妈妈说有老师、杰克和朋友在。奥吉想带他小时候最爱的玩具熊巴布，说可以藏在袋子里没人看见，妈妈也答应了。他还遗憾学校不让带手机。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>What if I can't sleep at night?</blockquote><p class="note">what if 在这里是“万一……怎么办/要是……呢”，奥吉连着用这个句式盘问妈妈，把他对独自过夜的担心全抖了出来。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fold</b> <span class="pos">v.</span> 折叠</li><li><b>logo</b> <span class="pos">n.</span> （产品上的）标志、商标图案</li><li><b>flashlight</b> <span class="pos">n.</span> 手电筒</li><li><b>nightmare</b> <span class="pos">n.</span> 噩梦、不好的梦</li><li><b>stuffed animal</b> <span class="pos">n.</span> 毛绒玩具动物</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>妈妈的叮嘱：驱虫水、防晒、游泳要摘助听器</h2>
+            <div class="seg-en">Don't forget your hearing aids</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">母亲叮嘱</span><span class="tag">助听器</span><span class="tag">改形象</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>妈妈反复叮嘱的细节都有一个共同目的——保护奥吉那副贵重的助听器，记住他戴助听器这个设定。</div>
+        <div class="body">
+<p>She stuck Baboo deep inside the bag and then stuffed the last of my T-shirts on top of him. “So many clothes for just two days!”</p>
+<p>“Three days and two nights,” I corrected her.</p>
+<p>“Yep.” She nodded, smiling. “Three days and two nights.” She zipped up the duffel bag and picked it up. “Not too heavy. Try it.”</p>
+<p>I picked up the bag. “Fine.” I shrugged.</p>
+<p>She sat on the bed. “Hey, what happened to your Empire Strikes Back poster?”</p>
+<p>“Oh, I took that down ages ago,” I answered.</p>
+<p>She shook her head. “Huh, I didn’t notice that before.”</p>
+<p>“I’m trying to, you know, change my image a bit,” I explained.</p>
+<p>“Okay.” She smiled, nodding like she understood. “Anyway, honey, you have to promise me you won’t forget to put on the bug spray, okay? On the legs, especially when you’re hiking through the woods. It’s right here in the front compartment.”</p>
+<p>“Uh-huh.”</p>
+<p>“And put on your sunscreen,” she said. “You do not want to get a sunburn. And don’t, I repeat, do not forget to take your hearing aids off if you go swimming.”</p>
+<p>“Would I get electrocuted?”</p>
+<p>“No, but you’d be in real hot water with Daddy because those things cost a fortune!” she laughed. “I put the rain poncho in the front compartment, too. Same thing goes if it rains, Auggie, okay? Make sure you cover the hearing aids with the hood.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈把巴布塞进袋底再用 T 恤盖好。奥吉说他早把《星球大战》海报摘下来，是想“改改自己的形象”。妈妈叮嘱他别忘喷驱虫水、擦防晒霜、游泳时务必把助听器摘下来——她开玩笑说要是弄坏了助听器，爸爸会“让他有好果子吃”，因为那东西贵得要命。她还把雨披放在前袋，提醒下雨要用帽子罩住助听器。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And don't, I repeat, do not forget to take your hearing aids off if you go swimming.</blockquote><p class="note">hearing aid = 助听器。妈妈一字一顿地用 do not 强调：游泳时一定要把助听器摘下来，因为它非常贵重。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bug spray</b> <span class="pos">n.</span> 驱虫喷雾</li><li><b>compartment</b> <span class="pos">n.</span> （箱包的）隔层、口袋</li><li><b>sunscreen</b> <span class="pos">n.</span> 防晒霜</li><li><b>sunburn</b> <span class="pos">n.</span> 晒伤</li><li><b>electrocuted</b> <span class="pos">adj.</span> 被电击的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“你今年真的长大了”：自己读书睡觉</h2>
+            <div class="seg-en">I'll write you letters</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 265 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">成长</span><span class="tag">第一次独立入睡</span><span class="tag">母子对话</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是转折点：奥吉主动拒绝妈妈的陪睡——他说的“长大了”不仅指长高，更指他愿意开始独立，这是全书成长主题的缩影。</div>
+        <div class="body">
+<p>“Aye, aye, sir,” I said, saluting.</p>
+<p>She smiled and pulled me over.</p>
+<p>“I can’t believe how much you’ve grown up this year, Auggie,” she said softly, putting her hands on the sides of my face.</p>
+<p>“Do I look taller?”</p>
+<p>“Definitely.” She nodded.</p>
+<p>“I’m still the shortest one in my grade.”</p>
+<p>“I’m not really even talking about your height,” she said.</p>
+<p>“Suppose I hate it there?”</p>
+<p>“You’re going to have a great time, Auggie.”</p>
+<p>I nodded. She got up and gave me a quick kiss on the forehead. “Okay, so I say we get to bed now.”</p>
+<p>“It’s only nine o’clock, Mom!”</p>
+<p>“Your bus leaves at six a.m. tomorrow. You don’t want to be late. Come on. Chop chop. Your teeth are brushed?”</p>
+<p>I nodded and climbed into bed. She started to lie down next to me.</p>
+<p>“You don’t need to put me to bed tonight, Mom,” I said. “I’ll read on my own till I get sleepy.”</p>
+<p>“Really?” She nodded, impressed. She squeezed my hand and gave it a kiss. “Okay then, goodnight, love. Have sweet dreams.”</p>
+<p>“You too.”</p>
+<p>She turned on the little reading light beside the bed.</p>
+<p>“I’ll write you letters,” I said as she was leaving. “Even though I’ll probably be home before you guys even get them.”</p>
+<p>“Then we can read them together,” she said, and threw me a kiss.</p>
+<p>When she left my room, I took my copy of The Lion, the Witch and the Wardrobe off the night table and started reading until I fell asleep.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉敬了个礼说“是，长官”，妈妈把手放在他脸颊上，感慨这一年他真的长大了——虽然他还是全年级最矮的。妈妈让他早点睡，因为明早六点班车就出发。奥吉第一次说今晚不用妈妈陪着哄睡，他要自己读到困。离开时他说会给妈妈写信，然后拿起《狮子女巫魔衣柜》读起来直到睡着。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You don't need to put me to bed tonight, Mom. I'll read on my own till I get sleepy.</blockquote><p class="note">put sb to bed = 哄某人上床睡觉。奥吉第一次对妈妈说今晚不用哄睡，这个细小的主动信号标志着他开始独自面对夜晚。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>salute</b> <span class="pos">v.</span> 敬礼</li><li><b>impressed</b> <span class="pos">adj.</span> 钦佩的、留下好印象的</li><li><b>squeeze</b> <span class="pos">v.</span> 紧握、捏</li><li><b>night table</b> <span class="pos">n.</span> 床头柜</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>黎明醒来，看见过世的黛西的影子</h2>
+            <div class="seg-en">Daisy's ghost</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 249 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">过世的爱犬</span><span class="tag">黎明的勇气</span><span class="tag">幻影</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“黛西的影子”这个超自然又温情的瞬间：过世的狗在黎明出现给了他勇气，这是奥吉独自出发前的心理支撑。</div>
+        <div class="body">
+<p class="q">… though the Witch knew the Deep Magic, there is a magic deeper still which she did not know. Her knowledge goes back only to the dawn of time. But if she could have looked a little further back, into the stillness and the darkness before Time dawned, she would have read there a different incantation.</p>
+<p>THE NEXT DAY I woke up really early. It was still dark inside my room and even darker outside, though I knew it would be morning soon. I turned over on my side but didn’t feel at all sleepy. That’s when I saw Daisy sitting near my bed. I mean, I knew it wasn’t Daisy, but for a second I saw a shadow that looked just like her. I didn’t think it was a dream then, but now, looking back, I know it must have been. It didn’t make me sad to see her at all: it just filled me up with nice feelings inside. She was gone after a second, and I couldn’t see her again in the darkness.</p>
+<p>The room slowly started lightening. I reached for my hearing aid headband and put it on, and now the world was really awake. I could hear the garbage trucks clunking down the street and the birds in our backyard. And down the hallway I heard Mom’s alarm beeping. Daisy’s ghost made me feel super strong inside, knowing wherever I am, she’d be there with me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉很早就醒了，屋里屋外都还黑着但他不再困了。他瞥见床边有个像是他家过世的狗黛西的影子，虽然清楚地知道不是真的——现在回想起来那一定是场浅梦——可看见她一点不让他难过，反而心里充满暖意。他戴上助听器头戴，听到垃圾车声和鸟鸣。黛西的“影子”让他感到无比有力量，仿佛无论去哪她都会陪着他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Daisy's ghost made me feel super strong inside, knowing wherever I am, she'd be there with me.</blockquote><p class="note">ghost 这里是“影子/幻影”的意思。黎明梦见过世的狗黛西给了奥吉力量，让他相信她永远陪着自己——这是他临行前的定心丸。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>ghost</b> <span class="pos">n.</span> 鬼魂、影子幻影</li><li><b>shadow</b> <span class="pos">n.</span> 影子</li><li><b>lighten</b> <span class="pos">v.</span> （天色）变亮</li><li><b>fill up</b> <span class="pos">phr.</span> 充满（某种情绪）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>把巴布留在床上，给妈妈留一张纸条</h2>
+            <div class="seg-en">Dear Mom, I won't need Baboo</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 109 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">放手与独立</span><span class="tag">留纸条</span><span class="tag">告别过去</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>读那行纸条是重点：奥吉选择不带走巴布，等于宣布自己要独自面对露营——连最依赖的安慰品都让给了妈妈。</div>
+        <div class="body">
+<p>I got up out of bed and went to my desk and wrote a little note to Mom. Then I went into the living room, where my packed bag was by the door. I opened it up and fished inside until I found what I was looking for.</p>
+<p>I took Baboo back to my room, and I laid him in my bed and taped the little note to Mom on his chest. And then I covered him with my blanket so Mom would find him later. The note read:</p>
+<p>Dear Mom, I won’t need Baboo, but if you miss me, you can cuddle with him yourself. XO Auggie</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉起床后先给妈妈写了张纸条，然后到门口打开已经打包好的行李，从里面翻出巴布。他把巴布放回自己床上，把纸条贴在它胸口，再盖上毯子让妈妈稍后能发现。纸条上写着：“亲爱的妈妈：我这次不需要巴布了，可你要是想我，就自己抱着它睡吧。奥吉（❤️）”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Dear Mom, I won't need Baboo, but if you miss me, you can cuddle with him yourself. XO Auggie</blockquote><p class="note">cuddle = 抱着、搂着。cuddle with Baboo 是抱着玩偶睡的意思。这张纸条是奥吉式的温柔告别：把巴布留给想他的妈妈。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fish</b> <span class="pos">v.</span> （在包里）翻找</li><li><b>tape</b> <span class="pos">v.</span> 用胶带贴住</li><li><b>note</b> <span class="pos">n.</span> 纸条、便条</li><li><b>cuddle</b> <span class="pos">v.</span> 抱着、搂着取暖</li><li><b>XO</b> <span class="pos">phr.</span> 信末的“抱抱亲亲”（X=吻，O=抱）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_77.html">← 上一单元</a>
+    <a href="wonder_unit_79.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第78/96 单元 · 第八部 · 奥吉 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u78.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第27单元 太阳奥吉统治下的家庭宇宙</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 27 单元 · 太阳奥吉统治下的家庭宇宙</div>
+    <div class="unit-en">A Tour of the Galaxy · Before August</div>
+    <div class="unit-stats">
+      <span>⏱ 约 11 分钟</span>
+      <span>📄 881 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>这一单元换成姐姐维娅的视角开篇。她把全家比作一个宇宙：奥吉是太阳，爸妈是绕着他转的行星，其他亲友是围绕的行星与小行星。维娅说从小就习惯不抱怨、不打扰爸妈，一切都以奥吉的需要优先。但今年她觉得家里的“宇宙”开始失衡；她还翻出旧照片，回忆八月被抱回家那天的情景——她盯着他看了很久，最后只说了一句“他长得不像莉莉！”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>奥吉是太阳，我们都绕着他转</h2>
+            <div class="seg-en">August is the Sun</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 312 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">家庭比喻</span><span class="tag">懂事的孩子</span><span class="tag">奥吉为中心</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“全家以奥吉为中心”这个比喻：维娅不是抱怨，而是平静地描述自己从小被要求懂事的生活。</div>
+        <div class="body">
+<p>AUGUST IS THE Sun. Me and Mom and Dad are planets orbiting the Sun. The rest of our family and friends are asteroids and comets floating around the planets orbiting the Sun. The only celestial body that doesn’t orbit August the Sun is Daisy the dog, and that’s only because to her little doggy eyes, August’s face doesn’t look very different from any other human’s face. To Daisy, all our faces look alike, as flat and pale as the moon.</p>
+<p>I’m used to the way this universe works. I’ve never minded it because it’s all I’ve ever known. I’ve always understood that August is special and has special needs. If I was playing too loudly and he was trying to take a nap, I knew I would have to play something else because he needed his rest after some procedure or other had left him weak and in pain. If I wanted Mom and Dad to watch me play soccer, I knew that nine out of ten times they’d miss it because they were busy shuttling August to speech therapy or physical therapy or a new specialist or a surgery.</p>
+<p>Mom and Dad would always say I was the most understanding little girl in the world. I don’t know about that, just that I understood there was no point in complaining. I’ve seen August after his surgeries: his little face bandaged up and swollen, his tiny body full of IVs and tubes to keep him alive. After you’ve seen someone else going through that, it feels kind of crazy to complain over not getting the toy you had asked for, or your mom missing a school play. I knew this even when I was six years old. No one ever told it to me. I just knew it.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅用宇宙作比喻：奥吉是太阳，她和爸妈是绕着他转的行星，亲友是更外层的小行星彗星，只有狗狗黛西不把奥吉当特殊的存在。她说自己早就习惯这种运转，从六岁起就知道不该抱怨——奥吉每次手术后都虚弱疼痛，爸妈忙得顾不上她踢球或接她。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>AUGUST IS THE Sun. Me and Mom and Dad are planets orbiting the Sun.</blockquote><p class="note">orbiting = 围绕……运行。维娅把家庭比作太阳系，一句话点明她在家庭里的位置：永远围着奥吉转。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>planet</b> <span class="pos">n.</span> 行星</li><li><b>orbit</b> <span class="pos">v.</span> 围绕……运行</li><li><b>comet</b> <span class="pos">n.</span> 彗星</li><li><b>celestial body</b> <span class="pos">n.</span> 天体、星体</li><li><b>complain</b> <span class="pos">v.</span> 抱怨</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我从小自己搞定一切</h2>
+            <div class="seg-en">Figuring things out on my own</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">独立自足</span><span class="tag">不抱怨</span><span class="tag">转折伏笔</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意段尾那句转折：“今年宇宙开始失衡”——为维娅后面内心的失落与变化埋下伏笔。</div>
+        <div class="body">
+<p>So I’ve gotten used to not complaining, and I’ve gotten used to not bothering Mom and Dad with little stuff. I’ve gotten used to figuring things out on my own: how to put toys together, how to organize my life so I don’t miss friends’ birthday parties, how to stay on top of my schoolwork so I never fall behind in class. I’ve never asked for help with my homework. Never needed reminding to finish a project or study for a test. If I was having trouble with a subject in school, I’d go home and study it until I figured it out on my own. I taught myself how to convert fractions into decimal points by going online. I’ve done every school project pretty much by myself. When Mom or Dad ask me how things are going in school, I’ve always said “good”—even when it hasn’t always been so good. My worst day, worst fall, worst headache, worst bruise, worst cramp, worst mean thing anyone could say has always been nothing compared to what August has gone through. This isn’t me being noble, by the way: it’s just the way I know it is.</p>
+<p>And this is the way it’s always been for me, for the little universe of us. But this year there seems to be a shift in the cosmos. The galaxy is changing. Planets are falling out of alignment.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅细数自己有多独立：不麻烦爸妈、功课自己做、网上自学把分数转成小数、每个学校项目都靠自己。她说自己最差的一天也比不上奥吉经历的痛苦，并强调这话不是自夸，只是事实。但今年她感到家里的“宇宙”起了变化，行星开始偏离轨道。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>This year there seems to be a shift in the cosmos. Planets are falling out of alignment.</blockquote><p class="note">shift = 转变；alignment = 对齐。维娅继续用太空比喻说家里的平衡开始倾斜，暗示她心里也有了变化。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fall behind</b> <span class="pos">phr.</span> 落后、跟不上</li><li><b>convert</b> <span class="pos">v.</span> 转换</li><li><b>noble</b> <span class="pos">adj.</span> 高尚的、无私的</li><li><b>bruise</b> <span class="pos">n.</span> 瘀伤、淤青</li><li><b>in alignment</b> <span class="pos">phr.</span> 成一线、协调一致</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>我第一次见到回来的八月</h2>
+            <div class="seg-en">Before August</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 323 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">旧照片</span><span class="tag">莉莉玩偶</span><span class="tag">初次见面</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“莉莉玩偶”的象征：它预演了当姐姐，却被真弟弟完全取代——维娅对奥吉既是爱也可能是隐约的被替代感。</div>
+        <div class="body">
+<p>I HONESTLY DON’T remember my life before August came into it. I look at pictures of me as a baby, and I see Mom and Dad smiling so happily, holding me. I can’t believe how much younger they looked back then: Dad was this hipster dude and Mom was this cute Brazilian fashionista. There’s one shot of me at my third birthday: Dad’s right behind me while Mom’s holding the cake with three lit candles, and in back of us are Tata and Poppa, Grans, Uncle Ben, Aunt Kate, and Uncle Po. Everyone’s looking at me and I’m looking at the cake. You can see in that picture how I really was the first child, first grandchild, first niece. I don’t remember what it felt like, of course, but I can see it plain as can be in the pictures.</p>
+<p>I don’t remember the day they brought August home from the hospital. I don’t remember what I said or did or felt when I saw him for the first time, though everyone has a story about it. Apparently, I just looked at him for a long time without saying anything at all, and then finally I said: “It doesn’t look like Lilly!” That was the name of a doll Grans had given me when Mom was pregnant so I could “practice” being a big sister. It was one of those dolls that are incredibly lifelike, and I had carried it everywhere for months, changing its diaper, feeding it. I’m told I even made a baby sling for it. The story goes that after my initial reaction to August, it only took a few minutes (according to Grans) or a few days (according to Mom) before I was all over him: kissing him, cuddling him, baby talking to him. After that I never so much as touched or mentioned Lilly ever again.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说自己其实不记得八月出生前的生活，只靠旧照片想象自己是第一个孩子、第一个孙女。她回忆第一次见到被抱回家的奥吉：据说她盯着看了很久没说话，最后说“他长得不像莉莉”——莉莉是外婆送她练习当姐姐的逼真玩偶。而据大人说，她很快就亲奥吉、抱奥吉，从此再也不碰莉莉。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“It doesn’t look like Lilly!”</blockquote><p class="note">lifelike = 逼真的。维娅初见弟弟竟拿他比玩偶，这句话既天真又透露出这段姐弟关系的起点。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hipster</b> <span class="pos">adj.</span> 潮人风格的、新潮的</li><li><b>lifelike</b> <span class="pos">adj.</span> 逼真的、像真的一样</li><li><b>diaper</b> <span class="pos">n.</span> 尿布</li><li><b>cuddle</b> <span class="pos">v.</span> 拥抱、依偎</li><li><b>sling</b> <span class="pos">n.</span> 背带、吊兜</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_26.html">← 上一单元</a>
+    <a href="wonder_unit_28.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第27/96 单元 · 第二部 · 维娅 · 约 11 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u27.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

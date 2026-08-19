@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第34单元 解析家族相册，诊断一块坏基因</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 34 单元 · 解析家族相册，诊断一块坏基因</div>
+    <div class="unit-en">Genetics 101 · The Punnett Square</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 779 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>维娅翻开族谱：爸爸家是来自俄国波兰的犹太移民，妈妈家是巴西人，父母在布朗大学相遇。她翻遍老照片，却从没在这家人脸上找到过八月的影子——可医生却说，爸妈两人都带着同一块“病”基因，而她自己也一样。她于是冷静地列出遗传概率：如果她生孩子，有一半机会把缺陷基因传下去；奥吉能活成什么样，是双倍基因的几率问题。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>爸爸犹太裔，妈妈巴西后裔</h2>
+            <div class="seg-en">Two peas in a pod</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 208 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">家族历史</span><span class="tag">移民背景</span><span class="tag">父母相遇</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一大段家族史的用意：维娅在铺垫——这样一个混血大家族，却没人像奥吉，为后面“基因从哪来”的疑问做引子。</div>
+        <div class="body">
+<p>BOTH SIDES OF Dad’s family were Jews from Russia and Poland. Poppa’s grandparents fled the pogroms and ended up in NYC at the turn of the century. Tata’s parents fled the Nazis and ended up in Argentina in the forties. Poppa and Tata met at a dance on the Lower East Side while she was in town visiting a cousin. They got married, moved to Bayside, and had Dad and Uncle Ben.</p>
+<p>Mom’s side of the family is from Brazil. Except for her mother, my beautiful Grans, and her dad, Agosto, who died before I was born, the rest of Mom’s family—all her glamorous aunts, uncles, and cousins—still live in Alto Leblon, a ritzy suburb south of Rio. Grans and Agosto moved to Boston in the early sixties, and had Mom and Aunt Kate, who’s married to Uncle Porter.</p>
+<p>Mom and Dad met at Brown University and have been together ever since. Isabel and Nate: like two peas in a pod. They moved to New York right after college, had me a few years later, then moved to a brick townhouse in North River Heights, the hippie-stroller capital of upper upper Manhattan, when I was about a year old.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅交代两边的家族背景：爸爸祖上从俄国波兰逃难到纽约，爷爷波帕奶奶塔塔很早就开枝散叶；妈妈这边是从巴西来的，除了漂亮的外婆格朗丝和外公阿古斯托，家里其他人都在巴西里约附近的富人区。外公外婆六十年代初搬到波士顿。她父母伊莎贝尔和内特在布朗大学认识后就在一起，结婚搬到纽约，维娅一岁时住进上曼哈顿的砖房。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Isabel and Nate: like two peas in a pod.</blockquote><p class="note">peas in a pod = 一个豆荚里的豆子，形容两人形影不离、非常般配。维娅用这句形容爸妈感情如胶似漆。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>pogrom</b> <span class="pos">n.</span> （历史上对犹太人的）大屠杀</li><li><b>flee</b> <span class="pos">v.</span> 逃离、逃走</li><li><b>ritzy</b> <span class="pos">adj.</span> 豪华的、高档的</li><li><b>suburb</b> <span class="pos">n.</span> 郊区</li><li><b>two peas in a pod</b> <span class="pos">phr.</span> 一个豆荚里的豆子（形影不离、极其相像）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>奥吉，还有我，都带着那块坏基因</h2>
+            <div class="seg-en">I carry it, too</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 331 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">基因突变</span><span class="tag">携带者</span><span class="tag">遗传概率</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“我也携带这块基因”这一句的分量——维娅不只是弟弟的旁观者，她自己也背着同样的遗传风险。</div>
+        <div class="body">
+<p>Not one person in the exotic mix of my family gene pool has ever shown any obvious signs of having what August has. I’ve pored over grainy sepia pictures of long-dead relatives in babushkas; black-and-white snapshots of distant cousins in crisp white linen suits, soldiers in uniform, ladies with beehive hairdos; Polaroids of bell-bottomed teenagers and long-haired hippies, and not once have I been able to detect even the slightest trace of August’s face in their faces. Not a one. But after August was born, my parents underwent genetic counseling. They were told that August had what seemed to be a “previously unknown type of mandibulofacial dysostosis caused by an autosomal recessive mutation in the TCOF1 gene, which is located on chromosome 5, complicated by a hemifacial microsomia characteristic of OAV spectrum.” Sometimes these mutations occur during pregnancy. Sometimes they’re inherited from one parent carrying the dominant gene. Sometimes they’re caused by the interaction of many genes, possibly in combination with environmental factors. This is called multifactorial inheritance. In August’s case, the doctors were able to identify one of the “single nucleotide deletion mutations” that made war on his face. The weird thing is, though you’d never know it from looking at them: both my parents carry that mutant gene.</p>
+<p>And I carry it, too.</p>
+<p>IF I HAVE children, there’s a one-in-two chance that I will pass on the defective gene to them. That doesn’t mean they’ll look like August, but they’ll carry the gene that got double-dosed in August and helped make him the way he is. If I marry someone who has the same defective gene, there’s a one-in-two chance that our kids will carry the gene and look totally normal, a one-in-four chance that our kids will not carry the gene at all, and a one-in-four chance that our kids will look like August.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说族谱里这么多人，却从没人在脸上露出八月的痕迹。奥吉出生后父母做过基因咨询，得知他的病症是一种“TCOF1 基因突变引起的下颌面骨发育不全”，医生能识别出那条攻击他脸的突变基因。而诡异的是，爸妈看起来完全正常，却都携带这块坏基因。维娅接着平静地说出最关键的一句：她自己，也带着这块基因。然后她列出概率：她若生孩子，有一半机会把坏基因传下去。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And I carry it, too.</blockquote><p class="note">carry the gene = 携带基因。维娅轻描淡写地说“我也带着它”，却道尽了她和奥吉命中相连的另一条线。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>gene pool</b> <span class="pos">n.</span> 基因库、基因总和</li><li><b>sepia</b> <span class="pos">adj.</span> 棕褐色的（老照片色调）</li><li><b>mutation</b> <span class="pos">n.</span> 突变</li><li><b>inherit</b> <span class="pos">v.</span> 继承、遗传</li><li><b>defective</b> <span class="pos">adj.</span> 有缺陷的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>科学说不清的地方，还有无数孩子</h2>
+            <div class="seg-en">I like the sound of science</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">普内特方格</span><span class="tag">科学的不精确</span><span class="tag">没出生的孩子</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住维娅结尾那句有点悲凉的话：当成百上千的词也解释不清时，那些词下是无数没能出生的孩子——也包括她可能的孩子。</div>
+        <div class="body">
+<p>If August has children with someone who doesn’t have a trace of the gene, there’s a 100 percent probability that their kids will inherit the gene, but a zero percent chance that their kids will have a double dose of it, like August. Which means they’ll carry the gene no matter what, but they could look totally normal. If he marries someone who has the gene, their kids will have the same odds as my kids.</p>
+<p>This only explains the part of August that’s explainable. There’s that other part of his genetic makeup that’s not inherited but just incredibly bad luck.</p>
+<p>Countless doctors have drawn little tic-tac-toe grids for my parents over the years to try to explain the genetic lottery to them. Geneticists use these Punnett squares to determine inheritance, recessive and dominant genes, probabilities and chance. But for all they know, there’s more they don’t know. They can try to forecast the odds, but they can’t guarantee them. They use terms like “germline mosaicism,” “chromosome rearrangement,” or “delayed mutation” to explain why their science is not an exact science. I actually like how doctors talk. I like the sound of science. I like how words you don’t understand explain things you can’t understand. There are countless people under words like “germline mosaicism,” “chromosome rearrangement,” or “delayed mutation.” Countless babies who’ll never be born, like mine.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅补充说奥吉基因里还有一部分不是遗传、纯粹是运气差。医生们给她爸妈一遍遍画田字格（普内特方格）解释遗传彩票，却承认他们也预测不准，尽用“生殖系嵌合体”“染色体重排”“迟发突变”这些难听懂的词遮掩科学的不精确。但维娅说她反而喜欢医生说话，喜欢科学的声音——那些你听不懂的词，恰好解释了你无法理解的事。她说在这些词下面，压着无数没能出生的孩子，比如她自己可能失去的。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>There are countless people under words like “germline mosaicism,” “chromosome rearrangement,” or “delayed mutation.” Countless babies who’ll never be born, like mine.</blockquote><p class="note">countless = 数不清的。维娅想到那些晦涩术语背后是无数没能降生的孩子，心头微微一酸。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>recessive gene</b> <span class="pos">n.</span> 隐性基因</li><li><b>dominant gene</b> <span class="pos">n.</span> 显性基因</li><li><b>Punnett square</b> <span class="pos">n.</span> 普内特方格（遗传概率棋盘）</li><li><b>forecast</b> <span class="pos">v.</span> 预测</li><li><b>countless</b> <span class="pos">adj.</span> 数不清的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_33.html">← 上一单元</a>
+    <a href="wonder_unit_35.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第34/96 单元 · 第二部 · 维娅 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u34.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

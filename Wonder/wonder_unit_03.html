@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第3单元 深夜回家路上，偷听到爸妈的争论</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 3 单元 · 深夜回家路上，偷听到爸妈的争论</div>
+    <div class="unit-en">Driving</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 673 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>从克里斯托弗家回来，奥吉在车后座靠着维娅的头睡着了。睡醒时月色正亮，他听见爸妈在议论他：妈妈觉得不能再一味保护他、要帮他学会面对现实，爸爸却气冲冲地说“这是送他去中学当待宰的羔羊”，话说到一半发现奥吉醒了。奥吉哭着说“上学大家都会盯着我看”，妈妈安慰他不必非去，但告诉他校长已经想见他了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>装睡偷听到爸妈为我吵架</h2>
+            <div class="seg-en">A lamb to the slaughter</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 279 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">夜路</span><span class="tag">爸妈分歧</span><span class="tag">待宰的羔羊</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住爸妈想法的分歧：妈妈主张面对现实、爸爸觉得是把他送去任人宰割——同一个决定，两人心里都疼。</div>
+        <div class="body">
+<p>IT WAS A long drive home. I fell asleep in the backseat like I always do, my head on Via’s lap like she was my pillow, a towel wrapped around the seat belt so I wouldn’t drool all over her. Via fell asleep, too, and Mom and Dad talked quietly about grown-up things I didn’t care about.</p>
+<p>I don’t know how long I was sleeping, but when I woke up, there was a full moon outside the car window. It was a purple night, and we were driving on a highway full of cars. And then I heard Mom and Dad talking about me.</p>
+<p>“We can’t keep protecting him,” Mom whispered to Dad, who was driving. “We can’t just pretend he’s going to wake up tomorrow and this isn’t going to be his reality, because it is, Nate, and we have to help him learn to deal with it. We can’t just keep avoiding situations that …”</p>
+<p>“So sending him off to middle school like a lamb to the slaughter …,” Dad answered angrily, but he didn’t even finish his sentence because he saw me in the mirror looking up.</p>
+<p>“What’s a lamb to the slaughter?” I asked sleepily.</p>
+<p>“Go back to sleep, Auggie,” Dad said softly.</p>
+<p>“Everyone will stare at me at school,” I said, suddenly crying.</p>
+<p>“Honey,” Mom said. She turned around in the front seat and put her hand on my hand. “You know if you don’t want to do this, you don’t have to. But we spoke to the principal there and told him about you and he really wants to meet you.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉在长途车后座睡得迷迷糊糊，醒来时发现爸妈正在低声议论他。妈妈说不能再保护他了，要帮他学会面对现实；爸爸气冲冲地说这是“送他去中学像待宰的羔羊”，一看到后视镜里奥吉睁开的眼睛就住了口。奥吉问“什么叫待宰的羔羊”，随即突然哭出来，说“在学校大家都会盯着我看”。妈妈转过身握住他的手，叫他别担心，说他们已经跟校长说过他，校长很想见他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>So sending him off to middle school like a lamb to the slaughter …</blockquote><p class="note">a lamb to the slaughter = 待宰的羔羊（比喻毫无防备、任人伤害的人）。爸爸用它激烈地反对送奥吉上学。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>protect</b> <span class="pos">v.</span> 保护</li><li><b>deal with</b> <span class="pos">phr.</span> 处理、应对</li><li><b>slaughter</b> <span class="pos">n.</span> 屠杀、宰杀</li><li><b>avoid</b> <span class="pos">v.</span> 回避、避开</li><li><b>stare at</b> <span class="pos">phr.</span> 盯着看</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>你们跟校长说了什么？</h2>
+            <div class="seg-en">How brave you are</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 250 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">母亲的话</span><span class="tag">勇敢的夸赞</span><span class="tag">全家福</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意妈妈“她的微笑像在拥抱我”这一句：大人的微笑对奥吉也是一种温暖，读时体会他对父母爱意的敏感。</div>
+        <div class="body">
+<p>“What did you tell him about me?”</p>
+<p>“How funny you are, and how kind and smart. When I told him you read Dragon Rider when you were six, he was like, ‘Wow, I have to meet this kid.’”</p>
+<p>“Did you tell him anything else?” I said.</p>
+<p>Mom smiled at me. Her smile kind of hugged me.</p>
+<p>“I told him about all your surgeries, and how brave you are,” she said.</p>
+<p>“So he knows what I look like?” I asked.</p>
+<p>“Well, we brought pictures from last summer in Montauk,” Dad said. “We showed him pictures of the whole family. And that great shot of you holding that flounder on the boat!”</p>
+<p>“You were there, too?” I have to admit I felt a little disappointed that he was a part of this.</p>
+<p>“We both talked to him, yes,” Dad said. “He’s a really nice man.”</p>
+<p>“You would like him,” Mom added.</p>
+<p>Suddenly it felt like they were on the same side.</p>
+<p>“Wait, so when did you meet him?” I said.</p>
+<p>“He took us on a tour of the school last year,” said Mom.</p>
+<p>“Last year?” I said. “So you’ve been thinking about this for a whole year and you didn’t tell me?”</p>
+<p>“We didn’t know if you’d even get in, Auggie,” answered Mom. “It’s a very hard school to get into. There’s a whole admissions process. I didn’t see the point in telling you and having you get all worked up about it unnecessarily.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉接着追问爸妈到底跟校长说了什么。妈妈说夸他又逗、又善良、又聪明，还提到他六岁就读过《龙骑士》；她微微一笑，说也讲了奥吉的所有手术和他多么勇敢。奥吉又问那校长知道他的长相吗，爸爸说他们带去了去蒙塔克度假的全家福，还有他举着比目鱼的大好照片——这让奥吉有点失望，原来爸爸也参与其中。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I told him about all your surgeries, and how brave you are,</blockquote><p class="note">brave = 勇敢。妈妈说只关心奥吉“有多勇敢”，不回避他的手术经历，也始终肯定他的为人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>principal</b> <span class="pos">n.</span> 校长</li><li><b>brave</b> <span class="pos">adj.</span> 勇敢的</li><li><b>disappointed</b> <span class="pos">adj.</span> 失望的</li><li><b>flounder</b> <span class="pos">n.</span> 比目鱼</li><li><b>hug</b> <span class="pos">v.</span> 拥抱</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>原来你们瞒了一年</h2>
+            <div class="seg-en">It was a white lie</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 144 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">善意的谎言</span><span class="tag">入学考试</span><span class="tag">被隐瞒的感受</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这句“善意的谎言”是重点：妈妈出于爱而隐瞒，奥吉却因被欺骗感到受伤——大人与孩子对“为你好”的理解不同。</div>
+        <div class="body">
+<p>“But you’re right, Auggie, we should’ve told you when we found out last month that you got in,” said Dad.</p>
+<p>“In hindsight,” sighed Mom, “yes, I guess.”</p>
+<p>“Did that lady who came to the house that time have something to do with this?” I said. “The one that gave me that test?”</p>
+<p>“Yes, actually,” said Mom, looking guilty. “Yes.”</p>
+<p>“You told me it was an IQ test,” I said.</p>
+<p>“I know, well, that was a white lie,” she answered. “It was a test you needed to take to get into the school. You did very well on it, by the way.”</p>
+<p>“So you lied,” I said.</p>
+<p>“A white lie, but yes. Sorry,” she said, trying to smile, but when I didn’t smile back, she turned around in her seat and faced forward.</p>
+<p>“What’s a lamb to the slaughter?” I said.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉发现爸妈去年就见过校长、一起逛过学校，等于瞒了他整整一年。妈妈说当初怕他考不上白白紧张，直到上个月确定录取才该告诉他。奥吉又追问：以前来家里给他做测试的那位女士是不是跟这事有关？妈妈承认了，并坦白那其实不是智商测试，而是入学的考试，还说“你考得非常好”。奥吉冷冷地说“所以你撒谎了”，妈妈承认那是“善意的谎言”，可当他没有回以微笑时，妈妈转回身不再看他。最后奥吉又问了句“什么叫待宰的羔羊”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>A white lie, but yes. Sorry,</blockquote><p class="note">white lie = 善意的谎言（无恶意的、为不伤人的谎）。妈妈承认骗了他，却选了“善意”这个词来安慰，奥吉并不买账。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>admissions process</b> <span class="pos">n.</span> 招生录取流程</li><li><b>IQ test</b> <span class="pos">n.</span> 智商测试</li><li><b>get all worked up</b> <span class="pos">phr.</span> 过度激动、紧张（关于某事）</li><li><b>hindsight</b> <span class="pos">n.</span> 事后看来、回看</li><li><b>unnecessarily</b> <span class="pos">adv.</span> 不必要地、多余地</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_02.html">← 上一单元</a>
+    <a href="wonder_unit_04.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第3/96 单元 · 第一部 · 奥吉 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u03.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

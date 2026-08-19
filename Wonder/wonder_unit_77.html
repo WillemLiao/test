@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第77单元 五年级自然营：第一次离开家</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 77 单元 · 五年级自然营：第一次离开家</div>
+    <div class="unit-en">The Fifth-Grade Nature Retreat · Known For</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 685 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>每年春天，比彻预备学校的五年级学生都要去宾夕法尼亚州的布罗伍德自然保护区住两夜三天。奥吉其实有点期待，可他从没离开家过过夜，心里直发怵。他想起小时候唯一一次在克里斯托弗家过夜就闹了个大乌龙，半夜哭着要回家，凌晨三点才被爸爸开车接回家。另一边，他又很兴奋，让妈妈给他买了新的带轮行李箱，因为不想拖着自己喜欢《星球大战》的东西去露营，怕被同学记住的标签是“那个星球大战迷”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>全校都兴奋，只有我不安：我从没离开家过夜</h2>
+            <div class="seg-en">I'm kind of nervous</div>
+          </div>
+          <div class="seg-meta">约 5 分钟 · 419 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自然营出发</span><span class="tag">第一次独自过夜</span><span class="tag">住院往事</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住奥吉没离开家睡过这一关键背景——小时候手术住院太多，父母夜夜陪床。这解释了全班对露营的兴奋和他个人不安的反差。</div>
+        <div class="body">
+<p>EVERY YEAR IN the spring, the fifth graders of Beecher Prep go away for three days and two nights to a place called the Broarwood Nature Reserve in Pennsylvania. It’s a four-hour bus drive away. The kids sleep in cabins with bunk beds. There are campfires and s’mores and long walks through the woods. The teachers have been prepping us about this all year long, so all the kids in the grade are excited about it—except for me. And it’s not even that I’m not excited, because I kind of am—it’s just I’ve never slept away from home before and I’m kind of nervous.</p>
+<p>Most kids have had sleepovers by the time they’re my age. A lot of kids have gone to sleepaway camps, or stayed with their grandparents or whatever. Not me. Not unless you include hospital stays, but even then Mom or Dad always stayed with me overnight. But I never slept over Tata and Poppa’s house, or Aunt Kate and Uncle Po’s house. When I was really little, that was mainly because there were too many medical issues, like my trache tube needing to be cleared every hour, or reinserting my feeding tube if it got detached. But when I got bigger, I just never felt like sleeping anywhere else. There was one time when I half slept over Christopher’s house. We were about eight, and we were still best friends. Our family had gone for a visit to his house, and me and Christopher were having such a great time playing Legos Star Wars that I didn’t want to leave when it was time to go. We were like, “Please, please, please can we have a sleepover?” So our parents said yes, and Mom and Dad and Via drove home. And me and Christopher stayed up till midnight playing, until Lisa, his mom, said: “Okay, guys, time to go to bed.” Well, that’s when I kind of panicked a bit. Lisa tried to help me go to sleep, but I just started crying that I wanted to go home. So at one a.m. Lisa called Mom and Dad, and Dad drove all the way back out to Bridgeport to pick me up. We didn’t get home until three a.m. So my one and only sleepover, up until now, was pretty much of a disaster, which is why I’m a little nervous about the nature retreat.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>五年级学生每年春天要去布罗伍德自然保护区住两夜三天，睡木屋上下铺，有篝火和棉花糖烤饼（s'mores）。老师这一年一直在做铺垫，同学们都兴奋极了，奥吉也承认自己有点期待，只是他从没离开家睡过觉，紧张得很。他想起多年住院时爸妈都整夜陪着，唯一一次在克里斯托弗家过夜，午夜就哭着要回家，凌晨一点克里斯托弗妈妈打电话，爸爸开车到布里奇波特把他接回家，那场过夜成了一场灾难，所以他现在更紧张了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Not me. Not unless you include hospital stays, but even then Mom or Dad always stayed with me overnight.</blockquote><p class="note">sleepover = 在朋友家过夜。奥吉说除了住院，自己从没在外面睡过，而且即使住院爸妈也总会陪床——用这句点出他与别的孩子最大的不同。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>reserve</b> <span class="pos">n.</span> 自然保护区</li><li><b>cabin</b> <span class="pos">n.</span> 小木屋、林间小屋</li><li><b>bunk bed</b> <span class="pos">n.</span> 上下铺床位</li><li><b>s'more</b> <span class="pos">n.</span> 棉烤饼（烤棉花糖夹饼干，露营食品）</li><li><b>sleepover</b> <span class="pos">n.</span> 在朋友家过夜的聚会</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我不想今后被记住的标签是“星球大战迷”</h2>
+            <div class="seg-en">What I'm known for</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 266 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">中学标签</span><span class="tag">星球大战</span><span class="tag">身份焦虑</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>理解“known for（被人记住/以……闻名）”这个点：在学校里你总是会因某样东西而出名，奥吉担心的是星球大战这个标签。</div>
+        <div class="body">
+<p>On the other hand, I’m really excited.</p>
+<p>I ASKED MOM to buy me a new rolling duffel bag because my old one had Star Wars stuff on it, and there was no way I was going to take that to the fifth-grade nature retreat. As much as I love Star Wars, I don’t want that to be what I’m known for. Everyone’s known for something in middle school. Like Reid is known for really being into marine life and the oceans and things like that. And Amos is known for being a really good baseball player. And Charlotte is known for having been in a TV commercial when she was six. And Ximena’s known for being really smart.</p>
+<p>My point is that in middle school you kind of get known for what you’re into, and you have to be careful about stuff like that. Like Max G and Max W will never live down their Dungeons &amp; Dragons obsession.</p>
+<p>So I was actually trying to ease out of the whole Star Wars thing a bit. I mean, it’ll always be special to me, like it is with the doctor who put in my hearing aids. It’s just not the thing I wanted to be known for in middle school. I’m not sure what I want to be known for, but it’s not that.</p>
+<p>That’s not exactly true: I do know what I’m really known for. But there’s nothing I can do about that. A Star Wars duffel bag I could do something about.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉让妈妈买了新的带轮行李箱，因为他绝不想带着印《星球大战》图案的旧包去自然营。他琢磨着中学里每个人都有被人记住的标签：里德是海洋迷，阿莫斯是棒球好手，夏洛特六岁时拍过电视广告，希梅娜是学霸。奥吉想让自己慢慢摆脱对《星球大战》的痴迷，那不是他想要的标签——他真正被人记住的其实是别的事，只是那件事他改变不了，只有旧行李箱他能换掉。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Everyone's known for something in middle school.</blockquote><p class="note">known for = 以……而闻名/被记住。奥吉说中学里每个人都会因为某件事而出名，这正是少年们开始在意别人如何看待自己的年纪。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>duffel bag</b> <span class="pos">n.</span> 帆布行李袋、运动行李包</li><li><b>marine</b> <span class="pos">adj.</span> 海洋的</li><li><b>commercial</b> <span class="pos">n.</span> 电视广告</li><li><b>ease out</b> <span class="pos">phr.</span> 慢慢退出、逐渐摆脱</li><li><b>obsession</b> <span class="pos">n.</span> 痴迷、入迷的东西</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_76.html">← 上一单元</a>
+    <a href="wonder_unit_78.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第77/96 单元 · 第八部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u77.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

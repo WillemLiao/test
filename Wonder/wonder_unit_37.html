@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第37单元 姐姐劝回弟弟，妈妈却漏听了米兰达的下落</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 37 单元 · 姐姐劝回弟弟，妈妈却漏听了米兰达的下落</div>
+    <div class="unit-en">Time to Think</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 993 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉装病躲学家，说反正父母说过他可以随时退学，铁了心不去。维娅一边劝他别让几个坏孩子夺走他上学的乐趣与尊严，一边终于把话题绕到米兰达身上。奥吉淡淡吐出一句让维娅惊呆的话：米兰达打过电话来——却是打给他，还让他转告姐姐她很想她。维娅愣在原地，心里又酸又喜，最终在姐弟你来我往的争执里，奥吉答应回学校，还捎来那句被标上“原话”的“她很想你”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>奥吉铁了心要退学</h2>
+            <div class="seg-en">I’m quitting</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 251 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">装病躲学</span><span class="tag">铁了心退学</span><span class="tag">姐姐劝阻</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅劝法的核心：她怕的不是奥吉退学，而是他轻易把主动权让给伤害他的那些人。</div>
+        <div class="body">
+<p>AUGUST PLAYED UP the stomach ache the next day so he wouldn’t have to go to school. I admit I felt a little bad for Mom, who was genuinely concerned that he had a stomach bug, but I had promised August I wouldn’t tell her about the incident at school.</p>
+<p>By Sunday, he was still determined not to go back to school.</p>
+<p>“What are you planning on telling Mom and Dad?” I asked him when he told me this.</p>
+<p>“They said I could quit whenever I wanted to.” He said this while he was still focused on a comic book he was reading.</p>
+<p>“But you’ve never been the kind of kid who quits things,” I said truthfully. “That’s not like you.”</p>
+<p>“I’m quitting.”</p>
+<p>“You’re going to have to tell Mom and Dad why,” I pointed out, pulling the comic book out of his hands so he’d have to look up at me while we were talking. “Then Mom will call the school and everyone will know about it.”</p>
+<p>“Will Jack get in trouble?”</p>
+<p>“I would think so.”</p>
+<p>“Good.”</p>
+<p>I have to admit, August was surprising me more and more. He pulled another comic book off his shelf and started leafing through it.</p>
+<p>“Auggie,” I said. “Are you really going to let a couple of stupid kids keep you from going back to school? I know you’ve been enjoying it. Don’t give them that power over you. Don’t give them the satisfaction.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>第二天奥吉继续装肚子疼躲学家，周日仍咬定不回学校，说爸妈答应过他不想上随时能退。维娅劝他别冲动，说会退的人不像你，可他要是不退了就得告诉爸妈原因，那妈妈会打电话去学校、弄得人尽皆知。她问那杰克会不会被罚，奥吉冷冷地回“挺好”。她提醒他别让几个蠢孩子夺走他上学的快乐，别把那种权力交给他们。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Don’t give them that power over you. Don’t give them the satisfaction.”</blockquote><p class="note">satisfaction = 满足感。维娅劝奥吉别把快感和权力让给嘲弄他的孩子，这也是她自己在捍卫的东西。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>play up</b> <span class="pos">phr.</span> 夸大、装出某种样子</li><li><b>determined</b> <span class="pos">adj.</span> 下定决心的</li><li><b>quit</b> <span class="pos">v.</span> 放弃、退出</li><li><b>satisfaction</b> <span class="pos">n.</span> 满足感、快意</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>别拿你的苦日子和我比</h2>
+            <div class="seg-en">Not the same as yours</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 254 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">姐弟争辩</span><span class="tag">处境不同</span><span class="tag">都要忍耐坏日子</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是姐妹关系里少见的一次被顶回来的时刻：奥吉点破了维娅和他处境的不同，让她一时说不出话。</div>
+        <div class="body">
+<p>“They have no idea I even heard them,” he explained.</p>
+<p>“No, I know, but …”</p>
+<p>“Via, it’s okay. I know what I’m doing. I’ve made up my mind.”</p>
+<p>“But this is crazy, Auggie!” I said emphatically, pulling the new comic book away from him, too. “You have to go back to school. Everyone hates school sometimes. I hate school sometimes. I hate my friends sometimes. That’s just life, Auggie. You want to be treated normally, right? This is normal! We all have to go to school sometimes despite the fact that we have bad days, okay?”</p>
+<p>“Do people go out of their way to avoid touching you, Via?” he answered, which left me momentarily without an answer. “Yeah, right. That’s what I thought. So don’t compare your bad days at school to mine, okay?”</p>
+<p>“Okay, that’s fair,” I said. “But it’s not a contest about whose days suck the most, Auggie. The point is we all have to put up with the bad days. Now, unless you want to be treated like a baby the rest of your life, or like a kid with special needs, you just have to suck it up and go.”</p>
+<p>He didn’t say anything, but I think that last bit was getting to him.</p>
+<p>“You don’t have to say a word to those kids,” I continued. “August, actually, it’s so cool that you know what they said, but they don’t know you know what they said, you know?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅强调每个人都有恨学校、恨朋友的时候，这是生活的一部分，想被平等对待就得照常上学。奥吉的一句话让她顿时语塞：“会有人刻意绕开、不敢碰你吗，维娅？”他说所以她别拿她学校的坏日子来比。她承认有道理，但说这不是比谁更惨，关键是都得忍耐坏日子，除非你想一辈子被当婴儿或特需小孩，就该挺过去。她还说不必跟那些孩子说半个字。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Do people go out of their way to avoid touching you, Via?”</blockquote><p class="note">out of their way = 特意、刻意。奥吉一句话直点两人差异的核心：没人刻意回避触碰他姐姐，却都躲着他。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>go out of one’s way</b> <span class="pos">phr.</span> 特意、不惜麻烦去……</li><li><b>suck it up</b> <span class="pos">phr.</span> 咬牙挺住、忍一忍</li><li><b>special needs</b> <span class="pos">n.</span> 特殊需求（儿童教育的说法）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>米兰达打电话来，却是找奥吉</h2>
+            <div class="seg-en">She was calling me</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 272 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">米兰达来电</span><span class="tag">转告姐姐</span><span class="tag">姐弟互揭心事</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住奥吉那句“她不是找你，是找我”——米兰达和维娅的裂痕，其实藏在这个电话里。</div>
+        <div class="body">
+<p>“What the heck?”</p>
+<p>“You know what I mean. You don’t have to talk to them ever again, if you don’t want. And they’ll never know why. See? Or you can pretend to be friends with them, but deep down inside you know you’re not.”</p>
+<p>“Is that how you are with Miranda?” he asked.</p>
+<p>“No,” I answered quickly, defensively. “I never faked my feelings with Miranda.”</p>
+<p>“So why are you saying I should?”</p>
+<p>“I’m not! I’m just saying you shouldn’t let those little jerks get to you, that’s all.”</p>
+<p>“Like Miranda got to you.”</p>
+<p>“Why do you keep bringing Miranda up?” I yelled impatiently. “I’m trying to talk to you about your friends. Please keep mine out of it.”</p>
+<p>“You’re not even friends with her anymore.”</p>
+<p>“What does that have to do with what we’re talking about?”</p>
+<p>The way August was looking at me reminded me of a doll’s face. He was just staring at me blankly with his half-closed doll eyes.</p>
+<p>“She called the other day,” he said finally.</p>
+<p>“What?” I was stunned. “And you didn’t tell me?”</p>
+<p>“She wasn’t calling you,” he answered, pulling both comic books out of my hands. “She was calling me. Just to say hi. To see how I was doing. She didn’t even know I was going to a real school now. I can’t believe you hadn’t even told her. She said the two of you don’t hang out as much anymore, but she wanted me to know she’d always love me like a big sister.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅继续讲你可以不理那帮坏孩子、假装还在做朋友，问奥吉是不是他就是这样对米兰达的，奥吉反将她一军“那你为什么劝我这么做”。两人你一言我一语，维娅让他别提米兰达，奥吉却看着她说：米兰达前几天打过电话。维娅惊住问他怎么没说，奥吉告诉她——米兰达不是找她，而是找他，只为了问候一声，她甚至不知道他已经上正规学校了，还说虽然他们见面少了，她永远把他当弟弟一样疼。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“She wasn’t calling you,” he answered, pulling both comic books out of my hands. “She was calling me.”</blockquote><p class="note">pull … out of = 从……手中拿走。奥吉那句“她不是打给你，是打给我”让维娅猝不及防。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>defensively</b> <span class="pos">adv.</span> 防御地、辩解地</li><li><b>faked</b> <span class="pos">adj.</span> 装出来的、虚假的</li><li><b>stunned</b> <span class="pos">adj.</span> 震惊的、目瞪口呆的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>“她让我转告你：她很想你”</h2>
+            <div class="seg-en">She misses you</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 216 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">原话转告</span><span class="tag">米兰达想念</span><span class="tag">各怀心事</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意那句“原话”的分量：米兰达仍然想着维娅，让一直假装不在乎的维娅心底泛起暖意。</div>
+        <div class="body">
+<p>Double-stunned. Stung. Flabbergasted. No words formed in my mouth.</p>
+<p>“Why didn’t you tell me?” I said, finally.</p>
+<p>“I don’t know.” He shrugged, opening the first comic book again.</p>
+<p>“Well, I’m telling Mom and Dad about Jack Will if you stop going to school,” I answered. “Tushman will probably call you into school and make Jack and those other kids apologize to you in front of everyone, and everyone will treat you like a kid who should be going to a school for kids with special needs. Is that what you want? Because that’s what’s going to happen. Otherwise, just go back to school and act like nothing happened. Or if you want to confront Jack about it, fine. But either way, if you—”</p>
+<p>“Fine. Fine. Fine,” he interrupted.</p>
+<p>“What?”</p>
+<p>“Fine! I’ll go!” he yelled, not loudly. “Just stop talking about it already. Can I please read my book now?”</p>
+<p>“Fine!” I answered. Turning to leave his room, I thought of something. “Did Miranda say anything else about me?”</p>
+<p>He looked up from the comic book and looked right into my eyes.</p>
+<p>“She said to tell you she misses you. Quote unquote.”</p>
+<p>I nodded.</p>
+<p>“Thanks,” I said casually, too embarrassed to let him see how happy that made me feel.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅又惊又气，好半天说不出一句话。她问奥吉为什么不早告诉她，他耸耸肩说不知道。她想用“告诉爸妈杰克的事”威胁他上学，他连声“好、好、好”地服软，答应回去。临出门她想起什么，问他米兰达还说别的了吗。奥吉放下漫画，直直看着她：米兰达让他转告——她很想你，“原话”。维娅点点头，克制着不让他看出这句话让她多开心。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“She said to tell you she misses you. Quote unquote.”</blockquote><p class="note">quote unquote = 引用原话（口语）。奥吉特意标注这是米兰达的原话，一字不差的想念。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>flabbergasted</b> <span class="pos">adj.</span> 惊得说不出话的</li><li><b>sting</b> <span class="pos">v.</span> 刺痛、扎心</li><li><b>shrug</b> <span class="pos">v.</span> 耸耸肩</li><li><b>quote unquote</b> <span class="pos">phr.</span> “原话”（表示引用）</li><li><b>embarrassed</b> <span class="pos">adj.</span> 尴尬的、不好意思的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_36.html">← 上一单元</a>
+    <a href="wonder_unit_38.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第37/96 单元 · 第二部 · 维娅 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u37.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

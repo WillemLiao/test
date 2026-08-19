@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第5单元 第一次见到图什曼先生和加西亚太太</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 5 单元 · 第一次见到图什曼先生和加西亚太太</div>
+    <div class="unit-en">Paging Mr. Tushman · Nice Mrs. Garcia</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1118 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>开学前几周，奥吉和妈妈去Beecher预备学校见校长图什曼先生。想到爸爸给这个姓氏编的玩笑，奥吉一路上憋不住笑，以为校长会是个大屁股的怪人，结果他高高瘦瘦、挺和善。奥吉紧张得话都听不清，图什曼蹲下来迎着他的眼睛说话，还带他们参观学校——这所学校比姐姐维娅的学校小，闻起来像医院。他们还见了办公室的加西亚太太，握手、聊她办公室的照片，妈妈也说了好多话。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>在门口遇见“图什曼先生”</h2>
+            <div class="seg-en">Paging Mr. Tushman</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 249 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">初访中学</span><span class="tag">见面笑场</span><span class="tag">姓氏玩笑</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对比此刻的轻松氛围：奥吉还没意识到马上要见同学，只当是普通参观——紧张感即将在后文一点点逼近。</div>
+        <div class="body">
+<p>I WOULD HAVE been more nervous about meeting Mr. Tushman if I’d known I was also going to be meeting some kids from the new school. But I didn’t know, so if anything, I was kind of giggly. I couldn’t stop thinking about all the jokes Daddy had made about Mr. Tushman’s name. So when me and Mom arrived at Beecher Prep a few weeks before the start of school, and I saw Mr. Tushman standing there, waiting for us at the entrance, I started giggling right away. He didn’t look at all like what I pictured, though. I guess I thought he would have a huge butt, but he didn’t. In fact, he was a pretty normal guy. Tall and thin. Old but not really old. He seemed nice. He shook my mom’s hand first.</p>
+<p>“Hi, Mr. Tushman, it’s so nice to see you again,” said Mom. “This is my son, August.”</p>
+<p>Mr. Tushman looked right at me and smiled and nodded. He put his hand out for me to shake.</p>
+<p>“Hi, August,” he said, totally normally. “It’s a pleasure to meet you.”</p>
+<p>“Hi,” I mumbled, dropping my hand into his hand while I looked down at his feet. He was wearing red Adidas.</p>
+<p>“So,” he said, kneeling down in front of me so I couldn’t look at his sneakers but had to look at his face, “your mom and dad have told me a lot about you.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉不知道这次见校长还会见到新学校的几个学生，只当是去玩，满脑子都是爸爸拿“图什曼”（Tushman，谐音“屁股人”）这个名字编的笑话，在门口见到真人就忍不住笑。他原以为校长会是个大屁股的人，结果对方又高又瘦、和善可亲，先握了妈妈的手。图什曼蹲到他面前，平视着他的眼睛说“很高兴认识你”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He didn't look at all like what I pictured, though.</blockquote><p class="note">picture 在这里是动词“想象”。奥吉原本脑补出一个大屁股的校长，真人却完全不是那么回事。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>nervous</b> <span class="pos">adj.</span> 紧张的</li><li><b>giggle</b> <span class="pos">v.</span> 咯咯地笑</li><li><b>entrance</b> <span class="pos">n.</span> 入口</li><li><b>picture</b> <span class="pos">v.</span> 想象、设想</li><li><b>butt</b> <span class="pos">n.</span> 屁股（口语）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>说话含糊，原来要现场参观</h2>
+            <div class="seg-en">Did you think we were going to the movies?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 269 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">参观学校</span><span class="tag">张口就躲</span><span class="tag">妈妈的心疼</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意奥吉对陌生大人的戒备：他不去握图什曼的手而改牵妈妈，妈妈的“一捏”含着心疼与歉意。</div>
+        <div class="body">
+<p>“Like what have they told you?” I asked.</p>
+<p>“Sorry?”</p>
+<p>“Honey, you have to speak up,” said Mom.</p>
+<p>“Like what?” I asked, trying not to mumble. I admit I have a bad habit of mumbling.</p>
+<p>“Well, that you like to read,” said Mr. Tushman, “and that you’re a great artist.” He had blue eyes with white eyelashes. “And you’re into science, right?”</p>
+<p>“Uh-huh,” I said, nodding.</p>
+<p>“We have a couple of great science electives at Beecher,” he said. “Maybe you’ll take one of them?”</p>
+<p>“Uh-huh,” I said, though I had no idea what an elective was.</p>
+<p>“So, are you ready to take a tour?”</p>
+<p>“You mean we’re doing that now?” I said.</p>
+<p>“Did you think we were going to the movies?” he answered, smiling as he stood up.</p>
+<p>“You didn’t tell me we were taking a tour,” I said to Mom in my accusing voice.</p>
+<p>“Auggie …,” she started to say.</p>
+<p>“It’ll be fine, August,” said Mr. Tushman, holding his hand out to me. “I promise.”</p>
+<p>I think he wanted me to take his hand, but I took Mom’s instead. He smiled and started walking toward the entrance.</p>
+<p>Mommy gave my hand a little squeeze, though I don’t know if it was an “I love you” squeeze or an “I’m sorry” squeeze. Probably a little of both.</p>
+<p>The only school I’d ever been inside before was Via’s, when I went with Mom and Dad to watch Via sing in spring concerts and stuff like that. This school was very different. It was smaller. It smelled like a hospital.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉回答图什曼的问题时声音小得听不清，妈妈提醒他“大声点”。图什曼说他爱读书、画画好、还喜欢科学，问他要不要直接参观学校。奥吉才知道原来要马上参观，用责备的语气问妈妈怎么没告诉他。他伸手想去牵妈妈的手而不是图什曼的手，妈妈捏了捏他的手指——既像“我爱你”也像“对不起”。这所学校比他姐姐的小，闻起来像医院。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Probably a little of both.</blockquote><p class="note">奥吉猜妈妈那一握“既像‘我爱你’，也像‘对不起’”（a little of both）。一句轻轻的话，写尽妈妈送他上学的复杂心情。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>mumble</b> <span class="pos">v.</span> 含糊地咕哝</li><li><b>speak up</b> <span class="pos">phr.</span> 大声说、提高音量</li><li><b>elective</b> <span class="pos">n.</span> 选修课</li><li><b>accusing</b> <span class="pos">adj.</span> 质问的、责备的</li><li><b>squeeze</b> <span class="pos">n.</span> 紧握住</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>办公室里的“闪亮微笑”</h2>
+            <div class="seg-en">Mrs. Garcia</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 264 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">躲闪的目光</span><span class="tag">伪装的微笑</span><span class="tag">不敢对视</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这里的细节很重要：加西亚太太“闪亮的微笑”下眼睛微微一瞬的躲避——奥吉对这些反应早已敏锐得如同雷达。</div>
+        <div class="body">
+<p>WE FOLLOWED MR. TUSHMAN down a few hallways. There weren’t a lot of people around. And the few people who were there didn’t seem to notice me at all, though that may have been because they didn’t see me. I sort of hid behind Mom as I walked. I know that sounds kind of babyish of me, but I wasn’t feeling very brave right then.</p>
+<p>We ended up in a small room with the words OFFICE OF THE MIDDLE SCHOOL DIRECTOR on the door. Inside, there was a desk with a nice-seeming lady sitting behind it.</p>
+<p>“This is Mrs. Garcia,” said Mr. Tushman, and the lady smiled at Mom and took off her glasses and got up out of her chair.</p>
+<p>My mother shook her hand and said: “Isabel Pullman, nice to meet you.”</p>
+<p>“And this is August,” Mr. Tushman said. Mom kind of stepped to the side a bit, so I would move forward. Then that thing happened that I’ve seen happen a million times before. When I looked up at her, Mrs. Garcia’s eyes dropped for a second. It was so fast no one else would have noticed, since the rest of her face stayed exactly the same. She was smiling a really shiny smile.</p>
+<p>“Such a pleasure to meet you, August,” she said, holding out her hand for me to shake.</p>
+<p>“Hi,” I said quietly, giving her my hand, but I didn’t want to look at her face, so I kept staring at her glasses, which hung from a chain around her neck.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉跟着图什曼走过几条走廊，靠人群不多，他躲在妈妈身后走。他们走进挂着“中学部主任办公室”牌子的房间，里面坐着加西亚太太。她笑得特别“闪亮”，可奥吉抬头的一瞬间，注意到她避开目光的短暂一瞬——快得别人都不会发觉。她热情地与奥吉握手，奥吉却只盯着她脖子上挂眼镜的金色链子，不敢看她的脸。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Mrs. Garcia's eyes dropped for a second.</blockquote><p class="note">eyes dropped = 目光躲闪、垂下。即使别人笑得再得体，奥吉也能捕捉到那一瞬的回避——这是他熟练到心疼的生存技能。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shiny</b> <span class="pos">adj.</span> 闪闪发亮的</li><li><b>drop</b> <span class="pos">v.</span> 垂下、低下（目光）</li><li><b>hide behind</b> <span class="pos">phr.</span> 躲在……后面</li><li><b>chain</b> <span class="pos">n.</span> 链条、链子</li><li><b>discover</b> <span class="pos">v.</span> 发现</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>“王牌握手”与墙上的照片</h2>
+            <div class="seg-en">The kid's got a killer handshake</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 247 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">王牌握手</span><span class="tag">加西亚太太</span><span class="tag">孙子的照片</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对比两种笑：前面是“闪亮的礼貌笑”，提到孙子时才是“真正的、不一样的笑”——奥吉在学着分辨真真假假的表情。</div>
+        <div class="body">
+<p>“Wow, what a firm grip!” said Mrs. Garcia. Her hand was really warm.</p>
+<p>“The kid’s got a killer handshake,” Mr. Tushman agreed, and everyone laughed above my head.</p>
+<p>“You can call me Mrs. G,” Mrs. Garcia said. I think she was talking to me, but I was looking at all the stuff on her desk now. “That’s what everyone calls me. Mrs. G, I forgot my combination. Mrs. G, I need a late pass. Mrs. G, I want to change my elective.”</p>
+<p>“Mrs. G’s actually the one who runs the place,” said Mr. Tushman, which again made all the grown-ups laugh.</p>
+<p>“I’m here every morning by seven-thirty,” Mrs. Garcia continued, still looking at me while I stared at her brown sandals with small purple flowers on the buckles. “So if you ever need anything, August, I’m the one to ask. And you can ask me anything.”</p>
+<p>“Okay,” I mumbled.</p>
+<p>“Oh, look at that cute baby,” Mom said, pointing to one of the photographs on Mrs. Garcia’s bulletin board. “Is he yours?”</p>
+<p>“No, my goodness!” said Mrs. Garcia, smiling a big smile now that was totally different from her shiny smile. “You’ve just made my day. He’s my grandson.”</p>
+<p>“What a cutie!” said Mom, shaking her head. “How old?”</p>
+<p>“In that picture he was five months, I think. But he’s big now. Almost eight years old!”</p>
+<p>“Wow,” said Mom, nodding and smiling. “Well, he is absolutely beautiful.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>加西亚太太夸奥吉握手很有力，图什曼附和说“这孩子握手是王牌级别的”，大人们在他头顶哈哈大笑。加西亚太太自我介绍可以叫她“Mrs. G”，说同学们总找她办事。她讲自己每天早上七点半就到办公室，奥吉却只顾盯着她鞋上的紫色小花。妈妈指着墙上照片问是不是她的孩子，加西亚太太笑得比刚才真实多了——那其实是她快八岁的孙子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The kid's got a killer handshake.</blockquote><p class="note">killer 这里是“极棒、王牌”的意思（killer handshake = 超有力量的握手），口语中常把“厉害”形容为 killer。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>grip</b> <span class="pos">n.</span> 握力、紧握</li><li><b>killer</b> <span class="pos">adj.</span> 极棒的、绝妙的（口语）</li><li><b>firm</b> <span class="pos">adj.</span> 有力的、坚定的</li><li><b>bulletin board</b> <span class="pos">n.</span> 公告板、布告栏</li><li><b>grandson</b> <span class="pos">n.</span> 孙子</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>原来妈妈和我一样紧张</h2>
+            <div class="seg-en">We're all going to take very good care of August</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 89 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">大人的脆弱</span><span class="tag">渐渐放心</span><span class="tag">照顾我的承诺</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>收束在“妈妈也紧张”这一点：奥吉一直以为只有自己在害怕，此刻他瞥见了大人的脆弱。</div>
+        <div class="body">
+<p>“Thank you!” said Mrs. Garcia, nodding like she was about to say something else about her grandson. But then all of a sudden her smile got a little smaller. “We’re all going to take very good care of August,” she said to Mom, and I saw her give Mom’s hand a little squeeze. I looked at Mom’s face, and that’s when I realized she was just as nervous as I was. I guess I liked Mrs. Garcia—when she wasn’t wearing her shiny smile.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>加西亚太太正要继续讲孙子，笑容却忽然变淡了些，认真地对妈妈说“我们会好好照顾奥吉的”，并轻轻握了握妈妈的手。奥吉看向妈妈的脸，这才发现原来妈妈和他一样紧张。他渐渐喜欢上了加西亚太太——只要她没在戴那副“闪亮的微笑”时。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>We're all going to take very good care of August.</blockquote><p class="note">take good care of = 好好照顾。加西亚太太这句承诺让奥吉明白，大人们都在认真对待他，也包括同样紧张的妈妈。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>just as</b> <span class="pos">phr.</span> 和……一样（同样地）</li><li><b>nervous</b> <span class="pos">adj.</span> 紧张的</li><li><b>take care of</b> <span class="pos">phr.</span> 照顾、照料</li><li><b>realize</b> <span class="pos">v.</span> 意识到</li><li><b>discover</b> <span class="pos">v.</span> 发觉、看出</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_04.html">← 上一单元</a>
+    <a href="wonder_unit_06.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第5/96 单元 · 第一部 · 奥吉 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u05.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

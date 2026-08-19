@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第58单元 情人节礼物与第一次见她的家人</title>
+<style>
+:root{--c:#7a6aa8;--bg:#f0edf7;--nav:#ded7ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第五部 · 贾斯汀</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 58 单元 · 情人节礼物与第一次见她的家人</div>
+    <div class="unit-en">Valentine’s Day</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 992 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Five: Justin</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>情人节贾斯汀送维娅一颗心形项链，她送他一个用旧软盘做的挎包。周六晚他去见她父母，一路紧张得抽搐到头肩上；到了后她父母热情得让他安心。谈吃饭、讲狗狗黛西的来历。饭后回到她家，贾斯汀第一次见识这种其乐融融的家：爸妈总说“我爱你”，狗狗被当宝贝——这让想到自己父母离婚、互相憎恨、没人对他说过爱我字的贾斯汀既暖又酸。离开时他发现自己的抽搐全停了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>紧张的老毛病：去见她的爸妈</h2>
+            <div class="seg-en">my tics come out</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 327 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">情人节</span><span class="tag">见家长</span><span class="tag">紧张抽搐</span><span class="tag">装作没看见</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“我们今晚都在假装没看见”这句：侍者的表情、贾斯汀的抽搐、奥吉吃玉米片的样子——同一张桌上人人都有不便道破的难堪。</div>
+        <div class="body">
+<p>I GIVE OLIVIA a heart necklace for valentine’s day, and she gives me a messenger bag she’s made out of old floppy disks. very cool how she makes things like that. earrings out of pieces of circuit boards. dresses out of t-shirts. bags out of old jeans. she’s so creative. i tell her she should be an artist someday, but she wants to be a scientist. a geneticist, of all things. she wants to find cures for people like her brother, i guess.</p>
+<p>we make plans for me to finally meet her parents. a mexican restaurant on amesfort avenue near her house on saturday night.</p>
+<p>all day long i’m nervous about it. and when i get nervous my tics come out. i mean, my tics are always there, but they’re not like they used to be when i was little: nothing but a few hard blinks now, the occasional head pull. but when i’m stressed they get worse—and i’m definitely stressing about meeting her folks.</p>
+<p>they’re waiting inside when i get to the restaurant. the dad gets up and shakes my hand, and the mom gives me a hug. i give auggie a hello fist-punch and kiss olivia on the cheek before i sit down.</p>
+<p>it’s so nice to meet you, justin! we’ve heard so much about you!</p>
+<p>her parents couldn’t be nicer. put me at ease right away. the waiter brings over the menus and i notice his expression the moment he lays eyes on august. but i pretend not to notice. i guess we’re all pretending not to notice things tonight. the waiter. my tics. the way august crushes the tortilla chips on the table and spoons the crumbs into his mouth. i look at olivia and she smiles at me. she knows. she sees the waiter’s face. she sees my tics. olivia is a girl who sees everything.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>情人节维娅送贾斯汀一个旧软盘做的挎包，还给他心形项链，他夸她该当艺术家，她只想当遗传学家——替像弟弟那样的人找解药。他们约好周六晚在她家附近的墨西哥餐厅见她父母，贾斯汀紧张了一整天，一紧张他的抽搐毛病就发作。到店后她父亲起身握手、母亲拥抱他，他给奥吉来了记拳碰拳。她父母客气得让他立刻放松，但他留意到侍者看奥吉的表情，还有奥吉把玉米片捏碎直接往嘴里倒的怪习惯，他装作没看见，维娅看在眼里。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>i guess we're all pretending not to notice things tonight. the waiter. my tics. the way august crushes the tortilla chips on the table and spoons the crumbs into his mouth.</blockquote><p class="note">tortilla chips = 墨西哥玉米片；tics = 抽搐（神经性不自主动作）。奥吉把玉米片捏碎用勺舀着吃，是本书里他特殊的进食习惯。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>floppy disk</b> <span class="pos">n.</span> 软盘（旧式电脑存储设备）</li><li><b>geneticist</b> <span class="pos">n.</span> 遗传学家</li><li><b>tics</b> <span class="pos">n.</span> 抽搐（神经性不自主小动作）</li><li><b>put me at ease</b> <span class="pos">phr.</span> 让我放松下来</li><li><b>crumb</b> <span class="pos">n.</span> 碎屑、渣渣</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>一整个晚上被当成家人对待</h2>
+            <div class="seg-en">listening to every word</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 262 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">家庭温暖</span><span class="tag">音乐话题</span><span class="tag">老狗黛西</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对比是重点：奥吉父母对贾斯汀音乐的认真关注，与他自己的父母“从不问”形成强烈反差。</div>
+        <div class="body">
+<p>we spend the entire dinner talking and laughing. olivia’s parents ask me about my music, how i got into the fiddle and stuff like that. and i tell them about how i used to play classical violin but I got into appalachian folk music and then zydeco. and they’re listening to every word like they’re really interested. they tell me to let them know the next time my band’s playing a gig so they can come listen.</p>
+<p>i’m not used to all the attention, to be truthful. my parents don’t have a clue about what I want to do with my life. they never ask. we never talk like this. i don’t think they even know i traded my baroque violin for an eight-string hardanger fiddle two years ago.</p>
+<p>after dinner we go back to olivia’s for some ice cream. their dog greets us at the door. an old dog. super sweet. she’d thrown up all over the hallway, though. olivia’s mom rushes to get paper towels while the dad picks the dog up like she’s a baby.</p>
+<p>what’s up, ol’ girlie? he says, and the dog’s in heaven, tongue hanging out, tail wagging, legs in the air at awkward angles.</p>
+<p>dad, tell justin how you got daisy, says olivia.</p>
+<p>yeah! says auggie.</p>
+<p>the dad smiles and sits down in a chair with the dog still cradled in his arms. it’s obvious he’s told this story lots of times and they all love to hear it.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>整顿饭他们有说有笑。奥吉的父母问贾斯汀的音乐，他说自己从古典小提琴转攻阿巴拉契亚民谣再到 zydeco，他们听得认真，还说下次他乐队演出要去看。贾斯汀坦白自己不习惯这种关注：他的父母根本不知道他想做什么、从不问他。饭后回奥吉家吃冰淇淋，老狗黛西在门口迎接却刚在过道吐了一地，她妈妈去拿纸巾，爸爸像抱婴儿一样把狗抱起来，奥吉和维娅让爸爸讲黛西是怎么来的。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>my parents don't have a clue about what I want to do with my life. they never ask. we never talk like this.</blockquote><p class="note">don't have a clue = 完全不知道。贾斯汀说他父母对他想做什么一无所知、从不问、也从不像这样聊天——点出他自己家庭的冷漠。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fiddle</b> <span class="pos">n.</span> 小提琴（尤指民间风格的）</li><li><b>appalachian</b> <span class="pos">adj.</span> 阿巴拉契亚的（美国东南部地区）</li><li><b>gig</b> <span class="pos">n.</span> （乐队的）演出</li><li><b>baroque violin</b> <span class="pos">n.</span> 巴洛克小提琴</li><li><b>throw up</b> <span class="pos">phr.</span> 呕吐、吐出来</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>黛西的故事：二十块买来的臭狗</h2>
+            <div class="seg-en">wanna buy my dog?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 211 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">黛西来历</span><span class="tag">流浪狗</span><span class="tag">融入家庭</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>黛西“知道自己走运摊上这家人”那句是钥匙——贾斯汀说自己也懂这种感觉，他真的开始把自己归属到这个家里。</div>
+        <div class="body">
+<p>so i’m coming home from the subway one day, he says, and a homeless guy i’ve never seen in this neighborhood before is pushing this floppy mutt in a stroller, and he comes up to me and says, hey, mister, wanna buy my dog? and without even thinking about it, i say sure, how much you want? and he says ten bucks, so i give him the twenty dollars i have in my wallet and he hands me the dog. justin, i’m telling you, you’ve never smelled anything so bad in your life! she stank so much i can’t even tell you! so i took her right from there to the vet down the street and then i brought her home.</p>
+<p>didn’t even call me first, by the way! the mom interjects as she cleans the floor, to see if i’m okay with his bringing home some homeless guy’s dog.</p>
+<p>the dog actually looks over at the mom when she says this, like she understands everything everyone is saying about her. she’s a happy dog, like she knows she lucked out that day finding this family.</p>
+<p>i kind of know how she feels. i like olivia’s family. they laugh a lot.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉的爸爸讲黛西的来历：某天地铁出来，一个流浪汉推着童车里的脏狗问他买不买，他二话不说花二十块买下，狗臭得难以形容，他直接送去兽医再带回家。妈妈插嘴抱怨他当时都没先打电话问自己同不同意。那只狗竟像听得懂似的看向妈妈，一脸幸福——它知道那天自己走运摊上了这家人。贾斯汀说他也懂那种感觉，他喜欢奥吉一家，因为他们总在笑。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>she's a happy dog, like she knows she lucked out that day finding this family. i kind of know how she feels.</blockquote><p class="note">luck out = 走运、撞大运。贾斯汀说自己有点懂黛西的感觉——他也在寻找能让自己“走运”的归属。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>stroller</b> <span class="pos">n.</span> 婴儿车、童车</li><li><b>mutt</b> <span class="pos">n.</span> 杂种狗、土狗</li><li><b>stank</b> <span class="pos">v.</span> （stink 的过去式）发臭、奇臭</li><li><b>vet</b> <span class="pos">n.</span> 兽医</li><li><b>luck out</b> <span class="pos">phr.</span> 走运、撞大运</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>我自己的家从不说“我爱你”</h2>
+            <div class="seg-en">they tell each other &quot;i love you&quot; all the time</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 192 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">家庭疏离</span><span class="tag">父母离婚</span><span class="tag">渴望被爱</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“我爱你”三个字是全段差异的浓缩：奥吉家随时说，贾斯汀家从不说——他的抽搐停了，暗示他在这家终于感到安心。</div>
+        <div class="body">
+<p>my family’s not like this at all. my mom and dad got divorced when i was four and they pretty much hate each other. i grew up spending half of every week in my dad’s apartment in chelsea and the other half in my mom’s place in brooklyn heights. i have a half brother who’s five years older than me and barely knows i exist. for as long as i can remember, i’ve felt like my parents could hardly wait for me to be old enough to take care of myself. “you can go to the store by yourself.” “here’s the key to the apartment.” it’s funny how there’s a word like overprotective to describe some parents, but no word that means the opposite. what word do you use to describe parents who don’t protect enough? underprotective? neglectful? self-involved? lame? all of the above.</p>
+<p>olivia’s family tell each other “i love you” all the time.</p>
+<p>i can’t remember the last time anyone in my family said that to me.</p>
+<p>by the time i go home, my tics have all stopped.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀对比自己的家：爸妈在他四岁时离婚，彼此恨得不行，他一周分一半时间住两地；有个大了五岁、几乎不认识他的同父异母哥哥。他从小就觉得自己爸妈巴不得他快点能自己照顾自己——把钥匙留给他自己出门。他感慨有“过度保护”这个词，却没有“保护不够”的反义词。奥吉一家随时对彼此说“我爱你”，而贾斯汀不记得自己家最后一次有人这么对他说是什么时候。而他回到家时，抽搐竟全停了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>olivia's family tell each other &quot;i love you&quot; all the time. i can't remember the last time anyone in my family said that to me.</blockquote><p class="note">注意“我爱你们/我爱你”在奥吉家是日常，贾斯汀却不记得家人何时说过——一句话写尽两个家庭的天壤之别。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>divorced</b> <span class="pos">adj.</span> 离了婚的</li><li><b>half brother</b> <span class="pos">n.</span> 同父/同母异父/母的兄弟</li><li><b>overprotective</b> <span class="pos">adj.</span> 过度保护的、管太多的</li><li><b>neglectful</b> <span class="pos">adj.</span> 疏忽的、不尽责的</li><li><b>the opposite</b> <span class="pos">n.</span> 反义词、相反的事物</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_57.html">← 上一单元</a>
+    <a href="wonder_unit_59.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第58/96 单元 · 第五部 · 贾斯汀 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u58.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

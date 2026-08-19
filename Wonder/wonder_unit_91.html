@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第91单元 礼堂入座，我发现杰克暗恋夏默</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 91 单元 · 礼堂入座，我发现杰克暗恋夏默</div>
+    <div class="unit-en">Take Your Seats, Everyone</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 722 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉和杰克跟着几个六年级学生走进礼堂——一个水晶吊灯、红天鹅绒墙、软座成排的宏大空间。候场区里，鲁宾老师一遍遍喊大家按字母顺序入座，奥吉和杰克却拿着卷起的节目单玩击剑。这时夏默（Summer）穿着淡粉裙子、化了点妆走过来，奥吉真心夸她漂亮，而杰克也实事求是地说她还行——就是这一下，奥吉头一次意识到杰克喜欢夏默。几人挤在一起翻节目单，吐槽致辞、聊颁奖，弄得鲁宾老师气急败坏地重新安排座位，杰克还坐错了排，挤眉弄眼的表情把奥吉乐坏了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>金色礼堂，杰克玩起击剑游戏</h2>
+            <div class="seg-en">Take your seats, everyone</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">毕业礼堂</span><span class="tag">候场入座</span><span class="tag">玩闹</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住入场的仪式感和轻松气氛——毕业这天大家穿得正式、排场宏大，而奥吉和杰克却在用节目单疯闹，衬托出他们纯真的年岁。</div>
+        <div class="body">
+<p>JACK AND I walked right behind a couple of sixth graders into the building, and then followed them to the auditorium.</p>
+<p>Mrs. G was at the entrance, handing out the programs and telling kids where to go.</p>
+<p>“Fifth graders down the aisle to the left,” she said. “Sixth graders go to the right. Everyone come in. Come in. Good morning. Go to your staging areas. Fifth graders to the left, sixth grade to the right …”</p>
+<p>The auditorium was huge inside. Big sparkly chandeliers. Red velvet walls. Rows and rows and rows of cushioned seats leading up to the giant stage. We walked down the wide aisle and followed the signs to the fifth-grade staging area, which was in a big room to the left of the stage. Inside were four rows of folding chairs facing the front of the room, which is where Ms. Rubin was standing, waving us in as soon as we walked in the room.</p>
+<p>“Okay, kids, take your seats. Take your seats,” she was saying, pointing to the rows of chairs. “Don’t forget, you’re sitting alphabetically. Come on, everybody, take your seats.” Not too many kids had arrived yet, though, and the ones who had weren’t listening to her. Me and Jack were sword-fighting with our rolled-up programs.</p>
+<p>“Hey, guys.”</p>
+<p>It was Summer walking over to us. She was wearing a light pink dress and, I think, a little makeup.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克和奥吉走进教学楼，跟着几个六年级学生一路来到礼堂。G女士在入口处发节目单、指挥方向。礼堂大得惊人：闪亮的水晶吊灯、红天鹅绒墙面、一排排软垫座椅通向巨大的舞台。候场区是舞台左边的大房间，鲁宾老师站最前面招手让他们进来，不停喊大家入座、按字母顺序坐。可到的孩子不多，也没人听她的——奥吉和杰克正用卷起来的节目单玩击剑。这时夏默走过来，穿着淡粉色连衣裙，好像还化了点妆。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Me and Jack were sword-fighting with our rolled-up programs.</blockquote><p class="note">sword-fighting = 挥着卷起的节目单假装比剑。在正式的毕业典礼前这样玩闹，特别孩子气、也特别可爱。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>auditorium</b> <span class="pos">n.</span> 礼堂、大会堂</li><li><b>program</b> <span class="pos">n.</span> 节目单、活动安排</li><li><b>chandelier</b> <span class="pos">n.</span> 枝形吊灯（这里说闪亮的水晶吊灯）</li><li><b>velvet</b> <span class="pos">n.</span> 天鹅绒</li><li><b>alphabetically</b> <span class="pos">adv.</span> 按字母顺序地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>杰克露馅：他对夏默有意思</h2>
+            <div class="seg-en">Jack had a crush on her</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 251 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">杰克心动</span><span class="tag">节目单</span><span class="tag">年度回顾</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住奥吉的发现时刻：杰克那句故作轻描淡写的评语反而泄露了他的心思——儿童视角里，友情与初恋的微妙变化在这里轻轻被点破。</div>
+        <div class="body">
+<p>“Wow, Summer, you look awesome,” I told her, because she really did.</p>
+<p>“Really? Thanks, you do, too, Auggie.”</p>
+<p>“Yeah, you look okay, Summer,” said Jack, kind of matter-of-factly. And for the first time, I realized that Jack had a crush on her.</p>
+<p>“This is so exciting, isn’t it?” said Summer.</p>
+<p>“Yeah, kind of,” I answered, nodding.</p>
+<p>“Oh man, look at this program,” said Jack, scratching his forehead. “We’re going to be here all freakin’ day.”</p>
+<p>I looked at my program.</p>
+<p>Headmaster’s Opening Remarks:</p>
+<p>Dr. Harold Jansen</p>
+<p>Middle-School Director’s Address:</p>
+<p>Mr. Lawrence Tushman</p>
+<p>“Light and Day”:</p>
+<p>Middle-School Choir</p>
+<p>Fifth-Grade Student Commencement Address:</p>
+<p>Ximena Chin</p>
+<p>Pachelbel: “Canon in D”:</p>
+<p>Middle-School Chamber Music Ensemble</p>
+<p>Sixth-Grade Student Commencement Address:</p>
+<p>Mark Antoniak</p>
+<p>“Under Pressure”:</p>
+<p>Middle-School Choir</p>
+<p>Middle-School Dean’s Address:</p>
+<p>Ms. Jennifer Rubin</p>
+<p>Awards Presentation (see back)</p>
+<p>Roll Call of Names</p>
+<p>“Why do you think that?” I asked.</p>
+<p>“Because Mr. Jansen’s speeches go on forever,” said Jack. “He’s even worse than Tushman!”</p>
+<p>“My mom said she actually dozed off when he spoke last year,” Summer added.</p>
+<p>“What’s the awards presentation?” I asked.</p>
+<p>“That’s where they give medals to the biggest brainiacs,” Jack answered. “Which would mean Charlotte and Ximena will win everything in the fifth grade, like they won everything in the fourth grade and in the third grade.”</p>
+<p>“Not in the second grade?” I laughed.</p>
+<p>“They didn’t give those awards out in the second grade,” he answered.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉真心夸夏默漂亮，夏默笑着道谢。杰克却用那种实事求是的口气说她看着还行，正是这一反常语气让奥吉头一次意识到：杰克喜欢上夏默了。夏默说这场面真让人兴奋。杰克翻翻节目单直咂嘴，说汉森校长的致辞没完没了，比图什曼还能讲，夏默也说妈妈去年听校长讲话都睡着了。奥吉问颁奖是什么，杰克说那是给全年级最聪明的人发奖牌，那夏洛特和希梅纳（Ximena）又要像三四年级那样横扫一切了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And for the first time, I realized that Jack had a crush on her.</blockquote><p class="note">have a crush on = 对……有意思、暗恋。奥吉从杰克反常的话里第一次看穿了好友对夏默的心动。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>awesome</b> <span class="pos">adj.</span> 棒极了、很了不起</li><li><b>matter-of-factly</b> <span class="pos">adv.</span> 一脸平静地、就事论事地</li><li><b>have a crush on</b> <span class="pos">phr.</span> 暗恋、对……有好感</li><li><b>doze off</b> <span class="pos">phr.</span> 打瞌睡、睡着</li><li><b>brainiac</b> <span class="pos">n.</span> 聪明绝顶的人、学霸</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>杰克坐错排，把奥吉乐翻了</h2>
+            <div class="seg-en">You're in the wrong row</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 231 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">按序入座</span><span class="tag">春心萌动</span><span class="tag">坐错位置</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这个结尾轻快又有画面感：正装毕业典礼上收尾却是一场无伤大雅的坐错座位小闹剧，把紧张的日子收得很暖、很孩子气。</div>
+        <div class="body">
+<p>“Maybe you’ll win this year,” I joked.</p>
+<p>“Not unless they give awards for the most Cs!” he laughed.</p>
+<p>“Everybody, take your seats!” Ms. Rubin started yelling louder now, like she was getting annoyed that nobody was listening. “We have a lot to get through, so take your seats. Don’t forget you’re sitting in alphabetical order! A through G is the first row! H through N is the second row; O through Q is the third row; R through Z is the last row. Let’s go, people.”</p>
+<p>“We should go sit down,” said Summer, walking toward the front section.</p>
+<p>“You guys are definitely coming over my house after this, right?” I called out after her.</p>
+<p>“Definitely!” she said, taking her seat next to Ximena Chin.</p>
+<p>“When did Summer get so hot?” Jack muttered in my ear.</p>
+<p>“Shut up, dude,” I said, laughing as we headed toward the third row.</p>
+<p>“Seriously, when did that happen?” he whispered, taking the seat next to mine.</p>
+<p>“Mr. Will!” Ms. Rubin shouted. “Last time I checked, W came between R and Z, yes?”</p>
+<p>Jack looked at her blankly.</p>
+<p>“Dude, you’re in the wrong row!” I said.</p>
+<p>“I am?” And the face he made as he got up to leave, which was a mixture of looking completely confused and looking like he’s just played a joke on someone, totally cracked me up.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉打趣杰克今年说不定能拿奖，杰克笑着回呛：除非有最多C奖。鲁宾老师开始更大声地吼，让大家务必按字母顺序坐（A到G第一排，H到N第二排等）。夏默说该入座了，往前排走，奥吉冲她喊会后一定要来他家玩。杰克在奥吉耳边嘟囔夏默什么时候变这么漂亮了，奥吉笑着让他闭嘴。可杰克坐到了第三排——他的姓是W才对。鲁宾老师质问杰克W不是在R和Z之间吗，杰克一脸发懵，那又困惑又像是开了别人玩笑的表情，把奥吉彻底笑翻了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And the face he made as he got up to leave, which was a mixture of looking completely confused and looking like he's just played a joke on someone, totally cracked me up.</blockquote><p class="note">crack sb up = 把某人逗得大笑。杰克坐错排后那副又懵又像恶作剧得逞的表情，把奥吉乐坏了，整段收在轻快的笑声里。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>mutter</b> <span class="pos">v.</span> 小声嘟囔</li><li><b>whisper</b> <span class="pos">v.</span> 低声耳语</li><li><b>confused</b> <span class="pos">adj.</span> 困惑的、糊涂的</li><li><b>crack sb up</b> <span class="pos">phr.</span> 把某人逗得大笑</li><li><b>blankly</b> <span class="pos">adv.</span> 茫然地、发愣地</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_90.html">← 上一单元</a>
+    <a href="wonder_unit_92.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第91/96 单元 · 第八部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u91.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

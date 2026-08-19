@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第46单元 好朋友奥吉突然不理我了</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 46 单元 · 好朋友奥吉突然不理我了</div>
+    <div class="unit-en">Ex-Friends</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 645 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>杰克发现奥吉突然不理自己了：昨天还是朋友，今天就不怎么说话。他去问萨默，萨默却只回了句“流血尖叫”这种莫名其妙的话。杰克赌气想：反正我有别的朋友，奥吉想绝交就绝交。可他又发现，奥吉除了自己几乎没什么别的朋友，而没人愿意跟奥吉玩是因为大家太想挤进“人气圈子”。杰克心里其实很别扭——他明明挺喜欢跟奥吉待在一起的。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>奥吉突然不理我了</h2>
+            <div class="seg-en">He's mad at me</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 219 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">友情破裂</span><span class="tag">莫名其妙</span><span class="tag">萨默的哑谜</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“Bleeding Scream（流血尖叫）”这个奇怪词组——它是这段的重要线索，也暗示奥吉突然冷淡背后另有故事。</div>
+        <div class="body">
+<p>BLEEDING SCREAM? WHAT the heck? Summer Dawson has always been a bit out there, but this was too much. All I did was ask her why August was acting like he was mad at me or something. I figured she would know. And all she said was “Bleeding Scream”? I don’t even know what that means.</p>
+<p>It’s so weird because one day, me and August were friends. And the next day, whoosh, he was hardly talking to me. And I haven’t the slightest idea why. When I said to him, “Hey, August, you mad at me or something?” he shrugged and walked away. So I would take that as a definite yes. And since I know for a fact that I didn’t do anything to him to be mad about, I figured Summer could tell me what’s up. But all I got from her was “Bleeding Scream”? Yeah, big help. Thanks, Summer.</p>
+<p>You know, I’ve got plenty of other friends in school. So if August wants to officially be my ex-friend, then fine, that is okay by me, see if I care. I’ve started ignoring him like he’s ignoring me in school now. This is actually kind of hard since we sit next to each other in practically every class.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克莫名其妙：他问奥吉是不是生自己气了，奥吉只是耸耸肩就走开了，这是种肯定的回答。杰克确定自己没做错什么，就去找萨默问个究竟，萨默却只回他一句“流血尖叫”。杰克有点赌气地想：反正自己有的是朋友，奥吉想正式变成“前任朋友”就这么着吧，自己不在乎。可两人几乎节课都坐在一起，现在开始互相假装没看见，其实挺别扭。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>All she said was &quot;Bleeding Scream&quot;? I don't even know what that means.</blockquote><p class="note">Bleeding Scream 是奥吉万圣节服装的代号（血迹斑斑的尖叫骷髅）。萨默以为杰克知道，才用它来指代那件事。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>ex-friend</b> <span class="pos">n.</span> 前任朋友、绝交的朋友</li><li><b>shrug</b> <span class="pos">v.</span> 耸耸肩</li><li><b>ignore</b> <span class="pos">v.</span> 忽视、不理睬</li><li><b>bleeding</b> <span class="pos">adj.</span> 流血的、带血迹的</li><li><b>the slightest idea</b> <span class="pos">phr.</span> 一点头绪都没有（have no the slightest idea）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>除了我，奥吉几乎没别的朋友</h2>
+            <div class="seg-en">He's the one who loses</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 231 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">奥吉的朋友圈</span><span class="tag">没人愿意接近</span><span class="tag">嘴硬逞强</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这段盘点奥吉“没什么朋友”的现状——这既表明奥吉的孤单，也让杰克“他才没资格甩我”的话显得嘴硬。</div>
+        <div class="body">
+<p>Other kids have noticed and have started asking if me and August have had a fight. Nobody asks August what’s going on. Hardly anyone ever talks to him, anyway. I mean, the only person he hangs out with, other than me, is Summer. Sometimes he hangs out with Reid Kingsley a little bit, and the two Maxes got him playing Dungeons &amp; Dragons a couple of times at recess. Charlotte, for all her Goody Two-Shoeing, doesn’t ever do more than nod hello when she’s passing him in the hallway. And I don’t know if everyone’s still playing the Plague behind his back, because no one ever really told me about it directly, but my point is that it’s not like he has a whole lot of other friends he could be hanging out with instead of me. If he wants to dis me, he’s the one who loses—not me.</p>
+<p>So this is how things are between us now. We only talk to each other about school stuff if we absolutely have to. Like, I’ll say, “What did Rubin say the homework was?” and he’ll answer. Or he’ll be like, “Can I use your pencil sharpener?” and I’ll get my sharpener out of my pencil case for him. But as soon as the bell rings, we go our separate ways.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>其他同学开始问杰克是不是跟奥吉吵架了，可没人去问奥吉，因为平时就没几个人跟他说话。杰克盘算着奥吉的朋友圈：除了自己，就只有萨默偶尔陪他，里德和两个麦克斯只是在课间跟他玩《龙与地下城》，夏洛特顶多点点头打招呼。杰克认定：如果奥吉要“甩”他，吃亏的是奥吉而不是自己。如今两人只在必须说学校的事时才交谈，铃一响就各走各的。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The only person he hangs out with, other than me, is Summer.</blockquote><p class="note">hang out with = 和……一起玩。杰克的观察：除了我，奥吉唯一常待在一起的人就是萨默——奥吉其实很孤单。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hang out with</b> <span class="pos">phr.</span> 和……一起玩、待在一起</li><li><b>recess</b> <span class="pos">n.</span> 课间休息</li><li><b>dis</b> <span class="pos">v.</span> 羞辱、冷落（俚语）</li><li><b>pencil sharpener</b> <span class="pos">n.</span> 卷笔刀、削笔器</li><li><b>Dungeons &amp; Dragons</b> <span class="pos">n.</span> 《龙与地下城》（一款角色扮演桌游）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>好的一面和坏的一面</h2>
+            <div class="seg-en">It's August's fault</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 195 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">人气圈子</span><span class="tag">嘴硬心软</span><span class="tag">内心矛盾</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克内心的矛盾：一边嘴硬说不在乎，一边承认“我其实喜欢跟奥吉玩”──这段把他别扭又舍不得的心情写得很清楚。</div>
+        <div class="body">
+<p>Why this is good is because I get to hang out with a lot more kids now. Before, when I was hanging out with August all the time, kids weren’t hanging out with me because they’d have to hang out with him. Or they would keep things from me, like the whole thing about the Plague. I think I was the only one who wasn’t in on it, except for Summer and maybe the D&amp;D crowd. And the truth is, though nobody’s that obvious about it: nobody wants to hang out with him. Everyone’s way too hung up on being in the popular group, and he’s just as far from the popular group as you can get. But now I can hang out with anyone I want. If I wanted to be in the popular group, I could totally be in the popular group.</p>
+<p>Why this is bad is because, well, (a) I don’t actually enjoy hanging out with the popular group that much. And (b) I actually liked hanging out with August.</p>
+<p>So this is kind of messed up. And it’s all August’s fault.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克列出好处：现在他能跟更多孩子玩了，之前大家不敢接近他是因为要连奥吉一起顾着，还会瞒着他“鼠疫”这类事；因为没人真想跟奥吉玩，都太想挤进人气圈子，奥吉离人气圈子最远。杰克说自己想的话完全能进人气圈子。可坏处是：他其实不怎么喜欢跟人气圈子待一起，而且他确实喜欢跟奥吉玩。杰克叹道“这真糟糕，都怪奥吉”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I actually liked hanging out with August.</blockquote><p class="note">actually = 其实。杰克终于坦白：尽管嘴上抱怨，他其实很喜欢跟奥吉待在一起——“It's all August's fault”不过是气话。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hang up on</b> <span class="pos">phr.</span> 沉迷于、过分看重</li><li><b>popular group</b> <span class="pos">n.</span> 人气小圈子、受欢迎的一群人</li><li><b>keep things from</b> <span class="pos">phr.</span> 对……隐瞒事情</li><li><b>stuff</b> <span class="pos">n.</span> 各种事情（口语）</li><li><b>fault</b> <span class="pos">n.</span> 过错、责任</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_45.html">← 上一单元</a>
+    <a href="wonder_unit_47.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第46/96 单元 · 第四部 · 杰克 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u46.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

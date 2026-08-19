@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第64单元 写给奥吉娃娃的纸条</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 64 单元 · 写给奥吉娃娃的纸条</div>
+    <div class="unit-en">The Auggie Doll</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 778 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>二月是这场“战争”最激烈的时期，朱利安一伙几乎对奥吉和杰克全班孤立。朱利安在柜子里塞恐吓纸条，奥吉和杰克也用假扮的女孩“贝乌拉”回敬搞笑的纸条。朱利安、迈尔斯、亨利还对杰克恶作剧，因为他们知道欺负奥吉会惹大麻烦。可局势逐渐逆转：连朱利安的跟班阿莫斯都开始帮杰克，多数男生不再买朱利安的账，他编的“买凶杀人”谣言也成了笑柄。到三月末，只有迈尔斯和亨利还站朱利安这边，而奥吉发现自己终于能开玩笑、交到朋友——迈雅还送他丑丑娃娃钥匙圈。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>二月最猛的柜子纸条大战</h2>
+            <div class="seg-en">You stink, big cheese!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 209 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">柜子纸条</span><span class="tag">战争时期</span><span class="tag">讽刺回击</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住双方的“纸条战斗”：朱利安用恶毒的字条，奥吉杰克用讽刺幽默回敬——这反映两个阵营不同的战斗方式。</div>
+        <div class="body">
+<p>FOR A WHILE, the “war” was all we talked about. February was when it was really at its worst. That’s when practically nobody was talking to us, and Julian had started leaving notes in our lockers. The notes to Jack were stupid, like: You stink, big cheese! and Nobody likes you anymore!</p>
+<p>I got notes like: Freak! And another that said: Get out of our school, orc!</p>
+<p>Summer thought we should report the notes to Ms. Rubin, who was the middle-school dean, or even Mr. Tushman, but we thought that would be like snitching. Anyway, it’s not like we didn’t leave notes, too, though ours weren’t really mean. They were kind of funny and sarcastic.</p>
+<p>One was: You’re so pretty, Julian! I love you. Will you marry me? Love, Beulah</p>
+<p>Another was: Love your hair! XOX Beulah</p>
+<p>Another was: You’re a babe. Tickle my feet. XO Beulah</p>
+<p>Beulah was a made-up person that me and Jack came up with. She had really gross habits, like eating the green stuff in between her toes and sucking on her knuckles. And we figured someone like that would have a real crush on Julian, who looked and acted like someone in a KidzBop commercial.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>“战争”在那阵子一直是我们聊的事，二月份最激烈，几乎全班都不理我们，朱利安开始在我们柜子里塞纸条。给杰克的纸条很幼稚，比如“你臭死了，大块头奶酪！”和“没人再喜欢你了！”；奥吉自己收到“怪物！”和“滚出我们学校，兽人！”这样的纸条。任妮提议去报告给初中部主任罗宾老师或图什曼先生，但奥吉和杰克觉得那像告密，而且他们其实也回敬了纸条——只是不那么刻薄，反而又好笑又讽刺，署名是个捏造的人物“贝乌拉”。他们编的贝乌拉有很恶心的习惯，比如啃脚趾缝里的绿东西、嘬指关节，按他们的设想，这种人才会真的对朱利安着迷，因为他看起来就像儿童歌曲广告里的人。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Beulah was a made-up person that me and Jack came up with.</blockquote><p class="note">made-up = 虚构的、编造的。奥吉和杰克捏造了“贝乌拉”这个痴迷朱利安的假粉丝，用嘲弄的方式反击，而不是粗暴骂人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>snitch</b> <span class="pos">v.</span> 告密、打小报告</li><li><b>sarcastic</b> <span class="pos">adj.</span> 讽刺的、挖苦的</li><li><b>made-up</b> <span class="pos">adj.</span> 虚构的、编造的</li><li><b>gross</b> <span class="pos">adj.</span> 恶心的、令人反胃的</li><li><b>crush</b> <span class="pos">n.</span> 迷恋的对象；have a crush on 暗恋某人</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>欺负杰克容易，欺负我难</h2>
+            <div class="seg-en">an easier target</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">恶作剧</span><span class="tag">战队分化</span><span class="tag">阿莫斯倒戈</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意一个关键转折：他们专门挑杰克下手而不碰奥吉，因为知道霸凌奥吉后果严重——这恰恰证明奥吉在这个班里已经拥有了保护。</div>
+        <div class="body">
+<p>There were also a couple of times in February when Julian, Miles, and Henry played tricks on Jack. They didn’t play tricks on me, I think, because they knew that if they got caught “bullying” me, it would be big-time trouble for them. Jack, they figured, was an easier target. So one time they stole his gym shorts and played Monkey in the Middle with them in the locker room. Another time Miles, who sat next to Jack in homeroom, swiped Jack’s worksheet off his desk, crumpled it in a ball, and tossed it to Julian across the room. This wouldn’t have happened if Ms. Petosa had been there, of course, but there was a substitute teacher that day, and subs never really know what’s going on. Jack was good about this stuff. He never let them see he was upset, though I think sometimes he was.</p>
+<p>The other kids in the grade knew about the war. Except for Savanna’s group, the girls were neutral at first. But by March they were getting sick of it. And so were some of the boys. Like another time when Julian was dumping some pencil-sharpener shavings into Jack’s backpack, Amos, who was usually tight with them, grabbed the backpack out of Julian’s hands and returned it to Jack. It was starting to feel like the majority of boys weren’t buying into Julian anymore.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>二月份有几次朱利安、迈尔斯、亨利对杰克恶作剧，却不敢对奥吉下手，因为他们明白一旦被抓住“霸凌”奥吉，麻烦就大了；相比之下杰克是更容易下手的目标。他们偷走杰克的运动短裤，在更衣室当作圈球逗他；还有一次迈尔斯从杰克课桌抢走作业纸，揉成团隔着教室丢给朱利安。那天老师是个代课老师，管不住局面。杰克很扛得住，从不让他们看出自己难受，虽然奥吉觉得他有时候其实难受。班上的同学都知道这场“战争”，除了萨万娜那群，女生起初保持中立，但到三月都腻了；连通常跟朱利安一伙的阿莫斯都从朱利安手里抢回杰克的书包还给他，多数男生开始不买朱利安的账了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Jack, they figured, was an easier target.</blockquote><p class="note">figure = 认为、估计；target = 目标。朱利安他们清楚欺负奥吉会惹大麻烦，所以挑“更容易的目标”杰克。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>target</b> <span class="pos">n.</span> 目标、对象</li><li><b>tricks on</b> <span class="pos">phr.</span> play tricks on 对……使坏、恶作剧</li><li><b>swipe</b> <span class="pos">v.</span> 偷走、（顺手）拿走</li><li><b>crumple</b> <span class="pos">v.</span> 揉皱、弄成一团</li><li><b>neutral</b> <span class="pos">adj.</span> 中立的、不偏不倚的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>丑娃娃钥匙圈和那句玩笑</h2>
+            <div class="seg-en">For the nicest Auggie Doll</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 299 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">盟友流失</span><span class="tag">玩笑破冰</span><span class="tag">丑娃娃钥匙圈</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这段的核心情感转折：奥吉从“被躲避、被嘲笑”变成“能自嘲、被大家接受”，丑娃娃钥匙圈就是他被接纳的物证。</div>
+        <div class="body">
+<p>Then a few weeks ago, Julian started spreading this ridiculous rumor that Jack had hired some “hit man” to “get” him and Miles and Henry. This lie was so pathetic that people were actually laughing about him behind his back. At that point, any boys who had still been on his side now jumped ship and were clearly neutral. So by the end of March, only Miles and Henry were on Julian’s side—and I think even they were getting tired of the war by then.</p>
+<p>I’m pretty sure everyone’s stopped playing the Plague game behind my back, too. No one really cringes if I bump into them anymore, and people borrow my pencils without acting like the pencil has cooties.</p>
+<p>People even joke around with me now sometimes. Like the other day I saw Maya writing a note to Ellie on a piece of Uglydoll stationery, and I don’t know why, but I just kind of randomly said: “Did you know the guy who created the Uglydolls based them on me?”</p>
+<p>Maya looked at me with her eyes wide open like she totally believed me. Then, when she realized I was only kidding, she thought it was the funniest thing in the world.</p>
+<p>“You are so funny, August!” she said, and then she told Ellie and some of the other girls what I had just said, and they all thought it was funny, too. Like at first they were shocked, but then when they saw I was laughing about it, they knew it was okay to laugh about it, too. And the next day I found a little Uglydoll key chain sitting on my chair with a nice little note from Maya that said: For the nicest Auggie Doll in the world! XO Maya.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>几周前朱利安又开始散布荒唐谣言，说杰克雇了“杀手”要对付他和迈尔斯、亨利三个人。这谎话太可悲，大家反而在背后笑话他，原本挺他的男生也纷纷“跳船”转回中立。到三月末，只有迈尔斯和亨利还站在朱利安那边。奥吉说大家也不玩那套躲着他的“瘟疫”游戏了，撞到人没人皱眉头，借铅笔也不用担心染上“虱子”。他甚至能开玩笑：有天看见迈雅用丑娃娃信纸给艾丽写纸条，他就随口说“你知道丑娃娃的作者是照着我画的吗？”迈雅先是一惊，发现他在开玩笑后觉得这是世上最好笑的事，还夸他“你真有趣，奥吉”，转头讲给别的女孩听。第二天奥吉椅子上放了个丑娃娃钥匙圈，附迈雅的纸条：“致世上最可爱的奥吉娃娃！”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>For the nicest Auggie Doll in the world! XO Maya.</blockquote><p class="note">XO = 吻和拥抱（kisses and hugs），通常用于信的结尾。迈雅把奥吉比作“最可爱的奥吉娃娃”，是接纳与善意的信号。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>rumor</b> <span class="pos">n.</span> 谣言、传闻</li><li><b>jump ship</b> <span class="pos">phr.</span> 临阵倒戈、中途退出（离开原本的阵营）</li><li><b>cringe</b> <span class="pos">v.</span> 畏缩、皱眉感到尴尬</li><li><b>cooties</b> <span class="pos">n.</span> （童语）虱子、传染病（指不想碰的东西）</li><li><b>key chain</b> <span class="pos">n.</span> 钥匙圈、钥匙链</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>半年过去，一切都变了</h2>
+            <div class="seg-en">more and more</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 30 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">变化对比</span><span class="tag">融入</span><span class="tag">助听器引子</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一小段很短，是上一段的收尾和下一单元的过渡——注意“越来越多”暗示融入在稳步发生，为助听器话题做了铺垫。</div>
+        <div class="body">
+<p>Six months ago stuff like that would never have happened, but now it happens more and more.</p>
+<p>Also, people have been really nice about the hearing aids I started wearing.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说半年之前这种事绝不会发生，可现在越来越多。另外，大家对奥吉开始佩戴的助听器也都非常友善。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Six months ago stuff like that would never have happened, but now it happens more and more.</blockquote><p class="note">stuff like that = 诸如此类的事。一句简短收尾点出整个单元的变化：半年前不可想象，如今却越来越多。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>stuff like that</b> <span class="pos">phr.</span> 诸如此类的事情</li><li><b>hearing aid</b> <span class="pos">n.</span> 助听器</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_63.html">← 上一单元</a>
+    <a href="wonder_unit_65.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第64/96 单元 · 第六部 · 奥吉 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u64.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

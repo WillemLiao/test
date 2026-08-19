@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第38单元 萨默为什么总和奥吉同桌吃饭</title>
+<style>
+:root{--c:#4a7a8c;--bg:#e8f1f4;--nav:#d5e6ec;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第三部 · 萨默</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 38 单元 · 萨默为什么总和奥吉同桌吃饭</div>
+    <div class="unit-en">Weird Kids · The Plague</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 637 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Three: Summer</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>叙述者切换到同学萨默。开学两周来，她发现全校都在背后议论她和“怪小孩”奥古斯特做朋友，管他叫“僵尸小孩”。萨默坦白：她第一天坐到奥吉身边只是因为可怜他，可现在她却是因为觉得他有意思才继续和他玩。这一单元她还偶然发现学校流传着一个离谱的“游戏”叫“瘟疫”——谁碰到奥吉就得马上洗手消毒。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>同桌吃饭成了全年级最大的新闻</h2>
+            <div class="seg-en">Why I hang out with the freak</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 268 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">同桌吃饭</span><span class="tag">全校议论</span><span class="tag">怜悯起步</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住一个关键反转：萨默第一天坐过去是出于可怜，但她现在已经不把和奥吉吃饭当回事——怜悯和真友谊的区别是这段的重点。</div>
+        <div class="body">
+<p>SOME KIDS HAVE actually come out and asked me why I hang out with “the freak” so much. These are kids that don’t even know him well. If they knew him, they wouldn’t call him that.</p>
+<p>“Because he’s a nice kid!” I always answer. “And don’t call him that.”</p>
+<p>“You’re a saint, Summer,” Ximena Chin said to me the other day. “I couldn’t do what you’re doing.”</p>
+<p>“It’s not a big deal,” I answered her truthfully.</p>
+<p>“Did Mr. Tushman ask you to be friends with him?” Charlotte Cody asked.</p>
+<p>“No. I’m friends with him because I want to be friends with him,” I answered.</p>
+<p>Who knew that my sitting with August Pullman at lunch would be such a big deal? People acted like it was the strangest thing in the world. It’s weird how weird kids can be.</p>
+<p>I sat with him that first day because I felt sorry for him. That’s all. Here he was, this strange-looking kid in a brand-new school. No one was talking to him. Everyone was staring at him. All the girls at my table were whispering about him. He wasn’t the only new kid at Beecher Prep, but he was the only one everyone was talking about. Julian had nicknamed him the Zombie Kid, and that’s what everyone was calling him. “Did you see the Zombie Kid yet?” Stuff like that gets around fast. And August knew it. It’s hard enough being the new kid even when you have a normal face. Imagine having his face?</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>有孩子当面问萨默为什么总和“怪胎”奥吉待在一起，还劝她。萨默回答因为奥吉是个好孩子，也承认自己确实有意和他做朋友。可她没想到，她和奥吉同桌吃午饭竟然闹得全校这么大动静，大家都管奥吉叫“僵尸小孩”。她想起自己第一天坐过去，只是因为可怜那个没人搭理的新同学。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I sat with him that first day because I felt sorry for him. That's all.</blockquote><p class="note">felt sorry for him = 可怜他。萨默坦白自己最初的动机只是同情，为后文“如今觉得他有意思”做铺垫。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hang out with</b> <span class="pos">phr.</span> 和……一起玩、待在一起</li><li><b>freak</b> <span class="pos">n.</span> 怪人、怪物（带贬义的称呼）</li><li><b>saint</b> <span class="pos">n.</span> 圣人、特别有耐心善良的人</li><li><b>nickname</b> <span class="pos">v.</span> 起绰号</li><li><b>get around</b> <span class="pos">phr.</span> （消息）传开、四处传播</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>奥吉的脸要习惯，但他很有趣</h2>
+            <div class="seg-en">Not a biggie</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 293 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">适应长相</span><span class="tag">跳方格游戏</span><span class="tag">瘟疫传言</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>把握萨默的立场：她开始觉得奥吉“有意思”，但对同学那股装成熟、传谣言的风气很不耐烦——这预示她对奥吉的友谊是真诚的。</div>
+        <div class="body">
+<p>So I just went over and sat with him. Not a biggie. I wish people would stop trying to turn it into something major.</p>
+<p>He’s just a kid. The weirdest-looking kid I’ve ever seen, yes. But just a kid.</p>
+<p>I DO ADMIT August’s face takes some getting used to. I’ve been sitting with him for two weeks now, and let’s just say he’s not the neatest eater in the world. But other than that, he’s pretty nice. I should also say that I don’t really feel sorry for him anymore. That might have been what made me sit down with him the first time, but it’s not why I keep sitting down with him. I keep sitting down with him because he is fun.</p>
+<p>One of the things I’m not loving about this year is how a lot of the kids are acting like they’re too grown-up to play things anymore. All they want to do is “hang out” and “talk” at recess. And all they talk about now is who likes who and who is cute and isn’t cute. August doesn’t bother about that stuff. He likes to play Four Square at recess, which I love to play, too.</p>
+<p>It was actually because I was playing Four Square with August that I found out about the Plague. Apparently this is a “game” that’s been going on since the beginning of the year. Anyone who accidentally touches August has only thirty seconds to wash their hands or find hand sanitizer before they catch the Plague. I’m not sure what happens to you if you actually catch the Plague because nobody’s touched August yet—not directly.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默强调和奥吉吃饭根本不是大事，奥吉只是她见过长相最怪的孩子，但说到底就是个普通孩子。她承认奥吉的脸确实需要时间适应，不过坐了两次周课后他很有趣。她很烦别的孩子到了课间就只“闲逛”“聊八卦”，奥吉却愿意和她玩跳方格的游戏，让她很开心。也正因为玩这个游戏，她才知道“瘟疫”的传言。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I keep sitting down with him because he is fun.</blockquote><p class="note">关键转折句：萨默说“我继续和他坐一起，是因为他有意思”，点明从怜悯变成了真友谊。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>biggie</b> <span class="pos">n.</span> 大事；not a biggie 没什么大不了的</li><li><b>get used to</b> <span class="pos">phr.</span> 逐渐习惯、适应</li><li><b>recess</b> <span class="pos">n.</span> 课间休息</li><li><b>Four Square</b> <span class="pos">n.</span> 跳方格（一种课间球类游戏）</li><li><b>hand sanitizer</b> <span class="pos">n.</span> 免洗洗手液</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>原来躲着奥吉是怕“中瘟疫”</h2>
+            <div class="seg-en">The Plague</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 76 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">瘟疫游戏</span><span class="tag">躲着奥吉</span><span class="tag">校园恶意</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>感受这个“瘟疫”游戏有多伤奥吉：同学用疾病隐喻把他隔离成传染源，这是温柔外表下隐藏的恶意。</div>
+        <div class="body">
+<p>How I found out about this is that Maya Markowitz told me that the reason she won’t play Four Square with us at recess is that she doesn’t want to catch the Plague. I was like, “What’s the Plague?” And she told me. I told Maya I thought that was really dumb and she agreed, but she still wouldn’t touch a ball that August just touched, not if she could help it.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>同学玛雅告诉萨默，她不一起玩跳方格是因为不想“染上瘟疫”。萨默这才明白，学校里流传着这样一个恶作剧式的“游戏”：谁不小心碰到奥吉，就要在三十秒内洗手或找免洗消毒液，否则就会被传染“瘟疫”。好在还没人真的碰过奥吉。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Anyone who accidentally touches August has only thirty seconds to wash their hands or find hand sanitizer before they catch the Plague.</blockquote><p class="note">catch the Plague = 染上瘟疫。这句让读者看清：孩子们把“碰到奥吉”等同于“可能被传染”，用想象出来的病当借口孤立他。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>Plague</b> <span class="pos">n.</span> 瘟疫、传染病</li><li><b>accidentally</b> <span class="pos">adv.</span> 意外地、不小心地</li><li><b>sanitizer</b> <span class="pos">n.</span> 消毒液</li><li><b>dumb</b> <span class="pos">adj.</span> 愚蠢的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_37.html">← 上一单元</a>
+    <a href="wonder_unit_39.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第38/96 单元 · 第三部 · 萨默 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u38.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

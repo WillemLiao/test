@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第51单元 道歉信与朱利安妈妈的来信</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 51 单元 · 道歉信与朱利安妈妈的来信</div>
+    <div class="unit-en">Letters, Emails, Facebook, Texts</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 656 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>这单元是信件与邮件。杰克按图什曼的要求写了两封信：一封给校长，为自己打朱利安真诚道歉但拒绝说出原因；一封给朱利安道歉，还祝他的新牙快快长。图什曼回信说很少有故事只有两面，好朋友有时值得为之辩护。随后朱利安的妈妈梅丽莎发来一封措辞尖锐的邮件：表面上同意杰克回校，实则暗示奥吉是个「有特殊需求的孩子」，为了招呼他反而给孩子们压了太多担子，还质疑学校招收奥吉的决定和审核标准。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>给校长和朱利安的两封道歉信</h2>
+            <div class="seg-en">I am very, very sorry for punching Julian</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">写信道歉</span><span class="tag">校长回信</span><span class="tag">为友辩护</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意图什曼客气的回信里藏着两句话：一面说打人不对，一面又暗示他理解、甚至欣赏杰克为朋友出头。</div>
+        <div class="body">
+<p class="q">December 18</p>
+<p class="q">Dear Mr. Tushman,</p>
+<p>I am very, very sorry for punching Julian. It was very, very wrong for me to do that. I am writing a letter to him to tell him that, too. If it’s okay, I would really rather not tell you why I did what I did because it doesn’t really make it right anyway. Also, I would rather not make Julian get in trouble for having said something he should not have said.</p>
+<p class="q">Very sincerely,</p>
+<p class="q">Jack Will</p>
+<p class="q">December 18</p>
+<p class="q">Dear Julian,</p>
+<p>I am very, very, very sorry for hitting you. It was wrong of me. I hope you are okay. I hope your grown-up tooth grows in fast. Mine always do.</p>
+<p class="q">Sincerely,</p>
+<p class="q">Jack Will</p>
+<p class="q">December 26</p>
+<p class="q">Dear Jack,</p>
+<p>Thank you so much for your letter. One thing I’ve learned after being a middle-school director for twenty years: there are almost always more than two sides to every story. Although I don’t know the details, I have an inkling about what may have sparked the confrontation with Julian.</p>
+<p>While nothing justifies striking another student—ever—I also know good friends are sometimes worth defending. This has been a tough year for a lot of students, as the first year of middle school usually is.</p>
+<p>Keep up the good work, and keep being the fine boy we all know you are.</p>
+<p class="q">All the best,</p>
+<p class="q">Lawrence Tushman</p>
+<p class="q">Middle-School Director</p>
+<p class="q">To: ltushman@beecherschool.edu</p>
+<p class="q">Cc: johnwill@phillipsacademy.edu; amandawill@copperbeech.org</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克在12月18日写了两封信。给图什曼的信里他为打朱利安诚恳道歉，却说宁可不说出原因，也不愿牵连朱利安为一句不该说的话受罚。给朱利安的信里再次道歉，并祝他的恒牙快点长出来。12月26日图什曼回信：做了二十年中学校长，他懂得每个故事几乎都不止两面，虽然打人永远说不过去，但好朋友有时值得为之辩护。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>While nothing justifies striking another student—ever—I also know good friends are sometimes worth defending.</blockquote><p class="note">justify = 为……辩护、证明合理；strike = 击打。校长点出这封信的立场：打人不对，但为朋友辩护值得。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>punch</b> <span class="pos">v.</span> 用拳打、击打</li><li><b>justify</b> <span class="pos">v.</span> 使合理、为……辩护</li><li><b>strike</b> <span class="pos">v.</span> 击打</li><li><b>defend</b> <span class="pos">v.</span> 为……辩护、保护</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>朱利安妈妈的尖锐邮件</h2>
+            <div class="seg-en">Too much pressure placed on his shoulders</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 339 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">朱利安妈妈</span><span class="tag">隐晦排外</span><span class="tag">质疑录取</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这段是人物的底色展示：朱利安的妈妈用恭敬客气的措辞，包装对奥吉的排斥与对学校的质疑。</div>
+        <div class="body">
+<p class="q">Fr: melissa.albans@rmail.com</p>
+<p class="q">Subject: Jack Will</p>
+<p class="q">Dear Mr. Tushman,</p>
+<p>I spoke with Amanda and John Will yesterday, and they expressed their regret at Jack’s having punched our son, Julian, in the mouth. I am writing to let you know that my husband and I support your decision to allow Jack to return to Beecher Prep after a two-day suspension. Although I think hitting a child would be valid grounds for expulsion in other schools, I agree such extreme measures aren’t warranted here. We have known the Will family since our boys were in kindergarten, and are confident that every measure will be taken to ensure this doesn’t happen again.</p>
+<p class="q">To that end, I wonder if Jack’s unexpectedly violent behavior might have been a result of too much pressure being placed on his young shoulders? I am speaking specifically of the new child with special needs who both Jack and Julian were asked to “befriend.” In retrospect, and having now seen the child in question at various school functions and in the class pictures, I think it may have been too much to ask of our children to be able to process all that. Certainly, when Julian mentioned he was having a hard time befriending the boy, we told him he was “off the hook” in that regard. We think the transition to middle school is hard enough without having to place greater burdens or hardships on these young, impressionable minds. I should also mention that, as a member of the school board, I was a little disturbed that more consideration was not given during this child’s application process to the fact that Beecher Prep is not an inclusion school. There are many parents—myself included—who question the decision to let this child into our school at all. At the very least, I am somewhat troubled that this child was not held to the same stringent application standards (i.e. interview) that the rest of the incoming middle-school students were.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>朱利安的妈妈梅丽莎给图什曼写信。表面支持让杰克停课两天后回校，并表示愿意相信威尔斯家会杜绝再犯。可随后她话锋一转：怀疑杰克突然的暴力行为是不是因为被要求去「亲近」那个有特殊需求的新孩子、承受了太多压力。她自称是校董事，质疑学校凭什么招收奥吉——Beech绝不是一所「全纳学校」，而奥吉甚至没被要求像其他新生一样参加面试。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>In retrospect, and having now seen the child in question at various school functions and in the class pictures, I think it may have been too much to ask of our children to be able to process all that.</blockquote><p class="note">in retrospect = 回想起来；the child in question = 所说的那个孩子（她指的是奥吉）。她没有直接说出名字，透着刻意的距离感。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>regret</b> <span class="pos">n.</span> 遗憾、懊悔</li><li><b>in retrospect</b> <span class="pos">phr.</span> 回想起来、回头想想</li><li><b>inclusion school</b> <span class="pos">n.</span> 全纳学校（接纳有特殊需要学生的学校）</li><li><b>stringent</b> <span class="pos">adj.</span> 严格的、苛刻的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>校长一句一句挡回</h2>
+            <div class="seg-en">Rest assured</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 71 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">校长护奥吉</span><span class="tag">纠正偏见</span><span class="tag">面试解释</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意校长如何不动声色地为奥吉辩护——一句「奥吉没有特殊需要」，正面回绝梅丽莎以特殊需要为由的排挤。</div>
+        <div class="body">
+<p class="q">Best,</p>
+<p class="q">Melissa Perper Albans</p>
+<p class="q">To: melissa.albans@rmail.com</p>
+<p class="q">Fr: ltushman@beecherschool.edu</p>
+<p class="q">Cc: johnwill@phillipsacademy.edu; amandawill@copperbeech.org</p>
+<p class="q">Subject: Jack Will</p>
+<p class="q">Dear Mrs. Albans,</p>
+<p>Thanks for your email outlining your concerns. Were I not convinced that Jack Will is extremely sorry for his actions, and were I not confident that he would not repeat those actions, rest assured that I would not be allowing him back to Beecher Prep.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>图什曼简短回信梅丽莎。他说若不是确信杰克已深深懊悔、不会再犯，绝不会让他回校；至于奥吉，他并不需要特殊照顾——他既不残疾也不发育迟缓，所以学校从他不会成为麻烦。图什曼还解释：面试改在奥吉家里进行是有充分理由的，奥吉是个极好的学生，而且已经赢得了一些真正出色的年轻人的友谊，包括杰克·威尔。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>As for your other concerns regarding our new student August, please note that he does not have special needs. He is neither disabled, handicapped, nor developmentally delayed in any way.</blockquote><p class="note">disabled = 残疾的；handicapped = 有障碍的；developmentally delayed = 发育迟缓。校长逐条反驳，强调奥吉只是外表不同，能力上并无特殊。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>convinced</b> <span class="pos">adj.</span> 确信的、信服的</li><li><b>rest assured</b> <span class="pos">phr.</span> 你放心、请相信</li><li><b>disabled</b> <span class="pos">adj.</span> 残疾的、有残障的</li><li><b>prejudicial</b> <span class="pos">adj.</span> 带偏见的、有损公平的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_50.html">← 上一单元</a>
+    <a href="wonder_unit_52.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第51/96 单元 · 第四部 · 杰克 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u51.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

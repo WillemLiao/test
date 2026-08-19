@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第94单元 颁奖时刻：奥吉获亨利·沃德·比彻勋章</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 94 单元 · 颁奖时刻：奥吉获亨利·沃德·比彻勋章</div>
+    <div class="unit-en">Awards</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 813 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>颁奖环节正式开始。鲁宾老师念优等生荣誉榜名单，奥吉听到自己名字站起来，却不知道父母坐在人海哪里，只能想象妈妈在远处向他挥手。图什曼先生逐一颁发学业、音乐、体育等多项奖牌，奥吉为好友艾莫斯拿体育金牌而开心，更在夏默拿到创意写作金牌时扯着嗓子为她欢呼。最后一个重量级奖是亨利·沃德·比彻勋章。图什曼讲述比彻这位废奴主义者的校名由来，动情地引用他关于伟大的话——最伟大的人，是用自己的魅力托起最多心灵的人。话音落下，他宣布把这个奖颁给那位用安静的力量托起最多心灵的学生：奥古斯特·普尔曼，请你上来。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>优等生名单，还有为夏默欢呼</h2>
+            <div class="seg-en">Woo-hoo, Summer!</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 293 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">优等生名单</span><span class="tag">奖牌</span><span class="tag">友情欢呼</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>品出奥吉的心趣：他关心奖牌，更关心朋友——为艾莫斯高兴、为夏默尖叫，说明这一年他用真心换来了真正的友情。</div>
+        <div class="body">
+<p>I LIKED MR. TUSHMAN’S speech, but I have to admit: I kind of zoned out a little during some of the other speeches.</p>
+<p>I tuned in again as Ms. Rubin started reading off the names of the kids who’d made the High Honor Roll because we were supposed to stand up when our names were called. So I waited and listened for my name as she went down the list alphabetically. Reid Kingsley. Maya Markowitz. August Pullman. I stood up. Then when she finished reading off the names, she asked us all to face the audience and take a bow, and everyone applauded.</p>
+<p>I had no idea where in that huge crowd my parents might be sitting. All I could see were the flashes of light from people taking photos and parents waving at their kids. I pictured Mom waving at me from somewhere even though I couldn’t see her.</p>
+<p>Then Mr. Tushman came back to the podium to present the medals for academic excellence, and Jack was right: Ximena Chin won the gold medal for “overall academic excellence in the fifth grade.” Charlotte won the silver. Charlotte also won a gold medal for music. Amos won the medal for overall excellence in sports, which I was really happy about because, ever since the nature retreat, I considered Amos to be like one of my best friends in school. But I was really, really thrilled when Mr. Tushman called out Summer’s name for the gold medal in creative writing. I saw Summer put her hand over her mouth when her name was called, and when she walked up onto the stage, I yelled: “Woo-hoo, Summer!” as loudly as I could, though I don’t think she heard me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉喜欢图什曼的致辞，但别的致辞他多少有点走神。直到鲁宾老师开始按字母顺序念优等生荣誉榜名单——念到自己名字就得站起来——他才认真听起来。雷德·金斯利、玛雅·马科维茨、奥古斯特·普尔曼，奥吉应声起立，朝全场观众鞠躬，掌声响起。他看不到父母坐在台下哪里，只能想象妈妈正在某处向他挥手。接着图什曼回来颁学业优秀奖牌：希梅纳（Ximena）拿五年级总成绩金、夏洛特拿银并另有音乐金、艾莫斯拿体育总成绩金——奥吉很为他高兴，因为自自然营之后艾莫斯已是他在学校最要好的朋友之一。而当夏默（Summer）拿到创意写作金时，奥吉激动到扯着最大嗓门喊Woo-hoo, Summer！</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>When Mr. Tushman called out Summer's name for the gold medal in creative writing, I was really, really thrilled.</blockquote><p class="note">thrilled = 激动万分。听到好朋友夏默拿了创意写作金牌，奥吉比谁都高兴，管不了台上听不听得到，扯着嗓子喊Woo-hoo！</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>zone out</b> <span class="pos">phr.</span> 走神、心不在焉</li><li><b>tune in</b> <span class="pos">phr.</span> 集中注意力听</li><li><b>bow</b> <span class="pos">v./n.</span> 鞠躬；take a bow 鞠躬致意</li><li><b>flash</b> <span class="pos">n.</span> 闪光（这里指拍照的闪光灯）</li><li><b>thrilled</b> <span class="pos">adj.</span> 激动万分的、非常兴奋的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>压轴大奖：比彻勋章</h2>
+            <div class="seg-en">The Henry Ward Beecher medal</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 257 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">压轴大奖</span><span class="tag">比彻勋章</span><span class="tag">悬念铺垫</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意图什曼反复强调的四个词：善良、友谊、品格、勇气——它们暗示这枚奖章真正要找的是谁，也为最后点出奥吉埋下伏笔。</div>
+        <div class="body">
+<p>After the last name was called, all the kids who’d just won awards stood next to each other onstage, and Mr. Tushman said to the audience: “Ladies and gentlemen, I am very honored to present to you this year’s Beecher Prep School scholastic achievers. Congratulations to all of you!”</p>
+<p>I applauded as the kids onstage bowed. I was so happy for Summer.</p>
+<p>“The final award this morning,” said Mr. Tushman, after the kids onstage had returned to their seats, “is the Henry Ward Beecher medal to honor students who have been notable or exemplary in certain areas throughout the school year. Typically, this medal has been our way of acknowledging volunteerism or service to the school.”</p>
+<p>I immediately figured Charlotte would get this medal because she organized the coat drive this year, so I kind of zoned out a bit again. I looked at my watch: 10:56. I was getting hungry for lunch already.</p>
+<p>“… Henry Ward Beecher was, of course, the nineteenth-century abolitionist—and fiery sermonizer for human rights—after whom this school was named,” Mr. Tushman was saying when I started paying attention again.</p>
+<p>“While reading up on his life in preparation for this award, I came upon a passage that he wrote that seemed particularly consistent with the themes I touched on earlier, themes I’ve been ruminating upon all year long. Not just the nature of kindness, but the nature of one’s kindness. The power of one’s friendship. The test of one’s character. The strength of one’s courage—”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>最后一个名字念完后，所有获奖者上台并肩站成一排，图什曼向全场郑重介绍这批本年度学业成就者，奥吉为他们鼓掌，最替夏默开心。随后图什曼宣布今天最后一个奖：亨利·沃德·比彻勋章，用以表彰整个学年里在特定领域表现突出、可作典范的学生，以往通常颁给志愿服务或对学校有贡献的人。奥吉立刻以为会是夏洛特得奖，因为她今年组织了外套募捐活动，于是又有点走神，看了眼表已是10时56分，肚子都饿了。直到图什曼讲到比彻是19世纪那位废奴主义者、人权方面热情洋溢的布道者、学校正是以他命名——并表示在准备这个奖时读到比彻写的一段话，与他前面讲的主题契合：不只是善良的本质，更是人如何对待自己的那份善良、友谊的力量、品格的考验、勇气的力量。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The power of one's friendship. The test of one's character. The strength of one's courage—</blockquote><p class="note">图什曼一口气点出几个关键词——友谊的力量、品格的考验、勇气的力量——这一连串词都在悄悄指向今天真正要表彰的那个人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>scholastic</b> <span class="pos">adj.</span> 学业的、学术的</li><li><b>exemplary</b> <span class="pos">adj.</span> 典范的、模范的</li><li><b>volunteerism</b> <span class="pos">n.</span> 志愿服务、志愿精神</li><li><b>abolitionist</b> <span class="pos">n.</span> 废奴主义者</li><li><b>ruminate on</b> <span class="pos">phr.</span> 反复思考、沉思</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>托起最多心灵的人</h2>
+            <div class="seg-en">Carries up the most hearts</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 251 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">伟大之辩</span><span class="tag">哽咽致辞</span><span class="tag">大奖将落</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这就是本单元的戏剧高潮：图什曼数着勇敢、善良、友谊、品格，又宣布要把勋章颁给以安静的力量托起最多心灵的人——字字句句都在指向台下的奥吉。</div>
+        <div class="body">
+<p>And here the weirdest thing happened: Mr. Tushman’s voice cracked a bit, like he got all choked up. He actually cleared his throat and took a big sip of water. I started paying attention, for real now, to what he was saying.</p>
+<p>“The strength of one’s courage,” he repeated quietly, nodding and smiling. He held up his right hand like he was counting off. “Courage. Kindness. Friendship. Character. These are the qualities that define us as human beings, and propel us, on occasion, to greatness. And this is what the Henry Ward Beecher medal is about: recognizing greatness.</p>
+<p>“But how do we do that? How do we measure something like greatness? Again, there’s no yardstick for that kind of thing. How do we even define it? Well, Beecher actually had an answer for that.”</p>
+<p>He put his reading glasses on again, leafed through a book, and started to read. “‘Greatness,’ wrote Beecher, ‘lies not in being strong, but in the right using of strength. … He is the greatest whose strength carries up the most hearts …’”</p>
+<p>And again, out of the blue, he got all choked up. He put his two index fingers over his mouth for a second before continuing.</p>
+<p>“‘He is the greatest,’” he finally continued, “‘whose strength carries up the most hearts by the attraction of his own.’ Without further ado, this year I am very proud to award the Henry Ward Beecher medal to the student whose quiet strength has carried up the most hearts.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>就在说到这儿时，件奇怪的事发生了：图什曼先生的嗓音有些发颤，像被什么堵住了一样——他清了清喉咙，喝了大大一口水。奥吉这才真正认真听起来。图什曼放低声音重复勇气的力量，举起右手一根根数：勇敢、善良、友谊、品格——这些是让人之所以为人的特质，有时会把我们推向伟大，而这枚勋章表彰的正是伟大。他说世上没有度量伟大的标尺，但比彻给出了答案。他戴上老花镜，翻书读起来：伟大不在于强大，而在于善用力量……最伟大的人，是用自己的力量托起最多心灵的人。他读到这儿又哽咽了，用两根食指压在嘴唇上定了定神，才继续念完那句：最伟大的人，是通过自身魅力的吸引，托起最多心灵的人。他不绕弯子地宣布：今年他非常自豪地把亨利·沃德·比彻勋章颁给那位以安静的力量托起最多心灵的学生。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He is the greatest whose strength carries up the most hearts by the attraction of his own.</blockquote><p class="note">比彻的原句：最伟大的人，是用自己的魅力与力量托起最多心灵的人。carries up = 托起、往上带；hearts = 心灵。这句为奥吉的获奖作了最有力的注脚。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>choked up</b> <span class="pos">phr.</span> （激动得）说不出话、喉咙发堵</li><li><b>courage</b> <span class="pos">n.</span> 勇气</li><li><b>character</b> <span class="pos">n.</span> 品格、性格</li><li><b>yardstick</b> <span class="pos">n.</span> 标尺、衡量标准</li><li><b>out of the blue</b> <span class="pos">phr.</span> 突然地、毫无征兆地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>奥古斯特·普尔曼，请上来</h2>
+            <div class="seg-en">Come up here to receive this award?</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 12 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">获奖揭晓</span><span class="tag">奥吉名扬</span><span class="tag">本书高点</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住这一瞬：获奖的不是擅长学习的优等生，而是奥吉——这是他平凡外表下、温柔与勇气所换来的最高认可，也是全书情感最重的一刻。</div>
+        <div class="body">
+<p>“So will August Pullman please come up here to receive this award?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>图什曼先生说完那句颁奖词，全场安静了一瞬，他随即开口宣布获奖者的名字——那么，奥古斯特·普尔曼，请上来接受这个奖好吗？这一声点名，把所有人都吓了一跳，也把这个奖项郑重地交到了奥吉手里。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>So will August Pullman please come up here to receive this award?</blockquote><p class="note">图什曼郑重地念出奥古斯特·普尔曼的名字。award = 奖、勋。这个熟悉的名字此刻被高声宣读，成了全场瞩目的焦点。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>award</b> <span class="pos">n.</span> 奖、奖项</li><li><b>receive</b> <span class="pos">v.</span> 接受、领取</li><li><b>come up</b> <span class="pos">phr.</span> 走上前、上来</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_93.html">← 上一单元</a>
+    <a href="wonder_unit_95.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第94/96 单元 · 第八部 · 奥吉 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u94.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

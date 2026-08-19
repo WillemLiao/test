@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第41单元 奥吉第一次来家里：关于脸与来世</title>
+<style>
+:root{--c:#4a7a8c;--bg:#e8f1f4;--nav:#d5e6ec;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第三部 · 萨默</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 41 单元 · 奥吉第一次来家里：关于脸与来世</div>
+    <div class="unit-en">Warning: This Kid Is Rated R</div>
+    <div class="unit-stats">
+      <span>⏱ 约 11 分钟</span>
+      <span>📄 883 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Three: Summer</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉第一次到萨默家做客，虽然萨默提前提醒，她妈妈第一眼看到奥吉的脸还是吓了一跳，萨默赶紧私下让妈妈别做怪表情。两人聊起萨默的爸爸，这才知道他几年前去世了。他们谈死亡与灵魂，萨默相信人死后灵魂会转世成新生婴儿、重来一次——奥吉很喜欢这个说法，因为下辈子他就不用再带着这张脸。随后萨默鼓起勇气问他脸到底是怎么回事。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>妈妈的怪表情藏不住</h2>
+            <div class="seg-en">Hi, Mom, this is Auggie</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 248 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">奥吉来家</span><span class="tag">妈妈的惊讶</span><span class="tag">爸爸的照片</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意“妈妈的表情”这个细节：连训练过反射的大人都很难当场面不改色——这正是奥吉每天要面对的日常。</div>
+        <div class="body">
+<p>I HAD WARNED Mom about August’s face. I had described what he looked like. I did this because I know she’s not always so good at faking her feelings, and August was coming over for the first time today. I even sent her a text at work to remind her about it. But I could tell from the expression on her face when she came home after work that I hadn’t prepared her enough. She was shocked when she came through the door and saw his face for the first time.</p>
+<p>“Hi, Mom, this is Auggie. Can he stay for dinner?” I asked quickly.</p>
+<p>It took a second for my question to even register.</p>
+<p>“Hi, Auggie,” she said. “Um, of course, sweetheart. If it’s okay with Auggie’s mother.”</p>
+<p>While Auggie called his mother on his cell phone, I whispered to Mom: “Stop making that weirded-out face!” She had that look like when she’s watching the news and some horrific event has happened. She nodded quickly, like she hadn’t realized she was making a face, and was really nice and normal to Auggie afterward.</p>
+<p>After a while, Auggie and I got tired of working on our projects and went to hang out in the living room. Auggie was looking at the pictures on the mantel, and he saw a picture of me and Daddy.</p>
+<p>“Is that your dad?” he said.</p>
+<p>“Yeah.”</p>
+<p>“I didn’t know you were … what’s the word?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默怕妈妈见了奥吉的脸反应太大，提前发消息提醒她。可妈妈下班一进门看到他，还是明显被吓到。萨默赶紧介绍奥吉并问能否留他吃晚饭，趁奥吉打电话问妈妈时，小声让妈妈别再做那种怪脸。妈妈回过神后，对奥吉很亲切。随后两人玩腻了写作业，去客厅看壁炉架上的照片，奥吉发现了萨默和爸爸的合影。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;Stop making that weirded-out face!&quot;</blockquote><p class="note">weirded-out = 一脸怪相。萨默低声提醒妈妈：就算惊讶也别写在脸上，要为奥吉着想。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>register</b> <span class="pos">v.</span> 被理解、进入意识</li><li><b>whisper</b> <span class="pos">v.</span> 低声说、耳语</li><li><b>mantel</b> <span class="pos">n.</span> 壁炉台（上面常摆照片）</li><li><b>shocked</b> <span class="pos">adj.</span> 震惊的</li><li><b>expression</b> <span class="pos">n.</span> 表情</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>“我爸爸是个排长，几年前去世了”</h2>
+            <div class="seg-en">He was a platoon sergeant</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 259 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">爸爸去世</span><span class="tag">丧亲之痛</span><span class="tag">灵魂转世</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是两人友谊的转折点：萨默吐露丧父之痛，奥吉认真倾听，亲密感由此建立起来。</div>
+        <div class="body">
+<p>“Biracial.”</p>
+<p>“Right! That’s the word.”</p>
+<p>“Yeah.”</p>
+<p>He looked at the picture again.</p>
+<p>“Are your parents divorced? I’ve never seen him at drop-off or anything.”</p>
+<p>“Oh, no,” I said. “He was a platoon sergeant. He died a few years ago.”</p>
+<p>“Whoa! I didn’t know that.”</p>
+<p>“Yeah.” I nodded, handing him a picture of my dad in his uniform.</p>
+<p>“Wow, look at all those medals.”</p>
+<p>“Yeah. He was pretty awesome.”</p>
+<p>“Wow, Summer. I’m sorry.”</p>
+<p>“Yeah, it sucks. I really miss him a lot.”</p>
+<p>“Yeah, wow.” He nodded, handing me back the picture.</p>
+<p>“Have you ever known anyone who died?” I asked.</p>
+<p>“Just my grandmother, and I don’t really even remember her.”</p>
+<p>“That’s too bad.”</p>
+<p>Auggie nodded.</p>
+<p>“You ever wonder what happens to people when they die?” I asked.</p>
+<p>He shrugged. “Not really. I mean, I guess they go to heaven? That’s where my Grans went.”</p>
+<p>“I think about it a lot,” I said. “I think when people die, their souls go to heaven but just for a little while. Like that’s where they see their old friends and stuff, and kind of catch up on old times. But then I actually think the souls start thinking about their lives on earth, like if they were good or bad or whatever. And then they get born again as brand-new babies in the world.”</p>
+<p>“Why would they want to do that?”</p>
+<p>“Because then they get another chance to get it right,” I answered. “Their souls get a chance to have a do-over.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉问萨默是不是混血儿，又猜她爸妈是不是离婚了——从没在校门口见过她爸爸。萨默告诉他：爸爸是排长，几年前去世了，还给他看爸爸穿军装、挂满奖章的照片，说自己真的很想念他。奥吉道歉，聊起他去世的祖母。萨默讲起她对死亡的想象：人死后灵魂先去天堂见老友，然后回想生前是好是坏，再转世成新生儿——灵魂有再来一次的机会。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;Because then they get another chance to get it right,&quot; I answered. &quot;Their souls get a chance to have a do-over.&quot;</blockquote><p class="note">do-over = 重来一次。萨默相信灵魂能转世再活一次，以弥补上辈子的遗憾。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>biracial</b> <span class="pos">adj.</span> 混血的（父母不同种族）</li><li><b>divorced</b> <span class="pos">adj.</span> 离婚的</li><li><b>platoon sergeant</b> <span class="pos">n.</span> 排长（军队军衔）</li><li><b>medal</b> <span class="pos">n.</span> 勋章、奖章</li><li><b>do-over</b> <span class="pos">n.</span> 重来一次的机会</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“下辈子我就能换个脸了”</h2>
+            <div class="seg-en">I won't be stuck with this face</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">换个脸</span><span class="tag">自嘲幽默</span><span class="tag">鼓起勇气提问</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“换个脸”这句心愿的分量：奥吉用玩笑掩盖的心酸，这一刻通过转世的话题悄悄流露出来。</div>
+        <div class="body">
+<p>He thought about what I was saying and then nodded. “Kind of like when you get a makeup test,” he said.</p>
+<p>“Right.”</p>
+<p>“But they don’t come back looking the same,” he said. “I mean, they look completely different when they come back, right?”</p>
+<p>“Oh yeah,” I answered. “Your soul stays the same but everything else is different.”</p>
+<p>“I like that,” he said, nodding a lot. “I really like that, Summer. That means in my next life I won’t be stuck with this face.”</p>
+<p>He pointed to his face when he said that and batted his eyes, which made me laugh.</p>
+<p>“I guess not.” I shrugged.</p>
+<p>“Hey, I might even be handsome!” he said, smiling. “That would be so awesome, wouldn’t it? I could come back and be this good-looking dude and be super buff and super tall.”</p>
+<p>I laughed again. He was such a good sport about himself. That’s one of the things I like the most about Auggie.</p>
+<p>“Hey, Auggie, can I ask you a question?”</p>
+<p>“Yeah,” he said, like he knew exactly what I wanted to ask.</p>
+<p>I hesitated. I’ve been wanting to ask him this for a while but I’ve always lost the guts to ask.</p>
+<p>“What?” he said. “You want to know what’s wrong with my face?”</p>
+<p>“Yeah, I guess. If it’s okay for me to ask.”</p>
+<p>He shrugged. I was so relieved that he didn’t seem mad or sad.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉想了会儿萨默的话，把它比作补考，并追问转世后长相会不会变。萨默说：灵魂不变，但外貌完全不一样。奥吉为此又惊又喜，因为这意味着下辈子他不必再带着这张脸，甚至可能长得英俊又高大健壮。他拿自己的脸开玩笑，看得开、很会自嘲，萨默越来越喜欢他。最后萨默鼓起勇气想问他“你脸到底怎么回事”，奥吉猜中了，答应告诉她。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;That means in my next life I won't be stuck with this face.&quot;</blockquote><p class="note">be stuck with = 摆脱不掉。奥吉难得坦白：他多希望下辈子不必再顶着这张脸。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>makeup test</b> <span class="pos">n.</span> 补考（重新考一次）</li><li><b>buff</b> <span class="pos">adj.</span> 健壮、肌肉发达的</li><li><b>good sport</b> <span class="pos">n.</span> 输得起、脾气好、很随和的人</li><li><b>hesitate</b> <span class="pos">v.</span> 犹豫</li><li><b>lose the guts</b> <span class="pos">phr.</span> 没有勇气（guts 勇气）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>“我其实算某种医学奇迹呢”</h2>
+            <div class="seg-en">Man-di-bu-lo-facial dys-ostosis</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 132 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">罕见病自述</span><span class="tag">医学奇迹玩笑</span><span class="tag">幽默化解</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>感受奥吉处理沉重话题的方式：用自嘲和幽默把疾病讲成笑话，既保护自己也化解对方的尴尬。</div>
+        <div class="body">
+<p>“Yeah, it’s no big deal,” he said casually. “The main thing I have is this thing called man-di-bu-lo-facial dys-os-tosis—which took me forever to learn how to pronounce, by the way. But I also have this other syndrome thing that I can’t even pronounce. And these things kind of just morphed together into one big superthing, which is so rare they don’t even have a name for it. I mean, I don’t want to brag or anything, but I’m actually considered something of a medical wonder, you know.”</p>
+<p>He smiled.</p>
+<p>“That was a joke,” he said. “You can laugh.”</p>
+<p>I smiled and shook my head.</p>
+<p>“You’re funny, Auggie.” I said.</p>
+<p>“Yes, I am,” he said proudly. “I am cool beans.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉轻松地说起自己的病因：主要是一种叫“下颌面骨发育不全”的罕见病（他自己都学了好久才会念），还叠加另一种说不上名字的综合征。他开玩笑说这些病搅在一起成了个超级罕见的怪东西，自己也算得上“医学奇迹”，还特意提醒萨默“这是笑话，你可以笑”。萨默笑着说“你真逗”，奥吉得意地说“我确实很棒”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;I'm actually considered something of a medical wonder, you know.&quot;</blockquote><p class="note">medical wonder = 医学奇迹。奥吉用调侃的口吻讲述自己的病，随后补一句“这是笑话”，让气氛轻松起来。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>syndrome</b> <span class="pos">n.</span> 综合征</li><li><b>morphed</b> <span class="pos">v.</span> 变形、演变成（morph 的过去式）</li><li><b>pronounce</b> <span class="pos">v.</span> 发音、念出</li><li><b>brag</b> <span class="pos">v.</span> 吹嘘、炫耀</li><li><b>cool beans</b> <span class="pos">phr.</span> 棒极了、很厉害（口语）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_40.html">← 上一单元</a>
+    <a href="wonder_unit_42.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第41/96 单元 · 第三部 · 萨默 · 约 11 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u41.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

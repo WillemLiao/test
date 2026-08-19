@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第35单元 与旧友分道，万圣节独自想外婆</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 35 单元 · 与旧友分道，万圣节独自想外婆</div>
+    <div class="unit-en">Out with the Old · October 31</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 971 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>开学两周后，维娅决定和米兰达、伊拉和平分手：她们投向了新学校的风云人物圈，午饭只聊她听不进去的八卦。她转而认识了聪明幽默的伊莲诺，进了“学霸桌”，还悄悄喜欢上一个拉小提琴的安静男生贾斯汀。与此同时，外婆在万圣节前夜的忌日临近，这天妈妈忙着给奥吉改做波巴·费特的万圣节戏服。维娅在家里想着外婆，而奥吉那天却穿着另一套“流血惊叫”鬼服的旧戏服，哪套也不是妈妈新做的。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我毅然离开米兰达和伊拉</h2>
+            <div class="seg-en">A clean break</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 277 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自断旧友谊</span><span class="tag">图书馆读书</span><span class="tag">认识新朋友</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住维娅决定“干干脆脆分开”的心态：她不想撒谎假装没事，宁可用孤独和书本填满空位。</div>
+        <div class="body">
+<p>MIRANDA AND ELLA blasted off. They attached themselves to a new crowd destined for high school glory. After a week of painful lunches where all they would do was talk about people that didn’t interest me, I decided to make a clean break for it. They asked no questions. I told no lies. We just went our separate ways.</p>
+<p>I didn’t even mind after a while. I stopped going to lunch for about a week, though, to make the transition easier, to avoid the fake Oh, shoot, there’s no room for you at the table, Olivia! It was easier just to go to the library and read.</p>
+<p>I finished War and Peace in October. It was amazing. People think it’s such a hard read, but it’s really just a soap opera with lots of characters, people falling in love, fighting for love, dying for love. I want to be in love like that someday. I want my husband to love me the way Prince Andrei loved Natasha.</p>
+<p>I ended up hanging out with a girl named Eleanor who I’d known from my days at PS 22, though we’d gone to different middle schools. Eleanor had always been a really smart girl—a little bit of a crybaby back then, but nice. I’d never realized how funny she was (not laugh-out-loud Daddy-funny, but full of great quips), and she never knew how lighthearted I could be. Eleanor, I guess, had always been under the impression that I was very serious. And, as it turns out, she’d never liked Miranda and Ella. She thought they were stuck-up.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说米兰达和伊拉一头扎进新学校的光鲜圈子，午饭只聊她不感兴趣的人，忍过一周痛心的午餐后她决定干脆了断，双方都不问缘由、也不撒谎，就此分开。为过这段过渡期，她有约一周不去吃午饭，宁可去图书馆读书，十月还读完了《战争与和平》，觉得它不过是人物众多、为爱争爱死爱的肥皂剧。她由此认识了她喜欢的安静女孩伊莲诺。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>After a week of painful lunches where all they would do was talk about people that didn’t interest me, I decided to make a clean break for it.</blockquote><p class="note">make a clean break = 干净利落地一刀两断。维娅受够了插不进的聊天，决定彻底告别这段友谊。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>blast off</b> <span class="pos">phr.</span> 起飞、（这里）冲进</li><li><b>destined</b> <span class="pos">adj.</span> 注定要……的</li><li><b>clean break</b> <span class="pos">phr.</span> 彻底了断、干净分手</li><li><b>transition</b> <span class="pos">n.</span> 过渡、转变</li><li><b>stuck-up</b> <span class="pos">adj.</span> 自以为高人一等的、势利的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>学霸桌，还有那个拉小提琴的贾斯汀</h2>
+            <div class="seg-en">The smart-kids’ table</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 335 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">学霸桌</span><span class="tag">遇见贾斯汀</span><span class="tag">外婆忌日</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“贾斯汀”这个亮眼的名字——这是维娅感情线的伏笔；同时外婆忌日与妈妈只忙奥吉戏服形成对照。</div>
+        <div class="body">
+<p>I gained entry through Eleanor to the smart-kids’ table at lunch. It was a larger group than I’d been accustomed to hanging out with, and a more diverse crowd. It included Eleanor’s boyfriend, Kevin, who would definitely become class president someday; a few techie guys; girls like Eleanor who were members of the yearbook committee and the debate club; and a quiet guy named Justin who had small round glasses and played the violin, and who I had an instant crush on.</p>
+<p>When I’d see Miranda and Ella, who were now hanging out with the super-popular set, we’d say “Hey, what’s up,” and move on. Occasionally Miranda would ask me how August was doing, and then say “Tell him I say hello.” This I never did, not to spite Miranda, but because August was in his own world these days. There were times, at home, that we never crossed paths.</p>
+<p>GRANS HAD DIED the night before Halloween. Since then, even though it’s been four years, this has always been a sad time of year for me. For Mom, too, though she doesn’t always say it. Instead, she immerses herself in getting August’s costume ready, since we all know Halloween is his favorite time of year.</p>
+<p>This year was no different. August really wanted to be a Star Wars character called Boba Fett, so Mom looked for a Boba Fett costume in August’s size, which, strangely enough, was out of stock everywhere. She went to every online store, found a few on eBay that were going for an outrageous amount, and finally ended up buying a Jango Fett costume that she then converted into a Boba Fett costume by painting it green. I would say, in all, she must have spent two weeks working on the stupid costume. And no, I won’t mention the fact that Mom has never made any of my costumes, because it really has no bearing on anything at all.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅借伊莲诺进了午饭的“学霸桌”，一桌人更有趣也更多样，包括伊莲诺的男友凯文、一群技术宅、年鉴委员和辩论社女生，还有戴小圆眼镜、安静拉小提琴的贾斯汀，她对贾斯汀一见倾心。偶遇米兰达和伊拉时她们只打个招呼。米兰达偶尔问起奥吉近况、让她代为问好，她却从没转达。外婆在万圣节前夜去世，四年来这天她总低回，妈妈则埋头忙着给奥吉准备他心爱的戏服：今年奥吉要当《星球大战》的波巴·费特。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>and a quiet guy named Justin who had small round glasses and played the violin, and who I had an instant crush on.</blockquote><p class="note">crush = 迷恋、好感。维娅对这个安静拉小提琴、戴圆眼镜的男孩贾斯汀一见钟情。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>yearbook</b> <span class="pos">n.</span> 毕业年鉴、纪念册</li><li><b>committee</b> <span class="pos">n.</span> 委员会</li><li><b>debate club</b> <span class="pos">n.</span> 辩论社</li><li><b>crush</b> <span class="pos">n.</span> 暗恋对象、强烈好感</li><li><b>out of stock</b> <span class="pos">phr.</span> 缺货、没货</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>万圣节一早，妈妈陪我哭了起来</h2>
+            <div class="seg-en">Crying with Mom</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 307 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">母女同哭</span><span class="tag">想起外婆</span><span class="tag">奥吉肚子疼</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“妈妈又是奥吉的妈妈”这个转折——母女刚短暂走近，一个电话就把妈妈的注意力从维娅身上拉走，维娅心里明白却不计较。</div>
+        <div class="body">
+<p>The morning of Halloween I woke up thinking about Grans, which made me really sad and weepy. Dad kept telling me to hurry up and get dressed, which just stressed me out even more, and suddenly I started crying. I just wanted to stay home.</p>
+<p>So Dad took August to school that morning and Mom said I could stay home, and the two of us cried together for a while. One thing I knew for sure: however much I missed Grans, Mom must have missed her more. All those times August was clinging to life after a surgery, all those rush trips to the ER: Grans had always been there for Mom. It felt good to cry with Mom. For both of us. At some point, Mom had the idea of our watching The Ghost and Mrs. Muir together, which was one of our all-time favorite black-and-white movies. I agreed that that was a great idea. I think I probably would have used this weeping session as an opportunity to tell Mom everything that was going on at school with Miranda and Ella, but just as we were sitting down in front of the DVD player, the phone rang. It was the nurse from August’s school calling to tell Mom that August had a stomach ache and should be picked up. So much for the old movies and the mother-daughter bonding.</p>
+<p>Mom picked August up, and the moment he came home, he went straight to the bathroom and threw up. Then he went to his bed and pulled the covers over his head. Mom took his temperature, brought him some hot tea, and assumed the “August’s mom” role again. “Via’s mom,” who had come out for a little while, was put away. I understood, though: August was in bad shape.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>万圣节清晨，维娅醒来就因想到外婆而难过落泪，本想请假在家。爸爸送奥吉上学，妈妈陪她一块儿哭——她心想妈妈一定比自己更想念外婆：奥吉每一次手术后挣扎、一次次奔急诊，都有外婆陪着妈妈。妈妈提议看两人都爱的黑白老片《幽灵与华伦夫人》，可刚坐下，学校就来电话说奥吉肚子疼，让妈妈去接。奥吉一回到家就冲进厕所吐了，然后蒙头躺下，妈妈又变回“奥吉的妈妈”，把刚冒出来的“维娅的妈妈”放回抽屉。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Via’s mom,” who had come out for a little while, was put away.</blockquote><p class="note">put away = 收起来、藏起来。维娅用比喻说：妈妈那“维娅的妈妈”身份才冒头一会儿，就被“奥吉的妈妈”顶替了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>weepy</b> <span class="pos">adj.</span> 爱哭的、眼泪汪汪的</li><li><b>cling to</b> <span class="pos">phr.</span> 紧紧攀住、依靠</li><li><b>ER</b> <span class="pos">abbr.</span> 急诊室（Emergency Room）</li><li><b>bonding</b> <span class="pos">n.</span> 感情的联结、亲密相处</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>他为什么没穿妈妈做的波巴·费特</h2>
+            <div class="seg-en">Why the old costume?</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 52 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">未穿的戏服</span><span class="tag">奥吉的反常</span><span class="tag">悬念</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住这个没问出口的疑问：奥吉偏偏没穿心爱的新戏服，暗示他那天在学校出了事——为后面万圣节的真相埋线。</div>
+        <div class="body">
+<p>Neither one of us asked him why he had worn his Bleeding Scream costume to school instead of the Boba Fett costume Mom had made for him. If it annoyed Mom to see the costume she had worked on for two weeks tossed on the floor, unused, she didn’t show it.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>没人问奥吉为什么穿“流血惊叫”鬼服去上学，而不是穿妈妈辛辛苦苦改了两周的波巴·费特戏服。妈妈看到她反复赶工做的戏服被随手扔在地上没穿，却没有半点不高兴。这一小段很短，却留下了奥吉那天在学校究竟遭遇了什么、以及他为何改穿旧戏服的悬念。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>If it annoyed Mom to see the costume she had worked on for two weeks tossed on the floor, unused, she didn’t show it.</blockquote><p class="note">tossed on the floor = 被扔在地上。妈妈辛苦做的戏服被弃未穿，她却不露声色，这份沉默反而更反常。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>toss</b> <span class="pos">v.</span> 随手一丢、扔掉</li><li><b>unused</b> <span class="pos">adj.</span> 没被用到的、闲置的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_34.html">← 上一单元</a>
+    <a href="wonder_unit_36.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第35/96 单元 · 第二部 · 维娅 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u35.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

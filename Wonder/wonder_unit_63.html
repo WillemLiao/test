@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第63单元 北极星上的科学展</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 63 单元 · 北极星上的科学展</div>
+    <div class="unit-en">North Pole</div>
+    <div class="unit-stats">
+      <span>⏱ 约 7 分钟</span>
+      <span>📄 581 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>科学展上，奥吉和杰克做的土豆灯拿了A，这是杰克全年第一次拿A。家长们围着展厅走动、挨个孩子的摊位前参观，奥吉意识到展厅里的所有目光都会投向他——就像罗盘的针总是指向北方，而他就像是北极。他回望这一整年那些让他“被注视”的学校活动，从感恩节分享节到冬季音乐会再到新年艺术展，渐渐学会把它想成不过是细雨的毛毛雨。最后他发现连大人都按孩子的小圈子自动分组社交，妈妈笑着说“人以群分”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>土豆灯拿了A，可目光全盯着我</h2>
+            <div class="seg-en">THE SPUD LAMP WAS a big hit</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 205 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">科学展</span><span class="tag">土豆灯</span><span class="tag">被注视的比喻</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>重点理解奥吉那个比喻：他还不如校园里的同学父母熟悉他，所以家长们的目光让他重新变回“焦点”。</div>
+        <div class="body">
+<p>THE SPUD LAMP WAS a big hit at the science fair. Jack and I got an A for it. It was the first A Jack got in any class all year long, so he was psyched.</p>
+<p>All the science-fair projects were set up on tables in the gym. It was the same setup as the Egyptian Museum back in December, except this time there were volcanoes and molecule dioramas on the tables instead of pyramids and pharaohs. And instead of the kids taking our parents around to look at everybody else’s artifact, we had to stand by our tables while all the parents wandered around the room and came over to us one by one.</p>
+<p>Here’s the math on that one: Sixty kids in the grade equals sixty sets of parents—and doesn’t even include grandparents. So that’s a minimum of one hundred and twenty pairs of eyes that find their way over to me. Eyes that aren’t as used to me as their kids’ eyes are by now. It’s like how compass needles always point north, no matter which way you’re facing. All those eyes are compasses, and I’m like the North Pole to them.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>科学展上，奥吉和杰克做的“土豆灯”大受欢迎，两人拿了A，这是杰克全年第一次拿A。所有科学展项目都摆在体育馆里，这次不再是埃及博物馆的沙漠布景，而是火山和分子模型。跟上次带着爸妈到处参观不同，这次孩子要守在自己的摊位前，让家长一个个过来。奥吉算了笔账：六十个孩子就至少有一百二十双不太熟悉他的眼睛，全都涌过来——他像地图上的北极，所有眼睛都像罗盘的指针朝他转。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>All those eyes are compasses, and I'm like the North Pole to them.</blockquote><p class="note">奥吉说“所有的眼睛都是罗盘，而我就相当于北极”——北 poole 拼写同“北极”，奥吉用这个地理比喻表达自己永远是人群目光的焦点。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hit</b> <span class="pos">n.</span> 大受欢迎；a big hit 非常成功</li><li><b>fair</b> <span class="pos">n.</span> 展览会、集市；science fair 科学展</li><li><b>psyched</b> <span class="pos">adj.</span> 非常兴奋、激动</li><li><b>diorama</b> <span class="pos">n.</span> 立体模型、透视画模型</li><li><b>compass</b> <span class="pos">n.</span> 罗盘、指南针</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>睫毛雨还是倾盆大雨</h2>
+            <div class="seg-en">a total hurricane</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 265 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">学校活动回顾</span><span class="tag">被围观</span><span class="tag">细雨与飓风</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“细雨(drizzle)”和“飓风(hurricane)”的对比——奥吉平时已习惯被看(细雨)，可一大群不熟的人会让他不知所措(暴雨)。</div>
+        <div class="body">
+<p>That’s why I still don’t like school events that include parents. I don’t hate them as much as I did at the beginning of the school year. Like the Thanksgiving Sharing Festival: that was the worst one, I think. That was the first time I had to face the parents all at once. The Egyptian Museum came after that, but that one was okay because I got to dress up as a mummy and nobody noticed me. Then came the winter concert, which I totally hated because I had to sing in the chorus. Not only can I not sing at all, but it felt like I was on display. The New Year Art Show wasn’t quite as bad, but it was still annoying. They put up our artwork in the hallways all over the school and had the parents come and check it out. It was like starting school all over again, having unsuspecting adults pass me on the stairway.</p>
+<p>Anyway, it’s not that I care that people react to me. Like I’ve said a gazillion times: I’m used to that by now. I don’t let it bother me. It’s like when you go outside and it’s drizzling a little. You don’t put on boots for a drizzle. You don’t even open your umbrella. You walk through it and barely notice your hair getting wet.</p>
+<p>But when it’s a huge gym full of parents, the drizzle becomes like this total hurricane. Everyone’s eyes hit you like a wall of water.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说这就是为什么他至今仍不喜欢有家长参加的学校活动：感恩节分享节是最糟的一次，他要一次性面对所有家长；埃及博物馆因为扮成木乃伊没人注意所以他觉得还行；冬季音乐会他得上台唱歌，他既不会唱又觉得像被围观；新年艺术展把作品挂满全校供家长来看，他又得像刚开学那样在楼梯间被陌生人打量。他坚称自己并不在乎别人怎么看他——就像毛毛雨时你不会打伞，直接走过去头发湿一点点也无所谓。但当整个体育馆都是家长，细雨就变成一场铺天盖地的飓风，所有人的目光像一堵水墙朝他砸来。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Everyone's eyes hit you like a wall of water.</blockquote><p class="note">hit ... like a wall of water 像一堵水墙拍过来。奥吉用“细雨”和“飓风”的比喻区分日常的小尴尬和大场面带来的压力。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>drizzle</b> <span class="pos">n./v.</span> 毛毛雨；下毛毛雨</li><li><b>hurricane</b> <span class="pos">n.</span> 飓风、大台风</li><li><b>display</b> <span class="pos">n.</span> 展示；on display 被展出、被围观</li><li><b>chorus</b> <span class="pos">n.</span> 合唱团、合唱部分</li><li><b>gazillion</b> <span class="pos">n.</span> （口语）极其巨大的数字、无数</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>原来大人们也抱团</h2>
+            <div class="seg-en">like seeks like</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 111 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">大人社交</span><span class="tag">人以群分</span><span class="tag">观察到圈子</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一小段约1分钟，观察大人们的“抱团”如何照出孩子学校里的圈子分化(奥吉圈与朱利安圈)。</div>
+        <div class="body">
+<p>Mom and Dad hang around my table a lot, along with Jack’s parents. It’s kind of funny how parents actually end up forming the same little groups their kids form. Like my parents and Jack’s and Summer’s mom all like and get along with each other. And I see Julian’s parents hang out with Henry’s parents and Miles’s parents. And even the two Maxes’ parents hang out together. It’s so funny.</p>
+<p>I told Mom and Dad about it later when we were walking home, and they thought it was a funny observation.</p>
+<p>I guess it’s true that like seeks like, said Mom.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>科学展上，爸妈和杰克的家长一直待在奥吉摊位附近。奥吉觉得好笑的是：大人的社交竟然和孩子的小圈子一样——他和杰克的家长、任妮的妈妈彼此合得来，朱利安的爸妈和亨利、迈尔斯的爸妈走到一块儿，两个马克斯的家长也自成一派。回家路上他把这个发现告诉爸妈，他们说这观察很有趣，妈妈还说“人以群分”这句话看来是真的。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I guess it's true that like seeks like, said Mom.</blockquote><p class="note">like seeks like = 物以类聚、人以群分。妈妈用这句成语总结，奥吉觉得大人们也像孩子一样自动分派系很逗。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hang around</b> <span class="pos">phr.</span> 待在……附近、闲逛</li><li><b>get along with</b> <span class="pos">phr.</span> 与……相处融洽</li><li><b>observation</b> <span class="pos">n.</span> 观察、观察到的东西</li><li><b>like, seeks</b> <span class="pos">v.</span> like attracts like 同类相吸</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_62.html">← 上一单元</a>
+    <a href="wonder_unit_64.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第63/96 单元 · 第六部 · 奥吉 · 约 7 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u63.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

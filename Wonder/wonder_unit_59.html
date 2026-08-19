@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第59单元 舞台剧试镜与许愿的瓢虫</title>
+<style>
+:root{--c:#7a6aa8;--bg:#f0edf7;--nav:#ded7ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第五部 · 贾斯汀</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 59 单元 · 舞台剧试镜与许愿的瓢虫</div>
+    <div class="unit-en">Our Town · Ladybug</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 632 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Five: Justin</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>学校的春季剧目是《我们的小镇》，维娅鼓动贾斯汀去试男主角“舞台监督”，他滑稽绝顶地拿到了角色，而维娅自己反而只得了小角色，还当艾米丽·吉布斯的替补——贾斯汀觉得她可能是故意搞砸试镜。四月演出，离现在还不到六周，他压力很大。一个温暖的傍晚，她坐在门前台阶帮他背台词，突然一只瓢虫落下来，她让他闭眼许个愿；许完愿后两人甜蜜对视，天空的颜色正好像她的眼睛。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我没法不去想：她是不是故意落选</h2>
+            <div class="seg-en">total fluke</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 249 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">舞台剧试镜</span><span class="tag">主角之争</span><span class="tag">维娅疑云</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“她几乎像松了口气”和“我怀疑她故意搞砸试镜”这两处，暗示维娅心里藏着不想被人注意的事——为本单元的煽情高潮埋伏笔。</div>
+        <div class="body">
+<p>WE’RE DOING THE play our town for the spring show this year. olivia dares me to try out for the lead role, the stage manager, and somehow i get it. total fluke. never got any lead roles in anything before. i tell olivia she brings me good luck. unfortunately, she doesn’t get the female lead, emily gibbs. the pink-haired girl named miranda gets it. olivia gets a bit part and is also the emily understudy. i’m actually more disappointed than olivia is. she almost seems relieved. i don’t love people staring at me, she says, which is sort of strange coming from such a pretty girl. a part of me thinks maybe she blew her audition on purpose.</p>
+<p>the spring show is at the end of april. it’s mid-march now, so that’s less than six weeks to memorize my part. plus rehearsal time. plus practicing with my band. plus finals. plus spending time with olivia. it’s going to be a rough six weeks, that’s for sure. mr. davenport, the drama teacher, is already manic about the whole thing. will drive us crazy by the time it’s over, no doubt. i heard through the grapevine that he’d been planning on doing the elephant man but changed it to our town at the last minute, and that change took a week off of our rehearsal schedule.</p>
+<p>not looking forward to the craziness of the next month and a half.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>春季剧目选定《我们的小镇》，维娅激贾斯汀去试男主角“舞台监督”，他竟拿到了，觉得纯属走运——他以前从没拿过主角。可惜维娅没选上女主角艾米丽·吉布斯，粉发女孩米兰达得了这个角色，维娅只得小角色和替补。贾斯汀比维娅还失望，维娅却像松了口气，说“我不喜欢别人盯着我”。他怀疑她是故意考砸试镜。四月开演，现在是三月中旬，不到六周要背台词、排练、练乐队、应付期末，还得陪维娅，他预感接下来的六周会很难熬。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>i don't love people staring at me, she says, which is sort of strange coming from such a pretty girl. a part of me thinks maybe she blew her audition on purpose.</blockquote><p class="note">blow an audition = 把试镜搞砸。贾斯汀觉得维娅可能故意考砸，因为她“不喜欢别人盯着我看”——一句话埋下她隐瞒一事的伏笔。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>dare</b> <span class="pos">v.</span> 激将、向……挑战</li><li><b>stage manager</b> <span class="pos">n.</span> 舞台监督</li><li><b>fluke</b> <span class="pos">n.</span> 侥幸、运气好</li><li><b>understudy</b> <span class="pos">n.</span> 替补演员</li><li><b>manic</b> <span class="pos">adj.</span> 狂热的、疯魔的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>台阶上背台词，飞来一只瓢虫</h2>
+            <div class="seg-en">make a wish</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 283 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">代背台词</span><span class="tag">瓢虫</span><span class="tag">萤火虫回忆</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>瓢虫是“好运”的象征，维娅还提到小时候和奥吉用萤火虫许愿——这段温情呼应了她与弟弟的羁绊。</div>
+        <div class="body">
+<p>OLIVIA AND I are sitting on her front stoop. she’s helping me with my lines. it’s a warm march evening, almost like summer. the sky is still bright cyan but the sun is low and the sidewalks are streaked with long shadows.</p>
+<p>i’m reciting: yes, the sun’s come up over a thousand times. summers and winters have cracked the mountains a little bit more and the rains have brought down some of the dirt. some babies that weren’t even born before have begun talking regular sentences already; and a number of people who thought they were right young and spry have noticed that they can’t bound up a flight of stairs like they used to, without their heart fluttering a little. …</p>
+<p>i shake my head. can’t remember the rest.</p>
+<p>all that can happen in a thousand days, olivia prompts me, reading from the script.</p>
+<p>right, right, right, i say, shaking my head. i sigh. i’m wiped, olivia. how the heck am i going to remember all these lines?</p>
+<p>you will, she answers confidently. she reaches out and cups her hands over a ladybug that appears out of nowhere. see? a good luck sign, she says, slowly lifting her top hand to reveal the ladybug walking on the palm of her other hand.</p>
+<p>good luck or just the hot weather, i joke.</p>
+<p>of course good luck, she answers, watching the ladybug crawl up her wrist. there should be a thing about making a wish on a ladybug. auggie and I used to do that with fireflies when we were little. she cups her hand over the ladybug again. come on, make a wish. close your eyes.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>温暖得近乎夏天的三月傍晚，维娅和贾斯汀坐在她家门口台阶上对台词。他拼命背《我们的小镇》里的那段长叙述词，背到一半忘了，累得叹气，怀疑自己怎么记得住那么多台词。她自信地说他一定行，伸手接住不知从哪飞来的瓢虫，说这是好运的征兆，让他闭眼许愿。他开玩笑说“那是好运还是天太热”，她认真作答，还说起小时候她和奥吉抓萤火虫许愿的事，又把手罩在瓢虫上催他许愿。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>come on, make a wish. close your eyes.</blockquote><p class="note">make a wish = 许个愿。维娅让贾斯汀闭眼对瓢虫许愿，是延续她与奥吉小时候抓萤火虫时许愿的习惯——温柔的仪式感。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>stoop</b> <span class="pos">n.</span> 门廊台阶</li><li><b>lines</b> <span class="pos">n.</span> （演员的）台词</li><li><b>recite</b> <span class="pos">v.</span> 背诵、念出</li><li><b>wiped</b> <span class="pos">adj.</span> 累坏的、筋疲力尽的</li><li><b>ladybug</b> <span class="pos">n.</span> 瓢虫</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>天空恰好是她眼睛的颜色</h2>
+            <div class="seg-en">the exact color of her eyes</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 100 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">许愿</span><span class="tag">甜蜜时刻</span><span class="tag">各自的心愿</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“天空恰好是她眼睛的颜色”——这个画面是全书浪漫的瞬间之一，也暗示他们之间还有各自没说出口的愿。</div>
+        <div class="body">
+<p>i dutifully close my eyes. a long second passes, then I open them.</p>
+<p>did you make a wish? she asks.</p>
+<p>yep.</p>
+<p>she smiles, uncups her hands, and the ladybug, as if on cue, spreads its wings and flits away.</p>
+<p>don’t you want to know what I wished for? i ask, kissing her.</p>
+<p>no, she answers shyly, looking up at the sky, which, at this very moment, is the exact color of her eyes.</p>
+<p>i made a wish, too, she says mysteriously, but she has so many things she could wish for I have no idea what she’s thinking.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀乖乖闭眼，过了一会儿睁开，说许好愿了。她松开手，瓢虫像收到指令似的展开翅膀飞走了。他吻着她问想不想知道许了什么愿，她害羞地摇头说不想，抬头看向此刻恰好像她眼睛颜色的天空。她还神秘地说自己也许了愿，可她想许的愿太多了，贾斯汀猜不出她在想什么。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>she smiles, uncups her hands, and the ladybug, as if on cue, spreads its wings and flits away.</blockquote><p class="note">on cue = 正好在恰当的时候。Uncup = 松开罩着的手；flit = 轻快地飞走。瓢虫像配合表演一样在她松手时飞走。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>on cue</b> <span class="pos">phr.</span> 正好在合适的时候、像掐准点一样</li><li><b>uncup</b> <span class="pos">v.</span> 松开罩住的手</li><li><b>flit</b> <span class="pos">v.</span> 轻快地飞掠而过</li><li><b>shyly</b> <span class="pos">adv.</span> 害羞地、腼腆地</li><li><b>mysteriously</b> <span class="pos">adv.</span> 神秘地、故弄玄虚地</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_58.html">← 上一单元</a>
+    <a href="wonder_unit_60.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第59/96 单元 · 第五部 · 贾斯汀 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u59.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

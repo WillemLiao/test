@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第33单元 早餐桌上的地铁之争</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 33 单元 · 早餐桌上的地铁之争</div>
+    <div class="unit-en">Breakfast</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 743 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>开学第二天早餐，维娅想自己搭地铁回家，避免再让米兰达妈妈接送。妈妈担心她单独搭地铁，爸爸却坚持她已经够大，还拿她读《战争与和平》当成年证据；哥哥也插一句为米兰达说话，说米兰达不是坏人。维娅为妈妈昨晚失约在奥吉房里睡着一肚气。最终爸爸力排众议，带她出门去搭地铁，妈妈趴在窗口叮嘱到家前打电话。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我想自己搭地铁回家</h2>
+            <div class="seg-en">I’m fifteen</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 252 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">搭地铁</span><span class="tag">想独立</span><span class="tag">隐情没说</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这场争执的潜台词：维娅想避开米兰达，却用“我长大了、该独立”当理由掩盖真相。</div>
+        <div class="body">
+<p>“CAN YOU PICK me up from school today?” I said the next morning, smearing some cream cheese on my bagel.</p>
+<p>Mom was making August’s lunch (American cheese on whole-wheat bread, soft enough for Auggie to eat) while August sat eating oatmeal at the table. Dad was getting ready to go to work. Now that I was in high school, the new school routine was going to be that Dad and I would take the subway together in the morning, which meant his having to leave fifteen minutes earlier than usual, then I’d get off at my stop and he’d keep going. And Mom was going to pick me up after school in the car.</p>
+<p>“I was going to call Miranda’s mother to see if she could drive you home again,” Mom answered.</p>
+<p>“No, Mom!” I said quickly. “You pick me up. Or I’ll just take the subway.”</p>
+<p>“You know I don’t want you to take the subway by yourself yet,” she answered.</p>
+<p>“Mom, I’m fifteen! Everybody my age takes the subway by themselves!”</p>
+<p>“She can take the subway home,” said Dad from the other room, adjusting his tie as he stepped into the kitchen.</p>
+<p>“Why can’t Miranda’s mother just pick her up again?” Mom argued with him.</p>
+<p>“She’s old enough to take the subway by herself,” Dad insisted.</p>
+<p>Mom looked at both of us. “Is something going on?” She didn’t address her question to either one of us in particular.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅早餐时开口要妈妈来学校接她，说不想再麻烦米兰达妈妈。如今家里的新规矩是早上她和爸爸一同搭地铁上学，放学妈妈开车接。妈妈说不放心她独自搭地铁，她顶嘴说自己都十五岁了，同龄人都搭地铁。妈妈眼看两人争执，问“是不是出了什么事”，可这话她谁也没对着说，维娅和爸爸都不吱声。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Mom, I’m fifteen! Everybody my age takes the subway by themselves!”</blockquote><p class="note">subway = 地铁。维娅拿年龄当理由争取独立，真正原因是她想避开米兰达却没敢直说。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>smear</b> <span class="pos">v.</span> 涂抹</li><li><b>bagel</b> <span class="pos">n.</span> 贝果（面包圈）</li><li><b>oatmeal</b> <span class="pos">n.</span> 燕麦粥</li><li><b>routine</b> <span class="pos">n.</span> 惯例、日常安排</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>妈妈道歉，我却只想原谅她</h2>
+            <div class="seg-en">Let her off the hook</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 251 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">妈妈道歉</span><span class="tag">放妈妈过关</span><span class="tag">米兰达之争</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅的态度转折：从赌气到“放妈妈过关”，她总是心软，把委屈咽进肚里不让家里难做。</div>
+        <div class="body">
+<p>“You would know if you had come back to check on me,” I said spitefully, “like you said you would.”</p>
+<p>“Oh God, Via,” said Mom, remembering now how she had completely ditched me last night. She put down the knife she was using to cut Auggie’s grapes in half (still a choking hazard for him because of the size of his palate). “I am so sorry. I fell asleep in Auggie’s room. By the time I woke up …”</p>
+<p>“I know, I know.” I nodded indifferently.</p>
+<p>Mom came over, put her hands on my cheeks, and lifted my face to look at her.</p>
+<p>“I’m really, really sorry,” she whispered. I could tell she was.</p>
+<p>“It’s okay!” I said.</p>
+<p>“Via …”</p>
+<p>“Mom, it’s fine.” This time I meant it. She looked so genuinely sorry I just wanted to let her off the hook.</p>
+<p>She kissed and hugged me, then returned to the grapes.</p>
+<p>“So, is something going on with Miranda?” she asked.</p>
+<p>“Just that she’s acting like a complete jerk,” I said.</p>
+<p>“Miranda’s not a jerk!” Auggie quickly chimed in.</p>
+<p>“She can be!” I yelled. “Believe me.”</p>
+<p>“Okay then, I’ll pick you up, no problem,” Mom said decisively, sweeping the half-grapes into a snack bag with the side of her knife. “That was the plan all along anyway. I’ll pick Auggie up from school in the car and then we’ll pick you up. We’ll probably get there about a quarter to four.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅赌气说“你要是昨晚回来看看我就知道了”，妈妈这才想起自己完全把答应来看她的承诺忘了，因为在奥吉房里睡着了，她说真抱歉。妈妈捧起维娅的脸道歉，维娅先不甘心地应着，后来见她真心懊悔，便收下这份歉意放她过关。妈妈趁机问是不是米兰达出了什么事，维娅说她就是个坏蛋，奥吉却立刻替米兰达辩护说她不坏，争辩中妈妈决定开车来接她。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She looked so genuinely sorry I just wanted to let her off the hook.</blockquote><p class="note">off the hook = 脱离困境、不再被追究。维娅见妈妈真心抱歉，便决定原谅她、不再计较。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>spitefully</b> <span class="pos">adv.</span> 赌气地、恶狠狠地</li><li><b>ditch</b> <span class="pos">v.</span> 抛弃、甩掉（这里指来不了）</li><li><b>palate</b> <span class="pos">n.</span> 上颚</li><li><b>off the hook</b> <span class="pos">phr.</span> 脱身、不被追究</li><li><b>chime in</b> <span class="pos">phr.</span> 插嘴附和</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>爸爸一句话定了局：搭地铁</h2>
+            <div class="seg-en">War and Peace, Isabel!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">地铁之争落定</span><span class="tag">爸爸撑腰</span><span class="tag">战争与和平</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意爸爸那句“《战争与和平》”既像玩笑又像宣言——他是在用女儿读名著为她的独立站台。</div>
+        <div class="body">
+<p>“No!” I said firmly, before she’d even finished.</p>
+<p>“Isabel, she can take the subway!” said Dad impatiently. “She’s a big girl now. She’s reading War and Peace, for crying out loud.”</p>
+<p>“What does War and Peace have to with anything?” answered Mom, clearly annoyed.</p>
+<p>“It means you don’t have to pick her up in the car like she’s a little girl,” he said sternly. “Via, are you ready? Get your bag and let’s go.”</p>
+<p>“I’m ready,” I said, pulling on my backpack. “Bye, Mom! Bye, Auggie!”</p>
+<p>I kissed them both quickly and headed toward the door.</p>
+<p>“Do you even have a MetroCard?” Mom said after me.</p>
+<p>“Of course she has a MetroCard!” answered Dad, fully exasperated. “Yeesh, Momma! Stop worrying so much! Bye,” he said, kissing her on the cheek. “Bye, big boy,” he said to August, kissing him on the top of his head. “I’m proud of you. Have a good day.”</p>
+<p>“Bye, Daddy! You too.”</p>
+<p>Dad and I jogged down the stoop stairs and headed down the block.</p>
+<p>“Call me after school before you get on the subway!” Mom yelled at me from the window. I didn’t even turn around but waved my hand at her so she’d know I heard her. Dad did turn around, walking backward for a few steps.</p>
+<p>“War and Peace, Isabel!” he called out, smiling as he pointed at me. “War and Peace!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈还打算开车接她，维娅坚持说不。爸爸不耐烦地劝妈妈别再操心，说女儿都读《战争与和平》了是大姑娘了，妈妈听不懂这有什么关系。维娅收拾好书包亲别家人出门，妈妈在后面喊“你有地铁卡吗”，爸爸替她应声，催妈妈别乱操心。走在路上，爸爸倒退几步，指着维娅冲妈妈喊“《战争与和平》，伊莎贝尔！”逗她，妈妈则叮咛她上地铁前必须先打电话。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“War and Peace, Isabel!” he called out, smiling as he pointed at me. “War and Peace!”</blockquote><p class="note">War and Peace = 托尔斯泰《战争与和平》。爸爸反复念叨这本名著，用“读名著＝长大了”为女儿独立撑腰。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>exasperated</b> <span class="pos">adj.</span> 恼火的、不耐烦的</li><li><b>sternly</b> <span class="pos">adv.</span> 严厉地、板着脸地</li><li><b>MetroCard</b> <span class="pos">n.</span> （纽约）地铁卡</li><li><b>stoop</b> <span class="pos">n.</span> （门口）台阶、门廊</li><li><b>for crying out loud</b> <span class="pos">phr.</span> （表不耐烦）拜托、真是的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_32.html">← 上一单元</a>
+    <a href="wonder_unit_34.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第33/96 单元 · 第二部 · 维娅 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u33.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

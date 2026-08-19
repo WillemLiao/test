@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第18单元 一百分，我打五分：第一天回家</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 18 单元 · 一百分，我打五分：第一天回家</div>
+    <div class="unit-en">One to Ten</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 636 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉一直有“一到十打分”的习惯，那是术后他不能说话时用指头跟妈妈沟通痛感养成的。放学后妈妈在校门口接他，第一个问题就是“今天怎么样，一到十打几分”，奥吉淡淡说“五分”，妈妈意外之余很欣慰。回家路上他遇见萨默、和她道别，妈妈追问个不停。妈妈问起那个很漂亮的女孩，奥吉却说“我们有点像美女与野兽”，说完撒腿就跑，留下妈妈愣在原地。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>“今天怎么样，一到十打几分？”</h2>
+            <div class="seg-en">How was it? One to ten?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">一到十打分</span><span class="tag">妈妈的习惯</span><span class="tag">五分</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“一到十”这个习惯的由来：它在提醒读者奥吉受过的那些苦，而今天他给上学打了“五分”——对旁人来说不算什么，对家人却是惊喜。</div>
+        <div class="body">
+<p>MOM ALWAYS HAD this habit of asking me how something felt on a scale of one to ten. It started after I had my jaw surgery, when I couldn’t talk because my mouth was wired shut. They had taken a piece of bone from my hip bone to insert into my chin to make it look more normal, so I was hurting in a lot of different places. Mom would point to one of my bandages, and I would hold up my fingers to show her how much it was hurting. One meant a little bit. Ten meant so, so, so much. Then she would tell the doctor when he made his rounds what needed adjusting or things like that. Mom got very good at reading my mind sometimes.</p>
+<p>After that, we got into the habit of doing the one-to-ten scale for anything that hurt, like if I just had a plain old sore throat, she’d ask: “One to ten?” And I’d say: “Three,” or whatever it was.</p>
+<p>When school was over, I went outside to meet Mom, who was waiting for me at the front entrance like all the other parents or babysitters. The first thing she said after hugging me was: “So, how was it? One to ten?”</p>
+<p>“Five,” I said, shrugging, which I could tell totally surprised her.</p>
+<p>“Wow,” she said quietly, “that’s even better than I hoped for.”</p>
+<p>“Are we picking Via up?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈有个老习惯：做什么事都用一到十分衡量，这源自奥吉做下颌手术、嘴被箍住说不了话的时候——他从髋骨取骨接进下巴，全身好多个地方在疼，妈妈指着纱布，他就举起手指头表示痛的等级：一代表一点点，十代表痛到不行。后来大小事都用这套。放学妈妈在校门口等他，第一句话就是“今天怎么样，一到十打几分”，奥吉耸耸肩说“五分”，把妈妈惊讶得直说这比自己预想的更好。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>When school was over, I went outside to meet Mom, who was waiting for me at the front entrance like all the other parents or babysitters.</blockquote><p class="note">像别的家长或保姆一样在校门口等——在奥吉眼里，妈妈也只是一个普通的、接孩子放学的人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>scale</b> <span class="pos">n.</span> 等级、刻度</li><li><b>bandage</b> <span class="pos">n.</span> 绷带、纱布</li><li><b>sore throat</b> <span class="pos">n.</span> 喉咙痛</li><li><b>shrug</b> <span class="pos">v.</span> 耸耸肩</li><li><b>entrance</b> <span class="pos">n.</span> 入口、大门</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>一路上妈妈问题问个不停</h2>
+            <div class="seg-en">Jack hung out with me a lot</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">放学回家</span><span class="tag">妈妈的追问</span><span class="tag">杰克陪他</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>看妈妈和奥吉对话的节奏：妈妈小心翼翼憋着满肚子问题，奥吉用“嗯”“还好”一再敷衍——他不想让妈妈担心，也不想再回想那些目光。</div>
+        <div class="body">
+<p>“Miranda’s mother is picking her up today. Do you want me to carry your backpack, sweetness?” We had started walking through the crowd of kids and parents, most of whom were noticing me, “secretly” pointing me out to each other.</p>
+<p>“I’m fine,” I said.</p>
+<p>“It looks too heavy, Auggie.” She started to take it from me.</p>
+<p>“Mom!” I said, pulling my backpack away from her. I walked in front of her through the crowd.</p>
+<p>“See you tomorrow, August!” It was Summer. She was walking in the opposite direction.</p>
+<p>“Bye, Summer,” I said, waving at her.</p>
+<p>As soon as we crossed the street and were away from the crowd, Mom said: “Who was that, Auggie?”</p>
+<p>“Summer.”</p>
+<p>“Is she in your class?”</p>
+<p>“I have lots of classes.”</p>
+<p>“Is she in any of your classes?” Mom said.</p>
+<p>“Nope.”</p>
+<p>Mom waited for me to say something else, but I just didn’t feel like talking.</p>
+<p>“So it went okay?” said Mom. I could tell she had a million questions she wanted to ask me. “Everyone was nice? Did you like your teachers?”</p>
+<p>“Yeah.”</p>
+<p>“How about those kids you met last week? Were they nice?”</p>
+<p>“Fine, fine. Jack hung out with me a lot.”</p>
+<p>“That’s so great, sweetie. What about that boy Julian?”</p>
+<p>I thought about that Darth Sidious comment. By now it felt like that had happened a hundred years ago.</p>
+<p>“He was okay,” I said.</p>
+<p>“And the blond girl, what was her name?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈想帮奥吉背书包，被他躲开了。人群里大部分人都“偷偷”朝奥吉指指点点，妈妈看在眼里却没说破。回家路上遇见放学反向走的萨默，两人道了别。妈妈立刻追问萨默是谁、在不在他的课上，奥吉说不在。妈妈憋着一肚子问题，问他同学友不友善、老师喜不喜欢、上周见过的那些孩子怎么样，奥吉敷衍地说杰克一整天都陪着他，还替朱利安说了句“还好”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I could tell she had a million questions she wanted to ask me.</blockquote><p class="note">a million questions = 数不完的问题（夸张说法）。妈妈有一肚子话想问，却一个字一个字地试探着说。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>point out</b> <span class="pos">phr.</span> 指出、指给……看</li><li><b>secretly</b> <span class="pos">adv.</span> 秘密地、暗中</li><li><b>cross the street</b> <span class="pos">phr.</span> 过马路</li><li><b>hang out</b> <span class="pos">phr.</span> 一起玩、待在一起</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“我们有点像美女与野兽”</h2>
+            <div class="seg-en">Beauty and the Beast</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 150 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">美女与野兽</span><span class="tag">自嘲</span><span class="tag">踢石头跑开</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是奥吉少有的自嘲时刻：他把“漂亮的萨默”和“长相畸形的自己”比作美女与野兽，说完就跑——用这句话替自己化解难堪，也给读者留下心疼。</div>
+        <div class="body">
+<p>“Charlotte. Mom, I said everyone was nice already.”</p>
+<p>“Okay,” Mom answered.</p>
+<p>I honestly don’t know why I was kind of mad at Mom, but I was. We crossed Amesfort Avenue, and she didn’t say anything else until we turned onto our block.</p>
+<p>“So,” Mom said. “How did you meet Summer if she wasn’t in any of your classes?”</p>
+<p>“We sat together at lunch,” I said.</p>
+<p>I had started kicking a rock between my feet like it was a soccer ball, chasing it back and forth across the sidewalk.</p>
+<p>“She seems very nice.”</p>
+<p>“Yeah, she is.”</p>
+<p>“She’s very pretty,” Mom said.</p>
+<p>“Yeah, I know,” I answered. “We’re kind of like Beauty and the Beast.”</p>
+<p>I didn’t wait to see Mom’s reaction. I just started running down the sidewalk after the rock, which I had kicked as hard as I could in front of me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈又追问夏洛特和萨默的事，奥吉有点莫名地生起妈妈的气。过了马路，妈妈问起不在他任何课上的萨默是怎么认识的，奥吉说他们一起吃的午饭。妈妈夸她看起来人很好、也很漂亮，奥吉却回了一句“我们有点像美女与野兽”，说完全没等妈妈反应，就拼命把脚下的石头踢得远远的，顺着人行道追着跑开了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;Yeah, I know,&quot; I answered. &quot;We're kind of like Beauty and the Beast.&quot;</blockquote><p class="note">Beauty and the Beast = 经典童话《美女与野兽》。奥吉幽默地拿自己与萨默作比，笑里其实带着几分真心的失落。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>kicking a rock</b> <span class="pos">phr.</span> 踢石头</li><li><b>chase</b> <span class="pos">v.</span> 追逐、追赶</li><li><b>back and forth</b> <span class="pos">phr.</span> 来回地</li><li><b>reaction</b> <span class="pos">n.</span> 反应</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_17.html">← 上一单元</a>
+    <a href="wonder_unit_19.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第18/96 单元 · 第一部 · 奥吉 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u18.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

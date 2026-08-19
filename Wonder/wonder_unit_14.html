@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第14单元 待宰的羔羊，还有那句刺人的话</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 14 单元 · 待宰的羔羊，还有那句刺人的话</div>
+    <div class="unit-en">Lamb to the Slaughter</div>
+    <div class="unit-stats">
+      <span>⏱ 约 5 分钟</span>
+      <span>📄 369 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>轮到奥吉自我介绍，他昨晚刚查过“待宰的羔羊”这个词，说的是那种心里没数、平静走进险境的人。他含糊报了自己的名字和家里有姐姐维娅、小狗黛西，全班没人提问。朱利安却突然问他脑后那根小辫子是不是“学徒侠客”那种造型，顺着聊起了星球大战；奥吉正觉得他也许没坏心，朱利安却提起一个脸被烧毁致畸的反派角色，奥吉才明白他是在拿自己的脸说事。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>朱利安问我：那不是学徒发型吗</h2>
+            <div class="seg-en">Lamb to the slaughter</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 248 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自我介绍</span><span class="tag">朱利安发问</span><span class="tag">星球大战</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意章名“待宰的羔羊”的意思：羔羊并不知道自己要去受苦。奥吉今天的自我介绍，就像羔羊平静地被送去宰杀——他以为自己安全，危险却已在身边。</div>
+        <div class="body">
+<p>“LIKE A LAMB to the slaughter”: Something that you say about someone who goes somewhere calmly, not knowing that something unpleasant is going to happen to them.</p>
+<p>I Googled it last night. That’s what I was thinking when Ms. Petosa called my name and suddenly it was my turn to talk.</p>
+<p>“My name is August,” I said, and yeah, I kind of mumbled it.</p>
+<p>“What?” said someone.</p>
+<p>“Can you speak up, honey?” said Ms. Petosa.</p>
+<p>“My name is August,” I said louder, forcing myself to look up. “I, um … have a sister named Via and a dog named Daisy. And, um … that’s it.”</p>
+<p>“Wonderful,” said Ms. Petosa. “Anyone have questions for August?”</p>
+<p>No one said anything.</p>
+<p>“Okay, you’re next,” said Ms. Petosa to Jack.</p>
+<p>“Wait, I have a question for August,” said Julian, raising his hand. “Why do you have that tiny braid in the back of your hair? Is that like a Padawan thing?”</p>
+<p>“Yeah.” I shrug-nodded.</p>
+<p>“What’s a Padawan thing?” said Ms. Petosa, smiling at me.</p>
+<p>“It’s from Star Wars,” answered Julian. “A Padawan is a Jedi apprentice.”</p>
+<p>“Oh, interesting,” answered Ms. Petosa, looking at me. “So, are you into Star Wars, August?”</p>
+<p>“I guess.” I nodded, not looking up because what I really wanted was to just slide under the desk.</p>
+<p>“Who’s your favorite character?” Julian asked. I started thinking maybe he wasn’t so bad.</p>
+<p>“Jango Fett.”</p>
+<p>“What about Darth Sidious?” he said. “Do you like him?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉给全班介绍自己，心想自己就像“待宰的羔羊”那样，平静又毫不知情地走进不愉快的事。他含糊说了名字，又提到姐姐维娅和小狗黛西，台下没人问问题。朱利安却举手问他脑后的小辫子是不是“学徒”（星球大战里的学徒侠客）那种造型，顺着聊起星球大战，还问奥吉最喜欢的角色——奥吉开始觉得他也许没那么坏。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I started thinking maybe he wasn't so bad.</blockquote><p class="note">作者用这句话埋下伏笔：奥吉正天真地把朱利安往好处想——可他看不透对方这层层发问，其实是“待宰羔羊”式的陷阱。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>slaughter</b> <span class="pos">n.</span> 屠宰、残杀</li><li><b>calmly</b> <span class="pos">adv.</span> 平静地、镇定地</li><li><b>mumble</b> <span class="pos">v.</span> 含含糊糊地说、嘟囔</li><li><b>braid</b> <span class="pos">n.</span> 辫子、编发</li><li><b>apprentice</b> <span class="pos">n.</span> 学徒、见习生</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>他拿那张被烧毁的脸戳我</h2>
+            <div class="seg-en">his whole face just kind of melts</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 121 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">隐晦的嘲讽</span><span class="tag">脸被烧伤</span><span class="tag">朱利安的恶意</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>反派西迪厄斯“脸被烧畸、像融化了一样”这句话，正是朱利安用星球大战做的隐形攻击，暗指奥吉的脸——这是本章最伤人的一刻。</div>
+        <div class="body">
+<p>“Okay, guys, you can talk about Star Wars stuff at recess,” said Ms. Petosa cheerfully. “But let’s keep going. We haven’t heard from you yet,” she said to Jack.</p>
+<p>Now it was Jack’s turn to talk, but I admit I didn’t hear a word he said. Maybe no one got the Darth Sidious thing, and maybe Julian didn’t mean anything at all. But in Star Wars Episode III: Revenge of the Sith, Darth Sidious’s face gets burned by Sith lightning and becomes totally deformed. His skin gets all shriveled up and his whole face just kind of melts.</p>
+<p>I peeked at Julian and he was looking at me. Yeah, he knew what he was saying.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>老师笑着让大家下课再聊星球大战，轮到杰克说了，可奥吉一个字也没听进去——他满脑子都在想朱利安刚提的那个反派“达斯·西迪厄斯”。原来在《星球大战》第三部里，这个角色的脸被原力闪电烧伤而严重变形、皮肤皱缩融化。奥吉侧眼一看，朱利安正盯着他——他明白朱利安是故意的。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>But in Star Wars Episode III: Revenge of the Sith, Darth Sidious's face gets burned by Sith lightning and becomes totally deformed.</blockquote><p class="note">deformed = 畸形的、变形的。德思·西迪厄斯就是后来的一代反派皇帝，脸被Sith闪电烧得全变了样。朱利安拿这个角色来暗指奥吉的长相。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>recess</b> <span class="pos">n.</span> 课间休息</li><li><b>deformed</b> <span class="pos">adj.</span> 畸形的、变形的</li><li><b>shriveled</b> <span class="pos">adj.</span> 皱缩的、干瘪的</li><li><b>melt</b> <span class="pos">v.</span> 融化</li><li><b>peek</b> <span class="pos">v.</span> 偷偷看、瞥一眼</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_13.html">← 上一单元</a>
+    <a href="wonder_unit_15.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第14/96 单元 · 第一部 · 奥吉 · 约 5 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u14.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

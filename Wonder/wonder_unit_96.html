@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第96单元 回家路上：你真的是一个奇迹</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 96 单元 · 回家路上：你真的是一个奇迹</div>
+    <div class="unit-en">The Walk Home</div>
+    <div class="unit-stats">
+      <span>⏱ 约 4 分钟</span>
+      <span>📄 312 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>获奖的欢腾后，一大群人浩浩荡荡走过安姆斯福特大道，走回奥吉家吃蛋糕和冰淇淋。那是个湛蓝晴空、阳光恰到好处的六月天。奥吉、Summer和Jack一路笑疯，连对看一眼都能笑出来；爸爸在前面给大人讲好笑的故事逗得大家直乐。奥吉发现妈妈故意落在队伍后面，独自微笑着想心事。他走过去，在她走路时忽然抱住她。奥吉轻声说了一句“谢谢你让我去上学”，妈妈搂紧他，回应道“谢谢你，奥吉——谢谢你来了我们生命里，谢谢你是你”，最后在他耳边轻轻说出全书最重要的一句话：“你真的像一个奇迹，奥吉。你就是一个奇迹。”</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>六月晴空下，一路欢笑着回家</h2>
+            <div class="seg-en">I still felt like I was floating</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 245 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">六月晴天</span><span class="tag">步回家中</span><span class="tag">妈妈的温柔</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意镜头从欢腾的全景慢慢收拢到妈妈身上：一个平静、独自微笑的细节——奥吉对妈妈那个温柔的留意，正是下一段母子对话的前奏。</div>
+        <div class="body">
+<p>WE WALKED TO our house for cake and ice cream after the reception. Jack and his parents and his little brother, Jamie. Summer and her mother. Uncle Po and Aunt Kate. Uncle Ben, Tata and Poppa. Justin and Via and Miranda. Mom and Dad.</p>
+<p>It was one of those great June days when the sky is completely blue and the sun is shining but it isn’t so hot that you wish you were on the beach instead. It was just the perfect day. Everyone was happy. I still felt like I was floating, the Star Wars hero music in my head.</p>
+<p>I walked with Summer and Jack, and we just couldn’t stop cracking up. Everything made us laugh. We were in that giggly kind of mood where all someone has to do is look at you and you start laughing.</p>
+<p>I heard Dad’s voice up ahead and looked up. He was telling everyone a funny story as they walked down Amesfort Avenue. The grown-ups were all laughing, too. It was like Mom always said: Dad could be a comedian.</p>
+<p>I noticed Mom wasn’t walking with the group of grown-ups, so I looked behind me. She was hanging back a bit, smiling to herself like she was thinking of something sweet. She seemed happy.</p>
+<p>I took a few steps back and surprised her by hugging her as she walked. She put her arm around me and gave me a squeeze.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>招待会结束后，一大群人走回奥吉家吃蛋糕和冰淇淋：杰克和他爸妈、弟弟杰米，Summer和她的妈妈，Uncle Po、Aunt Kate，Ben叔叔、Tata和Poppa，Justin、维娅和Miranda，还有爸爸妈妈。那是六月里难得的晴好日子——天空一片湛蓝，阳光明媚却不热得让人想跑去海边，简直是完美的一天，人人都是快乐的。奥吉仍像在飘，英雄电影里的《星球大战》音乐还在脑子里回响。他和Summer、Jack走在一起，三人笑个不停，满脑子都是那种孩子气的乐呵劲儿——甚至只要有人看你一眼，你就忍不住笑出声。他抬头听爸爸在前面讲好笑的故事，大人们也听得直笑，正如妈妈常说的：爸爸可以当喜剧演员。奥吉回头，发现妈妈没跟大人们走在一起，她故意落在后面，独自微笑着像在想什么甜蜜的事，看上去很开心。他往回走了几步，在她走路时忽然抱住她，她伸手搂住他，轻轻把他抱紧。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She was hanging back a bit, smiling to herself like she was thinking of something sweet.</blockquote><p class="note">hang back = 落在后面、往后落后。妈妈独自微笑、若有所思的画面，是奥吉在热闹人群中对母亲最珍视的一瞥。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>floating</b> <span class="pos">adj.</span> 飘飘然的、飘飘欲仙的</li><li><b>giggly</b> <span class="pos">adj.</span> 咯咯直笑的、傻乐的</li><li><b>comedian</b> <span class="pos">n.</span> 喜剧演员</li><li><b>hang back</b> <span class="pos">phr.</span> 落在后面、不急于向前</li><li><b>squeeze</b> <span class="pos">n./v.</span> 紧抱、拥抱压制</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>“你还是一个奇迹，奥吉”</h2>
+            <div class="seg-en">You really are a wonder</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 67 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">全书结尾</span><span class="tag">母子告白</span><span class="tag">是奇迹的你</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全书的最后一笔，也是最温柔的高潮：一句“谢谢你让我去上学”和妈妈的“谢谢你来我们的生命——谢谢你是你”，把整本书的善良主题收束成一个爱的拥抱。</div>
+        <div class="body">
+<p>“Thank you for making me go to school,” I said quietly.</p>
+<p>She hugged me close and leaned down and kissed the top of my head.</p>
+<p>“Thank you, Auggie,” she answered softly.</p>
+<p>“For what?”</p>
+<p>“For everything you’ve given us,” she said. “For coming into our lives. For being you.”</p>
+<p>She bent down and whispered in my ear. “You really are a wonder, Auggie. You are a wonder.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉轻轻对妈妈说了一句“谢谢你让我去上学”。妈妈把奥吉搂紧，弯下腰吻了吻他的头顶，柔声回答：“谢谢你，奥吉。”奥吉不解地问“为什么谢我？”妈妈答道：“谢谢你所给予我们的一切，谢谢你走进我们的生命，谢谢你就是你。”说罢，她俯身凑到奥吉耳边，轻声说出全书最后也最重要的一句话：“奥吉，你真是一个奇迹，你就是一个奇迹。”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>For everything you've given us. For coming into our lives. For being you.</blockquote><p class="note">妈妈的三个“为”——谢谢你给了我们一切、谢谢你走进我们的生命、谢谢你是你自己——这句对奥吉无条件爱的告白，是全书最催泪的定格。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>wonder</b> <span class="pos">n.</span> 奇迹、令人惊叹的人或事</li><li><b>whisper</b> <span class="pos">v.</span> 低声耳语</li><li><b>given us</b> <span class="pos">phr.</span> 给予我们（这里指带给我们的一切）</li><li><b>for being you</b> <span class="pos">phr.</span> 就因为你只是你（不求改变、无条件接纳）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_95.html">← 上一单元</a>
+    <span></span>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第96/96 单元 · 第八部 · 奥吉 · 约 4 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u96.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

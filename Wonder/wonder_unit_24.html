@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第24单元 万圣节：戴上头盔才能做回普通人</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 24 单元 · 万圣节：戴上头盔才能做回普通人</div>
+    <div class="unit-en">Costumes</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 786 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>万圣节是奥吉最爱的节日，因为戴上面罩他也成了“每个普通小孩”——没人多看他一眼，没人认出他。他从小到大披过各色戏服：南瓜、航天员、黑武士，还爱戴一顶宇航员头盔到处跑，直到动眼睛手术才不得不摘掉。今年他要扮《帝国反击战》里的波巴·费特，妈妈亲手把詹戈·费特的铠甲涂绿让他穿戴。可节日清晨家里乱了套——维娅大哭大闹，妈妈忙着安抚她，爸爸急着上班，催奥吉快走。赶时间之下，奥吉顺手扔上去年的“流血尖叫”戏服，随意出门去了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>戴上头盔和面具，就没人认得我</h2>
+            <div class="seg-en">The best holiday in the world</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 304 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">万圣节</span><span class="tag">面具下的自由</span><span class="tag">宇航员头盔回忆</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是理解奥吉内心最深处的第一把钥匙：面具对他而言不是好玩，而是“被当作普通人”的唯一稀有时刻——读时抓住他对“不被看见”的渴望。</div>
+        <div class="body">
+<p>FOR ME, HALLOWEEN is the best holiday in the world. It even beats Christmas. I get to dress up in a costume. I get to wear a mask. I get to go around like every other kid with a mask and nobody thinks I look weird. Nobody takes a second look. Nobody notices me. Nobody knows me.</p>
+<p>I wish every day could be Halloween. We could all wear masks all the time. Then we could walk around and get to know each other before we got to see what we looked like under the masks.</p>
+<p>When I was little, I used to wear an astronaut helmet everywhere I went. To the playground. To the supermarket. To pick Via up from school. Even in the middle of summer, though it was so hot my face would sweat. I think I wore it for a couple of years, but I had to stop wearing it when I had my eye surgery. I was about seven, I think. And then we couldn’t find the helmet after that. Mom looked everywhere for it. She figured that it had probably ended up in Grans’s attic, and she kept meaning to look for it, but by then I had gotten used to not wearing it.</p>
+<p>I have pictures of me in all my Halloween costumes. My first Halloween I was a pumpkin. My second I was Tigger. My third I was Peter Pan (my dad dressed up as Captain Hook). My fourth I was Captain Hook (my dad dressed up as Peter Pan). My fifth I was an astronaut. My sixth I was Obi-Wan Kenobi. My seventh I was a clone trooper. My eighth I was Darth Vader. My ninth I was the Bleeding Scream, the one that has fake blood oozing out over the skull mask.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说万圣节是全世界最好的节日，比圣诞节还棒：这天他能穿戏服、戴面具，像其他孩子一样走动，没人觉得他奇怪，没人多看一眼，没人认识他。他甚至希望天天都是万圣节，所有人都一直戴着面具，先认识彼此、再看清彼此面具下的脸。他回忆小时候无论去游乐场、超市还是接维娅，都顶着个宇航员头盔，热得满脸汗也不肯摘，约七岁做了眼手术后妈妈找遍各处也找不到那顶头盔，而他已经习惯不戴了。末尾他罗列历年装扮：南瓜、跳跳虎、彼得潘、刺客、宇航员到黑武士。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Then we could walk around and get to know each other before we got to see what we looked like under the masks.</blockquote><p class="note">奥吉的愿望很特别：希望所有人都先认识彼此，再面对面具下的真容。他并不想躲起来——他只想让人先了解“我是谁”，而不是先被“我长什么样”吓跑。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>costume</b> <span class="pos">n.</span> 戏服、装扮</li><li><b>helmet</b> <span class="pos">n.</span> 头盔</li><li><b>attic</b> <span class="pos">n.</span> 阁楼、顶楼储藏间</li><li><b>ooze</b> <span class="pos">v.</span> 慢慢渗出、渗出（血、液）</li><li><b>skull</b> <span class="pos">n.</span> 头骨、骷髅</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>妈妈亲手涂绿的波巴·费特铠甲</h2>
+            <div class="seg-en">Mom's good at costumes</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 271 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">手工戏服</span><span class="tag">朱利安撞衫</span><span class="tag">维娅的哭声</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>两个伏笔同时埋下：朱利安撞了奥吉的“波巴·费特”装扮，关系似乎微妙地较着劲；维娅在弟弟的重要日子突然情绪塌方——她那边另一条故事正在暗自生长。</div>
+        <div class="body">
+<p>This year I’m going to be Boba Fett: not Boba Fett the kid in Star Wars Episode II: Attack of the Clones, but Boba Fett the man from Star Wars Episode V: The Empire Strikes Back. Mom searched everywhere for the costume but couldn’t find one in my size, so she bought me a Jango Fett costume—since Jango was Boba’s dad and wore the same armor—and then painted the armor green. She did some other stuff to it to make it look worn, too. Anyway, it looks totally real. Mom’s good at costumes.</p>
+<p>In homeroom we all talked about what we were going to be for Halloween. Charlotte was going as Hermione from Harry Potter. Jack was going as a wolfman. I heard that Julian was going as Jango Fett, which was a weird coincidence. I don’t think he liked hearing that I was going as Boba Fett.</p>
+<p>On the morning of Halloween, Via had this big crying meltdown about something. Via’s always been so calm and cool, but this year she’s had a couple of these kinds of fits. Dad was late for work and was like, “Via, let’s go! Let’s go!” Usually Dad is super patient about things, but not when it comes to his being late for work, and his yelling just stressed out Via even more, and she started crying louder, so Mom told Dad to take me to school and that she’d deal with Via. Then Mom kissed me goodbye quickly, before I even put on my costume, and disappeared into Via’s room.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>今年奥吉想扮的是《帝国反击战》里成年版的波巴·费特，可妈妈翻遍各处都找不到合他尺寸的戏服，便买了詹戈·费特那套（因詹戈是波巴的爸爸、穿同样的铠甲），自己动手把铠甲涂成绿色，又做了些旧化处理，成品看起来跟真的一样——妈妈很擅长做戏服。早班班上大家互报要扮什么：夏洛特扮哈利·波特的赫敏，杰克扮狼人，奥吉听说朱利安要扮詹戈·费特——这巧合有点奇怪，他觉得朱利安听说自己要扮波巴·费特时并不乐意。节日清晨，维娅不知为何大哭大闹，爸爸急着上班直催，妈妈只好让爸爸送奥吉、自己留下来哄维娅。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She did some other stuff to it to make it look worn, too. Anyway, it looks totally real. Mom's good at costumes.</blockquote><p class="note">look worn = 看起来很旧、像穿旧的。为了不让铠甲太新，妈妈还做了旧化处理——一句“妈妈很擅长做戏服”写出妈奥特的用心和手巧。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>armor</b> <span class="pos">n.</span> 铠甲、盔甲</li><li><b>coincidence</b> <span class="pos">n.</span> 巧合</li><li><b>meltdown</b> <span class="pos">n.</span> 情绪崩溃、大哭大闹</li><li><b>stress out</b> <span class="pos">phr.</span> 使……倍感压力、把……逼急</li><li><b>deal with</b> <span class="pos">phr.</span> 处理、应付</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>赶时间，穿上了去年的血脸戏服</h2>
+            <div class="seg-en">The Bleeding Scream costume</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 211 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">临时换装</span><span class="tag">爸爸催出门</span><span class="tag">伏笔开场</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这场的“巧合”是整本《奇迹男孩》最大的转折引擎：赶时间让奥吉临时换了戏服——而正是这个随意的决定，将决定他在万圣节那天会无意间撞见什么。</div>
+        <div class="body">
+<p>“Auggie, let’s go now!” said Dad. “I have a meeting I can’t be late for!”</p>
+<p>“I haven’t put my costume on yet!”</p>
+<p>“So put it on, already. Five minutes. I’ll meet you outside.”</p>
+<p>I rushed to my room and started to put on the Boba Fett costume, but all of a sudden I didn’t feel like wearing it. I’m not sure why—maybe because it had all these belts that needed to be tightened and I needed someone’s help to put it on. Or maybe it was because it still smelled a little like paint. All I knew was that it was a lot of work to put the costume on, and Dad was waiting and would get super impatient if I made him late. So, at the last minute, I threw on the Bleeding Scream costume from last year. It was such an easy costume: just a long black robe and a big white mask. I yelled goodbye from the door on my way out, but Mom didn’t even hear me.</p>
+<p>“I thought you were going as Jango Fett,” said Dad when I got outside.</p>
+<p>“Boba Fett!”</p>
+<p>“Whatever,” said Dad. “This is a better costume anyway.”</p>
+<p>“Yeah, it’s cool,” I answered.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>爸爸连声催“快走，我开会不能迟到”，奥吉冲回房间套波巴·费特，却忽然不想穿了——嫌那些带子要系紧、得有人帮忙，闻着还有点油漆味，又要费好大劲儿，怕让急着上班的爸爸等更久、发火。最后关头他拎起去年的“流血尖叫”戏服：就一条黑长袍加一张大白面具，省事至极。他出门朝屋里喊了声再见，妈妈正忙着哄维娅，压根没听见。爸爸在门外问“你不是要扮詹戈·费特吗”，奥吉纠正“是波巴·费特”，爸爸随口说“这身反倒更好看”，奥吉应了句“是啊，挺酷”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>So, at the last minute, I threw on the Bleeding Scream costume from last year.</blockquote><p class="note">throw on = 随手往身上一套。这个“随便一穿”的决定正是全书的关键转折——奥吉并不知道，这身临时的戏服会让他撞见一件足以改变一切的事。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>throw on</b> <span class="pos">phr.</span> 随手往身上一套（衣服）</li><li><b>impatient</b> <span class="pos">adj.</span> 不耐烦的</li><li><b>robe</b> <span class="pos">n.</span> 长袍</li><li><b>tighten</b> <span class="pos">v.</span> 系紧、勒紧</li><li><b>whatever</b> <span class="pos">interj.</span> 随便吧、管他呢（表示不以为意）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_23.html">← 上一单元</a>
+    <a href="wonder_unit_25.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第24/96 单元 · 第一部 · 奥吉 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u24.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第26单元 锁在厕所里哭，然后装病回家</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 26 单元 · 锁在厕所里哭，然后装病回家</div>
+    <div class="unit-en">Names</div>
+    <div class="unit-stats">
+      <span>⏱ 约 6 分钟</span>
+      <span>📄 468 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉在心里默念着那些被叫的名字——“老鼠男孩、怪胎、怪物……”，却没跟任何人提起。他躲进二楼空无一人的厕所，锁上门，摘下面具不知哭了好久。第一节一上课，他来到医务室说自己肚子疼——倒也不算谎话，他感觉自己像被踢了一脚。护士茉莉给妈妈打了电话，让他躺下。妈妈赶来弯下腰问他，奥吉只含糊地应着，装病把鼻子也算了进去。两人一路搂着走回家，奥吉什么也没说；晚上妈妈见他提不起劲去讨糖，还特地给爸爸打了电话，说孩子连万圣节都不肯去了。第二天是周五，奥吉干脆连课也没上——那整个周末，他心里只有一个声音：我再也不回学校了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>那些外号，和锁起来哭的隔间</h2>
+            <div class="seg-en">Rat Boy. Freak. Monster.</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 252 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">被叫的外号</span><span class="tag">厕所里的独自崩溃</span><span class="tag">装病叫妈妈</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意奥吉把最痛苦的“外号清单”写在开头的高潮处——他没哭诉给任何人，只转身装病。读时体会他“不说”的倔强：连对最爱他的妈妈都不肯开口。</div>
+        <div class="body">
+<p>RAT BOY. FREAK. MONSTER. Freddy Krueger. E.T. Gross-out. Lizard face. Mutant. I know the names they call me. I’ve been in enough playgrounds to know kids can be mean. I know, I know, I know.</p>
+<p>I ended up in the second-floor bathroom. No one was there because first period had started and everyone was in class. I locked the door to my stall and took off my mask and just cried for I don’t know how long. Then I went to the nurse’s office and told her I had a stomach ache, which was true, because I felt like I’d been kicked in the gut. Nurse Molly called Mom and had me lie down on the sofa next to her desk. Fifteen minutes later, Mom was at the door.</p>
+<p>“Sweetness,” she said, coming over to hug me.</p>
+<p>“Hi,” I mumbled. I didn’t want her to ask anything until afterward.</p>
+<p>“You have a stomach ache?” she asked, automatically putting her hand on my forehead to check for my temperature.</p>
+<p>“He said he feels like throwing up,” said Nurse Molly, looking at me with very nice eyes.</p>
+<p>“And I have a headache,” I whispered.</p>
+<p>“I wonder if it’s something you ate,” said Mom, looking worried.</p>
+<p>“There’s a stomach bug going around,” said Nurse Molly.</p>
+<p>“Oh geez,” said Mom, her eyebrows going up as she shook her head. She helped me to my feet. “Should I call a taxi or are you okay walking home?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉心里默念一串被叫过的外号——老鼠男孩、怪胎、怪物、弗雷迪·克鲁格、外星人、蜥蜴脸、畸形——他在操场待得够久，知道孩子能多刻薄，他都知道、都知道。第一节上课后，他躲进空无一人的二楼厕所，锁上隔间门，摘下面具，哭到不知多久。然后他去找护士茉莉，说自己肚子疼——这话不假，他真觉得自己像被踹了一脚肚子。护士叫来妈妈，让他躺在办公桌旁的沙发上。十五分钟后妈妈赶到，搂着喊着“宝贝”，奥吉只含糊应了声“嗨”，他不想让她现在就问。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>RAT BOY. FREAK. MONSTER.</blockquote><p class="note">奥吉用一连串被叫过的外号开篇——“老鼠男孩、怪胎、怪物”，没有哭诉，只是平静地逐条列给读者听，那句“我早知道孩子能多刻薄”才是他咽下去的自白。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>freak</b> <span class="pos">n.</span> （侮辱性说法）怪胎、怪人</li><li><b>mutant</b> <span class="pos">n.</span> 畸形人、异类（也是漫画里“变种人”）</li><li><b>gross-out</b> <span class="pos">n./adj.</span> 恶心的东西；让人反胃的</li><li><b>stall</b> <span class="pos">n.</span> （厕所的）隔间</li><li><b>gut</b> <span class="pos">n.</span> 肚子、内脏（kicked in the gut 被踢了一脚肚子）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>连万圣节讨糖都不肯去了</h2>
+            <div class="seg-en">He doesn't even have the energy</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 216 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">装病回家</span><span class="tag">错过万圣节</span><span class="tag">再也不回学校</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这整段几乎没有台词，全靠“不开口”“摇头”“躲在家中”推进——抓住奥吉用“沉默”和“缺席”表达他的痛，以及妈妈那句“连万圣节都不去了”有多么刺穿一个母亲的担忧。</div>
+        <div class="body">
+<p>“I can walk.”</p>
+<p>“What a brave kid!” said Nurse Molly, patting me on the back as she walked us toward the door. “If he starts throwing up or runs a temperature, you should call the doctor.”</p>
+<p>“Absolutely,” said Mom, shaking Nurse Molly’s hand. “Thank you so much for taking care of him.”</p>
+<p>“My pleasure,” answered Nurse Molly, putting her hand under my chin and tilting my face up. “You take care of yourself, okay?”</p>
+<p>I nodded and mumbled “Thank you.” Mom and I hug-walked the whole way home. I didn’t tell her anything about what had happened, and later when she asked me if I felt well enough to go trick-or-treating after school, I said no. This worried her, since she knew how much I usually loved trick-or-treating.</p>
+<p>I heard her say to Dad on the phone: “… He doesn’t even have the energy to go trick-or-treating. … No, no fever at all … Well, I will if he doesn’t feel better by tomorrow. … I know, poor thing … Imagine his missing Halloween.”</p>
+<p>I got out of going to school the next day, too, which was Friday. So I had the whole weekend to think about everything. I was pretty sure I would never go back to school again.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>护士茉莉夸奥吉“多勇敢的孩子”，还叮嘱妈妈“他要是吐了或发烧，记得看医生”。妈妈跟护士握手道谢，护士托起奥吉的下巴说“你自己多保重”。奥吉和妈妈一路搂帖着走回家，他什么都没讲；晚上妈妈问他要不要去讨糖，他摇头——妈妈很意外，因为他向来最爱讨糖。奥吉听见妈妈在电话里跟爸爸说：“他连讨糖的力气都没有……没有，一点没发烧……要是明天还不好我就带他看医生……我知道，可怜的孩子……想想他连万圣节都错过了。”第二天周五，奥吉也没上学，于是整个周末他都用来想那件事——他几乎确定，自己不会再回学校了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“He doesn't even have the energy to go trick-or-treating.”</blockquote><p class="note">energy = 精力、力气；trick-or-treat = 万圣节挨家敲门讨糖。奥吉连最爱的事都不想做了，妈妈听出了不对劲——他却仍守口如瓶。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>run a temperature</b> <span class="pos">phr.</span> 发烧（体温升高）</li><li><b>tilt</b> <span class="pos">v.</span> 微微抬起、托起</li><li><b>trick-or-treat</b> <span class="pos">phr.</span> 万圣节挨家讨糖（糖果还是捣鬼由你选）</li><li><b>energy</b> <span class="pos">n.</span> 精力、力气</li><li><b>mumble</b> <span class="pos">v.</span> 含糊地嘟囔、轻声咕哝</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_25.html">← 上一单元</a>
+    <a href="wonder_unit_27.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第26/96 单元 · 第一部 · 奥吉 · 约 6 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u26.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

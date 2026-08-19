@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第10单元 道别后回家，妈妈心疼到脸红</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 10 单元 · 道别后回家，妈妈心疼到脸红</div>
+    <div class="unit-en">The Deal · Home</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1078 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>逛完学校回到办公室，图什曼问奥吉还想不想再看，妈妈催他用“去接维娅”作借口想早点离开，其实维娅会跟爸爸一起回家。一行人在门口匆忙道别，奥吉直到走出楼都没抬头。然而半条街开外，妈妈的追问触到了真相——他倒进床里，狗Daisy扑上来舔他的脸；他这才说出朱利安当众问“你脸上是怎么回事”。妈妈听得脸颊通红、头都疼了，奥吉却平静地说：我真的很想上这所学校，这次我没有撒谎。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>回到办公室，妈妈问起小鸡</h2>
+            <div class="seg-en">The baby chicks in science</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 254 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">小鸡</span><span class="tag">善解人意的对话</span><span class="tag">美术教室</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>妈妈用话题活跃气氛，朱利安都能接上话——此刻的客气下没什么恶意，真正的坏才是在后头那句关于脸的问话。</div>
+        <div class="body">
+<p>MOM AND MR. TUSHMAN were talking when we got back to the office. Mrs. Garcia was the first to see us come back, and she started smiling her shiny smile as we walked in.</p>
+<p>“So, August, what did you think? Did you like what you saw?” she asked.</p>
+<p>“Yeah.” I nodded, looking over at Mom.</p>
+<p>Jack, Julian, and Charlotte were standing by the door, not sure where to go or if they were still needed. I wondered what else they’d been told about me before they’d met me.</p>
+<p>“Did you see the baby chick?” Mom asked me.</p>
+<p>As I shook my head, Julian said: “Are you talking about the baby chicks in science? Those get donated to a farm at the end of every school year.”</p>
+<p>“Oh,” said Mom, disappointed.</p>
+<p>“But they hatch new ones every year in science,” Julian added. “So August will be able to see them again in the spring.”</p>
+<p>“Oh, good,” said Mom, eyeing me. “They were so cute, August.”</p>
+<p>I wished she wouldn’t talk to me like I was a baby in front of other people.</p>
+<p>“So, August,” said Mr. Tushman, “did these guys show you around enough or do you want to see more? I realize I forgot to ask them to show you the gym.”</p>
+<p>“We did anyway, Mr. Tushman,” said Julian.</p>
+<p>“Excellent!” said Mr. Tushman.</p>
+<p>“And I told him about the school play and some of the electives,” said Charlotte. “Oh no!” she said suddenly. “We forgot to show him the art room!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉和三个同学回到办公室时，加西亚太太先迎上来用闪亮的微笑招呼他。妈妈问他“看到科学教室的小鸡了吗”，奥吉摇头，朱利安在旁插话：那些小鸡每个学年末都会被送到农场上，不过每年春天科学课都会再孵新的，夏天前奥吉还能再看。妈妈笑说那真是太好了。图什曼又问奥吉想不想再多看看学校，奥吉心里却盼着早点走；夏洛特突然才想起“哎呀，我们忘带他看美术教室了”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Those get donated to a farm at the end of every school year.</blockquote><p class="note">donate = 捐赠。朱利安虽不讨喜，但这句关于小鸡去向的话倒是些对学校的了解，也缓和了一点点场面。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shine</b> <span class="pos">v.</span> 发光；shiny 闪闪发亮</li><li><b>donate</b> <span class="pos">v.</span> 捐赠、捐献</li><li><b>hatch</b> <span class="pos">v.</span> 孵化、孵出</li><li><b>gym</b> <span class="pos">n.</span> 体育馆</li><li><b>art room</b> <span class="pos">n.</span> 美术教室</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>用“接维娅”当离开的借口</h2>
+            <div class="seg-en">Don't we have to pick Via up soon?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">想离开的信号</span><span class="tag">善意的谎</span><span class="tag">妈妈的默契</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>母子之间的信号很关键：一句“该接维娅了”就是奥吉想逃离的信号——妈妈读懂并配合他，是全书亲情的默契写法。</div>
+        <div class="body">
+<p>“That’s okay,” said Mr. Tushman.</p>
+<p>“But we can show it to him now,” Charlotte offered.</p>
+<p>“Don’t we have to pick Via up soon?” I said to Mom.</p>
+<p>That was our signal for my telling Mom if I really wanted to leave.</p>
+<p>“Oh, you’re right,” said Mom, getting up. I could tell she was pretending to check the time on her watch. “I’m sorry, everybody. I lost track of the time. We have to go pick up my daughter at her new school. She’s taking an unofficial tour today.” This part wasn’t a lie: that Via was checking out her new school today. The part that was a lie was that we were picking her up at the school, which we weren’t. She was coming home with Dad later.</p>
+<p>“Where does she go to school?” asked Mr. Tushman, getting up.</p>
+<p>“She’s starting Faulkner High School this fall.”</p>
+<p>“Wow, that’s not an easy school to get into. Good for her!”</p>
+<p>“Thank you,” said Mom, nodding. “It’ll be a bit of a schlep, though. The A train down to Eighty-Sixth, then the crosstown bus all the way to the East Side. Takes an hour that way but it’s just a fifteen-minute drive.”</p>
+<p>“It’ll be worth it. I know a couple of kids who got into Faulkner and love it,” said Mr. Tushman.</p>
+<p>“We should really go, Mom,” I said, tugging at her pocketbook.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>夏洛特提出现在就能带奥吉去看美术教室，奥吉却对妈妈说“我们是不是得早点去接维娅”——这是他跟妈妈约好的“想离开”的信号。妈妈心领神会地看了眼手表直说“哎哟，我们得走了，要去接女儿”，可那句“去学校接她”其实是个谎，维娅今天压根不在那，她会跟爸爸一起回家。图什曼赞叹女儿考上的Faulkner高中很难进，奥吉却拽着妈妈的包一直催“咱们真该走啦”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>That was our signal for my telling Mom if I really wanted to leave.</blockquote><p class="note">signal = 暗号、信号。原来“去接维娅”是奥吉和妈妈约好、表示“我想走了”的暗号。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>signal</b> <span class="pos">n.</span> 暗号、信号</li><li><b>unofficial</b> <span class="pos">adj.</span> 非官方的、非正式的</li><li><b>schlep</b> <span class="pos">n.</span> 长途折腾、跋涉（口语）</li><li><b>tug</b> <span class="pos">v.</span> 用力拉、拽</li><li><b>pocketbook</b> <span class="pos">n.</span> 手提包、钱包</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>一进门就扑进床里，小狗舔我的脸</h2>
+            <div class="seg-en">threw myself onto my bed</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 267 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">扑进床里</span><span class="tag">小狗撒娇</span><span class="tag">终于回家</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“又伤心又有点高兴”——这是奥吉把所有复杂情绪压在心里、回家才敢全部倾倒出来的转折点。</div>
+        <div class="body">
+<p>We said goodbye kind of quickly after that. I think Mr. Tushman was a little surprised that we were leaving so suddenly, and then I wondered if he would blame Jack and Charlotte, even though it was really only Julian who made me feel kind of bad.</p>
+<p>“Everyone was really nice,” I made sure to tell Mr. Tushman before we left.</p>
+<p>“I look forward to having you as a student,” said Mr. Tushman, patting my back.</p>
+<p>“Bye,” I said to Jack, Charlotte, and Julian, but I didn’t look at them—or look up at all—until I left the building.</p>
+<p>AS SOON AS we had walked at least half a block from the school, Mom said: “So … how’d it go? Did you like it?”</p>
+<p>“Not yet, Mom. When we get home,” I said.</p>
+<p>The moment we got inside the house, I ran to my room and threw myself onto my bed. I could tell Mom didn’t know what was up, and I guess I really didn’t, either. I felt very sad and a tiny bit happy at the exact same time, kind of like that laughing-crying feeling all over again.</p>
+<p>My dog, Daisy, followed me into the room, jumped on the bed, and started licking me all over my face.</p>
+<p>“Who’s a good girlie?” I said in my Dad voice. “Who’s a good girlie?”</p>
+<p>“Is everything okay, sweetness?” Mom said. She wanted to sit down beside me but Daisy was hogging the bed. “Excuse me, Daisy.” She sat down, nudging Daisy over. “Were those kids not nice to you, Auggie?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>他们很快地说了再见，奥吉总觉得图什曼会错怪杰克和夏洛特，可他心里明白真正让他难受的只有朱利安；走前他特意说“大家都很好”。“一离开学校半条街，妈妈就问你觉得怎么样”，奥吉说等回家再说。刚进门他就冲进自己房间扑到床上，又悲伤又有一点点高兴，全乱在一起。狗Daisy追进来跳上床，舔他的脸，奥吉用爸爸的腔调夸它“谁是好姑娘”。妈妈放下手里的事坐过来，问他那些孩子是不是对你不好。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I felt very sad and a tiny bit happy at the exact same time, kind of like that laughing-crying feeling all over again.</blockquote><p class="note">a tiny bit = 一点点。奥吉“又伤心又有点高兴”地哭哭又笑笑，是他表达混乱心情的经典比喻。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>blame</b> <span class="pos">v.</span> 责怪、归咎</li><li><b>lick</b> <span class="pos">v.</span> 舔</li><li><b>hogging</b> <span class="pos">v.</span> 霸占（hog 的现在分词）</li><li><b>nudge</b> <span class="pos">v.</span> 推、轻轻撞</li><li><b>at the same time</b> <span class="pos">phr.</span> 同时</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>跟妈妈说：我最喜欢杰克</h2>
+            <div class="seg-en">That boy Julian seemed especially nice</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 247 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">最喜欢杰克</span><span class="tag">表里不一的人</span><span class="tag">妈妈的震惊</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“在大人面前一人一面、在孩子面前又另一副面孔”——这句话为后面朱利安的伪善埋下伏笔，也是最伤人的事实。</div>
+        <div class="body">
+<p>“Oh no,” I said, only half lying. “They were okay.”</p>
+<p>“But were they nice? Mr. Tushman went out of his way to tell me what sweet kids they are.”</p>
+<p>“Uh-huh.” I nodded, but I kept looking at Daisy, kissing her on the nose and rubbing her ear until her back leg did that little flea-scratch shake.</p>
+<p>“That boy Julian seemed especially nice,” Mom said.</p>
+<p>“Oh, no, he was the least nice. I liked Jack, though. He was nice. I thought his name was Jack Will but it’s just Jack.”</p>
+<p>“Wait, maybe I’m getting them confused. Which one was the one with the dark hair that was brushed forward?”</p>
+<p>“Julian.”</p>
+<p>“And he wasn’t nice?”</p>
+<p>“No, not nice.”</p>
+<p>“Oh.” She thought about this for a second. “Okay, so is he the kind of kid who’s one way in front of grown-ups and another way in front of kids?”</p>
+<p>“Yeah, I guess.”</p>
+<p>“Ah, hate those,” she answered, nodding.</p>
+<p>“He was like, ‘So, August, what’s the deal with your face?’” I said, looking at Daisy the whole time. “‘Were you in a fire or something?’”</p>
+<p>Mom didn’t say anything. When I looked up at her, I could tell she was completely shocked.</p>
+<p>“He didn’t say it in a mean way,” I said quickly. “He was just asking.”</p>
+<p>Mom nodded.</p>
+<p>“But I really liked Jack,” I said. “He was like, ‘Shut up, Julian!’ And Charlotte was like, ‘You’re so rude, Julian!’”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈问那些孩子对你好不好，奥吉一边揉Daisy的耳朵一边半真半假地说“他们还行”。妈妈凭印象挑起“朱利安看起来格外好相处”，奥吉却直说“不，他反而是最不友善的，我真正喜欢的人是杰克”。妈妈追问肯“是不是那种在大人面前一个样、在孩子面前又另一个样”的孩子，奥吉点头。最后他学朱利安当时的话说：“你脸上是什么情况，是不是出过火灾？”妈妈一听，整个人愣住了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Okay, so is he the kind of kid who's one way in front of grown-ups and another way in front of kids?</blockquote><p class="note">grown-ups = 大人。妈妈一针见血地问，是不是那种“在大人面前一套、在孩子面前又一套”的孩子——一下就戳中了朱利安的本性。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>especially</b> <span class="pos">adv.</span> 特别地</li><li><b>one way</b> <span class="pos">phr.</span> 一个样子</li><li><b>figure that out</b> <span class="pos">phr.</span> 搞清楚、弄明白</li><li><b>confused</b> <span class="pos">adj.</span> 困惑的</li><li><b>shocked</b> <span class="pos">adj.</span> 震惊的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>我真的很想上学，这次不是谎话</h2>
+            <div class="seg-en">Really, Mom. I want to.</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 66 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">妈妈的道歉</span><span class="tag">我的决心</span><span class="tag">不再退缩</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>收束在奥吉的成长上：被朱利安冒犯后，他没有选择逃避，反而坚定地想去那所学校——他想证明这份决定里也有他自己的勇敢。</div>
+        <div class="body">
+<p>Mom nodded again. She pressed her fingers on her forehead like she was pushing against a headache.</p>
+<p>“I’m so sorry, Auggie,” she said quietly. Her cheeks were bright red.</p>
+<p>“No, it’s okay, Mom, really.”</p>
+<p>“You don’t have to go to school if you don’t want, sweetie.”</p>
+<p>“I want to,” I said.</p>
+<p>“Auggie …”</p>
+<p>“Really, Mom. I want to.” And I wasn’t lying.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈扶着额头像在压住头疼，声音低低地、眼圈发红地说“对不起，奥吉”。可奥吉连忙说“没关系，真的”，接着妈妈认真问他“你要是不想去上学，就不用去，宝贝”。奥吉看着她的眼睛，认真地一字一句说“我真的想去”——这一回，他没有撒谎。他心里也响起一个声音：也许从今天这趟开始，他并没有后悔走这一趟。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Really, Mom. I want to. And I wasn't lying.</blockquote><p class="note">I wasn't lying = 我没有撒谎。经历了朱利安的伤害，奥吉却更坚定地想上学——这句“真话”成了他迈向新生活的起点。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>sweetie</b> <span class="pos">n.</span> 亲爱的、宝贝（称呼）</li><li><b>forehead</b> <span class="pos">n.</span> 额头</li><li><b>headache</b> <span class="pos">n.</span> 头痛</li><li><b>lie</b> <span class="pos">v.</span> 撒谎</li><li><b>regret</b> <span class="pos">v.</span> 后悔</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_09.html">← 上一单元</a>
+    <a href="wonder_unit_11.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第10/96 单元 · 第一部 · 奥吉 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u10.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

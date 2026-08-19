@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第60单元 公交站：三个恶霸与我的小把戏</title>
+<style>
+:root{--c:#7a6aa8;--bg:#f0edf7;--nav:#ded7ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第五部 · 贾斯汀</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 60 单元 · 公交站：三个恶霸与我的小把戏</div>
+    <div class="unit-en">The Bus Stop</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1072 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Five: Justin</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>贾斯汀送维娅回家，被托付陪杰克的弟弟奥吉的朋友杰克等公交，顺路留下杰克一起。杰克的妈妈走开时，三个校霸——朱利安和两个 大块头跟班亨利、迈尔斯——跟在杰克背后做呕吐声，欺负他。杰克给贾斯汀看一张写着全班名字、分三栏的纸条，说朱利安把整个年级都拉起来针对他和奥吉。贾斯汀一路开导安慰杰克。后来在街角碰到那三个校霸，他摘下眼镜、夹起琴盒摆出狠样，撂下一句狠话吓住了他们。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>被托付陪杰克等公交</h2>
+            <div class="seg-en">can you walk jack to the bus stop?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 245 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">陪等公交</span><span class="tag">第一次见杰克</span><span class="tag">小硬汉</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>像“小硬汉”的杰克给读者第一印象：嘴硬、说自己能搞定——为紧接着他被欺负埋下反差。</div>
+        <div class="body">
+<p>OLIVIA’S MOM, AUGGIE, jack, and daisy come down the stoop just as i’m saying goodbye to olivia. slightly awkward since we are in the middle of a nice long kiss.</p>
+<p>hey, guys, says the mom, pretending not to see anything, but the two boys are giggling.</p>
+<p>hi, mrs. pullman.</p>
+<p>please call me isabel, justin, she says again. it’s like the third time she’s told me this, so i really need to start calling her that.</p>
+<p>i’m heading home, i say, as if to explain.</p>
+<p>oh, are you heading to the subway? she says, following the dog with a newspaper. can you walk jack to the bus stop?</p>
+<p>no problem.</p>
+<p>that okay with you, jack? the mom asks him, and he shrugs. justin, can you stay with him till the bus comes?</p>
+<p>of course!</p>
+<p>we all say our goodbyes. olivia winks at me.</p>
+<p>you don’t have to stay with me, says jack as we’re walking up the block. i take the bus by myself all the time. auggie’s mom is way too overprotective.</p>
+<p>he’s got a low gravelly voice, like a little tough guy. he kind of looks like one of those little-rascal kids in old black-and-white movies, like he should be wearing a newsboy cap and knickers.</p>
+<p>we get to the bus stop and the schedule says the bus will be there in eight minutes. i’ll wait with you, i tell him.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀刚和维娅道别、还在长长一吻时，维娅的妈妈带着奥吉、杰克和狗下了台阶，有点尴尬。妈妈请他陪杰克去公交站、留到车来为止。一路上杰克说他一直自己坐公交，嫌奥吉的妈妈“保护过度了”。杰克声音又低又粗，像个电影里的小硬汉。到公交站显示车还要八分钟，贾斯汀说自己会陪他等。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>he's got a low gravelly voice, like a little tough guy.</blockquote><p class="note">gravelly voice = 沙哑低沉的嗓音。tough guy = 硬汉。贾斯汀第一眼就觉得杰克像旧电影里的小硬汉。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bus stop</b> <span class="pos">n.</span> 公交站</li><li><b>gravelly</b> <span class="pos">adj.</span> 沙哑的、低沉粗哑的</li><li><b>tough guy</b> <span class="pos">n.</span> 硬汉、狠角色</li><li><b>knickers</b> <span class="pos">n.</span> 灯笼裤（旧式男童外裤）</li><li><b>overprotective</b> <span class="pos">adj.</span> 过度保护的、管太多的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>三个校霸在后面欺负杰克</h2>
+            <div class="seg-en">making loud throw-up noises</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 252 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">校园霸凌</span><span class="tag">呕吐声</span><span class="tag">假装没事</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>呕吐声是羞辱信号：三个校霸不敢动手，只敢低成本的恶作剧——贾斯汀的“朋友？”这句戳破了杰克的假装没事。</div>
+        <div class="body">
+<p>up to you. he shrugs. can i borrow a dollar? i want some gum.</p>
+<p>i fish a dollar out of my pocket and watch him cross the street to the grocery store on the corner. he seems too small to be walking around by himself, somehow. then i think how i was that young when i was taking the subway by myself. way too young. i’m going to be an overprotective dad someday, i know it. my kids are going to know i care.</p>
+<p>i’m waiting there a minute or two when i notice three kids walking up the block from the other direction. they walk right past the grocery store, but one of them looks inside and nudges the other two, and they all back up and look inside. i can tell they’re up to no good, all elbowing each other, laughing. one of them is jack’s height but the other two look much bigger, more like teens. they hide behind the fruit stand in front of the store, and when jack walks out, they trail behind him, making loud throw-up noises. jack casually turns around at the corner to see who they are and they run away, high-fiving each other and laughing. little jerks.</p>
+<p>jack crosses the street like nothing happened and stands next to me at the bus stop, blowing a bubble.</p>
+<p>friends of yours? i finally say.</p>
+<p>ha, he says. he’s trying to smile but i can see he’s upset.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克向贾斯汀借一块钱去买口香糖，贾斯汀想他这么小竟自己买公交走，感慨自己小时候也这样、以后一定要当保护过度的爸爸。等车时他看到三个孩子路过杂货店往里张望，躲在水果摊后，等杰克出来就跟在后面做呕吐声。杰克回头看了一眼，他们便跑开、击掌大笑。杰克像没事人一样过街走到车站，吹着泡泡；贾斯汀忍不住问“你朋友？”，杰克想笑却看得出不高兴。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>jack crosses the street like nothing happened and stands next to me at the bus stop, blowing a bubble. friends of yours? i finally say.</blockquote><p class="note">blowing a bubble = 吹泡泡糖。杰克装作若无其事吹泡泡，贾斯汀那句“你朋友？”把尴尬直接挑明。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fish out</b> <span class="pos">phr.</span> （从口袋里）掏出、摸出</li><li><b>nudge</b> <span class="pos">v.</span> 用肘/手轻推示意</li><li><b>trail</b> <span class="pos">v.</span> 尾随、跟在后面</li><li><b>throw-up</b> <span class="pos">phr.</span> 呕吐的（throw-up noise 呕吐声）</li><li><b>high-five</b> <span class="pos">v.</span> 击掌</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>那张把全班分三栏的纸条</h2>
+            <div class="seg-en">a list of names in three columns</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 255 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">三栏名单</span><span class="tag">朱利安</span><span class="tag">全校孤立</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“三栏名单”是霸凌的物证：朱利安不是单点欺负，而是系统性把全班分派——贾斯汀建议拉拢“中立者”冲淡他的孤立。</div>
+        <div class="body">
+<p>just some jerks from my school, he says. a kid named julian and his two gorillas, henry and miles.</p>
+<p>do they bother you like that a lot?</p>
+<p>no, they’ve never done that before. they’d never do that in school or they’d get kicked out. julian lives two blocks from here, so I guess it was just bad luck running into him.</p>
+<p>oh, okay. i nod.</p>
+<p>it’s not a big deal, he assures me.</p>
+<p>we both automatically look down amesfort avenue to see if the bus is coming.</p>
+<p>we’re sort of in a war, he says after a minute, as if that explains everything. then he pulls out this crumpled piece of loose-leaf paper from his jean pocket and gives it to me. i unfold it, and it’s a list of names in three columns. he’s turned the whole grade against me, says jack.</p>
+<p>not the whole grade, i point out, looking down at the list.</p>
+<p>he leaves me notes in my locker that say stuff like everybody hates you.</p>
+<p>you should tell your teacher about that.</p>
+<p>jack looks at me like i’m an idiot and shakes his head.</p>
+<p>anyway, you have all these neutrals, i say, pointing to the list. if you get them on your side, things will even up a bit.</p>
+<p>yeah, well, that’s really going to happen, he says sarcastically.</p>
+<p>why not?</p>
+<p>he shoots me another look like i am absolutely the stupidest guy he’s ever talked to in the world.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克说那几个人是学校里的朱利安和他的两个“跟班”亨利、迈尔斯，以前从没这样过，在学校里不敢、会被开除。他从牛仔裤口袋里掏出一张皱巴巴的纸条给贾斯汀，上面三栏列满了名字——他说朱利安把整个年级都拉起来针对他和奥吉了。朱利安还往他储物柜里塞“人人都恨你”之类的纸条。贾斯汀让他告诉老师，他翻个白眼，贾斯汀又指纸条上“中立”那些名字说服他们站队就会打平，他嘲讽地说那怎么可能。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>i unfold it, and it's a list of names in three columns. he's turned the whole grade against me, says jack.</blockquote><p class="note">turn ... against ... = 让某人与自己对立。unfold = 展开。朱利安用纸条把人分成派系，把全班推到杰克和奥吉的对立面。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>gorilla</b> <span class="pos">n.</span> 大猩猩；这里指凶星子、打手跟班</li><li><b>unfold</b> <span class="pos">v.</span> 展开（纸张）</li><li><b>column</b> <span class="pos">n.</span> （表格的）纵列</li><li><b>turn against</b> <span class="pos">phr.</span> 使……与自己为敌</li><li><b>neutral</b> <span class="pos">n.</span> 中立者、旁观者</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>原来这一切都因为他的朋友奥吉</h2>
+            <div class="seg-en">this is all about his being friends with august</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 252 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">与奥吉交友</span><span class="tag">泰勒观点</span><span class="tag">决定出手</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“这一切都是因为他和奥吉做朋友”——点明杰克被霸凌的真正原因，与全书主题直接相连；贾斯汀此刻已被激起保护欲。</div>
+        <div class="body">
+<p>what? i say.</p>
+<p>he shakes his head like i’m hopeless. let’s just say, he says, i’m friends with someone who isn’t exactly the most popular kid in the school.</p>
+<p>then it hits me, what’s he’s not coming out and saying: august. this is all about his being friends with august. and he doesn’t want to tell me because i’m the sister’s boyfriend. yeah, of course, makes sense.</p>
+<p>we see the bus coming down amesfort avenue.</p>
+<p>well, just hang in there, i tell him, handing back the paper. middle school is about as bad as it gets, and then it gets better. everything’ll work out.</p>
+<p>he shrugs and shoves the list back into his pocket.</p>
+<p>we wave bye when he gets on the bus, and i watch it pull away.</p>
+<p>when i get to the subway station two blocks away, i see the same three kids hanging out in front of the bagel place next door. they’re still laughing and yuck-yucking each other like they’re some kind of gangbangers, little rich boys in expensive skinny jeans acting tough.</p>
+<p>don’t know what possesses me, but i take my glasses off, put them in my pocket, and tuck my fiddle case under my arm so the pointy side is facing up. i walk over to them, my face scrunched up, mean-looking. they look at me, laughs dying on their lips when they see me, ice cream cones at odd angles.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀追问说不通的地方，杰克摇头说，就当我交了个不太全校最受欢迎的朋友吧。贾斯汀这才恍然大悟：这一切都是因为杰克和奥吉做朋友；杰克不说破，是因为自己是奥吉的姐姐的男朋友。车来了，贾斯汀劝他“撑住，中学会越来越难但也越来越好”，把评纸还给他。杰克耸耸肩塞回口袋上了车。走两个街区到地铁站时，贾斯汀又看见那三个小孩，还在快餐店门口交头接耳笑着。他不知哪来的冲动，摘下眼镜、把琴盒尖角朝上夹在腋下，沉着脸朝他们走过去。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>let's just say, he says, i'm friends with someone who isn't exactly the most popular kid in the school.</blockquote><p class="note">isn't exactly the most popular = 一点也算不上最受欢迎（婉转说法）。杰克用委婉语指奥吉，不愿当面说出让自己被排挤的朋友的名字。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hang in there</b> <span class="pos">phr.</span> 撑住、坚持下去</li><li><b>shrug</b> <span class="pos">v.</span> 耸肩（表示无可奈何）</li><li><b>shove back</b> <span class="pos">phr.</span> 塞回（口袋）</li><li><b>pull away</b> <span class="pos">phr.</span> （车）开走、驶离</li><li><b>fiddle case</b> <span class="pos">n.</span> 小提琴琴盒</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>我摆出狠样威胁那三个校霸</h2>
+            <div class="seg-en">don't mess with jack</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 68 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">威胁警告</span><span class="tag">保护杰克</span><span class="tag">小把戏</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>贾斯汀没有动手，只靠气势和那句敲琴盒的暗示就吓住了他们——他用大人的威严保护了杰克，也完成了从旁观者到保护者的转变。</div>
+        <div class="body">
+<p>yo, listen up. don’t mess with jack, i say really slowly, gritting my teeth, my voice all clint eastwood tough-guy. mess with him again and you will be very, very sorry. and then i tap my fiddle case for effect.</p>
+<p>got it?</p>
+<p>they nod in unison, ice cream dripping onto their hands.</p>
+<p>good. i nod mysteriously, then sprint down the subway two steps at a time.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀用低沉的硬汉语气一字一顿地警告那三个校霸：“听着，别招惹杰克。再招惹他，你们会非常非常后悔。”说完用手指敲了敲琴盒。三人齐刷刷点头，冰激凌化在手上。贾斯汀点了个头，便两步并一步冲下地铁站。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>don't mess with jack. mess with him again and you will be very, very sorry.</blockquote><p class="note">mess with = 招惹、找麻烦。这句“别惹杰克，再惹你们会很后悔”是全段最狠也最干净的一句——没有暴力，只有气势。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>mess with</b> <span class="pos">phr.</span> 招惹、找……的麻烦</li><li><b>grit one's teeth</b> <span class="pos">phr.</span> 咬紧牙关</li><li><b>in unison</b> <span class="pos">phr.</span> 齐声、异口同声</li><li><b>drip</b> <span class="pos">v.</span> 滴落、淌</li><li><b>sprint</b> <span class="pos">v.</span> 冲刺、狂奔</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_59.html">← 上一单元</a>
+    <a href="wonder_unit_61.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第60/96 单元 · 第五部 · 贾斯汀 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u60.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

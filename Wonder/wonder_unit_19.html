@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第19单元 剪掉辫子那晚，爸爸来陪我说话</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 19 单元 · 剪掉辫子那晚，爸爸来陪我说话</div>
+    <div class="unit-en">Padawan</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 998 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>开学第一天回家的晚上，奥吉剪掉了后脑勺那根留了好几年的小辫子，姐姐维娅为此差点跟他吵起来。夜里爸爸来给他盖被子，轻声问他这一天是不是真的过得不错；妈妈也悄悄来道晚安。一家人轮流哄他睡觉，奥吉却一路沉默——只有贴近他的人才看得出来他藏着心事。果不其然，妈妈念《霍比特人》给他听时，奥吉突然哭了出来，抽泣着问：“为什么我非得长得这么丑？”这句藏在心底的话，终于在黑暗里漏了出来。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我剪掉了留了好几年的小辫子</h2>
+            <div class="seg-en">I cut off the braid</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">剪辫子</span><span class="tag">家人反应</span><span class="tag">无声的心事</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅发火和爸爸打趣的对比——家人对奥吉剪辫子反应完全不同，而奥吉一路只回一句“我不确定/我累了”：他的沉默在开头就埋下了伏笔。</div>
+        <div class="body">
+<p>THAT NIGHT I cut off the little braid on the back of my head. Dad noticed first.</p>
+<p>“Oh good,” he said. “I never liked that thing.”</p>
+<p>Via couldn’t believe I had cut it off.</p>
+<p>“That took you years to grow!” she said, almost like she was angry. “Why did you cut it off?”</p>
+<p>“I don’t know,” I answered.</p>
+<p>“Did someone make fun of it?”</p>
+<p>“No.”</p>
+<p>“Did you tell Christopher you were cutting it off?”</p>
+<p>“We’re not even friends anymore!”</p>
+<p>“That’s not true,” she said. “I can’t believe you would just cut it off like that,” she added snottily, and then practically slammed my bedroom door shut as she left the room.</p>
+<p>I was snuggling with Daisy on my bed when Dad came to tuck me in later. He scooched Daisy over gently and lay down next to me on the blanket.</p>
+<p>“So, Auggie Doggie,” he said, “it was really an okay day?” He got that from an old cartoon about a dachshund named Auggie Doggie, by the way. He had bought it for me on eBay when I was about four, and we watched it a lot for a while—especially in the hospital. He would call me Auggie Doggie and I would call him “dear ol’ Dad,” like the puppy called the dachshund dad on the show.</p>
+<p>“Yeah, it was totally okay,” I said, nodding.</p>
+<p>“You’ve been so quiet all night long.”</p>
+<p>“I guess I’m tired.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>那天晚上奥吉剪掉后脑勺的小辫子，爸爸看见了说“正好，我从来就不喜欢那玩意儿”，姐姐维娅却难以置信地发火——她不明白奥吉为什么把留了多年的辫子一剪子剪了，还气呼呼地大力关上门。晚些时候父女俩都围过来：奥吉和狗黛西窝在床上，爸爸靠过来，用老动画里“Auggie Doggie”的称呼逗他，问他这一天是不是真不错，奥吉只说“我大概是累了”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I was snuggling with Daisy on my bed when Dad came to tuck me in later.</blockquote><p class="note">snuggle = 依偎、蜷着；tuck someone in = 给某人塞好被子、哄睡。奥吉和狗窝在床上，爸爸来给他盖被子——一个很安静温暖的画面，衬出他白天心里的不平静。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>braid</b> <span class="pos">n.</span> 辫子</li><li><b>make fun of</b> <span class="pos">phr.</span> 取笑、嘲笑</li><li><b>snottily</b> <span class="pos">adv.</span> 气冲冲地、没好气地</li><li><b>snuggle</b> <span class="pos">v.</span> 依偎、蜷缩着靠在一起</li><li><b>tuck someone in</b> <span class="pos">phr.</span> 给某人掖好被子、哄睡</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>“要是不顺心，我们能不能送我去上学”</h2>
+            <div class="seg-en">It was a good call Mom made</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">上学的约定</span><span class="tag">对妈妈的微妙情绪</span><span class="tag">爸爸的深夜盘问</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这场睡前对话把家庭暗线挑明：奥吉面上说“不错”，却对提议上学的妈妈偷偷有气；爸爸悄悄把它们全问了出来——注意奥吉对去学校的真实态度其实还没完全说通。</div>
+        <div class="body">
+<p>“It was a long day, huh?”</p>
+<p>I nodded.</p>
+<p>“But it really was okay?”</p>
+<p>I nodded again. He didn’t say anything, so after a few seconds, I said: “It was better than okay, actually.”</p>
+<p>“That’s great to hear, Auggie,” he said quietly, kissing my forehead. “So it looks like it was a good call Mom made, your going to school.”</p>
+<p>“Yeah. But I could stop going if I wanted to, right?”</p>
+<p>“That was the deal, yes,” he answered. “Though I guess it would depend on why you wanted to stop going, too, you know. You’d have to let us know. You’d have to talk to us and tell us how you’re feeling, and if anything bad was happening. Okay? You promise you’d tell us?”</p>
+<p>“Yeah.”</p>
+<p>“So can I ask you something? Are you mad at Mom or something? You’ve been kind of huffy with her all night long. You know, Auggie, I’m as much to blame for sending you to school as she is.”</p>
+<p>“No, she’s more to blame. It was her idea.”</p>
+<p>Mom knocked on the door just then and peeked her head inside my room.</p>
+<p>“Just wanted to say good night,” she said. She looked kind of shy for a second.</p>
+<p>“Hi, Momma,” Dad said, picking up my hand and waving it at her.</p>
+<p>“I heard you cut off your braid,” Mom said to me, sitting down at the edge of the bed next to Daisy.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>爸爸追问这一天是不是真的还好，奥吉终于说“比‘还好’更好”。爸爸提妈妈决定让他上学是“做对了”，奥吉却问：如果我想停,是不是能停。爸爸答应那是之前说好的约定，但要他把心里话都说出来。随后爸爸看出奥吉整晚对妈妈有点气鼓鼓的，问他是不是生妈妈的气，奥吉一口咬定“是她先提议的”。这时妈妈探头进来道晚安，还提到听见奥吉剪了辫子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“No, she’s more to blame. It was her idea.”</blockquote><p class="note">be to blame = 该负责任、该怪的人；”It was her idea“ = 那是她的主意。爸爸试着揽一半责任，奥吉却硬邦邦地回了一句，让大家看出他对“谁说来上学”这件事还在较劲。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>that was the deal</b> <span class="pos">phr.</span> 这是之前说好的约定</li><li><b>depend on</b> <span class="pos">phr.</span> 取决于、要看……而定</li><li><b>blame</b> <span class="pos">v./n.</span> 责怪；责任（be to blame 该被怪）</li><li><b>huffy</b> <span class="pos">adj.</span> 气鼓鼓的、带着气的</li><li><b>peek</b> <span class="pos">v.</span> 偷看、探头看一眼</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>妈妈的睡前书，和维娅升高中这天</h2>
+            <div class="seg-en">Will you check in on Via?</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 290 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">维娅的高中第一天</span><span class="tag">睡前故事《霍比特人》</span><span class="tag">家中的暗流</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这场的镜头在奥吉、维娅和爸妈之间来回切：一句“今天也是维娅高中第一天”把姐姐当成大背景放进故事里——注意后文奥吉妈妈和姐姐两条线索的分量。</div>
+        <div class="body">
+<p>“It’s not a big deal,” I answered quickly.</p>
+<p>“I didn’t say it was,” said Mom.</p>
+<p>“Why don’t you put Auggie to bed tonight?” Dad said to Mom, getting up. “I’ve got some work to do anyway. Good night, my son, my son.” That was another part of our Auggie Doggie routine, though I wasn’t in the mood to say Good night, dear ol’ Dad. “I’m so proud of you,” said Dad, and then he got up out of the bed.</p>
+<p>Mom and Dad had always taken turns putting me to bed. I know it was a little babyish of me to still need them to do that, but that’s just how it was with us.</p>
+<p>“Will you check in on Via?” Mom said to Dad as she lay down next to me.</p>
+<p>He stopped by the door and turned around. “What’s wrong with Via?”</p>
+<p>“Nothing,” said Mom, shrugging, “at least that she would tell me. But … first day of high school and all that.”</p>
+<p>“Hmm,” said Dad, and then he pointed his finger at me and winked. “It’s always something with you kids, isn’t it?” he said.</p>
+<p>“Never a dull moment,” said Mom.</p>
+<p>“Never a dull moment,” Dad repeated. “Good night, guys.”</p>
+<p>As soon as he closed the door, Mom pulled out the book she’d been reading to me for the last couple of weeks. I was relieved because I really was afraid she’d want to “talk,” and I just didn’t feel like doing that. But Mom didn’t seem to want to talk, either. She just flipped through the pages until she got to where we had left off. We were about halfway through The Hobbit.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈说辫子不是大事，爸爸顺势把“哄睡”的活儿交给妈妈，自己起身，仿佛没等那套“Auggie Doggie”的晚安对白演完。他走到门口时，妈妈叮嘱他去看看维娅——因为今天是维娅高中第一天。爸爸朝奥吉眨眨眼感叹“你们这群孩子总有情况”。门一关，妈妈就翻出这些天一直在念的《霍比特人》，奥吉松了口气，他生怕妈妈要“谈谈”，而妈妈似乎也不想多谈，只想接着读。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Never a dull moment,” said Mom.</blockquote><p class="note">Never a dull moment = 从来没有无聊安静的时刻。爸妈异口同声的一句玩笑，说透了这家人“总有事情”的日常，也轻轻带出了维娅那份被弟弟抢走注意的落寞。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>proud of</b> <span class="pos">phr.</span> 为……感到骄傲</li><li><b>check in on</b> <span class="pos">phr.</span> 去看看、去关心一下</li><li><b>wink</b> <span class="pos">v.</span> 挤眼睛、使眼色</li><li><b>dull moment</b> <span class="pos">n.</span> 无聊安静的时刻</li><li><b>relieved</b> <span class="pos">adj.</span> 松了一口气的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>“为什么我非得长得这么丑”</h2>
+            <div class="seg-en">Why do I have to be so ugly?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 218 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">忽然落泪</span><span class="tag">难看的脸</span><span class="tag">妈妈的爱</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>全单元的泪点：白天忍着不哭的奥吉，被一段关于“希望和失望”的故事撬开了防线。抓住那句“妈妈一点都不惊讶他会哭”——她太了解儿子心里压着什么。</div>
+        <div class="body">
+<p>“‘Stop! stop!’ shouted Thorin,” said Mom, reading aloud, “but it was too late, the excited dwarves had wasted their last arrows, and now the bows that Beorn had given them were useless.</p>
+<p>“They were a gloomy party that night, and the gloom gathered still deeper on them in the following days. They had crossed the enchanted stream; but beyond it the path seemed to straggle on just as before, and in the forest they could see no change.”</p>
+<p>I’m not sure why, but all of a sudden I started to cry.</p>
+<p>Mom put the book down and wrapped her arms around me. She didn’t seem surprised that I was crying. “It’s okay,” she whispered in my ear. “It’ll be okay.”</p>
+<p>“I’m sorry,” I said between sniffles.</p>
+<p>“Shh,” she said, wiping my tears with the back of her hand. “You have nothing to be sorry about. …”</p>
+<p>“Why do I have to be so ugly, Mommy?” I whispered.</p>
+<p>“No, baby, you’re not …”</p>
+<p>“I know I am.”</p>
+<p>She kissed me all over my face. She kissed my eyes that came down too far. She kissed my cheeks that looked punched in. She kissed my tortoise mouth.</p>
+<p>She said soft words that I know were meant to help me, but words can’t change my face.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈接着上次的地方，念《霍比特人》里索林喊“停！停！”的那段：那些矮人丧失了箭，前路幽暗。奥吉说不上为什么，突然就哭了出来。妈妈放下书，把他搂进怀里，仿佛早料到他会哭，柔声说“没事的”。奥吉抽噎着问：“为什么我非得长得这么丑？”妈妈吻遍他低垂的眼睛、凹陷的脸颊、龟裂的嘴，说尽安慰的话，可话语终究改变不了他的脸。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Why do I have to be so ugly, Mommy?” I whispered.</blockquote><p class="note">奥吉整晚的沉默在这句里爆发了。妈妈“一点也不惊讶”他会哭——因为她最清楚，那句“为什么我长得这么丑”其实一直沉在奥吉心里，只是今晚才漏了出来。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>useless</b> <span class="pos">adj.</span> 没用的、毫无用处的</li><li><b>gloom</b> <span class="pos">n.</span> 阴郁、愁云</li><li><b>sniffle</b> <span class="pos">n./v.</span> 抽鼻子的声音；抽咽</li><li><b>wipe</b> <span class="pos">v.</span> 擦掉、拭去</li><li><b>ugly</b> <span class="pos">adj.</span> 难看的、丑陋的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_18.html">← 上一单元</a>
+    <a href="wonder_unit_20.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第19/96 单元 · 第一部 · 奥吉 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u19.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

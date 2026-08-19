@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第12单元 教室里的空座位，没人敢坐我旁边</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 12 单元 · 教室里的空座位，没人敢坐我旁边</div>
+    <div class="unit-en">Locks</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 615 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉直接找到三楼的301教室，庆幸自己提前参观过。教室里他开始被明目张胆地注视，他照旧假装没看见。他选了靠后半圈的座位，但发现每个人都刻意避开他身边的位子，好几次有人走近又临时换走。杰克·威尔主动坐到他旁边并跟他打招呼。老师佩托萨夫人点名发资料和储物柜密码锁时，看到他还是停顿了那么一瞬。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我躲在后排，没人肯坐我旁边</h2>
+            <div class="seg-en">no one sat down next to me</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 248 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">孤立感</span><span class="tag">躲藏</span><span class="tag">夏洛特打招呼</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住这个细节：座位一个个空出来却始终没人肯坐在奥吉身边——作者用空间的隔离写他第一天在学校感受到的孤立。</div>
+        <div class="body">
+<p>I WENT STRAIGHT to room 301 on the third floor. Now I was glad I’d gone on that little tour, because I knew exactly where to go and didn’t have to look up once. I noticed that some kids were definitely staring at me now. I did my thing of pretending not to notice.</p>
+<p>I went inside the classroom, and the teacher was writing on the chalkboard while all the kids started sitting at different desks. The desks were in a half circle facing the chalkboard, so I chose the desk in the middle toward the back, which I thought would make it harder for anyone to stare at me. I still kept my head way down, just looking up enough from under my bangs to see everyone’s feet. As the desks started to fill up, I did notice that no one sat down next to me. A couple of times someone was about to sit next to me, then changed his or her mind at the last minute and sat somewhere else.</p>
+<p>“Hey, August.” It was Charlotte, giving me her little wave as she sat down at a desk in the front of the class. Why anyone would ever choose to sit way up front in a class, I don’t know.</p>
+<p>“Hey,” I said, nodding hello. Then I noticed Julian was sitting a few seats away from her, talking to some other kids. I know he saw me, but he didn’t say hello.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉凭记忆直接找到301教室，庆幸自己参观过不用抬头问路。他注意到有些孩子现在确实在盯着他看了，他照旧假装没看见。他挑了个靠后的中间座位好避开注视，低着头从刘海缝隙里只看得见大家的脚。可座位渐渐坐满，却没人坐到他身边——好几个人临到最后一刻又改了主意坐去别处。只有夏洛特象征性地跟他打了个招呼。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>As the desks started to fill up, I did notice that no one sat down next to me.</blockquote><p class="note">注意动词 fill up（座位被填满），却偏偏空出了奥吉身旁的那把。没有人靠近，是他第一天最扎心的体验。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>chalkboard</b> <span class="pos">n.</span> 黑板</li><li><b>desk</b> <span class="pos">n.</span> 课桌、书桌</li><li><b>bangs</b> <span class="pos">n.</span> 刘海</li><li><b>change one's mind</b> <span class="pos">phr.</span> 改变主意</li><li><b>facing</b> <span class="pos">prep.</span> 面对、朝向</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>杰克·威尔坐到了我身边</h2>
+            <div class="seg-en">It was Jack Will. Jack.</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 289 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">同桌杰克</span><span class="tag">老师的注视</span><span class="tag">储物柜密码锁</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住同桌杰克·威尔——他是第一个主动坐在奥吉身边的人，这个看似随意的动作会成为之后故事的重要转折点。</div>
+        <div class="body">
+<p>Suddenly someone was sitting down next to me. It was Jack Will. Jack.</p>
+<p>“What’s up,” he said, nodding at me.</p>
+<p>“Hey, Jack,” I answered, waving my hand, which I immediately wished I hadn’t done because it felt kind of uncool.</p>
+<p>“Okay, kids, okay, everybody! Settle down,” said the teacher, now facing us. She had written her name, Ms. Petosa, on the chalkboard. “Everybody find a seat, please. Come in,” she said to a couple of kids who had just walked in the room. “There’s a seat there, and right there.”</p>
+<p>She hadn’t noticed me yet.</p>
+<p>“Now, the first thing I want everyone to do is stop talking and …”</p>
+<p>She noticed me.</p>
+<p>“… put your backpacks down and quiet down.”</p>
+<p>She had only hesitated for a millionth of a second, but I could tell the moment she saw me. Like I said: I’m used to it by now.</p>
+<p>“I’m going to take attendance and do the seating chart,” she continued, sitting on the edge of her desk. Next to her were three neat rows of accordion folders. “When I call your name, come up and I’ll hand you a folder with your name on it. It contains your class schedule and your combination lock, which you should not try to open until I tell you to. Your locker number is written on the class schedule. Be forewarned that some lockers are not right outside this class but down the hall, and before anyone even thinks of asking: no, you cannot switch lockers and you can’t switch locks. Then if there’s time at the end of this period, we’re all going to get to know each other a little better, okay? Okay.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>突然有人坐到了奥吉旁边，是杰克·威尔。杰克跟他点头打招呼，奥吉挥了挥手又立刻后悔觉得不够酷。老师佩托萨夫人在黑板上写下自己的名字，让大家安静坐下。她先没注意到奥吉，看到他的那一瞬停顿了那么一小会儿——奥吉说他早就习惯了这种反应。老师交代了点名、座位表，还有文件夹里的课程表和储物柜密码锁的规则。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She had only hesitated for a millionth of a second, but I could tell the moment she saw me.</blockquote><p class="note">millisecond（毫秒）里的 a millionth of a second = 一百万分之一秒。老师说不上来到底有没有停顿，但奥吉一眼就看穿了，只因他早已习惯大人第一次见到他时的反应。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>nod</b> <span class="pos">v.</span> 点头</li><li><b>uncool</b> <span class="pos">adj.</span> 不酷的、丢脸的</li><li><b>hesitate</b> <span class="pos">v.</span> 犹豫、停顿</li><li><b>attendance</b> <span class="pos">n.</span> 点名、考勤</li><li><b>combination lock</b> <span class="pos">n.</span> 密码锁、转轮锁</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>老师点名，第一个就喊朱利安</h2>
+            <div class="seg-en">Julian Albans?</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 78 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">点名环节</span><span class="tag">朱利安</span><span class="tag">发放储物柜锁</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>短短一分钟的过场：老师按姓氏首字母把朱利安排在最前面点名，正好让这个在礼堂里对奥吉不太友善的孩子成了焦点。</div>
+        <div class="body">
+<p>She picked up the clipboard on her desk and started reading the names out loud.</p>
+<p>“Okay, so, Julian Albans?” she said, looking up.</p>
+<p>Julian raised his hand and said “Here” at the same time.</p>
+<p>“Hi, Julian,” she said, making a note on her seating chart. She picked up the very first folder and held it out toward him. “Come pick it up,” she said, kind of no-nonsense. He got up and took it from her. “Ximena Chin?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>老师拿起桌上的写字板开始逐个念名字。她最先念到的是朱利安·奥尔本斯，朱利安举手同时应了一声“到”。老师回了一声招呼，在座位表上做了记号，拿起第一个文件夹递给他，语气不容商量地说了句“过来拿”。朱利安起身接过去，老师随即念下一个名字“希梅娜·秦”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She picked up the clipboard on her desk and started reading the names out loud.</blockquote><p class="note">clipboard = 带夹子的写字板。她念第一个名字就是朱利安，而朱利安是参观那天让爸爸夸奥吉勇敢的那个男孩。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>clipboard</b> <span class="pos">n.</span> 带夹子的写字板</li><li><b>out loud</b> <span class="pos">phr.</span> 大声地（读出来）</li><li><b>raised his hand</b> <span class="pos">phr.</span> 举起他的手（想要应答）</li><li><b>note</b> <span class="pos">n.</span> 记号、笔记；make a note 记下来</li><li><b>no-nonsense</b> <span class="pos">adj.</span> 干脆利落的、不容废话的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_11.html">← 上一单元</a>
+    <a href="wonder_unit_13.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第12/96 单元 · 第一部 · 奥吉 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u12.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

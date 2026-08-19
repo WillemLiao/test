@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第40单元 僵掉的午饭：奥吉信了别人的谣言</title>
+<style>
+:root{--c:#4a7a8c;--bg:#e8f1f4;--nav:#d5e6ec;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第三部 · 萨默</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 40 单元 · 僵掉的午饭：奥吉信了别人的谣言</div>
+    <div class="unit-en">November</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 755 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Three: Summer</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>第二天萨默用“吃坏万圣节糖果”骗过了萨瓦娜，还谎称喜欢别人好让朱利安死心。可回到学校，她发现奥吉变得怪怪的：整个午饭他说不了几句话，目光回避。奥吉最后摊牌，说他知道校长图什曼提前找小朋友“命令”他们和他做朋友，萨默不用勉强。萨默气坏了，发誓她没有，奥吉才道歉，并告诉她万圣节那天杰克背后说他坏话的事，两人小指拉钩和好。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>说谎圆场，却发现奥吉不对劲</h2>
+            <div class="seg-en">Something was up with him</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 281 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">善意谎言</span><span class="tag">奥吉变冷淡</span><span class="tag">坏氛围</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对比萨默为维护友谊编的善意谎言与奥吉的冷淡：问题不在她，而在奥吉心里压着事。</div>
+        <div class="body">
+<p>THE NEXT DAY at school I told Savanna I had eaten some really bad Halloween candy and gotten sick, which is why I went home early from her party, and she believed me. There was actually a stomach bug going around, so it was a good lie.</p>
+<p>I also told her that I had a crush on someone else that wasn’t Julian so she would leave me alone about that and hopefully spread the word to Julian that I wasn’t interested. She, of course, wanted to know who I had a crush on, and I told her it was a secret.</p>
+<p>August was absent the day after Halloween, and when he came back, I could tell something was up with him. He was acting so weird at lunch!</p>
+<p>He barely said a word, and kept looking down at his food when I talked to him. Like he wouldn’t look me in the eye.</p>
+<p>Finally, I was like, “Auggie, is everything okay? Are you mad at me or something?”</p>
+<p>“No,” he said.</p>
+<p>“Sorry you weren’t feeling well on Halloween. I kept looking for Boba Fett in the hallways.”</p>
+<p>“Yeah, I was sick.”</p>
+<p>“Did you have that stomach bug?”</p>
+<p>“Yeah, I guess.”</p>
+<p>He opened a book and started to read, which was kind of rude.</p>
+<p>“I’m so excited about the Egyptian Museum project,” I said. “Aren’t you?”</p>
+<p>He shook his head, his mouth full of food. I actually looked away because between the way he was chewing, which almost seemed like he was being gross on purpose, and the way his eyes were just kind of closed down, I was getting a really bad vibe from him.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默编谎说自己吃了变质万圣节糖果才早退，萨瓦娜信了；她又谎称喜欢上了别人，好让朱利安别再纠缠。可奥吉第二天缺勤、回来后在饭桌上异常沉默，不肯抬眼看她。萨默试探着和他说话、提埃及博物馆项目，奥吉却只顾低头吃饭看书，让她感到一股糟糕的氛围。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He barely said a word, and kept looking down at his food when I talked to him.</blockquote><p class="note">barely = 几乎不。奥吉几乎不说话、不肯看她，暗示他心里有事，为后面摊牌埋下伏笔。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>had a crush on</b> <span class="pos">phr.</span> 对……有好感、暗恋</li><li><b>stomach bug</b> <span class="pos">n.</span> 肠胃不适（因为食物生病）</li><li><b>absent</b> <span class="pos">adj.</span> 缺席的、没来上课</li><li><b>vibe</b> <span class="pos">n.</span> 氛围、感觉</li><li><b>rude</b> <span class="pos">adj.</span> 粗鲁的、没礼貌的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>“你不用假装和我做朋友”</h2>
+            <div class="seg-en">You don't have to do this</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 260 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">埃及项目</span><span class="tag">误读好意</span><span class="tag">校长传闻</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>体会奥吉此刻的内心：他把萨默的善意误读成“奉命行事”，这份不信任让他几乎要把真朋友推开。</div>
+        <div class="body">
+<p>“What project did you get?” I asked.</p>
+<p>He shrugged, pulled out a little scrap of paper from his jeans pocket, and flicked it across the table to me.</p>
+<p>Everyone in the grade got assigned an Egyptian artifact to work on for Egyptian Museum Day, which was in December. The teachers wrote all the assignments down on tiny scraps of paper, which they put into a fishbowl, and then all us kids in the grade took turns picking the papers out of the fishbowl in assembly.</p>
+<p>So I unfolded Auggie’s little slip of paper.</p>
+<p>“Oh, cool!” I said, maybe a little overexcited because I was trying to get him psyched up. “You got the Step Pyramid of Sakkara!”</p>
+<p>“I know!” he said.</p>
+<p>“I got Anubis, the god of the afterlife.”</p>
+<p>“The one with the dog head?”</p>
+<p>“It’s actually a jackal head,” I corrected him. “Hey, you want to start working on our projects together after school? You could come over to my house.”</p>
+<p>He put his sandwich down and leaned back in his chair. I can’t even describe the look he was giving me.</p>
+<p>“You know, Summer,” he said. “You don’t have to do this.”</p>
+<p>“What are you talking about?”</p>
+<p>“You don’t have to be friends with me. I know Mr. Tushman talked to you.”</p>
+<p>“I have no idea what you’re talking about.”</p>
+<p>“You don’t have to pretend, is all I’m saying. I know Mr. Tushman talked to some kids before school started and told them they had to be friends with me.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默问奥吉分到了哪个埃及项目，奥吉只耸肩弹出张小纸片——原来是萨卡拉阶梯金字塔。萨默想约他放学一起做完，请他到自己家来。奥吉却放下三明治往后一靠，冷冷地说：你不用勉强，我知道校长图什曼开学前找过几个孩子，命令他们必须和他做朋友。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;You don't have to be friends with me. I know Mr. Tushman talked to you.&quot;</blockquote><p class="note">奥吉认定萨默是受校长指派才接近他——他把怀疑说出口，友谊出现裂缝。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shrug</b> <span class="pos">v.</span> 耸肩（表示不知道或不在乎）</li><li><b>artifact</b> <span class="pos">n.</span> 文物、手工艺制品</li><li><b>fishbowl</b> <span class="pos">n.</span> 金鱼缸（这里用来抽签）</li><li><b>jackal</b> <span class="pos">n.</span> 豺（阿努比斯是豺头神）</li><li><b>pretend</b> <span class="pos">v.</span> 假装</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>发毒誓：我真的不是奉命行事</h2>
+            <div class="seg-en">No he didn't! I swear on my life!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 214 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">发毒誓</span><span class="tag">杰克背后坏话</span><span class="tag">拉钩和好</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意奥吉真正的痛点：他不是怀疑萨默，而是被杰克背叛伤透了心，害怕再一次被“奉命接近”的人辜负。</div>
+        <div class="body">
+<p>“He did not talk to me, August.”</p>
+<p>“Yeah, he did.”</p>
+<p>“No, he did not.”</p>
+<p>“Yeah, he did.”</p>
+<p>“No he didn’t!! I swear on my life!” I put my hands up in the air so he could see I wasn’t crossing my fingers. He immediately looked down at my feet, so I shook off my UGGs so he could see my toes weren’t crossed.</p>
+<p>“You’re wearing tights,” he said accusingly.</p>
+<p>“You can see my toes are flat!” I yelled.</p>
+<p>“Okay, you don’t have to scream.”</p>
+<p>“I don’t like being accused of things, okay?”</p>
+<p>“Okay. I’m sorry.”</p>
+<p>“You should be.”</p>
+<p>“He really didn’t talk to you?”</p>
+<p>“Auggie!”</p>
+<p>“Okay, okay, I’m really sorry.”</p>
+<p>I would have stayed mad at him longer, but then he told me about something bad that had happened to him on Halloween and I couldn’t stay mad at him anymore. Basically, he heard Jack bad-mouthing him and saying really horrible things behind his back. It kind of explained his attitude, and now I knew why he’d been out “sick.”</p>
+<p>“Promise you won’t tell anyone,” he said.</p>
+<p>“I won’t.” I nodded. “Promise you won’t ever be mean like that to me again?”</p>
+<p>“Promise,” he said, and we pinky swore.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉坚持说校长找过她，萨默急了，举起双手让他确认自己没有交叉手指，还脱掉UGG靴子露脚趾证明没撒谎。奥吉阴阳怪气说她穿紧身裤看不出脚趾平不平，萨默气得喊“你不许这样冤枉我”。他道歉后告诉萨默：万圣节那天他听见杰克在背后说他很难听的坏话，所以这两天一直躲着人。两人约定互不声张，拉了钩。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Promise you won't ever be mean like that to me again?</blockquote><p class="note">be mean to = 对……刻薄。萨默要奥吉承诺以后不再这样冤枉她，两人用 pinky swear（拉小指）立下约定。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>swear on my life</b> <span class="pos">phr.</span> 以性命起誓</li><li><b>crossing my fingers</b> <span class="pos">phr.</span> 交叉手指（美国式发小谎的手势）</li><li><b>bad-mouthing</b> <span class="pos">n.</span> 背后说坏话</li><li><b>pinky swear</b> <span class="pos">n.</span> 拉小指约定</li><li><b>accusingly</b> <span class="pos">adv.</span> 带着指责地</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_39.html">← 上一单元</a>
+    <a href="wonder_unit_41.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第40/96 单元 · 第三部 · 萨默 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u40.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

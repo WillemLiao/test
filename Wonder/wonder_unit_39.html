@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第39单元 万圣节派对上的“友情考验”</title>
+<style>
+:root{--c:#4a7a8c;--bg:#e8f1f4;--nav:#d5e6ec;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第三部 · 萨默</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 39 单元 · 万圣节派对上的“友情考验”</div>
+    <div class="unit-en">The Halloween Party</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 832 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Three: Summer</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>萨默意外收到班上最受欢迎的女生萨瓦娜发来的万圣节派对邀请，兴奋地前往。可到了派对，萨瓦娜和亨利却拐弯抹角地“考验”她：劝她别总和“僵尸小孩”奥吉待在一起，还说只要撇开奥吉，她就能加入最受欢迎的小圈子，甚至透露朱利安喜欢她想约她。萨默没有答应，借口去洗手间，偷偷打电话叫妈妈来接她回家。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>意外收到最红女生的派对邀请</h2>
+            <div class="seg-en">Savanna's Halloween party</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 256 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">派对邀请</span><span class="tag">人气女生</span><span class="tag">独角兽戏服</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意萨瓦娜的叮嘱很微妙：既显得友善，又强调“我没请几个人”——一开始就给萨默划定了“圈子边界”。</div>
+        <div class="body">
+<p>I WAS REALLY excited because I got an invitation to Savanna’s Halloween party.</p>
+<p>Savanna is probably the most popular girl in the school. All the boys like her. All the girls want to be friends with her. She was the first girl in the grade to actually have a “boyfriend.” It was some kid who goes to MS 281, though she dumped him and started dating Henry Joplin, which makes sense because the two of them totally look like teenagers already.</p>
+<p>Anyway, even though I’m not in the “popular” group, I somehow got invited, which is very cool. When I told Savanna I got her invitation and would be going to her party, she was really nice to me, though she made sure to tell me that she didn’t invite a lot of people, so I shouldn’t go around bragging to anyone that I got invited. Maya didn’t get invited, for instance. Savanna also made sure to tell me not to wear a costume. It’s good she told me because, of course, I would have worn a costume to a Halloween party—not the unicorn costume I made for the Halloween Parade, but the Goth girl getup that I’d worn to school. But even that was a no-no for Savanna’s party. The only negative about my going to Savanna’s party was that now I wouldn’t be able to go the parade and the unicorn costume would be wasted. That was kind of a bummer, but okay.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默很开心，因为收到了全校最受欢迎的女孩萨瓦娜的万圣节派对邀请。萨瓦娜男友换成了亨·乔普林，两人看着像大人。萨瓦娜特意叮嘱萨默：别到处炫耀被邀请，也别穿戏服来。萨默为去派对只能放弃万圣节游行，用不上自制的独角兽戏服，有点小遗憾，但她还是接受了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>she made sure to tell me that she didn't invite a lot of people, so I shouldn't go around bragging to anyone that I got invited.</blockquote><p class="note">brag = 炫耀。萨瓦娜的潜台词是：能被邀请是恩典，别声张，也别得意忘形。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>popular</b> <span class="pos">adj.</span> 受欢迎的、人气高的</li><li><b>bragging</b> <span class="pos">n.</span> 炫耀、吹嘘</li><li><b>costume</b> <span class="pos">n.</span> 服装、戏服</li><li><b>unicorn</b> <span class="pos">n.</span> 独角兽</li><li><b>bummer</b> <span class="pos">n.</span> 令人失望的事</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>“你男朋友在哪儿？”——他指的是奥吉</h2>
+            <div class="seg-en">Where's your boyfriend?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 247 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">派对现场</span><span class="tag">被问奥吉</span><span class="tag">人气圈子</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意“男朋友”这句玩笑的恶意：把奥吉与萨默绑成一对，是在暗示她俩都属于“异类”。</div>
+        <div class="body">
+<p>Anyway, the first thing that happened when I got to her party was that Savanna greeted me at the door and asked: “Where’s your boyfriend, Summer?”</p>
+<p>I didn’t even know what she was talking about.</p>
+<p>“I guess he doesn’t have to wear a mask at Halloween, right?” she added. And then I knew she was talking about August.</p>
+<p>“He’s not my boyfriend,” I said.</p>
+<p>“I know. I’m just kidding!” She kissed my cheek (all the girls in her group kissed each other’s cheeks now whenever they said hello), and threw my jacket on a coatrack in her hallway. Then she took me by the hand down the stairs to her basement, which is where the party was. I didn’t see her parents anywhere.</p>
+<p>There were about fifteen kids there: all of them were popular kids from either Savanna’s group or Julian’s group. I guess they’ve all kind of merged into one big supergroup of popular kids, now that some of them have started dating each other.</p>
+<p>I didn’t even know there were so many couples. I mean, I knew about Savanna and Henry, but Ximena and Miles? And Ellie and Amos? Ellie’s practically as flat as I am.</p>
+<p>Anyway, about five minutes after I got there, Henry and Savanna were standing next to me, literally hovering over me.</p>
+<p>“So, we want to know why you hang out with the Zombie Kid so much,” said Henry.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默一进门，萨瓦娜就问她“你男朋友在哪儿”，随即打趣说对方万圣节不用戴面具——萨默这才明白她指的是奥吉。派对上全是萨瓦娜或朱利安圈子里的受欢迎孩子，都是一群爱谈恋爱的中学生。萨默一到，亨利和萨瓦娜就围过来，开门见山问：你到底为什么总和“僵尸小孩”待在一起？</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;So, we want to know why you hang out with the Zombie Kid so much,&quot; said Henry.</blockquote><p class="note">Henry = 亨利，萨瓦娜的现男友。他开口就追问萨默和“僵尸小孩”的关系，气氛开始紧绷。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>greet</b> <span class="pos">v.</span> 打招呼、迎接</li><li><b>kidding</b> <span class="pos">n.</span> 开玩笑，指说笑</li><li><b>merged</b> <span class="pos">v.</span> 合并、融合（这里指两个圈子混为一体）</li><li><b>hovering over</b> <span class="pos">phr.</span> 在头顶上方转悠、逼近</li><li><b>basement</b> <span class="pos">n.</span> 地下室</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“只要你撇开他，就能成为人气王”</h2>
+            <div class="seg-en">You would be more popular</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">劝她离开奥吉</span><span class="tag">朱利安告白</span><span class="tag">借故离开</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>体会萨默的应对：她表面敷衍、没有正面冲突，但立刻用“去洗手间”抽身离场——用动作替自己表态。</div>
+        <div class="body">
+<p>“He’s not a zombie,” I laughed, like they were making a joke. I was smiling but I didn’t feel like smiling.</p>
+<p>“You know, Summer,” said Savanna, “you would be a lot more popular if you didn’t hang out with him so much. I’m going to be completely honest with you: Julian likes you. He wants to ask you out.”</p>
+<p>“He does?”</p>
+<p>“Do you think he’s cute?”</p>
+<p>“Um … yeah, I guess. Yeah, he’s cute.”</p>
+<p>“So you have to choose who you want to hang out with,” Savanna said. She was talking to me like a big sister would talk to a little sister. “Everyone likes you, Summer. Everyone thinks you’re really nice and that you’re really, really pretty. You could totally be part of our group if you wanted to, and believe me, there are a lot of girls in our grade who would love that.”</p>
+<p>“I know.” I nodded. “Thank you.”</p>
+<p>“You’re welcome,” she answered. “You want me to tell Julian to come and talk to you?”</p>
+<p>I looked over to where she was pointing and could see Julian looking over at us.</p>
+<p>“Um, I actually need to go to the bathroom. Where is that?”</p>
+<p>I went to where she pointed, sat down on the side of the bathtub, and called Mom and asked her to pick me up.</p>
+<p>“Is everything okay?” said Mom.</p>
+<p>“Yeah, I just don’t want to stay,” I said.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨瓦娜半哄半劝地“开导”萨默：不和奥吉待在一起她会更受欢迎，朱利安喜欢她、想约她。她像大姐姐一样说，萨默明明又漂亮又招人喜欢，完全可以加入她们的小圈子。萨默微笑着点头道歉，却借故要去洗手间，走进浴室坐在浴缸边，打电话叫妈妈来接她。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;you would be a lot more popular if you didn't hang out with him so much.&quot;</blockquote><p class="note">萨瓦娜这句话抛出的是“二选一”交易：要人气就得放弃奥吉。萨默没有答应，而用“去洗手间”悄悄逃开。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>popular</b> <span class="pos">adj.</span> 受欢迎的</li><li><b>ask you out</b> <span class="pos">phr.</span> 约你出去、约你约会</li><li><b>cute</b> <span class="pos">adj.</span> 可爱的、好看的</li><li><b>honest</b> <span class="pos">adj.</span> 诚实的</li><li><b>bathtub</b> <span class="pos">n.</span> 浴缸</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>满街的戏服里，偏偏没有一匹独角兽</h2>
+            <div class="seg-en">Not one unicorn</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 86 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">偷偷离场</span><span class="tag">万圣节游行</span><span class="tag">独角兽落空</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>“没有一匹独角兽”是点睛之笔：她放弃了游行和独角兽戏服来赴约，却换来失望，讽刺意味十足。</div>
+        <div class="body">
+<p>Mom didn’t ask any more questions and said she’d be there in ten minutes.</p>
+<p>“Don’t ring the bell,” I told her. “Just call me when you’re outside.”</p>
+<p>I hung out in the bathroom until Mom called, and then I snuck upstairs without anyone seeing me, got my jacket, and went outside.</p>
+<p>It was only nine-thirty. The Halloween Parade was in full swing down Amesfort Avenue. Huge crowds everywhere. Everyone was in costume. Skeletons. Pirates. Princesses. Vampires. Superheroes.</p>
+<p>But not one unicorn.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈答应十分钟就到。萨默躲进洗手间直到妈妈来电，然后偷溜上楼，拿了外套悄悄走出门，没惊动任何人。此时才九点半，大街上正举行万圣节游行，人山人海，到处是骷髅、海盗、公主、吸血鬼和超级英雄的戏服——“唯独没有一匹独角兽。”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>But not one unicorn.</blockquote><p class="note">简短有力的结尾：她为了这场派队放弃了独角兽游行，此刻回想起错过的，心里有点失落。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>ring the bell</b> <span class="pos">phr.</span> 按门铃</li><li><b>snuck</b> <span class="pos">v.</span> 溜、悄悄走（sneak 的过去式）</li><li><b>parade</b> <span class="pos">n.</span> 游行</li><li><b>skeleton</b> <span class="pos">n.</span> 骷髅</li><li><b>vampire</b> <span class="pos">n.</span> 吸血鬼</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_38.html">← 上一单元</a>
+    <a href="wonder_unit_40.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第39/96 单元 · 第三部 · 萨默 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u39.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

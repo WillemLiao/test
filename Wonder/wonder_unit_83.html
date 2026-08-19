@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第83单元 黑暗里的声音：逃出生天后互相看顾</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 83 单元 · 黑暗里的声音：逃出生天后互相看顾</div>
+    <div class="unit-en">Voices in the Dark</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 743 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>众人在黑暗中一路狂奔，终于确定甩掉了那帮大孩子。奥吉这才知道一路拽着他跑的是亨利。跑进玉米地的几个人惊魂未定，却也笑作一团——阿莫斯回味自己“怪兽卡车”式的冲撞，还挨了几拳。亨利为撕破奥吉的连帽衫道歉，阿莫斯几人也为折返来救他们而握手言和。就在这时杰克发现奥吉的助听器不见了，连日来的委屈一下涌上来，奥吉放声大哭，阿莫斯像他爸爸那样用双臂搂住他，让他哭了个够。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>终于甩掉了他们，阿莫斯笑谈那一撞</h2>
+            <div class="seg-en">Bam!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">摆脱追兵</span><span class="tag">团队的默契</span><span class="tag">阿莫斯自嘲</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住一个温情又重要的点：一路拉着奥吉逃跑的是亨利——之前还在跟杰克冷战的亨利，危险时刻却毫不犹豫出手救人。</div>
+        <div class="body">
+<p>FINALLY, AFTER WHAT seemed like a forever of running, someone yelled: “I think we lost them!”</p>
+<p>“Amos?”</p>
+<p>“I’m right here!” said Amos’s voice a few feet behind us.</p>
+<p>“We can stop!” Miles yelled from farther up.</p>
+<p>“Jack!” I yelled.</p>
+<p>“Whoa!” said Jack. “I’m here.”</p>
+<p>“I can’t see a thing!”</p>
+<p>“Are you sure we lost them?” Henry asked, letting go of my arm. That’s when I realized that he’d been the one who was pulling me as we ran.</p>
+<p>“Yeah.”</p>
+<p>“Shh! Let’s listen!”</p>
+<p>We all got super quiet, listening for footsteps in the dark. All we could hear were the crickets and frogs and our own crazy panting. We were out of breath, stomachs hurting, bodies bent over our knees.</p>
+<p>“We lost them,” said Henry.</p>
+<p>“Whoa! That was intense!”</p>
+<p>“What happened to the flashlight?”</p>
+<p>“I dropped it!”</p>
+<p>“How did you guys know?” said Jack.</p>
+<p>“We saw them before.”</p>
+<p>“They looked like jerks.”</p>
+<p>“You just rammed into him!” I said to Amos.</p>
+<p>“I know, right?” laughed Amos.</p>
+<p>“He didn’t even see it coming!” said Miles.</p>
+<p>“He was like, ‘Are you a freak, too?’ and you were like, bam!” said Jack.</p>
+<p>“Bam!” said Amos, throwing a fake punch in the air. “But after I tackled him, I was like, run, Amos, you schmuck, he’s ten times bigger than you! And I got up and started running as fast as I could!”</p>
+<p>We all started laughing.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>跑了好一阵子，有人喊“我觉得甩掉他们了！”，阿莫斯、迈尔斯、杰克一声声报着“我在这儿”。奥吉这才知道，一路拽着他跑的人是亨利。大家屏住呼吸听黑暗里的脚步声，只听见蟋蟀、青蛙和他们自己剧烈的喘息。确认安全后气氛轻松起来，几个人又笑又闹：阿莫斯说撞倒埃迪后他心里直喊“快跑阿莫斯你真蠢，他比你大十倍”，然后起身拼命跑。亨利说甩掉了他们，迈尔斯接茬说那帮人一看就是混蛋。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>After I tackled him, I was like, run, Amos, you schmuck, he's ten times bigger than you!</blockquote><p class="note">tackle = 扑倒、抱摔。阿莫斯自嘲撞倒埃迪后立刻意识到那人比自己大十倍，于是抢先开溜——这句话引得大家哄堂大笑。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>lose someone</b> <span class="pos">phr.</span> 甩掉某人的追赶</li><li><b>cricket</b> <span class="pos">n.</span> 蟋蟀</li><li><b>panting</b> <span class="pos">n.</span> 大口喘气、气喘吁吁</li><li><b>intense</b> <span class="pos">adj.</span> 激烈的、惊心动魄的</li><li><b>schmuck</b> <span class="pos">n.</span> 傻瓜、蠢货（口语骂语）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>玉米地里的拥抱言和</h2>
+            <div class="seg-en">That was really cool of you guys</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 249 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">玉米地</span><span class="tag">击掌和解</span><span class="tag">阿莫斯的肯定</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一段是感情的和解高潮：几个曾因往事有所隔阂的孩子，用击掌和夸赞接纳了奥吉——尤其是阿莫斯那句“坚守立场很酷”。</div>
+        <div class="body">
+<p>“I grabbed Auggie and I was like, ‘Run!’” said Henry.</p>
+<p>“I didn’t even know it was you pulling me!” I answered.</p>
+<p>“That was wild,” said Amos, shaking his head.</p>
+<p>“Totally wild.”</p>
+<p>“Your lip is bleeding, dude.”</p>
+<p>“I got in a couple of good punches,” answered Amos, wiping his lip.</p>
+<p>“I think they were seventh graders.”</p>
+<p>“They were huge.”</p>
+<p>“Losers!” Henry shouted really loudly, but we all shushed him.</p>
+<p>We listened for a second to make sure no one had heard him.</p>
+<p>“Where the heck are we?” asked Amos. “I can’t even see the screen.”</p>
+<p>“I think we’re in the cornfields,” answered Henry.</p>
+<p>“Duh, we’re in the cornfields,” said Miles, pushing a cornstalk at Henry.</p>
+<p>“Okay, I know exactly where we are,” said Amos. “We have to go back in this direction. That’ll take us to the other side of the field.”</p>
+<p>“Yo, dudes,” said Jack, hand high in the air. “That was really cool of you guys to come back for us. Really cool. Thanks.”</p>
+<p>“No problem,” answered Amos, high-fiving Jack. And then Miles and Henry high-fived him, too.</p>
+<p>“Yeah, dudes, thanks,” I said, holding my palm up like Jack just had, though I wasn’t sure if they’d high-five me, too.</p>
+<p>Amos looked at me and nodded. “It was cool how you stood your ground, little dude,” he said, high-fiving me.</p>
+<p>“Yeah, Auggie,” said Miles, high-fiving me, too. “You were like, ‘We’re littler than you guys’ …”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>亨利说当时他抓奥吉就跑，奥吉说都不知道是他在拉自己。阿莫斯的嘴唇在流血，他说挨了几拳也算值，还说那些人像是七年级的、都长得又高又大。亨利大声骂了句“废物！”被大家连忙嘘声制止。他们发现现在竟在玉米地里，阿莫斯带头认路返回。杰克高举手掌谢他们折返救人，阿莫斯、迈尔斯、亨利一一和他击掌，也击了奥吉的手——阿莫斯说“你能守住立场很酷，小兄弟”，迈尔斯也夸奥吉那句“我们比你们矮小”很有骨气。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It was cool how you stood your ground, little dude, he said, high-fiving me.</blockquote><p class="note">stand your ground = 坚守立场、不退缩。high-five = 击掌。阿莫斯用这句话肯定奥吉敢直面那帮大孩子。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>make sure</b> <span class="pos">phr.</span> 确保、确认</li><li><b>cornfield</b> <span class="pos">n.</span> 玉米地</li><li><b>high-five</b> <span class="pos">n./v.</span> 举手击掌（庆祝/示好）</li><li><b>duh</b> <span class="pos">interj.</span> 这不是明摆着吗（表示别人说废话）</li><li><b>stand your ground</b> <span class="pos">phr.</span> 坚守立场、毫不退缩</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>助听器丢了，奥吉再也忍不住大哭</h2>
+            <div class="seg-en">The waterworks</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 253 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">助听器遗失</span><span class="tag">情绪的崩溃</span><span class="tag">伙伴的温暖</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>读情绪的崩溃点：不是害怕、不是受伤，而是发现助听器丢了这件事，成为压垮奥吉的最后一根稻草，他再也忍不住委屈。</div>
+        <div class="body">
+<p>“I didn’t know what else to say!” I laughed.</p>
+<p>“Very cool,” said Henry, and he high-fived me, too. “Sorry I ripped your sweatshirt.”</p>
+<p>I looked down, and my sweatshirt was completely torn down the middle. One sleeve was ripped off, and the other was so stretched out it was hanging down to my knees.</p>
+<p>“Hey, your elbow’s bleeding,” said Jack.</p>
+<p>“Yeah.” I shrugged. It was starting to hurt a lot.</p>
+<p>“You okay?” said Jack, seeing my face.</p>
+<p>I nodded. Suddenly I felt like crying, and I was trying really hard not to do that.</p>
+<p>“Wait, your hearing aids are gone!” said Jack.</p>
+<p>“What!” I yelled, touching my ears. The hearing aid band was definitely gone. That’s why I felt like I was underwater! “Oh no!” I said, and that’s when I couldn’t hold it in anymore. Everything that had just happened kind of hit me and I couldn’t help it: I started to cry. Like big crying, what Mom would call “the waterworks.” I was so embarrassed I hid my face in my arm, but I couldn’t stop the tears from coming.</p>
+<p>The guys were really nice to me, though. They patted me on the back.</p>
+<p>“You’re okay, dude. It’s okay,” they said.</p>
+<p>“You’re one brave little dude, you know that?” said Amos, putting his arm around my shoulders. And when I kept on crying, he put both his arms around me like my dad would have done and let me cry.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>亨利向奥吉道歉说撕破了他的连帽衫，奥吉低头一看，毛衣整个从中间裂开，一只袖子断了，另一只长到垂到膝盖。杰克提醒他胳膊肘出血了，奥吉还逞强说没事，可其实很疼。两人都问他有没有事，奥吉赶紧点头，却拼命忍住想哭的冲动。杰克突然喊“你的助听器没了！”，奥吉一摸耳朵——助听器头带果然不见了，怪不得他感觉像在水里一样。这本该彻底击垮他，他终于绷不住哭了起来，据妈妈说他这是“眼泪开闸”，他还不好意思地把脸埋在胳膊里。几个男生温柔地拍着他的背安慰他，阿莫斯更是像他爸爸那样用双臂搂住他，让他哭个够。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You're one brave little dude, you know that? said Amos, putting his arm around my shoulders.</blockquote><p class="note">brave little dude = 勇敢的小家伙。阿莫斯搂住奥吉肩膀说他是勇敢的孩子，又像爸爸那样双臂抱住他，让一直硬撑的奥吉终于能哭出来。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>waterworks</b> <span class="pos">n.</span> （口语）大哭、眼泪开闸</li><li><b>embarrassed</b> <span class="pos">adj.</span> 尴尬的、难为情的</li><li><b>pat</b> <span class="pos">v.</span> 轻拍（安慰）</li><li><b>shrug</b> <span class="pos">v.</span> 耸耸肩（表示无所谓）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_82.html">← 上一单元</a>
+    <a href="wonder_unit_84.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第83/96 单元 · 第八部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u83.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

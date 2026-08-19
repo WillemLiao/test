@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第44单元 冰淇淋店前第一次见到奥吉</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 44 单元 · 冰淇淋店前第一次见到奥吉</div>
+    <div class="unit-en">Carvel</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 700 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>杰克回忆：他五六岁时，在艾姆斯福特大道的一家冰淇淋店（Carvel）门口第一次见到奥吉。当时他真的被吓了一跳，以为奥吉戴了僵尸面具，还脱口“啊”了一声，奥吉的姐姐狠狠瞪着他。保姆维罗妮卡赶紧带着他们离开，并教训他们不该盯着看的失礼行为。这是杰克与奥吉的第一次照面，也埋下了杰克心里那种“看到他就很难装作正常”的纠结。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>冰淇淋店门口那声“啊”</h2>
+            <div class="seg-en">That's when I saw him</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 307 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">初次见面</span><span class="tag">本能的惊吓</span><span class="tag">奥吉的姐姐</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克的第一反应是“吓一跳、当成僵尸面具”——这正是大多数人对奥吉外貌的本能反应，也是本书反复表现的主题。</div>
+        <div class="body">
+<p>I REMEMBER SEEING him for the first time in front of the Carvel on Amesfort Avenue when I was about five or six. Me and Veronica, my babysitter, were sitting on the bench outside the store with Jamie, my baby brother, who was sitting in his stroller facing us. I guess I was busy eating my ice cream cone, because I didn’t even notice the people who sat down next to us.</p>
+<p>Then at one point I turned my head to suck the ice cream out of the bottom of my cone, and that’s when I saw him: August. He was sitting right next to me. I know it wasn’t cool, but I kind of went “Uhh!” when I saw him because I honestly got scared. I thought he was wearing a zombie mask or something. It was the kind of “uhh” you say when you’re watching a scary movie and the bad guy like jumps out of the bushes. Anyway, I know it wasn’t nice of me to do that, and though the kid didn’t hear me, I know his sister did.</p>
+<p>“Jack! We have to go!” said Veronica. She had gotten up and was turning the stroller around because Jamie, who had obviously just noticed the kid, too, was about to say something embarrassing. So I jumped up kind of suddenly, like a bee had landed on me, and followed Veronica as she zoomed away. I could hear the kid’s mom saying softly behind us: “Okay, guys, I think it’s time to go,” and I turned around to look at them one more time. The kid was licking his ice cream cone, the mom was picking up his scooter, and the sister was glaring at me like she was going to kill me. I looked away quickly.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克回忆五六岁时和保姆维罗妮卡、小弟弟杰米坐在冰淇淋店Carvel门口的长椅上。他一转头想吸出冰淇淋筒底部的冰淇淋，才发现奥吉就坐在旁边。杰克被吓着了，脱口“啊！”了一声——他以为奥吉戴了僵尸面具。虽然那孩子没听见，但杰克知道他的姐姐听见了。保姆赶紧推着弟弟离开，奥吉的妈妈默默地说该走了，而奥吉的姐姐像要杀人一样瞪着杰克。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I think I kind of went &quot;Uhh!&quot; when I saw him because I honestly got scared.</blockquote><p class="note">went &quot;Uhh!&quot; = 发出了“啊！”的声音。kind of = 有点、算是。这里杰克坦白自己看到奥吉的第一反应是害怕。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>babysitter</b> <span class="pos">n.</span> 保姆、临时照看孩子的人</li><li><b>stroller</b> <span class="pos">n.</span> 婴儿车、童车</li><li><b>zombie</b> <span class="pos">n.</span> 僵尸</li><li><b>zoom away</b> <span class="pos">phr.</span> 飞快地离去、一溜烟走掉</li><li><b>glare at</b> <span class="pos">phr.</span> 怒视、恶狠狠地瞪着</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>保姆教训我们别盯着看</h2>
+            <div class="seg-en">Was that boy wearing a mask?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">保姆的教训</span><span class="tag">童言无忌</span><span class="tag">伤人的眼神</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意小杰米问“是不是万圣节/戴了面具”——童言无忌，却点出了奥吉外貌带来的误会，而保姆更担心的是这样伤人。</div>
+        <div class="body">
+<p>“Veronica, what was wrong with that kid?” I whispered.</p>
+<p>“Hush, boy!” she said, her voice angry. I love Veronica, but when she got mad, she got mad. Meanwhile, Jamie was practically spilling out of his stroller trying to get another look as Veronica pushed him away.</p>
+<p>“But, Vonica …,” said Jamie.</p>
+<p>“You boys were very naughty! Very naughty!” said Veronica as soon as we were farther down the block. “Staring like that!”</p>
+<p>“I didn’t mean to!” I said.</p>
+<p>“Vonica,” said Jamie.</p>
+<p>“Us leaving like that,” Veronica was muttering. “Oh Lord, that poor lady. I tell you, boys. Every day we should thank the Lord for our blessings, you hear me?”</p>
+<p>“Vonica!”</p>
+<p>“What is it, Jamie?”</p>
+<p>“Is it Halloween?”</p>
+<p>“No, Jamie.”</p>
+<p>“Then why was that boy wearing a mask?”</p>
+<p>Veronica didn’t answer. Sometimes, when she was mad about something, she would do that.</p>
+<p>“He wasn’t wearing a mask,” I explained to Jamie.</p>
+<p>“Hush, Jack!” said Veronica.</p>
+<p>“Why are you so mad, Veronica?” I couldn’t help asking.</p>
+<p>I thought this would make her angrier, but actually she shook her head.</p>
+<p>“It was bad how we did that,” she said. “Just getting up like that, like we’d just seen the devil. I was scared for what Jamie was going to say, you know? I didn’t want him to say anything that would hurt that little boy’s feelings. But it was very bad, us leaving like that. The momma knew what was going on.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>离开后杰克问保姆那个孩子怎么了，维罗妮卡很生气，说他们“很淘气”，不该那样盯着看。小杰米问那个哥哥是不是戴着面具、是不是万圣节。杰克想解释他其实没戴面具，但维罗妮卡让他闭嘴。杰克问保姆为什么这么生气，维罗妮卡叹着气承认：那样起身就走，像见了鬼似的，太糟了——那位妈妈什么都看在眼里，她只是怕杰米说出伤人的话。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Just getting up like that, like we'd just seen the devil.</blockquote><p class="note">like we'd just seen the devil = 好像我们刚见了鬼（/恶魔）一样。维罗妮卡承认——那样慌慌张张离开，本身就很伤人，那位妈妈心里都清楚。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>whisper</b> <span class="pos">v.</span> 低声说、耳语</li><li><b>naughty</b> <span class="pos">adj.</span> 淘气的、不听话的</li><li><b>mutter</b> <span class="pos">v.</span> 咕哝、小声抱怨</li><li><b>blessings</b> <span class="pos">n.</span> 福气、上天的恩赐</li><li><b>devil</b> <span class="pos">n.</span> 恶魔、鬼</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>不必故意去伤害，也会伤害到人</h2>
+            <div class="seg-en">He wasn't wearing a mask</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 147 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">奥吉的宇航员头盔</span><span class="tag">无意的伤害</span><span class="tag">无法装正常</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住这一哲理句：“不想伤人也会伤人”——它将成为杰克面对奥吉时的内心指引，也是全书的重要主题。</div>
+        <div class="body">
+<p>“But we didn’t mean it,” I answered.</p>
+<p>“Jack, sometimes you don’t have to mean to hurt someone to hurt someone. You understand?”</p>
+<p>That was the first time I ever saw August in the neighborhood, at least that I remember. But I’ve seen him around ever since then: a couple of times in the playground, a few times in the park. He used to wear an astronaut helmet sometimes. But I always knew it was him underneath the helmet. All the kids in the neighborhood knew it was him. Everyone has seen August at some point or another. We all know his name, though he doesn’t know ours.</p>
+<p>And whenever I’ve seen him, I try to remember what Veronica said. But it’s hard. It’s hard not to sneak a second look. It’s hard to act normal when you see him.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克辩解说他不是故意的，维罗妮卡却讲了一句重话：有时候你不需要故意想伤害谁，也会伤害到人。杰克说那是他记忆中第一次在附近见到奥吉，之后在操场、公园又碰见过好几次；奥吉有时戴个宇航员头盔。街坊的孩子都知道那下面的人就是奥吉，大家都认得他的名字，虽然他并不认得我们。每次看到奥吉，杰克都想记起维罗妮卡的话，但很难装出正常的样子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Sometimes you don't have to mean to hurt someone to hurt someone.</blockquote><p class="note">mean to do = 故意、存心要做。维罗妮卡的意思是：不是故意的伤害也是伤害。这是杰克心里的重要一课。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hurt</b> <span class="pos">v.</span> 伤害</li><li><b>mean to</b> <span class="pos">phr.</span> 故意、存心做某事</li><li><b>astronaut</b> <span class="pos">n.</span> 宇航员</li><li><b>helmet</b> <span class="pos">n.</span> 头盔</li><li><b>sneak a look</b> <span class="pos">phr.</span> 偷看、偷偷瞄一眼</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_43.html">← 上一单元</a>
+    <a href="wonder_unit_45.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第44/96 单元 · 第四部 · 杰克 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u44.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第21单元 十月格言和一场缺了席的生日保龄球</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 21 单元 · 十月格言和一场缺了席的生日保龄球</div>
+    <div class="unit-en">Mr. Browne’s October Precept · Apples</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 722 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>十月，布朗先生给全班布置了格言“你的行为就是你的纪念碑”，奥吉认真地写了篇小文章，说人应被记住的应是所做之事，而非长相。同月他的十岁生日将至，他难得开口向妈妈要一场大型保龄球派对，还执意要请全班免得不公平。可跟帖的人寥寥无几——最终只有五个同学答应，还各有理由。妈妈一句“苹果不会落在远离苹果树的地方”暗指奥吉同学的父母也没放在眼里，生日那天场子小，但来的亲友聚在隔壁球道，仍热闹温暖。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>“你的行为就是你的纪念碑”</h2>
+            <div class="seg-en">Your deeds are your monuments</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 281 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">布朗先生格言</span><span class="tag">行为重于长相</span><span class="tag">生日将至</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>奥吉那句“比我们长什么样更重要”正是全书的核心——把格言和上一单元“为什么我长得丑”对照起来读，能体会这句话对奥吉的分量。</div>
+        <div class="body">
+<p>MR. BROWNE’S PRECEPT FOR October was:</p>
+<p class="q">YOUR DEEDS ARE YOUR MONUMENTS.</p>
+<p>He told us that this was written on the tombstone of some Egyptian guy that died thousands of years ago. Since we were just about to start studying ancient Egypt in history, Mr. Browne thought this was a good choice for a precept.</p>
+<p>Our homework assignment was to write a paragraph about what we thought the precept meant or how we felt about it.</p>
+<p>This is what I wrote:</p>
+<p class="q">This precept means that we should be remembered for the things we do. The things we do are the most important things of all. They are more important than what we say or what we look like. The things we do outlast our mortality. The things we do are like monuments that people build to honor heroes after they’ve died. They’re like the pyramids that the Egyptians built to honor the pharaohs. Only instead of being made out of stone, they’re made out of the memories people have of you. That’s why your deeds are like your monuments. Built with memories instead of with stone.</p>
+<p>MY BIRTHDAY IS October 10. I like my birthday: 10/10. It would’ve been great if I’d been born at exactly 10:10 in the morning or at night, but I wasn’t. I was born just after midnight. But I still think my birthday is cool.</p>
+<p>I usually have a little party at home, but this year I asked Mom if I could have a big bowling party. Mom was surprised but happy. She asked me who I wanted to ask from my class, and I said everyone in my homeroom plus Summer.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>十月的布朗先生格言是“你的行为就是你的纪念碑”，据说刻在几千年前一位埃及人的墓碑上，正配合他们即将开学的古埃及单元。老师布置作业，让学生写写自己对这句格言的理解。奥吉写的这段很动人：人该被记住的是做过的事，比说过的话、比长相更重要；那些事像纪念英雄的纪念碑、像埃及金字塔——只是不用石头砌，而是用别人对你的记忆砌成的。接着他提到自己的生日是10月10日，正打算向妈妈开口要一场大型保龄球派对。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The things we do are like monuments that people build to honor heroes after they’ve died.</blockquote><p class="note">monument = 纪念碑；honor = 纪念、致敬。奥吉把“做过的事”比作纪念英雄的丰碑——他说，真正的碑不是石头，而是别人记住你的样子。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>precept</b> <span class="pos">n.</span> 格言、箴言</li><li><b>tombstone</b> <span class="pos">n.</span> 墓碑</li><li><b>monument</b> <span class="pos">n.</span> 纪念碑、丰碑</li><li><b>deed</b> <span class="pos">n.</span> 行为、事迹</li><li><b>mortality</b> <span class="pos">n.</span> 生命有尽、必死性 → 一生短暂</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>生日要开大派对，全班都请</h2>
+            <div class="seg-en">I have to invite everyone</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">生日派对</span><span class="tag">全班邀请</span><span class="tag">诺宾的伏笔</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意妈妈两次提到的“朱利安”这个伏笔——一个被贴标签“什么来头那家伙”的同学还没正式登场。同时“才五个人”这个头，已经让奥吉隐约察觉了冷场。</div>
+        <div class="body">
+<p>“That’s a lot of kids, Auggie,” said Mom.</p>
+<p>“I have to invite everyone because I don’t want anyone to get their feelings hurt if they find out other people are invited and they aren’t, okay?”</p>
+<p>“Okay,” Mom agreed. “You even want to invite the ‘what’s the deal’ kid?”</p>
+<p>“Yeah, you can invite Julian,” I answered. “Geez, Mom, you should forget about that already.”</p>
+<p>“I know, you’re right.”</p>
+<p>A couple of weeks later, I asked Mom who was coming to my party, and she said: “Jack Will, Summer. Reid Kingsley. Both Maxes. And a couple of other kids said they were going to try to be there.”</p>
+<p>“Like who?”</p>
+<p>“Charlotte’s mom said Charlotte had a dance recital earlier in the day, but she was going to try to come to your party if time allowed. And Tristan’s mom said he might come after his soccer game.”</p>
+<p>“So that’s it?” I said. “That’s like … five people.”</p>
+<p>“That’s more than five people, Auggie. I think a lot of people just had plans already,” Mom answered. We were in the kitchen. She was cutting one of the apples we had just gotten at the farmers’ market into teensy-weensy bites so I could eat it.</p>
+<p>“What kind of plans?” I asked.</p>
+<p>“I don’t know, Auggie. We sent out the evites kind of late.”</p>
+<p>“Like what did they tell you, though? What reasons did they give?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉平时就在家开个派对，今年却开口问妈妈能不能办一场大型保龄球派对，妈妈又惊又喜。奥吉坚持要请整个早班班的同学加萨默，说是不想让谁因没被邀请而伤心。妈妈打趣那要不要请那位“什么来头那家伙”，奥吉说“可以，你请朱利安吧，妈，那笔账你早该忘了”。几周后妈妈列来宾名单：杰克·维尔、萨默、里德、两个麦克斯，外加可能抽空来的夏洛特和特里斯坦——掰指一算，才五个多人。奥吉追问大家给的理由，妈妈支吾着说电子请帖发得晚了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I have to invite everyone because I don’t want anyone to get their feelings hurt if they find out other people are invited and they aren’t, okay?</blockquote><p class="note">get their feelings hurt = 伤心、被人伤到感情。奥吉宁肯多请，也不要有人因没被邀请而难过——这句话把一个怕被排斥的孩子骨子里的善良写透了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bowling party</b> <span class="pos">n.</span> 保龄球派对</li><li><b>homeroom</b> <span class="pos">n.</span> （同一班主任的）固定班级/早班班</li><li><b>geez</b> <span class="pos">interj.</span> （表急躁、感叹）哎呀、天哪</li><li><b>recital</b> <span class="pos">n.</span> （音乐、舞蹈的）表演、汇演</li><li><b>teensy-weensy</b> <span class="pos">adj.</span> 极小的、一丁点大的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“苹果不会落在远离苹果树的地方”</h2>
+            <div class="seg-en">The apple doesn't fall far from the tree</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 199 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">谚语暗讽</span><span class="tag">朱利安一家</span><span class="tag">亲人好友的生日</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>读懂那句谚语“the apple doesn't fall far from the tree”——父母是树、孩子是果，妈妈暗指朱利安的家长没回复请帖，映出了朱利安对他的态度。同时结实的重点是：真正的朋友留了下来，让冷清变成了温暖。</div>
+        <div class="body">
+<p>“Everyone gave different reasons, Auggie.” She sounded a bit impatient. “Really, sweetie, it shouldn’t matter what their reasons were. People had plans, that’s all.”</p>
+<p>“What did Julian give as his reason?” I asked.</p>
+<p>“You know,” said Mom, “his mom was the only person who didn’t RSVP at all.” She looked at me. “I guess the apple doesn’t fall far from the tree.”</p>
+<p>I laughed because I thought she was making a joke, but then I realized she wasn’t.</p>
+<p>“What does that mean?” I asked.</p>
+<p>“Never mind. Now go wash your hands so you can eat.”</p>
+<p>My birthday party turned out to be much smaller than I thought it would be, but it was still great. Jack, Summer, Reid, Tristan, and both Maxes came from school, and Christopher came, too—all the way from Bridgeport with his parents. And Uncle Ben came. And Aunt Kate and Uncle Po drove in from Boston, though Tata and Poppa were in Florida for the winter. It was fun because all the grown-ups ended up bowling in the lane next to ours, so it really felt like there were a lot of people there to celebrate my birthday.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈说得不耐烦了，劝奥吉别去抠大家请假的理由。奥吉追问朱利安为什么不来，妈妈说只有朱利安那边半句回音都没有——他的父母根本没回复请帖。妈妈望着奥吉，意味深长地说了句“我看苹果不会落在远离苹果树的地方”，奥吉一开始以为她在开玩笑，细想才明白她是在说朱利安德品行随了爸妈。生日那天来的人果然很少，可杰克、萨默、里德、特里斯坦、两个麦克斯、远道从布里奇波特赶来的克里斯托弗，还有一堆长辈都来了，大人挤在隔壁道上打球，热闹得像置身人群。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“I guess the apple doesn't fall far from the tree.”</blockquote><p class="note">apple doesn't fall far from the tree 是一句英文谚语，意思和“龙生龙、凤生凤”类似：孩子往往随父母。妈妈用它暗指朱利安一家人都没把人当回事，奥吉一开始还当是玩笑。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>impatient</b> <span class="pos">adj.</span> 不耐烦的</li><li><b>RSVP</b> <span class="pos">v./n.</span> 回复（收到邀请后的）——“敬请回复”缩写</li><li><b>never mind</b> <span class="pos">phr.</span> 算了、别在意</li><li><b>bowl</b> <span class="pos">v.</span> 打保龄球</li><li><b>celebrate</b> <span class="pos">v.</span> 庆祝</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_20.html">← 上一单元</a>
+    <a href="wonder_unit_22.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第21/96 单元 · 第一部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u21.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

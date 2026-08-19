@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第6单元 喜欢上校长的办公室，开始僵住</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 6 单元 · 喜欢上校长的办公室，开始僵住</div>
+    <div class="unit-en">Jack Will, Julian, and Charlotte</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 703 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>图什曼带奥吉进他的办公室，房间里摆着悬空的地球仪、镜子拼成的魔方，墙上还挂着学生送的画。奥吉喜欢这个地方，问起“为什么你有自己的办公室，Mrs. G没有”，并打趣说是不是该叫他“Mr. T”。这时走廊传来孩子的说话声，奥吉的心一下子狂跳起来，笑声从他心里被吓跑——他马上就要见到将来同班的学生了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>爱观察细节，也爱逗校长</h2>
+            <div class="seg-en">Do they call you Mr. T?</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 288 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">办公室探秘</span><span class="tag">姓氏玩笑</span><span class="tag">试探被接纳</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一小段先给奥吉一个放松的瞬间：他发现大人并没有被他的长相吓住，反而能跟他开玩笑——轻松里藏着他对被接纳的试探。</div>
+        <div class="body">
+<p>WE FOLLOWED MR. TUSHMAN into a small room across from Mrs. Garcia’s desk. He was talking as he closed the door to his office and sat down behind his big desk, though I wasn’t really paying much attention to what he was saying. I was looking around at all the things on his desk. Cool stuff, like a globe that floated in the air and a Rubik’s-type cube made with little mirrors. I liked his office a lot. I liked that there were all these neat little drawings and paintings by students on the walls, framed like they were important.</p>
+<p>Mom sat down in a chair in front of Mr. Tushman’s desk, and even though there was another chair right next to hers, I decided to stand beside her.</p>
+<p>“Why do you have your own room and Mrs. G doesn’t?” I said.</p>
+<p>“You mean, why do I have an office?” asked Mr. Tushman.</p>
+<p>“You said she runs the place,” I said.</p>
+<p>“Oh! Well, I was kind of kidding. Mrs. G is my assistant.”</p>
+<p>“Mr. Tushman is the director of the middle school,” Mom explained.</p>
+<p>“Do they call you Mr. T?” I asked, which made him smile.</p>
+<p>“Do you know who Mr. T is?” he answered. “I pity the fool?” he said in a funny tough voice, like he was imitating someone.</p>
+<p>I had no idea what he was talking about.</p>
+<p>“Anyway, no,” said Mr. Tushman, shaking his head. “No one calls me Mr. T. Though I have a feeling I’m called a lot of other things I don’t know about. Let’s face it, a name like mine is not so easy to live with, you know what I mean?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉没怎么听图什曼说话，只顾看办公室里的宝贝：悬空漂浮的地球仪、镶满小镜子的魔方，还有墙上像艺术品一样裱起来的学生的画。他喜欢这间办公室，故意站在妈妈身边而不肯坐下。他问图什曼为什么自己有一间办公室而Mrs. G没有，得知她只是他的助手、他才是中学部主任后，又打趣问“大家是不是叫你Mr. T”，图什曼还模仿某角色说了句“我可怜那傻子”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Let's face it, a name like mine is not so easy to live with, you know what I mean?</blockquote><p class="note">live with = 忍受、与……共存。图什曼自我解嘲地说“像我这样的姓氏可不好‘过日子’”，意思是他早就习惯了别人拿名字开玩笑。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>globe</b> <span class="pos">n.</span> 地球仪</li><li><b>floated</b> <span class="pos">v.</span> 漂浮（float 的过去式）</li><li><b>director</b> <span class="pos">n.</span> 主任、主管</li><li><b>imitating</b> <span class="pos">adj.</span> 模仿的</li><li><b>assistant</b> <span class="pos">n.</span> 助手、助理</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>听见孩子的说话声，心一下炸开</h2>
+            <div class="seg-en">A portrait of me!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 277 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">南瓜画像</span><span class="tag">笑声骤停</span><span class="tag">心跳加速</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这里的情绪急转要抓准：前一秒还在轻松说笑，下一秒孩子的声音像警报一样吓跑他所有的安全感。</div>
+        <div class="body">
+<p>Here I have to admit I totally laughed, because I knew exactly what he meant.</p>
+<p>“My mom and dad had a teacher called Miss Butt,” I said.</p>
+<p>“Auggie!” said Mom, but Mr. Tushman laughed.</p>
+<p>“Now, that’s bad,” said Mr. Tushman, shaking his head. “I guess I shouldn’t complain. Hey, so listen, August, here’s what I thought we would do today. …”</p>
+<p>“Is that a pumpkin?” I said, pointing to a framed painting behind Mr. Tushman’s desk.</p>
+<p>“Auggie, sweetie, don’t interrupt,” said Mom.</p>
+<p>“You like it?” said Mr. Tushman, turning around and looking at the painting. “I do, too. And I thought it was a pumpkin, too, until the student who gave it to me explained that it is actually not a pumpkin. It is … are you ready for this … a portrait of me! Now, August, I ask you: do I really look that much like a pumpkin?”</p>
+<p>“No!” I answered, though I was thinking yes. Something about the way his cheeks puffed out when he smiled made him look like a jack-o’-lantern. Just as I thought that, it occurred to me how funny that was: cheeks, Mr. Tushman. And I started laughing a little. I shook my head and covered my mouth with my hand.</p>
+<p>Mr. Tushman smiled like he could read my mind.</p>
+<p>I was about to say something else, but then all of a sudden I heard other voices outside the office: kids’ voices. I’m not exaggerating when I say this, but my heart literally started beating like I’d just run the longest race in the world. The laughter I had inside just poured out of me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉和校长聊起一个叫“Miss Butt”（屁股女士）的老师，两人一起大笑；奥吉又指着墙上那幅画问是不是南瓜，谁知那竟是学生给校长画的画像，还画得和露齿大笑时鼓起的脸颊真像南瓜。两人正有说有笑，办公室外忽然传来孩子的声音——奥吉说自己的心像刚跑完世上最长的一场比赛那样狂跳，原本在心里翻涌的那点笑意一下子全被吓没了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>My heart literally started beating like I'd just run the longest race in the world.</blockquote><p class="note">literally = 字面上、真真切切地。奥吉形容心跳“像刚跑完世上最长的比赛”，夸张的比喻写出他对陌生同龄人的深重恐惧。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>complain</b> <span class="pos">v.</span> 抱怨</li><li><b>interrupt</b> <span class="pos">v.</span> 打断、插话</li><li><b>portrait</b> <span class="pos">n.</span> 肖像画</li><li><b>pumpkin</b> <span class="pos">n.</span> 南瓜</li><li><b>literally</b> <span class="pos">adv.</span> 真正地、简直</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>为什么我把刘海留这么长</h2>
+            <div class="seg-en">Kids' voices</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 138 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">留长发的理由</span><span class="tag">大孩子很可怕</span><span class="tag">他们到了</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住“刘海遮眼”这个意象：它不只是发型，是奥吉对外界伤害的一道自我保护——即将出场的三个同龄人会验证他的恐惧。</div>
+        <div class="body">
+<p>The thing is, when I was little, I never minded meeting new kids because all the kids I met were really little, too. What’s cool about really little kids is that they don’t say stuff to try to hurt your feelings, even though sometimes they do say stuff that hurts your feelings. But they don’t actually know what they’re saying. Big kids, though: they know what they’re saying. And that is definitely not fun for me. One of the reasons I grew my hair long last year was that I like how my bangs cover my eyes: it helps me block out the things I don’t want to see.</p>
+<p>Mrs. Garcia knocked on the door and poked her head inside.</p>
+<p>“They’re here, Mr. Tushman,” she said.</p>
+<p>“Who’s here?” I said.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉解释自己为什么以前不害怕见陌生孩子：很小的孩子说的话未必存心伤人，哪怕有时候也会刺痛他，但他们自己并不明白；而大一些的孩子“知道自己在说什么”，这对他绝不好受。这也是他去年把头发留长的原因——他喜欢刘海遮住眼睛，帮他挡住不想看见的东西。这时加西亚太太敲门探头说“他们到了”，奥吉还来不及追问是谁，图什曼便开口道谢。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>it helps me block out the things I don't want to see.</blockquote><p class="note">block out = 挡住、屏蔽。奥吉用刘海挡住“不想看的目光”，说明这个动作（遮眼）几乎成了他对付世界的习惯反应。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hurt your feelings</b> <span class="pos">phr.</span> 伤害你的感情</li><li><b>definitely</b> <span class="pos">adv.</span> 绝对、确实</li><li><b>bangs</b> <span class="pos">n.</span> 刘海</li><li><b>block out</b> <span class="pos">phr.</span> 遮挡、屏蔽掉</li><li><b>poke</b> <span class="pos">v.</span> 探出、伸出（头来）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_05.html">← 上一单元</a>
+    <a href="wonder_unit_07.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第6/96 单元 · 第一部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u06.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第16单元 午餐时分，一个人嚼三明治</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 16 单元 · 午餐时分，一个人嚼三明治</div>
+    <div class="unit-en">Lunch</div>
+    <div class="unit-stats">
+      <span>⏱ 约 7 分钟</span>
+      <span>📄 545 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>维娅早就警告过奥吉午餐最难熬，可实际还是超出他的预料。所有五年级的孩子同时涌进食堂，互相挤撞占座，奥吉坐了两次都被人以“有人坐”为由赶走，只能独自坐在空桌旁。他带的是妈妈备好的奶酪三明治和果汁，不用排队领饭。他低着头也能感到被人注视着、交头接耳，还想起自己嘴里的豁口和咀嚼时的模样——他早就知道自己吃饭的样子有多怪。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>食堂占座，没人让我坐</h2>
+            <div class="seg-en">No seat-saving allowed</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 268 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">食堂午饭</span><span class="tag">占座</span><span class="tag">独自一人</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“占座”这个场景：条条通道都挤满了朋友，唯独没有留给奥吉的位子——午餐正是他一天中最孤立的一段。</div>
+        <div class="body">
+<p>VIA HAD WARNED me about lunch in middle school, so I guess I should have known it would be hard. I just hadn’t expected it to be this hard. Basically, all the kids from all the fifth-grade classes poured into the cafeteria at the same time, talking loudly and bumping into one another while they ran to different tables. One of the lunchroom teachers said something about no seat-saving allowed, but I didn’t know what she meant and maybe no one else did, either, because just about everybody was saving seats for their friends. I tried to sit down at one table, but the kid in the next chair said, “Oh, sorry, but somebody else is sitting here.”</p>
+<p>So I moved to an empty table and just waited for everyone to finish stampeding and the lunchroom teacher to tell us what to do next. As she started telling us the cafeteria rules, I looked around to see where Jack Will was sitting, but I didn’t see him on my side of the room. Kids were still coming in as the teachers started calling the first few tables to get their trays and stand on line at the counter. Julian, Henry, and Miles were sitting at a table toward the back of the room.</p>
+<p>Mom had packed me a cheese sandwich, graham crackers, and a juice box, so I didn’t need to stand on line when my table was called. Instead, I just concentrated on opening my backpack, pulling out my lunch bag, and slowly opening the aluminum-foil wrapping of my sandwich.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅早提醒过奥吉午间最难，可实际还是超乎预料。所有五年级孩子同时涌进食堂，大声说话、互相碰撞着跑去占桌。食堂老师说“不许占座”，可几乎人人都在给朋友占座。奥吉想坐一桌，旁边的人却说这有人了；他只好挪到一张空桌，等大家都涌完。他看见朱利安、亨利和迈尔斯坐在后面的桌，却没找到杰克。于是他不排队，闷头拆开妈妈包的奶酪三明治。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I tried to sit down at one table, but the kid in the next chair said, &quot;Oh, sorry, but somebody else is sitting here.&quot;</blockquote><p class="note">坐下去又被一句“这里有人坐”礼貌地请走——对方并没有粗鲁，反倒更让奥吉说不出话，这种客气本身就是拒绝。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>cafeteria</b> <span class="pos">n.</span> （学校的）食堂、自助餐厅</li><li><b>bump into</b> <span class="pos">phr.</span> 撞到、偶然碰见</li><li><b>seat-saving</b> <span class="pos">adj.</span> （为朋友）占位的</li><li><b>stampede</b> <span class="pos">v.</span> 潮水般涌来、蜂拥</li><li><b>graham cracker</b> <span class="pos">n.</span> 全麦饼干</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我吃饭的样子，像只史前 swamp 怪兽</h2>
+            <div class="seg-en">I eat like a tortoise</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 277 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自嘲</span><span class="tag">吃相</span><span class="tag">腭裂手术</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>重点在这里的自嘲与心酸：奥吉承认自己“像乌龟、像史前沼泽里的东西那样吃饭”——他不是没意识到别人的注视，而是早就替别人嫌弃过自己。</div>
+        <div class="body">
+<p>I could tell I was being stared at without even looking up. I knew that people were nudging each other, watching me out of the corners of their eyes. I thought I was used to those kinds of stares by now, but I guess I wasn’t.</p>
+<p>There was one table of girls that I knew were whispering about me because they were talking behind their hands. Their eyes and whispers kept bouncing over to me.</p>
+<p>I hate the way I eat. I know how weird it looks. I had a surgery to fix my cleft palate when I was a baby, and then a second cleft surgery when I was four, but I still have a hole in the roof of my mouth. And even though I had jaw-alignment surgery a few years ago, I have to chew food in the front of my mouth. I didn’t even realize how this looked until I was at a birthday party once, and one of the kids told the mom of the birthday boy he didn’t want to sit next to me because I was too messy with all the food crumbs shooting out of my mouth. I know the kid wasn’t trying to be mean, but he got in big trouble later, and his mom called my mom that night to apologize. When I got home from the party, I went to the bathroom mirror and started eating a saltine cracker to see what I looked like when I was chewing. The kid was right. I eat like a tortoise, if you’ve ever seen a tortoise eating. Like some prehistoric swamp thing.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉不用抬头就知道有人盯着他，人们互相碰肘、用余光看他。一桌女生捂着手说悄悄话，目光和低语不停扫过来。他恨自己吃饭的样子：婴儿时修补过腭裂、四岁又手术，嘴里仍有豁口，前几年矫正下颌后只能在前牙处咀嚼。他想起一次生日派对上有个孩子当众说他吃相邋遢、食物渣直往外喷，那孩子后来被骂、他妈妈夜里还打电话道歉。奥吉回家照镜子吃苏打饼干，才发现对方说得没错——他吃起来像只乌龟、像某个史前沼泽生物。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The kid was right. I eat like a tortoise, if you've ever seen a tortoise eating. Like some prehistoric swamp thing.</blockquote><p class="note">tortoise = 乌龟，prehistoric = 史前的。奥吉用乌龟和“史前沼泽生物”来形容自己吃饭的模样，是自嘲里裹着一层心酸。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>nudge</b> <span class="pos">v.</span> 用肘轻碰（示意）</li><li><b>cleft palate</b> <span class="pos">n.</span> 腭裂</li><li><b>chew</b> <span class="pos">v.</span> 咀嚼</li><li><b>crumbs</b> <span class="pos">n.</span> 食物碎屑、面包渣</li><li><b>tortoise</b> <span class="pos">n.</span> 乌龟、陆龟</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_15.html">← 上一单元</a>
+    <a href="wonder_unit_17.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第16/96 单元 · 第一部 · 奥吉 · 约 7 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u16.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第73单元 夏令营里的谎言：米兰达编出一个全新的自己</title>
+<style>
+:root{--c:#b06a8a;--bg:#f7edf2;--nav:#eedae4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第七部 · 米兰达</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 73 单元 · 夏令营里的谎言：米兰达编出一个全新的自己</div>
+    <div class="unit-en">Camp Lies</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 776 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Seven: Miranda</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>叙述者换成米兰达——维娅的少年好友。她父母在她升九年级前的夏天离婚，父亲立刻和别人在一起，她很少见到他，母亲则变得疏远冷淡。她本不想去夏令营，但母亲坚持要她去。夏令营糟糕透顶，她没有认识的人，于是开始对营里的女孩编造谎言：父母在欧洲、住在豪宅、养了条叫黛西的狗。有一天她甚至脱口说出自己有个畸形的弟弟——其实说的是奥吉。这些谎言让她在营地突然变得受欢迎。回到家她先打给艾拉而不是维娅，因为艾拉不像维娅那样认真追问。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>父母离婚，母亲疏远，我被硬送去夏令营</h2>
+            <div class="seg-en">My parents got divorced</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 328 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">父母离婚</span><span class="tag">母亲的疏远</span><span class="tag">不情愿去营地</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住一个对比：对外微笑温柔、对家人疏远的母亲，正好预示了米兰达自己在营地里对陌生人编造美好生活的心理。</div>
+        <div class="body">
+<p>MY PARENTS GOT divorced the summer before ninth grade. My father was with someone else right away. In fact, though my mother never said so, I think this was the reason they got divorced.</p>
+<p>After the divorce, I hardly ever saw my father. And my mother acted stranger than ever. It’s not that she was unstable or anything: just distant. Remote. My mother is the kind of person who has a happy face for the rest of the world but not a lot left over for me. She’s never talked to me much—not about her feelings, her life. I don’t know much about what she was like when she was my age. Don’t know much about the things she liked or didn’t like. The few times she mentioned her own parents, who I’ve never met, it was mostly about how she wanted to get as far away from them as she could once she’d grown up. She never told me why. I asked a few times, but she would pretend she hadn’t heard me.</p>
+<p>I didn’t want to go to camp that summer. I had wanted to stay with her, to help her through the divorce. But she insisted I go away. I figured she wanted the alone time, so I gave it to her.</p>
+<p>Camp was awful. I hated it. I thought it would be better being a junior counselor, but it wasn’t. No one I knew from the previous year had come back, so I didn’t know anyone—not a single person. I’m not even sure why, but I started playing this little make-believe game with the girls in the camp. They’d ask me stuff about myself, and I’d make things up: my parents are in Europe, I told them. I live in a huge townhouse on the nicest street in North River Heights. I have a dog named Daisy.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达开场交代背景：父母在她升九年级前的夏天离婚，父亲马上有了别人。离婚后她几乎见不到父亲，母亲变得比以往更疏远冷淡，从不跟她谈感受和生活，也很少提自己的父母。米兰达本不想去夏令营，想留在家陪母亲熬过离婚，但母亲坚持要她去，她只好听从。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I don’t know much about what she was like when she was my age.</blockquote><p class="note">米兰达说“我几乎不知道她像我这么大时是什么样”——母女之间几乎不交流，这是她感到孤独的根源。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>divorce</b> <span class="pos">n./v.</span> 离婚</li><li><b>distant</b> <span class="pos">adj.</span> 疏远的、冷漠的</li><li><b>remote</b> <span class="pos">adj.</span> 冷冰冰的、难以亲近的</li><li><b>insist</b> <span class="pos">v.</span> 坚持（要求）</li><li><b>junior counselor</b> <span class="pos">n.</span> 少年辅导员（夏令营里比营员大一点的助手）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我脱口说出自己有个畸形的弟弟</h2>
+            <div class="seg-en">I blurted out… a little brother</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 201 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">脱口而出的谎</span><span class="tag">奥吉像亲弟弟</span><span class="tag">愧疚与不舍</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意米兰达的矛盾心理：既因为拿奥吉说谎感到愧疚，又真心认为奥吉确实像她的弟弟——谎言与真感情纠缠在一起。</div>
+        <div class="body">
+<p>Then one day I blurted out that I had a little brother who was deformed. I have absolutely no idea why I said this: it just seemed like an interesting thing to say. And, of course, the reaction I got from the little girls in the bungalow was dramatic. Really? So sorry! That must be tough! Et cetera. Et cetera. I regretted saying this the moment it escaped from my lips, of course: I felt like such a fake. If Via ever found out, I thought, she’d think I was such a weirdo. And I felt like a weirdo. But, I have to admit, there was a part of me that felt a little entitled to this lie. I’ve known Auggie since I was six years old. I’ve watched him grow up. I’ve played with him. I’ve watched all six episodes of Star Wars for his sake, so I could talk to him about the aliens and bounty hunters and all that. I’m the one that gave him the astronaut helmet he wouldn’t take off for two years. I mean, I’ve kind of earned the right to think of him as my brother.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达在营地对女孩们开始编造的谎言里，突然脱口说自己有个畸形的弟弟——指的是奥吉。她说出口就后悔，觉得自己像个假货，怕被维娅发现自己是怪人。但她又觉得自己有资格讲这个谎：她六岁就认识奥吉，陪他长大、陪他玩游戏、为他和奥吉聊《星球大战》，还送过他戴了两年的宇航员头盔，早已把他当弟弟。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I’m the one that gave him the astronaut helmet he wouldn’t take off for two years.</blockquote><p class="note">give him the helmet = 送他头盔。这颗宇航员头盔是奥吉童年记忆的关键物品，米兰达用它证明自己曾真心参与过奥吉的成长。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>blurt out</b> <span class="pos">phr.</span> 脱口而出、不假思索地说出</li><li><b>deformed</b> <span class="pos">adj.</span> 畸形的、变形的</li><li><b>fake</b> <span class="pos">n.</span> 假货、骗子</li><li><b>weirdo</b> <span class="pos">n.</span> 怪人、古怪的人</li><li><b>astronaut helmet</b> <span class="pos">n.</span> 宇航员头盔</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>谎言让我成了营地最抢手的女孩</h2>
+            <div class="seg-en">The lies did wonders</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 247 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">说谎走红</span><span class="tag">学会抽烟</span><span class="tag">疏远维娅</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“受欢迎”与“失去真心朋友”的交换：米兰达用假身份换来了人气，却主动躲开了真正懂她的维娅。</div>
+        <div class="body">
+<p>And the strangest thing is that these lies I told, these fictions, did wonders for my popularity. The other junior counselors heard it from the campers, and they were all over it. Never in my life have I ever been considered one of the “popular” girls in anything, but that summer in camp, for whatever reason, I was the girl everybody wanted to hang out with. Even the girls in bungalow 32 were totally into me. These were the girls at the top of the food chain. They said they liked my hair (though they changed it). They said they liked the way I did my makeup (though they changed that, too). They showed me how to turn my T-shirts into halter tops. We smoked. We snuck out late at night and took the path through the woods to the boys’ camp. We hung out with boys.</p>
+<p>When I got home from camp, I called Ella right away to make plans with her. I don’t know why I didn’t call Via. I guess I just didn’t feel like talking about stuff with her. She would have asked me about my parents, about camp. Ella never really asked me about things. She was an easier friend to have in that way. She wasn’t serious like Via. She was fun. She thought it was cool when I dyed my hair pink. She wanted to hear all about those trips through the woods late at night.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这些谎言让米兰达在营地人缘暴涨——她这辈子从没当过“受欢迎”的女孩，那个夏天却成了人人都想结交的朋友，连营地里最顶层的小团体也看上她，还教她打扮、一起抽烟、夜里溜出去穿过树林去男孩营地。回到家她先打电话给艾拉约她玩，而没有打给维娅，因为艾拉从不追问她太多，不像维娅那样认真严肃。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She was an easier friend to have in that way.</blockquote><p class="note">easier friend = 更好相处的朋友。米兰达选艾拉正是因为艾拉不追问、好相处——她害怕面对会认真追问的维娅。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>do wonders</b> <span class="pos">phr.</span> 效果惊人、带来奇效</li><li><b>popular</b> <span class="pos">adj.</span> 受欢迎的、有人缘的</li><li><b>halter top</b> <span class="pos">n.</span> 露背吊带背心</li><li><b>sneak out</b> <span class="pos">phr.</span> 偷偷溜出去</li><li><b>make plans</b> <span class="pos">phr.</span> 约好安排（一起玩）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_72.html">← 上一单元</a>
+    <a href="wonder_unit_74.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第73/96 单元 · 第七部 · 米兰达 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u73.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

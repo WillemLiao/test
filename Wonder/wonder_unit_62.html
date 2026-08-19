@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第62单元 关于宇宙与运气的一场失眠思考</title>
+<style>
+:root{--c:#7a6aa8;--bg:#f0edf7;--nav:#ded7ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第五部 · 贾斯汀</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 62 单元 · 关于宇宙与运气的一场失眠思考</div>
+    <div class="unit-en">The Universe</div>
+    <div class="unit-stats">
+      <span>⏱ 约 4 分钟</span>
+      <span>📄 296 词</span>
+      <span>🧩 1 小段</span>
+      <span>👤 叙述者：Five: Justin</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>贾斯汀夜里睡不着，脑子里塞满了台词、周期表元素、定理，还有维娅和奥吉。米兰达那句“宇宙对奥吉·普尔曼并不仁慈”一直回荡。他想：那些让奥吉变成这样的症候群概率只有四百万分之一，难道出生的那一刻就要买一张彩票，好坏全凭随机运气？可慢慢更温柔的想法安抚了他：其实并不全是随机的，因为宇宙会用看不见的方式照料它最脆弱的造物——譬如那对盲目爱他的父母、那位为自己还算幸运而愧疚的姐姐、那个朋友一个个离开他的沙哑声音的男孩，还有钱包里揣着他照片的粉发女孩。也许这是场彩票，但宇宙到头来会让它扯平，它会照料自己所有的鸟儿。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>彩票还是庇护？宇宙到底对奥吉怎么样</h2>
+            <div class="seg-en">the universe takes care of all its birds</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 296 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">宇宙与运气</span><span class="tag">失眠独白</span><span class="tag">米兰达那句话</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>本单元是贾斯汀内心的独白，收束了全书最深的哲思：运气看似随机不公，但宇宙通过身边的人默默“扯平”——把每个被他爱着的人都写进这张“爱的彩票”。</div>
+        <div class="body">
+<p>I CAN’T SLEEP tonight. my head is full of thoughts that won’t turn off. lines from my monologues. elements of the periodic table that i’m supposed to be memorizing. theorems i’m supposed to be understanding. olivia. auggie.</p>
+<p>miranda’s words keep coming back: the universe was not kind to auggie pullman.</p>
+<p>i’m thinking about that a lot and everything it means. she’s right about that. the universe was not kind to auggie pullman. what did that little kid ever do to deserve his sentence? what did the parents do? or olivia? she once mentioned that some doctor told her parents that the odds of someone getting the same combination of syndromes that came together to make auggie’s face were like one in four million. so doesn’t that make the universe a giant lottery, then? you purchase a ticket when you’re born. and it’s all just random whether you get a good ticket or a bad ticket. it’s all just luck.</p>
+<p>my head swirls on this, but then softer thoughts soothe, like a flatted third on a major chord. no, no, it’s not all random, if it really was all random, the universe would abandon us completely. and the universe doesn’t. it takes care of its most fragile creations in ways we can’t see. like with parents who adore you blindly. and a big sister who feels guilty for being human over you. and a little gravelly-voiced kid whose friends have left him over you. and even a pink-haired girl who carries your picture in her wallet. maybe it is a lottery, but the universe makes it all even out in the end. the universe takes care of all its birds.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>深夜贾斯汀睡不着，脑中念头停不下来：台词、周期表元素、定理、维娅、奥吉。米兰达说“宇宙对奥吉不仁慈”的话反复回响。他心想那概率是四百万分之一——难道出生就是买一张彩票，拿到好票坏票全看运气？接着更温柔的想法浮现：如果一切都是随机，宇宙就会彻底抛弃我们，可它不会。它用看不见的方式照料最脆弱的造物——有盲目爱他的父母，有对自己仍算幸运而愧疚的姐姐，有朋友一个个离开他那沙哑嗓音的男孩，还有钱包里总揣着他照片的粉发女孩。也许这是场彩票，但宇宙最终会让它扯平。宇宙会照料自己所有的鸟儿。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>maybe it is a lottery, but the universe makes it all even out in the end. the universe takes care of all its birds.</blockquote><p class="note">lottery = 彩票；make it all even out = 让一切都扯平、平衡回来；take care of all its birds = 照料它所有的鸟儿。“所有的鸟儿”呼应本单元独白的温柔基调——即便身处风暴，也被守护着。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>lottery</b> <span class="pos">n.</span> 彩票；抽签</li><li><b>even out</b> <span class="pos">phr.</span> 扯平、拉平、趋于均衡</li><li><b>abandon</b> <span class="pos">v.</span> 抛弃、放弃</li><li><b>fragile</b> <span class="pos">adj.</span> 脆弱的</li><li><b>adore</b> <span class="pos">v.</span> 崇拜、深深喜爱</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_61.html">← 上一单元</a>
+    <a href="wonder_unit_63.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第62/96 单元 · 第五部 · 贾斯汀 · 约 4 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u62.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

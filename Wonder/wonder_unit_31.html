@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第31单元 新学期，米兰达变了，我的谎也越编越顺</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 31 单元 · 新学期，米兰达变了，我的谎也越编越顺</div>
+    <div class="unit-en">Major Tom · After School</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1096 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>维娅发现从夏令营回来后的米兰达和换了一个人似的：剪了粉色短发、穿着像校规禁止的吊带衫，说话也疏远近人。更让她难受的是，她敏锐感到米兰达和伊拉整个暑假背着她聚了好几次，还偷偷商量在新学校改头换面，却没人告诉她。开学第一天她撒谎拒绝坐米兰达家的车，为躲避而自己搭地铁回家，回家后又对妈妈连番撒谎。晚上她冲进弟弟房间，第一次听到他学会用讽刺的语气回话。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>米兰达才是对奥吉最好的人</h2>
+            <div class="seg-en">Major Tom</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 286 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">汤姆少校</span><span class="tag">宇航员头盔</span><span class="tag">暑假失联</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“米兰达取号‘汤姆少校’、送奥吉头盔”这段深情回忆，和后面米兰达的疏远形成鲜明反差，让维娅更想不通。</div>
+        <div class="body">
+<p>OUT OF THE three of us, Miranda had almost always been the sweetest to August, hugging him and playing with him long after Ella and I had moved on to playing something else. Even as we got older, Miranda always made sure to try to include August in our conversations, ask him how he was doing, talk to him about Avatar or Star Wars or Bone or something she knew he liked. It was Miranda who had given Auggie the astronaut helmet he wore practically every day of the year when he was five or six. She would call him Major Tom and they would sing “Space Oddity” by David Bowie together. It was their little thing. They knew all the words and would blast it on the iPod and sing the song out loud.</p>
+<p>Since Miranda’s always been really good about calling us as soon as she got home from summer camp, I was a little surprised when I didn’t hear from her. I even texted her and she didn’t reply. I figured maybe she had ended up staying in the camp longer, now that she was a counselor. Maybe she met a cute guy.</p>
+<p>Then I realized from her Facebook wall that she’d actually been back home for a full two weeks, so I sent her an IM and we chatted online a bit, but she didn’t give me a reason for not calling, which I thought was bizarre. Miranda had always been a little flaky, so I figured that’s all it was. We made plans to meet downtown, but then I had to cancel because we were driving out to visit Tata and Poppa for the weekend.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说三人里米兰达对奥吉最好，从小一起玩到长大后还会主动逗他聊天。正是米兰达送给五岁的奥吉那顶几乎年全年戴着的宇航员头盔，叫他“汤姆少校”，一起唱大卫·鲍伊的《太空怪谈》。可这个暑假维娅却迟迟没等到米兰达从夏令营回来的电话，发短信也不回，直到从对方的社交墙发现她其实回家两星期了。两人原约在城里见面，又被维娅临时放鸽子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She would call him Major Tom and they would sing “Space Oddity” by David Bowie together.</blockquote><p class="note">Major Tom = 《太空怪谈》里的宇航员。米兰达给奥吉起的外号，曾是两人最亲近的小秘密，如今却仿佛被淡忘。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>astronaut</b> <span class="pos">n.</span> 宇航员</li><li><b>helmet</b> <span class="pos">n.</span> 头盔</li><li><b>blast</b> <span class="pos">v.</span> 大声播放（blast it on the iPod）</li><li><b>counselor</b> <span class="pos">n.</span> 辅导员、夏令营领队</li><li><b>flaky</b> <span class="pos">adj.</span> 靠不住的、不靠谱的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>粉发吊带衫，那不是米兰达</h2>
+            <div class="seg-en">A distant friend</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 286 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">好友突变</span><span class="tag">被排除在外</span><span class="tag">强装没事</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅的“察觉力”：她没说破、也不问，只把委屈咽下，这种吞声和装没事正是她“懂事”性格在友谊里的复现。</div>
+        <div class="body">
+<p>So I ended up not seeing either Miranda or Ella until the first day of school. And, I have to admit, I was shocked. Miranda looked so different: her hair was cut in this super-cute bob that she’d dyed bright pink, of all things, and she was wearing a striped tube top that (a) seemed way inappropriate for school, and (b) was totally not her usual style. Miranda had always been such a prude about clothes, and here she was all pink-haired and tube-topped. But it wasn’t just the way she looked that was different: she was acting differently, too. I can’t say she wasn’t nice, because she was, but she seemed kind of distant, like I was a casual friend. It was the weirdest thing in the world.</p>
+<p>At lunch the three of us sat together like we always used to, but the dynamics had shifted. It was obvious to me that Ella and Miranda had gotten together a few times during the summer without me, though they never actually said that. I pretended not to be at all upset while we talked, though I could feel my face getting hot, my smile being fake. Although Ella wasn’t as over-the-top as Miranda, I noticed a change in her usual style, too. It’s like they had talked to each other beforehand about redoing their image at the new school, but hadn’t bothered to clue me in. I admit: I had always thought I was above this kind of typical teenage pettiness, but I felt a lump in my throat throughout lunch. My voice quivered as I said “See you later” when the bell rang.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>开学第一天维娅见到米兰达大吃一惊：粉色短发、背着式吊带衫，完全不像是她一贯保守的风格，而且人也变得疏远，待她像普通朋友。午饭时三人照旧坐一起，可气氛变了——维娅明显感到米兰达和伊拉暑假背着她聚过几次，两人像事先商量好去新学校改头换面，却没人通知她。她装作不介意，脸上热得发红，假装笑，喉咙里堵着团块，连道别时声音都在抖。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It’s like they had talked to each other beforehand about redoing their image at the new school, but hadn’t bothered to clue me in.</blockquote><p class="note">clue me in = 告诉我、让我知情。维娅觉得两个好友事先密谋改变形象，却把她蒙在鼓里，这是她最心凉的地方。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bob</b> <span class="pos">n.</span> 波波头（短发发型）</li><li><b>dye</b> <span class="pos">v.</span> 染（发）</li><li><b>tube top</b> <span class="pos">n.</span> 吊带背心、抹胸上衣</li><li><b>prude</b> <span class="pos">n.</span> 拘谨守旧的人、假正经</li><li><b>pettiness</b> <span class="pos">n.</span> 小心眼、斤斤计较</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>为避开米兰达，我一连撒了几个谎</h2>
+            <div class="seg-en">A lie slips out</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 286 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">谎话连篇</span><span class="tag">独自回家</span><span class="tag">敷衍妈妈</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅撒谎的节奏越来越顺——她用逃避米兰达和应付妈妈两层谎来保护自己，掩盖心里那个没人懂她的空洞。</div>
+        <div class="body">
+<p>“I HEAR WE’RE driving you home today.”</p>
+<p>It was Miranda in eighth period. She had just sat down at the desk right behind me. I had forgotten that Mom had called Miranda’s mother the night before to ask if she could drive me home from school.</p>
+<p>“You don’t have to,” I answered instinctively, casually. “My mom can pick me up.”</p>
+<p>“I thought she had to pick Auggie up or something.”</p>
+<p>“It turns out she can pick me up afterward. She just texted me. Not a problem.”</p>
+<p>“Oh. Okay.”</p>
+<p>“Thanks.”</p>
+<p>It was all a lie on my part, but I couldn’t see sitting in a car with the new Miranda. After school I ducked into a restroom to avoid bumping into Miranda’s mother outside. Half an hour later I walked out of the school, ran the three blocks to the bus stop, hopped on the M86 to Central Park West, and took the subway home.</p>
+<p>“Hey there, sweetie!” Mom said the moment I stepped through the front door. “How was your first day? I was starting to wonder where you guys were.”</p>
+<p>“We stopped for pizza.” Incredible how easily a lie can slip through your lips.</p>
+<p>“Is Miranda not with you?” She seemed surprised that Miranda wasn’t right behind me.</p>
+<p>“She went straight home. We have a lot of homework.”</p>
+<p>“On your first day?”</p>
+<p>“Yes, on our first day!” I yelled, which completely surprised Mom. But before she could say anything, I said: “School was fine. It’s really big, though. The kids seem nice.” I wanted to give her enough information so she wouldn’t feel the need to ask me more. “How was Auggie’s first day of school?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>第八节课米兰达说放学顺便送她回家，维娅随口谎称妈妈会来接，装没事一样推辞。她实在不想和这个陌生的米兰达坐同一辆车，放学躲进洗手间避开米兰达妈妈，独自绕了三站路、搭地铁回家。进门妈妈问第一天怎么样，她脱口而出“我们去吃了披萨”“米兰达直接回家了”“作业很多”。一句接一句的谎，连她自己都觉得不可思议，最后匆忙岔开话题问起奥吉第一天上学。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Incredible how easily a lie can slip through your lips.</blockquote><p class="note">slip through your lips = 从嘴边溜出。维娅感慨谎言说出口竟如此轻巧，暴露了她自己也没想到会说这么多谎。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>instinctively</b> <span class="pos">adv.</span> 本能地、不假思索地</li><li><b>duck into</b> <span class="pos">phr.</span> 躲进、闪进</li><li><b>subway</b> <span class="pos">n.</span> 地铁</li><li><b>slip</b> <span class="pos">v.</span> 悄悄溜走、滑出</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>我第一次听奥吉用讽刺的口气说话</h2>
+            <div class="seg-en">Why would people be mean?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 238 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">奥吉的讽刺</span><span class="tag">追问学校</span><span class="tag">母女隔阂</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住奥吉那句“为什么会有人欺负我”的讽刺意味——他可能在用天真包装某种受伤，维娅只觉得弟弟变了、学会反击了。</div>
+        <div class="body">
+<p>Mom hesitated, her eyebrows still high up on her forehead from when I’d snapped at her a second earlier. “Okay,” she said slowly, like she was letting out a breath.</p>
+<p>“What do you mean ‘okay’?” I said. “Was it good or bad?”</p>
+<p>“He said it was good.”</p>
+<p>“So why do you think it wasn’t good?”</p>
+<p>“I didn’t say it wasn’t good! Geez, Via, what’s up with you?”</p>
+<p>“Just forget I asked anything at all,” I answered, and stormed dramatically into Auggie’s room and slammed the door. He was on his PlayStation and didn’t even look up. I hated how zombified his video games made him.</p>
+<p>“So how was school?” I said, scooching Daisy over so I could sit on his bed next to him.</p>
+<p>“Fine,” he answered, still not looking up from his game.</p>
+<p>“Auggie, I’m talking to you!” I pulled the PlayStation out of his hands.</p>
+<p>“Hey!” he said angrily.</p>
+<p>“How was school?”</p>
+<p>“I said fine!” he yelled back, grabbing the PlayStation back from me.</p>
+<p>“Were people nice to you?”</p>
+<p>“Yes!”</p>
+<p>“No one was mean?”</p>
+<p>He put the PlayStation down and looked up at me as if I had just asked the dumbest question in the world. “Why would people be mean?” he said. It was the first time in his life that I heard him be sarcastic like that. I didn’t think he had it in him.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅冲进奥吉房间、摔上门，见他在打游戏，没好气地问学校怎么样。他答“挺好”，她追问有没有人欺负他，奥吉放下手柄抬头反问：“为什么会有人欺负我？”这是他这辈子第一次用讽刺的语气说话，维娅没想到他还有这一面。房门外，妈妈为她刚才的吼叫仍愣着，问她从前一天对米兰达的事没说出口，只能说“学校挺好”来堵住追问。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Why would people be mean?” he said.</blockquote><p class="note">mean = 刻薄、欺负人。奥吉反问里带着讽刺，是维娅从未见过的成熟，也是本段情绪的高潮。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>storm</b> <span class="pos">v.</span> 气冲冲地冲（进）</li><li><b>slam</b> <span class="pos">v.</span> 猛关（门）</li><li><b>zombified</b> <span class="pos">adj.</span> 像僵尸一样精神恍惚的</li><li><b>sarcastic</b> <span class="pos">adj.</span> 讽刺的、挖苦的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_30.html">← 上一单元</a>
+    <a href="wonder_unit_32.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第31/96 单元 · 第二部 · 维娅 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u31.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

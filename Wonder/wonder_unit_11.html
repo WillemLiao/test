@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第11单元 开学第一天，我紧张成一只鸽子</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 11 单元 · 开学第一天，我紧张成一只鸽子</div>
+    <div class="unit-en">First-Day Jitters</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 641 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>这是奥吉第一天真正走进比彻预备学校的日子。他紧张到胃里的蝴蝶像鸽子乱飞，爸妈为他上学的事一度意见相反——爸爸坚持要去，妈妈犹豫。全家一起送他和维娅到校门口，一路上奥吉觉得熟悉的街区突然变得陌生。走到校门口时，还没人对他指指点点，爸爸和维娅拥抱道别，妈妈差点哭出来，奥吉硬生生忍住转身走进校门。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>爸妈为我去不去上学吵翻了天</h2>
+            <div class="seg-en">more like pigeons than butterflies</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 213 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">开学紧张</span><span class="tag">家长分歧</span><span class="tag">勇敢面对特鲁曼</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意家长态度的反转：参观当天奥吉勇敢面对朱利安，让爸爸改变了看法，也牵动妈妈从坚决变成犹豫——这决定了他今天能否上学。</div>
+        <div class="body">
+<p>OKAY, SO I admit that the first day of school I was so nervous that the butterflies in my stomach were more like pigeons flying around my insides. Mom and Dad were probably a little nervous, too, but they acted all excited for me, taking pictures of me and Via before we left the house since it was Via’s first day of school, too.</p>
+<p>Up until a few days before, we still weren’t sure I would be going to school at all. After my tour of the school, Mom and Dad had reversed sides on whether I should go or not. Mom was now the one saying I shouldn’t go and Dad was saying I should. Dad had told me he was really proud of how I’d handled myself with Julian and that I was turning into quite the strong man. And I heard him tell Mom that he now thought she had been right all along. But Mom, I could tell, wasn’t so sure anymore. When Dad told her that he and Via wanted to walk me to school today, too, since it was on the way to the subway station, Mom seemed relieved that we would all be going together. And I guess I was, too.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>开学第一天奥吉紧张到胃里的蝴蝶变成了鸽子。参观完学校后，爸妈对是否送他上学意见正好反转——妈妈现在说别去、爸爸坚持要去。爸爸夸他那天面对朱利安很勇敢，还承认妈妈可能一直都对。妈妈见爸爸和维娅都要陪他走路上学而松了口气，奥吉也默默松了口气。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>OKAY, SO I admit that the first day of school I was so nervous that the butterflies in my stomach were more like pigeons flying around my insides.</blockquote><p class="note">butterflies in my stomach = 心里紧张（像胃里有蝴蝶飞舞）。奥吉说自己紧张到蝴蝶变成了鸽子，用夸张比喻形容紧张程度翻倍。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>nervous</b> <span class="pos">adj.</span> 紧张的、不安的</li><li><b>insides</b> <span class="pos">n.</span> 体内、身体内部</li><li><b>reversed</b> <span class="pos">adj.</span> 反转的、颠倒的</li><li><b>proud</b> <span class="pos">adj.</span> 自豪的、骄傲的</li><li><b>relieved</b> <span class="pos">adj.</span> 如释重负的、松了口气的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>熟悉的街区，看起来却全变了</h2>
+            <div class="seg-en">my neighborhood of North River Heights</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 251 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">熟悉街区</span><span class="tag">陌生感</span><span class="tag">走出舒适区</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“熟悉”与“陌生”的对比：同一条街，只因心情和身份变了就全然不同——暗示他的生活正走进一个全新的世界。</div>
+        <div class="body">
+<p>Even though Beecher Prep is just a few blocks from our house, I’ve only been on that block a couple of times before. In general, I try to avoid blocks where there are lots of kids roaming around. On our block, everybody knows me and I know everybody. I know every brick and every tree trunk and every crack in the sidewalk. I know Mrs. Grimaldi, the lady who’s always sitting by her window, and the old guy who walks up and down the street whistling like a bird. I know the deli on the corner where Mom gets our bagels, and the waitresses at the coffee shop who all call me “honey” and give me lollipops whenever they see me. I love my neighborhood of North River Heights, which is why it was so strange to be walking down these blocks feeling like it was all new to me suddenly. Amesfort Avenue, a street I’ve been down a million times, looked totally different for some reason. Full of people I never saw before, waiting for buses, pushing strollers.</p>
+<p>We crossed Amesfort and turned up Heights Place: Via walked next to me like she usually does, and Mom and Dad were behind us. As soon as we turned the corner, we saw all the kids in front of the school—hundreds of them talking to each other in little groups, laughing, or standing with their parents, who were talking with other parents. I kept my head way down.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>比彻预备学校离家只有几个街区，但奥吉平时刻意避开孩子成群的地方。在自己街区他认识每块砖、每棵树、每个人——窗前的老太太格里马尔迪夫人、吹口哨的老头、送棒棒糖的咖啡店女服务生。可他今天经过阿姆斯特福特大街时，这条走过一百万遍的路突然全是没见过的人，让他觉得一切都变得陌生。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>In general, I try to avoid blocks where there are lots of kids roaming around.</blockquote><p class="note">roam around = 四处闲逛。奥吉说自己往常总躲开孩子成群的地方，反衬出今天主动走向满是孩子的学校有多不容易。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>roam</b> <span class="pos">v.</span> 闲逛、漫步</li><li><b>crack</b> <span class="pos">n.</span> 裂缝、缝隙</li><li><b>sidewalk</b> <span class="pos">n.</span> 人行道</li><li><b>whistle</b> <span class="pos">v.</span> 吹口哨</li><li><b>stroller</b> <span class="pos">n.</span> 婴儿车</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>校门口的道别，妈妈差点哭出来</h2>
+            <div class="seg-en">disappeared into the school</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 177 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">校门口告别</span><span class="tag">故作镇定</span><span class="tag">第一次迈进学校</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>留意这个情感节点：最爱他的妈妈差点当众落泪，奥吉碍于面子躲开拥抱转身就走——故作镇定背后藏着对家人的依赖。</div>
+        <div class="body">
+<p>“Everyone’s just as nervous as you are,” said Via in my ear. “Just remember that this is everyone’s first day of school. Okay?”</p>
+<p>Mr. Tushman was greeting students and parents in front of the school entrance.</p>
+<p>I have to admit: so far, nothing bad had happened. I didn’t catch anyone staring or even noticing me. Only once did I look up to see some girls looking my way and whispering with their hands cupped over their mouths, but they looked away when they saw me notice them.</p>
+<p>We reached the front entrance.</p>
+<p>“Okay, so this is it, big boy,” said Dad, putting his hands on top of my shoulders.</p>
+<p>“Have a great first day. I love you,” said Via, giving me a big kiss and a hug.</p>
+<p>“You, too,” I said.</p>
+<p>“I love you, Auggie,” said Dad, hugging me.</p>
+<p>“Bye.”</p>
+<p>Then Mom hugged me, but I could tell she was about to cry, which would have totally embarrassed me, so I just gave her a fast hard hug, turned, and disappeared into the school.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅在奥吉耳边说大家跟他一样紧张，这是所有人的开学第一天。特鲁曼先生在校门口迎接师生。到目前为止没人盯着他看，只有几个女生捂嘴窃窃私语，被他一发现就移开目光。到校门口，爸爸把手放他肩上说“今天就是它了，大男孩”，维娅亲他和他告别，爸爸也抱他，妈妈想哭却强忍着——奥吉给了妈妈一个快速的紧抱，转身消失在校门里。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>so I just gave her a fast hard hug, turned, and disappeared into the school.</blockquote><p class="note">奥吉用“快速用力的拥抱”代替语言告别，转身消失在校门里——他没有回头，独自迈进了新生活。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>cupped</b> <span class="pos">adj.</span> （手）捂成杯状的</li><li><b>whispering</b> <span class="pos">n.</span> 窃窃私语、说悄悄话</li><li><b>entrance</b> <span class="pos">n.</span> 入口、大门</li><li><b>embarrassed</b> <span class="pos">adj.</span> 尴尬的、难为情的</li><li><b>disappeared</b> <span class="pos">v.</span> 消失了</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_10.html">← 上一单元</a>
+    <a href="wonder_unit_12.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第11/96 单元 · 第一部 · 奥吉 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u11.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

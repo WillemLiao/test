@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第52单元 邮件往来与寒假后的排挤</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 52 单元 · 邮件往来与寒假后的排挤</div>
+    <div class="unit-en">Letters, Emails, Facebook, Texts · Back from Winter Break</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1092 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>前半是续接书信：杰克父母回信朱利安妈妈并愿付牙科账单，杰克在Facebook上重新邀约奥吉，又发短信道歉认错。可即使奥吉原谅了他，元旦后重返学校的杰克却发现班里没人理他——阿莫斯、亨利、特里斯坦把他当瘟疫躲着，午饭时同桌也换了位置。杰克的直觉没错：这是朱利安的小圈子的报复，他被孤立成孤家寡人。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>给校长写道歉信却不肯说原因</h2>
+            <div class="seg-en">Dear Mr. Tushman</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">写信道歉</span><span class="tag">三缄其口</span><span class="tag">不愿牵连</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住杰克信中最矛盾的一点：他道歉，但拒绝说出真相，因为真相会连带他自己和朱利安都陷入麻烦。</div>
+        <div class="body">
+<p class="q">December 18</p>
+<p class="q">Dear Mr. Tushman,</p>
+<p>I am very, very sorry for punching Julian. It was very, very wrong for me to do that. I am writing a letter to him to tell him that, too. If it’s okay, I would really rather not tell you why I did what I did because it doesn’t really make it right anyway. Also, I would rather not make Julian get in trouble for having said something he should not have said.</p>
+<p class="q">Very sincerely,</p>
+<p class="q">Jack Will</p>
+<p class="q">December 18</p>
+<p class="q">Dear Julian,</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>12月18日，杰克给图什曼校长写信：他为打朱利安感到非常非常抱歉，也明白那是不对的，他会单独给朱利安写信道歉。但他宁愿不解释动手的原因，因为解释并不错，也不愿让朱利安为一句不该说的话挨罚。信末郑重落款「杰克·威尔」。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>If it's okay, I would really rather not tell you why I did what I did because it doesn't really make it right anyway.</blockquote><p class="note">would rather not = 宁愿不。杰克把原因咽在肚子里，因为他觉得解释了也不会让打人变得正当。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>punch</b> <span class="pos">v.</span> 用拳打</li><li><b>sincerely</b> <span class="pos">adv.</span> 真诚地（书信结尾用语）</li><li><b>rather</b> <span class="pos">adv.</span> 宁愿；would rather not 宁愿不</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>校长与家长之间的邮件拉锯</h2>
+            <div class="seg-en">He already had them in abundance</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 268 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">邮件交锋</span><span class="tag">校长护奥吉</span><span class="tag">偏见与反偏见</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对比双方的口径：朱利安的妈妈处处暗示奥吉是负担，图什曼则处处把奥吉说成一个优秀、值得尊重的学生。</div>
+        <div class="body">
+<p>I am very, very, very sorry for hitting you. It was wrong of me. I hope you are okay. I hope your grown-up tooth grows in fast. Mine always do.</p>
+<p class="q">Sincerely,</p>
+<p class="q">Jack Will</p>
+<p class="q">December 26</p>
+<p class="q">Dear Jack,</p>
+<p>Thank you so much for your letter. One thing I’ve learned after being a middle-school director for twenty years: there are almost always more than two sides to every story. Although I don’t know the details, I have an inkling about what may have sparked the confrontation with Julian.</p>
+<p>While nothing justifies striking another student—ever—I also know good friends are sometimes worth defending. This has been a tough year for a lot of students, as the first year of middle school usually is.</p>
+<p>Keep up the good work, and keep being the fine boy we all know you are.</p>
+<p class="q">All the best,</p>
+<p class="q">Lawrence Tushman</p>
+<p class="q">Middle-School Director</p>
+<p class="q">To: ltushman@beecherschool.edu</p>
+<p class="q">Cc: johnwill@phillipsacademy.edu; amandawill@copperbeech.org</p>
+<p class="q">Fr: melissa.albans@rmail.com</p>
+<p class="q">Subject: Jack Will</p>
+<p class="q">Dear Mr. Tushman,</p>
+<p>I spoke with Amanda and John Will yesterday, and they expressed their regret at Jack’s having punched our son, Julian, in the mouth. I am writing to let you know that my husband and I support your decision to allow Jack to return to Beecher Prep after a two-day suspension. Although I think hitting a child would be valid grounds for expulsion in other schools, I agree such extreme measures aren’t warranted here. We have known the Will family since our boys were in kindergarten, and are confident that every measure will be taken to ensure this doesn’t happen again.</p>
+<p class="q">To that end, I wonder if Jack’s unexpectedly violent behavior might have been a result of too much pressure being placed on his young shoulders? I am speaking specifically of the new child with special needs who both Jack and Julian were asked to “befriend.” In retrospect, and having now seen the child in question at various school functions and in the class pictures, I think it may have been too much to ask of our children to be able to process all that. Certainly, when Julian mentioned he was having a hard time befriending the boy, we told him he was “off the hook” in that regard. We think the transition to middle school is hard enough without having to place greater burdens or hardships on these young, impressionable minds. I should also mention that, as a member of the school board, I was a little disturbed that more consideration was not given during this child’s application process to the fact that Beecher Prep is not an inclusion school. There are many parents—myself included—who question the decision to let this child into our school at all. At the very least, I am somewhat troubled that this child was not held to the same stringent application standards (i.e. interview) that the rest of the incoming middle-school students were.</p>
+<p class="q">Best,</p>
+<p class="q">Melissa Perper Albans</p>
+<p class="q">To: melissa.albans@rmail.com</p>
+<p class="q">Fr: ltushman@beecherschool.edu</p>
+<p class="q">Cc: johnwill@phillipsacademy.edu; amandawill@copperbeech.org</p>
+<p class="q">Subject: Jack Will</p>
+<p class="q">Dear Mrs. Albans,</p>
+<p>Thanks for your email outlining your concerns. Were I not convinced that Jack Will is extremely sorry for his actions, and were I not confident that he would not repeat those actions, rest assured that I would not be allowing him back to Beecher Prep.</p>
+<p>As for your other concerns regarding our new student August, please note that he does not have special needs. He is neither disabled, handicapped, nor developmentally delayed in any way, so there was no reason to assume anyone would take issue with his admittance to Beecher Prep—whether it is an inclusion school or not. In terms of the application process, the admissions director and I both felt it within our right to hold the interview off-site at August’s home for reasons that are obvious. We felt that this slight break in protocol was warranted but in no way prejudicial—in one way or another—to the application review. August is an extremely good student, and has secured the friendship of some truly exceptional young people, including Jack Will.</p>
+<p>At the beginning of the school year, when I enlisted certain children to be a “welcoming committee” to August, I did so as a way of easing his transition into a school environment. I did not think asking these children to be especially kind to a new student would place any extra “burdens or hardships” on them. In fact, I thought it would teach them a thing or two about empathy, and friendship, and loyalty.</p>
+<p>As it turns out, Jack Will didn’t need to learn any of these virtues—he already had them in abundance.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>拼起两封往来的信：杰克给朱利安道歉、祝他恒牙快长，图什曼回信点明「故事几乎都不止两面」；随后是朱利安妈妈梅丽莎那封尖锐的邮件，质疑奥吉带给大家的「负担」。图什曼逐条回驳：奥吉没有特殊需要、面试改在奥吉家合理、奥吉是极好的学生，还赢得了一些真正出色年轻人的友谊——包括杰克·威尔。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>As it turns out, Jack Will didn't need to learn any of these virtues—he already had them in abundance.</blockquote><p class="note">in abundance = 大量地、丰富地。校长说杰克不需要学这些美德，因为他早已具备——这是对杰克人品的肯定。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>confrontation</b> <span class="pos">n.</span> 对抗、冲突</li><li><b>admittance</b> <span class="pos">n.</span> 准许进入、录取</li><li><b>empathy</b> <span class="pos">n.</span> 同理心、共情</li><li><b>abundance</b> <span class="pos">n.</span> 丰富、大量</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>道歉短信与寒假后的冰冷气氛</h2>
+            <div class="seg-en">There was no clean slate</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 284 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">跨年短信</span><span class="tag">奥吉的原谅</span><span class="tag">开学冷遇</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对比两条线：奥吉在短信里渐渐原谅杰克，而校园里朱利安圈子已经开始用「冷暴力」报复杰克——故事进入冰点。</div>
+        <div class="body">
+<p>Thank you again for being in touch.</p>
+<p class="q">Sincerely,</p>
+<p class="q">Lawrence Tushman</p>
+<p class="q">To: melissa.albans@rmail.com</p>
+<p class="q">Fr: johnwill@phillipsacademy.edu</p>
+<p class="q">Cc: ltushman@beecherschool.edu; amandawill@copperbeech.org</p>
+<p class="q">Subject: Jack</p>
+<p class="q">Hi Melissa,</p>
+<p>Thank you for being so understanding about this incident with Jack. He is, as you know, extremely sorry for his actions. I hope you do accept our offer to pay Julian’s dental bills.</p>
+<p>We are very touched by your concern regarding Jack’s friendship with August. Please know we have asked Jack if he felt any undue pressure about any of this, and the answer was a resolute “no.” He enjoys August’s company and feels like he has made a good friend.</p>
+<p class="q">Hope you have a</p>
+<p class="q">Happy New Year!</p>
+<p class="q">John and Amanda Will</p>
+<p class="q">Hi August,</p>
+<p class="q">Jacklope Will wants to be friends with you on Facebook.</p>
+<p class="q">Jackalope Will</p>
+<p class="q">32 mutual friends</p>
+<p class="q">Thanks,</p>
+<p class="q">The Facebook Team</p>
+<p class="q">To: auggiedoggiepullman@email.com</p>
+<p class="q">Subject: Sorry ! ! ! ! ! !</p>
+<p class="q">Message:</p>
+<p class="q">Hey august. Its me Jack Will. I noticed im not on ur friends list anymore. Hope u friend me agen cuz im really sorry. I jus wanted 2 say that. Sorry. I know why ur mad at me now Im sorry I didn’t mean the stuff I said. I was so stupid. I hope u can 4give me</p>
+<p class="q">Hope we can b friends agen.</p>
+<p class="q">Jack</p>
+<p class="q">1 New Text Message</p>
+<p class="q">From: AUGUST</p>
+<p class="q">Dec 31 4:47PM</p>
+<p class="q">got ur message u know why im mad at u now?? did Summer tell u?</p>
+<p class="q">1 New Text Message</p>
+<p class="q">From: JACKWILL</p>
+<p class="q">Dec 31 4:49PM</p>
+<p class="q">She told me bleeding scream as hint but didn’t get it at first then I remember seeing bleeding scream in homeroom on Hallween. didn’t know it was you thought u were coming as Boba Fett.</p>
+<p class="q">1 New Text Message</p>
+<p class="q">From: AUGUST</p>
+<p class="q">Dec 31 4:51PM</p>
+<p class="q">I changed my mind at the last minute. Did u really punch Julian?</p>
+<p class="q">1 New Text Message</p>
+<p class="q">From: JACKWILL</p>
+<p class="q">Dec 31 4:54PM</p>
+<p class="q">Yeah i punchd him knocked out a tooth in the back. A baby tooth.</p>
+<p class="q">1 New Text Message</p>
+<p class="q">From: AUGUST</p>
+<p class="q">Dec 31 4:55PM</p>
+<p class="q">whyd u punch him????????</p>
+<p class="q">1 New Text Message</p>
+<p class="q">From: JACKWILL</p>
+<p class="q">Dec 31 4:56PM</p>
+<p class="q">I dunno</p>
+<p>DESPITE WHAT TUSHMAN said, there was no “clean slate” when I went back to school in January. In fact, things were totally weird from the second I got to my locker in the morning. I’m next to Amos, who’s always been a pretty straight-up kid, and I was like, “Yo, what up?” and he basically just nodded a half hello and closed his locker door and left. I was like, okay, that was bizarre. And then I said: “Hey, what up?” to Henry, who didn’t even bother half-smiling but just looked away.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克的父母给梅丽莎回信，愿意承担朱利安的看牙费。随后杰克在Facebook上重新请求和奥吉做朋友，又发短信向奥吉认错，说他知道奥吉为什么生自己的气，他之前说的话太蠢了，希望得到原谅。奥吉回短信问「你知道我为什么生你的气了吗？是不是萨默告诉你的？」，两人在跨年夜互发短信摊开了万圣节的事。可寒假后回到学校，杰克的储物柜旁阿莫斯只半点头就关门走了，亨利干脆转开目光。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I jus wanted 2 say that. Sorry. I know why ur mad at me now Im sorry I didn't mean the stuff I said. I was so stupid. I hope u can 4give me</blockquote><p class="note">这是短信口语缩写：jus = just，ur = you are，2 = to，u = you，4give = forgive。意思：我只是想说这些，对不起。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>mutual friends</b> <span class="pos">n.</span> 共同好友</li><li><b>4give</b> <span class="pos">phr.</span> forgive（短信缩写）原谅</li><li><b>mad at</b> <span class="pos">phr.</span> 生……的气</li><li><b>clean slate</b> <span class="pos">phr.</span> 一笔勾销、从新开始</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>五分钟被两个人当空气</h2>
+            <div class="seg-en">This is Julian's payback</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 260 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">被孤立</span><span class="tag">瘟疫效应</span><span class="tag">朋友离席</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克观察到的「分化」：真正对他好的只有奥吉和少数人，其余都躲开——昔日的朋友正被朱利安阵营收编。</div>
+        <div class="body">
+<p>Okay, so something’s up. Dissed by two people in less than five minutes. Not that anyone’s counting. I thought I’d try one more time, with Tristan, and boom, same thing. He actually looked nervous, like he was afraid of talking to me.</p>
+<p>I’ve got a form of the Plague now, is what I thought. This is Julian’s payback.</p>
+<p>And that’s pretty much how it went all morning. Nobody talked to me. Not true: the girls were totally normal with me. And August talked to me, of course. And, actually, I have to say both Maxes said hello, which made me feel kind of bad for never, ever hanging out with them in the five years I’ve been in their class.</p>
+<p>I hoped lunch would be better, but it wasn’t. I sat down at my usual table with Luca and Isaiah. I guess I thought since they weren’t in the super-popular group but were kind of middle-of-the-road jock kids that I’d be safe with them. But they barely nodded when I said hello. Then, when our table was called, they got their lunches and never came back. I saw them find a table way over at the other end of the cafeteria. They weren’t at Julian’s table, but they were near him, like on the fringe of popularity. So anyway, I’d been ditched. I knew table switching was something that happened in the fifth grade, but I never thought it would happen to me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克想再试一次特里斯坦，结果对方甚至露出害怕的样子，像是怕和他说话。杰克心里浮现一个念头：自己现在像「带着瘟疫」，这是朱利安的报复。整个上午没人理他——除了女生们照常对他说话，奥吉也理他，两个麦克斯还跟他打了招呼。可午饭时他在常坐的桌上，卢卡和艾赛亚只草草点头，端了餐盘就再没回来，坐到了食堂另一头、靠近朱利安位置的地方。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I've got a form of the Plague now, is what I thought. This is Julian's payback.</blockquote><p class="note">Plague = 瘟疫；payback = 报复。杰克用「染上瘟疫」形容自己被整个班级回避，并认定这是朱利安的报复。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>diss</b> <span class="pos">v.</span> 轻视、冷落</li><li><b>payback</b> <span class="pos">n.</span> 报复、偿还</li><li><b>Plague</b> <span class="pos">n.</span> 瘟疫</li><li><b>ditch</b> <span class="pos">v.</span> 把某人甩下、抛弃</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>独自一张桌，躲进图书馆</h2>
+            <div class="seg-en">I decided to skip lunch</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 38 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">孤独午餐</span><span class="tag">躲进图书馆</span><span class="tag">孤立无援</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>体会独处的重量：被孤立的疼痛不在于没饭吃，而在于「没有人坐在你身边」。</div>
+        <div class="body">
+<p>It felt really awful being at the table by myself. I felt like everyone was watching me. It also made me feel like I had no friends. I decided to skip lunch and go read in the library.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这一小段很短（不到1分钟）。杰克一个人坐在食堂的桌前，觉得特别难受，好像所有人都在看着他，也让他觉得自己一个朋友都没有。于是他决定不吃午饭，去图书馆看书。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It felt really awful being at the table by myself. I felt like everyone was watching me. It also made me feel like I had no friends. I decided to skip lunch and go read in the library.</blockquote><p class="note">skip lunch = 不吃午饭。杰克宁可饿着躲进图书馆，也不愿被人看见自己孤零零的样子。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>awful</b> <span class="pos">adj.</span> 糟糕的、难受的</li><li><b>by myself</b> <span class="pos">phr.</span> 独自一个人</li><li><b>skip</b> <span class="pos">v.</span> 跳过、略过</li><li><b>library</b> <span class="pos">n.</span> 图书馆</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_51.html">← 上一单元</a>
+    <a href="wonder_unit_53.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第52/96 单元 · 第四部 · 杰克 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u52.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

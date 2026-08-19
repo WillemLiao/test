@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第45单元 杰克改变主意的原因，与奥吉的四个亮点</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 45 单元 · 杰克改变主意的原因，与奥吉的四个亮点</div>
+    <div class="unit-en">Why I Changed My Mind · Four Things</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1116 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>杰克问妈妈校长还打电话叫了谁，得知还有朱利安和夏洛特，他很嫌弃朱利安是个假人。接着杰克拼命向妈妈描述奥吉的长相有多吓人，弟弟杰米还想起来自己曾对着奥吉尖叫跑开——被妈妈狠狠批评。谁知杰克却突然决定“好吧，我去”，原来是因为小杰米都能那样伤人，他担心奥吉在中学没有立足之地。之后杰克列了四点：他的脸会习惯、他很风趣、他很聪明、而且杰克真心想和他做朋友。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>校长还叫了朱利安和夏洛特</h2>
+            <div class="seg-en">Who else did Mr. Tushman call?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 247 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">校长的人选</span><span class="tag">朱利安与夏洛特</span><span class="tag">杰克作证</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克对朱利安“phony（假人）”、夏洛特“Goody Two-Shoes（老好人）”的刻薄评价——为后面人物的关系埋下伏笔。</div>
+        <div class="body">
+<p>“WHO ELSE DID Mr. Tushman call?” I asked Mom later that night. “Did he tell you?”</p>
+<p>“He mentioned Julian and Charlotte.”</p>
+<p>“Julian!” I said. “Ugh. Why Julian?”</p>
+<p>“You used to be friends with Julian!”</p>
+<p>“Mom, that was like in kindergarten. Julian’s the biggest phony there is. And he’s trying so hard to be popular all the time.”</p>
+<p>“Well,” said Mom, “at least Julian agreed to help this kid out. Got to give him credit for that.”</p>
+<p>I didn’t say anything because she was right.</p>
+<p>“What about Charlotte?” I asked. “Is she doing it, too?”</p>
+<p>“Yes,” Mom said.</p>
+<p>“Of course she is. Charlotte’s such a Goody Two-Shoes,” I answered.</p>
+<p>“Boy, Jack,” said Mom, “you seem to have a problem with everybody these days.”</p>
+<p>“It’s just …,” I started. “Mom, you have no idea what this kid looks like.”</p>
+<p>“I can imagine.”</p>
+<p>“No! You can’t! You’ve never seen him. I have.”</p>
+<p>“It might not even be who you’re thinking it is.”</p>
+<p>“Trust me, it is. And I’m telling you, it’s really, really bad. He’s deformed, Mom. His eyes are like down here.” I pointed to my cheeks. “And he has no ears. And his mouth is like …”</p>
+<p>Jamie had walked into the kitchen to get a juice box from the fridge.</p>
+<p>“Ask Jamie,” I said. “Right, Jamie? Remember that kid we saw in the park after school last year? The kid named August? The one with the face?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>晚上杰克问妈妈，校长还打电话叫了谁。得知有朱利安时他直犯恶心，说明友在幼儿园时代就结束了、朱利安是最大的假人；妈妈却提醒他至少朱利安同意帮忙。说起夏洛特，杰克叫她“老好人”。然后他开始极力向妈妈描述奥吉的长相：眼睛低到脸颊、没有耳朵、嘴也……弟弟杰米正好进厨房拿果汁，杰克拉他作证。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He's deformed, Mom. His eyes are like down here. I pointed to my cheeks. And he has no ears.</blockquote><p class="note">deformed = 畸形的。杰克用手比划着向妈妈描述奥吉的外貌，想证明这件事有多糟糕，也让读者更能体会奥吉的脸带来的冲击。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>phony</b> <span class="pos">n./adj.</span> 假人、虚伪的</li><li><b>kindergarten</b> <span class="pos">n.</span> 幼儿园</li><li><b>popular</b> <span class="pos">adj.</span> 受欢迎的、有人缘的</li><li><b>Goody Two-Shoes</b> <span class="pos">n.</span> 老好人、假正经的人</li><li><b>deformed</b> <span class="pos">adj.</span> 畸形的、变形的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>弟弟的尖叫与妈妈的失望</h2>
+            <div class="seg-en">He gave me a nightmare</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">弟弟的噩梦</span><span class="tag">妈妈的批评</span><span class="tag">杰米的童言</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意妈妈的态度：她不在乎杰米“控诉”奥吉吓人，反而批评两个儿子缺乏同情心——这是杰克态度转变的起点。</div>
+        <div class="body">
+<p>“Oh, that kid?” said Jamie, his eyes opening wide. “He gave me a nightmare!! Remember, Mommy? That nightmare about the zombies from last year?”</p>
+<p>“I thought that was from watching a scary movie!” answered Mom.</p>
+<p>“No!” said Jamie, “it was from seeing that kid! When I saw him, I was like, ‘Ahhh!’ and I ran away. …”</p>
+<p>“Wait a minute,” said Mom, getting serious. “Did you do that in front of him?”</p>
+<p>“I couldn’t help it!” said Jamie, kind of whining.</p>
+<p>“Of course you could help it!” Mom scolded. “Guys, I have to tell you, I’m really disappointed by what I’m hearing here.” And she looked like how she sounded. “I mean, honestly, he’s just a little boy—just like you! Can you imagine how he felt to see you running away from him, Jamie, screaming?”</p>
+<p>“It wasn’t a scream,” argued Jamie. “It was like an ‘Ahhh!’” He put his hands on his cheeks and started running around the kitchen.</p>
+<p>“Come on, Jamie!” said Mom angrily. “I honestly thought both my boys were more sympathetic than that.”</p>
+<p>“What’s sympathetic?” said Jamie, who was only going into the second grade.</p>
+<p>“You know exactly what I mean by sympathetic, Jamie,” said Mom.</p>
+<p>“It’s just he’s so ugly, Mommy,” said Jamie.</p>
+<p>“Hey!” Mom yelled, “I don’t like that word! Jamie, just get your juice box. I want to talk to Jack alone for a second.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰米瞪大眼睛说：那个孩子害他做噩梦了，就像去年的僵尸噩梦，而噩梦其实不是因为恐怖片，是因为看到那个孩子。妈妈严肃起来，批评两个儿子不该在奥吉面前那样喊叫逃跑。杰米辩解说那只是“啊！”不是尖叫，还边喊边满厨房跑。杰米竟说“他就是太丑了，妈妈”，妈妈让他闭嘴去拿果汁，要单独跟杰克谈谈。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I honestly thought both my boys were more sympathetic than that.</blockquote><p class="note">sympathetic = 有同情心、体谅人的。妈妈失望地说：我本以为我的两个儿子比这更有同情心。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>nightmare</b> <span class="pos">n.</span> 噩梦</li><li><b>whine</b> <span class="pos">v.</span> 哭哭啼啼、抱怨</li><li><b>scold</b> <span class="pos">v.</span> 斥责、数落</li><li><b>sympathetic</b> <span class="pos">adj.</span> 有同情心的、体谅的</li><li><b>ugly</b> <span class="pos">adj.</span> 丑的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>我同意了，并解释为何改变主意</h2>
+            <div class="seg-en">Why I changed my mind</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 292 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">转变心意</span><span class="tag">挺身而出</span><span class="tag">奥吉很酷</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克改变主意的真实原因：不是怕训话、不是保护奥吉，而是“连好孩子都能伤人”让他警醒。这是重要的性格转折点。</div>
+        <div class="body">
+<p>“Look, Jack,” said Mom as soon as he left, and I knew she was about to give me a whole speech.</p>
+<p>“Okay, I’ll do it,” I said, which completely shocked her.</p>
+<p>“You will?”</p>
+<p>“Yes!”</p>
+<p>“So I can call Mr. Tushman?”</p>
+<p>“Yes! Mom, yes, I said yes!”</p>
+<p>Mom smiled. “I knew you’d rise to the occasion, kiddo. Good for you. I’m proud of you, Jackie.” She messed up my hair.</p>
+<p>So here’s why I changed my mind. It wasn’t so I wouldn’t have to hear Mom give me a whole lecture. And it wasn’t to protect this August kid from Julian, who I knew would be a jerk about the whole thing. It was because when I heard Jamie talking about how he had run away from August going ‘Ahhh,’ I suddenly felt really bad. The thing is, there are always going to be kids like Julian who are jerks. But if a little kid like Jamie, who’s usually a nice enough kid, can be that mean, then a kid like August doesn’t stand a chance in middle school.</p>
+<p>FIRST OF ALL, you do get used to his face. The first couple of times I was like, whoa, I’m never going to get used to this. And then, after about a week, I was like, huh, it’s not so bad.</p>
+<p>Second of all, he’s actually a really cool dude. I mean, he’s pretty funny. Like, the teacher will say something and August will whisper something funny to me that no one else hears and totally make me crack up. He’s also just, overall, a nice kid. Like, he’s easy to hang out with and talk to and stuff.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈正准备好好训杰克一顿，杰克却抢先说“好吧，我去”，把妈妈惊到了。妈妈说就知道他会“挺身而出”，还欣慰地揉乱他的头发。杰克坦白自己改变主意不是因为怕听训话，也不是为了保护奥吉不受朱利安欺负，而是因为听到小杰米那样尖叫逃跑，他忽然很难过——连平时不错的杰米都能这么刻薄，那奥吉在中学真没活路了。之后他列出奥吉的优点：他的脸会习惯，而且奥吉是个很酷、很搞笑的人，两人相处很轻松。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Then a kid like August doesn't stand a chance in middle school.</blockquote><p class="note">stand a chance = 有机会、有希望。杰克的顿悟：如果连杰米这样的好孩子都会这样伤人，那奥吉在中学就几乎没有立足之地了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>rise to the occasion</b> <span class="pos">phr.</span> 挺身而出、上得了台面</li><li><b>lecture</b> <span class="pos">n.</span> 训话、长篇大论的说教</li><li><b>jerk</b> <span class="pos">n.</span> 讨厌鬼、混蛋</li><li><b>stand a chance</b> <span class="pos">phr.</span> 有机会、有希望</li><li><b>crack up</b> <span class="pos">phr.</span> 大笑、忍俊不禁</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>抄作业被老师抓到，奥吉替我撒谎</h2>
+            <div class="seg-en">Fourthly, I'd choose August</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 337 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">抄作业被抓</span><span class="tag">奥吉的义气</span><span class="tag">真心结交</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“抄作业”事件里奥吉的选择：明知是假的，却为了护着杰克而撒谎——证明奥吉是真心对杰克好。</div>
+        <div class="body">
+<p>Third of all, he’s really smart. I thought he’d be behind everyone because he hadn’t gone to school before. But in most things he’s way ahead of me. I mean, maybe not as smart as Charlotte or Ximena, but he’s up there. And unlike Charlotte or Ximena, he lets me cheat off of him if I really need to (though I’ve only needed to a couple of times). He also let me copy his homework once, though we both got in trouble for it after class.</p>
+<p>“The two of you got the exact same answers wrong on yesterday’s homework,” Ms. Rubin said, looking at both of us like she was waiting for an explanation. I didn’t know what to say, because the explanation would have been: Oh, that’s because I copied August’s homework.</p>
+<p>But August lied to protect me. He was like, “Oh, that’s because we did our homework together last night,” which wasn’t true at all.</p>
+<p>“Well, doing homework together is a good thing,” Ms. Rubin answered, “but you’re supposed to still do it separately, okay? You could work side by side if you want, but you can’t actually do your homework together, okay? Got it?”</p>
+<p>After we left the classroom, I said: “Dude, thanks for doing that.” And he was like, “No problem.”</p>
+<p>That was cool.</p>
+<p>Fourthly, now that I know him, I would say I actually do want to be friends with August. At first, I admit it, I was only friendly to him because Mr. Tushman asked me to be especially nice and all that. But now I would choose to hang out with him. He laughs at all my jokes. And I kind of feel like I can tell August anything. Like he’s a good friend. Like, if all the guys in the fifth grade were lined up against a wall and I got to choose anyone I wanted to hang out with, I would choose August.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克继续夸奥吉：他很聪明，多数科目都比杰克强，还会让杰克抄他的答案。有一次两人抄作业被抓，一道错题的一模一样，鲁宾老师来追问。奥吉撒谎说两人是一起做的作业来保护杰克，被老师提醒要分开做。事后杰克道谢，奥吉说“没问题”。杰克最后说：虽然一开始友好只是因为校长要求，但现在他会真心选择跟奥吉玩，甚至如果要挑一个五年级的人做朋友，他会选奥吉。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>If all the guys in the fifth grade were lined up against a wall and I got to choose anyone I wanted to hang out with, I would choose August.</blockquote><p class="note">line up against a wall = 靠墙排成一排。杰克的告白：哪怕能随意挑选，他也只会选奥吉作伴——这是对友情转折的总结。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>cheat off</b> <span class="pos">phr.</span> 偷看（别人的答案）抄袭</li><li><b>copy</b> <span class="pos">v.</span> 抄写、复制</li><li><b>homework</b> <span class="pos">n.</span> 家庭作业</li><li><b>side by side</b> <span class="pos">phr.</span> 并排、肩并肩</li><li><b>explanation</b> <span class="pos">n.</span> 解释</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_44.html">← 上一单元</a>
+    <a href="wonder_unit_46.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第45/96 单元 · 第四部 · 杰克 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u45.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

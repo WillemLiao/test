@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第17单元 夏天之桌：第一个主动坐过来的女孩</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 17 单元 · 夏天之桌：第一个主动坐过来的女孩</div>
+    <div class="unit-en">The Summer Table</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 618 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>在食堂里，一个叫萨默（Summer，夏天的）的女孩主动坐到奥吉对面，一边抱怨学校的奶酪意面不如自己带的三明治，一边和他聊天。她赶走了来拉她回原桌的同学，还发现两人的名字能凑成“夏天”——于是想出一套“只有夏天名字才能坐”的午饭桌游戏，把奥吉、她自己、朱利安、瑞德，连老师佩托萨都编了进去，还替杰克的英文名找到能进桌的说辞。这个意外的朋友让奥吉第一天有了点暖意。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>萨默端着午饭坐到我面前</h2>
+            <div class="seg-en">My name is Summer</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">食堂</span><span class="tag">新朋友萨默</span><span class="tag">主动示好</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这个女孩的特别之处：她是这一路走来第一个主动问“这座有人吗”、还愿意留下来和奥吉分享午饭的孩子——她的主动打破了奥吉的孤独。</div>
+        <div class="body">
+<p>“HEY, IS THIS seat taken?”</p>
+<p>I looked up, and a girl I never saw before was standing across from my table with a lunch tray full of food. She had long wavy brown hair, and wore a brown T-shirt with a purple peace sign on it.</p>
+<p>“Uh, no,” I said.</p>
+<p>She put her lunch tray on the table, plopped her backpack on the floor, and sat down across from me. She started to eat the mac and cheese on her plate.</p>
+<p>“Ugh,” she said after the swallowing the first bite. “I should have brought a sandwich like you did.”</p>
+<p>“Yeah,” I said, nodding.</p>
+<p>“My name is Summer, by the way. What’s yours?”</p>
+<p>“August.”</p>
+<p>“Cool,” she said.</p>
+<p>“Summer!” Another girl came over to the table carrying a tray. “Why are you sitting here? Come back to the table.”</p>
+<p>“It was too crowded,” Summer answered her. “Come sit here. There’s more room.”</p>
+<p>The other girl looked confused for a second. I realized she had been one of the girls I had caught looking at me just a few minutes earlier: hand cupped over her mouth, whispering. I guess Summer had been one of the girls at that table, too.</p>
+<p>“Never mind,” said the girl, leaving.</p>
+<p>Summer looked at me, shrugged-smiled, and took another bite of her mac and cheese.</p>
+<p>“Hey, our names kind of match,” she said as she chewed.</p>
+<p>I guess she could tell I didn’t know what she meant.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>一个从没见过的女孩端着满盘的午饭站到奥吉对面，问这座能不能坐——她留着卷卷的棕色长发，穿着紫色和平标志的棕色T恤。她坐下就抱怨食堂的奶酪意面难吃，说自己该像奥吉一样带三明治。她自报名字叫萨默（夏天），又问奥吉的名字。另一个女孩追过来叫她回原桌，萨默拒绝了；奥吉认出那正是几分钟前捂嘴看他、低声说话的女生之一。萨默耸耸肩笑了笑，继续吃东西。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;My name is Summer, by the way. What's yours?&quot;</blockquote><p class="note">by the way = 顺便说一句。她用最普通的寒暄开头，被别的孩子嫌弃的午餐时间，对萨默来说只是一个可以安静聊天的地方。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>wavy</b> <span class="pos">adj.</span> （头发）波浪状的</li><li><b>peace sign</b> <span class="pos">n.</span> 和平手势、和平标志</li><li><b>plop</b> <span class="pos">v.</span> 扑通一声放下</li><li><b>swallow</b> <span class="pos">v.</span> 吞咽</li><li><b>crowded</b> <span class="pos">adj.</span> 拥挤的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>夏天之桌的游戏规则</h2>
+            <div class="seg-en">The “summer only” lunch table</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 309 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">夏天之桌</span><span class="tag">名字游戏</span><span class="tag">归属感</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住这个游戏背后的暖意：萨默把每个名字都编成“夏天的东西”绕进来开列名单——她是在用一种充满想象力的方式，为奥吉创造归属感。</div>
+        <div class="body">
+<p>“Summer? August?” she said, smiling, her eyes open wide, as she waited for me to get it.</p>
+<p>“Oh, yeah,” I said after a second.</p>
+<p>“We can make this the ‘summer only’ lunch table,” she said. “Only kids with summer names can sit here. Let’s see, is there anyone here named June or July?”</p>
+<p>“There’s a Maya,” I said.</p>
+<p>“Technically, May is spring,” Summer answered, “but if she wanted to sit here, we could make an exception.” She said it as if she’d actually thought the whole thing through. “There’s Julian. That’s like the name Julia, which comes from July.”</p>
+<p>I didn’t say anything.</p>
+<p>“There’s a kid named Reid in my English class,” I said.</p>
+<p>“Yeah, I know Reid, but how is Reid a summer name?” she asked.</p>
+<p>“I don’t know.” I shrugged. “I just picture, like, a reed of grass being a summer thing.”</p>
+<p>“Yeah, okay.” She nodded, pulling out her notebook. “And Ms. Petosa could sit here, too. That kind of sounds like the word ‘petal,’ which I think of as a summer thing, too.”</p>
+<p>“I have her for homeroom,” I said.</p>
+<p>“I have her for math,” she answered, making a face.</p>
+<p>She started writing the list of names on the second-to-last page of her notebook.</p>
+<p>“So, who else?” she said.</p>
+<p>By the end of lunch, we had come up with a whole list of names of kids and teachers who could sit at our table if they wanted. Most of the names weren’t actually summer names, but they were names that had some kind of connection to summer. I even found a way of making Jack Will’s name work by pointing out that you could turn his name into a sentence about summer, like “Jack will go to the beach,” which Summer agreed worked fine.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默说两人的名字“夏天”和“八月”正好是一对，提议把这张桌子当成“只有夏天名字才能坐”的桌。她认真盘算起来：名字像七月而生的朱利安可以入座，迈娅（May是五月、算春天）可以破例；奥吉说英语课有个叫瑞德（Reid，联想起岸边的芦苇）的也能坐，两人又把老师佩托萨夫人（像花瓣petal，也是夏天的东西）算进去。到午饭后，他们凑出一整张能在夏天之桌吃饭的分名字，连杰克的“杰克会去海边”都被想出来了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;We can make this the 'summer only' lunch table,&quot; she said. &quot;Only kids with summer names can sit here.&quot;</blockquote><p class="note">summer only = 只有夏天（名字）才能坐。萨默发明了这个规则，等于给了奥吉一张只属于他们的桌子。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>make an exception</b> <span class="pos">phr.</span> 破例、网开一面</li><li><b>reed</b> <span class="pos">n.</span> 芦苇、草丛</li><li><b>petal</b> <span class="pos">n.</span> 花瓣</li><li><b>connection</b> <span class="pos">n.</span> 联系、关联</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>没有夏天名字也行，只要人好</h2>
+            <div class="seg-en">Even if it's a winter name</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 65 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">善意第一</span><span class="tag">冬天的名字</span><span class="tag">萨默的模样</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一段很短，却点出萨默的底色：“人好就让坐”，说明她真正在意的从来不是名字游戏，而是善意本身。</div>
+        <div class="body">
+<p>“But if someone doesn’t have a summer name and wants to sit with us,” she said very seriously, “we’ll still let them if they’re nice, okay?”</p>
+<p>“Okay.” I nodded. “Even if it’s a winter name.”</p>
+<p>“Cool beans,” she answered, giving me a thumbs-up.</p>
+<p>Summer looked like her name. She had a tan, and her eyes were green like a leaf.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默很认真地说，如果有人没有夏天的名字又想跟他们坐，只要对方人好就还是可以让。奥吉点头答应，说哪怕是个冬天的名字也行。萨默比了个赞，说了句“太棒了”。作者顺带描写：萨默果然人如其名，皮肤晒得黝黑，眼睛绿得像片叶子。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;But if someone doesn't have a summer name and wants to sit with us,&quot; she said very seriously, &quot;we'll still let them if they're nice, okay?&quot;</blockquote><p class="note">very seriously = 非常认真地。萨默立下一条真正的规则：人好就欢迎。话里藏着她结交奥吉的真心。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>seriously</b> <span class="pos">adv.</span> 认真地、严肃地</li><li><b>thumbs-up</b> <span class="pos">n.</span> 竖起大拇指（表示赞许）</li><li><b>tan</b> <span class="pos">n.</span> 晒黑的肤色</li><li><b>leaf</b> <span class="pos">n.</span> 叶子</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_16.html">← 上一单元</a>
+    <a href="wonder_unit_18.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第17/96 单元 · 第一部 · 奥吉 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u17.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

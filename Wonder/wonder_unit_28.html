@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第28单元 外婆的最后一句话：你是我的全部</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 28 单元 · 外婆的最后一句话：你是我的全部</div>
+    <div class="unit-en">Seeing August</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 990 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>维娅讲述她第一次用“别人看奥吉的眼光”看弟弟，以及她最爱的外婆格朗丝之死。她十一岁那年去外婆家待了四周，那是她最快乐的日子；回家那天她短暂地像陌生人一样看待奥吉，之后心里就有了“两个奥吉”。两个月后外婆突发心脏病去世。临终前外婆告诉她一个秘密：她最爱的是维娅，外婆说“你是我的全部”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我从不觉得奥吉奇怪，直到去外婆家</h2>
+            <div class="seg-en">Seeing August</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 297 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">外婆家</span><span class="tag">快乐时光</span><span class="tag">不被注视</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意外婆这段时光是维娅生活里少有的“只属于自己”的快乐，与家里围绕奥吉的日常形成对比。</div>
+        <div class="body">
+<p>I NEVER USED to see August the way other people saw him. I knew he didn’t look exactly normal, but I really didn’t understand why strangers seemed so shocked when they saw him. Horrified. Sickened. Scared. There are so many words I can use to describe the looks on people’s faces. And for a long time I didn’t get it. I’d just get mad. Mad when they stared. Mad when they looked away. “What the heck are you looking at?” I’d say to people—even grown-ups.</p>
+<p>Then, when I was about eleven, I went to stay with Grans in Montauk for four weeks while August was having his big jaw surgery. This was the longest I’d ever been away from home, and I have to say it was so amazing to suddenly be free of all that stuff that made me so mad. No one stared at Grans and me when we went to town to buy groceries. No one pointed at us. No one even noticed us.</p>
+<p>Grans was one of those grandmothers who do everything with their grandkids. She’d run into the ocean if I asked her to, even if she had nice clothes on. She would let me play with her makeup and didn’t mind if I used it on her face to practice my face-painting skills. She’d take me for ice cream even if we hadn’t eaten dinner yet. She’d draw chalk horses on the sidewalk in front of her house. One night, while we were walking back from town, I told her that I wished I could live with her forever. I was so happy there. I think it might have been the best time in my life.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说她以前从不用别人的眼光看奥吉，不理解陌生人为何又惊恐又躲闪，只为此生气，甚至质问大人。十一岁那年奥吉做下巴大手术，她去外婆家住了四周，那是她离开家最久、也最快乐的一段时间——没人盯着她们看，外婆陪她做各种开心事，她甚至说想永远住下去。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I think it might have been the best time in my life.</blockquote><p class="note">best time = 最美好的时光。维娅把在外婆家的四周视为人生中最快乐的时期，为后面外婆离世做铺垫。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>horrified</b> <span class="pos">adj.</span> 惊恐万分的</li><li><b>groceries</b> <span class="pos">n.</span> 食品杂货</li><li><b>chalk</b> <span class="pos">n.</span> 粉笔</li><li><b>sidewalk</b> <span class="pos">n.</span> 人行道</li><li><b>forever</b> <span class="pos">adv.</span> 永远</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>那一瞬，我像陌生人一样看他</h2>
+            <div class="seg-en">The peephole</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 332 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">滑门时刻</span><span class="tag">两个奥吉</span><span class="tag">外婆猝逝</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“两个奥吉”这个意象：一段滑门时刻让维娅意识到姐姐的爱与正常孩子的目光可以同时存在。</div>
+        <div class="body">
+<p>Coming home after four weeks felt very strange at first. I remember very vividly stepping through the door and seeing August running over to welcome me home, and for this tiny fraction of a moment I saw him not the way I’ve always seen him, but the way other people see him. It was only a flash, an instant while he was hugging me, so happy that I was home, but it surprised me because I’d never seen him like that before. And I’d never felt what I was feeling before, either: a feeling I hated myself for having the moment I had it. But as he was kissing me with all his heart, all I could see was the drool coming down his chin. And suddenly there I was, like all those people who would stare or look away.</p>
+<p>Horrified. Sickened. Scared.</p>
+<p>Thankfully, that only lasted for a second: the moment I heard August laugh his raspy little laugh, it was over. Everything was back the way it had been before. But it had opened a door for me. A little peephole. And on the other side of the peephole there were two Augusts: the one I saw blindly, and the one other people saw.</p>
+<p>I think the only person in the world I could have told any of this to was Grans, but I didn’t. It was too hard to explain over the phone. I thought maybe when she came for Thanksgiving, I’d tell her what I felt. But just two months after I stayed with her in Montauk, my beautiful Grans died. It was so completely out of the blue. Apparently, she had checked herself into the hospital because she’d been feeling nauseous. Mom and I drove out to see her, but it’s a three-hour drive from where we live, and by the time we got to the hospital, Grans was gone. A heart attack, they told us. Just like that.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>从外婆家回来，维娅一进门看到奥吉扑上来迎接她，那一瞬间她豁然看见别人眼中的奥吉——流着口水，让她心里涌起一阵令她憎恨自己的感受，就像那些会盯着看或别开脸的人。好在她很快听到奥吉沙哑的笑声就恢复正常，但这个“小孔”让她从此分成两个奥吉：她盲目看见的，和别人看见的。她本想等外婆来感恩节倾诉，可外婆刚去世两个多月，突发心脏病，说走就走。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And on the other side of the peephole there were two Augusts: the one I saw blindly, and the one other people saw.</blockquote><p class="note">peephole = 猫眼、小孔。维娅用“门上的小孔”暗喻她突然窥见了别人看弟弟的视角。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>vividly</b> <span class="pos">adv.</span> 清晰地、历历在目地</li><li><b>fraction</b> <span class="pos">n.</span> 一小部分、瞬间</li><li><b>drool</b> <span class="pos">n.</span> 口水、涎水</li><li><b>nauseous</b> <span class="pos">adj.</span> 恶心的、想吐的</li><li><b>out of the blue</b> <span class="pos">phr.</span> 突然地、毫无征兆地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>外婆对我说出那个秘密</h2>
+            <div class="seg-en">You are my everything</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 320 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">外婆的秘密</span><span class="tag">临终遗言</span><span class="tag">母女痛哭</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意外婆“偏爱维娅”这个秘密为什么重要：所有人都围着奥吉，外婆却在暗中把维娅放在第一位。</div>
+        <div class="body">
+<p>It’s so strange how one day you can be on this earth, and the next day not. Where did she go? Will I really ever see her again, or is that a fairy tale?</p>
+<p>You see movies and TV shows where people receive horrible news in hospitals, but for us, with all our many trips to the hospital with August, there had always been good outcomes. What I remember the most from the day Grans died is Mom literally crumpling to the floor in slow, heaving sobs, holding her stomach like someone had just punched her. I’ve never, ever seen Mom like that. Never heard sounds like that come out of her. Even through all of August’s surgeries, Mom always put on a brave face.</p>
+<p>On my last day in Montauk, Grans and I had watched the sun set on the beach. We had taken a blanket to sit on, but it had gotten chilly, so we wrapped it around us and cuddled and talked until there wasn’t even a sliver of sun left over the ocean. And then Grans told me she had a secret to tell me: she loved me more than anyone else in the world.</p>
+<p>“Even August?” I had asked.</p>
+<p>She smiled and stroked my hair, like she was thinking about what to say.</p>
+<p>“I love Auggie very, very much,” she said softly. I can still remember her Portuguese accent, the way she rolled her r’s. “But he has many angels looking out for him already, Via. And I want you to know that you have me looking out for you. Okay, menina querida? I want you to know that you are number one for me. You are my …” She looked out at the ocean and spread her hands out, like she was trying to smooth out the waves, “You are my everything. You understand me, Via? Tu es meu tudo.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅回忆外婆去世那天妈妈瘫倒在地、抱着肚子痛哭，她从没见过妈妈那样失态，因为哪怕奥吉手术时妈妈都强撑着。她又想起离开外婆家最后一晚，两人裹着毯子在沙滩看日落，外婆说有个秘密要告诉她：外婆爱她胜过世上任何人，说她身边有很多天使守护，而外婆要守护她，还用法语说“你是我的全部”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You are my everything. You understand me, Via? Tu es meu tudo.</blockquote><p class="note">everything = 一切。“meu tudo”是葡萄牙语“我的全部”，外婆用母语对维娅表达最深的偏爱。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>crumple</b> <span class="pos">v.</span> 瘫倒、皱成一团</li><li><b>heave</b> <span class="pos">v.</span> （因哭泣、痛苦而）起伏抽动</li><li><b>sob</b> <span class="pos">n.</span> 呜咽、啜泣</li><li><b>sliver</b> <span class="pos">n.</span> 一长条、一丝</li><li><b>accent</b> <span class="pos">n.</span> 口音</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>这个秘密像毯子一样盖着我</h2>
+            <div class="seg-en">A secret like a blanket</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 41 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">守住秘密</span><span class="tag">偏爱</span><span class="tag">精神依靠</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>理解“像毯子”这层意思：外婆的话成了维娅日后孤独时取暖的精神依靠。</div>
+        <div class="body">
+<p>I understood her. And I knew why she said it was a secret. Grandmothers aren’t supposed to have favorites. Everyone knows that. But after she died, I held on to that secret and let it cover me like a blanket.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说外婆走后，她紧紧守住这个秘密——因为外婆本不该有偏心，可她心里明白外婆为什么说这是秘密。她把这句“你是我的一切”像一条毯子一样盖在身上，用来温暖自己。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>But after she died, I held on to that secret and let it cover me like a blanket.</blockquote><p class="note">hold on to = 紧紧抓住、守住。外婆的偏爱像毯子包裹维娅，是她日后情感上的慰藉。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>favorite</b> <span class="pos">n.</span> 偏爱、最喜爱的人</li><li><b>blanket</b> <span class="pos">n.</span> 毯子</li><li><b>secret</b> <span class="pos">n.</span> 秘密</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_27.html">← 上一单元</a>
+    <a href="wonder_unit_29.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第28/96 单元 · 第二部 · 维娅 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u28.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

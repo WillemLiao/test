@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第95单元 全场起立为奥吉，他像在飘</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 95 单元 · 全场起立为奥吉，他像在飘</div>
+    <div class="unit-en">Floating · Pictures</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1003 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>图什曼的话刚进脑子，掌声就炸开了。奥吉被身边的同学推着站起来，杰克举着拳头领着大家齐声喊他的名字Aug-gie! Aug-gie!，艾莫斯也冲着喊Woo-hoo, little dude!。他走向舞台，全场观众突然起立——这是一场献给他的起立鼓掌。图什曼用双手握住他的手说好样的，奥吉，把金章挂到他脖子上像奥运会冠军一样。奥吉觉得自己像在飘，几乎听见了星球大战的主题曲。他心想自己只是个人人觉得难以想象成为他的普通孩子，可如果他熬过了五年级就配得上这枚奖，那就收下。招待会上亲友们涌上来拥抱他，拍照时他被众人围进一个密实的小圈子，第一次完全没在意自己那张脸。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>呼声中奥吉走向舞台</h2>
+            <div class="seg-en">Aug-gie! Aug-gie! Aug-gie!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 279 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">全场欢呼</span><span class="tag">朋友声援</span><span class="tag">众人认可</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住这场震耳欲聋的声援：从喊名字到击掌到艾莫斯喊little dude——一群昔日同学正用最热烈的欢呼认可他，和他刚入学时的孤立形成强烈反差。</div>
+        <div class="body">
+<p>PEOPLE STARTED APPLAUDING before Mr. Tushman’s words actually registered in my brain. I heard Maya, who was next to me, give a little happy scream when she heard my name, and Miles, who was on the other side of me, patted my back. “Stand up, get up!” said kids all around me, and I felt lots of hands pushing me upward out of my seat, guiding me to the edge of the row, patting my back, high-fiving me. “Way to go, Auggie!” “Nice going, Auggie!” I even started hearing my name being chanted: “Aug-gie! Aug-gie! Aug-gie!” I looked back and saw Jack leading the chant, fist in the air, smiling and signaling for me to keep going, and Amos shouting through his hands: “Woo-hoo, little dude!”</p>
+<p>Then I saw Summer smiling as I walked past her row, and when she saw me look at her, she gave me a secret little thumbs-up and mouthed a silent “cool beans” to me. I laughed and shook my head like I couldn’t believe it. I really couldn’t believe it.</p>
+<p>I think I was smiling. Maybe I was beaming, I don’t know. As I walked up the aisle toward the stage, all I saw was a blur of happy bright faces looking at me, and hands clapping for me. And I heard people yelling things out at me: “You deserve it, Auggie!” “Good for you, Auggie!” I saw all my teachers in the aisle seats, Mr. Browne and Ms. Petosa and Mr. Roche and Mrs. Atanabi and Nurse Molly and all the others: and they were cheering for me, woo-hooing and whistling.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>图什曼的话一落，掌声还没在奥吉脑子里转过来就已经响起。身边的玛雅（Maya）听到他的名字惊喜地小小尖叫，另一边的迈尔斯拍了拍他背。四周的孩子齐声说站起来！快起来！，好多只手把他从座位上推起来、引到排头，一边拍他背、一边跟他击掌：好样的，奥吉！真棒，奥吉！他竟听到了大家齐声喊他的名字：Aug-gie! Aug-gie! Aug-gie!回头只见杰克高举起拳头领喊，笑着示意他继续走，而艾莫斯用手拢着嘴大喊Woo-hoo, little dude!。路过夏默那排时，她偷偷竖起大拇指，无声地对他说了句酷毙了。奥吉走过过道时只看到一片笑脸和鼓起的掌，老师们也在过道旁为他欢呼吹口哨。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I even started hearing my name being chanted: “Aug-gie! Aug-gie! Aug-gie!”</blockquote><p class="note">chant = 一齐呼喊。全场齐声喊奥吉的名字，这节拍般的呐喊是他在这所学校得到的最盛大欢迎。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>register</b> <span class="pos">v.</span> （在脑子里）反应过来、被意识到</li><li><b>high-five</b> <span class="pos">v.</span> 举手击掌</li><li><b>chant</b> <span class="pos">v./n.</span> 齐声呼喊；有节奏的呐喊</li><li><b>thumbs-up</b> <span class="pos">n.</span> 竖大拇指（表示赞许）</li><li><b>big deal</b> <span class="pos">phr.</span> 了不起的事</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>全场起立，金章挂上脖</h2>
+            <div class="seg-en">It was a standing ovation. For me.</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">起立鼓掌</span><span class="tag">挂上金章</span><span class="tag">电影般时刻</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全书最具感染力的画面：为奥吉响起的全场起立鼓掌（standing ovation）加上图什曼亲手挂上金章——一个曾被无数目光躲开的孩子，此刻站在了全世界为他鼓掌的中央。</div>
+        <div class="body">
+<p>I felt like I was floating. It was so weird. Like the sun was shining full force on my face and the wind was blowing. As I got closer to the stage, I saw Ms. Rubin waving at me in the front row, and then next to her was Mrs. G, who was crying hysterically—a happy crying—smiling and clapping the whole time. And as I walked up the steps to the stage, the most amazing thing happened: everyone started standing up. Not just the front rows, but the whole audience suddenly got up on their feet, whooping, hollering, clapping like crazy. It was a standing ovation. For me.</p>
+<p>I walked across the stage to Mr. Tushman, who shook my hand with both his hands and whispered in my ear: “Well done, Auggie.” Then he placed the gold medal over my head, just like they do in the Olympics, and had me turn to face the audience. It felt like I was watching myself in a movie, almost, like I was someone else. It was like that last scene in Star Wars Episode IV: A New Hope when Luke Skywalker, Han Solo, and Chewbacca are being applauded for destroying the Death Star. I could almost hear the Star Wars theme music playing in my head as I stood on the stage.</p>
+<p>I wasn’t even sure why I was getting this medal, really.</p>
+<p>No, that’s not true. I knew why.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉觉得自己像在飘，很奇妙——像阳光直直照在脸上、又有风吹过。走近舞台时他看到鲁宾老师在前排冲他招手，旁边是G女士，正哭得稀里哗啦——是高兴的哭，边哭边笑边鼓掌。走上台阶那一刻最不可思议的事发生了：所有人站了起来，不只是前排，整个观众席都起身了，又喊又叫、疯了一样鼓掌。这是一场起立鼓掌——为他而鼓。奥吉走上台，图什曼用双手握他的手，附在耳边说好样的，奥吉，然后把金章挂到他脖子上，像奥运会领奖一样，还让他转身面向观众。奥吉觉得自己像是在看一场关于自己的电影，几乎听见了星球大战的主题曲。他其实不太确定自己为什么能得这个奖——不，他知道为什么。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It was a standing ovation. For me.</blockquote><p class="note">standing ovation = 全场起立鼓掌，是观众能给予的最高礼遇。For me这两个词点题：这份礼遇是献给奥吉的。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>floating</b> <span class="pos">adj.</span> 飘飘然的、如腾云驾雾</li><li><b>hysterically</b> <span class="pos">adv.</span> 歇斯底里地、哭得很凶地</li><li><b>standing ovation</b> <span class="pos">n.</span> 全场起立鼓掌</li><li><b>whoop</b> <span class="pos">v.</span> 大声欢呼、喊叫</li><li><b>Death Star</b> <span class="pos">n.</span> 死星（《星球大战》中被摧毁的空间站）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>我只是个普通孩子</h2>
+            <div class="seg-en">An ordinary kid</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 229 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">普通而骄傲</span><span class="tag">亲友拥抱</span><span class="tag">招待会</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一小段奥吉的独白——我只是个普通孩子——他用自嘲般的坦荡接住了荣耀，既不骄也不卑，把主题稳稳落在他还像当初一样看待自己上。</div>
+        <div class="body">
+<p>It’s like people you see sometimes, and you can’t imagine what it would be like to be that person, whether it’s somebody in a wheelchair or somebody who can’t talk. Only, I know that I’m that person to other people, maybe to every single person in that whole auditorium.</p>
+<p>To me, though, I’m just me. An ordinary kid.</p>
+<p>But hey, if they want to give me a medal for being me, that’s okay. I’ll take it. I didn’t destroy a Death Star or anything like that, but I did just get through the fifth grade. And that’s not easy, even if you’re not me.</p>
+<p>AFTERWARD THERE WAS a reception for the fifth and sixth graders under a huge white tent in the back of the school. All the kids found their parents, and I didn’t mind at all when Mom and Dad hugged me like crazy, or when Via wrapped her arms around me and swung me left and right about twenty times. Then Poppa and Tata hugged me, and Aunt Kate and Uncle Po, and Uncle Ben—everyone kind of teary-eyed and wet-cheeked. But Miranda was the funniest: she was crying more than anyone and squeezed me so tight that Via had to practically pry her off of me, which made them both laugh.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉想，就像人们有时会看到坐轮椅的、或不能说话的人，无法想象成为那样的人是什么感觉——而他明白，在别人眼里，他自己就是那样的人，也许是整个礼堂每个人眼中的那样。但对他自己来说，他仅仅是他，一个普通孩子。不过既然大家愿意为做他自己颁他一个奖，那他收下也行。他没有摧毁什么死星，可他确实熬过了五年级——哪怕不是他，这也是件不容易的事。颁奖散场后，学校后方的白色大帐篷下为五六年级开了招待会。孩子们都找到了父母，奥吉完全不介意爸妈抱着他狂亲，也不介意维娅把他搂住左右甩了快二十下。Poppa和Tata、凯特阿姨和本叔叔都来抱他，人人眼眶湿湿、脸颊带泪。最逗的是米兰达（Miranda），她哭得比谁都凶，把奥吉勒得极紧，维娅几乎得把她扒开，两人因此笑作一团。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>To me, though, I'm just me. An ordinary kid.</blockquote><p class="note">对别人来说奥吉是个奇迹或谜，但在他自己眼里，他始终只是一个普通孩子。ordinary = 普通的，这句回扣全书开篇的自我认知。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>wheelchair</b> <span class="pos">n.</span> 轮椅</li><li><b>ordinary</b> <span class="pos">adj.</span> 普通的、平常的</li><li><b>swing</b> <span class="pos">v.</span> 摆动、甩动</li><li><b>teary-eyed</b> <span class="pos">adj.</span> 热泪盈眶的</li><li><b>pry...off</b> <span class="pos">phr.</span> 把……从（某人身上）掰开、撬开</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>合影里，第一次忘了自己的脸</h2>
+            <div class="seg-en">Clicking away like we were on a red carpet</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 253 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">集体合影</span><span class="tag">被簇拥</span><span class="tag">接纳与自洽</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全书最圆满的收束意象之一：镜头前挤满同学，没有人在意奥吉的脸，而他第一次毫不在意自己那张脸——他终于被接纳，也终于放过了自己。</div>
+        <div class="body">
+<p>Everyone started taking pictures of me and pulling out their Flips, and then Dad got me, Summer, and Jack together for a group shot. We put our arms around each other’s shoulders, and for the first time I can remember, I wasn’t even thinking about my face. I was just smiling a big fat happy smile for all the different cameras clicking away at me. Flash, flash, click, click: smiling away as Jack’s parents and Summer’s mom started clicking. Then Reid and Maya came over. Flash, flash, click, click. And then Charlotte came over and asked if she could take a picture with us, and we were like, “Sure, of course!” And then Charlotte’s parents were snapping away at our little group along with everyone else’s parents.</p>
+<p>And the next thing I knew, the two Maxes had come over, and Henry and Miles, and Savanna. Then Amos came over, and Ximena. And we were all in this big tight huddle as parents clicked away like we were on a red carpet somewhere. Luca. Isaiah. Nino. Pablo. Tristan. Ellie. I lost track of who else came over. Everybody, practically. All I knew for sure is that we were all laughing and squeezing in tight against each other, and no one seemed to care if it was my face that was next to theirs or not. In fact, and I don’t mean to brag here, but it kind of felt like everyone wanted to get close to me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>大家开始给奥吉拍照、纷纷掏出各自的相机。爸爸把奥吉、夏默和杰克撮合到一块儿拍合影，他们把胳膊搭上彼此肩膀——这是奥吉记忆里头一次，他根本没去想自己的脸，只是对着咔咔作响的一台台相机咧开一个大大的、满心欢喜的笑。闪光灯此起彼伏，杰克爸妈、夏默妈妈也加入拍照。接着里德（Reid）、玛雅来，夏洛特也来问能不能一起拍。再后来两个马克斯、亨利和迈尔斯、萨凡娜、艾莫斯、希梅纳全都拥了过来，一大伙人挤成一个又大又紧的小团体，家长的相机咔咔响，像走红毯似的。卢卡、伊赛亚、尼诺……奥吉已经数不清还有谁来，差不多所有人都来了。他只确定一件事：大家都笑着挤在一起，没人在意紧挨着自己的是不是奥吉那张脸。事实上——他也不想自夸——但他感觉每个人争先恐后想离他近一点。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>For the first time I can remember, I wasn't even thinking about my face.</blockquote><p class="note">曾经走到哪都被盯着脸的奥吉，此刻却完全没去想自己的脸。在这张热闹的合影里，他第一次彻底放下对相貌的敏感。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>group shot</b> <span class="pos">n.</span> 集体合照</li><li><b>red carpet</b> <span class="pos">n.</span> （明星走红毯的）红地毯</li><li><b>huddle</b> <span class="pos">n.</span> 挤成一团的一群人</li><li><b>brag</b> <span class="pos">v.</span> 吹嘘、自夸</li><li><b>click</b> <span class="pos">n./v.</span> （相机快门的）咔嚓声</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_94.html">← 上一单元</a>
+    <a href="wonder_unit_96.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第95/96 单元 · 第八部 · 奥吉 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u95.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

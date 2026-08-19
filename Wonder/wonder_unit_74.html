@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第74单元 在学校渐行渐远，我阻止了《象人》剧，打电话给奥吉</title>
+<style>
+:root{--c:#b06a8a;--bg:#f7edf2;--nav:#eedae4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第七部 · 米兰达</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 74 单元 · 在学校渐行渐远，我阻止了《象人》剧，打电话给奥吉</div>
+    <div class="unit-en">School · What I Miss Most</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 976 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Seven: Miranda</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>米兰达和维娅在高中几乎见不到面，见面也尴尬，两人从不吵架只是渐渐疏远，米兰达和艾拉还背地里说维娅的坏话。她留意到维娅交了男友贾斯汀，自己则有了排球运动员男友扎克。她无意间看到《象人》剧本——讲一个畸形的男人——便说服老师换掉这部剧，因为怕触痛自己那个有出生缺陷的弟弟。她抢走了维娅想要的艾米丽·吉布斯一角。最后她打电话给奥吉，奥吉兴奋地说自己去上常规学校了，可他并不知道她和维娅已经疏远。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我和维娅不争吵，只是渐渐疏远</h2>
+            <div class="seg-en">we just drifted away</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 311 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">渐行渐远</span><span class="tag">背地说坏话</span><span class="tag">维娅的男友</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住那句自我纠结的真相：“她没变，是我们变了”——米兰达知道自己才是变心的那个人，却不甘心承认。</div>
+        <div class="body">
+<p>I HARDLY SAW Via at school this year, and when I did it was awkward. It felt like she was judging me. I knew she didn’t like my new look. I knew she didn’t like my group of friends. I didn’t much like hers. We never actually argued: we just drifted away. Ella and I badmouthed her to each other: She’s such a prude, she’s so this, she’s so that. We knew we were being mean, but it was easier to ice her out if we pretended she had done something to us. The truth is she hadn’t changed at all: we had. We’d become these other people, and she was still the person she’d always been. That annoyed me so much and I didn’t know why.</p>
+<p>Once in a while I’d look to see where she was sitting in the lunchroom, or check the elective lists to see what she’d signed up for. But except for a few nods in the hallway and an occasional “hello,” we never really spoke to each other.</p>
+<p>I noticed Justin about halfway through the school year. I hadn’t noticed him at all before then, other than that he was this skinny cutish dude with thick glasses and longish hair who carried a violin everywhere. Then one day I saw him in front of the school with his arm around Via. “So Via has a boyfriend!” I said to Ella, kind of mocking. I don’t know why it surprised me that she’d have a boyfriend. Out of the three of us, she was totally the prettiest: blue, blue eyes and long wavy dark hair. But she’d just never acted like she was at all interested in boys. She acted like she was too smart for that kind of stuff.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达说这学期几乎见不到维娅，见面也很尴尬，彼此都觉得对方在评判自己。她们从没真正吵过架，只是渐渐疏远，米兰达和艾拉还互相说她坏话，用“假装她做了什么对不起我们的事”来让自己疏远她更心安。可事实上维娅几乎没变，变的是她们自己——这让米兰达莫名恼火。她还注意到维娅交了男友：抱着小提琴、戴厚眼镜的贾斯汀，并且惊讶又有点嘲讽，因为维娅长得最美却从不表现得对男孩感兴趣。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The truth is she hadn’t changed at all: we had.</blockquote><p class="note">米兰达的清醒自省：“她根本没变，是我们变了。”这是她疏远维娅这件事的症结所在。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>awkward</b> <span class="pos">adj.</span> 尴尬的、别扭的</li><li><b>drift away</b> <span class="pos">phr.</span> 渐渐疏远、慢慢拉开距离</li><li><b>badmouth</b> <span class="pos">v.</span> 说人坏话</li><li><b>prude</b> <span class="pos">n.</span> 古板正经、放不开的人</li><li><b>mock</b> <span class="pos">v.</span> 嘲笑、取笑</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我阻止了《象人》剧，因为它像奥吉的故事</h2>
+            <div class="seg-en">This play would hit too close to home</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 274 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">换掉象人剧</span><span class="tag">保护弟弟的心</span><span class="tag">戏剧课</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住米兰达没进课堂就出手的动机：她主动保护奥吉的感情，不想让学校的戏揭开弟弟的伤疤——这是她对奥吉真心的证明。</div>
+        <div class="body">
+<p>I had a boyfriend, too: a guy named Zack. When I told him I was choosing the theater elective, he shook his head and said: “Careful you don’t turn into a drama geek.” Not the most sympathetic dude in the world, but very cute. Very high up on the totem pole. A varsity jock.</p>
+<p>I wasn’t planning on taking theater at first. Then I saw Via’s name on the sign-up sheet and just wrote my name down on the list. I don’t even know why. We managed to avoid one another throughout most of the semester, like we didn’t even know each other. Then one day I got to theater class a little early, and Davenport asked me to run off additional copies of the play he was planning on having us do for the spring production: The Elephant Man. I’d heard about it but I didn’t really know what it was about, so I started skimming through the pages while I was waiting for the xerox machine. It was about a man who lived more than a hundred years ago named John Merrick who was terribly deformed.</p>
+<p>“We can’t do this play, Mr. D,” I told him when I got back to class, and I told him why: my little brother has a birth defect and has a deformed face and this play would hit too close to home. He seemed annoyed and a little unsympathetic, but I kind of said that my parents would have a real issue with the school doing this play. So anyway, he ended up switching to Our Town.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达的男友扎克是校队运动员、排球高手，对她选戏剧课颇不以为然。她起初没打算选戏剧，是看见维娅签了名才跟着签了名。有一次她早到戏剧课，达文波特老师让她多复印一份要排的剧本《象人》——讲一百多年前脸部畸形严重的约翰·梅里克。米兰达翻看后觉得剧本和自己弟弟奥吉的出生缺陷太相似，坚持要求换剧，说父母会有意见，老师最终换成了《我们的小镇》。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>my little brother has a birth defect and has a deformed face and this play would hit too close to home.</blockquote><p class="note">hit too close to home = 太贴近痛处、刺痛人心。米兰达用亲弟弟的经历阻止这场戏，也偷偷守住了自己与奥吉的这份牵绊。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>drama geek</b> <span class="pos">n.</span> 戏剧迷、戏剧书呆子</li><li><b>jock</b> <span class="pos">n.</span> （校园里的）运动健将</li><li><b>elective</b> <span class="pos">n.</span> 选修课</li><li><b>birth defect</b> <span class="pos">n.</span> 先天缺陷</li><li><b>hit too close to home</b> <span class="pos">phr.</span> 太贴近心口的痛处、让人感同身受得难受</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>我抢了维娅的角色，又打电话给奥吉</h2>
+            <div class="seg-en">I went for the role of Emily Gibbs</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 310 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">争抢角色</span><span class="tag">怀念维娅一家</span><span class="tag">给奥吉打电话</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>看清这一段的双层情感：一边是抢走维娅角色的竞争心，一边是打给奥吉时流露出的、对维娅一家和奥吉的真心牵挂。</div>
+        <div class="body">
+<p>I think I went for the role of Emily Gibbs because I knew Via was going to go for it, too. It never occurred to me that I’d beat her for the role.</p>
+<p>ONE OF THE things I miss the most about Via’s friendship is her family. I loved her mom and dad. They were always so welcoming and nice to me. I knew they loved their kids more than anything. I always felt safe around them: safer than anywhere else in the world. How pathetic that I felt safer in someone else’s house than in my own, right? And, of course, I loved Auggie. I was never afraid of him: even when I was little. I had friends that couldn’t believe I’d ever go over to Via’s house. “His face creeps me out,” they’d say. “You’re stupid,” I’d tell them. Auggie’s face isn’t so bad once you get used to it.</p>
+<p>I called Via’s house once just to say hello to Auggie. Maybe part of me was hoping Via would answer, I don’t know.</p>
+<p>“Hey, Major Tom!” I said, using my nickname for him.</p>
+<p>“Miranda!” He sounded so happy to hear my voice it actually kind of took me by surprise. “I’m going to a regular school now!” he told me excitedly.</p>
+<p>“Really? Wow!” I said, totally shocked. I guess I never thought he’d go to a regular school. His parents have always been so protective of him. I guess I thought he’d always be that little kid in the astronaut helmet I gave him. Talking to him, I could tell he had no idea that Via and I weren’t close anymore. “It’s different in high school,” I explained to him. “You end up hanging out with loads of different people.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达选艾米丽·吉布斯这个角色，是因为她知道维娅也想要，但她从没想过自己能赢过维娅。她怀念维娅家的温暖：爱她的父母、让她觉得比在自己家还安全的地方，还有奥吉——她从不怕奥吉的脸，还替奥吉怼过说他脸吓人的朋友。她打电话给奥吉，用昵称“Major Tom”叫他，奥吉兴奋地告诉她自己去上常规学校了，还交到了杰克和萨默两个朋友，却一点也不知道米兰达和维娅已经疏远。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He sounded so happy to hear my voice it actually kind of took me by surprise.</blockquote><p class="note">take sb by surprise = 令某人吃惊。奥吉听到米兰达的声音那么高兴，让她意外，也透着她的孤独与愧疚。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>occur to</b> <span class="pos">phr.</span> （想法）出现、被想到</li><li><b>beat sb for the role</b> <span class="pos">phr.</span> 争演某个角色赢过某人</li><li><b>hospitality</b> <span class="pos">n.</span> 热情好客、款待</li><li><b>creep out</b> <span class="pos">phr.</span> 让……感到毛骨悚然、吓人</li><li><b>protective</b> <span class="pos">adj.</span> 保护的、保护欲强的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>再见：替我向维娅问好，告诉她我想她</h2>
+            <div class="seg-en">Tell her I miss her</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 81 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">电话里的问候</span><span class="tag">说我想你</span><span class="tag">借奥吉传话</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意结尾这句“Tell her I miss her”——米兰达嘴硬心软，借奥吉之口向已疏远的维娅告别。</div>
+        <div class="body">
+<p>“I have some friends in my new school,” he told me. “A kid named Jack and a girl named Summer.”</p>
+<p>“That’s awesome, Auggie,” I said. “Well, I was just calling to tell you I miss you and hope you’re having a good year. Feel free to call me whenever you want, okay, Auggie? You know I love you always.”</p>
+<p>“I love you, too, Miranda!”</p>
+<p>“Say hi to Via for me. Tell her I miss her.”</p>
+<p>“I will. Bye!”</p>
+<p>“Bye!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉在电话里说自己在新学校朋友不多，认识了杰克和萨默。米兰达说自己只是打电话告诉他我想他、祝他有个好年，随时可以打给她，又说“你知道我一直爱你”。奥吉也回应“我也爱你”。挂电话前米兰达拜托他替自己向维娅问好，告诉她他想她，奥吉答应后两人道别。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Say hi to Via for me. Tell her I miss her.</blockquote><p class="note">say hi to sb for me = 替我向某人问好。米兰达自己不肯直接找维娅，只能让奥吉转达“我想她”——羞耻又真诚的告别。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>awesome</b> <span class="pos">adj.</span> 太棒了、了不起的</li><li><b>miss</b> <span class="pos">v.</span> 想念、挂念</li><li><b>feel free to</b> <span class="pos">phr.</span> 尽管去、随意（不要客气）</li><li><b>whenever</b> <span class="pos">conj.</span> 无论何时、任何时候</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_73.html">← 上一单元</a>
+    <a href="wonder_unit_75.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第74/96 单元 · 第七部 · 米兰达 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u74.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

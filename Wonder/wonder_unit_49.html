@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第49单元 科学课上想起万圣节真相，挥拳打向朱利安</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 49 单元 · 科学课上想起万圣节真相，挥拳打向朱利安</div>
+    <div class="unit-en">In Science · Partners</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1071 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>杰克承认自己最讨厌科学课，功课多、鲁宾老师又严，以前全靠奥吉坐在旁边让他抄笔记。这天老师布置科学博览会项目，杰克正头大，突然回忆起万圣节：那个穿着“流血尖叫”骷髅服、靠窗坐的人，后来他忽然记起那就是奥吉——自己曾在朱利安面前说奥吉的坏话，还当面被他听见。老师竟把杰克和奥吉分成了搭档，朱利安还想捣鼓着凑对并叫奥吉“怪胎”，杰克实在忍不住，一拳打向朱利安的嘴。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我最讨厌的科学课</h2>
+            <div class="seg-en">I hate science the most</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 281 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">讨厌作业</span><span class="tag">抄笔记依赖</span><span class="tag">绝交后的不便</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“抄奥吉笔记”这个细节——它既是杰克科学成绩的依赖，也从侧面写出奥吉的认真与善意，为后面两人和好做铺垫。</div>
+        <div class="body">
+<p>I’M NOT THE greatest student in the world. I know some kids actually like school, but I honestly can’t say I do. I like some parts of school, like PE and computer class. And lunch and recess. But all in all, I’d be fine without school. And the thing I hate the most about school is all the homework we get. It’s not enough that we have to sit through class after class and try to stay awake while they fill our heads with all this stuff we will probably never need to know, like how to figure out the surface area of a cube or what the difference is between kinetic and potential energy. I’m like, who cares? I’ve never, ever heard my parents say the word “kinetic” in my entire life!</p>
+<p>I hate science the most out of all my classes. We get so much work it’s not even funny! And the teacher, Ms. Rubin, is so strict about everything—even the way we write our headings on the top of our papers! I once got two points off a homework assignment because I didn’t put the date on top. Crazy stuff.</p>
+<p>When me and August were still friends, I was doing okay in science because August sat next to me and always let me copy his notes. August has the neatest handwriting of anybody I’ve ever seen who’s a boy. Even his script is neat: up and down perfectly, with really small round loopy letters. But now that we’re ex-friends, it’s bad because I can’t ask him to let me copy his notes anymore.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克说自己不是好学生，最恨的是没完没了的作业，还对“立方体表面积”“动能与势能的区别”这类死知识满不在乎，说他爸妈一辈子都没提过“kinetic”这个词。各科里他又最讨厌科学：作业多得离谱，鲁宾老师连卷子首部的书写格式都管，他曾因没写日期被扣了两分。以前他和奥吉还是朋友时科学就没问题，因为奥吉字迹工整还让他抄笔记，可现在绝交了，他再也没法开口借笔记了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>August has the neatest handwriting of anybody I've ever seen who's a boy.</blockquote><p class="note">neat = 工整、整洁。杰克夸奥吉的笔迹是他见过的男生里最工整的——这是他对奥吉的正面观察。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>surface area</b> <span class="pos">n.</span> 表面积</li><li><b>kinetic</b> <span class="pos">adj.</span> 运动的、动能的</li><li><b>potential energy</b> <span class="pos">n.</span> 势能</li><li><b>strict</b> <span class="pos">adj.</span> 严格的</li><li><b>handwriting</b> <span class="pos">n.</span> 笔迹、书写</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>突然记起“流血尖叫”</h2>
+            <div class="seg-en">It was August!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 223 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">记忆闪回</span><span class="tag">流血尖叫</span><span class="tag">认出奥吉</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住这个“记忆闪回”的时刻：杰克在科学课上猛地明白了“Bleeding Scream”指的是奥吉——这是全单元最关键的解谜。</div>
+        <div class="body">
+<p>So I was kind of scrambling today, trying to take notes about what Ms. Rubin was saying (my handwriting is awful), when all of a sudden she started talking about the fifth-grade science-fair project, how we all had to choose a science project to work on.</p>
+<p>While she was saying this, I was thinking, We just finished the freakin’ Egypt project, now we have to start a whole new thing? And then in my head I was going, Oh noooooo! like that kid in Home Alone with his mouth hanging open and his hands on his face. That was the face I was making on the inside. And then I thought of those pictures of melting ghost faces I’ve seen somewhere, where the mouths are open wide and they’re screaming. And then all of a sudden this picture flew into my head, this memory, and I knew what Summer had meant by “bleeding scream.” It’s so weird how it all just came to me in this flash. Someone in homeroom had dressed up in a Bleeding Scream costume on Halloween. I remember seeing him a few desks away from me. And then I remember not seeing him again.</p>
+<p>Oh man. It was August!</p>
+<p>All of this hit me in science class while the teacher was talking.</p>
+<p>Oh man.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这天杰克正手忙脚乱抄笔记，鲁宾老师说起五年级科学博览会项目要选题目。杰克心里叫苦：埃及项目刚做完又要来新的。他想起“家庭总动员”里那个嘴张着、手捂脸的孩子的画面，又想到“融化的鬼脸”那些尖叫的图。忽然记忆闪过——他明白萨默说的“流血尖叫”是什么了：万圣节时有人穿着“流血尖叫”骷髅服坐在离他几个座位的地方，可他记得后来就再没看见那个人了。他猛然想通：那就是奥吉！</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And then I remember not seeing him again. Oh man. It was August!</blockquote><p class="note">oh man = 天哪（感叹用语）。杰克的记忆像电影一样闪现：他明白那个骷髅服的人就是奥吉——萨默那句哑谜终于解开了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>scramble</b> <span class="pos">v.</span> 手忙脚乱地赶着做</li><li><b>science fair</b> <span class="pos">n.</span> 科学博览会、科学展</li><li><b>homeroom</b> <span class="pos">n.</span> 年级教室、早自习教室</li><li><b>costume</b> <span class="pos">n.</span> 服装、化装（尤指节日打扮）</li><li><b>flash</b> <span class="pos">n.</span> 一闪、瞬间</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>原来我们在背后说过奥吉的坏话</h2>
+            <div class="seg-en">He was supposed to be Boba Fett</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 250 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">背后说人</span><span class="tag">追悔莫及</span><span class="tag">波巴·费特</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克的愧疚：“奥吉本该扮成波巴·费特”——他误以为同桌的不是奥吉，才肆无忌惮说了坏话，如今追悔莫及。</div>
+        <div class="body">
+<p>I’d been talking to Julian about August. Oh man. Now I understood! I was so mean. I don’t even know why. I’m not even sure what I said, but it was bad. It was only a minute or two. It’s just that I knew Julian and everybody thought I was so weird for hanging out with August all the time, and I felt stupid. And I don’t know why I said that stuff. I just was going along. I was stupid. I am stupid. Oh God. He was supposed to come as Boba Fett! I would never have said that stuff in front of Boba Fett. But that was him, that Bleeding Scream sitting at the desk looking over at us. The long white mask with the fake squirting blood. The mouth open wide. Like the ghoul was crying. That was him.</p>
+<p>I felt like I was going to puke.</p>
+<p>I DIDN’T HEAR a word of what Ms. Rubin was saying after that. Blah blah blah. Science-fair project. Blah blah blah. Partners. Blah blah. It was like the way grown-ups talk in Charlie Brown movies. Like someone talking underwater. Mwah-mwah-mwahhh, mwah mwahh.</p>
+<p>Then all of a sudden Ms. Rubin started pointing to kids around the class. “Reid and Tristan, Maya and Max, Charlotte and Ximena, August and Jack.” She pointed to us when she said this. “Miles and Amos, Julian and Henry, Savanna and …” I didn’t hear the rest.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克懊悔莫迭：他之前跟朱利安聊过奥吉。他终于想明白，自己说过的那些难听话就是被奥吉听见了——自己一直觉得总跟奥吉玩很怪很丢人，稀里糊涂就顺着别人说了。他心里直喊“我太蠢”。他说奥吉本该打扮成波巴·费特，要是知道那是奥吉，他绝不敢在奥吉面前说那种话。可那个坐在不远处、戴着长白面具和假血、张着嘴像朝人哭的“流血尖叫”，就是奥吉。杰克恶心得想吐。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He was supposed to come as Boba Fett! I would never have said that stuff in front of Boba Fett.</blockquote><p class="note">Boba Fett = 电影《星球大战》里的赏金猎人角色。杰克的意思是：他以为那不是奥吉，才敢乱说话——可现在追悔莫及。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>mean</b> <span class="pos">adj.</span> 刻薄的、坏心眼的</li><li><b>squirting blood</b> <span class="pos">n.</span> 喷出来的假血</li><li><b>ghoul</b> <span class="pos">n.</span> 食尸鬼、恶鬼</li><li><b>puke</b> <span class="pos">v.</span> 呕吐（口语）</li><li><b>weird</b> <span class="pos">adj.</span> 古怪的、奇怪的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>老师把我们俩分成了搭档</h2>
+            <div class="seg-en">August and Jack</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 250 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">分组搭档</span><span class="tag">朱利安挑拨</span><span class="tag">想换组</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一段围绕“杰克和奥吉被分到同一组”——这是命运给的补救机会，也是逼杰克面对愧疚的直接导火索。</div>
+        <div class="body">
+<p>“Huh?” I said.</p>
+<p>The bell rang.</p>
+<p>“So don’t forget to get together with your partners to choose a project from the list, guys!” said Ms. Rubin as everyone started taking off. I looked up at August, but he had already put his backpack on and was practically out the door.</p>
+<p>I must have had a stupid look on my face because Julian came over and said: “Looks like you and your best bud are partners.” He was smirking when he said this. I hated him so much right then.</p>
+<p>“Hello, earth to Jack Will?” he said when I didn’t answer him.</p>
+<p>“Shut up, Julian.” I was putting my loose-leaf binder away in my backpack and just wanted him away from me.</p>
+<p>“You must be so bummed you got stuck with him,” he said. “You should tell Ms. Rubin you want to switch partners. I bet she’d let you.”</p>
+<p>“No she wouldn’t,” I said.</p>
+<p>“Ask her.”</p>
+<p>“No, I don’t want to.”</p>
+<p>“Ms. Rubin?” Julian said, turning around and raising his hand at the same time.</p>
+<p>Ms. Rubin was erasing the chalkboard at the front of the room. She turned when she heard her name.</p>
+<p>“No, Julian!” I whisper-screamed.</p>
+<p>“What is it, boys?” she said impatiently.</p>
+<p>“Could we switch partners if we wanted to?” said Julian, looking very innocent. “Me and Jack had this science-fair project idea we wanted to work on together. …”</p>
+<p>“Well, I guess we could arrange that …,” she started to say.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>从那以后杰克一个字也没听进去，只觉得老师的话像《花生》动画里大人们的“哇啦哇啦”。突然鲁宾老师开始点名分组：“里德和特里斯坦，玛雅和麦克斯，夏洛特和辛梅娜，奥吉和杰克。”她还指着他们俩。杰克的“哦？”还没说完铃就响了，老师说回去跟搭档挑题目，可他一看，奥吉已经背好书包快走出门了。杰克脸上大概一副蠢样，朱利安凑过来说风凉话，还撺掇他跟老师说换搭档，说着竟举起了手要叫老师。杰克低声吼他“闭嘴”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Ms. Rubin started pointing to kids around the class. &quot;Reid and Tristan, Maya and Max, Charlotte and Ximena, August and Jack.&quot;</blockquote><p class="note">搭档是 partners，分组叫 pairing。老师把“奥吉和杰克”点在一起，让本想逃避的杰克顿时无处可躲。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>partner</b> <span class="pos">n.</span> 搭档、伙伴</li><li><b>smirk</b> <span class="pos">v.</span> 得意地坏笑</li><li><b>shut up</b> <span class="pos">phr.</span> 闭嘴</li><li><b>loose-leaf binder</b> <span class="pos">n.</span> 活页夹</li><li><b>impatiently</b> <span class="pos">adv.</span> 不耐烦地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>我给了朱利安一拳</h2>
+            <div class="seg-en">I punched him</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 67 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">挥拳</span><span class="tag">护着奥吉</span><span class="tag">压不住的愤怒</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住这一拳：朱利安骂奥吉是“freak（怪胎）”彻底惹怒了杰克——这是他第一次为保护奥吉动拳头。</div>
+        <div class="body">
+<p>“No, it’s okay, Ms. Rubin,” I said quickly, heading out the door. “Bye!”</p>
+<p>Julian ran after me.</p>
+<p>“Why’d you do that?” he said, catching up to me at the stairs. “We could have been partners. You don’t have to be friends with that freak if you don’t want to be, you know. …”</p>
+<p>And that’s when I punched him. Right in the mouth.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克抢在老师前说“不用了，老师，没事”，快步走出门。朱利安追上来，在楼梯边追上他，说你们本来可以当搭档，又补了一句“你不必非得跟那个怪胎做朋友，你知道的”。话音刚落，杰克一拳打向朱利安的嘴。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And that's when I punched him. Right in the mouth.</blockquote><p class="note">punch = 用拳打。朱利安叫奥吉“怪胎（freak）”，激得杰克一拳正打在朱利安的嘴上——他用行动表明了立场。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>punch</b> <span class="pos">v.</span> 用拳打</li><li><b>freak</b> <span class="pos">n.</span> 怪胎、怪物（贬义词）</li><li><b>catch up to</b> <span class="pos">phr.</span> 追上</li><li><b>stairs</b> <span class="pos">n.</span> 楼梯</li><li><b>heads out the door</b> <span class="pos">phr.</span> 朝门外走去</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_48.html">← 上一单元</a>
+    <a href="wonder_unit_50.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第49/96 单元 · 第四部 · 杰克 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u49.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

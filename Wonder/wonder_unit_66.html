@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第66单元 听得见的明亮与姐姐的秘密</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 66 单元 · 听得见的明亮与姐姐的秘密</div>
+    <div class="unit-en">Hearing Brightly · Via’s Secret</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 708 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>耳医一打开助听器，奥吉脑中的“海洋声”就消失了，世界变得又轻又亮——他像换灯泡的房间，原来一直不知道自己有多“暗”。他高兴地告诉妈妈不用再喊了，耳医还教他调音量，说他现在是“仿生听觉”。第二天戴着助听器上学，同学竟没人大惊小怪：任妮为他高兴，杰克说像 FBI 探员，布朗老师也只是贴心地说要repeat随时告诉我。可春假刚结束几天，妈妈发现维娅隐瞒了高中下周有一出戏，两人大吵一架；靠“洛鲍特”耳朵，奥吉偷听到维娅说不想让家人去看、还抱怨妈妈以前从不关心她有多痛。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>世界重新变亮了</h2>
+            <div class="seg-en">my ears were hearing brightly now</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 245 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">助听器生效</span><span class="tag">换灯泡比喻</span><span class="tag">白噪音消失</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“换灯泡”这个比喻：奥吉过去一直活在自己没察觉的“暗”里，直到助听器让他听见被海洋声淹没的清晰声音。</div>
+        <div class="body">
+<p>HOW CAN I describe what I heard when the doctor turned on my hearing aids? Or what I didn’t hear? It’s too hard to think of words. The ocean just wasn’t living inside my head anymore. It was gone. I could hear sounds like shiny lights in my brain. It was like when you’re in a room where one of the lightbulbs on the ceiling isn’t working, but you don’t realize how dark it is until someone changes the lightbulb and then you’re like, whoa, it’s so bright in here! I don’t know if there’s a word that means the same as “bright” in terms of hearing, but I wish I knew one, because my ears were hearing brightly now.</p>
+<p>“How does it sound, Auggie?” said the ear doctor. “Can you hear me okay, buddy?”</p>
+<p>I looked at him and smiled but I didn’t answer.</p>
+<p>“Sweetie, do you hear anything different?” said Mom.</p>
+<p>“You don’t have to shout, Mom.” I nodded happily.</p>
+<p>“Are you hearing better?” asked the ear doctor.</p>
+<p>“I don’t hear that noise anymore,” I answered. “It’s so quiet in my ears.”</p>
+<p>“The white noise is gone,” he said, nodding. He looked at me and winked. “I told you you’d like what you heard, August.” He made more adjustments on the left hearing aid.</p>
+<p>“Does it sound very different, love?” Mom asked.</p>
+<p>“Yeah.” I nodded. “It sounds … lighter.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉不知道怎么形容戴上助听器那一刻听见的声音：脑子里的“海洋声”不见了，像房间里有盏灯坏了，你一直不知道屋里有多暗，直到有人换了灯泡你才惊呼“哇，这里好亮”。他说找不到一个形容“听觉上很亮”的词，但他能确定自己的耳朵现在“听得明亮了”。耳医问“听起来怎样？”奥吉微笑不答，妈妈关切地问，他高兴地点头说“你以后不用喊了，妈妈”。那恼人的噪声没了，耳朵里好安静。耳医说“白噪音消失了”，还朝他眨了眨眼说“我就说你会喜欢听到的”。他调整了左边助听器，问听起来是不是很不一样，奥吉点头说“嗯，听上去……轻了很多”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It's so quiet in my ears.</blockquote><p class="note">white noise = 白噪音（持续的沙沙噪声）。奥吉说的“吵闹的噪声”就是白噪音。全段用“shiny lights/明亮”形容听得清的感觉，很诗意。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>white noise</b> <span class="pos">n.</span> 白噪音（持续的背景杂音）</li><li><b>lightbulb</b> <span class="pos">n.</span> 灯泡</li><li><b>wink</b> <span class="pos">v.</span> 眨眼（表示开玩笑或默契）</li><li><b>adjustment</b> <span class="pos">n.</span> 调整、调节</li><li><b>lighter</b> <span class="pos">adj.</span> 更轻快的（指声音更清爽）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>戴上学，没人大惊小怪</h2>
+            <div class="seg-en">like an FBI agent</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 257 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">上学首日</span><span class="tag">大家的善意</span><span class="tag">轻松如常</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“想象中的巨大压力 vs 实际的平淡”这一反差：奥吉担心的嘲笑根本没发生，反而得到善意与贴心。</div>
+        <div class="body">
+<p>“That’s because you have bionic hearing now, buddy,” said the ear doctor, adjusting the right side. “Now touch here.” He put my hand behind the hearing aid. “Do you feel that? That’s the volume. You have to find the volume that works for you. We’re going to do that next. Well, what do you think?” He picked up a small mirror and had me look in the big mirror at how the hearing aids looked in the back. My hair covered most of the headband. The only part that peeked out was the tubing.</p>
+<p>“Are you okay with your new bionic Lobot hearing aids?” the ear doctor asked, looking in the mirror at me.</p>
+<p>“Yeah,” I said. “Thank you.”</p>
+<p>“Thank you so much, Dr. James,” said Mom.</p>
+<p>The first day I showed up at school with the hearing aids, I thought kids would make a big deal about it. But no one did. Summer was glad I could hear better, and Jack said it made me look like an FBI agent or something. But that was it. Mr. Browne asked me about it in English class, but it wasn’t like, what the heck is that thing on your head?! It was more like, “If you ever need me to repeat something, Auggie, make sure you tell me, okay?”</p>
+<p>Now that I look back, I don’t know why I was so stressed about it all this time. Funny how sometimes you worry a lot about something and it turns out to be nothing.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>耳医说奥吉现在有了“仿生听觉”，教他摸助听器后面找音量旋钮，回头再帮他调。他让奥吉照大镜子看背后的助听器，头发盖住大部分头带，只露出一点管子。耳医问“你能接受你这副新的仿生洛鲍特助听器吗？”奥吉说了声“嗯，谢谢”；妈妈也向詹姆斯医生道谢。第一天戴着助听器上学，奥吉以为同学们会大惊小怪，结果谁都没说什么：任妮为他听得更清而高兴，杰克说他看着像 FBI 探员之类的。布朗老师在英文课提起，但不是“你头上那是啥鬼东西”的音调，而是体贴地说“如果你需要我重讲一遍，一定要告诉我”。回想起来，奥吉不懂自己当初干嘛那么紧张——人常常把某件事想得很大，到头来却什么都没发生。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Funny how sometimes you worry a lot about something and it turns out to be nothing.</blockquote><p class="note">turn out to be nothing = 到头来什么事都没有。奥吉总结：人常在担心，最后却发现是虚惊一场。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>volume</b> <span class="pos">n.</span> 音量、音量旋钮</li><li><b>peek out</b> <span class="pos">phr.</span> 冒出来、露出一小部分</li><li><b>repeat</b> <span class="pos">v.</span> 重复、再说一遍</li><li><b>stressed</b> <span class="pos">adj.</span> 紧张的、压力大的</li><li><b>FBI agent</b> <span class="pos">n.</span> FBI探员</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>偷听到姐姐的秘密</h2>
+            <div class="seg-en">Via's Secret</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 206 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">母女争吵</span><span class="tag">维娅的秘密</span><span class="tag">被忽视的姐姐</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这段是单元的情感裂口：维娅那句“你一辈子都没怎么管过我”暗示她在家里长期被忽视——这是 Part Six 埋下的家庭暗线。</div>
+        <div class="body">
+<p>A COUPLE OF days after spring break ended, Mom found out that Via hadn’t told her about a school play that was happening at her high school the next week. And Mom was mad. Mom doesn’t really get mad that much (though Dad would disagree with that), but she was really mad at Via for that. She and Via got into a huge fight. I could hear them yelling at each other in Via’s room. My bionic Lobot ears could hear Mom saying: “But what is with you lately, Via? You’re moody and taciturn and secretive. …”</p>
+<p>“What is so wrong with my not telling you about a stupid play?” Via practically screamed. “I don’t even have a speaking part in it!”</p>
+<p>“Your boyfriend does! Don’t you want us to see him in it?”</p>
+<p>“No! Actually, I don’t!”</p>
+<p>“Stop screaming!”</p>
+<p>“You screamed first! Just leave me alone, okay? You’ve been really good about leaving me alone my whole life, so why you choose high school to suddenly be interested I have no idea. …”</p>
+<p>Then I don’t know what Mom answered because it all got very quiet, and even my bionic Lobot ears couldn’t pick up a signal.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>春假结束后几天，妈妈发现维娅没告诉她：她高中下周有一出戏。妈妈很少生气，这回却气炸了，两人在维娅房间大吵。靠“仿生洛鲍特耳”，奥吉听到妈妈说“你最近到底怎么了？又闷、又不爱说话、又神神秘秘……”维娅几乎是吼着说“我没告诉你有出蠢戏怎么了？我连台词都没有！”妈妈问“你的男朋友有啊！你不想让我们去看他吗？”维娅说“不，我其实不想”。她吼道“你别吼了”“你吼在先！别管我好不好？你这一辈子都没怎么管过我，凭什么到了高中突然来关心我？”之后屋子里安静下来，连奥吉的洛鲍特耳朵也收不到信号了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You've been really good about leaving me alone my whole life, so why you choose high school to suddenly be interested I have no idea.</blockquote><p class="note">leave me alone = 别管我。taciturn = 沉默寡言。维娅这句赌气话点出了她在家长期被忽略的委屈。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>moody</b> <span class="pos">adj.</span> 情绪多变的、喜怒无常的</li><li><b>taciturn</b> <span class="pos">adj.</span> 沉默寡言的</li><li><b>secretive</b> <span class="pos">adj.</span> 遮遮掩掩的、守口如瓶的</li><li><b>speaking part</b> <span class="pos">n.</span> （戏剧中）有台词的戏份</li><li><b>pick up a signal</b> <span class="pos">phr.</span> 接收到信号（这里指偷听到声音）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_65.html">← 上一单元</a>
+    <a href="wonder_unit_67.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第66/96 单元 · 第六部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u66.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

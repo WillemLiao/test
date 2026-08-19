@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第47单元 雪天里打造的闪电雪橇，与那句格言</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 47 单元 · 雪天里打造的闪电雪橇，与那句格言</div>
+    <div class="unit-en">Snow · Fortune Favors the Bold</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 725 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>感恩节前下了第一场雪，学校停课，杰克正好想躲几天不用每天面对奥吉。他跟着爸爸去骷髅山的公园滑雪，还捡回一个破旧木雪橇，亲手修好、刷白、贴上“闪电”字样，取名“闪电”。开学后积雪化光了，杰克对奥吉点点头算打招呼，却没说雪橇的事。这月布朗老师的格言是“命运眷顾勇敢者”，杰克想说最勇敢的事就是跟奥吉做朋友，却不敢写出来。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>最爱的大雪停课日</h2>
+            <div class="seg-en">The first snow of winter</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 194 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">雪天停课</span><span class="tag">郁闷心绪</span><span class="tag">孩子的快乐</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这段写的是杰克“躲开奥吉”的轻松感——作者用欢快的雪天来反衬他心里的那点郁闷。</div>
+        <div class="body">
+<p>THE FIRST SNOW of winter hit right before Thanksgiving break. School was closed, so we got an extra day of vacation. I was glad about that because I was so bummed about this whole August thing and I just wanted some time to chill without having to see him every day. Also, waking up to a snow day is just about my favorite thing in the world. I love that feeling when you first open your eyes in the morning and you don’t even know why everything seems different than usual. Then it hits you: Everything is quiet. No cars honking. No buses going down the street. Then you run over to the window, and outside everything is covered in white: the sidewalks, the trees, the cars on the street, your windowpanes. And when that happens on a school day and you find out your school is closed, well, I don’t care how old I get: I’m always going to think that that’s the best feeling in the world. And I’m never going to be one of those grown-ups that use an umbrella when it’s snowing—ever.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>感恩节前下了第一场雪，学校停课多放一天假，杰克很高兴——他正为奥吉的事郁闷，想清静清静不用天天看见他。他形容自己有多爱雪天醒来的感觉：四周安静，没有车喇叭，没有公交车，窗外一切都覆着白雪，而且发现学校停课的美妙。他发誓自己永远爱这种日子，也绝不会做那种下雪还打伞的大人。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I was so bummed about this whole August thing and I just wanted some time to chill without having to see him every day.</blockquote><p class="note">bummed = 沮丧、低落；chill = 放松、清静。杰克想借停课躲开奥吉，透露出他心里还很纠结。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bummed</b> <span class="pos">adj.</span> 沮丧的、闷闷不乐的</li><li><b>chill</b> <span class="pos">v.</span> 放松、冷静下来</li><li><b>honk</b> <span class="pos">v.</span> （汽车）按喇叭</li><li><b>windowpane</b> <span class="pos">n.</span> 窗玻璃</li><li><b>umbrella</b> <span class="pos">n.</span> 雨伞</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>捡回破雪橇，亲手做成“闪电”</h2>
+            <div class="seg-en">I named it Lightning</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 288 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自制雪橇</span><span class="tag">闪电</span><span class="tag">父子时光</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克亲手把“垃圾”改造成“最棒的雪橇”——这段写的是他的动手能力与创造力，也为他后来内心的事埋下反差。</div>
+        <div class="body">
+<p>Dad’s school was closed, too, so he took me and Jamie sledding down Skeleton Hill in the park. They say a little kid broke his neck while sledding down that hill a few years ago, but I don’t know if this is actually true or just one of those legends. On the way home, I spotted this banged-up wooden sled kind of propped up against the Old Indian Rock monument. Dad said to leave it, it was just garbage, but something told me it would make the greatest sled ever. So Dad let me drag it home, and I spent the rest of the day fixing it up. I super-glued the broken slats together and wrapped some heavy-duty white duct tape around them for extra strength. Then I spray painted the whole thing white with the paint I had gotten for the Alabaster Sphinx I was making for the Egyptian Museum project. When it was all dry, I painted LIGHTNING in gold letters on the middle piece of wood, and I made a little lightning-bolt symbol above the letters. It looked pretty professional, I have to say. Dad was like, “Wow, Jackie! You were right about the sled!”</p>
+<p>The next day, we went back to Skeleton Hill with Lightning. It was the fastest thing I’ve ever ridden—so, so, so much faster than the plastic sleds we’d been using. And because it had gotten warmer outside, the snow had become crunchier and wetter: good packing snow. Me and Jamie took turns on Lightning all afternoon. We were in the park until our fingers were frozen and our lips had turned a little blue. Dad practically had to drag us home.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>爸爸的学校也放假，带杰克和杰米去骷髅山的公园滑雪。回家路上杰克在印第安老石纪念碑旁看到一个破旧的木雪橇，爸爸说是垃圾别管，杰克却觉得它能变成最好的雪橇。他用强力胶粘好裂开的木板、缠上重型胶带加固，把它整个喷成白色，还在中间木板上用金色的字写下“闪电”加上闪电符号。第二天父子俩带“闪电”去骷髅山，它快得吓人；杰克和杰米轮流玩到手指冻僵、嘴唇发蓝，爸爸几乎是硬把他们拖回家。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It was the fastest thing I've ever ridden—so, so, so much faster than the plastic sleds we'd been using.</blockquote><p class="note">sled = 雪橇。杰克给自己的作品取名“Lightning（闪电）”，因为它快得像闪电——这是他这个单元里难得的快乐时光。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>sled</b> <span class="pos">v./n.</span> 滑雪橇；雪橇</li><li><b>sledding</b> <span class="pos">n.</span> 滑雪橇这种活动</li><li><b>monument</b> <span class="pos">n.</span> 纪念碑</li><li><b>super-glue</b> <span class="pos">v.</span> 用强力胶粘</li><li><b>duct tape</b> <span class="pos">n.</span> 强力胶带、防水布胶带</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>想写“跟奥吉做朋友”，却不敢下笔</h2>
+            <div class="seg-en">Fortune favors the bold</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">十二月格言</span><span class="tag">勇敢与奥吉</span><span class="tag">不敢说出口</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意“敢写下来的都是不痛不痒的事，真正勇敢的却不敢写”——这里暴露了杰克心里对奥吉的亏欠与纠结。</div>
+        <div class="body">
+<p>By the end of the weekend, the snow had started turning gray and yellow, and then a rainstorm turned most of the snow to slush. When we got back to school on Monday, there was no snow left.</p>
+<p>It was rainy and yucky the first day back from vacation. A slushy day. That’s how I was feeling inside, too.</p>
+<p>I nodded “hey” to August the first time I saw him. We were in front of the lockers. He nodded “hey” back.</p>
+<p>I wanted to tell him about Lightning, but I didn’t.</p>
+<p>MR. BROWNE’S DECEMBER PRECEPT was: Fortune favors the bold. We were all supposed to write a paragraph about some time in our lives when we did something very brave and how, because of it, something good happened to us.</p>
+<p>I thought about this a lot, to be truthful. I have to say that I think the bravest thing I ever did was become friends with August. But I couldn’t write about that, of course. I was afraid we’d have to read these out loud, or Mr. Browne would put them up on the bulletin board like he does sometimes. So, instead, I wrote this lame thing about how I used to be afraid of the ocean when I was little. It was dumb but I couldn’t think of anything else.</p>
+<p>I wonder what August wrote about. He probably had a lot of things to choose from.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>周末一过，雪化成灰色黄色的泥泞，一场雨把雪冲成烂泥；周一回校时雪已经没了。天天下雨、又冷又脏，杰克心里也同感。他第一次见到奥吉时，在储物柜前互相点了点头算打招呼——他想告诉奥吉雪橇的事，却没开口。这月布朗老师的格言是“命运眷顾勇敢者”，要写一段自己做过勇敢的事。杰克觉得最勇敢的事是和奥吉做朋友，可他怕要点名念出来或贴上公告栏，只好写了个“小时候怕大海”的无聊故事，还在想奥吉会写什么。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I think the bravest thing I ever did was become friends with August.</blockquote><p class="note">fortune favors the bold = 命运眷顾勇敢者。杰克心里认定最勇敢的事就是和奥吉做朋友，却不敢把它写进作业——这句是全单元的题眼。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>slush</b> <span class="pos">n.</span> 泥泞的雪水、雪泥</li><li><b>precept</b> <span class="pos">n.</span> 格言、训诫</li><li><b>bold</b> <span class="pos">adj.</span> 勇敢的、大胆的</li><li><b>brave</b> <span class="pos">adj.</span> 勇敢的</li><li><b>bulletin board</b> <span class="pos">n.</span> 公告栏</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_46.html">← 上一单元</a>
+    <a href="wonder_unit_48.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第47/96 单元 · 第四部 · 杰克 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u47.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

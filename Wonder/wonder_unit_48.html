@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第48单元 那条雪橇原来是迈尔斯的</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 48 单元 · 那条雪橇原来是迈尔斯的</div>
+    <div class="unit-en">Private School</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 660 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>杰克先坦白：他家并不富，爸爸是老师、妈妈是社工，房子是租的五楼老楼顶楼，他跟弟弟还挤一个房间。课间他跟朱利安、亨利、迈尔斯混在一起，听他们聊去巴黎过圣诞多无聊、新雪橇值八百美元。聊到骷髅山时，迈尔斯说自己的旧雪橇被人偷了——原来杰克捡到还修好的“闪电”就是那条破雪橇。杰克怕被当成“捡走别人东西的流浪汉”，赶紧撒谎说去储物柜取书逃走了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>我家并不富</h2>
+            <div class="seg-en">My parents are not rich</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 286 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">普通家境</span><span class="tag">装富的同学</span><span class="tag">巴黎抱怨</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克先讲自己家庭的“普通与紧张”，再写有钱同学的炫耀——家庭出身和心境的对比随之浮出。</div>
+        <div class="body">
+<p>MY PARENTS ARE not rich. I say this because people sometimes think that everyone who goes to private school is rich, but that isn’t true with us. Dad’s a teacher and Mom’s a social worker, which means they don’t have those kinds of jobs where people make gazillions of dollars. We used to have a car, but we sold it when Jamie started kindergarten at Beecher Prep. We don’t live in a big townhouse or in one of those doorman buildings along the park. We live on the top floor of a five-story walk-up we rent from an old lady named Doña Petra all the way on the “other” side of Broadway. That’s “code” for the section of North River Heights where people don’t want to park their cars. Me and Jamie share a room. I overhear my parents talk about things like “Can we do without an air conditioner one more year?” or “Maybe I can work two jobs this summer.”</p>
+<p>So today at recess I was hanging out with Julian and Henry and Miles. Julian, who everyone knows is rich, was like, “I hate that I have to go back to Paris this Christmas. It’s so boring!”</p>
+<p>“Dude, but it’s, like, Paris,” I said like an idiot.</p>
+<p>“Believe me, it’s so boring,” he said. “My grandmother lives in this house in the middle of nowhere. It’s like an hour away from Paris in this tiny, tiny, tiny village. I swear to God, nothing happens there! I mean, it’s like, oh wow, there’s another fly on the wall! Look, there’s a new dog sleeping on the sidewalk. Yippee.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克先说清楚：他们家并不富，爸爸是老师、妈妈是社会工作者，挣不了“天价”钱。为了弟弟上私立学校，他们把车都卖了，租住在一个五层老楼没电梯的顶层，还和弟弟合住一间房，常听到爸妈讨论能不能再忍一年没空调、暑假要不要打两份工。课间他混在朱利安、亨利和迈尔斯中间，朱利安抱怨圣诞要回巴黎很无聊，杰克却脱口说“那可是巴黎啊”，显得有点傻。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Can we do without an air conditioner one more year? Or maybe I can work two jobs this summer.</blockquote><p class="note">do without = 没有……也对付过去。这句爸妈的对话点出杰克家经济很紧——和同学家的条件形成反差。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>private school</b> <span class="pos">n.</span> 私立学校</li><li><b>social worker</b> <span class="pos">n.</span> 社工、社会工作师</li><li><b>gazillions</b> <span class="pos">n.</span> 天文数字般巨款（夸张说法）</li><li><b>air conditioner</b> <span class="pos">n.</span> 空调</li><li><b>boring</b> <span class="pos">adj.</span> 无聊的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>聊着聊着，说到被偷的雪橇</h2>
+            <div class="seg-en">Someone took my old sled</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">八百美元雪橇</span><span class="tag">骷髅山的来历</span><span class="tag">旧雪橇被偷</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意对话一步步逼近真相：骷髅山、山脚的石头、被捡走的旧雪橇——杰克每听一句心跳就快一分。</div>
+        <div class="body">
+<p>I laughed. Sometimes Julian could be very funny.</p>
+<p>“Though my parents are talking about throwing a big party this year instead of going to Paris. I hope so. What are you doing over break?” said Julian.</p>
+<p>“Just hanging out,” I said.</p>
+<p>“You’re so lucky,” he said.</p>
+<p>“I hope it snows again,” I answered. “I got this new sled that is so amazing.” I was about to tell them about Lightning but Miles started talking first.</p>
+<p>“I got a new sled, too!” he said. “My dad got it from Hammacher Schlemmer. It’s so state of the art.”</p>
+<p>“How could a sled be state of the art?” said Julian.</p>
+<p>“It was like eight hundred dollars or something.”</p>
+<p>“Whoa!”</p>
+<p>“We should all go sledding and have a race down Skeleton Hill,” I said.</p>
+<p>“That hill is so lame,” answered Julian.</p>
+<p>“Are you kidding?” I said. “Some kid broke his neck there. That’s why it’s called Skeleton Hill.”</p>
+<p>Julian narrowed his eyes and looked at me like I was the biggest moron in the world. “It’s called Skeleton Hill because it was an ancient Indian burial ground, duh,” he said. “Anyway, it should be called Garbage Hill now, it’s so freakin’ junky. Last time I was there it was so gross, like with soda cans and broken bottles and stuff.” He shook his head.</p>
+<p>“I left my old sled there,” said Miles. “It was the crappiest piece of junk—and someone took it, too!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>朱利安讲起这年圣诞可能不开去巴黎的派对，问杰克假期干什么，杰克正要说自己那把超棒的“闪电”雪橇，却被迈尔斯抢了话：他说自己买了把顶级新雪橇，花了大约八百美元，还提议大家去骷髅山比赛。朱利安嫌那座山低级，说那是古印第安人的墓地才叫“骷髅山”，还嫌它又脏又乱。迈尔斯一听，说他把自己的旧破雪橇留在那儿，结果被人捡走了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It's called Skeleton Hill because it was an ancient Indian burial ground, duh.</blockquote><p class="note">burial ground = 墓地。朱利安一脸“这还用说”地纠正杰克，语气傲慢——作者借此写出朱利安的优越感。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>state of the art</b> <span class="pos">phr.</span> 最先进的、顶级的</li><li><b>lame</b> <span class="pos">adj.</span> 蹩脚的、没意思的</li><li><b>moron</b> <span class="pos">n.</span> 傻瓜、蠢货</li><li><b>burial ground</b> <span class="pos">n.</span> 墓地、埋骨之地</li><li><b>junk</b> <span class="pos">n.</span> 垃圾、破烂货</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>原来我捡的就是他的雪橇</h2>
+            <div class="seg-en">I was the hobo</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 128 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">真相揭开</span><span class="tag">难堪逃离</span><span class="tag">不敢承认</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克的狼狈：他得意修好的“闪电”，居然是别人不屑一顾的垃圾，他怕丢脸才逃走——这里充满难堪与自嘲。</div>
+        <div class="body">
+<p>“Maybe a hobo wanted to go sledding!” laughed Julian.</p>
+<p>“Where did you leave it?” I said.</p>
+<p>“By the big rock at the bottom of the hill. And I went back the next day and it was gone. I couldn’t believe somebody actually took it!”</p>
+<p>“Here’s what we can do,” said Julian. “Next time it snows, my dad could drive us all up to this golf course in Westchester that makes Skeleton Hill look like nothing. Hey, Jack, where are you going?”</p>
+<p>I had started to walk away.</p>
+<p>“I’ve got to get a book out of my locker,” I lied.</p>
+<p>I just wanted to get away from them fast. I didn’t want anyone to know that I was the “hobo” who had taken the sled.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>朱利安开玩笑说也许是个流浪汉想滑雪橇，杰克追问迈尔斯把雪橇留在哪，迈尔斯说是山脚那块大石头边，第二天回去就没了。朱利安提议下次下雪让爸爸载大家去西切斯特的高尔夫球场玩。杰克却开始悄悄走开，谎称要去储物柜拿书——其实他是想赶紧逃开，不想让任何人知道他就是那个“捡走雪橇的流浪汉”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I just wanted to get away from them fast. I didn't want anyone to know that I was the &quot;hobo&quot; who had taken the sled.</blockquote><p class="note">hobo = 流浪汉。朱利安开玩笑说捡走雪橇的是流浪汉，杰克却心虚地发现——自己就是那个“流浪汉”，只好赶紧溜走。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hobo</b> <span class="pos">n.</span> 流浪汉</li><li><b>golf course</b> <span class="pos">n.</span> 高尔夫球场</li><li><b>locker</b> <span class="pos">n.</span> 储物柜</li><li><b>lie</b> <span class="pos">v.</span> 说谎</li><li><b>take</b> <span class="pos">v.</span> 拿走、拿走（took 是过去式）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_47.html">← 上一单元</a>
+    <a href="wonder_unit_49.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第48/96 单元 · 第四部 · 杰克 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u48.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

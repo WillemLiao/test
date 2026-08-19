@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第80单元 露天电影夜前的盛会把戏</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 80 单元 · 露天电影夜前的盛会把戏</div>
+    <div class="unit-en">The Fairgrounds</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 702 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>自然营第二天照样精彩：早上骑马、下午在向导帮助下攀绳爬巨树。晚饭后他们坐十五分钟班车去露天市场参加户外电影之夜。奥吉在那边写家书，亲眼见到开阔田野上铺天盖地的壮丽晚霞，明白了古人为什么会以为天空是个扣在头顶的圆顶。他们第一个到，抢到屏幕正前方最好的位置，铺开睡袋当野餐垫，去小吃车买零食，还玩了投球赢玩具的把戏——阿莫斯赢了只黄河马送给希梅娜，成了全场八卦。天黑后球场四周的大灯同时亮起，所有人都欢呼起来。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>平原上铺天盖地的晚霞</h2>
+            <div class="seg-en">The sky was a dome</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 279 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">开阔天地</span><span class="tag">壮丽晚霞</span><span class="tag">写家书</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>读奥吉刚体会到的“天地开阔”的震撼：在城市里他只能看到楼缝间的落日，这片开阔平原让他第一次感到天空像穹顶一样罩在头顶。</div>
+        <div class="body">
+<p>THE NEXT DAY was just as great as the first day. We went horseback riding in the morning, and in the afternoon we rappelled up some ginormous trees with the help of the nature guides. By the time we got back to the cabins for dinner, we were all really tired again. After dinner they told us we had an hour to rest, and then we were going to take a fifteen-minute bus ride to the fairgrounds for an outdoor movie night.</p>
+<p>I hadn’t had the chance to write a letter to Mom and Dad and Via yet, so I wrote one telling them all about the stuff we did that day and the day before. I pictured myself reading it to them out loud when I got back, since there was just no way the letter would get home before I did.</p>
+<p>When we got to the fairgrounds, the sun was just starting to set. It was about seven-thirty. The shadows were really long on the grass, and the clouds were pink and orange. It looked like someone had taken sidewalk chalk and smudged the colors across the sky with their fingers. It’s not that I haven’t seen nice sunsets before in the city, because I have—slivers of sunsets between buildings—but I wasn’t used to seeing so much sky in every direction. Out here in the fairgrounds, I could understand why ancient people used to think the world was flat and the sky was a dome that closed in on top of it. That’s what it looked like from the fairgrounds, in the middle of this huge open field.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>第二天依然很棒：早上骑马，下午在向导帮助下用绳索攀上巨大的树。晚饭后大家有一小时休息，然后坐十五分钟班车去露天市场看电影。奥吉赶紧写了封家书给爸妈和维娅，想象回家后再念给他们听。到市场时太阳刚开始落山，草地上的影子拉得很长，云被染成粉红和橘色，像是有人用手指把彩色粉笔在天空上抹开。他不习惯四面八方都是天空的景象，在场地中央他恍然大悟古人为什么会以为天是个罩在大地上的圆顶。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It looked like someone had taken sidewalk chalk and smudged the colors across the sky with their fingers.</blockquote><p class="note">sidewalk chalk = 马路粉笔；smudge = 抹、涂。奥吉用“有人用手指把粉笔色抹满天空”来比喻晚霞，画面感极强。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>rappel</b> <span class="pos">v.</span> 用绳索凌空攀爬/悬垂下降</li><li><b>ginormous</b> <span class="pos">adj.</span> 巨大的（giant+huge 的合成口语词）</li><li><b>fairground</b> <span class="pos">n.</span> 露天市场、集市场地</li><li><b>smudge</b> <span class="pos">v.</span> 涂抹、弄脏（使颜色晕开）</li><li><b>dome</b> <span class="pos">n.</span> 圆顶、穹顶</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>抢占屏幕前的宝地，阿莫斯赢了河马</h2>
+            <div class="seg-en">The jock and the brainiac</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 231 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">抢占位置</span><span class="tag">小吃车</span><span class="tag">阿莫斯的八卦</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这条八卦信号：一向粗犷的“体育生”阿莫斯赢玩具送给了优等生希梅娜，周围同学都拿这两人起哄。</div>
+        <div class="body">
+<p>Because we were the first school to arrive, we got to run around the field all we wanted until the teachers told us it was time to lay out our sleeping bags on the ground and get good viewing seats. We unzipped our bags and laid them down like picnic blankets on the grass in front of the giant movie screen in the middle of the field. Then we went to the row of food trucks parked at the edge of the field to load up on snacks and sodas and stuff like that. There were concession stands there, too, like at a farmers’ market, selling roasted peanuts and cotton candy. And up a little farther was a short row of carnival-type stalls, the kind where you can win a stuffed animal if you throw a baseball into a basket. Jack and I both tried—and failed—to win anything, but we heard Amos won a yellow hippo and gave it to Ximena. That was the big gossip that went around: the jock and the brainiac.</p>
+<p>From the food trucks, you could see the cornstalks in back of the movie screen. They covered about a third of the entire field. The rest of the field was completely surrounded by woods. As the sun sank lower in the sky, the tall trees at the entrance to the woods looked dark blue.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>因为他们学校是第一个到的，孩子们先在场地里撒欢跑，直到老师喊话叫大家摊开睡袋占好屏幕前的观看位子。他们把睡袋像野餐垫一样铺在场地中央巨型屏幕前的草上，再去场边的一排小吃车买零食汽水，旁边还有集市式的摊位卖烤花生和棉花糖，稍远了有一排嘉年华式的摊子，可以投球进筐赢毛绒玩具。杰克和奥吉都试了但都没赢，可他们得知阿莫斯赢了只黄河马并送给了希梅娜——这一幕成了全场的大八卦：“体育健儿和书呆子”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>That was the big gossip that went around: the jock and the brainiac.</blockquote><p class="note">jock = 爱运动的男孩；brainiac = 书呆子型学霸。同学们用这对绰号给阿莫斯送河马给希梅娜这件事起了个八卦标题。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>sleeping bag</b> <span class="pos">n.</span> 睡袋</li><li><b>concession stand</b> <span class="pos">n.</span> 小卖部、零食摊点</li><li><b>cotton candy</b> <span class="pos">n.</span> 棉花糖</li><li><b>stall</b> <span class="pos">n.</span> 摊位、棚店</li><li><b>gossip</b> <span class="pos">n.</span> 八卦、流言</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>天黑了，球场大灯同时亮起</h2>
+            <div class="seg-en">All the lights went on at once</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 192 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">露天电影夜</span><span class="tag">猜词游戏</span><span class="tag">舞台灯光亮起</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全单元最动人的画面：天色渐暗、万物转紫时，所有大灯像有魔法般齐刷刷亮起——露天电影夜的序幕拉开了。</div>
+        <div class="body">
+<p>By the time the other school buses pulled into the parking lots, we were back in our spots on the sleeping bags, right smack in front of the screen: the best seats in the whole field. Everyone was passing around snacks and having a great time. Me and Jack and Summer and Reid and Maya played Pictionary. We could hear the sounds of the other schools arriving, the loud laughing and talking of kids coming out on the field on both sides of us, but we couldn’t really see them. Though the sky was still light, the sun had gone down completely, and everything on the ground had turned deep purple. The clouds were shadows now. We had trouble even seeing the Pictionary cards in front of us.</p>
+<p>Just then, without any announcement, all the lights at the ends of the field went on at once. They were like big bright stadium lights. I thought of that scene in Close Encounters when the alien ship lands and they’re playing that music: duh-dah-doo-da-dunnn. Everyone in the field started applauding and cheering like something great had just happened.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>别的学校班车陆续进场时，他们已经回到屏幕正前方的睡袋上——全场最好的位子。大家互相传零食玩得很开心，奥吉和杰克、萨默尔、里德、玛雅一起玩猜词游戏 Pictionary，能听见两侧别的学校孩子进场说笑的声音却看不见他们。天还亮着太阳却完全落下，地面上的一切都变成了深紫色，云变成了影子，他们连眼前的卡都快看不清了。就在这时没有预告，场地两端的大型球场灯同时亮起，奥吉想起《第三类接触》里外星飞船降落配着音乐的镜头，全场孩子都鼓掌欢呼起来。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Just then, without any announcement, all the lights at the ends of the field went on at once.</blockquote><p class="note">at once = 同时、一下子。奥吉用“毫无预告，所有灯一起亮起”写出露天影院开场那种近乎魔法的仪式感。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>smack</b> <span class="pos">adv.</span> 正好、恰好（right smack 正中）</li><li><b>pass around</b> <span class="pos">phr.</span> 互相传递（食物等）</li><li><b>purple</b> <span class="pos">n.</span> 紫色</li><li><b>stadium</b> <span class="pos">n.</span> 体育馆、球场（stadium lights 球场灯）</li><li><b>cheer</b> <span class="pos">v.</span> 欢呼、喝彩</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_79.html">← 上一单元</a>
+    <a href="wonder_unit_81.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第80/96 单元 · 第八部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u80.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

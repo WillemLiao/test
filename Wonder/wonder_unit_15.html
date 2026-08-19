@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第15单元 布朗老师的神秘“箴言”，唯一没提的东西</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 15 单元 · 布朗老师的神秘“箴言”，唯一没提的东西</div>
+    <div class="unit-en">Choose Kind</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1077 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>第二节课是英语课，老师是个留着黄胡子、个子很高的布朗先生。他先让大家懂一个词叫“precept（箴言）”，其实是关于真正重要之事的准则，类似座右铭。全班七嘴八舌说出规则、作业、家庭、宠物、鲨鱼、蜜蜂等等，可老师总说还不够；最后他在黑板上写下“我们是谁”。他告诉大家校门口的石碑上写着“认识你自己”，并留下九月箴言：“当你在做对与做好之间选择时，请选择做好。”奥吉抄下这句时，忽然发现自己开始喜欢上学了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>英语老师留着黄胡子</h2>
+            <div class="seg-en">A Wrinkle in Time</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 248 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">英语课</span><span class="tag">黄胡子老师</span><span class="tag">杰克受欢迎</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>对比上节课：这位老师见到奥吉时没有停顿、照常讲下去——他是第一个“看见了也不惊讶”的老师，给奥吉一种难得的自在。</div>
+        <div class="body">
+<p>THERE WAS A lot of shuffling around when the bell rang and everybody got up to leave. I checked my schedule and it said my next class was English, room 321. I didn’t stop to see if anyone else from my homeroom was going my way: I just zoomed out of the class and down the hall and sat down as far from the front as possible. The teacher, a really tall man with a yellow beard, was writing on the chalkboard.</p>
+<p>Kids came in laughing and talking in little groups but I didn’t look up. Basically, the same thing that happened in homeroom happened again: no one sat next to me except for Jack, who was joking around with some kids who weren’t in our homeroom. I could tell Jack was the kind of kid other kids like. He had a lot of friends. He made people laugh.</p>
+<p>When the second bell rang, everyone got quiet and the teacher turned around and faced us. He said his name was Mr. Browne, and then he started talking about what we would be doing this semester. At a certain point, somewhere between A Wrinkle in Time and Shen of the Sea, he noticed me but kept right on talking.</p>
+<p>I was mostly doodling in my notebook while he talked, but every once in a while I would sneak a look at the other students. Charlotte was in this class. So were Julian and Henry. Miles wasn’t.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>下课铃响，奥吉飞奔出教室，在英语课上又坐到最靠后的位子。老师是个留着黄色胡子、个子很高的男人，在黑板前写着什么。进教室的孩子三三两两说笑，可除了杰克又没人坐他旁边——奥吉看得出杰克是招人喜欢的类型，朋友多、会逗人笑。第二遍铃响时老师转身介绍自己是布朗先生，在讲到《时间皱纹》和《海之神的时候》之间看到了奥吉，却面不改色继续讲课。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I could tell Jack was the kind of kid other kids like. He had a lot of friends. He made people laugh.</blockquote><p class="note">make people laugh = 逗别人笑。奥吉用这句话点破，杰克是那种谁都愿意亲近的孩子，与他被人躲开的处境恰好相反。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shuffle</b> <span class="pos">v.</span> 拖着脚步、窸窣地走动</li><li><b>homeroom</b> <span class="pos">n.</span> （学校的）班主任课堂、本班教室</li><li><b>semester</b> <span class="pos">n.</span> 学期</li><li><b>doodle</b> <span class="pos">v.</span> 乱涂乱画、信手涂鸦</li><li><b>sneak a look</b> <span class="pos">phr.</span> 偷看一眼</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>什么叫“箴言”</h2>
+            <div class="seg-en">Rules about really important things</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 258 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">新词汇precept</span><span class="tag">什么是箴言</span><span class="tag">课堂问答</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住“precept（箴言）”这个词，它是本章乃至全书最重要的概念——奥吉的英语老师布朗先生要全班用这一年去理解它。</div>
+        <div class="body">
+<p>Mr. Browne had written on the chalkboard in big block letters:</p>
+<p class="q">P-R-E-C-E-P-T!</p>
+<p>“Okay, everybody write this down at the very top of the very first page in your English notebook.”</p>
+<p>As we did what he told us to do, he said: “Okay, so who can tell me what a precept is? Does anyone know?”</p>
+<p>No one raised their hands.</p>
+<p>Mr. Browne smiled, nodded, and turned around to write on the chalkboard again:</p>
+<p class="q">PRECEPTS = RULES ABOUT REALLY IMPORTANT THINGS!</p>
+<p>“Like a motto?” someone called out.</p>
+<p>“Like a motto!” said Mr. Browne, nodding as he continued writing on the board. “Like a famous quote. Like a line from a fortune cookie. Any saying or ground rule that can motivate you. Basically, a precept is anything that helps guide us when making decisions about really important things.”</p>
+<p>He wrote all that on the chalkboard and then turned around and faced us.</p>
+<p>“So, what are some really important things?” he asked us.</p>
+<p>A few kids raised their hands, and as he pointed at them, they gave their answers, which he wrote on the chalkboard in really, really sloppy handwriting:</p>
+<p class="q">RULES. SCHOOLWORK. HOMEWORK.</p>
+<p>“What else?” he said as he wrote, not even turning around. “Just call things out!” He wrote everything everyone called out.</p>
+<p class="q">FAMILY. PARENTS. PETS.</p>
+<p>One girl called out: “The environment!”</p>
+<p class="q">THE ENVIRONMENT,</p>
+<p>he wrote on the chalkboard, and added:</p>
+<p class="q">OUR WORLD!</p>
+<p>“Sharks, because they eat dead things in the ocean!” said one of the boys, a kid named Reid, and Mr. Browne wrote down</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>布朗老师在黑板上用大写字母写下“P-R-E-C-E-P-T”（箴言），让大家抄在英语笔记本第一页最顶上，再问有没有人知道什么是箴言，全班都摇头。他接着写下“准则=关于极重要之事的规则”，又解释它像座右铭、像名言、像幸运饼干里那句话，总之是帮你在做重要决定时引路的格言。他再让大家喊出有哪些真正重要的事，有人答规则、作业、家庭、宠物，还有人喊出鲨鱼、环境。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Basically, a precept is anything that helps guide us when making decisions about really important things.</blockquote><p class="note">guide = 引导、指引。布朗先生的解释通俗好懂：箴言就是在面对真正重要的事、做决定时能帮你的那句话。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>precept</b> <span class="pos">n.</span> 箴言、训诫、格言</li><li><b>motto</b> <span class="pos">n.</span> 座右铭、格言</li><li><b>quote</b> <span class="pos">n.</span> 引语、名言</li><li><b>motivate</b> <span class="pos">v.</span> 激励、激发</li><li><b>sloppy</b> <span class="pos">adj.</span> 潦草的、不整洁的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>认识你自己，校门口的箴言</h2>
+            <div class="seg-en">Know thyself</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">我们是谁</span><span class="tag">认识自己</span><span class="tag">杰克开玩笑</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>本章核心：布朗老师的答案是“我们是谁”。认识自己，正是奥吉在学校每日要面对的命题——他被推着去体会自己究竟是什么样的人。</div>
+        <div class="body">
+<p class="q">SHARKS.</p>
+<p>“Bees!” “Seatbelts!” “Recycling!” “Friends!”</p>
+<p>“Okay,” said Mr. Browne, writing all those things down. He turned around when he finished writing to face us again. “But no one’s named the most important thing of all.”</p>
+<p>We all looked at him, out of ideas.</p>
+<p>“God?” said one kid, and I could tell that even though Mr. Browne wrote “God” down, that wasn’t the answer he was looking for. Without saying anything else, he wrote down:</p>
+<p class="q">WHO WE ARE!</p>
+<p>“Who we are,” he said, underlining each word as he said it. “Who we are! Us! Right? What kind of people are we? What kind of person are you? Isn’t that the most important thing of all? Isn’t that the kind of question we should be asking ourselves all the time? “What kind of person am I?</p>
+<p>“Did anyone happen to notice the plaque next to the door of this school? Anyone read what it says? Anyone?”</p>
+<p>He looked around but no one knew the answer.</p>
+<p>“It says: ‘Know Thyself,’” he said, smiling and nodding. “And learning who you are is what you’re here to do.”</p>
+<p>“I thought we were here to learn English,” Jack cracked, which made everyone laugh.</p>
+<p>“Oh yeah, and that, too!” Mr. Browne answered, which I thought was very cool of him. He turned around and wrote in big huge block letters that spread all the way across the chalkboard:</p>
+<p class="q">MR. BROWNE’S SEPTEMBER PRECEPT:</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>大家继续喊出一堆“重要的事”——蜜蜂、安全带、回收、朋友——布朗老师说自己写的这些人还漏了最最重要的一个。有人猜“上帝”，但不是他要的答案。他在黑板上写下“我们是谁”，并问：你是哪一种人？这难道不是最重要的问题吗？他让大家看校门口的石碑，没人答得上来，于是他念出那行字“认识你自己”，说你们来这里就是为了认识自己。杰克打趣说“我以为我们是来学英语的”，把大家逗笑了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;It says: 'Know Thyself,'&quot; he said, smiling and nodding. &quot;And learning who you are is what you're here to do.&quot;</blockquote><p class="note">Know thyself = 认识你自己，出自古希腊。布朗老师用一个问题就把课堂从英语拉向了人生：你是来学英语的，更是来认识自己的。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>out of ideas</b> <span class="pos">phr.</span> 想不出主意了</li><li><b>underline</b> <span class="pos">v.</span> 在……下方画线</li><li><b>plaque</b> <span class="pos">n.</span> （墙上的）牌匾、碑记</li><li><b>crack</b> <span class="pos">v.</span> （这里指）开玩笑、调侃</li><li><b>block letters</b> <span class="pos">n.</span> 大写正体字母</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>选择做好：九月箴言</h2>
+            <div class="seg-en">When given the choice between being right and being kind, choose kind.</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 308 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">九月箴言</span><span class="tag">choose kind</span><span class="tag">马克劳斯教学法</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>牢牢记住这条九月箴言的英文原句——“choose kind”，它是《奇迹男孩》全书精神的浓缩，之后常常被反复提及。</div>
+        <div class="body">
+<p class="q">WHEN GIVEN THE CHOICE BETWEEN BEING RIGHT OR BEING KIND, CHOOSE KIND.</p>
+<p>“Okay, so, everybody,” he said, facing us again, “I want you to start a brand-new section in your notebooks and call it Mr. Browne’s Precepts.”</p>
+<p>He kept talking as we did what he was telling us to do.</p>
+<p>“Put today’s date at the top of the first page. And from now on, at the beginning of every month, I’m going to write a new Mr. Browne precept on the chalkboard and you’re going to write it down in your notebook. Then we’re going to discuss that precept and what it means. And at the end of the month, you’re going to write an essay about it, about what it means to you. So by the end of the year, you’ll all have your own list of precepts to take away with you.</p>
+<p>“Over the summer, I ask all my students to come up with their very own personal precept, write it on a postcard, and mail it to me from wherever you go on your summer vacation.”</p>
+<p>“People really do that?” said one girl whose name I didn’t know.</p>
+<p>“Oh yeah!” he answered, “people really do that. I’ve had students send me new precepts years after they’ve graduated from this school, actually. It’s pretty amazing.”</p>
+<p>He paused and stroked his beard.</p>
+<p>“But, anyway, next summer seems like a long way off, I know,” he joked, which made us laugh. “So, everybody relax a bit while I take attendance, and then when we’re finished with that, I’ll start telling you about all the fun stuff we’re going to be doing this year—in English.” He pointed to Jack when he said this, which was also funny, so we all laughed at that.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>布朗先生在黑板正中写下九月的箴言：“当你在做对和做好之间选择时，选择做好。”他让大家在笔记本里新建一个叫“布朗先生的箴言”的专区，每月月初抄一条并写篇有关它的短文，期末能带一沓走。他还会在暑假让每个学生想一句属于自己的箴言，写在后明信片上寄给他，有些毕业多年的学生至今还会寄来。说完他一边点名一边让学生先放松。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>WHEN GIVEN THE CHOICE BETWEEN BEING RIGHT OR BEING KIND, CHOOSE KIND.</blockquote><p class="note">being right = 做得对，being kind = 待人和善。这句“在做对与做好之间选择做好”后来成为贯穿全书的人生信条。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>brand-new</b> <span class="pos">adj.</span> 全新的</li><li><b>essay</b> <span class="pos">n.</span> 短文、作文</li><li><b>postcard</b> <span class="pos">n.</span> 明信片</li><li><b>graduate</b> <span class="pos">v.</span> 毕业</li><li><b>take attendance</b> <span class="pos">phr.</span> 点名</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>抄下箴言的那一刻，我开始喜欢学校了</h2>
+            <div class="seg-en">I was going to like school</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 22 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">情绪转折</span><span class="tag">开始喜欢学校</span><span class="tag">箴言的力量</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全单元情绪最温暖的落点：第一天的害怕与躲藏，被老师一句“choose kind”轻轻化解——奥吉第一次对接下来说“无论发生什么我都要喜欢上这里”。</div>
+        <div class="body">
+<p>As I wrote down Mr. Browne’s September precept, I suddenly realized that I was going to like school. No matter what.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这段很短，只有两句话：奥吉一边抄下布朗先生的九月箴言，一边忽然意识到，不管怎样，自己都会喜欢上这所学校。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>As I wrote down Mr. Browne's September precept, I suddenly realized that I was going to like school. No matter what.</blockquote><p class="note">No matter what = 不管怎样。奥吉在这一刻决定：就算有像朱利安那样的恶意，他也要喜欢上学校。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>realize</b> <span class="pos">v.</span> 意识到、领悟</li><li><b>no matter what</b> <span class="pos">phr.</span> 不管怎样、无论如何</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_14.html">← 上一单元</a>
+    <a href="wonder_unit_16.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第15/96 单元 · 第一部 · 奥吉 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u15.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

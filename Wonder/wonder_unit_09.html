@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第9单元 表演厅里的冒犯与一句温暖的反击</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 9 单元 · 表演厅里的冒犯与一句温暖的反击</div>
+    <div class="unit-en">The Performance Space</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1102 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>逛完科学教室，夏洛特一路不停说去年全校排的话剧《奥利弗！》——她一个女孩却演了男主角奥利弗，首演夜紧张得满头汗，直到看见爸妈才定神。进了大礼堂，朱利安屡次阴阳怪气地嘲笑奥吉要不要参加学校戏剧、拿“有没有学过科学”刁难他，还问他为什么头发留这么长、脸上是怎么了是不是被火烧过。奥吉一声不吭，杰克却帮他说了话，还悄悄告诉他：朱利安是个混蛋，但你得学着开口。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>演奥利弗的夏洛特话匣子大开</h2>
+            <div class="seg-en">Stop being such a diva!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">夏洛特的话匣子</span><span class="tag">演过奥利弗</span><span class="tag">大礼堂</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>理解夏洛特的性格：话多、爱表演、天生自来熟——她会在这段旅程里成为奥吉身边最健谈也最仗义的伙伴之一。</div>
+        <div class="body">
+<p>CHARLOTTE BASICALLY DIDN’T stop talking as we headed down to the second floor. She was describing the play they had put on last year, which was Oliver! She played Oliver even though she’s a girl. As she said this, she pushed open the double doors to a huge auditorium. At the other end of the room was a stage.</p>
+<p>Charlotte started skipping toward the stage. Julian ran after her, and then turned around halfway down the aisle.</p>
+<p>“Come on!” he said loudly, waving for me to follow him, which I did.</p>
+<p>“There were like hundreds of people in the audience that night,” said Charlotte, and it took me a second to realize she was still talking about Oliver! “I was so, so nervous. I had so many lines, and I had all these songs to sing. It was so, so, so, so hard!” Although she was talking to me, she really didn’t look at me much. “On opening night, my parents were all the way in back of the auditorium, like where Jack is right now, but when the lights are off, you can’t really see that far back. So I was like, ‘Where are my parents? Where are my parents?’ And then Mr. Resnick, our theater-arts teacher last year—he said: ‘Charlotte, stop being such a diva!’ And I was like, ‘Okay!’ And then I spotted my parents and I was totally fine. I didn’t forget a single line.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>往二楼走时夏洛特几乎不停嘴，讲去年全校排的话剧《奥利弗！》，她一个女孩却演了男主角奥利弗，边说边推开了大礼堂的门，里面是一整个舞台。她蹦蹦跳跳跑向舞台，朱利安追过去又转回来招手喊奥吉跟上。夏洛特说首演夜台下坐了上百人，她歌词台词一大堆，紧张得不行，直到上台前戏剧老师Mr. Resnick白她一眼说“别这么大牌”，她才定住神，一句也没忘。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Stop being such a diva!</blockquote><p class="note">diva = 大牌（原指一流女歌唱家，引申为耍大牌、矫情的人）。老师用这话让紧张过度的夏洛特别“戏精附体”。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>auditorium</b> <span class="pos">n.</span> 礼堂、观众席大厅</li><li><b>stage</b> <span class="pos">n.</span> 舞台</li><li><b>diva</b> <span class="pos">n.</span> 大牌、耍大牌的人</li><li><b>audience</b> <span class="pos">n.</span> 观众</li><li><b>spot</b> <span class="pos">v.</span> 看到、认出</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>朱利安拿科学选修课刁难我</h2>
+            <div class="seg-en">The science elective is the hardest</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 263 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">选课之争</span><span class="tag">朱利安的挑衅</span><span class="tag">暗处的目光</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>朱利安的语言开始带刺：“你从没上过学，凭什么觉得自己够聪明”——这是他第一次公开质疑奥吉的能力与出身。</div>
+        <div class="body">
+<p>While she was talking, I noticed Julian staring at me out of the corner of his eye. This is something I see people do a lot with me. They think I don’t know they’re staring, but I can tell from the way their heads are tilted. I turned around to see where Jack had gone to. He had stayed in the back of the auditorium, like he was bored.</p>
+<p>“We put on a play every year,” said Charlotte.</p>
+<p>“I don’t think he’s going to want to be in the school play, Charlotte,” said Julian sarcastically.</p>
+<p>“You can be in the play without actually being ‘in’ the play,” Charlotte answered, looking at me. “You can do the lighting. You can paint the backdrops.”</p>
+<p>“Oh yeah, whoopee,” said Julian, twirling his finger in the air.</p>
+<p>“But you don’t have to take the theater-arts elective if you don’t want to,” Charlotte said, shrugging. “There’s dance or chorus or band. There’s leadership.”</p>
+<p>“Only dorks take leadership,” Julian interrupted.</p>
+<p>“Julian, you’re being so obnoxious!” said Charlotte, which made Julian laugh.</p>
+<p>“I’m taking the science elective,” I said.</p>
+<p>“Cool!” said Charlotte.</p>
+<p>Julian looked directly at me. “The science elective is supposably the hardest elective of all,” he said. “No offense, but if you’ve never, ever been in a school before, why do you think you’re suddenly going to be smart enough to take the science elective? I mean, have you ever even studied science before? Like real science, not like the kind you do in kits?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>夏洛特继续说学校每年排戏时，奥吉注意到朱利安透过眼角偷偷看他，而杰克一直待在礼堂后面像在发呆。说起选修课，夏洛特说可以选舞蹈、合唱、乐队，还有领导力课程，朱利安立刻接了句“只有书呆子才选领导力”，夏洛特说他“真烦人”。奥吉说自己想选科学，朱利安直接盯住他：你知道科学选修是全年级最难的，从没上过学的人凭什么觉得自己突然就够聪明？</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>if you've never, ever been in a school before, why do you think you're suddenly going to be smart enough to take the science elective?</blockquote><p class="note">smart enough to do = 聪明到足以做某事。朱利安这句挑衅把奥吉“从没上过学”当作看不起他的理由。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>elective</b> <span class="pos">n.</span> 选修课</li><li><b>backdrop</b> <span class="pos">n.</span> 布景背景</li><li><b>obnoxious</b> <span class="pos">adj.</span> 令人讨厌的、烦人的</li><li><b>dork</b> <span class="pos">n.</span> 书呆子、怪咖（口语）</li><li><b>sarcastically</b> <span class="pos">adv.</span> 讽刺地、挖苦地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“你脸上是怎么回事？被火烧过吗？”</h2>
+            <div class="seg-en">What's the deal with your face?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">回脸上的伤疤</span><span class="tag">朱利安的残忍</span><span class="tag">杰克的怒火</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>最扎心的拷问出现了：“你脸上是怎么回事，是不是被火烧过”直接击中奥吉的伤口——也第一次暴露出朱利安真实的态度。</div>
+        <div class="body">
+<p>“Yeah.” I nodded.</p>
+<p>“He was homeschooled, Julian!” said Charlotte.</p>
+<p>“So teachers came to his house?” asked Julian, looking puzzled.</p>
+<p>“No, his mother taught him!” answered Charlotte.</p>
+<p>“Is she a teacher?” Julian said.</p>
+<p>“Is your mother a teacher?” Charlotte asked me.</p>
+<p>“No,” I said.</p>
+<p>“So she’s not a real teacher!” said Julian, as if that proved his point. “That’s what I mean. How can someone who’s not a real teacher actually teach science?”</p>
+<p>“I’m sure you’ll do fine,” said Charlotte, looking at me.</p>
+<p>“Let’s just go to the library now,” Jack called out, sounding really bored.</p>
+<p>“Why is your hair so long?” Julian said to me. He sounded like he was annoyed.</p>
+<p>I didn’t know what to say, so I just shrugged.</p>
+<p>“Can I ask you a question?” he said.</p>
+<p>I shrugged again. Didn’t he just ask me a question?</p>
+<p>“What’s the deal with your face? I mean, were you in a fire or something?”</p>
+<p>“Julian, that’s so rude!” said Charlotte.</p>
+<p>“I’m not being rude,” said Julian, “I’m just asking a question. Mr. Tushman said we could ask questions if we wanted to.”</p>
+<p>“Not rude questions like that,” said Charlotte. “Besides, he was born like that. That’s what Mr. Tushman said. You just weren’t listening.”</p>
+<p>“I was so listening!” said Julian. “I just thought maybe he was in a fire, too.”</p>
+<p>“Geez, Julian,” said Jack. “Just shut up.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说自己在家里由妈妈教，朱利安一听“你妈妈不是真老师，那她怎么能教科学”，夏洛特赶紧打圆场说“你一定能学好的”，杰克也催着去图书馆。朱利安又转而逼问奥吉为什么头发留这么长，接下来直接问：“你脸上是怎么回事？是遇到过火灾还是别的什么？”夏洛特骂他太粗鲁，朱利安还辩解这是“校长允许的问问题”，夏洛特说奥吉是天生就这样，杰克终于火了，厉声说“朱利安，闭上你的嘴”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Julian, that's so rude!</blockquote><p class="note">rude = 粗鲁、无礼。连向来维持礼貌的夏洛特也受不了朱利安追问奥吉的脸，可见这话有多伤人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>deal</b> <span class="pos">n.</span> （口语）问句里的‘怎么回事’；the deal 情况</li><li><b>rude</b> <span class="pos">adj.</span> 粗鲁的、无礼的</li><li><b>fire</b> <span class="pos">n.</span> 火灾</li><li><b>shrug</b> <span class="pos">v.</span> 耸肩</li><li><b>puzzled</b> <span class="pos">adj.</span> 困惑的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>你迟早得开口说话</h2>
+            <div class="seg-en">you're gonna have to talk</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 248 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">杰克看穿了我的笑</span><span class="tag">鼓励开口</span><span class="tag">用词怼回</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是单元的高光：杰克读懂了奥吉僵硬的笑容，并教他“你得学会说话”；而奥吉转头就用一个拼写错误回敬了讽刺——他开始反击了。</div>
+        <div class="body">
+<p>“You shut up!” Julian yelled.</p>
+<p>“Come on, August,” said Jack. “Let’s just go to the library already.”</p>
+<p>I walked toward Jack and followed him out of the auditorium. He held the double doors open for me, and as I passed by, he looked at me right in the face, kind of daring me to look back at him, which I did. Then I actually smiled. I don’t know. Sometimes when I have the feeling like I’m almost crying, it can turn into an almost-laughing feeling. And that must have been the feeling I was having then, because I smiled, almost like I was going to giggle. The thing is, because of the way my face is, people who don’t know me very well don’t always get that I’m smiling. My mouth doesn’t go up at the corners the way other people’s mouths do. It just goes straight across my face. But somehow Jack Will got that I had smiled at him. And he smiled back.</p>
+<p>“Julian’s a jerk,” he whispered before Julian and Charlotte reached us. “But, dude, you’re gonna have to talk.” He said this seriously, like he was trying to help me. I nodded as Julian and Charlotte caught up to us. We were all quiet for a second, all of us just kind of nodding, looking at the floor. Then I looked up at Julian.</p>
+<p>“The word’s ‘supposedly,’ by the way,” I said.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>朱利安回骂“你闭嘴”，杰克护着奥吉往图书馆走，还为他推开双双门。两人对视时，奥吉的难过几乎要变成笑，他勉强翘起嘴角——因为脸的原因，他笑起来嘴角不往上扬，可杰克居然看出来了，还朝他回了一个笑。走出门时杰克低声说“朱利安就是个混蛋，不过兄弟，你迟早得学会开口说话”。奥吉点点头，然后抬头对朱利安说：“顺便一提，那个词的读音是『supposedly』。”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>But somehow Jack Will got that I had smiled at him. And he smiled back.</blockquote><p class="note">get = 理解、领会。奥吉的笑因脸型几乎看不出来，杰克却“懂”了——这是他们友谊真正的开始。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>jerk</b> <span class="pos">n.</span> 混蛋、讨厌鬼（口语）</li><li><b>gonna</b> <span class="pos">phr.</span> 口语 = going to，将要</li><li><b>giggle</b> <span class="pos">v.</span> 咯咯地轻笑</li><li><b>seriously</b> <span class="pos">adv.</span> 认真地</li><li><b>whisper</b> <span class="pos">v.</span> 低声说</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>我把你那个词纠正一下</h2>
+            <div class="seg-en">The word's 'supposedly'</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 104 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">纠正读音</span><span class="tag">假道歉</span><span class="tag">暗处的敌意</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>结尾埋下伏笔：小事做出来都是友善，可朱利安撞他那一下和那句假道歉，其实一点都不友好——奥吉开始读懂朱利安表面之下的敌意。</div>
+        <div class="body">
+<p>“What are you talking about?”</p>
+<p>“You said ‘supposably’ before,” I said.</p>
+<p>“I did not!”</p>
+<p>“Yeah you did,” Charlotte nodded. “You said the science elective is supposably really hard. I heard you.”</p>
+<p>“I absolutely did not,” he insisted.</p>
+<p>“Whatever,” said Jack. “Let’s just go.”</p>
+<p>“Yeah, let’s just go,” agreed Charlotte, following Jack down the stairs to the next floor. I started to follow her, but Julian cut right in front of me, which actually made me stumble backward.</p>
+<p>“Oops, sorry about that!” said Julian.</p>
+<p>But I could tell from the way he looked at me that he wasn’t really sorry at all.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>朱利安被整懵，问“你在说什么”，奥吉回答说你把“supposedly”读成了“supposably”。朱利安嘴硬不认，可夏洛特点头作证他确实那么说过，杰克说“随他吧，咱们走”。大家便往楼下走，奥吉正要跟上夏洛特，朱利安却抢到他前面，一下把他撞得踉跄后退，还假惺惺说“哎呀真不好意思”。奥吉从他的眼神里看出，他一点都不抱歉。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>But I could tell from the way he looked at me that he wasn't really sorry at all.</blockquote><p class="note">could tell = 能看出来。这句话把朱利安的假道歉点破——他撞奥吉其实是有意的。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>supposedly</b> <span class="pos">adv.</span> 据说、据称</li><li><b>insist</b> <span class="pos">v.</span> 坚持说、一口咬定</li><li><b>stumble</b> <span class="pos">v.</span> 踉跄、绊到</li><li><b>sorry</b> <span class="pos">adj.</span> 抱歉的</li><li><b>by the way</b> <span class="pos">phr.</span> 顺便说一下</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_08.html">← 上一单元</a>
+    <a href="wonder_unit_10.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第9/96 单元 · 第一部 · 奥吉 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u09.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

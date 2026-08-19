@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第55单元 造访奥吉的星球大战小屋</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 55 单元 · 造访奥吉的星球大战小屋</div>
+    <div class="unit-en">August’s House</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 960 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>已是一月中旬，杰克的科学展览项目还没着落，奥吉催他放学后一起去家里定项目。杰克一路上担心奥吉是否把他的「万圣节事件」告诉父母，结果奥吉妈妈超级友善、只字未提。奥吉的房间摆满星球大战模型和海报，两人的狗黛西摇着尾巴讨摸摸。两人为选什么项目拌嘴，最终定了土豆电池（杰克连自己房间和电脑都没有）。这时姐姐维娅探头进来，杰克直觉到自己曾说奥吉的话让她知道了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>奥吉的房间和摇尾巴的黛西</h2>
+            <div class="seg-en">Star Wars miniatures and the dog</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 248 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">初访奥吉家</span><span class="tag">星球大战墙</span><span class="tag">小狗黛西</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意两个呼应：贺卡上的狗黛西出现在眼前；奥吉妈妈不知情、对杰克友善——「万圣节事件」还捂在两人之间。</div>
+        <div class="body">
+<p>IT WAS ALREADY the middle of January, and we still hadn’t even chosen what science-fair project we were going to work on. I guess I kept putting it off because I just didn’t want to do it. Finally, August was like, “Dude, we have to do this.” So we went to his house after school.</p>
+<p>I was really nervous because I didn’t know if August had ever told his parents about what we now called the Halloween Incident. Turns out the dad wasn’t even home and the mom was out running errands. I’m pretty sure from the two seconds I’d spent talking to her that Auggie had never mentioned a thing about it. She was super cool and friendly toward me.</p>
+<p>When I first walked into Auggie’s room, I was like, “Whoa, Auggie, you have got a serious Star Wars addiction.”</p>
+<p>He had ledges full of Star Wars miniatures, and a huge The Empire Strikes Back poster on his wall.</p>
+<p>“I know, right?” he laughed.</p>
+<p>He sat down on a rolling chair next to his desk and I plopped down on a beanbag chair in the corner. That’s when his dog waddled into the room right up to me.</p>
+<p>“He was on your holiday card!” I said, letting the dog sniff my hand.</p>
+<p>“She,” he corrected me. “Daisy. You can pet her. She doesn’t bite.”</p>
+<p>When I started petting her, she basically just rolled over onto her back.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>一月过半，两人还没定科学展览项目，杰克一直拖，最后奥吉说「哥们，咱们得搞定这个」，于是放学去了奥吉家。杰克很紧张，怕奥吉告诉父母「万圣节事件」，结果他爸不在家、妈妈出门办事，而且妈妈对杰克超级友好，杰克断定奥吉从没提过那件事。一进奥吉房间杰克就惊叹他成堆的星球大战模型和《帝国反击战》大海报，然后奥吉的狗黛西摇摇摆摆走进来，杰克认出它就在贺卡上。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>When I first walked into Auggie's room, I was like, &quot;Whoa, Auggie, you have got a serious Star Wars addiction.&quot;</blockquote><p class="note">addiction = 上瘾、沉迷。杰克一进门就被奥吉满屋的星战收藏惊到，用玩笑话形容他「重度星战迷」。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>addiction</b> <span class="pos">n.</span> 上瘾、沉迷</li><li><b>ledges</b> <span class="pos">n.</span> （墙上的）搁板、窗台</li><li><b>miniatures</b> <span class="pos">n.</span> 小模型、微缩模型</li><li><b>pet</b> <span class="pos">v.</span> 抚摸（宠物）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我没自己的房间，更别说电脑了</h2>
+            <div class="seg-en">I don't even have my own room</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 260 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">设施对比</span><span class="tag">Xbox诱惑</span><span class="tag">定项目</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一句透露杰克家的经济条件：他连私人房间和电脑都没有——奥吉家的环境与杰克形成鲜明对比。</div>
+        <div class="body">
+<p>“She wants you to rub her tummy,” said August.</p>
+<p>“Okay, this is the cutest dog I’ve ever seen,” I said, rubbing her stomach.</p>
+<p>“I know, right? She’s the best dog in the world. Aren’t you, girlie?”</p>
+<p>As soon as she heard Auggie’s voice say that, the dog started wagging her tail and went over to him.</p>
+<p>“Who’s my little girlie? Who’s my little girlie?” Auggie was saying as she licked him all over the face.</p>
+<p>“I wish I had a dog,” I said. “My parents think our apartment’s too small.” I started looking around at the stuff in his room while he turned on the computer. “Hey, you’ve got an Xbox 360? Can we play?”</p>
+<p>“Dude, we’re here to work on the science-fair project.”</p>
+<p>“Do you have Halo?”</p>
+<p>“Of course I have Halo.”</p>
+<p>“Please can we play?”</p>
+<p>He had logged on to the Beecher website and was now scrolling down Ms. Rubin’s teacher page through the list of science-fair projects. “Can you see from there?” he said.</p>
+<p>I sighed and went to sit on a little stool that was right next to him.</p>
+<p>“Cool iMac,” I said.</p>
+<p>“What kind of computer do you have?”</p>
+<p>“Dude, I don’t even have my own room, much less my own computer. My parents have this ancient Dell that’s practically dead.”</p>
+<p>“Okay, how about this one?” he said, turning the screen in my direction so I would look. I made a quick scan of the screen and my eyes literally started blurring.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克摸着黛西的肚子连连夸她可爱，黛西一听到奥吉的声音就摇尾巴去舔他的脸。杰克羡慕说自己也想要狗，可父母嫌公寓太小。他看见奥吉的Xbox 360想玩游戏，奥吉坚持要先把项目定下来。奥吉打开学校网站，杰克看着满屏的项目列表眼睛发花。他随口夸奥吉的iMac高级，奥吉反问他家电脑，杰克自嘲：我连自己的房间都没有，更别说电脑，爸妈那台旧Dell基本快报废了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Dude, I don't even have my own room, much less my own computer. My parents have this ancient Dell that's practically dead.</blockquote><p class="note">much less = 更不用说；practically dead = 基本快报废了。杰克用这句自嘲暴露了自家的拮据。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>much less</b> <span class="pos">phr.</span> 更不用说、更别提</li><li><b>practically</b> <span class="pos">adv.</span> 几乎、实际上</li><li><b>ancient</b> <span class="pos">adj.</span> 古老的、过时的</li><li><b>scroll down</b> <span class="pos">phr.</span> 向下滚动（浏览器）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>「黛丝·维达」与土豆电池</h2>
+            <div class="seg-en">Darth Daisy and the potato battery</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">项目之争</span><span class="tag">达斯黛西的笑话</span><span class="tag">和好如初</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>奥吉这句话点明两人曾冷战、现在和好——他用「我帮你」把科学项目和友情和解绑在了一起。</div>
+        <div class="body">
+<p>“Making a sun clock,” he said. “That sounds kind of cool.”</p>
+<p>I leaned back. “Can’t we just make a volcano?”</p>
+<p>“Everyone makes volcanoes.”</p>
+<p>“Duh, because it’s easy,” I said, petting Daisy again.</p>
+<p>“What about: How to make crystal spikes out of Epsom salt?”</p>
+<p>“Sounds boring,” I answered. “So why’d you call her Daisy?”</p>
+<p>He didn’t look up from the screen. “My sister named her. I wanted to call her Darth. Actually, technically speaking, her full name is Darth Daisy, but we never really called her that.”</p>
+<p>“Darth Daisy! That’s funny! Hi, Darth Daisy!” I said to the dog, who rolled onto her back again for me to rub her tummy.</p>
+<p>“Okay, this one is the one,” said August, pointing to a picture on the screen of a bunch of potatoes with wires poking out of them. “How to build an organic battery made of potatoes. Now, that’s cool. It says here you could power a lamp with it. We could call it the Spud Lamp or something. What do you think?”</p>
+<p>“Dude, that sounds way too hard. You know I suck at science.”</p>
+<p>“Shut up, you do not.”</p>
+<p>“Yeah I do! I got a fifty-four on my last test. I suck at science!”</p>
+<p>“No you don’t! And that was only because we were still fighting and I wasn’t helping you. I can help you now. This is a good project, Jack. We’ve got to do it.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克一心想做最简单的火山，奥吉嫌老套，又提议用泻盐做水晶，杰克嫌无聊。杰克问狗为什么叫黛西，奥吉说是姐姐取的，他本来想叫达斯·维达（衍生出「达斯·黛西」这名）。最后奥吉挑中「用土豆做有机电池给台灯供电」，要取名「薯灯」。杰克叫苦说自己科学最差、上次才考54分，奥吉却认真反驳：那还不是因为咱俩当时在冷战、我没帮你，现在我就能帮你，这个项目就得做。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And that was only because we were still fighting and I wasn't helping you. I can help you now.</blockquote><p class="note">奥吉说的是：你考差是因为之前咱俩在吵架、我没帮你，现在我就能帮你——话里透着修复友情的心意。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>volcano</b> <span class="pos">n.</span> 火山</li><li><b>crystal</b> <span class="pos">n.</span> 晶体、水晶</li><li><b>organic</b> <span class="pos">adj.</span> 有机的</li><li><b>battery</b> <span class="pos">n.</span> 电池</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>维娅的眼神让我心里发虚</h2>
+            <div class="seg-en">She hates me, right?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 206 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">姐姐维娅</span><span class="tag">眼神对视</span><span class="tag">真相已知</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅看杰克的「那个眼神」——一个眼神就传递了「我知道你说过什么」，这是本单元叙事的转折点。</div>
+        <div class="body">
+<p>“Fine, whatever.” I shrugged.</p>
+<p>Just then there was a knock on the door. A teenage girl with long dark wavy hair poked her head inside the door. She wasn’t expecting to see me.</p>
+<p>“Oh, hey,” she said to both of us.</p>
+<p>“Hey, Via,” said August, looking back at the computer screen. “Via, this is Jack. Jack, that’s Via.”</p>
+<p>“Hey,” I said, nodding hello.</p>
+<p>“Hey,” she said, looking at me carefully. I knew the second Auggie said my name that he had told her about the stuff I had said about him. I could tell from the way she looked at me. In fact, the way she looked at me made me think she remembered me from that day at Carvel on Amesfort Avenue all those years ago.</p>
+<p>“Auggie, I have a friend I want you to meet, okay?” she said. “He’s coming over in a few minutes.”</p>
+<p>“Is he your new boyfriend?” August teased.</p>
+<p>Via kicked the bottom of his chair. “Just be nice,” she said, and left the room.</p>
+<p>“Dude, your sister’s hot,” I said.</p>
+<p>“I know.”</p>
+<p>“She hates me, right? You told her about the Halloween Incident?”</p>
+<p>“Yeah.”</p>
+<p>“Yeah, she hates me or yeah, you told her about Halloween?”</p>
+<p>“Both.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>门外有人敲门，一个长发波浪的少女探进头来，是奥吉的姐姐维娅。杰克从她看自己的眼神里立刻明白奥吉已经把她说过奥吉的话告诉她了，甚至觉得她认得自己是当年在Amesfort大道那家冷饮店遇到过的男孩。维娅说等下有个朋友要来让奥吉认识，奥吉开玩笑问是不是她的新男友，维娅踢了他椅子一脚让他乖一点。杰克直说「你姐真漂亮」，然后紧张地问奥吉：「她恨我对吧？你告诉她万圣节事件了？」奥吉说「两条都对」。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I knew the second Auggie said my name that he had told her about the stuff I had said about him. I could tell from the way she looked at me.</blockquote><p class="note">这种写法叫伏笔：杰克从维娅看他的眼神，猜到奥吉已经跟姐姐说过自己讲过奥吉坏话的事。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>poke one's head</b> <span class="pos">phr.</span> 探头、探出头</li><li><b>tease</b> <span class="pos">v.</span> 开玩笑、逗弄</li><li><b>kick</b> <span class="pos">v.</span> 踢</li><li><b>hot</b> <span class="pos">adj.</span> （口语）漂亮的、性感的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_54.html">← 上一单元</a>
+    <a href="wonder_unit_56.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第55/96 单元 · 第四部 · 杰克 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u55.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

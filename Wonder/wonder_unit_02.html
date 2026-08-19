@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第2单元 妈妈讲我从出生到决定上学的故事</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 2 单元 · 妈妈讲我从出生到决定上学的故事</div>
+    <div class="unit-en">How I Came to Life · Christopher’s House</div>
+    <div class="unit-stats">
+      <span>⏱ 约 14 分钟</span>
+      <span>📄 1131 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>这一单元妈妈讲述奥吉出生的那晚——产房里有个爱放屁的护士、医生被吓晕在地，荒唐又好笑；当医生说她可能活不过当晚时，那位护士在她耳边说了一句话。出生后妈妈第一眼看到的只是他漂亮的眼睛。接着画面切回现在：奥吉三年前最好的朋友克里斯托弗搬走了，全家开车去他家玩时，奥吉偷听到妈妈在谈他秋天要去上学的事，他强烈抗拒，爸妈为此分歧，最后他得知学校叫Beecher Prep。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>妈妈最爱讲这个好笑的故事</h2>
+            <div class="seg-en">It makes me laugh so much</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 282 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">出生故事</span><span class="tag">放屁护士</span><span class="tag">家庭幽默</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>感受这段叙述的喜剧基调：再严肃可怕的事情，奥吉家都用玩笑来化解——这是了解这个家庭性格的关键。</div>
+        <div class="body">
+<p>I LIKE WHEN Mom tells this story because it makes me laugh so much. It’s not funny in the way a joke is funny, but when Mom tells it, Via and I just start cracking up.</p>
+<p>So when I was in my mom’s stomach, no one had any idea I would come out looking the way I look. Mom had had Via four years before, and that had been such a “walk in the park” (Mom’s expression) that there was no reason to run any special tests. About two months before I was born, the doctors realized there was something wrong with my face, but they didn’t think it was going to be bad. They told Mom and Dad I had a cleft palate and some other stuff going on. They called it “small anomalies.”</p>
+<p>There were two nurses in the delivery room the night I was born. One was very nice and sweet. The other one, Mom said, did not seem at all nice or sweet. She had very big arms and (here comes the funny part), she kept farting. Like, she’d bring Mom some ice chips, and then fart. She’d check Mom’s blood pressure, and fart. Mom says it was unbelievable because the nurse never even said excuse me! Meanwhile, Mom’s regular doctor wasn’t on duty that night, so Mom got stuck with this cranky kid doctor she and Dad nicknamed Doogie after some old TV show or something (they didn’t actually call him that to his face). But Mom says that even though everyone in the room was kind of grumpy, Dad kept making her laugh all night long.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说妈妈讲出生故事时他和姐姐维娅会笑到不行。妈妈怀他时一切顺利，出生前两个月才知道他脸上有点问题，医生称之为“小异常”。出生那晚产房里有个态度不好、手臂很粗、还一直放屁的护士，连“对不起”都不说；当值的也不是妈妈的固定医生，而是一个他们私下叫“Doogie”的坏脾气小医生。不过妈妈记得爸爸整晚都在逗她笑。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Mom says it was unbelievable because the nurse never even said excuse me!</blockquote><p class="note">excuse me = 对不起、借过。护士放屁却从不说“不好意思”，这在奥吉看来荒唐滑稽，也预示他家用笑声讲故事的风格。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>crack up</b> <span class="pos">phr.</span> 爆笑、打不住地笑</li><li><b>cleft palate</b> <span class="pos">n.</span> 唇腭裂（先天上颚裂开）</li><li><b>unbelievable</b> <span class="pos">adj.</span> 难以置信的</li><li><b>grumpy</b> <span class="pos">adj.</span> 脾气坏的、爱发牢骚的</li><li><b>nickname</b> <span class="pos">v.</span> 给……起绰号</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>产房里的闹剧与那句耳语</h2>
+            <div class="seg-en">The whole room got very quiet</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 335 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">出生之夜</span><span class="tag">晕倒的医生</span><span class="tag">护土的安慰</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意情绪的转折：前面是闹剧般的好笑，最后落点却是那位护士在绝望时刻的一句善意的安慰——笑中有泪。</div>
+        <div class="body">
+<p>When I came out of Mom’s stomach, she said the whole room got very quiet. Mom didn’t even get a chance to look at me because the nice nurse immediately rushed me out of the room. Dad was in such a hurry to follow her that he dropped the video camera, which broke into a million pieces. And then Mom got very upset and tried to get out of bed to see where they were going, but the farting nurse put her very big arms on Mom to keep her down in the bed. They were practically fighting, because Mom was hysterical and the farting nurse was yelling at her to stay calm, and then they both started screaming for the doctor. But guess what? He had fainted! Right on the floor! So when the farting nurse saw that he had fainted, she started pushing him with her foot to get him to wake up, yelling at him the whole time: “What kind of doctor are you? What kind of doctor are you? Get up! Get up!” And then all of a sudden she let out the biggest, loudest, smelliest fart in the history of farts. Mom thinks it was actually the fart that finally woke the doctor up. Anyway, when Mom tells this story, she acts out all the parts—including the farting noises—and it is so, so, so, so funny!</p>
+<p>Mom says the farting nurse turned out to be a very nice woman. She stayed with Mom the whole time. Didn’t leave her side even after Dad came back and the doctors told them how sick I was. Mom remembers exactly what the nurse whispered in her ear when the doctor told her I probably wouldn’t live through the night: “Everyone born of God overcometh the world.” And the next day, after I had lived through the night, it was that nurse who held Mom’s hand when they brought her to meet me for the first time.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉出生时整个产房安静下来，好心的护士立刻把他抱走，爸爸追出去时摔坏了摄像机；妈妈情绪激动地想下床，被放屁的护士死死按住。当大家去喊医生时，发现医生居然晕倒在地上，护士用脚踢他才把他弄醒，还放了个史上最响最臭的屁。可故事最动人处是：医生说她可能活不过当晚时，那位护士在她耳边轻语“凡从神生的，就胜过世界”——第二天正是这位护士拉着她的手第一次去见奥吉。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Everyone born of God overcometh the world.</blockquote><p class="note">overcometh 是古英语 overcomes 的旧式写法，意为“胜过”。护士引用圣经经文安抚妈妈，是奥吉出生故事里最深情的时刻。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hysterical</b> <span class="pos">adj.</span> 歇斯底里的、情绪失控的</li><li><b>faint</b> <span class="pos">v.</span> 晕倒</li><li><b>act out</b> <span class="pos">phr.</span> 把……表演出来（边说边演）</li><li><b>turned out to be</b> <span class="pos">phr.</span> 结果是、原来竟是</li><li><b>rushed</b> <span class="pos">v.</span> 匆忙带走（rush 的过去式）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>妈妈第一眼只看见我的眼睛</h2>
+            <div class="seg-en">How pretty my eyes were</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">看第一眼</span><span class="tag">好朋友离散</span><span class="tag">上学之争</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“我准备好上学了吗？没有”这个问答：奥吉和爸爸都坚决反对上学，为后面与妈妈的争执铺垫。</div>
+        <div class="body">
+<p>Mom says by then they had told her all about me. She had been preparing herself for the seeing of me. But she says that when she looked down into my tiny mushed-up face for the first time, all she could see was how pretty my eyes were.</p>
+<p>Mom is beautiful, by the way. And Dad is handsome. Via is pretty. In case you were wondering.</p>
+<p>I WAS REALLY bummed when Christopher moved away three years ago. We were both around seven then. We used to spend hours playing with our Star Wars action figures and dueling with our lightsabers. I miss that.</p>
+<p>Last spring we drove over to Christopher’s house in Bridgeport. Me and Christopher were looking for snacks in the kitchen, and I heard Mom talking to Lisa, Christopher’s mom, about my going to school in the fall. I had never, ever heard her mention school before.</p>
+<p>“What are you talking about?” I said.</p>
+<p>Mom looked surprised, like she hadn’t meant for me to hear that.</p>
+<p>“You should tell him what you’ve been thinking, Isabel,” Dad said. He was on the other side of the living room talking to Christopher’s dad.</p>
+<p>“We should talk about this later,” said Mom.</p>
+<p>“No, I want to know what you were talking about,” I answered.</p>
+<p>“Don’t you think you’re ready for school, Auggie?” Mom said.</p>
+<p>“No,” I said.</p>
+<p>“I don’t, either,” said Dad.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>尽管已有心理准备，妈妈第一次低头看奥吉那张皱成一团的小脸时，她看到的只是他的眼睛有多漂亮。随后奥吉提到最好朋友克里斯托弗三年前搬走了，他曾和克里斯托弗一起玩星球大战人偶、拿光剑对决，非常想念。去年春天全家开车去康涅狄格的克里斯托弗家，奥吉在厨房找零食时，偷听到妈妈跟克里斯托弗妈妈提起他“秋天要去上学”——他从没听妈妈提过上学。他当面追问，妈妈说“你觉得自己准备好上学了吗，奥吉？”，他答“没有”，爸爸也说“我也不觉得”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>All she could see was how pretty my eyes were.</blockquote><p class="note">妈妈没有先去想奥吉脸上的异样，而是只看见“他的眼睛多漂亮”。这份看轻外貌、看见孩子的母爱，是全书的情感底色。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bummed</b> <span class="pos">adj.</span> 沮丧的、失落的</li><li><b>talk about</b> <span class="pos">phr.</span> 谈论、说起</li><li><b>in the fall</b> <span class="pos">phr.</span> 在秋季（美国称秋天为 fall）</li><li><b>mention</b> <span class="pos">v.</span> 提起、提到</li><li><b>ready</b> <span class="pos">adj.</span> 准备好的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>定了：去毕奇预备学校</h2>
+            <div class="seg-en">Beecher Prep</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 274 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">贝奇学校</span><span class="tag">爸妈争执</span><span class="tag">父亲的承诺</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>三人态度一览：爸爸护着奥吉“不想做就不做”，妈妈为长远着想坚持上学——奥吉夹在中间，既抗拒又承认妈妈有理。</div>
+        <div class="body">
+<p>“Then that’s it, case closed,” I said, shrugging, and I sat in her lap like I was a baby.</p>
+<p>“I just think you need to learn more than I can teach you,” Mom said. “I mean, come on, Auggie, you know how bad I am at fractions!”</p>
+<p>“What school?” I said. I already felt like crying.</p>
+<p>“Beecher Prep. Right by us.”</p>
+<p>“Wow, that’s a great school, Auggie,” said Lisa, patting my knee.</p>
+<p>“Why not Via’s school?” I said.</p>
+<p>“That’s too big,” Mom answered. “I don’t think that would be a good fit for you.”</p>
+<p>“I don’t want to,” I said. I admit: I made my voice sound a little babyish.</p>
+<p>“You don’t have to do anything you don’t want to do,” Dad said, coming over and lifting me out of Mom’s lap. He carried me over to sit on his lap on the other side of the sofa. “We won’t make you do anything you don’t want to do.”</p>
+<p>“But it would be good for him, Nate,” Mom said.</p>
+<p>“Not if he doesn’t want to,” answered Dad, looking at me. “Not if he’s not ready.”</p>
+<p>I saw Mom look at Lisa, who reached over and squeezed her hand.</p>
+<p>“You guys will figure it out,” she said to Mom. “You always have.”</p>
+<p>“Let’s just talk about it later,” said Mom. I could tell she and Dad were going to get in a fight about it. I wanted Dad to win the fight. Though a part of me knew Mom was right. And the truth is, she really was terrible at fractions.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉像婴儿一样坐进妈妈怀里说“那就这么定了”，妈妈说觉得他需要学得比自己能教的多（她承认自己不擅长分数）。他问去哪所学校，得知是家附近的Beecher Prep，又赌气想上姐姐维娅的学校，但妈妈说那所学校太大不适合他。爸爸把奥吉抱到自己腿上，承诺绝不会逼他做不想做的事，妈妈则坚持“那对他有好处”，两人眼看要吵起来。奥吉心里想让爸爸赢，但也清楚妈妈是对的——她教分数确实很烂。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And the truth is, she really was terrible at fractions.</blockquote><p class="note">fractions = 分数（数学）。这句是全书式的小幽默：争论了大半天，奥吉最后承认——妈妈教数学确实不行。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fraction</b> <span class="pos">n.</span> （数学）分数</li><li><b>fit</b> <span class="pos">n.</span> 合适的人/东西；a good fit 很合适</li><li><b>admit</b> <span class="pos">v.</span> 承认</li><li><b>babyish</b> <span class="pos">adj.</span> 像孩子一样幼稚的</li><li><b>case closed</b> <span class="pos">phr.</span> 结案、就这么定了</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_01.html">← 上一单元</a>
+    <a href="wonder_unit_03.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第2/96 单元 · 第一部 · 奥吉 · 约 14 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u02.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

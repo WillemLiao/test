@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第54单元 杰克的忏悔与「官方站队名单」</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 54 单元 · 杰克的忏悔与「官方站队名单」</div>
+    <div class="unit-en">Why I Didn’t Sit with August the First Day of School · Sides</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 795 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>杰克承认自己是个大伪君子——开学第一天他明明看到奥吉没人可一起坐，却为了能跟「普通孩子」轻松待会儿，故意坐到离奥吉最远的一桌，后来还和刚认识的艾赛亚、卢卡成了固定饭友。如今他坐回奥吉和夏默身边，把夏洛特的情报尽量轻描淡写地讲给两人听，奥吉却大大方方自嘲「欢迎来到我的世界」。隔天夏默摊开夏洛特整理的站队名单，三人都笑了；杰克的「瘟疫」玩笑惹来尴尬，奥吉却拿「奶酪之触」回应，逗得大家喷奶大笑。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>开学第一天，我当了个大伪君子</h2>
+            <div class="seg-en">I'm a total hypocrite</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 267 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自我忏悔</span><span class="tag">开学首日</span><span class="tag">伪君子</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一整段是杰克的自我反思：他并非一开始就好朋友，他也曾因为「想当普通孩子」而躲开奥吉——和今天的处境形成呼应。</div>
+        <div class="body">
+<p>OKAY, I’M A total hypocrite. I know. That very first day of school I remember seeing August in the cafeteria. Everybody was looking at him. Talking about him. Back then, no one was used to his face or even knew that he was coming to Beecher, so it was a total shocker for a lot of people to see him there on the first day of school. Most kids were even afraid to get near him.</p>
+<p>So when I saw him going into the cafeteria ahead of me, I knew he’d have no one to sit with, but I just couldn’t bring myself to sit with him. I had been hanging out with him all morning long because we had so many classes together, and I guess I was just kind of wanting a little normal time to chill with other kids. So when I saw him move to a table on the other side of the lunch counter, I purposely found a table as far away from there as I could find. I sat down with Isaiah and Luca even though I’d never met them before, and we talked about baseball the whole time, and I played basketball with them at recess. They became my lunch table from then on.</p>
+<p>I heard Summer had sat down with August, which surprised me because I knew for a fact she wasn’t one of the kids that Tushman had talked to about being friends with Auggie. So I knew she was doing it just to be nice, and that was pretty brave, I thought.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克坦白自己是个伪君子。开学第一天他在食堂看到奥吉，当时大家都不认识奥吉的脸、多数孩子甚至不敢靠近他。杰克知道奥吉会没地方坐，却怎么也不肯坐过去——他整个上午都和奥吉一起上课，只想换点「和别的孩子消遣」的正常时间，于是故意挑了离奥吉最远的桌子，和素不相识的艾赛亚、卢卡聊了一中午棒球，从此成了饭友。他听说夏默主动跟奥吉坐在一起，也知道夏默并不在图什曼托付的朋友名单里，觉得她单纯是出于善心，很勇敢。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I guess I was just kind of wanting a little normal time to chill with other kids.</blockquote><p class="note">chill with = 跟……轻松相处。杰克承认自己当时只想拥有「正常、轻松」的时刻，这份私心让他愧疚。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hypocrite</b> <span class="pos">n.</span> 伪君子</li><li><b>shocker</b> <span class="pos">n.</span> 令人震惊的事</li><li><b>chill with</b> <span class="pos">phr.</span> 与……轻松相处</li><li><b>purposely</b> <span class="pos">adv.</span> 故意地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>奥吉的「欢迎来到我的世界」</h2>
+            <div class="seg-en">Welcome to my world!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">同病相怜</span><span class="tag">站队名单</span><span class="tag">自嘲</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>奥吉这句自嘲充满心酸的力量——杰克此刻尝到的孤独，是奥吉从小到大每天的生活。这是两人真正靠近的时刻。</div>
+        <div class="body">
+<p>So now here I was sitting with Summer and August, and they were being totally nice to me as always. I filled them in about everything Charlotte had told me, except for the whole big part about my having “snapped” under the pressure of being Auggie’s friend, or the part about Julian’s mom saying that Auggie had special needs, or the part about the school board. I guess all I really told them about was how Julian had had a holiday party and managed to turn the whole grade against me.</p>
+<p>“It just feels so weird,” I said, “to not have people talking to you, pretending you don’t even exist.”</p>
+<p>Auggie started smiling.</p>
+<p>“Ya think?” he said sarcastically. “Welcome to my world!”</p>
+<p>“SO HERE ARE the official sides,” said Summer at lunch the next day. She pulled out a folded piece of loose-leaf paper and opened it. It had three columns of names.</p>
+<p>“Where did you get this?” said Auggie, looking over my shoulder as I read the list.</p>
+<p>“Charlotte made it,” Summer answered quickly. “She gave it to me last period. She said she thought you should know who was on your side, Jack.”</p>
+<p>“Yeah, not many people, that’s for sure,” I said.</p>
+<p>“Reid is,” she said. “And the two Maxes.”</p>
+<p>“Great. The nerds are on my side.”</p>
+<p>“Don’t be mean,” said Summer. “I think Charlotte likes you, by the way.”</p>
+<p>“Yeah, I know.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克坐在夏默和奥吉中间，两人待他如常友善。他把夏洛特告诉他的事讲给两人听，却隐去了自己「被迫亲近奥吉而崩溃」、奥吉被说成有特殊需要、以及校董事会那几段。他只说朱利安办了圣诞派对，还设法让整个年级跟他作对。杰克感叹「没人跟你说话、当你不存在的感觉真奇怪」，奥吉却笑着讽刺：「你觉得呢？欢迎来到我的世界！」夏默隔天又摊开夏洛特列的三栏名单，杰克的盟友只有里德和两个麦克斯，杰克自嘲「书呆子站在我这边」。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;Welcome to my world!&quot;</blockquote><p class="note">welcome to my world = 欢迎来到我的世界（指「这就是我的日常」）。奥吉用一句玩笑点破了两人的处境差异。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fill in</b> <span class="pos">phr.</span> 向……详细说明、禀报</li><li><b>weird</b> <span class="pos">adj.</span> 奇怪的、异样的</li><li><b>sarcastically</b> <span class="pos">adv.</span> 讽刺地</li><li><b>nerd</b> <span class="pos">n.</span> 书呆子、极客</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>关于「瘟疫」和「奶酪之触」的玩笑</h2>
+            <div class="seg-en">The Cheese Touch</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 259 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">自嘲化解</span><span class="tag">瘟疫与奶酪之触</span><span class="tag">谈情说爱玩笑</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>看奥吉怎么用幽默化解尴尬：别人叫他「瘟疫」，他不但不恼怒，还拿「奶酪之触」自嘲配戏——这是奥吉独有的坚强。</div>
+        <div class="body">
+<p>“Are you going to ask her out?”</p>
+<p>“Are you kidding? I can’t, now that everybody’s acting like I have the Plague.”</p>
+<p>The second I said it, I realized I shouldn’t have said it. There was this awkward moment of silence. I looked at Auggie.</p>
+<p>“It’s okay,” he said. “I knew about that.”</p>
+<p>“Sorry, dude,” I said.</p>
+<p>“I didn’t know they called it the Plague, though,” he said. “I figured it was more like the Cheese Touch or something.”</p>
+<p>“Oh, yeah, like in Diary of a Wimpy Kid.” I nodded.</p>
+<p>“The Plague actually sounds cooler,” he joked. “Like someone could catch the ‘black death of ugliness.’” As he said this, he made air quotes.</p>
+<p>“I think it’s awful,” said Summer, but Auggie shrugged while taking a big sip from his juice box.</p>
+<p>“Anyway, I’m not asking Charlotte out,” I said.</p>
+<p>“My mom thinks we’re all too young to be dating anyway,” she answered.</p>
+<p>“What if Reid asked you out?” I said. “Would you go?”</p>
+<p>I could tell she was surprised. “No!” she said.</p>
+<p>“I’m just asking,” I laughed.</p>
+<p>She shook her head and smiled. “Why? What do you know?”</p>
+<p>“Nothing! I’m just asking!” I said.</p>
+<p>“I actually agree with my mom,” she said. “I do think we’re too young to be dating. I mean, I just don’t see what the rush is.”</p>
+<p>“Yeah, I agree,” said August. “Which is kind of a shame, you know, what with all those babes who keep throwing themselves at me and stuff?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>夏默问杰克会不会约夏洛特出去，杰克说「开什么玩笑，现在人人都当我得了瘟疫」。话一出口他就后悔这句话不该当着奥吉的面说，空气静了一瞬。可奥吉大度地说他早就知道了，还打趣：他们居然叫「瘟疫」，他以为会叫「奶酪之触」——像《小屁孩日记》里那样。奥吉学着打出「丑陋黑死病」的手势引号，把夏默逗得皱眉，自己却咕咚灌下一大盒果汁，还开着玩笑说可惜自己「招惹太多美女」。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>The Plague actually sounds cooler, he joked. Like someone could catch the 'black death of ugliness.'</blockquote><p class="note">黑死病（black death）+ 丑陋（ugliness）——奥吉自嘲地称自己是「丑陋的黑死病」，用幽默把别人对他的排斥挡回去。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>the Cheese Touch</b> <span class="pos">n.</span> 奶酪之触（《小屁孩日记》里的恶作剧游戏，被碰到会「传染」排斥）</li><li><b>awkward</b> <span class="pos">adj.</span> 尴尬的、局促的</li><li><b>ask out</b> <span class="pos">phr.</span> 约某人出去（约会）</li><li><b>plague</b> <span class="pos">n.</span> 瘟疫</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>牛奶喷鼻子，三个人笑作一团</h2>
+            <div class="seg-en">The milk came out my nose</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 28 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">开怀大笑</span><span class="tag">牛奶喷鼻</span><span class="tag">友谊治愈</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>沉重的单元以一个爆笑的瞬间收尾：被孤立的人也能有一桌笑声——这正是友谊的意义。</div>
+        <div class="body">
+<p>He said this in such a funny way that the milk I was drinking came out my nose when I laughed, which made us all totally crack up.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这一小段极短（不到1分钟）。奥吉逗趣的话让杰克笑到把嘴里的牛奶从鼻子里喷了出来，三个人顿时一起哈哈大笑。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He said this in such a funny way that the milk I was drinking came out my nose when I laughed, which made us all totally crack up.</blockquote><p class="note">crack up = 大笑、笑崩。把牛奶笑到从鼻子喷出来，说明这桌人已经彻底放松、亲密得可以放声笑了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>crack up</b> <span class="pos">phr.</span> 大笑、笑到不行</li><li><b>funny</b> <span class="pos">adj.</span> 搞笑的、逗趣的</li><li><b>came out</b> <span class="pos">phr.</span> （从……里）喷出来、冒出</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_53.html">← 上一单元</a>
+    <a href="wonder_unit_55.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第54/96 单元 · 第四部 · 杰克 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u54.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

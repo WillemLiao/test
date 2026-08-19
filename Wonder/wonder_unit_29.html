@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第29单元 透过小孔，我看见两个奥吉</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 29 单元 · 透过小孔，我看见两个奥吉</div>
+    <div class="unit-en">August Through the Peephole</div>
+    <div class="unit-stats">
+      <span>⏱ 约 11 分钟</span>
+      <span>📄 864 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>维娅罕见地静下来，逐字描述奥吉的五官长相：低垂倾斜的眼睛、突起的眼球、没有眉毛睫毛、没有颧骨、过大的鼻子和过小的下巴。她坦言自己也不确定奥吉是否明白别人怎么看他——镜子里他看到的是爸爸妈妈眼里的奥吉，还是别人眼里的那个奥吉。她也承认如今家里的每个人都把奥吉当小孩团团转，而她想让他长大：大家费尽心思让他觉得正常，结果他真的以为自己正常了。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>维娅第一次细看奥吉的脸</h2>
+            <div class="seg-en">His eyes …</div>
+          </div>
+          <div class="seg-meta">约 5 分钟 · 379 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">外貌描写</span><span class="tag">手术历史</span><span class="tag">活下来的奇迹</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这段是全书对奥吉长相最直白的描写，注意维娅的语气：她不是嫌弃，而是在观察、在数他跨过的生死关。</div>
+        <div class="body">
+<p>HIS EYES ARE about an inch below where they should be on his face, almost to halfway down his cheeks. They slant downward at an extreme angle, almost like diagonal slits that someone cut into his face, and the left one is noticeably lower than the right one. They bulge outward because his eye cavities are too shallow to accommodate them. The top eyelids are always halfway closed, like he’s on the verge of sleeping. The lower eyelids sag so much they almost look like a piece of invisible string is pulling them downward: you can see the red part on the inside, like they’re almost inside out. He doesn’t have eyebrows or eyelashes. His nose is disproportionately big for his face, and kind of fleshy. His head is pinched in on the sides where the ears should be, like someone used giant pliers and crushed the middle part of his face. He doesn’t have cheekbones. There are deep creases running down both sides of his nose to his mouth, which gives him a waxy appearance. Sometimes people assume he’s been burned in a fire: his features look like they’ve been melted, like the drippings on the side of a candle. Several surgeries to correct his lip have left a few scars around his mouth, the most noticeable one being a jagged gash running from the middle of his upper lip to his nose. His upper teeth are small and splay out. He has a severe overbite and an extremely undersized jawbone. He has a very small chin. When he was very little, before a piece of his hip bone was surgically implanted into his lower jaw, he really had no chin at all. His tongue would just hang out of his mouth with nothing underneath to block it. Thankfully, it’s better now. He can eat, at least: when he was younger, he had a feeding tube. And he can talk. And he’s learned to keep his tongue inside his mouth, though that took him several years to master. He’s also learned to control the drool that used to run down his neck. These are considered miracles. When he was a baby, the doctors didn’t think he’d live.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅第一次这样细致地描写奥吉的样貌：眼睛位置偏低倾斜、没有眉毛睫毛、鼻子过大、脸上没有颧骨还有深深的皱纹，看去像被火烫过、像融化的蜡烛滴。她补充说奥吉从小一次次手术，舌头曾因没有下巴兜着而垂出口外，如今他能吃能说，学会把舌头收进嘴里、忍住口水，这些被当成奇迹——因为他出生时医生说他不一定能活下来。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>These are considered miracles.</blockquote><p class="note">miracles = 奇迹。维娅说奥吉能吃饭、能说话、学会把舌头收回去，这些都被医生当作奇迹，因为他生下来时可能活不过。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>slant</b> <span class="pos">v.</span> 倾斜、歪斜</li><li><b>bulge</b> <span class="pos">v.</span> 鼓起、凸出</li><li><b>eye cavities</b> <span class="pos">n.</span> 眼眶、眼窝</li><li><b>fleshy</b> <span class="pos">adj.</span> 肉感的、多肉的</li><li><b>splay</b> <span class="pos">v.</span> 张开、展开</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>奥吉在镜子里看见的是哪一个自己</h2>
+            <div class="seg-en">Two Augusts</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 235 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">助听器</span><span class="tag">镜中的自己</span><span class="tag">不敢问的问句</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一连串没答案的问句——维娅不敢问弟弟，只能暗自猜测，说明姐弟之间有一道她不知如何跨越的墙。</div>
+        <div class="body">
+<p>He can hear, too. Most kids born with these types of birth defects have problems with their middle ears that prevent them from hearing, but so far August can hear well enough through his tiny cauliflower-shaped ears. The doctors think that eventually he’ll need to wear hearing aids, though. August hates the thought of this. He thinks the hearing aids will get noticed too much. I don’t tell him that the hearing aids would be the least of his problems, of course, because I’m sure he knows this.</p>
+<p>Then again, I’m not really sure what August knows or doesn’t know, what he understands and doesn’t understand.</p>
+<p>Does August see how other people see him, or has he gotten so good at pretending not to see that it doesn’t bother him? Or does it bother him? When he looks in the mirror, does he see the Auggie Mom and Dad see, or does he see the Auggie everyone else sees? Or is there another August he sees, someone in his dreams behind the misshapen head and face? Sometimes when I looked at Grans, I could see the pretty girl she used to be underneath the wrinkles. I could see the girl from Ipanema inside the old-lady walk. Does August see himself as he might have looked without that single gene that caused the catastrophe of his face?</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅提到奥吉耳朵虽小却目前能听清，医生预测他将来要戴助听器，奥吉最怕这个，怕被更多人注意到。她接着反复自问：奥吉知不知道别人怎么看自己？他是不是假装看不到才不被伤害？他照镜子时看到的是爸妈眼里的奥吉、所有人眼里的奥吉，还是睡梦里那个没长歪的自己？她想起自己看见外婆皱纹下年轻时漂亮的她，不禁猜想奥吉会否也想念没长这张脸的自己。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Does August see himself as he might have looked without that single gene that caused the catastrophe of his face?</blockquote><p class="note">catastrophe = 大灾难。维娅问弟弟是否想象过没有那条坏基因、没有这张脸的模样，道出她替弟弟心疼。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>hearing aid</b> <span class="pos">n.</span> 助听器</li><li><b>misshapen</b> <span class="pos">adj.</span> 畸形的、变形的</li><li><b>wrinkle</b> <span class="pos">n.</span> 皱纹</li><li><b>catastrophe</b> <span class="pos">n.</span> 大灾难、惨祸</li><li><b>gene</b> <span class="pos">n.</span> 基因</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>我们都该让奥吉长大了</h2>
+            <div class="seg-en">He needs to grow up</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 250 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">读不懂弟弟</span><span class="tag">过度保护</span><span class="tag">正常的悖论</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住段尾的转折：家里越是把奥吉当正常孩子，越是与现实脱节；维娅想让他认清并面对真实的自己，从这里能看出她已经开始思考现实。</div>
+        <div class="body">
+<p>I wish I could ask him this stuff. I wish he would tell me how he feels. He used to be easier to read before the surgeries. You knew that when his eyes squinted, he was happy. When his mouth went straight, he was being mischievous. When his cheeks trembled, he was about to cry. He looks better now, no doubt about that, but the signs we used to gauge his moods are all gone. There are new ones, of course. Mom and Dad can read every single one. But I’m having trouble keeping up. And there’s a part of me that doesn’t want to keep trying: why can’t he just say what he’s feeling like everyone else? He doesn’t have a trache tube in his mouth anymore that keeps him from talking. His jaw’s not wired shut. He’s ten years old. He can use his words. But we circle around him like he’s still the baby he used to be. We change plans, go to plan B, interrupt conversations, go back on promises depending on his moods, his whims, his needs. That was fine when he was little. But he needs to grow up now. We need to let him, help him, make him grow up. Here’s what I think: we’ve all spent so much time trying to make August think he’s normal that he actually thinks he is normal. And the problem is, he’s not.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说希望自己能问奥吉、奥吉也能告诉她感受，可手术后能读他表情的旧信号都消失了，妈爸能看懂新的，她却跟不上，也不想再费劲——他十岁了，会说话，凭什么不能直接说出来。她又自责家里仍把他当婴儿团团转，随他情绪改计划、中断对话。她的结论是：大家太想让奥吉觉得正常，结果他真的以为自己正常——可问题是，他并不正常。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>we’ve all spent so much time trying to make August think he’s normal that he actually thinks he is normal.</blockquote><p class="note">normal = 正常的。维娅点出家里善意的谎言反过来害了弟弟：他居然真相信自己正常，可现实并非如此。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>squint</b> <span class="pos">v.</span> 眯起眼（看/笑）</li><li><b>mischievous</b> <span class="pos">adj.</span> 调皮的、淘气的</li><li><b>gauge</b> <span class="pos">v.</span> 估量、判断</li><li><b>whim</b> <span class="pos">n.</span> 一时兴起的念头、任性</li><li><b>wire</b> <span class="pos">v.</span> 用金属丝固定（wire shut 缝合）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_28.html">← 上一单元</a>
+    <a href="wonder_unit_30.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第29/96 单元 · 第二部 · 维娅 · 约 11 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u29.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第32单元 妈妈深夜站在奥吉房门口，像一抹幽灵</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 32 单元 · 妈妈深夜站在奥吉房门口，像一抹幽灵</div>
+    <div class="unit-en">The Padawan Bites the Dust · An Apparition at the Door</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 806 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>维娅先为奥吉悄悄剪掉自己的“学徒辫”暗自生气，又为开学这天家里没人顾得上她而失落。晚饭后妈妈来敲门想安慰她，她赌气说“现在不行”，妈妈答应睡前再来，可那晚来的是爸爸——他说奥吉第一天很糟，妈妈在陪他。夜里维娅起身喝水，撞见妈妈像幽灵一样站在奥吉房门口倾听他睡着的气息，妈妈却不肯解释。她不禁自问：多少个夜晚妈妈这样站过？她可曾这样站在我的房门口过？</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>奥吉悄悄剪掉了他的学徒辫</h2>
+            <div class="seg-en">The Padawan braid</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 261 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">学徒辫</span><span class="tag">照镜子</span><span class="tag">疲惫的妈妈</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意奥吉照镜子端详自己的举动：他自己也在意长相，这与维娅深夜纠缠的心事互为镜照。</div>
+        <div class="body">
+<p>I’M NOT SURE at what point that night Auggie had cut off his Padawan braid, or why that made me really mad. I had always found his obsession with everything Star Wars kind of geeky, and that braid in the back of his hair, with its little beads, was just awful. But he had always been so proud of it, of how long it took him to grow it, of how he had chosen the beads himself in a crafts store in Soho. He and Christopher, his best friend, used to play with lightsabers and Star Wars stuff whenever they got together, and they had both started growing their braids at the same time. When August cut his braid off that night, without an explanation, without telling me beforehand (which was surprising)—or even calling Christopher—I was just so upset I can’t even explain why.</p>
+<p>I’ve seen Auggie brushing his hair in the bathroom mirror. He meticulously tries to get every hair in place. He tilts his head to look at himself from different angles, like there’s some magic perspective inside the mirror that could change the dimensions of his face.</p>
+<p>Mom knocked on my door after dinner. She looked drained, and I realized that between me and Auggie, today had been a tough day for her, too.</p>
+<p>“So you want to tell me what’s up?” she asked nicely, softly.</p>
+<p>“Not now, okay?” I answered. I was reading. I was tired. Maybe later I’d be up to telling her about Miranda, but not now.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅说奥吉那天晚上不知何时剪掉了自己的“学徒辫”，她说不清为什么这让她很生气。那条带小珠子的辫子他一直引以为傲，是他和朋友克里斯托弗同时留起来的星球大战执念。就在她写满心事时，她看见奥吉在浴室镜子里认真梳头、从各个角度端详自己。晚饭后妈妈敲门，看起来很疲惫——今天为她的事和奥吉的事夹击，妈妈也够呛，问她要不要聊聊。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I’ve seen Auggie brushing his hair in the bathroom mirror. He meticulously tries to get every hair in place.</blockquote><p class="note">meticulously = 一丝不苟地。奥吉在镜子里认真把每根头发摆好位置，写出他对自己样貌的在意。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>padawan</b> <span class="pos">n.</span> 学徒（《星球大战》里学艺的学徒）</li><li><b>braid</b> <span class="pos">n.</span> 辫子</li><li><b>lightsaber</b> <span class="pos">n.</span> 光剑（《星球大战》武器）</li><li><b>drained</b> <span class="pos">adj.</span> 精疲力竭的、被掏空的</li><li><b>meticulously</b> <span class="pos">adv.</span> 一丝不苟地</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>来道晚安的是爸爸，不是妈妈</h2>
+            <div class="seg-en">Dad always laughs</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 260 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">爸爸的幽默</span><span class="tag">妈妈失约</span><span class="tag">战争与和平</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意爸爸用幽默化解维娅的委屈，同时悄悄为妈妈“失约”开脱——家里真实的注意力仍偏向奥吉。</div>
+        <div class="body">
+<p>“I’ll check in before you go to bed,” she said, and then she came over and kissed me on the top of my head.</p>
+<p>“Can Daisy sleep with me tonight?”</p>
+<p>“Sure, I’ll bring her in later.”</p>
+<p>“Don’t forget to come back,” I said as she left.</p>
+<p>“I promise.”</p>
+<p>But she didn’t come back that night. Dad did. He told me Auggie had had a bad first day and Mom was helping him through it. He asked me how my day had gone and I told him fine. He said he didn’t believe me for a second, and I told him Miranda and Ella were acting like jerks. (I didn’t mention how I took the subway home by myself, though.) He said nothing tests friendships like high school, and then proceeded to poke fun at the fact that I was reading War and Peace. Not real fun, of course, since I’d heard him brag to people that he had a “fifteen-year-old who is reading Tolstoy.” But he liked to rib me about where I was in the book, in a war part or in a peace part, and if there was anything in there about Napoleon’s days as a hip-hop dancer. It was silly stuff, but Dad always managed to make everyone laugh. And sometimes that’s all you need to feel better.</p>
+<p>“Don’t be mad at Mom,” he said as he bent down to give me a good-night kiss. “You know how much she worries about Auggie.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈答应睡前再来看看维娅，还答应让小狗黛西陪她睡，可那晚来的却是爸爸——他告诉维娅奥吉第一天过得很糟，妈妈正陪着他。爸爸逗她说谎瞒不过他，问起米兰达和伊拉是不是在装坏，还打趣她把《战争与和平》读到战争段还是和平段，讲拿破仑跳街舞的段子。维娅说有时逗笑就那么有用，爸爸临走让她别生妈妈的气，因为妈妈太担心奥吉了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>But Dad always managed to make everyone laugh. And sometimes that’s all you need to feel better.</blockquote><p class="note">managed to = 设法做到。爸爸擅长用玩笑哄全家人笑，维娅说有时被逗笑就足够了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>jerk</b> <span class="pos">n.</span> 混蛋、讨厌鬼</li><li><b>poke fun at</b> <span class="pos">phr.</span> 取笑、拿……开玩笑</li><li><b>brag</b> <span class="pos">v.</span> 吹嘘、夸耀</li><li><b>rib</b> <span class="pos">v.</span> 逗弄、调侃</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>妈妈像幽灵般守在弟弟门口</h2>
+            <div class="seg-en">A ghost at the door</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 261 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">夜里的妈妈</span><span class="tag">蓝色夜灯</span><span class="tag">沉默的守护</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“像幽灵又像天使”的画面带给人的振动：妈妈的守护深沉到近乎幽灵般夜复一夜。</div>
+        <div class="body">
+<p>“I know,” I acknowledged.</p>
+<p>“Want the light on or off? It’s getting kind of late,” he said, pausing by the light switch at the door.</p>
+<p>“Can you bring Daisy in first?”</p>
+<p>Two seconds later he came back with Daisy dangling in his arms, and he laid her down next to me on the bed.</p>
+<p>“Good night, sweetheart,” he said, kissing my forehead. He kissed Daisy on her forehead, too. “Good night, girlie. Sweet dreams.”</p>
+<p>ONCE, I GOT up in the middle of the night because I was thirsty, and I saw Mom standing outside Auggie’s room. Her hand was on the doorknob, her forehead leaning on the door, which was ajar. She wasn’t going in his room or stepping out: just standing right outside the door, as if she was listening to the sound of his breathing as he slept. The hallway lights were out. The only thing illuminating her was the blue night-light in August’s bedroom. She looked ghostlike standing there. Or maybe I should say angelic. I tried to walk back into my room without disturbing her, but she heard me and walked over to me.</p>
+<p>“Is Auggie okay?” I asked. I knew that sometimes he would wake up choking on his own saliva if he accidentally turned over on his back.</p>
+<p>“Oh, he’s fine,” she said, wrapping her arms around me. She walked me back into my room, pulled the covers over me, and kissed me good night. She never explained what she was doing outside his door, and I never asked.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅半夜口渴起身，看见妈妈站在奥吉门口，手搭在门把上、额头贴在半开的门上，像在听他睡着的气息，昏暗月色中只被弟弟房里的蓝色夜灯照亮，像鬼魂又像天使。妈妈听见动静走来抱她，替她掖好被角吻她晚安，却始终没解释自己在门外做什么，维娅也没问。她主动问一句“奥吉还好吗”，因为知道奥吉有时仰睡会被自己的口水呛醒。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She looked ghostlike standing there. Or maybe I should say angelic.</blockquote><p class="note">ghostlike = 像鬼魂的；angelic = 像天使的。维娅看着深夜守门的妈妈，一时说不出该用哪个词。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>ajar</b> <span class="pos">adj.</span> 微开着的（门）</li><li><b>illuminate</b> <span class="pos">v.</span> 照亮</li><li><b>ghostlike</b> <span class="pos">adj.</span> 像鬼魂般的</li><li><b>angelic</b> <span class="pos">adj.</span> 天使般的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>她可曾也这样守过我的房门</h2>
+            <div class="seg-en">Ever stood outside my door</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 24 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">想被守护</span><span class="tag">内心失落</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一句没有答案的猜想——维娅羡慕奥吉得到的那种守护，也在试探自己是否同样被妈妈记在心上。</div>
+        <div class="body">
+<p>I wonder how many nights she’s stood outside his door. And I wonder if she’s ever stood outside my door like that.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这一小段只有一句话：维娅在心里暗想，不知妈妈到底多少个夜晚这样站在奥吉门外，不知妈妈有没有也这样守过她的房门。这句话道出了她心里最隐秘的渴望与缺失。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I wonder if she’s ever stood outside my door like that.</blockquote><p class="note">stand outside the door = 守在门外。维娅的疑问藏着羡慕与失落：她想要的是和奥吉一样的关注。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>wonder</b> <span class="pos">v.</span> 想知道、琢磨</li><li><b>stood</b> <span class="pos">v.</span> stand 的过去式，站立</li><li><b>outside</b> <span class="pos">adv.</span> 在外面</li><li><b>ever</b> <span class="pos">adv.</span> 曾经（疑问句中）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_31.html">← 上一单元</a>
+    <a href="wonder_unit_33.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第32/96 单元 · 第二部 · 维娅 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u32.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

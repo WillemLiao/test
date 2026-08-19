@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第42单元 埃及博物馆之夜与那个秘密提示</title>
+<style>
+:root{--c:#4a7a8c;--bg:#e8f1f4;--nav:#d5e6ec;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第三部 · 萨默</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 42 单元 · 埃及博物馆之夜与那个秘密提示</div>
+    <div class="unit-en">The Egyptian Tomb</div>
+    <div class="unit-stats">
+      <span>⏱ 约 7 分钟</span>
+      <span>📄 539 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Three: Summer</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>接下来一个月，奥吉和萨默放学后常一起玩，两家还互相吃饭，大人们甚至撮合萨默妈妈和奥吉的叔叔。埃及博物馆日那天，体育馆变成了大展厅，两人穿着木乃伊戏服，用方糖搭金字塔、真金粉涂阿努比斯。家长进馆时，杰克过来问萨默，奥吉为什么生他的气、要求提个醒。萨默守信用没说，只在他耳边轻轻报出两个字——“尖叫面具”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>木乃伊小朋友和方糖金字塔</h2>
+            <div class="seg-en">August's sugar-cube pyramid</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">埃及博物馆</span><span class="tag">方糖金字塔</span><span class="tag">木乃伊戏服</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住一起精心准备、认真做作品的过程——奥吉与萨默的友谊已经从“同桌吃饭”深化成了真正互相信任的日常。</div>
+        <div class="body">
+<p>OVER THE NEXT month, August and I hung out a lot after school, either at his house or my house. August’s parents even invited Mom and me over for dinner a couple of times. I overheard them talking about fixing Mom up on a blind date with August’s uncle Ben.</p>
+<p>On the day of the Egyptian Museum exhibit, we were all really excited and kind of giddy. It had snowed the day before—not as much as it had snowed over the Thanksgiving break, but still, snow is snow.</p>
+<p>The gym was turned into a giant museum, with everyone’s Egyptian artifact displayed on a table with a little caption card explaining what the thing was. Most of the artifacts were really great, but I have to say I really think mine and August’s were the best. My sculpture of Anubis looked pretty real, and I had even used real gold paint on it. And August had made his step pyramid out of sugar cubes. It was two feet high and two feet long, and he had spray painted the cubes with this kind of fake-sand paint or something. It looked so awesome.</p>
+<p>We all dressed up in Egyptian costumes. Some of the kids were Indiana Jones–type archaeologists. Some of them dressed up like pharaohs. August and I dressed up like mummies. Our faces were covered except for two little holes for the eyes and one little hole for the mouth.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>接下来一个月，奥吉和萨默放学后常一起玩，两家大人还撮合萨默妈妈跟奥吉叔叔交朋友。埃及博物馆日这天，下过雪，大家兴奋又忐忑。体育馆被布置成巨型展厅，摆满每个人的文物展品加说明卡。萨默用真金粉涂的阿努比斯雕塑和自己满分的作品，奥吉则用方糖搭了一座两英尺高的阶梯金字塔，还喷了仿沙颜料，看起来棒极了。两人都穿上木乃伊戏服，只露出眼睛和小嘴的洞。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>August had made his step pyramid out of sugar cubes.</blockquote><p class="note">sugar cubes = 方糖。奥吉用方糖搭金字塔，既可爱又见巧思，是两人一起认真准备项目的结果。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>overhear</b> <span class="pos">v.</span> 无意中听到</li><li><b>blind date</b> <span class="pos">n.</span> 相亲、由他人安排的初次约会</li><li><b>giddy</b> <span class="pos">adj.</span> 兴奋到有点发飘的</li><li><b>captions</b> <span class="pos">n.</span> 说明文字、题注</li><li><b>mummy</b> <span class="pos">n.</span> 木乃伊</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>拿手电筒的黑柜展览与杰克的提问</h2>
+            <div class="seg-en">“Cool costume”</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">手电筒之旅</span><span class="tag">杰克的疑惑</span><span class="tag">守信与同情</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意萨默对杰克的态度：她既不能背叛对奥吉的承诺，又忍不住同情一头雾水的杰克，内心纠结由此展开。</div>
+        <div class="body">
+<p>When the parents showed up, they all lined up in the hallway in front of the gym. Then we were told we could go get our parents, and each kid got to take his or her parent on a flashlight tour through the dark gym. August and I took our moms around together. We stopped at each exhibit, explaining what it was, talking in whispers, answering questions. Since it was dark, we used our flashlights to illuminate the artifacts while we were talking. Sometimes, for dramatic effect, we would hold the flashlights under our chins while we were explaining something in detail. It was so much fun, hearing all these whispers in the dark, seeing all the lights zigzagging around the dark room.</p>
+<p>At one point, I went over to get a drink at the water fountain. I had to take the mummy wrap off my face.</p>
+<p>“Hey, Summer,” said Jack, who came over to talk to me. He was dressed like the man from The Mummy. “Cool costume.”</p>
+<p>“Thanks.”</p>
+<p>“Is the other mummy August?”</p>
+<p>“Yeah.”</p>
+<p>“Um … hey, do you know why August is mad at me?”</p>
+<p>“Uh-huh.” I nodded.</p>
+<p>“Can you tell me?”</p>
+<p>“No.”</p>
+<p>He nodded. He seemed bummed.</p>
+<p>“I told him I wouldn’t tell you,” I explained.</p>
+<p>“It’s so weird,” he said. “I have no idea why he’s mad at me all of a sudden. None. Can’t you at least give me a hint?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>家长们在体育馆门前排队，每个孩子领着自己的爸妈在黑漆漆的展厅里打手电筒边走边讲解。萨默和奥吉一起带两位妈妈参观，有时为制造效果把手电筒举到下巴底下。萨默去饮水机喝水、摘下木乃伊绷带时，杰克穿着《木乃伊》的戏服过来搭话，夸她戏服，然后问她：奥吉为什么生我的气？萨默说知道但不能说，因为她答应过奥吉保密，杰克听了很失落。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;I told him I wouldn't tell you,&quot; I explained.</blockquote><p class="note">萨默拒绝了杰克，理由是她答应了奥吉保密——守信在她心里比讨好别人更重要。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>flashlight</b> <span class="pos">n.</span> 手电筒</li><li><b>illuminate</b> <span class="pos">v.</span> 照亮</li><li><b>dramatic effect</b> <span class="pos">n.</span> 戏剧性效果</li><li><b>bummed</b> <span class="pos">adj.</span> 沮丧的、失落的</li><li><b>hint</b> <span class="pos">n.</span> 提示、线索</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>耳边那句轻轻的“尖叫面具”</h2>
+            <div class="seg-en">Bleeding Scream</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 52 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">保密冲突</span><span class="tag">轻声提示</span><span class="tag">尖叫面具</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>体会萨默这个折中：她没有直接告诉杰克“谁害的”，只给了个模糊线索——一句“尖叫面具”，既守住又松动了自己的承诺。</div>
+        <div class="body">
+<p>I looked over at where August was across the room, talking to our moms. I wasn’t about to break my solid oath that I wouldn’t tell anyone about what he overheard at Halloween, but I felt bad for Jack.</p>
+<p>“Bleeding Scream,” I whispered in his ear, and then walked away.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>萨默望向房间另一头正和妈妈们聊天的奥吉，发誓绝不破坏答应过他的保密，却又为杰克感到不忍。她最终在杰克耳边轻轻说了句“尖叫面具”（指他万圣节那个面具下听到的话），然后转身离开。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;Bleeding Scream,&quot; I whispered in his ear, and then walked away.</blockquote><p class="note">Bleeding Scream = 尖叫面具（万圣节面具名）。萨默只给杰克一个微弱提示，既想帮他，又没背叛奥吉的信任。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>oath</b> <span class="pos">n.</span> 誓言、承诺</li><li><b>break my promise</b> <span class="pos">phr.</span> 违背诺言</li><li><b>walk away</b> <span class="pos">phr.</span> 走开、转身离去</li><li><b>comfort</b> <span class="pos">v.</span> 安慰</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_41.html">← 上一单元</a>
+    <a href="wonder_unit_43.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第42/96 单元 · 第三部 · 萨默 · 约 7 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u42.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

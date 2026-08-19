@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第36单元 万圣节之夜，奥吉说出杰克背叛的真相</title>
+<style>
+:root{--c:#6a8056;--bg:#eef1e6;--nav:#dde6d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第二部 · 维娅</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 36 单元 · 万圣节之夜，奥吉说出杰克背叛的真相</div>
+    <div class="unit-en">Trick or Treat</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 753 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Two: Via</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>万圣节那天下午奥吉说自己不舒服、不打算出门讨糖，维娅心知这是他一整年里唯一能像普通孩子一样摘下面具放心的夜晚。她进房陪他，逼问之下奥吉终于道出真相：他偷听到几个男生在背后说他坏话，其中最伤他的竟然是自己的“好朋友”杰克·伟尔。维娅又哄又劝，答应把糖都让给他，才终于劝动这个闷闷不乐的小子换上波巴·费特戏服，戴上头盔，一起出门参加万圣节游行。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>万圣节是他唯一能摘下面具的夜晚</h2>
+            <div class="seg-en">Below the mask</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 290 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">万圣节的意义</span><span class="tag">奥吉的反常</span><span class="tag">两套戏服</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住“万圣节是奥吉唯一能做普通小孩的一夜”这层寓意，理解他为何这次反常执意不睡。</div>
+        <div class="body">
+<p>AUGUST SAID HE wasn’t feeling well enough to go trick-or-treating later in the afternoon, which was sad for him because I know how much he loved to trick-or-treat—especially after it got dark outside. Even though I was well beyond the trick-or-treating stage myself, I usually threw on some mask or other to accompany him up and down the blocks, watching him knocking on people’s doors, giddy with excitement. I knew it was the one night a year when he could truly be like every other kid. No one knew he was different under the mask. To August, that must have felt absolutely amazing.</p>
+<p>At seven o’clock that night, I knocked on his door.</p>
+<p>“Hey,” I said.</p>
+<p>“Hey,” he said back. He wasn’t using his PlayStation or reading a comic book. He was just lying in his bed looking at the ceiling. Daisy, as always, was next to him on the bed, her head draped over his legs. The Bleeding Scream costume was crumpled up on the floor next to the Boba Fett costume.</p>
+<p>“How’s your stomach?” I said, sitting next to him on the bed.</p>
+<p>“I’m still nauseous.”</p>
+<p>“You sure you’re not up for the Halloween Parade?”</p>
+<p>“Positive.”</p>
+<p>This surprised me. Usually August was such a trouper about his medical issues, whether it was skateboarding a few days after a surgery or sipping food through a straw when his mouth was practically bolted shut. This was a kid who’s gotten more shots, taken more medicines, put up with more procedures by the age of ten than most people would have to put up with in ten lifetimes, and he was sidelined from a little nausea?</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉下午说自己不舒服、不去讨糖。维娅知道这是他一年里唯一能像别的孩子一样、在面具下没人知道他是谁、从而真正放心的夜，往常她都会陪他挨家挨户敲门。七点她敲开他的门，他躺在床上望着天花板，旁边蜷着黛西，两套衣服扔在地上——成套的“流血惊叫”鬼服和妈妈做的波巴·费特戏服。她问他肚子怎样，他说还恶心，坚决不去。她感到奇怪：这么能忍疼吃药的孩子，会为这点恶心就不出门？</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I knew it was the one night a year when he could truly be like every other kid. No one knew he was different under the mask.</blockquote><p class="note">under the mask = 在面具底下。万圣节的面具让奥吉头一次能躲开别人的眼光，做一天普通小孩。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>trick-or-treat</b> <span class="pos">phr.</span> 挨家挨户讨糖（万圣节习俗）</li><li><b>giddy</b> <span class="pos">adj.</span> 兴奋的、晕乎乎的</li><li><b>nauseous</b> <span class="pos">adj.</span> 恶心的、想吐的</li><li><b>trouper</b> <span class="pos">n.</span> 吃苦耐劳的人、挺得住的人</li><li><b>sidelined</b> <span class="pos">adj.</span> 被晾在一边、缺席</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>是杰克·伟尔，我最要好的新朋友</h2>
+            <div class="seg-en">Why would he say it?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 242 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">杰克背叛</span><span class="tag">偷听真相</span><span class="tag">被装朋友</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意奥吉心结的最痛处：不是别人说他坏话，而是背叛来自他信任的“好朋友”杰克。</div>
+        <div class="body">
+<p>“You want to tell me what’s up?” I said, sounding a bit like Mom.</p>
+<p>“No.”</p>
+<p>“Is it school?”</p>
+<p>“Yes.”</p>
+<p>“Teachers? Schoolwork? Friends?”</p>
+<p>He didn’t answer.</p>
+<p>“Did someone say something?” I asked.</p>
+<p>“People always say something,” he answered bitterly. I could tell he was close to crying.</p>
+<p>“Tell me what happened,” I said.</p>
+<p>And he told me what happened. He had overheard some very mean things some boys were saying about him. He didn’t care about what the other boys had said, he expected that, but he was hurt that one of the boys was his “best friend” Jack Will. I remembered his mentioning Jack a couple of times over the past few months. I remembered Mom and Dad saying he seemed like a really nice kid, saying they were glad August had already made a friend like that.</p>
+<p>“Sometimes kids are stupid,” I said softly, holding his hand. “I’m sure he didn’t mean it.”</p>
+<p>“Then why would he say it? He’s been pretending to be my friend all along. Tushman probably bribed him with good grades or something. I bet you he was like, hey, Jack, if you make friends with the freak, you don’t have to take any tests this year.”</p>
+<p>“You know that’s not true. And don’t call yourself a freak.”</p>
+<p>“Whatever. I wish I’d never gone to school in the first place.”</p>
+<p>“But I thought you were liking it.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅学着妈妈的口吻问奥吉怎么了，他先说不，又点头承认和学校有关，却咬紧牙关。她追问是否有人说了什么，他苦涩地答“人总爱说些有的没的”，快哭了。他终于坦承：他偷听到几个男生在背后说他坏话，那些难听的话他可以不在乎，可最让他心碎的是其中一个是他的“好朋友”杰克·伟尔——几个月前他还提过好几次，爸妈也高兴他终于交到这样的朋友。维娅柔声劝他说孩子有时很蠢，他更气，大声说杰克从头到尾都在装朋友，八成是校长图什曼用免考贿赂他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>but he was hurt that one of the boys was his “best friend” Jack Will.</blockquote><p class="note">hurt = 受伤、难过。其他男生的坏话奥吉能忍，最伤他的是自己信任的“好朋友”杰克·伟尔也在其中。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bitterly</b> <span class="pos">adv.</span> 苦涩地、辛酸地</li><li><b>overhear</b> <span class="pos">v.</span> 无意中听到、偷听到</li><li><b>bribe</b> <span class="pos">v.</span> 贿赂、收买</li><li><b>best friend</b> <span class="pos">n.</span> 最好的朋友</li><li><b>freak</b> <span class="pos">n.</span> 怪物、怪胎（这里是他人对奥吉的侮辱）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>戴上面具去游行，我就把糖全给你</h2>
+            <div class="seg-en">Let’s just go</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 221 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">怒火与眼泪</span><span class="tag">姐妹劝说</span><span class="tag">戴上面具出门</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意维娅怎么一步步用“糖＋不让妈妈逼你”把奥吉劝出房门，姐妹俩在委屈里互相取暖。</div>
+        <div class="body">
+<p>“I hate it!” He was angry all of a sudden, punching his pillow. “I hate it! I hate it! I hate it!” He was shrieking at the top of his lungs.</p>
+<p>I didn’t say anything. I didn’t know what to say. He was hurt. He was mad.</p>
+<p>I let him have a few more minutes of his fury. Daisy started licking the tears off of his face.</p>
+<p>“Come on, Auggie,” I said, patting his back gently. “Why don’t you put on your Jango Fett costume and—”</p>
+<p>“It’s a Boba Fett costume! Why does everyone mix that up?”</p>
+<p>“Boba Fett costume,” I said, trying to stay calm. I put my arm around his shoulders. “Let’s just go to the parade, okay?”</p>
+<p>“If I go to the parade, Mom will think I’m feeling better and make me go to school tomorrow.”</p>
+<p>“Mom would never make you go to school,” I answered. “Come on, Auggie. Let’s just go. It’ll be fun, I promise. And I’ll let you have all my candy.”</p>
+<p>He didn’t argue. He got out of bed and slowly started pulling on his Boba Fett costume. I helped him adjust the straps and tighten the belt, and by the time he put his helmet on, I could tell he was feeling better.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉突然发怒，一边捶枕头一边尖叫“我讨厌它！我讨厌它！”，维娅不知该说什么，只任他吼了会儿，让黛西舔掉他脸上的泪。她拍拍他的背哄他换套戏服去游行，还特意纠正成波巴·费特。奥吉却抬眼说：要是去游行，妈妈就以为他好了，明天就得去上学。维娅保证妈妈绝不会强迫他，劝他出门解闷，答应把他那份糖全给他。他终于松口，慢吞吞套上波巴·费特戏服，戴好头盔时，维娅看得出他心情好了些。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“It’s a Boba Fett costume! Why does everyone mix that up?”</blockquote><p class="note">mix up = 弄混、搞错。奥吉激动地纠正姐姐把戏服和另一套弄混，这点小事让他难得露出孩子气。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>strew</b> <span class="pos">v.</span> 散落、撒</li><li><b>shriek</b> <span class="pos">v.</span> 尖叫、尖喊</li><li><b>fury</b> <span class="pos">n.</span> 暴怒、狂怒</li><li><b>pat</b> <span class="pos">v.</span> 轻拍、抚拍</li><li><b>candy</b> <span class="pos">n.</span> 糖果</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_35.html">← 上一单元</a>
+    <a href="wonder_unit_37.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第36/96 单元 · 第二部 · 维娅 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u36.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

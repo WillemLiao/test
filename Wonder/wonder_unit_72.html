@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第72单元 站在台上的维娅和人群里的我</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 72 单元 · 站在台上的维娅和人群里的我</div>
+    <div class="unit-en">The Ending</div>
+    <div class="unit-stats">
+      <span>⏱ 约 11 分钟</span>
+      <span>📄 919 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>《我们的小镇》惊艳全场。维娅在台上念“再见，世界”那段台词时竟然真的哭了，妈妈也被打动了；谢幕时全场起立鼓掌，奥吉拍到手疼，心想全世界每个人都该在人生里至少获得一次全场起立的掌声。散场后一家人绕到后台祝贺维娅和贾斯汀，维娅说米兰达开演前突然生病，她临阵顶替、连“台词都说错了几句”。可就在维娅要把奥吉介绍给导演时，导演愣住不说话了，贾斯汀赶紧把他拉走；人群把落单的奥吉挤得头晕、差点调反助听器音量。正慌乱时，有人从背后把他抱起来——是米兰达，她笑着叫他“汤少校”。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>全场起立鼓掌</h2>
+            <div class="seg-en">a standing ovation</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 275 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">全场起立鼓掌</span><span class="tag">维娅念白落泪</span><span class="tag">观众的感动</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住奥吉那句庄重的感想——“世界上的每个人都该获得至少一次全场起立鼓掌”，这是整章最动人、也最能代表他心肠的一句话。</div>
+        <div class="body">
+<p>THE PLAY WAS so amazing. I don’t want to give away the ending, but it’s the kind of ending that makes people in the audience teary. Mom totally lost it when Via-as-Emily said:</p>
+<p>“Good-by, Good-by world! Good-by, Grover’s Corners … Mama and Papa. Good-by to clocks ticking and Mama’s sunflowers. And food and coffee. And new-ironed dresses and hot baths … and sleeping and waking up. Oh, earth, you’re too wonderful for anybody to realize you!”</p>
+<p>Via was actually crying while she was saying this. Like real tears: I could see them rolling down her cheeks. It was totally awesome.</p>
+<p>After the curtain closed, everyone in the audience started clapping. Then the actors came out one by one. Via and Justin were the last ones out, and when they appeared, the whole audience rose to their feet.</p>
+<p>“Bravo!” I heard Dad yelling through his hands.</p>
+<p>“Why is everyone getting up?” I said.</p>
+<p>“It’s a standing ovation,” said Mom, getting up.</p>
+<p>So I got up and clapped and clapped. I clapped until my hands hurt. For a second, I imagined how cool it would be to be Via and Justin right then, having all these people standing up and cheering for them. I think there should be a rule that everyone in the world should get a standing ovation at least once in their lives.</p>
+<p>Finally, after I don’t know how many minutes, the line of actors onstage stepped back and the curtain closed in front of them. The clapping stopped and the lights went up and the audience started getting up to leave.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这出戏太精彩了。奥吉不想剧透结尾，但那是个让观众泛泪的结尾，妈妈在“维娅扮演的艾米丽”说出那段台词时彻底破防：“再见，再见，世界！再见，格罗弗转角……妈妈和爸爸。再见了滴答的时钟和妈妈的向日葵。再见了食物和咖啡，再见了新熨的衣服和热水澡……再见了睡觉和醒来。哦，大地，你太美好，美到没人能真正体会到！”维娅说这段时真的哭了，奥吉看得见泪水滚下她的脸颊，这画面太棒了。幕布合拢，全场鼓掌，演员一个个走出来；维娅和贾斯汀最后出来，一出现全场都站起来。爸爸捂着手喊“太棒了！”奥吉问为什么大家都站起来，妈妈说“这叫全场起立鼓掌”，也站起来了。奥吉跟着站起来一直鼓掌，拍到手掌发疼。他想象此刻站在台上、被所有人站起来欢呼有多酷，觉得世上该有条规矩：每个人一辈子至少该获得一次全场起立鼓掌。不知过了多少分钟，台上的演员们后退一步，幕布在他们面前合拢，掌声停了，灯亮起，观众开始起身离场。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I think there should be a rule that everyone in the world should get a standing ovation at least once in their lives.</blockquote><p class="note">standing ovation = 全场起立鼓掌。奥吉由此想到：每个人都该被这样真诚地喝彩一次，体现出他毫无嫉妒、替所有人着想的善良。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>teary</b> <span class="pos">adj.</span> 眼含泪水的、催泪的</li><li><b>standing ovation</b> <span class="pos">n.</span> 全场起立鼓掌</li><li><b>go along</b> <span class="pos">v.</span> （此处 lose it 口语）情绪失控、泪崩</li><li><b>clap</b> <span class="pos">v.</span> 鼓掌</li><li><b>awesome</b> <span class="pos">adj.</span> 棒极了、了不起的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>后台的拥抱和祝贺</h2>
+            <div class="seg-en">You were brilliant!</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 252 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">后台祝贺</span><span class="tag">全家骄傲</span><span class="tag">临阵顶替</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这段整家人的喜悦与骄傲集中爆发：妈妈“抱得太紧怕窒息”、爸爸“又拥抱又握手”，家人第一次这样齐声为维娅喝彩。</div>
+        <div class="body">
+<p>Me and Mom and Dad made our way to the backstage. Crowds of people were congratulating the performers, surrounding them, patting them on the back. We saw Via and Justin at the center of the crowd, smiling at everyone, laughing and talking.</p>
+<p>“Via!” shouted Dad, waving as he made his way through the crowd. When he got close enough, he hugged her and lifted her off the floor a little. “You were amazing, sweetheart!”</p>
+<p>“Oh my God, Via!” Mom was screaming with excitement. “Oh my God, oh my God!” She was hugging Via so hard I thought Via would suffocate, but Via was laughing.</p>
+<p>“You were brilliant!” said Dad.</p>
+<p>“Brilliant!” Mom said, kind of nodding and shaking her head at the same time.</p>
+<p>“And you, Justin,” said Dad, shaking Justin’s hand and giving him a hug at the same time. “You were fantastic!”</p>
+<p>“Fantastic!” Mom repeated. She was, honestly, so emotional she could barely talk.</p>
+<p>“What a shock to see you up there, Via!” said Dad.</p>
+<p>“Mom didn’t even recognize you at first!” I said.</p>
+<p>“I didn’t recognize you!” said Mom, her hand over her mouth.</p>
+<p>“Miranda got sick right before the show started,” said Via, all of out of breath. “There wasn’t even time to make an announcement.” I have to say she looked kind of strange, because she was wearing all this makeup and I’d never seen her like this before.</p>
+<p>“And you just stepped in there right at the last minute?” said Dad. “Wow.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉和爸妈穿过人群绕到后台，一大群人围着演员们祝贺、拍背。他们看到维娅和贾斯汀在人群中央，对每个人笑着、聊着。爸爸一边挤过人群一边冲维娅喊“维娅！”走近后抱起她，把她双脚微微抬高“你太棒了，宝贝！”妈妈激动地尖叫“天啊，维娅！天啊天啊！”把维娅抱得紧紧的，奥吉担心她会窒息，可维娅在笑。爸爸连声夸“你太出色了！”“太出色了！”妈妈也点着又摇着头附和。爸爸又握着贾斯汀的手同时给他拥抱“你也太精彩了！”妈妈激动得几乎说不出话，重复着“太精彩了！”。爸爸说“在台上看见你，真是个大惊喜！”奥吉插嘴“妈妈一开始都没认出你呢！”“我没认出你！”妈妈捂嘴说。维娅喘着气解释“米兰达在开演前突然病了，连宣布都来不及”。奥吉觉得她看起来有点陌生，因为画了浓妆，他从没见过她这样。爸爸感叹“你就这样最后一刻顶了上去？哇。”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Miranda got sick right before the show started, said Via, all of out of breath. There wasn't even time to make an announcement.</blockquote><p class="note">out of breath = 上气不接下气。维娅揭晓谜底：米兰达开演前突然生病，她没有任何预告地临阵顶上——这也解释了她为何堪称奇迹。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>congratulate</b> <span class="pos">v.</span> 祝贺</li><li><b>pat on the back</b> <span class="pos">phr.</span> 拍拍后背（表示赞赏）</li><li><b>brilliant</b> <span class="pos">adj.</span> 出色的、才华横溢的</li><li><b>suffocate</b> <span class="pos">v.</span> 窒息</li><li><b>out of breath</b> <span class="pos">phr.</span> 上气不接下气</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>落单在人群里发晕</h2>
+            <div class="seg-en">I got confused and turned them louder</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 310 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">导演的愣怔</span><span class="tag">被撞落单</span><span class="tag">头晕失焦</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是气氛的转折：从全家的高光瞬间落到奥吉被独自抛在陌生而拥挤的人群中——导演看到他的脸时的愣怔，又一次提醒他与众不同的处境。</div>
+        <div class="body">
+<p>“She was amazing, wasn’t she?” said Justin, his arm around Via.</p>
+<p>“There wasn’t a dry eye in the house,” said Dad.</p>
+<p>“Is Miranda okay?” I said, but no one heard me.</p>
+<p>At that moment, a man who I think was their teacher came over to Justin and Via, clapping his hands.</p>
+<p>“Bravo, bravo! Olivia and Justin!” He kissed Via on both cheeks.</p>
+<p>“I flubbed a couple of lines,” said Via, shaking her head.</p>
+<p>“But you got through it,” said the man, smiling ear to ear.</p>
+<p>“Mr. Davenport, these are my parents,” said Via.</p>
+<p>“You must be so proud of your girl!” he said, shaking their hands with both his hands.</p>
+<p>“We are!”</p>
+<p>“And this is my little brother, August,” said Via.</p>
+<p>He looked like he was about to say something but suddenly froze when he looked at me.</p>
+<p>“Mr. D,” said Justin, pulling him by the arm, “come meet my mom.”</p>
+<p>Via was about to say something to me, but then someone else came over and started talking to her, and before I knew it, I was kind of alone in the crowd. I mean, I knew where Mom and Dad were, but there were so many people all around us, and people kept bumping into me, spinning me around a bit, giving me that one-two look, which made me feel kind of bad. I don’t know if it was because I was feeling hot or something, but I kind of started getting dizzy. People’s faces were blurring in my head. And their voices were so loud it was almost hurting my ears. I tried to turn the volume down on my Lobot ears, but I got confused and turned them louder at first, which kind of shocked me. And then I looked up and I didn’t see Mom or Dad or Via anywhere.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀搂着维娅说“她很棒，对不对？”爸爸说“全场没有一双眼睛是干的”。奥吉问“米兰达还好吗？”可没人听见。这时一位奥吉猜是他们老师的男人过来鼓掌“好极了，好极了！奥利维亚和贾斯汀！”他亲了亲维娅两边脸颊。维娅摇头“我念错了几句台词”，那男人笑逐颜开“可你挺过来了”。维娅介绍“戴文波特先生，这我爸妈”，“有你们这样的女儿你们该多骄傲！”“是吧！”维娅说“这是我弟弟奥古斯特”。那男人正要开口，看见奥吉突然愣住了。贾斯汀抓住他胳膊把他拉走“戴文波特先生，来见见我妈妈”。维娅正要跟奥吉说话，又有人过来找她聊，一转眼的工夫奥吉就落单站在人群里。他知道爸妈在哪，可四周人太多，不断有人撞到他、把他转个圈、投来“看两眼又移开”的目光，让他很难受。不知是不是因为发热，他开始头晕，眼前的脸都模糊了，人们的声音大得几乎刺疼他的耳朵。他想调低“洛鲍特耳朵”的音量，却一时搞混，先把它调得更响，把自己吓了一跳。他再抬头，已经看不到爸爸妈妈或维娅的踪影。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He looked like he was about to say something but suddenly froze when he looked at me.</blockquote><p class="note">freeze = 定住、愣住。导演一看到奥吉的脸话就卡住了——贾斯汀立刻把人拉走，这一刻写照了旁人初见奥吉的典型反应，也伤到了奥吉。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>flub</b> <span class="pos">v.</span> 说错、搞砸（台词）</li><li><b>freeze</b> <span class="pos">v.</span> 定住、突然僵住</li><li><b>bump into</b> <span class="pos">phr.</span> 撞到、碰上</li><li><b>dizzy</b> <span class="pos">adj.</span> 头晕的、眩晕的</li><li><b>blur</b> <span class="pos">v.</span> 变模糊</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>抱我起来的竟是米兰达</h2>
+            <div class="seg-en">Hey, Major Tom!</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 82 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">被认出</span><span class="tag">米兰达的拥抱</span><span class="tag">亲切外号</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>惊喜欢迎的收尾：米兰达戏剧性地把落单慌乱的奥吉一把抱起——她不但没被他的脸吓到，还亲切地叫他“汤少校”，是全章最暖的慰藉。</div>
+        <div class="body">
+<p>“Via?” I yelled out. I started pushing through the crowd to find Mom. “Mommy!” I really couldn’t see anything but people’s stomachs and ties all around me. “Mommy!”</p>
+<p>Suddenly someone picked me up from behind.</p>
+<p>“Look who’s here!” said a familiar voice, hugging me tight. I thought it was Via at first, but when I turned around, I was completely surprised. “Hey, Major Tom!” she said.</p>
+<p>“Miranda!” I answered, and I gave her the tightest hug I could give.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉喊“维娅？”在人群里拼命挤着找妈妈，“妈妈！妈妈！”他眼前只剩下四周人们的肚子和领带。突然有人从背后把他抱了起来，“看看是谁来了！”一个熟悉的声音说着紧紧抱住他，奥吉一开始以为那是维娅，可转身一看，完全愣住了。“嘿，汤少校！”她说。“米兰达！”奥吉应道，回给她一个他所能给的最紧的拥抱。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Hey, Major Tom! she said.</blockquote><p class="note">Major Tom 是《太空怪谈》里那位宇航员的昵称，米兰达以此昵称称呼奥吉，亲昵又俏皮，毫无嫌弃之意。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>push through</b> <span class="pos">phr.</span> 挤过、穿过人群</li><li><b>familiar</b> <span class="pos">adj.</span> 熟悉的</li><li><b>pick up</b> <span class="pos">phr.</span> 抱起、拾起</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_71.html">← 上一单元</a>
+    <a href="wonder_unit_73.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第72/96 单元 · 第六部 · 奥吉 · 约 11 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u72.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

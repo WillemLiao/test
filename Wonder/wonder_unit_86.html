@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第86单元 回家与那只叫“小熊”的新狗狗</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 86 单元 · 回家与那只叫“小熊”的新狗狗</div>
+    <div class="unit-en">Home · Bear</div>
+    <div class="unit-stats">
+      <span>⏱ 约 11 分钟</span>
+      <span>📄 886 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉回到家，许久未见、爱意汹涌的妈妈把他当作呼吸进心里。母子俩在厨房聊起这趟旅程：奥吉说除昨晚那段外一切都棒极了，妈妈劝他别让那一个小时毁掉四十多小时的美好。他们聊到维娅马上和爸爸一起回家、聊到助听器，妈妈还说爸爸只在乎他平安。奥吉又兴奋复述杰克护他、阿莫斯“砰”地撞翻带头人的惊险一幕，妈妈则心有余悸。随后话题转别开：家里来了只像小熊崽的狗狗“小熊”，奥吉和维娅翘了一天课，轮流和它玩拔河，仿佛回到他上学前的老时光。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>进门，妈妈把我当作呼吸进心里</h2>
+            <div class="seg-en">She was breathing me in</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 240 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">欢迎回家</span><span class="tag">想念黛西</span><span class="tag">烤芝士三明治</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这开头和前一单元结尾照应衔接：奥吉进门先找窗台上不在了的黛西——过世的狗狗仍在他每天回家的习惯里，给重逢添了一丝伤感。</div>
+        <div class="body">
+<p>MOM AND I didn’t talk much the whole walk home, and when we got to the front stoop, I automatically looked in the front bay window, because I forgot for a second that Daisy wasn’t going to be there like always, perched on the sofa with her front paws on the windowsill, waiting for us to come home. It made me kind of sad when we walked inside. As soon as we did, Mom dropped my duffel bag and wrapped her arms around me and kissed me on my head and on my face like she was breathing me in.</p>
+<p>“It’s okay, Mom, I’m fine,” I said, smiling.</p>
+<p>She nodded and took my face in her hands. Her eyes were shiny.</p>
+<p>“I know you are,” she said. “I missed you so much, Auggie.”</p>
+<p>“I missed you, too.”</p>
+<p>I could tell she wanted to say a lot of things but she was stopping herself.</p>
+<p>“Are you hungry?” she asked.</p>
+<p>“Starving. Can I have a grilled cheese?”</p>
+<p>“Of course,” she answered, and immediately started to make the sandwich while I took my jacket off and sat down at the kitchen counter.</p>
+<p>“Where’s Via?” I asked.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>回家路上母子俩几乎没说话，到门口奥吉习惯性朝客厅前窗看去——忘了黛西不会再像往常一样蹲在窗台上等他们，进门时不禁有些难过。一进屋妈妈就丢下行李，张开双臂抱住他，在他头顶和脸上亲了又亲，仿佛要把他吸入身体。奥吉笑着说自己没事，妈妈捧着他的脸、眼睛闪亮地说很想他。奥吉也想她，感觉得出妈妈藏着一肚子话却硬咽了回去。她问奥吉饿不饿，奥吉说饿坏了要吃烤芝士三明治，妈妈立刻动手做，奥吉脱了外套在厨房台前坐下来，问维娅在哪。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I forgot for a second that Daisy wasn't going to be there like always, perched on the sofa with her front paws on the windowsill, waiting for us to come home.</blockquote><p class="note">perched on the sofa = 蹲坐在沙发上。奥吉进门时才想起黛西已经不在了，狗狗曾每天趴在窗台上等他们回家的画面深深留在他心里。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>bay window</b> <span class="pos">n.</span> 凸窗、向外凸出的窗</li><li><b>perched</b> <span class="pos">adj.</span> 蹲坐着的、栖息着的</li><li><b>windowsill</b> <span class="pos">n.</span> 窗台</li><li><b>wrap one's arms</b> <span class="pos">phr.</span> 张开双臂搂住</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>把好与坏都讲给妈妈听</h2>
+            <div class="seg-en">The bad part or the good part</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">坦诚对话</span><span class="tag">坏消息好消息</span><span class="tag">母亲的宽慰</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓妈妈那句温柔而有力的宽慰：你待了四十多小时、糟糕的只有一小时，别让他们夺走这一切——这是奥吉从创伤里缓缓恢复的心理拐点。</div>
+        <div class="body">
+<p>“She’s coming home with Dad today. Boy, did she miss you, Auggie,” Mom said.</p>
+<p>“Yeah? She would have liked the nature reserve. You know what movie they played? The Sound of Music.”</p>
+<p>“You’ll have to tell her that.”</p>
+<p>“So, do you want to hear about the bad part or the good part first?” I asked after a few minutes, leaning my head on my hand.</p>
+<p>“Whatever you want to talk about,” she answered.</p>
+<p>“Well, except for last night, I had an awesome time,” I said. “I mean, it was just awesome. That’s why I’m so bummed. I feel like they ruined the whole trip for me.”</p>
+<p>“No, sweetie, don’t let them do that to you. You were there for more than forty-eight hours, and that awful part lasted one hour. Don’t let them take that away from you, okay?”</p>
+<p>“I know.” I nodded. “Did Mr. Tushman tell you about the hearing aids?”</p>
+<p>“Yes, he called us this morning.”</p>
+<p>“Was Dad mad? Because they’re so expensive?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈说维娅今天和爸爸一起回家，还念叨维娅特别想他。奥吉说维娅会喜欢自然营的，因为放的是《音乐之声》。过了会儿他托着脑袋问妈妈想先听坏消息还是好消息，妈妈随他。奥吉说除了昨晚那段，整趟旅程棒极了——正因为棒，他才更难过得深，觉得那帮人毁了他的旅行。妈妈轻声他说你在那儿待了四十多个小时，糟糕的只有一小时，别让那些人把它从你身上夺走。奥吉点点头，又问图什曼先生有没有提起助听器，妈妈说今早他打过电话来了，奥吉忙问爸爸会不会因为助听器太贵而生气。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You were there for more than forty-eight hours, and that awful part lasted one hour. Don't let them take that away from you, okay?</blockquote><p class="note">take sth away from you = 从你身上夺走。妈妈用“一小时 vs 四十多小时”作对比，劝奥吉别让坏的记忆盖过整趟旅程的美好。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>lean</b> <span class="pos">v.</span> 倚靠、托（头）</li><li><b>bummed</b> <span class="pos">adj.</span> 沮丧的、扫兴的</li><li><b>ruin</b> <span class="pos">v.</span> 毁掉、破坏</li><li><b>reserve</b> <span class="pos">n.</span> 自然保护区</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“砰”——给妈妈复述阿莫斯那一撞</h2>
+            <div class="seg-en">He rammed right into the leader</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 309 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">复述冲撞</span><span class="tag">妈妈的骂人话</span><span class="tag">心有余悸</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>体会奥吉怎么把创伤讲成“酷”的英雄故事：他在妈妈面前兴致勃勃地复述杰克和阿莫斯如何护住他——用骄傲和兴奋来冲淡前一晚的恐惧。</div>
+        <div class="body">
+<p>“Oh my gosh, of course not, Auggie. He just wanted to know that you were all right. That’s all that matters to us. And that you don’t let those … thugs … ruin your trip.”</p>
+<p>I kind of laughed at the way she said the word “thugs.”</p>
+<p>“What?” she asked.</p>
+<p>“Thugs,” I teased her. “That’s kind of an old-fashioned word.”</p>
+<p>“Okay, jerks. Morons. Imbeciles,” she said, flipping over the sandwich in the pan. “Cretinos, as my mother would have said. Whatever you want to call them, if I saw them on the street, I would …” She shook her head.</p>
+<p>“They were pretty big, Mom.” I smiled. “Seventh graders, I think.”</p>
+<p>She shook her head. “Seventh graders? Mr. Tushman didn’t tell us that. Oh my goodness.”</p>
+<p>“Did he tell you how Jack stood up for me?” I said. “And Amos was like, bam, he rammed right into the leader. They both crashed to the ground, like in a real fight! It was pretty awesome. Amos’s lip was bleeding and everything.”</p>
+<p>“He told us there was a fight, but …,” she said, looking at me with her eyebrows raised. “I’m just … phew … I’m just so grateful you and Amos and Jack are fine. When I think about what could have happened …,” she trailed off, flipping the grilled cheese again.</p>
+<p>WE CALLED THE puppy Bear because when Mom first saw him, she said he looked just like a little bear cub. I said: “That’s what we should call him!” and everyone agreed that that was the perfect name.</p>
+<p>I took the next day off from school—not because my elbow was hurting me, which it was, but so I could play with Bear all day long. Mom let Via stay home from school, too, so the two of us took turns cuddling with Bear and playing tug-of-war with him. We had kept all of Daisy’s old toys, and we brought them out now, to see which ones he’d like best.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈笑着说爸爸当然不生气，他只想确认奥吉平安，只在乎奥吉别让那帮“混混”毁掉旅程。奥吉被妈妈嘴里蹦出的“thug（混混）”逗笑了，说她这词太老古董，妈妈一边翻着锅里的三明治一边换上一串更狠的骂法：混蛋、白痴、傻瓜，还有她外婆常挂在嘴边的话。奥吉笑着说那帮人是高个子的七年级学生，妈妈惊得挑眉。奥吉又兴奋地讲起杰克怎么护他、阿莫斯怎么“砰”地一头撞翻带头的人，两人像真打架一样摔作一团，阿莫斯嘴唇都流血了：“简直太酷了”。妈妈说她只听说有一场打斗，心里后怕得很，既感谢孩子们没事，又不敢去想万一的后果。奥吉抱怨蒙托克连帽衫整个撕烂了，妈妈答再买一件就好，把煎好的三明治端到他面前。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Did he tell you how Jack stood up for me? I said. And Amos was like, bam, he rammed right into the leader.</blockquote><p class="note">stand up for = 为……挺身而出；ram into = 猛撞向。奥吉用手比划着“bam”给妈妈讲那场打斗，眼里全是骄傲而非恐惧。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>thug</b> <span class="pos">n.</span> 暴徒、恶棍（戏谑口吻）</li><li><b>tease</b> <span class="pos">v.</span> 开玩笑、逗弄</li><li><b>stand up for</b> <span class="pos">phr.</span> 为……挺身而出</li><li><b>grateful</b> <span class="pos">adj.</span> 感激的、庆幸的</li><li><b>shredded</b> <span class="pos">adj.</span> 撕成碎片的、破烂的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>“小熊”和一个像从前的下午</h2>
+            <div class="seg-en">Playing tug-of-war with Bear</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 94 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">新狗狗小熊</span><span class="tag">与维娅独处</span><span class="tag">想起从前</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>把握情绪的一层“时间感”：和维娅玩着手拉手的拔河，奥吉仿佛回到全靠彼此的老时光——这种久违的亲近，正是创伤后最温暖的抚慰。</div>
+        <div class="body">
+<p>It was fun hanging out with Via all day, just the two of us. It was like old times, like before I started going to school. Back then, I couldn’t wait for her to come home from school so she could play with me before starting her homework. Now that we’re older, though, and I’m going to school and have friends of my own that I hang out with, we never do that anymore.</p>
+<p>So it was nice hanging out with her, laughing and playing. I think she liked it, too.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>新来的小狗叫“小熊”（Bear），因为妈妈初见它时说它看起来像只小熊崽，奥吉当即说“就给它取这个名字吧”，大家都觉得完美。奥吉第二天翘课去耍——不是因为胳膊肘疼（虽然确实疼），而是想整天跟小熊玩。妈妈让维娅也留在家里，两人轮流抱小熊、和它玩拔河，还翻出黛西留下的所有旧玩具，看看它喜欢哪些。整天跟维娅待在一起只有他们俩，像回到奥吉还没上学的老时光：那时他总盼着维娅放学回家陪他玩。现在他们长大了、各有各的玩伴，很久没有这样了，所以这个下午格外美好，奥吉觉得维娅也这么想。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It was fun hanging out with Via all day, just the two of us. It was like old times, like before I started going to school.</blockquote><p class="note">old times = 从前、往日。和维娅独处让奥吉想起上学前的时光，那时他天天盼着姐姐回家陪他玩——这个下午重温了那份亲近。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>cub</b> <span class="pos">n.</span> 幼崽（尤指熊、狮等）</li><li><b>cuddle</b> <span class="pos">v.</span> 抱着、搂着</li><li><b>tug-of-war</b> <span class="pos">n.</span> 拔河（这里指跟狗抢玩具的游戏）</li><li><b>hang out</b> <span class="pos">phr.</span> 在一起玩、消磨时间</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_85.html">← 上一单元</a>
+    <a href="wonder_unit_87.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第86/96 单元 · 第八部 · 奥吉 · 约 11 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u86.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

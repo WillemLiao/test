@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第22单元 万圣节变装，和那张不想拍的照片</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 22 单元 · 万圣节变装，和那张不想拍的照片</div>
+    <div class="unit-en">Halloween · School Pictures</div>
+    <div class="unit-stats">
+      <span>⏱ 约 8 分钟</span>
+      <span>📄 676 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>午饭时萨默问奥吉万圣节扮什么，奥吉早就想好要扮星球大战里的波巴·费特，却在得知学校规则“要政治正确、不能带枪”时犯了难——波巴·费特可拿着爆能枪。萨默随口聊起想扮的“独角兽”因为太宅而被同学取笑，奥吉却鼓动她去做，说她“穿什么都无所谓”。另一边，奥吉说他早就不让人给他拍照了，学校相册这天他拒不拍单人照，却逃不掉全班合影——摄影师看见他脸时像含了颗酸柠檬，奥吉假装自己笑不笑都没关系。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>万圣节扮什么，萨默有话说</h2>
+            <div class="seg-en">What are you going to be for Halloween?</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 281 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">万圣节变装</span><span class="tag">午餐好友萨默</span><span class="tag">波巴·费特</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这把午餐桌上只有奥吉和萨默两个人——记住这个小细节：他真正的朋友屈指可数。同时“政治正确不能带枪”的规则，为后面万圣节的重要转折埋下铺垫。</div>
+        <div class="body">
+<p>AT LUNCH THE next day, Summer asked me what I was going to be for Halloween. Of course, I’d been thinking about it since last Halloween, so I knew right away.</p>
+<p>“Boba Fett.”</p>
+<p>“You know you can wear a costume to school on Halloween, right?”</p>
+<p>“No way, really?”</p>
+<p>“So long as it’s politically correct.”</p>
+<p>“What, like no guns and stuff?”</p>
+<p>“Exactly.”</p>
+<p>“What about blasters?”</p>
+<p>“I think a blaster’s like a gun, Auggie.”</p>
+<p>“Oh man …,” I said, shaking my head. Boba Fett has a blaster.</p>
+<p>“At least, we don’t have to come like a character in a book anymore. In the lower school that’s what you had to do. Last year I was the Wicked Witch of the West from The Wizard of Oz.”</p>
+<p>“But that’s a movie, not a book.”</p>
+<p>“Hello?” Summer answered. “It was a book first! One of my favorite books in the world, actually. My dad used to read it to me every night in the first grade.”</p>
+<p>When Summer talks, especially when she’s excited about something, her eyes squint like she’s looking right at the sun.</p>
+<p>I hardly ever see Summer during the day, since the only class we have together is English. But ever since that first lunch at school, we’ve sat at the summer table together every day, just the two of us.</p>
+<p>“So, what are you going to be?” I asked her.</p>
+<p>“I don’t know yet. I know what I’d really want to go as, but I think it might be too dorky. You know, Savanna’s group isn’t even wearing costumes this year. They think we’re too old for Halloween.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>第二天午餐，萨默问奥吉万圣节扮什么，他早就想好要扮星球大战的波巴·费特。萨默提醒他可以穿戏服上学，只要“政治正确”，不能带枪之类。可奥吉喜欢的波巴·费特就揣着爆能枪，这让有点泄气。萨默说在较小的部校还只能扮书里的角色，去年她就扮过《绿野仙踪》的西方恶女巫——她兴奋时会眯起眼睛。两人几乎每天只你和我地坐同一张餐桌，奥吉问她想扮什么，她说想扮的有点太宅，还说萨凡纳那伙人今年连戏服都不穿了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>When Summer talks, especially when she's excited about something, her eyes squint like she's looking right at the sun.</blockquote><p class="note">squint = 眯起眼睛。作者用“像直视太阳一样眯眼”来写萨默说话时的样子——一句话就让一个爱笑、爱说的女孩在读者眼前活了起来。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>costume</b> <span class="pos">n.</span> 戏服、变装</li><li><b>politically correct</b> <span class="pos">adj.</span> 政治上正确的（这里指不得罪人、不冒犯）</li><li><b>blaster</b> <span class="pos">n.</span> （科幻里的）爆能枪、射线枪</li><li><b>dorky</b> <span class="pos">adj.</span> 宅气十足的、土土的</li><li><b>squint</b> <span class="pos">v.</span> 眯起眼睛</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>想扮独角兽的萨默</h2>
+            <div class="seg-en">A unicorn</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 302 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">独角兽心愿</span><span class="tag">互相鼓励</span><span class="tag">萨默的信任</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这段的“戏”在奥吉怎么接别人的不自信：他一句“谁在乎别人怎么想”点醒了萨默——他也是那个天天被看、却学着不care别人眼光的人。</div>
+        <div class="body">
+<p>“What? That’s just dumb.”</p>
+<p>“I know, right?”</p>
+<p>“I thought you didn’t care what those girls think.”</p>
+<p>She shrugged and took a long drink of her milk.</p>
+<p>“So, what dorky thing do you want to dress up as?” I asked her, smiling.</p>
+<p>“Promise not to laugh?” She raised her eyebrows and her shoulders, embarrassed. “A unicorn.”</p>
+<p>I smiled and looked down at my sandwich.</p>
+<p>“Hey, you promised not to laugh!” she laughed.</p>
+<p>“Okay, okay,” I said. “But you’re right: that is too dorky.”</p>
+<p>“I know!” she said. “But I have it all planned out: I’d make the head out of papier-mâché, and paint the horn gold and make the mane gold, too. … It would be so awesome.”</p>
+<p>“Okay.” I shrugged. “Then you should do it. Who cares what other people think, right?”</p>
+<p>“Maybe what I’ll do is just wear it for the Halloween Parade,” she said, snapping her fingers. “And I’ll just be, like, a Goth girl for school. Yeah, that’s it, that’s what I’ll do.”</p>
+<p>“Sounds like a plan.” I nodded.</p>
+<p>“Thanks, Auggie,” she giggled. “You know, that’s what I like best about you. I feel like I can tell you anything.”</p>
+<p>“Yeah?” I answered, nodding. I gave her a thumbs-up sign. “Cool beans.”</p>
+<p>I DON’T THINK anyone will be shocked to learn I don’t want to have my school picture taken on October 22. No way. No thank you. I stopped letting anyone take pictures of me a while ago. I guess you could call it a phobia. No, actually, it’s not a phobia. It’s an “aversion,” which is a word I just learned in Mr. Browne’s class. I have an aversion to having my picture taken. There, I used it in a sentence.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉笑萨默那“太笨”的想法——她甚至说这太宅了，说自己最想扮的是一个独角兽。被问到她害羞地挑眉耸肩，说要用纸浆糊个独角兽头、把角和鬃毛都涂成金色，会超酷。奥吉说“谁在乎别人怎么想”，劝她大胆去做。萨默拍板说，要不她就只在学校万圣节游行时穿，平时装成哥特女孩。她笑着夸奥吉最好的一点：觉得在他面前什么都能说。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“You know, that's what I like best about you. I feel like I can tell you anything.”</blockquote><p class="note">tell you anything = 什么都能跟你讲。萨默说出她最喜欢奥吉的地方是能跟他无话不谈——这是全书中少见的、纯粹为奥吉这个人本身而来的友情。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>unicorn</b> <span class="pos">n.</span> 独角兽</li><li><b>shrug</b> <span class="pos">v.</span> 耸肩（表示不以为意、无所谓）</li><li><b>papier-mâché</b> <span class="pos">n.</span> 纸浆（塑型手工艺）</li><li><b>mane</b> <span class="pos">n.</span> （马、狮子的）鬃毛</li><li><b>giggle</b> <span class="pos">v.</span> 咯咯笑</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>躲不掉的集体照</h2>
+            <div class="seg-en">An aversion to having my picture taken</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 93 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">拒拍照片</span><span class="tag">集体合影</span><span class="tag">笑容的奢望</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>最后一句“他笑不笑，都没人能看出来”是全段的泪点——对别人来说“照相时微笑”是最自然的事，对奥吉却连装都无从装起。</div>
+        <div class="body">
+<p>I thought Mom would try to get me to drop my aversion to having my picture taken for school, but she didn’t. Unfortunately, while I managed to avoid having the portrait taken, I couldn’t get out of being part of the class picture. Ugh. The photographer looked like he’d just sucked on a lemon when he saw me. I’m sure he thought I ruined the picture. I was one of the ones in the front, sitting down. I didn’t smile, not that anyone could tell if I had.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉早就不让人拍照了，可以称它为厌烦：他在布朗先生课上刚学过“aversion”这个词。他本想让妈妈劝他打消抗拒，可妈妈没有。他成功躲过了单独照，却逃不掉全班合影——摄影师看见他的脸时像刚吸过一颗酸柠檬，八成觉得奥吉毁了这张照片。奥吉被排在前面坐着，他咧嘴笑不笑没人看得出来。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I didn't smile, not that anyone could tell if I had.</blockquote><p class="note">作者又一次用克制的笔法：我不笑——反正就算我笑了，也没人看得出我在笑。奥吉对“用表情表达自己”这件事近乎绝望。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>aversion</b> <span class="pos">n.</span> 强烈的厌恶、避之唯恐不及</li><li><b>phobia</b> <span class="pos">n.</span> 恐惧症</li><li><b>portrait</b> <span class="pos">n.</span> （正式的）肖像照片</li><li><b>ruin</b> <span class="pos">v.</span> 毁掉、搞坏</li><li><b>photographer</b> <span class="pos">n.</span> 摄影师</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_21.html">← 上一单元</a>
+    <a href="wonder_unit_23.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第22/96 单元 · 第一部 · 奥吉 · 约 8 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u22.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

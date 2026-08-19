@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第25单元 面具下，我听见了他们怎么说我</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 25 单元 · 面具下，我听见了他们怎么说我</div>
+    <div class="unit-en">The Bleeding Scream</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 690 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>万圣节清晨，戴着白色骷髅面具的奥吉第一次挺胸抬头走在走廊里，也想被人看见——同一身装扮的孩子还跟他击了掌。可一进早班教室他碰上了朱利安：朱利安临时把戏服换成了帕尔帕廷，等着看“詹戈·费特”现身。奥吉鬼使神差地坐到他们附近，听见朱利安、迈尔斯、亨利和杰克·维尔议论自己——说他像缩小的干头、像兽人，说他“照镜子都受不”，“真要长这样我早自杀了”。奥吉还听到最大的背叛：杰克那句“是图什曼先生让我开学时跟他玩、还让老师把我们排到一块”。心碎的他无声走出教室，黑乎乎的面具下泪流满面，只想找个洞把自己藏进去。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>走廊里我第一次想被人看见</h2>
+            <div class="seg-en">Today I walked with my head up</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 265 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">昂首挺胸</span><span class="tag">走廊击掌</span><span class="tag">朱利安的等待</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>前半段的“昂着头想被看见”与后半段“进门就撞见朱利安换装等着看戏”形成强烈反差——奥吉久违的轻松在这一刻被当场击碎。</div>
+        <div class="body">
+<p>WALKING THROUGH THE halls that morning on my way to the lockers was, I have to say, absolutely awesome. Everything was different now. I was different. Where I usually walked with my head down, trying to avoid being seen, today I walked with my head up, looking around. I wanted to be seen. One kid wearing the same exact costume as mine, long white skull face oozing fake red blood, high-fived me as we passed each other on the stairs. I have no idea who he was, and he had no idea who I was, and I wondered for a second if he would have ever done that if he’d known it was me under the mask.</p>
+<p>I was starting to think this was going to go down as one of the most awesome days in the history of my life, but then I got to homeroom. The first costume I saw as I walked inside the door was Darth Sidious. It had one of the rubber masks that are so realistic, with a big black hood over the head and a long black robe. I knew right away it was Julian, of course. He must have changed his costume at the last minute because he thought I was coming as Jango Fett. He was talking to two mummies who must have been Miles and Henry, and they were all kind of looking at the door like they were waiting for someone to come through it. I knew it wasn’t a Bleeding Scream they were looking for. It was a Boba Fett.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉说那天早上穿过走廊往储物柜走的感觉“棒极了”：一切都变了，他也变了——往常他低着头躲人，今天却昂着头四处张望，想被看见。楼梯上遇到一个跟他穿一模一样的“流血尖叫”（白色骷髅脸渗红血）的孩子，两人擦肩时还击了个掌，奥吉不知道他是谁、他也不知道面具下是谁，奥吉心里暗暗想：若是对方知道面具下是我，还会不会这么做。可等他走进早班教室，第一眼看见的却是穿着帕尔帕廷戏服的朱利安——朱利安半小时前临时换了装扮，正和两个“木乃伊”盯着门口，分明是在等一个他想看到的“波巴·费特”，而不是这身“流血尖叫”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I wanted to be seen. One kid wearing the same exact costume as mine, long white skull face oozing fake red blood, high-fived me as we passed each other on the stairs.</blockquote><p class="note">high-five = 击掌庆祝。奥吉第一次被人看见、还被人击掌，可他心里也清楚：对方认不出面具下的“我”。这份快乐本身就像戴着面具一样，见不得真容。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>oozing</b> <span class="pos">adj.</span> 渗着（血、液）的</li><li><b>high-five</b> <span class="pos">v./n.</span> 击掌（庆祝、问好）</li><li><b>hood</b> <span class="pos">n.</span> 兜帽、头套</li><li><b>mummy</b> <span class="pos">n.</span> （扮鬼的）木乃伊</li><li><b>realistic</b> <span class="pos">adj.</span> 逼真的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>躲在一角，听见他们说我“还不如死了好”</h2>
+            <div class="seg-en">I knew I wanted to run out</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 314 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">听见恶意</span><span class="tag">杰克的背叛</span><span class="tag">自尊崩塌</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>全单元最扎心的一段：最重的背叛不是朱利安的丑话，而是杰克的“是学校让我陪他”——奥吉以为的友谊，在杰克嘴里变成了被安排的负担。一字一句都钉在奥吉心上。</div>
+        <div class="body">
+<p>I was going to go and sit at my usual desk, but for some reason, I don’t know why, I found myself walking over to a desk near them, and I could hear them talking.</p>
+<p>One of the mummies was saying: “It really does look like him.”</p>
+<p>“Like this part especially …,” answered Julian’s voice. He put his fingers on the cheeks and eyes of his Darth Sidious mask.</p>
+<p>“Actually,” said the mummy, “what he really looks like is one of those shrunken heads. Have you ever seen those? He looks exactly like that.”</p>
+<p>“I think he looks like an orc.”</p>
+<p>“Oh yeah!”</p>
+<p>“If I looked like that,” said the Julian voice, kind of laughing, “I swear to God, I’d put a hood over my face every day.”</p>
+<p>“I’ve thought about this a lot,” said the second mummy, sounding serious, “and I really think … if I looked like him, seriously, I think that I’d kill myself.”</p>
+<p>“You would not,” answered Darth Sidious.</p>
+<p>“Yeah, for real,” insisted the same mummy. “I can’t imagine looking in the mirror every day and seeing myself like that. It would be too awful. And getting stared at all the time.”</p>
+<p>“Then why do you hang out with him so much?” asked Darth Sidious.</p>
+<p>“I don’t know,” answered the mummy. “Tushman asked me to hang out with him at the beginning of the year, and he must have told all the teachers to put us next to each other in all our classes, or something.” The mummy shrugged. I knew the shrug, of course. I knew the voice. I knew I wanted to run out of the class right then and there. But I stood where I was and listened to Jack Will finish what he was saying. “I mean, the thing is: he always follows me around. What am I supposed to do?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉本想去自己平时坐的位子，却鬼使神差地走到朱利安他们附近的座位，听见了对话：有人夸这扮相“真像他”，朱利安指着面具说“尤其是这部分”像；个子一个木乃伊说他模样像“缩小的人头”、像“兽人”；朱利安笑着说“我若长这样，我发誓天天拿兜帽盖住脸”；更狠的是，那木乃伊认真地讲“若我长这样，我想我会自杀”。奥吉认出了那声耸肩——那是杰克·维尔。杰克接着说：是图什曼先生一开学就让我跟他玩，还让全校老师把我们排到相邻座位；“他一直跟着我，我有什么办法”。奥吉惨在门口站着听完，只想当场逃出教室。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Tushman asked me to hang out with him at the beginning of the year, and he must have told all the teachers to put us next to each other in all our classes, or something.”</blockquote><p class="note">hang out with = 和……一起玩、作陪。杰克暗示奥吉的友谊是校长塞给他的任务——这句“be told to be your friend”正是整本书第一声最刺耳的背叛。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shrunken head</b> <span class="pos">n.</span> （南美传说）缩小的人头</li><li><b>orc</b> <span class="pos">n.</span> （奇幻里的）兽人、半兽人</li><li><b>hang out with</b> <span class="pos">phr.</span> 和……一起玩、结伴</li><li><b>shrug</b> <span class="pos">v./n.</span> 耸肩（表示无奈、不知道）</li><li><b>for real</b> <span class="pos">phr.</span> 说真的、当真</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>“把他甩了”，我躲起来的脸在面具下哭</h2>
+            <div class="seg-en">My face felt like it was on fire</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 111 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">心碎落泪</span><span class="tag">想消失</span><span class="tag">被偷听的背叛</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>结尾的比喻是全书最痛的一句：“想要一个黑洞把我吞掉”。读懂奥吉此刻不是想打架或报复——他只是想彻底消失。这是他从没有过的绝望。</div>
+        <div class="body">
+<p>“Just ditch him,” said Julian.</p>
+<p>I don’t know what Jack answered because I walked out of the class without anyone knowing I had been there. My face felt like it was on fire while I walked back down the stairs. I was sweating under my costume. And I started crying. I couldn’t keep it from happening. The tears were so thick in my eyes I could barely see, but I couldn’t wipe them through the mask as I walked. I was looking for a little tiny spot to disappear into. I wanted a hole I could fall inside of: a little black hole that would eat me up.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>朱利安说了句“把他甩了”。奥吉不知道杰克怎么回答，因为他没让人察觉自己来过，就无声地走出了教室。他走下楼梯时脸像着了火一样烫，戏服里全是汗，眼泪止不住地往下流，浓得像看不见路，可隔着面具又擦不掉。他只想找个小到可以缩进去的角落，想有个洞能让他掉进去——一个能把他整个人吞掉的黑洞。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I wanted a hole I could fall inside of: a little black hole that would eat me up.</blockquote><p class="note">eat me up = 把我整个吞掉。奥吉哭得只能落荒而逃，他想要的不是对抗，而是“消失”——一个能把他整个人吞没的黑洞，是他此刻唯一的去处。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>be on fire</b> <span class="pos">phr.</span> 像着火一样烫（喻窘迫、发烫）</li><li><b>sweat</b> <span class="pos">v./n.</span> 出汗；汗</li><li><b>wipe</b> <span class="pos">v.</span> 擦拭</li><li><b>disappear</b> <span class="pos">v.</span> 消失</li><li><b>hole</b> <span class="pos">n.</span> 洞</li><li><b>ditch</b> <span class="pos">v.</span> 甩掉、抛弃</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_24.html">← 上一单元</a>
+    <a href="wonder_unit_26.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第25/96 单元 · 第一部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u25.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

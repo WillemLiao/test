@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第20单元 九月开学，人人都在偷看我</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 20 单元 · 九月开学，人人都在偷看我</div>
+    <div class="unit-en">Wake Me Up when September Ends · Jack Will</div>
+    <div class="unit-stats">
+      <span>⏱ 约 12 分钟</span>
+      <span>📄 994 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>九月底奥吉的日子很难熬：早起、作业、人生第一次“小测验”，还要面对学校里五百个孩子不断投来的目光。每堂新课都像是一次重新“被看”的机会，走廊里总有人故意绕开他，第一次看见他的孩子会发出“uh”的声响。不过同学没那么坏，只是好奇。几周后奥吉和杰克成了同桌，两人一起上下课、一起笑到憋不住，还讨论起要不要拿水枪喷偷看他的人，以及奥吉的整容手术。奥吉第一次在这所学校里找回了一点轻快的心情。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>早起、作业，和绕着我走的孩子</h2>
+            <div class="seg-en">Being at school was awful</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 307 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">开学适应</span><span class="tag">被围观与躲避</span><span class="tag">带病的脸</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住奥吉对自己处境的清醒：他不是愤怒，而是一种疲惫的“习惯”——他能数清每个年级需要多久才适应他的脸，这种冷静本身就是种自我保护。</div>
+        <div class="body">
+<p>THE REST OF September was hard. I wasn’t used to getting up so early in the morning. I wasn’t used to this whole notion of homework. And I got my first “quiz” at the end of the month. I never got “quizzes” when Mom homeschooled me. I also didn’t like how I had no free time anymore. Before, I was able to play whenever I wanted to, but now it felt like I always had stuff to do for school.</p>
+<p>And being at school was awful in the beginning. Every new class I had was like a new chance for kids to “not stare” at me. They would sneak peeks at me from behind their notebooks or when they thought I wasn’t looking. They would take the longest way around me to avoid bumping into me in any way, like I had some germ they could catch, like my face was contagious.</p>
+<p>In the hallways, which were always crowded, my face would always surprise some unsuspecting kid who maybe hadn’t heard about me. The kid would make the sound you make when you hold your breath before going underwater, a little “uh!” sound. This happened maybe four or five times a day for the first few weeks: on the stairs, in front of the lockers, in the library. Five hundred kids in a school: eventually every one of them was going to see my face at some time. And I knew after the first couple of days that word had gotten around about me, because every once in a while I’d catch a kid elbowing his friend as they passed me, or talking behind their hands as I walked by them. I can only imagine what they were saying about me. Actually, I prefer not to even try to imagine it.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>九月对奥吉很吃力：以前在家由妈妈教，现在他第一次要早起、做作业、面对人生第一堂“小测验”，而且没了想玩就玩的自由。在学校里，每进一间新课室都是一次新机会——有人从本子后面偷瞄他，有人绕最大一圈躲开他，像怕沾上什么病。走廊里总有没听说过他的孩子，第一次看见他的脸会“uh”一声愣住，还有小孩冲同伴使眼色、捂着嘴议论他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>They would take the longest way around me to avoid bumping into me in any way, like I had some germ they could catch, like my face was contagious.</blockquote><p class="note">bump into = 撞到、碰上；contagious = 会传染的。同学像躲病毒一样绕着奥吉走——奥吉知道自己被当成“会传染的人”，这种比喻平静又扎心。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>notion</b> <span class="pos">n.</span> 概念、想法（the notion of 关于……的概念）</li><li><b>sneak a peek</b> <span class="pos">phr.</span> 偷看一眼</li><li><b>bump into</b> <span class="pos">phr.</span> 撞到、意外碰上</li><li><b>germ</b> <span class="pos">n.</span> 细菌、病菌</li><li><b>contagious</b> <span class="pos">adj.</span> 会传染的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>要是突然来个楚巴卡，我也会好奇</h2>
+            <div class="seg-en">I'd probably stare a bit</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 272 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">换位思考</span><span class="tag">习惯的时间表</span><span class="tag">孤独的幽默</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>奥吉用幽默和“换位思考”消化伤害——他不谴责同学，反而理解他们。试着感受这份善良里藏着的孤独。</div>
+        <div class="body">
+<p>I’m not saying they were doing any of these things in a mean way, by the way: not once did any kid laugh or make noises or do anything like that. They were just being normal dumb kids. I know that. I kind of wanted to tell them that. Like, it’s okay, I’m know I’m weird-looking, take a look, I don’t bite. Hey, the truth is, if a Wookiee started going to the school all of a sudden, I’d be curious, I’d probably stare a bit! And if I was walking with Jack or Summer, I’d probably whisper to them: Hey, there’s the Wookiee. And if the Wookiee caught me saying that, he’d know I wasn’t trying to be mean. I was just pointing out the fact that he’s a Wookiee.</p>
+<p>It took about one week for the kids in my class to get used to my face. These were the kids I’d see every day in all my classes.</p>
+<p>It took about two weeks for the rest of the kids in my grade to get used to my face. These were the kids I’d see in the cafeteria, yard time, PE, music, library, computer class.</p>
+<p>It took about a month for the rest of the kids in the entire school to get used to it. These were the kids in all the other grades. They were big kids, some of them. Some of them had crazy haircuts. Some of them had earrings in their noses. Some of them had pimples. None of them looked like me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉为同学开脱：他们不是恶意，没人笑他、没人发出怪声，只是些正常的“呆瓜小孩”。他甚至想告诉他们“我知道自己长相怪，看看吧，我不咬人”。他用星战里的楚巴卡（Wookiee）打比方——如果突然来个毛茸茸的楚巴卡上学，他也会好奇地盯着看。接着他列出时间表：同班的孩子一周就习惯了，同年级要两周，全校其他孩子大约要一个月，那些高年级孩子有的发型夸张、有的鼻子打环、有的满脸痘痘，但没一个长得像他。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Hey, the truth is, if a Wookiee started going to the school all of a sudden, I’d be curious, I’d probably stare a bit!</blockquote><p class="note">Wookiee（楚巴卡）=《星球大战》里毛茸茸的大个子。奥吉自嘲：若来个真正的楚巴卡上学，他也不可能忍住不看——他用幽默解释为何别人盯着他。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>mean</b> <span class="pos">adj.</span> 刻薄的、恶意的</li><li><b>dumb</b> <span class="pos">adj.</span> 傻的、平凡的</li><li><b>weird-looking</b> <span class="pos">adj.</span> 长相怪异的</li><li><b>Wookiee</b> <span class="pos">n.</span> （《星球大战》）楚巴卡，毛茸茸巨型角色</li><li><b>pimple</b> <span class="pos">n.</span> 青春痘</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>和杰克结伴上下课</h2>
+            <div class="seg-en">We started cracking up</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">新朋友杰克</span><span class="tag">一起大笑</span><span class="tag">第一次释怀</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是奥吉第一次在学校里“笑得停不下来”。注意那声无恶意的“Whoa”反而成了两人大笑的由头——奥吉第一次感受到友谊能化解尴尬。</div>
+        <div class="body">
+<p>I HUNG OUT with Jack in homeroom, English, history, computer, music, and science, which were all the classes we had together. The teachers assigned seats in every class, and I ended up sitting next to Jack in every single class, so I figured either the teachers were told to put me and Jack together, or it was a totally incredible coincidence.</p>
+<p>I walked to classes with Jack, too. I know he noticed kids staring at me, but he pretended not to notice. One time, though, on our way to history, this huge eighth grader who was zooming down the stairs two steps at a time accidentally bumped into us at the bottom of the stairs and knocked me down. As the guy helped me stand up, he got a look at my face, and without even meaning to, he just said: “Whoa!” Then he patted me on the shoulder, like he was dusting me off, and took off after his friends. For some reason, me and Jack started cracking up.</p>
+<p>“That guy made the funniest face!” said Jack as we sat down at our desks.</p>
+<p>“I know, right?” I said. “He was like, whoa!”</p>
+<p>“I swear, I think he wet his pants!”</p>
+<p>We were laughing so hard that the teacher, Mr. Roche, had to ask us to settle down.</p>
+<p>Later, after we finished reading about how ancient Sumerians built sundials, Jack whispered: “Do you ever want to beat those kids up?”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉和杰克在几乎每堂课都坐在一起，他怀疑是老师故意安排，也可能纯属巧合。他们一起上下课，杰克明知别人在看奥吉却假装没看见。有一次一个飞奔的高年级大孩子撞倒奥吉，扶他起来时看清他的脸脱口一句“Whoa！”，拍拍他肩膀像掸灰似的跑了——结果奥吉和杰克反而笑得停不下来，笑得老师罗奇先生都得叫他们安静。下课后杰克悄悄问奥吉：你想不想揍那帮家伙一顿？</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>For some reason, me and Jack started cracking up.</blockquote><p class="note">crack up = 爆笑、笑得停不下来。被撞倒、被喊“Whoa”本是尴尬的事，可两个少年反而笑得前仰后合——友谊把难堪变成了一场玩笑。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>coincidence</b> <span class="pos">n.</span> 巧合</li><li><b>zoom down</b> <span class="pos">phr.</span> 飞快地冲下来</li><li><b>crack up</b> <span class="pos">phr.</span> 爆笑、笑得停不下来</li><li><b>dust off</b> <span class="pos">phr.</span> 掸掉灰尘</li><li><b>settle down</b> <span class="pos">phr.</span> 安静下来、镇定下来</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>水枪计划，和“这张脸已经是整过的”</h2>
+            <div class="seg-en">This is after plastic surgery</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 174 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">玩笑与释然</span><span class="tag">第一次问长相</span><span class="tag">失笑的友谊</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是全文第一次有人正面问奥吉的长相，而奥吉用一句荤素不忌的玩笑回应——“这张脸已经是整过的”把苦化为笑。看清杰克问得谨慎、奥吉答得坦荡的新友谊。</div>
+        <div class="body">
+<p>I shrugged. “I guess. I don’t know.”</p>
+<p>“I’d want to. I think you should get a secret squirt gun or something and attach it to your eyes somehow. And every time someone stares at you, you would squirt them in the face.”</p>
+<p>“With some green slime or something,” I answered.</p>
+<p>“No, no: with slug juice mixed with dog pee.”</p>
+<p>“Yeah!” I said, completely agreeing.</p>
+<p>“Guys,” said Mr. Roche from across the room. “People are still reading.”</p>
+<p>We nodded and looked down at our books. Then Jack whispered: “Are you always going to look this way, August? I mean, can’t you get plastic surgery or something?”</p>
+<p>I smiled and pointed to my face. “Hello? This is after plastic surgery!”</p>
+<p>Jack clapped his hand over his forehead and started laughing hysterically.</p>
+<p>“Dude, you should sue your doctor!” he answered between giggles.</p>
+<p>This time the two of us were laughing so much we couldn’t stop, even after Mr. Roche came over and made us both switch chairs with the kids next to us.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克提议奥吉弄把秘密水枪绑在眼睛上，谁盯着他就喷谁，两人越聊越带劲，把“弹药”升级成了鼻涕虫汁加狗尿。老师罗奇先生两度让他们安静。后来杰克低声问奥吉是不是永远都长这样、能不能做整容，奥吉笑笑指着自己的脸说：“嗨，这已经是整过容以后了！”杰克笑得拍额头，直喊奥吉该去告那医生。两个人笑到被老师调了座位还停不下来。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Hello? This is after plastic surgery!”</blockquote><p class="note">plastic surgery = 整容手术。杰克小心翼翼地问奥吉能不能做手术，奥吉却笑着回答“这就是整过以后的模样”——他把人生里最痛的事变成了一个敢讲的玩笑。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>squirt gun</b> <span class="pos">n.</span> 水枪</li><li><b>slime</b> <span class="pos">n.</span> 黏液、泥浆</li><li><b>slug</b> <span class="pos">n.</span> 鼻涕虫</li><li><b>whisper</b> <span class="pos">v.</span> 低声说、耳语</li><li><b>plastic surgery</b> <span class="pos">n.</span> 整容手术</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_19.html">← 上一单元</a>
+    <a href="wonder_unit_21.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第20/96 单元 · 第一部 · 奥吉 · 约 12 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u20.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

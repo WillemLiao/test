@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第50单元 杰克的办公室困局与冬日家书</title>
+<style>
+:root{--c:#4a6fa5;--bg:#eaeff7;--nav:#d7e0ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第四部 · 杰克</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 50 单元 · 杰克的办公室困局与冬日家书</div>
+    <div class="unit-en">Detention · Season’s Greetings</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1073 词</span>
+      <span>🧩 5 小段</span>
+      <span>👤 叙述者：Four: Jack</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>故事转到杰克的视角。他因为在万圣节那天一拳打断了朱利安的乳牙，被叫进图什曼校长的办公室，妈妈也被叫来。校长说这在学校会自动开除，要求杰克解释原因，可杰克就是不肯说——他没法说出「朱利安骂奥吉是怪胎」，因为那会牵扯出他自己也说过奥吉坏话。校长的惩罚是停课几天，并要求他写道歉信。回家后杰克收到奥吉和朱利安全家的贺卡，他对妈妈说「我们很幸运」。最后他哭着一五一十向妈妈交代了打朱利安的真正原因。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>校长办公室里，我一句话也说不清</h2>
+            <div class="seg-en">Some things you just can't explain</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">打架被查</span><span class="tag">不肯解释</span><span class="tag">母子对峙</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意杰克「有些话就是解释不清」的心态：他不是不肯讲，而是怕越讲越糟，这为后面埋下伏笔。</div>
+        <div class="body">
+<p>SOME THINGS YOU just can’t explain. You don’t even try. You don’t know where to start. All your sentences would jumble up like a giant knot if you opened your mouth. Any words you used would come out wrong.</p>
+<p>“Jack, this is very, very serious,” Mr. Tushman was saying. I was in his office, sitting on a chair across from his desk and looking at this picture of a pumpkin on the wall behind him. “Kids get expelled for this kind of thing, Jack! I know you’re a good kid and I don’t want that to happen, but you have to explain yourself.”</p>
+<p>“This is so not like you, Jack,” said Mom. She had come from work as soon as they had called her. I could tell she was going back and forth between being really mad and really surprised.</p>
+<p>“I thought you and Julian were friends,” said Mr. Tushman.</p>
+<p>“We’re not friends,” I said. My arms were crossed in front of me.</p>
+<p>“But to punch someone in the mouth, Jack?” said Mom, raising her voice. “I mean, what were you thinking?” She looked at Mr. Tushman. “Honestly, he’s never hit anyone before. He’s just not like that.”</p>
+<p>“Julian’s mouth was bleeding, Jack,” said Mr. Tushman. “You knocked out a tooth, did you know that?”</p>
+<p>“It was just a baby tooth,” I said.</p>
+<p>“Jack!” said Mom, shaking her head.</p>
+<p>“That’s what Nurse Molly said!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克坐在图什曼校长的办公室里，妈妈被临时叫来。校长说这种事通常会被开除，一再要求杰克解释为什么动手。妈妈又气又惊讶，说她从没见过杰克打人。图什曼追问他和朱利安是不是朋友，杰克冷冷说不是。校长的补充细节——朱利安嘴里流血、被打掉一颗牙——让场面更难堪。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>SOME THINGS YOU just can't explain. You don't even try. You don't know where to start. All your sentences would jumble up like a giant knot if you opened your mouth.</blockquote><p class="note">jumble up = 乱成一团；giant knot = 巨大的死结。这段话刻画杰克心里乱成一团、张口就语无伦次的感觉。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>explain</b> <span class="pos">v.</span> 解释、说明</li><li><b>expelled</b> <span class="pos">adj.</span> 被开除的</li><li><b>jumble up</b> <span class="pos">phr.</span> 乱成一团、混杂</li><li><b>giant</b> <span class="pos">adj.</span> 巨大的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我哭成一团，却仍不肯说出真相</h2>
+            <div class="seg-en">It'll just make everything worse</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 241 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">隐瞒真相</span><span class="tag">破绽解开</span><span class="tag">停课处分</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>重点理解杰克的顾虑链：说出真相会牵连他自己——这是全书「万圣节」秘密的关键伏笔。</div>
+        <div class="body">
+<p>“You’re missing the point!” Mom yelled.</p>
+<p>“I just want to know why,” said Mr. Tushman, raising his shoulders.</p>
+<p>“It’ll just make everything worse,” I sighed.</p>
+<p>“Just tell me, Jack.”</p>
+<p>I shrugged but I didn’t say anything. I just couldn’t. If I told him that Julian had called August a freak, then he’d go talk to Julian about it, then Julian would tell him how I had badmouthed August, too, and everybody would find out about it.</p>
+<p>“Jack!” said Mom.</p>
+<p>I started to cry. “I’m sorry …”</p>
+<p>Mr. Tushman raised his eyebrows and nodded, but he didn’t say anything. Instead, he kind of blew into his hands, like you do when your hands are cold. “Jack,” he said, “I don’t really know what to say here. I mean, you punched a kid. We have rules about that kind of thing, you know? Automatic expulsion. And you’re not even trying to explain yourself.”</p>
+<p>I was crying a lot by now, and the second Mom put her arms around me, I started to bawl.</p>
+<p>“Let’s, um …,” said Mr. Tushman, taking his glasses off to clean them, “let’s do this, Jack. We’re out for winter break as of next week anyway. How about you stay home for the rest of this week, and then after winter break you’ll come back and everything will be fresh and brand new. Clean slate, so to speak.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>图什曼只要杰克说出原因，杰克却叹气说「说出来只会让事情更糟」。他在心里盘算：一旦说出朱利安骂奥吉是怪胎，朱利安会反过来揭发他也说过奥吉坏话，所有人都会知道。他哭起来，妈妈抱住他，他放声大哭。图什曼最终给出处理办法：下周就放寒假了，杰克先在家待完这一周，寒假后回来「一笔勾销、重新开始」。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>If I told him that Julian had called August a freak, then he'd go talk to Julian about it, then Julian would tell him how I had badmouthed August, too, and everybody would find out about it.</blockquote><p class="note">freak = 怪胎；badmouth = 说人坏话。整句是一个因果链，说明杰克闭口不言的真实原因。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>freak</b> <span class="pos">n.</span> 怪胎、怪人（侮辱性说法）</li><li><b>badmouth</b> <span class="pos">v.</span> 说……的坏话</li><li><b>bawl</b> <span class="pos">v.</span> 号啕大哭</li><li><b>clean slate</b> <span class="pos">phr.</span> 一笔勾销、从头开始</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>停课处分与校长的松口</h2>
+            <div class="seg-en">Am I being suspended?</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 244 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">停课处分</span><span class="tag">道歉信</span><span class="tag">假日祝福</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意校长给出的台阶：写两封信就能保住档案干净——引出下一单元的书信章节。</div>
+        <div class="body">
+<p>“Am I being suspended?” I sniffled.</p>
+<p>“Well,” he said, shrugging, “technically yes, but it’s only for a couple of days. And I’ll tell you what. While you’re at home, you take the time to think about what’s happened. And if you want to write me a letter explaining what happened, and a letter to Julian apologizing, then we won’t even put any of this in your permanent record, okay? You go home and talk about it with your mom and dad, and maybe in the morning you’ll figure it all out a bit more.”</p>
+<p>“That sounds like a good plan, Mr. Tushman,” said Mom, nodding. “Thank you.”</p>
+<p>“Everything is going to be okay,” said Mr. Tushman, walking over to the door, which was closed. “I know you’re a nice kid, Jack. And I know that sometimes even nice kids do dumb things, right?” He opened the door.</p>
+<p>“Thank you for being so understanding,” said Mom, shaking his hand at the door.</p>
+<p>“No problem.” He leaned over and told her something quietly that I couldn’t hear.</p>
+<p>“I know, thank you,” said Mom, nodding.</p>
+<p>“So, kiddo,” he said to me, putting his hands on my shoulders. “Think about what you’ve done, okay? And have a great holiday. Happy Chanukah! Merry Christmas! Happy Kwanzaa!”</p>
+<p>I wiped my nose with my sleeve and started walking out the door.</p>
+<p>“Say thank you to Mr. Tushman,” said Mom, tapping my shoulder.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克抽着鼻子问自己是不是被停学了，图什曼说严格说算是，但只有几天，只要他能写一封解释信和给朱利安的道歉信，就不记入永久档案。妈妈感谢校长通情达理。图什曼蹲下来劝杰克在家好好想想，并祝他节日快乐。杰克用袖子擦了擦鼻子，往门口走。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And if you want to write me a letter explaining what happened, and a letter to Julian apologizing, then we won't even put any of this in your permanent record, okay?</blockquote><p class="note">apologize = 道歉；permanent record = 永久档案（记录违规的官方档案）。校长给出免于记档的条件。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>suspended</b> <span class="pos">adj.</span> 被停课的、被停学的</li><li><b>apologize</b> <span class="pos">v.</span> 道歉</li><li><b>permanent record</b> <span class="pos">n.</span> 永久档案（学校记违规的档案）</li><li><b>kiddo</b> <span class="pos">n.</span> 小家伙、小鬼（亲昵称呼）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>两家贺卡，妈妈的一句警醒</h2>
+            <div class="seg-en">We're very lucky, Jack</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 246 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">贺卡细节</span><span class="tag">妈妈的心思</span><span class="tag">知足点醒</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意妈妈从一张贺卡看出什么：别人（奥吉家）在坦然送出爱与善意，而她自己只想着儿子的麻烦。</div>
+        <div class="body">
+<p>I stopped and turned around, but I couldn’t look at him. “Thank you, Mr. Tushman,” I said.</p>
+<p>“Bye, Jack,” he answered.</p>
+<p>Then I walked out the door.</p>
+<p>WEIRDLY ENOUGH, WHEN we got back home and Mom brought in the mail, there were holiday cards from both Julian’s family and August’s family. Julian’s holiday card was a picture of Julian wearing a tie, looking like he was about to go to the opera or something. August’s holiday card was of a cute old dog wearing reindeer antlers, a red nose, and red booties. There was a cartoon bubble above the dog’s head that read: “Ho-Ho-Ho!” On the inside of the card it read:</p>
+<p class="q">To the Will family,</p>
+<p class="q">Peace on Earth.</p>
+<p class="q">Love, Nate, Isabel, Olivia, August (and Daisy)</p>
+<p>“Cute card, huh?” I said to Mom, who had hardly said a word to me all the way home. I think she honestly just didn’t know what to say. “That must be their dog,” I said.</p>
+<p>“Do you want to tell me what’s going on inside your head, Jack?” she answered me seriously.</p>
+<p>“I bet you they put a picture of their dog on the card every year,” I said.</p>
+<p>She took the card from my hands and looked at the picture carefully. Then she raised her eyebrows and her shoulders and gave me back the card. “We’re very lucky, Jack. There’s so much we take for granted. …”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克走出办公室后，回到家时妈妈从信箱里拿出两封贺卡：朱利安家的卡片是朱利安穿着领带要去听歌剧的样子；奥吉家卡片上是一只戴着驯鹿鹿角、红鼻子红靴袜的可爱老狗，写着「Ho-Ho-Ho」。妈妈几乎一路没说话，问他脑子里到底在想什么。她认真看了奥吉的贺卡后对杰克说：我们太幸运了，有太多我们习以为常的东西。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>&quot;We're very lucky, Jack. There's so much we take for granted.&quot; …</blockquote><p class="note">take for granted = 习以为常、视为当然。妈妈想说的是：他们习以为常的东西（正常的脸、顺遂的生活），是别人羡慕的事。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>reindeer</b> <span class="pos">n.</span> 驯鹿</li><li><b>antlers</b> <span class="pos">n.</span> 鹿角</li><li><b>take for granted</b> <span class="pos">phr.</span> 习以为常、视为理所当然</li><li><b>lucky</b> <span class="pos">adj.</span> 幸运的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-5">
+        <div class="seg-head">
+          <div class="seg-num">5</div>
+          <div class="seg-titles">
+            <h2>我哭着向妈妈吐露真相</h2>
+            <div class="seg-en">I told her why I punched Julian</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 98 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">P图事件</span><span class="tag">真相坦白</span><span class="tag">万圣节悬念</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>妈妈问是不是因为P图的事，杰克说「不是」——真正的导火索（万圣节）留到下一单元揭晓。</div>
+        <div class="body">
+<p>“I know,” I said. I knew what she was talking about without her having to say it. “I heard that Julian’s mom actually Photoshopped August’s face out of the class picture when she got it. She gave a copy to a couple of the other moms.”</p>
+<p>“That’s just awful,” said Mom. “People are just … they’re not always so great.”</p>
+<p>“I know.”</p>
+<p>“Is that why you hit Julian?”</p>
+<p>“No.”</p>
+<p>And then I told her why I punched Julian. And I told her that August was my ex-friend now. And I told her about Halloween.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>杰克说他知道妈妈指的是什么，也知道朱利安的妈妈曾用修图软件把奥吉从班级合影里P掉，还复印了几张给别的妈妈。妈妈感叹「人们并不总是那么好」。她问杰克是不是因为这件事才打朱利安，杰克回答不是。于是他把打朱利安的真正原因、奥吉现在是他的「前朋友」、以及万圣节的事，全都告诉了妈妈。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>And then I told her why I punched Julian. And I told her that August was my ex-friend now. And I told her about Halloween.</blockquote><p class="note">ex-friend = 前朋友；Halloween = 万圣节。三件事并列，把万圣节的秘密推到读者眼前，留下悬念。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>Photoshop</b> <span class="pos">v.</span> 用修图软件处理（照片）</li><li><b>awful</b> <span class="pos">adj.</span> 糟糕的、令人遗憾的</li><li><b>ex-friend</b> <span class="pos">n.</span> 前朋友、已绝交的朋友</li><li><b>Halloween</b> <span class="pos">n.</span> 万圣节（10月31日）</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_49.html">← 上一单元</a>
+    <a href="wonder_unit_51.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第50/96 单元 · 第四部 · 杰克 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u50.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

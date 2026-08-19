@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第75单元 首演之夜，我把角色让给了维娅</title>
+<style>
+:root{--c:#b06a8a;--bg:#f7edf2;--nav:#eedae4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第七部 · 米兰达</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 75 单元 · 首演之夜，我把角色让给了维娅</div>
+    <div class="unit-en">Extraordinary, but No One There to See · The Performance</div>
+    <div class="unit-stats">
+      <span>⏱ 约 13 分钟</span>
+      <span>📄 1063 词</span>
+      <span>🧩 4 小段</span>
+      <span>👤 叙述者：Seven: Miranda</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>首演那晚，米兰达的爸妈、男友扎克和所有所谓朋友都去别处了，没一个人来看戏，但她知道自己会演得很好，甚至可能惊艳全场。她从后台瞥见奥吉和伊莎贝尔、内特来坐第五排看戏。演出前她突然谎称不舒服、坚持不上台，老师只好临时叫灯光间的奥莉维亚（维娅）顶替她演艾米丽·吉布斯。米兰达把戏服亲手交给维娅，催她赶紧换上。她在后台看完全场。结尾谢幕时观众为维娅和贾斯汀起立鼓掌，让她有些心酸；但看到奥吉一家开心地回到后台，她从人群里追上有些落单的奥吉。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>没有在乎的人来看我的首演，但奥吉来了</h2>
+            <div class="seg-en">no one there to see</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 307 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">无人赴约的失望</span><span class="tag">奥吉一家来看戏</span><span class="tag">我其实演得好</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓这个强烈的反差：所有人都辜负了她的首演，唯独奥吉一家真的来看了——为后面她把角色让给维娅埋下伏笔。</div>
+        <div class="body">
+<p>NEITHER MY MOTHER nor my father could come see the play on opening night: my mother because she had this thing at work, and my dad because his new wife was going to have her baby any second now, and he had to be on call.</p>
+<p>Zack couldn’t come to opening night, either: he had a volleyball game against Collegiate he couldn’t miss. In fact, he had wanted me to miss the opening night so I could come cheer him on. My “friends” all went to the game, of course, because all their boyfriends were playing. Even Ella didn’t come. Given a choice, she chose the crowd.</p>
+<p>So on opening night no one that was remotely close to me was even there. And the thing is, I realized in my third or fourth rehearsal that I was good at this acting thing. I felt the part. I understood the words I spoke. I could read the lines as if they were coming from my brain and my heart. And on opening night, I can honestly say I knew I was going to be more than good: I was going to be great. I was going to be extraordinary, but there would be no one there to see.</p>
+<p>We were all backstage, nervously running through our lines in our heads. I peeked through the curtain at the people taking their seats in the auditorium. That’s when I saw Auggie walking down the aisle with Isabel and Nate. They took three seats in the fifth row, near the middle. Auggie was wearing a bow tie, looking around excitedly. He had grown up a bit since I’d last seen him, almost a year ago. His hair was shorter, and he was wearing some kind of hearing aid now. His face hadn’t changed a bit.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>首演之夜，米兰达的父母都不能来——妈妈要工作，爸爸的新妻子随时要生宝宝。男友扎克要打排球赛，还希望她也别演、去给他加油；“朋友们”全都去看男友比赛了，连艾拉也选择去凑热闹。于是首演当晚没有真正亲近的人在场。但米兰达在第三四次排练时就发现自己演得不错，她相信自己会演得出色甚至惊艳——只是没有人来看。开演前她偷掀幕布，看见奥吉和伊莎贝尔、内特走进礼堂，坐在第五排，奥吉穿着蝴蝶结领结，戴了助听器，兴奋地四处张望。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I was going to be extraordinary, but there would be no one there to see.</blockquote><p class="note">extraordinary = 非凡的、惊艳的。米兰达知道今晚自己会很棒，却没人来看——这句话既心酸，也为她接下来让给维娅做铺垫。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>opening night</b> <span class="pos">n.</span> 首演之夜</li><li><b>on call</b> <span class="pos">phr.</span> 待命、随时待命</li><li><b>rehearsal</b> <span class="pos">n.</span> 排练</li><li><b>extraordinary</b> <span class="pos">adj.</span> 非凡的、惊人的</li><li><b>auditorium</b> <span class="pos">n.</span> 礼堂、剧场</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>我谎称不舒服：今晚我不上台了</h2>
+            <div class="seg-en">I can’t go on tonight</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 251 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">装病罢演</span><span class="tag">顶替换角</span><span class="tag">与老师的冲突</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>看这出“装病”的戏：米兰达明明演得好，却故意临阵撂挑子，把角色让出去——她的真实动机留到下一段揭晓。</div>
+        <div class="body">
+<p>Davenport was running through some last-minute changes with the set decorator. I saw Justin pacing off stage left, mumbling his lines nervously.</p>
+<p>“Mr. Davenport,” I said, surprising myself as I spoke. “I’m sorry, but I can’t go on tonight.”</p>
+<p>Davenport turned around slowly.</p>
+<p>“What?” he said.</p>
+<p>“I’m sorry.”</p>
+<p>“Are you kidding?”</p>
+<p>“I’m just …,” I muttered, looking down, “I don’t feel well. I’m sorry. I feel like I’m going to throw up.” This was a lie.</p>
+<p>“It’s just last-minute jitters. …”</p>
+<p>“No! I can’t do it! I’m telling you.”</p>
+<p>Davenport looked furious. “Miranda, this is outrageous.”</p>
+<p>“I’m sorry!”</p>
+<p>Davenport took a deep breath, like he was trying to restrain himself. To be truthful, I thought he looked like he was going to explode. His forehead turned bright pink. “Miranda, this is absolutely unacceptable! Now go take a few deep breaths and—”</p>
+<p>“I’m not going on!” I said loudly, and the tears came to my eyes fairly easily.</p>
+<p>“Fine!” he screamed, not looking at me. Then he turned to a kid named David, who was a set decorator. “Go find Olivia in the lighting booth! Tell her she’s filling in for Miranda tonight!”</p>
+<p>“What?” said David, who wasn’t too swift.</p>
+<p>“Go!” shouted Davenport in his face. “Now!” The other kids had caught on to what was happening and gathered around.</p>
+<p>“What’s going on?” said Justin.</p>
+<p>“Last-minute change of plans,” said Davenport. “Miranda doesn’t feel well.”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达看见贾斯汀在台侧紧张地念词，突然开口跟达文波特老师说今晚不能上台，谎称自己不舒服想吐。老师起先以为她只是上台前紧张，想劝她深呼吸，她却态度强硬，坚持不上台，甚至掉下眼泪。达文波特老师气坏了，额头涨红，最后喊来灯光间里的奥莉维亚顶替米兰达的角色，并跟其他追问的学生解释说是临时换人。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Davenport took a deep breath, like he was trying to restrain himself.</blockquote><p class="note">restrain oneself = 克制自己、忍住不发火。米兰达这一招把老师气得几乎要爆发，也让读者好奇她为何非这样不可。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>go on</b> <span class="pos">phr.</span> （演出时）上场</li><li><b>mutters</b> <span class="pos">v.</span> 低声嘟囔、嘀咕</li><li><b>jitters</b> <span class="pos">n.</span> 紧张不安、上场前的慌乱</li><li><b>furious</b> <span class="pos">adj.</span> 暴怒的、气急败坏的</li><li><b>restrain</b> <span class="pos">v.</span> 克制、抑制</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>我把戏服交给维娅：你赶紧换上</h2>
+            <div class="seg-en">Hurry up, put it on</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 270 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">亲手让戏服</span><span class="tag">临时顶替演出</span><span class="tag">没说出口的理由</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住米兰达始终没答出那句“Why are you doing this”——她自己也没完全想清楚，这份心意没有说出口。</div>
+        <div class="body">
+<p>“I feel sick,” I said, trying to sound sick.</p>
+<p>“So why are you still here?” Davenport said to me angrily. “Stop talking, take off your costume, and give it to Olivia! Okay? Come on, everybody! Let’s go! Go! Go!”</p>
+<p>I ran backstage to the dressing room as quickly as I could and started peeling off my costume. Two seconds later there was a knock and Via half opened the door.</p>
+<p>“What is going on?” she said.</p>
+<p>“Hurry up, put it on,” I answered, handing her the dress.</p>
+<p>“You’re sick?”</p>
+<p>“Yeah! Hurry up!”</p>
+<p>Via, looking stunned, took off her T-shirt and jeans and pulled the long dress over her head. I pulled it down for her, and then zipped up the back. Luckily, Emily Webb didn’t go on until ten minutes into the play, so the girl handling hair and makeup had time to put Via’s hair up in a twist and do a quick makeup job. I’d never seen Via with a lot of makeup on: she looked like a model.</p>
+<p>“I’m not even sure I’ll remember my lines,” Via said, looking at herself in the mirror. “Your lines.”</p>
+<p>“You’ll do great,” I said.</p>
+<p>She looked at me in the mirror. “Why are you doing this, Miranda?”</p>
+<p>“Olivia!” It was Davenport, hush-shouting from the door. “You’re on in two minutes. It’s now or never!”</p>
+<p>Via followed him out the door, so I never got the chance to answer her question. I don’t know what I would have said, anyway. I wasn’t sure what the answer was.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达飞快跑回后台，开始脱戏服。维娅推门进来问怎么了，米兰达直接把裙子塞给她让她赶紧穿上。维娅惊呆了，脱掉自己原来的衣服穿上长裙，化妆师趁艾米丽的戏还有十分钟才出场，飞快给维娅盘了头发、化了妆。维娅照镜子说自己连台词都记不清（还是米兰达的台词），米兰达安慰她会演得很好。维娅问米兰达为什么要这么做，但那不米兰达还来不及回答，达文波特便喊维娅两分钟内上场，维娅跟着走了出去。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>“Why are you doing this, Miranda?”</blockquote><p class="note">维娅的这句直接追问是全段关键，但米兰达没机会回答——这份让角的真心，成了两人之间未说破的和解。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>peel off</b> <span class="pos">phr.</span> 脱掉、剥下（衣服）</li><li><b>stunned</b> <span class="pos">adj.</span> 惊呆的、愣住的</li><li><b>zipped up</b> <span class="pos">v.</span> 拉上拉链</li><li><b>makeup</b> <span class="pos">n.</span> 化妆</li><li><b>It’s now or never.</b> <span class="pos">phr.</span> 机不可失、就趁现在。</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-4">
+        <div class="seg-head">
+          <div class="seg-num">4</div>
+          <div class="seg-titles">
+            <h2>台下为维娅起立鼓掌，我从人堆里找回奥吉</h2>
+            <div class="seg-en">Major Tom</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 235 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">观众起立鼓掌</span><span class="tag">谢幕的心酸</span><span class="tag">找到落单的奥吉</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住结局的温度：虽然错过掌声让米兰达有点苦涩，她关心的始终不是自己，而是那个在人群里落单的奥吉。</div>
+        <div class="body">
+<p>I WATCHED THE rest of the play from the wings just offstage, next to Davenport. Justin was amazing, and Via, in that heartbreaking last scene, was awesome. There was one line she flubbed a bit, but Justin covered for her, and no one in the audience even noticed. I heard Davenport muttering under his breath: “Good, good, good.” He was more nervous than all of the students put together: the actors, the set decorators, the lighting team, the guy handling the curtains. Davenport was a wreck, frankly.</p>
+<p>The only time I felt any regret, if you could even call it that, was at the end of the play when everyone went out for their curtain calls. Via and Justin were the last of the actors walking out onstage, and the audience rose to their feet when they took their bows. That, I admit, was a little bittersweet for me. But just a few minutes later I saw Nate and Isabel and Auggie make their way backstage, and they all seemed so happy. Everyone was congratulating the actors, patting them on the back. It was that crazy backstage theater mayhem where sweaty actors stand euphoric while people come worship them for a few seconds. In that crush of people, I noticed Auggie looking kind of lost. I cut through the crowd as fast as I could and came up behind him.</p>
+<p>“Hey!” I said. “Major Tom!”</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>米兰达在侧幕旁看完剩下的演出：贾斯汀很出色，维娅在催泪的结尾那场也很棒，维娅有一句台词念岔了，贾斯汀帮她圆过去，观众根本没注意。结尾谢幕时维娅和贾斯汀最后走上台，观众起立鼓掌，让米兰达有些心酸。但看到内特、伊莎贝尔和奥吉高高兴兴回到后台，人人都在祝贺演员。在混乱的人群里，她注意到奥吉有点不知所措，便飞快穿过人群走到他身后，喊出那句昵称：“Major Tom！”</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>That, I admit, was a little bittersweet for me.</blockquote><p class="note">bittersweet = 苦甜交加、又心酸又欣慰。掌声给了维娅而不是米兰达，那一刻的感受五味杂陈。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>from the wings</b> <span class="pos">phr.</span> 从侧幕（舞台两侧没被观众看到的地方）</li><li><b>flub</b> <span class="pos">v.</span> 说错、念岔（台词）</li><li><b>curtain call</b> <span class="pos">n.</span> 谢幕</li><li><b>rise to one’s feet</b> <span class="pos">phr.</span> 站起身来（起立致敬、鼓掌）</li><li><b>bittersweet</b> <span class="pos">adj.</span> 苦甜参半的、又苦又甜的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_74.html">← 上一单元</a>
+    <a href="wonder_unit_76.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第75/96 单元 · 第七部 · 米兰达 · 约 13 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u75.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

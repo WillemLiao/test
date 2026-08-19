@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第57单元 第一次见到奥吉，我惊住了</title>
+<style>
+:root{--c:#7a6aa8;--bg:#f0edf7;--nav:#ded7ee;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第五部 · 贾斯汀</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 57 单元 · 第一次见到奥吉，我惊住了</div>
+    <div class="unit-en">Olivia’s Brother</div>
+    <div class="unit-stats">
+      <span>⏱ 约 10 分钟</span>
+      <span>📄 815 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Five: Justin</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>贾斯汀（维娅的男朋友）第一次见到奥吉，被他的长相吓了一跳——维娅只提过“颅面异常”，他以为早动手术会好很多。他努力掩饰惊讶，冷静地握手，还和奥吉聊了两句。随后维娅把贾斯汀拉回自己房间，紧张地问他是否被吓到；她坦白小时候很多孩子看到奥吉就躲，甚至不去参加她的生日会。最终她把一只北极熊玩偶交给贾斯汀，用无声的动作表示信任他的回答。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>第一次见到奥吉，我愣住了</h2>
+            <div class="seg-en">totally taken by surprise</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">初次见面</span><span class="tag">掩饰惊讶</span><span class="tag">奥吉长相</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意贾斯汀的内心挣扎：他努力“隐藏惊讶”，可惊讶是难以伪装的——为后文维娅问他是否被吓到埋下伏笔。</div>
+        <div class="body">
+<p>THE FIRST TIME i meet Olivia’s little brother, i have to admit i’m totally taken by surprise.</p>
+<p>i shouldn’t be, of course. olivia’s told me about his “syndrome.” has even described what he looks like. but she’s also talked about all his surgeries over the years, so i guess i assumed he’d be more normal-looking by now. like when a kid is born with a cleft lip and has plastic surgery to fix it sometimes you can’t even tell except for the little scar above the lip. i guess i thought her brother would have some scars here and there. but not this. i definitely wasn’t expecting to see this little kid in a baseball cap who’s sitting in front of me right now.</p>
+<p>actually there are two kids sitting in front me: one is a totally normal-looking kid with curly blond hair named jack; the other is auggie.</p>
+<p>i like to think i’m able to hide my surprise. i hope i do. surprise is one of those emotions that can be hard to fake, though, whether you’re trying to look surprised when you’re not or trying to not look surprised when you are.</p>
+<p>i shake his hand. i shake the other kid’s hand. don’t want to focus on his face. cool room, I say.</p>
+<p>are you via’s boyfriend? he says. i think he’s smiling.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>贾斯汀第一次见维娅的小弟弟，承认自己完全被惊到了。维娅说过他的“症候群”、描述过他的长相，可贾斯汀以为多次手术后他看起来会正常些，没想到眼前的奥吉戴着棒球帽，长相远比他想象得严重。旁边还坐着一个卷金发的普通男孩杰克。贾斯汀努力藏住惊讶，装出自然的样子和两人握手。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Surprise is one of those emotions that can be hard to fake, though, whether you're trying to look surprised when you're not or trying to not look surprised when you are.</blockquote><p class="note">贾斯汀讲透了“惊讶装不出来”这件难堪事——不管你是假装被吓到，还是假装没被吓到，都很难。fake = 假装。这正是他要面对的难题。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>taken by surprise</b> <span class="pos">phr.</span> 被吓到、措手不及</li><li><b>syndrome</b> <span class="pos">n.</span> 症候群（一组同时出现的病症）</li><li><b>cleft lip</b> <span class="pos">n.</span> 兔唇、唇裂</li><li><b>plastic surgery</b> <span class="pos">n.</span> 整形手术</li><li><b>fake</b> <span class="pos">v.</span> 假装、伪装</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>两个男孩笑话我的小提琴</h2>
+            <div class="seg-en">machine gun?</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 287 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">恋爱往事</span><span class="tag">音乐话题</span><span class="tag">维娅的隐瞒</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这一段交代背景：贾斯汀如何爱上维娅，以及维娅用了很久才敢提奥吉的事——她用中性词“异常”绕开残酷的“畸形”。</div>
+        <div class="body">
+<p>olivia pushes down his baseball cap.</p>
+<p>is that a machine gun? the blond kid asks, like i haven’t heard that one before. and we talk about zydeco for a bit. and then via’s taking my hand and leading me out of the room. as soon as we close the door behind us, we hear them laughing.</p>
+<p>i’m from brooklyn! one of them sings.</p>
+<p>olivia rolls her eyes as she smiles. let’s go hang out in my room, she says.</p>
+<p>we’ve been dating for two months now. i knew from the moment i saw her, the minute she sat down at our table in the cafeteria, that i liked her. i couldn’t keep my eyes off of her. really beautiful. with olive skin and the bluest eyes i’ve ever seen in my life. at first she acted like she only wanted to be friends. i think she kind of gives off that vibe without even meaning to. stay back. don’t even bother. she doesn’t flirt like some other girls do. she looks you right in the eye when she talks to you, like she’s daring you. so i just kept looking her right in the eye, too, like i was daring her right back. and then i asked her out and she said yes, which rocked.</p>
+<p>she’s an awesome girl and i love hanging out with her.</p>
+<p>she didn’t tell me about august until our third date. i think she used the phrase “a craniofacial abnormality” to describe his face. or maybe it was “craniofacial anomaly.” i know the one word she didn’t use was “deformed,” though, because that word would have registered with me.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>维娅把奥吉的棒球帽往下按了按，卷发男孩问贾斯汀背的是不是机关枪（其实是小提琴）。他们聊了一会儿 zydeco 音乐，然后维娅拉着贾斯汀走出房间，身后传来两个男孩的笑声，其中一个哼唱着。贾斯汀回忆他们约会两个月了：第一次在餐厅见她就被迷住，她皮肤浅棕、眼睛蓝得出奇，起初只当他是朋友，后来才答应约会。她直到第三次约会才告诉他奥吉的事，用的是“颅面异常”而不是“畸形”这个词。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>I knew the one word she didn't use was &quot;deformed,&quot; though, because that word would have registered with me.</blockquote><p class="note">registered with me = 让我印象深刻、我会记住。贾斯汀说：我知道她没说“畸形”这个词，因为这个词我一定会记住。reaction 发生在维娅委婉的措辞与残酷现实的对比上。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>machine gun</b> <span class="pos">n.</span> 机关枪</li><li><b>zydeco</b> <span class="pos">n.</span> 柴迪科（美国路易斯安那的民间舞曲）</li><li><b>vibe</b> <span class="pos">n.</span> 气氛、气场；vibe that 释放出那种感觉</li><li><b>flirt</b> <span class="pos">v.</span> 调情、卖弄风情</li><li><b>deformed</b> <span class="pos">adj.</span> 畸形的、变形的</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>维娅的心事：没人会第二次来找奥吉玩</h2>
+            <div class="seg-en">some people just don't know how to deal with auggie</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 285 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">维娅的委屈</span><span class="tag">信任试探</span><span class="tag">长大的奥吉</span><span class="tag">北极熊玩偶</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是本单元的情感核心：维娅一生背负的委屈借玩偶那一扔卸下来——她需要的不是安慰，而是确认贾斯汀真的接纳奥吉。</div>
+        <div class="body">
+<p>so, what did you think? she asks me nervously the second we’re inside her room. are you shocked?</p>
+<p>no, i lie.</p>
+<p>she smiles and looks away. you’re shocked.</p>
+<p>i’m not, i assure her. he’s just like what you said he’d be.</p>
+<p>she nods and plops down on her bed. kind of cute how she still has a lot of stuffed animals on her bed. she takes one of them, a polar bear, without thinking and puts it in her lap.</p>
+<p>i sit down on the rolling chair by her desk. her room is immaculate.</p>
+<p>when i was little, she says, there were lots of kids who never came back for a second playdate. i mean, lots of kids. i even had friends who wouldn’t come to my birthdays because he would be there. they never actually told me this, but it would get back to me. some people just don’t know how to deal with auggie, you know?</p>
+<p>i nod.</p>
+<p>it’s not even like they know they’re being mean, she adds. they were just scared. i mean, let’s face it, his face is a little scary, right?</p>
+<p>i guess, i answer.</p>
+<p>but you’re okay with it? she asks me sweetly. you’re not too freaked out? or scared?</p>
+<p>i’m not freaked out or scared. i smile.</p>
+<p>she nods and looks down at the polar bear on her lap. i can’t tell whether she believes me or not, but then she gives the polar bear a kiss on the nose and tosses it to me with a little smile. i think that means she believes me. or at least that she wants to.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>一进房间维娅就紧张地问贾斯汀的想法和是否被吓到，他嘴上说没有。她坐到床上，抱着一只北极熊玩偶，讲起以前很多孩子不会再来第二次玩，甚至因为她弟弟奥吉在而不来参加她的生日会；她说那些人只是害怕，不是故意刻薄，自己也承认奥吉的脸确实有点吓人。她又追问贾斯汀是不是真的不害怕，然后亲了下北极熊，把玩偶扔给他——贾斯汀想，这大概代表她相信他了，或者至少她愿意相信。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>she gives the polar bear a kiss on the nose and tosses it to me with a little smile. i think that means she believes me. or at least that she wants to.</blockquote><p class="note">toss = 扔、抛。维娅亲一下熊鼻子再扔给贾斯汀，这个无言的举动胜过千言万语——她想相信他真的不害怕。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>startled</b> <span class="pos">adj.</span> 受惊的、震惊的</li><li><b>plop down</b> <span class="pos">phr.</span> 一屁股坐下</li><li><b>stuffed animal</b> <span class="pos">n.</span> 毛绒玩具</li><li><b>toss</b> <span class="pos">v.</span> 扔、抛</li><li><b>freaked out</b> <span class="pos">phr.</span> 吓坏的、惊慌失措的</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_56.html">← 上一单元</a>
+    <a href="wonder_unit_58.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第57/96 单元 · 第五部 · 贾斯汀 · 约 10 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u57.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

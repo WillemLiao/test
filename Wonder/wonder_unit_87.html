@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第87单元 全校都知道我们被欺负的事了</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 87 单元 · 全校都知道我们被欺负的事了</div>
+    <div class="unit-en">The Shift</div>
+    <div class="unit-stats">
+      <span>⏱ 约 5 分钟</span>
+      <span>📄 367 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉回到学校的第二天发现一切彻底变了：全年级都听说了艾莫斯、亨利、迈尔斯为保护他和杰克挺身而出、反打了七年级学生的事。故事传了几轮越说越离谱，但大家都记住了——奥吉因为长相被欺负，而那几个大个子护住了他。从此奥吉成了他们中的一员，连运动员都热情地跟他打招呼。而朱利安因为错过了整件事成了局外人，依然对奥吉和杰克冷眼相待，但奥吉和杰克毫不在乎。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>回到学校，发现一切都变了</h2>
+            <div class="seg-en">A big shift in the way things were</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 265 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">身份转变</span><span class="tag">流言发酵</span><span class="tag">被接纳</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住转变的本质：奥吉的身份从那个脸有问题的孩子变成为大家口中的小兄弟——他人看待他的方式第一次发生了根本变化。</div>
+        <div class="body">
+<p>WHEN I WENT back to school the next day, the first thing I noticed was that there was a big shift in the way things were. A monumental shift. A seismic shift. Maybe even a cosmic shift. Whatever you want to call it, it was a big shift. Everyone—not just in our grade but every grade—had heard about what had happened to us with the seventh graders, so suddenly I wasn’t known for what I’d always been known for, but for this other thing that had happened. And the story of what happened had gotten bigger and bigger each time it was told. Two days later, the way the story went was that Amos had gotten into a major fistfight with the kid, and Miles and Henry and Jack had thrown some punches at the other guys, too. And the escape across the field became this whole long adventure through a cornfield maze and into the deep dark woods. Jack’s version of the story was probably the best because he’s so funny, but in whatever version of the story, and no matter who was telling it, two things always stayed the same: I got picked on because of my face and Jack defended me, and those guys—Amos, Henry, and Miles—protected me. And now that they’d protected me, I was different to them. It was like I was one of them. They all called me “little dude” now—even the jocks. These big dudes I barely even knew before would knuckle-punch me in the hallways now.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉回学校发现学校里风气大转变：全年级都听说了他和杰克被七年级学生欺负、艾莫斯等人出手保护的事。故事被越传越夸张，从一句打架变成穿过玉米迷宫逃进深黑森林的冒险。无论哪个版本，核心不变——奥吉因面容被欺负，杰克替他挡，艾莫斯、亨利、迈尔斯保护他。从此大家把奥吉当成自己人，连运动员都在走廊里冲他碰拳叫他小兄弟。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It was like I was one of them.</blockquote><p class="note">one of them = 他们中的一员。奥吉第一次感到自己被真正接纳，不再是那个被围观、被躲开的外人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>shift</b> <span class="pos">n.</span> 转变、变化</li><li><b>monumental</b> <span class="pos">adj.</span> 巨大的、重要的</li><li><b>seismic</b> <span class="pos">adj.</span> 震动性的（像地震一样大的）</li><li><b>fistfight</b> <span class="pos">n.</span> 赤手空拳的打架</li><li><b>knuckle-punch</b> <span class="pos">v.</span> 用拳背轻轻碰拳（很友好的打招呼方式）</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>艾莫斯变红了，朱利安成了局外人</h2>
+            <div class="seg-en">Julian was really out of the loop</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 102 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">地位反转</span><span class="tag">朱利安边缘化</span><span class="tag">释然</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意对比：施压者艾莫斯靠正名洗掉了之前的恶名、反而更红，而排挤人的朱利安被孤立了——他们的处境彻底反转。</div>
+        <div class="body">
+<p>Another thing to come out of it was that Amos became super popular and Julian, because he missed the whole thing, was really out of the loop. Miles and Henry were hanging out with Amos all the time now, like they switched best friends. I’d like to be able to say that Julian started treating me better, too, but that wouldn’t be true. He still gave me dirty looks across the room. He still never talked to me or Jack. But he was the only one who was like that now. And me and Jack, we couldn’t care less.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>这场风波还带来另一个结果：艾莫斯变得超级受欢迎，而朱利安因为错过了整件事成了局外人。迈尔斯和亨利现在整天跟艾莫斯黏在一起，就像换了最好的朋友。老实说朱利安并没有对奥吉变好——他依然隔着教室瞪奥吉，依然不跟奥吉和杰克说话，但他现在是唯一还这么做的人了。奥吉和杰克对此毫不在意。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>He still gave me dirty looks across the room.</blockquote><p class="note">give sb a dirty look = 用厌恶的眼神瞪某人。朱利安依然敌视奥吉，但奥吉和杰克根本不在乎。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>super popular</b> <span class="pos">adj.</span> 超级受欢迎</li><li><b>out of the loop</b> <span class="pos">phr.</span> 消息闭塞、被排除在外</li><li><b>hang out with</b> <span class="pos">phr.</span> 和……一起玩</li><li><b>switch</b> <span class="pos">v.</span> 换、调换</li><li><b>dirty look</b> <span class="pos">n.</span> 厌恶的瞪视、凶巴巴的眼神</li><li><b>couldn't care less</b> <span class="pos">phr.</span> 毫不在乎</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_86.html">← 上一单元</a>
+    <a href="wonder_unit_88.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第87/96 单元 · 第八部 · 奥吉 · 约 5 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u87.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

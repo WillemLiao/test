@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第92单元 图什曼先生的毕业致辞：你们在成长的门槛上</title>
+<style>
+:root{--c:#4a6a78;--bg:#e9eff1;--nav:#d4e0e4;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第八部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 92 单元 · 图什曼先生的毕业致辞：你们在成长的门槛上</div>
+    <div class="unit-en">A Simple Thing</div>
+    <div class="unit-stats">
+      <span>⏱ 约 7 分钟</span>
+      <span>📄 553 词</span>
+      <span>🧩 2 小段</span>
+      <span>👤 叙述者：Eight: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>约一小时后，巨大的礼堂里坐满了人，图什曼先生站上讲台，用他标志性的开场白向五年级和六年级学生致欢迎词。他说自己每年都得写两份毕业致辞——一份今天用、一份明天给七八年级用，今年他终于想明白为什么永远合不到一起：不是因为听众年龄不同，而是因为这个年纪本身就特别打动他。你们正站在童年的门槛上，站在童年与之后一切之间的分界处。致词的结尾，他引用了一段话，还卖关子说不是《彼得潘》、也不会请大家相信仙女就鼓掌，惹得全场大笑。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>礼堂挤满了人，致辞开讲</h2>
+            <div class="seg-en">You're at the cusp, kids</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 348 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">毕业致辞</span><span class="tag">欢迎词</span><span class="tag">童年门槛</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>抓住致辞的核心意象：门槛、分界、过渡——图什曼在向这些孩子点出他们人生此刻的重量，也悄悄为后续结尾的大段话作铺垫。</div>
+        <div class="body">
+<p>ABOUT AN HOUR later we were all seated in the giant auditorium waiting for Mr. Tushman to give his “middle-school address.” The auditorium was even bigger than I imagined it would be—bigger even than the one at Via’s school. I looked around, and there must have been a million people in the audience. Okay, maybe not a million, but definitely a lot.</p>
+<p>“Thank you, Headmaster Jansen, for those very kind words of introduction,” said Mr. Tushman, standing behind the podium on the stage as he talked into the microphone. “Welcome, my fellow teachers and members of the faculty. …</p>
+<p>“Welcome, parents and grandparents, friends and honored guests, and most especially, welcome to my fifth- and sixth-grade students. …</p>
+<p>“Welcome to the Beecher Prep Middle School graduation ceremonies!!!”</p>
+<p>Everyone applauded.</p>
+<p>“Every year,” continued Mr. Tushman, reading from his notes with his reading glasses way down on the tip of his nose, “I am charged with writing two commencement addresses: one for the fifth- and sixth-grade graduation ceremony today, and one for the seventh- and eighth-grade ceremony that will take place tomorrow. And every year I say to myself, Let me cut down on my work and write just one address that I can use for both situations. Seems like it shouldn’t be such a hard thing to do, right? And yet each year I still end up with two different speeches, no matter what my intentions, and I finally figured out why this year. It’s not, as you might assume, simply because tomorrow I’ll be talking to an older crowd with a middle-school experience that is largely behind them—whereas your middle-school experience is largely in front of you. No, I think it has to do more with this particular age that you are right now, this particular moment in your lives that, even after twenty years of my being around students this age, still moves me. Because you’re at the cusp, kids. You’re at the edge between childhood and everything that comes after. You’re in transition.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>大约一小时后，大家坐进巨大的礼堂，等图什曼先生讲他的初中部致辞。礼堂比奥吉想象的还大，台下看起来得有上百万人在听（当然不会，但确实人很多）。图什曼先生戴着一副架在鼻尖的老花镜，站在舞台讲台后的麦克风前开场，向校长、老师、家长祖父母和朋友们问好，尤其欢迎五年级和六年级的学生。他说自己每年都要写两份毕业致辞——今天一份、明天给七八年级一份——年年想合二为一却都失败，今年他终于明白了原因：不是因为听众年龄差，而是因为眼前这个年纪本身就深深地打动他——你们正站在童年与往后一切之间的门槛上，处在过渡之中。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You're at the cusp, kids. You're at the edge between childhood and everything that comes after.</blockquote><p class="note">cusp = 两个事物交界处的顶点。图什曼说孩子们正站在童年与之后的一切的分界上——一段很打动人的成长寄语。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>podium</b> <span class="pos">n.</span> 讲台、指挥台</li><li><b>microphone</b> <span class="pos">n.</span> 麦克风</li><li><b>commencement</b> <span class="pos">n.</span> 毕业典礼；commencement address 毕业致辞</li><li><b>cusp</b> <span class="pos">n.</span> （转折的）临界点、尖端</li><li><b>transition</b> <span class="pos">n.</span> 过渡、转变</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>衡量成长，不靠身高和成绩</h2>
+            <div class="seg-en">The greatest measure of success</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 205 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">成长之尺</span><span class="tag">感动人心</span><span class="tag">埋下主题</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>记住图什曼抛出的这段话的核心：不是跑几圈，而是你触动了谁——这正是全书主题善良与看见彼此的直接表达，也是后面结业典礼的中心思想。</div>
+        <div class="body">
+<p>“We are all gathered here together,” Mr. Tushman continued, taking off his glasses and using them to point at all of us in the audience, “all your families, friends, and teachers, to celebrate not only your achievements of this past year, Beecher middle schoolers—but your endless possibilities.</p>
+<p>“When you reflect on this past year, I want you all to look at where you are now and where you’ve been. You’ve all gotten a little taller, a little stronger, a little smarter … I hope.”</p>
+<p>Here some people in the audience chuckled.</p>
+<p>“But the best way to measure how much you’ve grown isn’t by inches or the number of laps you can now run around the track, or even your grade point average—though those things are important, to be sure. It’s what you’ve done with your time, how you’ve chosen to spend your days, and whom you have touched this year. That, to me, is the greatest measure of success.</p>
+<p>“There’s a wonderful line in a book by J. M. Barrie—and no, it’s not Peter Pan, and I’m not going to ask you to clap if you believe in fairies. …”</p>
+<p>Here everyone laughed again.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>图什曼先生摘下眼镜，拿着它指向台下每位观众，说今天大家齐聚一堂，不只要庆祝你们过去一年的成就，更要庆祝你们的无限可能。他说这一年你们都长高了些、壮了些、变聪明了些——但愿如此，台下有人轻笑。但他话锋一转：衡量成长最好的方式，不是量身高、不是看你现在能跑几圈，也不是绩点；而是看你如何度过时间、怎样选择过好每一天、这一年又影响了谁。他说书本里有句很棒的话——是J.M.巴里写的，不过不是《彼得潘》，他也不会请相信仙女的人鼓掌。全场又笑了。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>It's what you've done with your time, how you've chosen to spend your days, and whom you have touched this year.</blockquote><p class="note">touch = 触动、影响。图什曼说成功的真正标准不是成绩跑步，而是这一年你怎样生活、触动了哪些人——一句为全书的善良主题定调的话。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>achievement</b> <span class="pos">n.</span> 成就、成绩</li><li><b>reflect on</b> <span class="pos">phr.</span> 回顾、反思</li><li><b>gpa</b> <span class="pos">n.</span> 平均绩点（grade point average 的缩写）</li><li><b>measure</b> <span class="pos">v.</span> 衡量；measurement</li><li><b>clap</b> <span class="pos">v.</span> 拍手、鼓掌</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_91.html">← 上一单元</a>
+    <a href="wonder_unit_93.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第92/96 单元 · 第八部 · 奥吉 · 约 7 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u92.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

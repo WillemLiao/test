@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第23单元 没人愿意碰我的“奶酪怪”</title>
+<style>
+:root{--c:#a8743a;--bg:#f5f0e6;--nav:#ebe3d2;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第一部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 23 单元 · 没人愿意碰我的“奶酪怪”</div>
+    <div class="unit-en">The Cheese Touch</div>
+    <div class="unit-stats">
+      <span>⏱ 约 7 分钟</span>
+      <span>📄 565 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：One: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>奥吉渐渐发现一件事：大家正在习惯他的脸，却始终没人肯真正碰他。舞蹈课上，老师让西梅娜当他的舞伴，女孩当场脸色发白、冒汗，像发作了恐慌，找了个去厕所的借口逃跑；科学选修课上，七个孩子全挤在加热板的一侧，只有奥吉被晾在另一边。等到特里斯坦不得不挪到他这边时，两人手一碰，特里斯坦猛地抽手，连实验结果都摔了，先跑去水槽洗手。奥吉彻底明白了：在比彻预备学校，他就是那根没人敢沾的“奶酪碰一碰”里的霉奶酪。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>西梅娜一听要当我舞伴就吓坏了</h2>
+            <div class="seg-en">A panic attack in dance class</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 276 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">舞伴风波</span><span class="tag">恐慌发作</span><span class="tag">空间里的孤立</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>两个并排的画面都在说同一件事：舞蹈课“躲开他当舞伴”，科学课“挤作一团也不靠他”——奥吉把这些细节默记在心，但还没当场戳破。</div>
+        <div class="body">
+<p>I NOTICED NOT too long ago that even though people were getting used to me, no one would actually touch me. I didn’t realize this at first because it’s not like kids go around touching each other that much in middle school anyway. But last Thursday in dance class, which is, like, my least favorite class, Mrs. Atanabi, the teacher, tried to make Ximena Chin be my dance partner. Now, I’ve never actually seen someone have a “panic attack” before, but I have heard about it, and I’m pretty sure Ximena had a panic attack at that second. She got really nervous and turned pale and literally broke into a sweat within a minute, and then she came up with some lame excuse about really having to go to the bathroom. Anyway, Mrs. Atanabi let her off the hook, because she ended up not making anyone dance together.</p>
+<p>Then yesterday in my science elective, we were doing this cool mystery-powder investigation where we had to classify a substance as an acid or a base. Everyone had to heat their mystery powders on a heating plate and make observations, so we were all huddled around the powders with our notebooks. Now, there are eight kids in the elective, and seven of them were squished together on one side of the plate while one of them—me—had loads of room on the other side. So of course I noticed this, but I was hoping Ms. Rubin wouldn’t notice this, because I didn’t want her to say something. But of course she did notice this, and of course she said something.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉最近注意到，大家习惯了他的脸，却没人真的碰他。他起初没察觉，因为中学孩子本来就不太互相碰。可上周四他最讨厌的舞蹈课上，老师阿塔纳比夫人想让西梅娜·金当他舞伴——奥吉从没亲眼见过“恐慌发作”，可他几乎能断定西梅娜那一刻就是发作了：她紧张得脸色发白、眨眼间冒出一身汗，随后编了个“真得去洗手间”的破借口。老师放了她一马，索性不让任何人配对。接着昨天气奥吉的科学选修课上，八个孩子里有七个挤在加热板一边，唯独他自己独占另一边大量空间。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>She got really nervous and turned pale and literally broke into a sweat within a minute, and then she came up with some lame excuse about really having to go to the bathroom.</blockquote><p class="note">break into a sweat = 突然冒汗；lame excuse = 蹩脚的借口。奥吉观察得极细：一句“我得上洗手间”临时遁走，让他几乎确认对方是被自己的脸吓到了。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>panic attack</b> <span class="pos">n.</span> 恐慌发作、惊恐发作</li><li><b>break into a sweat</b> <span class="pos">phr.</span> 突然冒汗</li><li><b>pal(l)e</b> <span class="pos">adj.</span> 苍白的</li><li><b>lame excuse</b> <span class="pos">n.</span> 蹩脚的借口</li><li><b>classify</b> <span class="pos">v.</span> 归类、分门别类</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>特里斯坦碰了我，立刻冲向水槽洗手</h2>
+            <div class="seg-en">Tristan jerked his hand away</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">科学课的触碰</span><span class="tag">缩回去的手</span><span class="tag">确认的禁忌</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意这一击是从“最不讨厌他的同学”特里斯坦身上发生的——正是这最好的那次触碰，让奥吉彻底死心：不是谁对他坏，而是“碰他”本身成了禁忌。</div>
+        <div class="body">
+<p>“Guys, there’s plenty of room on that side. Tristan, Nino, go over there,” she said, so Tristan and Nino scooted over to my side. Tristan and Nino have always been okay-nice to me. I want to go on record as saying that. Not super-nice, like they go out of their way to hang out with me, but okay-nice, like they say hello to me and talk to me like normal. And they didn’t even make a face when Ms. Rubin told them to come on my side, which a lot of kids do when they think I’m not looking. Anyway, everything was going fine until Tristan’s mystery powder started melting. He moved his foil off the plate just as my powder began to melt, too, which is why I went to move mine off the plate, and then my hand accidentally bumped his hand for a fraction of a second. Tristan jerked his hand away so fast he dropped his foil on the floor while also knocking everyone else’s foil off the heating plate.</p>
+<p>“Tristan!” yelled Ms. Rubin, but Tristan didn’t even care about the spilled powder on the floor or that he ruined the experiment. What he was most concerned about was getting to the lab sink to wash his hands as fast as possible. That’s when I knew for sure that there was this thing about touching me at Beecher Prep.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>老师说“这边地方多着呢，特里斯坦、尼诺，你俩过去”，两人便挪到奥吉这边。奥吉想就此记一笔：特里斯坦和尼诺一直都是“还不错的友善”，会正常跟他说“你好”、好好聊几句，被点名过来时也没像别的孩子那样撇脸。可就在奥吉的粉末开始熔化、他伸手去挪自己那片锡纸时，手不经意间碰了特里斯坦一下——特里斯坦猛地把手抽回去，又快又猛，竟把自己和全组的锡纸都撞落在地。老师喊他，可特里斯坦根本不管洒了的粉末，直奔水槽洗手。这下奥吉百分百确认了比彻预备学校的这桩怪事。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Tristan jerked his hand away so fast he dropped his foil on the floor while also knocking everyone else's foil off the heating plate.</blockquote><p class="note">jerk one's hand away = 猛地抽手。奥吉只是不小心碰了他一下，特里斯坦却像被火烧到一样甩手，连别人的实验都撞翻了——这种反应比任何坏话都伤人。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>scoot over</b> <span class="pos">phr.</span> 挪过去、移过去</li><li><b>go out of one's way</b> <span class="pos">phr.</span> 煞费苦心、特意去做</li><li><b>make a face</b> <span class="pos">phr.</span> 做鬼脸、露出难看的表情</li><li><b>jerk away</b> <span class="pos">phr.</span> 猛地抽回、弹开</li><li><b>melt</b> <span class="pos">v.</span> 熔化</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>在比彻，我就是那块发霉的奶酪</h2>
+            <div class="seg-en">I'm the old moldy cheese</div>
+          </div>
+          <div class="seg-meta">约 1 分钟 · 46 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">奶酪碰一碰</span><span class="tag">自嘲的比喻</span><span class="tag">被贴上的标签</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>整段点题：奥吉用一篇大家都懂的流行小说来比喻自己的处境——他已经被这个学校集体“贴”成了一件不能碰的糟污物。</div>
+        <div class="body">
+<p>I think it’s like the Cheese Touch in Diary of a Wimpy Kid. The kids in that story were afraid they’d catch the cooties if they touched the old moldy cheese on the basketball court. At Beecher Prep, I’m the old moldy cheese.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉想起《小屁孩日记》里的“奶酪碰一碰”（Cheese Touch）梗：故事里孩子们都怕碰到篮球场边那块发了霉的旧奶酪，担心会沾上“虱子”。在比彻预备学校，奥吉自嘲道：我就是那块发霉的旧奶酪。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>At Beecher Prep, I'm the old moldy cheese.</blockquote><p class="note">moldy cheese = 发霉的奶酪。《小屁孩日记》里“奶酪碰一碰”是孩子们流传的游戏，谁碰到那块废奶酪谁就“倒霉”。奥吉用这句话把自己比下去：在大家心里，他就像那块人人都躲的霉奶酪。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>cheese touch</b> <span class="pos">n.</span> （《小屁孩日记》）奶酪碰一碰游戏</li><li><b>cooties</b> <span class="pos">n.</span> （小孩玩笑）虱子、晦气</li><li><b>moldy</b> <span class="pos">adj.</span> 发霉的</li><li><b>basketball court</b> <span class="pos">n.</span> 篮球场</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_22.html">← 上一单元</a>
+    <a href="wonder_unit_24.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第23/96 单元 · 第一部 · 奥吉 · 约 7 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u23.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>

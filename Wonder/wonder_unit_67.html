@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder · 第67单元 妈妈没来敲我的门</title>
+<style>
+:root{--c:#a85a4a;--bg:#f7ecea;--nav:#eed8d3;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:linear-gradient(180deg,var(--bg) 0%,#fff 300px);color:#333;font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.9;padding-left:250px}
+.main{max-width:860px;margin:0 auto;padding:40px 24px 80px}
+header h1{font-size:26px;color:var(--c);letter-spacing:1px}
+header .part-badge{display:inline-block;background:var(--c);color:#fff;font-size:11px;padding:3px 10px;border-radius:12px;margin:8px 0 2px;letter-spacing:1px}
+header .unit-zh{font-size:21px;font-weight:700;margin:8px 0 2px}
+header .unit-en{font-size:14px;color:#888;margin-bottom:12px}
+.unit-stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.unit-stats span{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:4px 12px;font-size:12px;color:#666}
+.unit-summary{background:#fff;border-left:4px solid var(--c);border-radius:8px;padding:16px 18px;margin:16px 0 34px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;color:#555}
+.unit-summary b{color:var(--c)}
+.segment{background:#fff;border-radius:12px;padding:26px 28px;margin-bottom:26px;box-shadow:0 3px 12px rgba(0,0,0,.06);opacity:0;transform:translateY(14px);animation:fadein .5s forwards}
+@keyframes fadein{to{opacity:1;transform:none}}
+.seg-head{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+.seg-num{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--c);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
+.seg-titles{flex:1}
+.seg-titles h2{font-size:19px;color:var(--c);line-height:1.4}
+.seg-en{font-size:12.5px;color:#999;font-style:italic;margin-top:2px}
+.seg-meta{flex:0 0 auto;font-size:11.5px;color:#999;background:var(--bg);padding:3px 10px;border-radius:10px;white-space:nowrap}
+.tags{margin:6px 0 12px}
+.tag{display:inline-block;background:var(--bg);color:var(--c);border:1px solid rgba(0,0,0,.06);font-size:11px;padding:2px 10px;border-radius:10px;margin-right:6px}
+.guide{background:var(--bg);border-radius:8px;padding:12px 14px;font-size:13.5px;color:#555;margin-bottom:16px}
+.guide .lbl{font-weight:700;color:var(--c);margin-right:8px}
+.body p{font-size:15.5px;margin:0 0 14px;color:#2f2f2f;font-family:Georgia,"Times New Roman","Songti SC",serif}
+.body p.q{border-left:3px solid var(--c);padding-left:14px;color:#555;font-style:italic}
+.body p{cursor:pointer}
+.body p:hover{background:rgba(168,116,58,.06);border-radius:6px}
+.body p.reading{background:var(--bg);box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);border-radius:8px}
+::highlight(tts-karaoke){background:rgba(168,116,58,.30);border-radius:3px}
+.tts-btn{flex:0 0 auto;background:var(--c);color:#fff;border:none;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer;white-space:nowrap;line-height:1.6}
+.tts-btn:hover{opacity:.85}
+.tts-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#2c2c2c;color:#fff;border-radius:24px;padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:13px;z-index:80;box-shadow:0 4px 16px rgba(0,0,0,.28);opacity:0;pointer-events:none;transition:opacity .2s;max-width:92vw}
+.tts-bar.show{opacity:1;pointer-events:auto}
+.tts-bar button{background:rgba(255,255,255,.16);color:#fff;border:none;border-radius:14px;padding:4px 12px;cursor:pointer;font-size:12px}
+.tts-bar button:hover{background:rgba(255,255,255,.3)}
+.tts-bar select{background:#444;color:#fff;border:none;border-radius:10px;padding:3px 6px;font-size:12px;max-width:140px}
+.tts-state{font-size:11px;color:#bbb;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.key{border-left:3px solid var(--c);background:#fafafa;border-radius:6px;padding:12px 14px;margin:14px 0;font-size:13.5px;color:#555}
+.key .lbl{font-weight:700;color:var(--c);display:block;margin-bottom:4px}
+.quote{background:#fdf6ec;border:1px solid rgba(168,116,58,.25);border-radius:8px;padding:14px 16px;margin:14px 0;font-size:13.5px}
+.quote .lbl{font-weight:700;color:#a8743a;display:block;margin-bottom:6px}
+.quote blockquote{font-family:Georgia,serif;font-style:italic;color:#5a4632;font-size:15px;margin:0 0 8px}
+.quote .note{color:#7a6a55;font-size:12.5px}
+.vocab{background:#f3f7f3;border:1px solid rgba(106,128,86,.25);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px}
+.vocab .lbl{font-weight:700;color:#6a8056;display:block;margin-bottom:6px}
+.vocab ul{list-style:none}
+.vocab li{padding:3px 0;color:#444}
+.vocab li b{color:#3f5a33}
+.vocab .pos{color:#999;font-size:11px;margin:0 4px;font-style:italic}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid rgba(0,0,0,.08);color:#999;font-size:12px;text-align:center}
+.next-nav{display:flex;justify-content:space-between;margin-top:26px;font-size:13px}
+.next-nav a{text-decoration:none;color:var(--c);font-weight:600}
+@media(max-width:900px){
+  body{padding-right:0}
+  .nav{transform:translateX(100%);transition:transform .25s;width:250px}.main{margin-right:0;padding:56px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="main">
+  <header>
+    <div class="part-badge">第六部 · 奥吉</div>
+    <h1>Wonder</h1>
+    <div class="unit-zh">第 67 单元 · 妈妈没来敲我的门</div>
+    <div class="unit-en">My Cave</div>
+    <div class="unit-stats">
+      <span>⏱ 约 9 分钟</span>
+      <span>📄 721 词</span>
+      <span>🧩 3 小段</span>
+      <span>👤 叙述者：Six: August</span>
+    </div>
+    <div class="unit-summary"><b>单元导读：</b>晚饭时爸爸妈妈和奥吉已经和好，达西（狗）因为白天吐得厉害，明早要去看兽医。餐桌上三个人各怀心事，奥吉问是否去看贾斯汀的戏，妈妈委婉说他这个年纪不会感兴趣，维娅也赌气说他会无聊透顶。妈妈说自己留下陪奥吉、爸爸一个人去，气得维娅抗议“你就是用不去惩罚我诚实”。话越说越上火，奥吉忽然爆发，狂喊妈妈和维娅都是骗子，说他们不想让他的“名牌高中同学”知道他弟弟是怪物。他冲回房间用枕头玩偶把自己埋成“洞穴”，可妈妈这次竟没跟进来陪他，半小时都不见人影。最后门开了，进来的不是妈妈，而是维娅。</div>
+  </header>
+
+      <section class="segment" id="seg-1">
+        <div class="seg-head">
+          <div class="seg-num">1</div>
+          <div class="seg-titles">
+            <h2>晚饭桌上说不清的邀请</h2>
+            <div class="seg-en">weigh everyone's feelings</div>
+          </div>
+          <div class="seg-meta">约 3 分钟 · 243 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">晚饭对话</span><span class="tag">看戏邀请</span><span class="tag">微妙平衡</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>注意饭桌上的微妙张力：表面上在讲“看戏”，其实是妈妈在维娅和奥吉之间平衡——奥吉隐约感到自己被排除在外。</div>
+        <div class="body">
+<p>BY DINNER THEY seemed to have made up. Dad was working late. Daisy was sleeping. She’d thrown up a lot earlier in the day, and Mom made an appointment to take her to the vet the next morning.</p>
+<p>The three of us were sitting down and no one was talking.</p>
+<p>Finally, I said: “So, are we going to see Justin in a play?”</p>
+<p>Via didn’t answer but looked down at her plate.</p>
+<p>“You know, Auggie,” said Mom quietly. “I hadn’t realized what play it was, and it really isn’t something that would be interesting to kids your age.”</p>
+<p>“So I’m not invited?” I said, looking at Via.</p>
+<p>“I didn’t say that,” said Mom. “It’s just I don’t think it’s something you’d enjoy.”</p>
+<p>“You’d get totally bored,” said Via, like she was accusing me of something.</p>
+<p>“Are you and Dad going?” I asked.</p>
+<p>“Dad’ll go,” said Mom. “I’ll stay home with you.”</p>
+<p>“What?” Via yelled at Mom. “Oh great, so you’re going to punish me for being honest by not going?”</p>
+<p>“You didn’t want us to go in the first place, remember?” answered Mom.</p>
+<p>“But now that you know about it, of course I want you to go!” said Via.</p>
+<p>“Well, I’ve got to weigh everyone’s feelings here, Via,” said Mom.</p>
+<p>“What are you two talking about?” I shouted.</p>
+<p>“Nothing!” they both snapped at the same time.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>到晚饭时分她们似乎已经和好，爸爸加班，达西因为白天吐得多睡着了，妈妈约了明早带它去兽医。三人坐下谁都不说话，奥吉终于开口问“那我们要去看贾斯汀的戏吗？”维娅低头看着盘子没答。妈妈小声说“奥吉，我之前没弄清楚演的是什么戏，确实不适合你这个年纪的孩子看”。“那我就不被邀请了？”奥吉看着维娅。妈妈说不是这个意思，只是觉得他不会喜欢；维娅像在指责一样说“你会无聊透顶的”。奥吉问“你和爸爸去吗？”妈妈说爸爸去，自己留在家里陪他。维娅冲妈妈喊“什么？太好了，你因为我说实话就用不去惩罚我？”妈妈提醒“本来你就不想让我们去，记得吗？”维娅说“可你现在既然知道了，我当然希望你们去！”妈妈说要权衡每个人的感受，奥吉问“你们俩在说什么？”两人同时吼“没什么！”。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Well, I've got to weigh everyone's feelings here, Via.</blockquote><p class="note">weigh = 权衡、掂量。妈妈说要在每个人的感受之间做平衡，正是这句话刺中了奥吉的敏感神经。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>weigh</b> <span class="pos">v.</span> 权衡、掂量（利弊）</li><li><b>accuse</b> <span class="pos">v.</span> 指责、指控</li><li><b>bored</b> <span class="pos">adj.</span> 无聊的、厌烦的</li><li><b>punish</b> <span class="pos">v.</span> 惩罚</li><li><b>snap</b> <span class="pos">v.</span> 厉声说、气冲冲地嚷</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-2">
+        <div class="seg-head">
+          <div class="seg-num">2</div>
+          <div class="seg-titles">
+            <h2>爆发：你们都是骗子</h2>
+            <div class="seg-en">Stop lying to me!</div>
+          </div>
+          <div class="seg-meta">约 4 分钟 · 286 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">情绪爆发</span><span class="tag">指责家人</span><span class="tag">洞穴一样的床</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>这是本单元的情绪爆发点：奥吉的愤怒源于“知道维娅嫌弃他、家人又遮遮掩掩”，他把多年的不被接纳一朝吼了出来。</div>
+        <div class="body">
+<p>“Just something about Via’s school that has nothing to do with you,” said Mom.</p>
+<p>“You’re lying,” I said.</p>
+<p>“Excuse me?” said Mom, kind of shocked. Even Via looked surprised.</p>
+<p>“I said you’re lying!” I shouted. “You’re lying!” I screamed at Via, getting up. “You’re both liars! You’re both lying to my face like I’m an idiot!”</p>
+<p>“Sit down, Auggie!” said Mom, grabbing my arm.</p>
+<p>I pulled my arm away and pointed at Via.</p>
+<p>“You think I don’t know what’s going on?” I yelled. “You just don’t want your brand-new fancy high school friends to know your brother’s a freak!”</p>
+<p>“Auggie!” Mom yelled. “That’s not true!”</p>
+<p>“Stop lying to me, Mom!” I shrieked. “Stop treating me like a baby! I’m not retarded! I know what’s going on!”</p>
+<p>I ran down the hallway to my room and slammed the door behind me so hard that I actually heard little pieces of the wall crumble inside the door frame. Then I plopped onto my bed and pulled the covers up on top of me. I threw my pillows over my disgusting face and then piled all my stuffed animals on top of the pillows, like I was inside a little cave. If I could walk around with a pillow over my face all the time, I would.</p>
+<p>I don’t even know how I got so mad. I wasn’t really mad at the beginning of dinner. I wasn’t even sad. But then all of a sudden it all kind of just exploded out of me. I knew Via didn’t want me to go to her stupid play. And I knew why.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>妈妈说“就是点维娅学校的事，跟你没关系”，奥吉说“你在撒谎”，妈妈和维娅都很惊讶。奥吉站起来尖声喊道“我说你在撒谎！你撒谎！你们俩都是骗子！你们当着我的面对我撒谎，把我当傻子！”“坐下，奥吉！”妈妈抓住他的胳膊，奥吉挣开，指着维娅吼“你以为我不知道怎么回事吗？你就是不想让你那些崭新的名校高中同学知道你弟弟是个怪物！”“奥吉！”妈妈喊“那不是真的！”奥吉尖叫道“别再骗我了！别把我当小孩！我不是傻子！我知道怎么回事！”他跑回房间，用力摔上门，甚至听到门框里的墙皮崩了个口。他扑到床上，拉起被子盖住自己，把枕头丢到那张“恶心的脸”上，又把玩偶全堆在枕头上，像钻进一个小洞穴。他恨不得能永远顶着一个枕套走路。他说自己也不知道怎么会气成这样，一开始并不生气也不难过，可突然之间就全爆发了——他知道维娅不想让他去看那出戏，也知道为什么。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>You just don't want your brand-new fancy high school friends to know your brother's a freak!</blockquote><p class="note">fancy = 花哨的、高档的；freak = 怪物（贬义）。奥吉把他心中最深的恐惧——被家人视为累赘——“freak”吼了出来，很扎心。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>fancy</b> <span class="pos">adj.</span> 高档的、花哨的</li><li><b>freak</b> <span class="pos">n.</span> 怪物（对长相的贬称）</li><li><b>shriek</b> <span class="pos">v.</span> 尖叫、尖声喊</li><li><b>slam</b> <span class="pos">v.</span> 砰地关上</li><li><b>stuffed animal</b> <span class="pos">n.</span> 毛绒玩偶</li></ul></div>
+      </section>
+
+      <section class="segment" id="seg-3">
+        <div class="seg-head">
+          <div class="seg-num">3</div>
+          <div class="seg-titles">
+            <h2>来的不是妈妈，是维娅</h2>
+            <div class="seg-en">It was Via.</div>
+          </div>
+          <div class="seg-meta">约 2 分钟 · 192 词</div>
+          <button class="tts-btn" onclick="window.__readSeg(this)" title="朗读本段英文">🔊 朗读</button>
+        </div>
+        <div class="tags"><span class="tag">等待妈妈</span><span class="tag">妈妈没来</span><span class="tag">维娅进门</span></div>
+        <div class="guide"><span class="lbl">读前导读</span>收尾的悬念：往常总会来的妈妈这次没来，推门而入的是姐姐维娅——预料之外，也预告了下一单元维娅可能要对他说些什么。</div>
+        <div class="body">
+<p>I figured Mom would follow me into my room right away, but she didn’t. I wanted her to find me inside my cave of stuffed animals, so I waited a little more, but even after ten minutes she still didn’t come in after me. I was pretty surprised. She always checks on me when I’m in my room, upset about stuff.</p>
+<p>I pictured Mom and Via talking about me in the kitchen. I figured Via was feeling really, really, really bad. I pictured Mom totally laying on the guilt. And Dad would be mad at her when he came home, too.</p>
+<p>I made a little hole through the pile of pillows and stuffed animals and peeked at the clock on my wall. Half an hour had passed and Mom still hadn’t come into my room. I tried to listen for the sounds in the other rooms. Were they still having dinner? What was going on?</p>
+<p>Finally, the door opened. It was Via. She didn’t even bother coming over to my bed, and she didn’t come in softly like I thought she would. She came in quickly.</p>
+        </div>
+        <div class="key"><span class="lbl">✦ 这节讲了什么</span><p>奥吉以为妈妈马上会跟进房间，但她没有。他在“玩偶洞穴”里躲着，想等她来找，可十分钟过去她也不来，他很意外——他难过时妈妈总会来房间看他。他想象厨房里妈妈和维娅在议论他，维娅一定很内疚，妈妈一定在使劲谴责她，爸爸回家也会生她的气。他在枕头和玩偶的缝隙里抠出个洞，看墙上的钟：半小时过去，妈妈还是没来。他竖起耳朵听别的屋子的动静，他们还在吃晚饭吗？到底怎么回事？终于，门开了。进来的是维娅，她没有像他想象的那样轻轻走到床边，也没放轻脚步，而是很快就冲了过来。</p></div>
+        <div class="quote"><span class="lbl">◆ 金句</span><blockquote>Finally, the door opened. It was Via.</blockquote><p class="note">it was Via = 来的是维娅。“it”用来指人。几句短句把“期待落空、意外登场”的紧张感推向下一单元。</p></div>
+        <div class="vocab"><span class="lbl">📖 生词</span><ul><li><b>figure</b> <span class="pos">v.</span> 认为、估计</li><li><b>laying on the guilt</b> <span class="pos">phr.</span> 使劲让对方感到愧疚</li><li><b>peek</b> <span class="pos">v.</span> 偷看、朝里瞧</li><li><b>half an hour</b> <span class="pos">n.</span> 半小时</li></ul></div>
+      </section>
+  <div class="next-nav">
+    <a href="wonder_unit_66.html">← 上一单元</a>
+    <a href="wonder_unit_68.html">下一单元 →</a>
+  </div>
+  <footer>Wonder · R. J. Palacio · 第67/96 单元 · 第六部 · 奥吉 · 约 9 分钟</footer>
+</div>
+<div class="tts-bar" id="tts-bar">
+  <span class="tts-state" id="tts-state">朗读中…</span>
+  <button id="tts-play" onclick="window.__ttsPlay()" title="暂停/继续">⏸</button>
+  <button id="tts-stop" onclick="window.__ttsStop()" title="停止">⏹</button>
+  <select id="tts-speed" title="语速"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option></select>
+  <select id="tts-voice" title="发音人" style="display:none"></select>
+</div>
+<script src="wu-data/u67.js"></script>
+<script src="tts-mimo.js"></script>
+<script src="wonder-nav.js"></script>
+</body>
+</html>
